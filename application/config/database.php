@@ -38,7 +38,7 @@
 | the active record class
 */
 
-$environment = 'prod'; //test or prod
+$environment = 'test'; //test or prod
 
 $active_group = "default";
 $active_record = TRUE;

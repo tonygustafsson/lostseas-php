@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /
+	RewriteBase /test/
 	
 	#Redirect non www request to www for SEO
 	RewriteCond %{HTTP_HOST} !^www\.

@@ -244,7 +244,7 @@ $config['encryption_key'] = "SpouwrlusluclEpIax953riejOuqIepR";
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'lostseas';
+$config['sess_cookie_name']		= 'lostseastest';
 $config['sess_expiration']		= 43200;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= TRUE;
