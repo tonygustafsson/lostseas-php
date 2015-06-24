@@ -1,0 +1,9 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2015-01-10 15:47:09 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /storage/content/02/177202/lostseas.com/public_html/application/controllers/ocean.php:556) /storage/content/02/177202/lostseas.com/public_html/system/core/Output.php 391
+ERROR - 2015-01-10 15:49:43 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /storage/content/02/177202/lostseas.com/public_html/application/controllers/ocean.php:556) /storage/content/02/177202/lostseas.com/public_html/system/core/Output.php 391
+ERROR - 2015-01-10 15:54:17 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /storage/content/02/177202/lostseas.com/public_html/application/controllers/ocean.php:556) /storage/content/02/177202/lostseas.com/public_html/system/core/Output.php 391
+ERROR - 2015-01-10 15:54:28 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /storage/content/02/177202/lostseas.com/public_html/application/controllers/ocean.php:556) /storage/content/02/177202/lostseas.com/public_html/system/core/Output.php 391
+ERROR - 2015-01-10 15:54:37 --> Severity: Warning  --> Cannot modify header information - headers already sent by (output started at /storage/content/02/177202/lostseas.com/public_html/application/controllers/ocean.php:556) /storage/content/02/177202/lostseas.com/public_html/system/core/Output.php 391
+ERROR - 2015-01-10 18:20:02 --> Severity: Notice  --> Undefined offset: 1 /storage/content/02/177202/lostseas.com/public_html/application/controllers/account.php 79
+ERROR - 2015-01-10 18:20:02 --> Query error: Column 'character_avatar' cannot be null

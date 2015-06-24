@@ -1,0 +1,31 @@
+<? if (isset($json)): ?>
+	<script type="text/javascript">
+		gameManipulateDOM(<?=$json?>);
+	</script>
+<? endif; ?>
+
+<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
+	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?=base_url('assets/images/places/governor_' . $game['nation'] . '.jpg')?>" class="header">
+</header>
+
+<section class="actions">
+	<a class="ajaxHTML" title="Talk to the governor" href="<?=base_url('cityhall/governor')?>"><img src="<?=base_url('assets/images/icons/cityhall_governor.png')?>" alt="Governor" width="32" height="32">Governor</a>
+	<? if ($this->user['game']['event_work'] != 'banned'): ?>
+		<a class="ajaxHTML" id="actions_work" title="Work to get some money" href="<?=base_url('cityhall/work')?>"><img src="<?=base_url('assets/images/icons/cityhall_work.png')?>" alt="Work" width="32" height="32">Work</a>
+	<? endif; ?>
+	<? if ($game['prisoners'] > 0 && $game['nation'] == $game['nationality']): ?>
+		<a id="action_prisoners" class="ajaxJSON" title="Hand over your prisoner and get a ransom" href="<?=base_url('cityhall/prisoners')?>"><img src="<?=base_url('assets/images/icons/cityhall_prisoners.png')?>" alt="Prisoners" width="32" height="32">Prisoners</a>
+	<? endif; ?>
+</section>
+
+<div id="msg"></div>
+
+<? if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === TRUE): ?>
+	<section id="offer">
+		<section class="actions">
+				<a href="cityhall/citizenship_accept" class="ajaxJSON nopic positive" title="Become a citizen!">Yes</a>
+				<a href="cityhall" class="nopic negative" title="Turn the governor down">No</a>
+		</section>
+	</section>
+<? endif; ?>

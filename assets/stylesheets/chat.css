@@ -1,0 +1,92 @@
+body.chat {
+	background-color: #e5f0f6;
+	background-image: url('../images/design/back_sky.jpg');
+	background-position: top left;
+	background-repeat: repeat-x;
+	background-attachment: fixed;
+	background-size: 100% 60%;
+}
+
+section#chat_users {
+	float: left;
+	width: 140px;
+	height: 470px;
+	background: rgba(255,255,255,0.5);
+}
+
+section#chat_users p {
+	background: rgba(255,255,255,0.8);
+	border-radius: 4px;
+	margin: 0.5em 0 0.5em 0.5em;
+	overflow: hidden;
+}
+
+section#chat_users p img {
+	float: left;
+	height: 100%;
+	clear: both;
+	padding-right: 0.5em;
+}
+
+article#chat {
+	float: left;
+	text-align: left;
+	width: 660px;
+	height: 470px;
+	padding: 10px;
+	margin: 0;
+	overflow: scroll;
+	background: rgba(255,255,255,0.5);
+	box-shadow: none;
+}
+
+article#chat div.entry {
+	width: 95%;
+	height: auto;
+	overflow: hidden;
+	min-height: 40px;
+	margin: 0.5em;
+	padding: 0.5em;
+	background: rgba(255,255,255,0.7);
+	border-radius: 6px;
+}
+
+article#chat div.entry span.timestamp {
+	color: #555;
+}
+
+section#chat_input {
+	width: 99%;
+	height: 40px;
+	position: absolute;
+	top: 460px;
+	left: 5px;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+section#chat_input input[type=text] {
+	width: 100%;
+	background: #F0F0F0;
+	color: #000;
+	border: 1px #999 solid;
+	height: 24px;
+	padding 0 0.5em 0 0.5em;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0;
+}
+
+section#chat_input input[type=submit] {
+	background: #000;
+	border: 1px #999 solid;
+	height: 30px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0;
+	color: #fff;
+	padding: 4px;
+}
