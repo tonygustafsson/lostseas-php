@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
@@ -21,10 +21,10 @@
 	<input type="hidden" name="needed_food" id="needed_food" value="<?php echo $game['needed_food'] * 5?>">
 	<input type="hidden" name="needed_water" id="needed_water" value="<?php echo $game['needed_water'] * 5?>">
 	
-	<? foreach ($prices as $product => $price): ?>
+	<?php foreach ($prices as $product => $price): ?>
 		<input type="hidden" id="<?php echo $product?>_buy" value="<?php echo $price['buy']?>">
 		<input type="hidden" id="<?php echo $product?>_sell" value="<?php echo $price['sell']?>">
-	<? endforeach; ?>
+	<?php endforeach; ?>
 	
 	<div class="slider_container">
 	

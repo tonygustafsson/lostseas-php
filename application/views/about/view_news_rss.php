@@ -10,7 +10,7 @@
 		<dc:rights>Copyright <? echo gmdate("Y", time());?></dc:rights>
 		<admin:generatorAgent rdf:resource="http://www.codeigniter.com/" />
 
-		<? foreach($posts as $entry): ?>
+		<?php foreach($posts as $entry): ?>
 			<item>
 				<title><? echo xml_convert(date("jS F, Y", $entry['unix_time'])); ?></title>
 				<link><? echo base_url() ?></link>
@@ -23,7 +23,7 @@
 					<? echo date ('r', $entry['unix_time']);?>
 					</pubDate>
 			</item>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 
 	</channel>
 </rss>  

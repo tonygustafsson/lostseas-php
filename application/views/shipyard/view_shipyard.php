@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
@@ -10,9 +10,9 @@
 </header>
 
 <section class="actions">
-	<a class="ajaxHTML" title="Buy ships and equipments" href="shipyard"><img src="<?echo base_url()?>assets/images/icons/shipyard_buy.png" alt="Buy" width="32" height="32">Buy</a>
-	<a class="ajaxHTML" title="Sell ships and equipments" href="shipyard/sell"><img src="<?echo base_url()?>assets/images/icons/shipyard_sell.png" alt="Sell" width="32" height="32">Sell</a>
-	<a class="ajaxHTML" title="Repair damaged ships" href="shipyard/repair"><img src="<?echo base_url()?>assets/images/icons/shipyard_repair.png" alt="Repair" width="32" height="32">Repair</a>
+	<a class="ajaxHTML" title="Buy ships and equipments" href="shipyard"><img src="<?php echo base_url()?>assets/images/icons/shipyard_buy.png" alt="Buy" width="32" height="32">Buy</a>
+	<a class="ajaxHTML" title="Sell ships and equipments" href="shipyard/sell"><img src="<?php echo base_url()?>assets/images/icons/shipyard_sell.png" alt="Sell" width="32" height="32">Sell</a>
+	<a class="ajaxHTML" title="Repair damaged ships" href="shipyard/repair"><img src="<?php echo base_url()?>assets/images/icons/shipyard_repair.png" alt="Repair" width="32" height="32">Repair</a>
 </section>
 
 <div id="msg"></div>
@@ -21,16 +21,16 @@
 
 <h3>Fixings</h3>
 
-<form method="post" class="ajaxJSON" id="buy" action="<?echo base_url()?>shipyard/fixings_post">
+<form method="post" class="ajaxJSON" id="buy" action="<?php echo base_url()?>shipyard/fixings_post">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">
 
-	<? foreach ($prices as $product => $price): ?>
+	<?php foreach ($prices as $product => $price): ?>
 		<input type="hidden" id="<?php echo $product?>_buy" value="<?php echo $price['buy']?>">
 		<input type="hidden" id="<?php echo $product?>_sell" value="<?php echo $price['sell']?>">
-	<? endforeach; ?>
+	<?php endforeach; ?>
 	
 	<fieldset style="margin-bottom: 0;">
-		<legend><img src="<?echo base_url()?>assets/images/icons/shipyard_fixings.png"> Cannons (<?php echo $prices['cannons']['buy']?>/<?php echo floor($prices['cannons']['sell'] * 0.7)?> dbl)</legend>
+		<legend><img src="<?php echo base_url()?>assets/images/icons/shipyard_fixings.png"> Cannons (<?php echo $prices['cannons']['buy']?>/<?php echo floor($prices['cannons']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">It's your cannons that make you win at sea battles! You need 2 crew members per cannon though, or else it will not be used.</p>
 		<div id="cannons-slider" style="width: 90%; margin: 20px;"></div>
 
@@ -44,7 +44,7 @@
 	</fieldset>
 	
 	<fieldset style="margin-bottom: 0;">
-		<legend><img src="<?echo base_url()?>assets/images/icons/raft.png"> Rafts (<?php echo $prices['rafts']['buy']?>/<?php echo floor($prices['rafts']['sell'] * 0.7)?> dbl)</legend>
+		<legend><img src="<?php echo base_url()?>assets/images/icons/raft.png"> Rafts (<?php echo $prices['rafts']['buy']?>/<?php echo floor($prices['rafts']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">If all your ships are destroyed at sea, you can save 10 crew members per raft.</p>
 		<div id="rafts-slider" style="width: 90%; margin: 20px;"></div>
 

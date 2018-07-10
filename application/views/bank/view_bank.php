@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>

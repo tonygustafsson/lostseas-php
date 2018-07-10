@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Account settings">
 	<h3>Account Settings</h3>
@@ -23,9 +23,9 @@
 		<legend>Profile picture</legend>
 
 		<div style="width: 100px; height: 100px; padding: 1em;" id="image_preview">
-			<? if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg')): ?>
-				<img style="border-radius: 4px" src="<?php echo APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
-			<? endif; ?>
+			<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg')): ?>
+				<img style="border-radius: 4px" src="<?php echo 'assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
+			<?php endif; ?>
 		</div>
 	
 		<input type="file" id="profile_picture_select" name="profile_picture_select[]">
@@ -44,53 +44,53 @@
 		
 		<label for="gender">Gender</label>
 		<p>
-			<? if ($user['gender'] == 'M'): ?>
+			<?php if ($user['gender'] == 'M'): ?>
 				Male: <input type="radio" name="gender" value="M" checked>
 				Female: <input type="radio" name="gender" value="F">
-			<? else: ?>
+			<?php else: ?>
 				Male: <input type="radio" name="gender" value="M">
 				Female: <input type="radio" name="gender" value="F" checked>
-			<? endif; ?>
+			<?php endif; ?>
 		</p>
 		
 		<label for="day, month, year">Birthday</label>
 		<select name="day">
-			<? for ($x = 1; $x <= 31; $x++): ?>
-				<option value="<?php echo $x?>"<? echo (date("j", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?php echo $x?></option>
-			<? endfor; ?>
+			<?php for ($x = 1; $x <= 31; $x++): ?>
+				<option value="<?php echo $x?>"<?php echo (date("j", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?php echo $x?></option>
+			<?php endfor; ?>
 		</select>
 		
 		<select name="month">
-			<? foreach ($months as $number => $month): ?>
-				<option value="<?php echo $number?>"<? echo (date("n", strtotime($user['birthday'])) == $number) ? 'selected' : '' ?>><?php echo $month?></option>
-			<? endforeach; ?>
+			<?php foreach ($months as $number => $month): ?>
+				<option value="<?php echo $number?>"<?php echo (date("n", strtotime($user['birthday'])) == $number) ? 'selected' : '' ?>><?php echo $month?></option>
+			<?php endforeach; ?>
 		</select>
 		
 		<select name="year">
-			<? for ($x = 1930; $x <= 2010; $x++): ?>
-				<option value="<?php echo $x?>"<? echo (date("Y", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?php echo $x?></option>
-			<? endfor; ?>
+			<?php for ($x = 1930; $x <= 2010; $x++): ?>
+				<option value="<?php echo $x?>"<?php echo (date("Y", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?php echo $x?></option>
+			<?php endfor; ?>
 		</select>
 		
 		<label for="presentation">Presentation</label>
 		<textarea name="presentation"><?php echo $user['presentation']?></textarea>
 		
 		<label for="notify_new_messages">Email me messages from other players</label>
-		<input type="checkbox" name="notify_new_messages"<?echo ($user['notify_new_messages'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" name="notify_new_messages"<?php echo ($user['notify_new_messages'] == 1) ? 'checked' : '' ?>>
 		
 		<p><strong>Privacy settings</strong></p>
 		
 		<label for="show_email">Show my email address</label>
-		<input type="checkbox" name="show_email"<?echo ($user['show_email'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" name="show_email"<?php echo ($user['show_email'] == 1) ? 'checked' : '' ?>>
 		
 		<label for="show_gender">Show my gender</label>
-		<input type="checkbox" name="show_gender"<?echo ($user['show_gender'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" name="show_gender"<?php echo ($user['show_gender'] == 1) ? 'checked' : '' ?>>
 		
 		<label for="show_age">Show my age</label>
-		<input type="checkbox" name="show_age"<?echo ($user['show_age'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" name="show_age"<?php echo ($user['show_age'] == 1) ? 'checked' : '' ?>>
 		
 		<label for="show_history">Show my log book and history data</label>
-		<input type="checkbox" name="show_history"<?echo ($user['show_history'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" name="show_history"<?php echo ($user['show_history'] == 1) ? 'checked' : '' ?>>
 		
 		<br><input type="submit" value="Save">
 	</fieldset>

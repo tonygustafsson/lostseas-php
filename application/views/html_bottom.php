@@ -178,15 +178,15 @@
 					<fieldset>
 						<legend>Log in</legend>
 						
-						<? if ($this->session->userdata('email') || $this->session->userdata('password')): ?>
+						<?php if ($this->session->userdata('email') || $this->session->userdata('password')): ?>
 								<? $this->session->unset_userdata('email') ?>
 								<? $this->session->unset_userdata('password') ?>
 								<p style="margin: 0.2em 1em; background: #d96868; padding: 0.3em; border-radius: 4px;">Your login was denied...</p>
-						<? endif; ?>
+						<?php endif; ?>
 						
-						<? if (isset($user['success'])): ?>
+						<?php if (isset($user['success'])): ?>
 								<div class="success"><p>You are now registered with the username: <?php echo $user['success']?>! Please log in.</p></div>
-						<? endif; ?>
+						<?php endif; ?>
 						
 						<label for="login_email">Email</label>
 						<input type="text" id="login_email" name="login_email" autofocus style="width: 100%">

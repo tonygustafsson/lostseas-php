@@ -116,7 +116,7 @@
 					<li><a id="nav_logout" title="Log out from this game" href="<?php echo base_url('account/logout')?>">Quit</a></li>
 				</ul>
 
-				<div id="music_control" style="display: inline-table; padding-left: 20px; padding-top: 15px;" data-autoplay="<?echo ($user['music_play'] == 1) ? 'yes' : 'no';?>" data-musicvolume="<?php echo $user['music_volume']?>">
+				<div id="music_control" style="display: inline-table; padding-left: 20px; padding-top: 15px;" data-autoplay="<?php echo ($user['music_play'] == 1) ? 'yes' : 'no';?>" data-musicvolume="<?php echo $user['music_volume']?>">
 					<a href="#" id="sound_controls_icon" title="Control music and sound effects"><img src="<?php echo base_url('assets/images/icons/sound_controls.png')?>" alt="Sound controls"></a>
 				</div>
 				
@@ -134,8 +134,8 @@
 					
 					<h3 style="margin: 0.5em 0;">Sound effects</h3>
 					<p id="sound_effects">
-						On <input type="radio" name="sound_effects" value="1"<?echo ($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
-						Off <input type="radio" name="sound_effects" value="0"<?echo ($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
+						On <input type="radio" name="sound_effects" value="1"<?php echo ($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
+						Off <input type="radio" name="sound_effects" value="0"<?php echo ($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
 					</p>
 				</div>
 
@@ -149,8 +149,8 @@
 			<aside id="action_panel" class="grid_2">
 				<h3>Action</h3>
 
-				<? $in_town = array('dock', 'shop', 'tavern', 'shipyard', 'cityhall', 'market', 'bank'); ?>
-				<nav id="nav_dock" style="<?echo (in_array($game['place'], $in_town)) ? 'display: block; ' : 'display: none; '?>">
+				<?php $in_town = array('dock', 'shop', 'tavern', 'shipyard', 'cityhall', 'market', 'bank'); ?>
+				<nav id="nav_dock" style="<?php echo (in_array($game['place'], $in_town)) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Visit the shop" href="<?php echo base_url('shop')?>"><img src="<?php echo base_url('assets/images/icons/shop.png')?>" alt="Shop" width="32" height="32">Shop</a></div>
 					<div><a class="ajaxHTML" title="Visit the tavern" href="<?php echo base_url('tavern')?>"><img src="<?php echo base_url('assets/images/icons/tavern.png')?>" alt="Tavern" width="32" height="32">Tavern</a></div>
 					<div><a class="ajaxHTML" title="Visit the city hall" href="<?php echo base_url('cityhall')?>"><img src="<?php echo base_url('assets/images/icons/cityhall.png')?>" alt="City Hall" width="32" height="32">City Hall</a></div>
@@ -160,29 +160,29 @@
 					<div><a class="ajaxHTML" title="Go out to sea!" href="<?php echo base_url('harbor')?>"><img src="<?php echo base_url('assets/images/icons/coast.png')?>" alt="Harbor" width="32" height="32">Harbor</a></div>
 				</nav>
 
-				<nav id="nav_harbor" style="<?echo ($game['place'] == 'harbor' && empty($game['event_ship'])) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_harbor" style="<?php echo ($game['place'] == 'harbor' && empty($game['event_ship'])) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Explore the ocean" href="<?php echo base_url('ocean')?>"><img src="<?php echo base_url('assets/images/icons/coast.png')?>" alt="Explore" width="32" height="32">Explore</a></div>
 					<div><a class="ajaxHTML" title="Land at this town" href="<?php echo base_url('dock')?>"><img src="<?php echo base_url('assets/images/icons/dock.png')?>" alt="Land" width="32" height="32">Land</a></div>
 				</nav>
 
-				<nav id="nav_ocean" style="<?echo ($game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade']))) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_ocean" style="<?php echo ($game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade']))) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Explore the ocean" href="<?php echo base_url('ocean')?>"><img src="<?php echo base_url('assets/images/icons/coast.png')?>" alt="Explore" width="32" height="32">Explore</a></div>
 				</nav>
 				
 				<?php if (! empty($this->user['game']['event_ship'])) { list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']); } else { $nation = NULL; } ?>
 			
-				<nav id="nav_ship_meeting_unfriendly" style="<?echo (! empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy'])) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_ship_meeting_unfriendly" style="<?php echo (! empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy'])) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Attack this ship!" href="<?php echo base_url('ocean/attack')?>"><img src="<?php echo base_url('assets/images/icons/attack.png')?>" alt="Attack" width="32" height="32">Attack</a></div>
 					<div><a class="ajaxHTML" title="Try to flee!" href="<?php echo base_url('ocean/flee')?>"><img src="<?php echo base_url('assets/images/icons/flee.png')?>" alt="Flee" width="32" height="32">Flee</a></div>
 				</nav>
 				
-				<nav id="nav_ship_meeting_friendly" style="<?echo (! empty($game['event_ship']) && ($nation == $game['nationality'])) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_ship_meeting_friendly" style="<?php echo (! empty($game['event_ship']) && ($nation == $game['nationality'])) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Attack this ship!" href="<?php echo base_url('ocean/attack')?>"><img src="<?php echo base_url('assets/images/icons/attack.png')?>" alt="Attack" width="32" height="32">Attack</a></div>
 					<div><a class="ajaxHTML" title="Trade with these sea men" href="<?php echo base_url('ocean/trade')?>"><img src="<?php echo base_url('assets/images/icons/trade.png')?>" alt="Trade" width="32" height="32">Trade</a></div>
 					<div><a class="ajaxHTML" title="Ignore this ship" href="<?php echo base_url('ocean/ignore')?>"><img src="<?php echo base_url('assets/images/icons/flee.png')?>" alt="Ignore" width="32" height="32">Ignore</a></div>
 				</nav>
 				
-				<nav id="nav_ship_meeting_neutral" style="<?echo (! empty($game['event_ship']) && ($nation != $game['nationality']) && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== NULL) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_ship_meeting_neutral" style="<?php echo (! empty($game['event_ship']) && ($nation != $game['nationality']) && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== NULL) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Attack this ship!" href="<?php echo base_url('ocean/attack')?>"><img src="<?php echo base_url('assets/images/icons/attack.png')?>" alt="Attack" width="32" height="32">Attack</a></div>
 					<div><a class="ajaxHTML" title="Ignore this ship" href="<?php echo base_url('ocean/ignore')?>"><img src="<?php echo base_url('assets/images/icons/flee.png')?>" alt="Ignore" width="32" height="32">Ignore</a></div>
 				</nav>

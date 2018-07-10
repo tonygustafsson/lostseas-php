@@ -1,11 +1,11 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Guide: Traveling">
-	<? if (! $logged_in): ?>
+	<?php if (! $logged_in): ?>
 		<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
 		<h2>Guide: Traveling</h2>
 		
@@ -39,15 +39,15 @@
 			</fieldset>
 		</form>
 
-	<? else: ?>
+	<?php else: ?>
 		<h3>Guide: Traveling</h3>
-	<? endif; ?>
+	<?php endif; ?>
 </header>
 
 <section class="actions">
-	<? if (! $logged_in): ?>
+	<?php if (! $logged_in): ?>
 		<a class="ajaxHTML" title="Presentation about the game" href="<?php echo base_url('about/presentation')?>"><img src="<?php echo base_url('assets/images/icons/presentation.png')?>" alt="Start" width="32" height="32">Start</a>
-	<? endif; ?>
+	<?php endif; ?>
 	<a class="ajaxHTML" title="A complete guide for this game" href="<?php echo base_url('about/guide_supplies')?>"><img src="<?php echo base_url('assets/images/icons/guide.png')?>" alt="Guide" width="32" height="32">Guide</a>
 	<a class="ajaxHTML" title="What's new in here?" href="<?php echo base_url('about/news')?>"><img src="<?php echo base_url('assets/images/icons/about_news.png')?>" alt="News" width="32" height="32">News</a>
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
@@ -81,7 +81,7 @@ The dutch towns are: Bonaire, Curacao, St. Martin and St. Eustatius.
 <p>All these towns actually existed in the 1600th. The towns nationality varied from year to year though.</p>
 
 <p style="text-align: center;">
-	<img src="<?echo base_url()?>assets/images/spanish_main.jpg" alt="Spanish main" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?php echo base_url()?>assets/images/spanish_main.jpg" alt="Spanish main" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
 </p>
 
 <p>You can visit which of these you want, no matter which nationality you belongs to. This can change in the future...</p>
@@ -101,7 +101,7 @@ as an ordinary attack. So you can lose. You will find more English ships around 
 travel to your enemies coasts.</p>
 
 <p style="text-align: center;">
-	<img src="<?echo base_url()?>assets/images/design/about_attack.jpg" alt="Attack" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?php echo base_url()?>assets/images/design/about_attack.jpg" alt="Attack" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
 </p>
 
 <p>I would suggest that you don't attack ships that have more cannons than you have. The is a random factor here, so you can win if the gap
@@ -111,7 +111,7 @@ isn't to big. But it's really risky! It's the amount of functional cannons that 
 the battle. And if you win, you will be able to chose how much you want to loot from the other ship.</p>
 
 <p style="text-align: center;">
-	<img src="<?echo base_url()?>assets/images/design/about_won.jpg" alt="Won" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?php echo base_url()?>assets/images/design/about_won.jpg" alt="Won" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
 </p>
 
 <h3>Trading at sea</h3>

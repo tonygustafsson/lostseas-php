@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2 title="bank_account"><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
@@ -20,11 +20,11 @@
 
 <div id="msg"></div>
 
-<form method="post" class="ajaxJSON" id="transfer_form" action="<?echo base_url('bank/loan_post')?>">
+<form method="post" class="ajaxJSON" id="transfer_form" action="<?php echo base_url('bank/loan_post')?>">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">
 	<input type="hidden" name="current_money_bank_loan" id="current_money_bank_loan" value="<?php echo $game['bank_loan']?>">
 	<fieldset>
-		<legend><img src="<?echo base_url('assets/images/icons/bank.png')?>" alt="Bank Loan" width="32" height="32"> Bank loan</legend>
+		<legend><img src="<?php echo base_url('assets/images/icons/bank.png')?>" alt="Bank Loan" width="32" height="32"> Bank loan</legend>
 		<div id="loan-slider" style="width: 90%; margin: 20px;"></div>
 		
 		<table style="margin: 0 auto; width: 90%">

@@ -3,10 +3,10 @@
 </header>
 
 <section class="actions">
-	<a class="ajaxHTML" title="Change user parameters" href="godmode/user/<?php echo $this->uri->segment(3)?>"><img src="<?echo base_url('assets/images/icons/players_user.png')?>" alt="User" width="32" height="32">User</a>
-	<a class="ajaxHTML" title="Change game parameters" href="godmode/index/<?php echo $this->uri->segment(3)?>"><img src="<?echo base_url('assets/images/icons/settings_character.png')?>" alt="Game" width="32" height="32">Game</a>
-	<a class="ajaxHTML" title="Change ship parameters" href="godmode/ship/<?php echo $this->uri->segment(3)?>"><img src="<?echo base_url('assets/images/icons/shipyard_sell.png')?>" alt="Ship" width="32" height="32">Ships</a>
-	<a class="ajaxHTML" title="Change crew parameters" href="godmode/crew/<?php echo $this->uri->segment(3)?>"><img src="<?echo base_url('assets/images/icons/tavern_sailor.png')?>" alt="Crew" width="32" height="32">Crew</a>
+	<a class="ajaxHTML" title="Change user parameters" href="godmode/user/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/players_user.png')?>" alt="User" width="32" height="32">User</a>
+	<a class="ajaxHTML" title="Change game parameters" href="godmode/index/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/settings_character.png')?>" alt="Game" width="32" height="32">Game</a>
+	<a class="ajaxHTML" title="Change ship parameters" href="godmode/ship/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/shipyard_sell.png')?>" alt="Ship" width="32" height="32">Ships</a>
+	<a class="ajaxHTML" title="Change crew parameters" href="godmode/crew/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/tavern_sailor.png')?>" alt="Crew" width="32" height="32">Crew</a>
 </section>
 
 <div id="msg"></div>
@@ -14,21 +14,21 @@
 <section class="actions">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">
-			<? foreach($players as $this_player): ?>
-				<? if (empty($this_player['name'])): ?>
-					<? if ($player['user']['id'] === $this_player['id']): ?>
+			<?php foreach($players as $this_player): ?>
+				<?php if (empty($this_player['name'])): ?>
+					<?php if ($player['user']['id'] === $this_player['id']): ?>
 						<option value="<?php echo $this_player['id']?>" selected>TempUser (<?php echo $this_player['id']?>)</option>
-					<? else: ?>
+					<?php else: ?>
 						<option value="<?php echo $this_player['id']?>">TempUser (<?php echo $this_player['id']?>)</option>
-					<? endif; ?>
-				<? else: ?>
-					<? if ($player['user']['id'] === $this_player['id']): ?>
+					<?php endif; ?>
+				<?php else: ?>
+					<?php if ($player['user']['id'] === $this_player['id']): ?>
 						<option value="<?php echo $this_player['id']?>" selected><?php echo $this_player['name']?> (<?php echo $this_player['id']?>)</option>
-					<? else: ?>
+					<?php else: ?>
 						<option value="<?php echo $this_player['id']?>"><?php echo $this_player['name']?> (<?php echo $this_player['id']?>)</option>
-					<? endif; ?>
-				<? endif; ?>
-			<? endforeach; ?>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
 		</select>
 		
 		<a id="godmode_change_user_url" class="ajaxHTML nopic" data-baseurl="<?php echo base_url('godmode/ship')?>" href="<?php echo base_url('godmode/ship/' . $user['id'])?>">Change</a>
@@ -48,7 +48,7 @@
 			<th>Health <a href="javascript:godmodeChangeAll('health')" title="Change health for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
 		</tr>
 		
-		<? foreach ($player_ships as $current_ship): ?>
+		<?php foreach ($player_ships as $current_ship): ?>
 			<tr id="<?php echo $current_ship['id']?>_row">
 				<td>
 					<a class="ajaxJSON" href="<?php echo base_url('godmode/ship_delete')?>/<?php echo $current_ship['id']?>" title="Delete ship"><img src="<?php echo base_url('assets/images/icons/delete.png')?>" alt="Delete"></a>
@@ -58,7 +58,7 @@
 				<td><input type="number" id="<?php echo $current_ship['id']?>_age" name="<?php echo $current_ship['id']?>_age" value="<?php echo $current_ship['age']?>"></td>
 				<td><input type="number" id="<?php echo $current_ship['id']?>_health" name="<?php echo $current_ship['id']?>_health" value="<?php echo $current_ship['health']?>"></td>
 			</tr>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 		
 	</table>
 	

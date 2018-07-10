@@ -7,4 +7,4 @@
 	<a href="#" class="select_avatar_link" style="text-decoration: none" data-gender="<?php echo $gender?>" data-character="<?php echo $x?>" data-imagebasepath="<?php echo APPPATH . '../assets/images/avatars/' . $gender . '/'?>">
 		<img src="<?php echo APPPATH . '../assets/images/avatars/' . $gender . '/avatar_' . $x . '.jpg'?>" alt="Avatar <?php echo $x?>" style="margin-left: 0.5em; border: 1px black solid; border-radius: 4px;" width="120" height="120">
 	</a>
-<? endfor; ?>
+<?php endfor; ?>

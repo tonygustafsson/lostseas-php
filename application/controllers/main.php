@@ -182,8 +182,8 @@ class Main extends CI_Controller {
 			return FALSE;
 		}
 		
-		$user_data['profile_picture'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '.jpg')) ? APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '.jpg' : APPPATH . '../assets/images/profile_pictures/nopic.jpg';
-		$user_data['profile_picture_thumbnail'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg')) ? APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg' : APPPATH . '../assets/images/profile_pictures/nopic_thumb.jpg';
+		$user_data['profile_picture'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '.jpg')) ? 'assets/images/profile_pictures/' . $user_data['id'] . '.jpg' : 'assets/images/profile_pictures/nopic.jpg';
+		$user_data['profile_picture_thumbnail'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg')) ? 'assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg' : 'assets/images/profile_pictures/nopic_thumb.jpg';
 		$user_data['gender_long'] = ($user_data['gender'] == 'M') ? 'male' : 'female';
 	
 		//The user seems to exist, get more info from this user
@@ -192,8 +192,8 @@ class Main extends CI_Controller {
 		$crew_data = ($game_data) ? $this->Crew->get_brief($user_data['id']) : array();
 		
 		//Add some extra game variables, calculated of the other tables
-		$game_data['character_avatar_path'] = APPPATH . '../assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.jpg';
-		$game_data['character_avatar_thumb_path'] = APPPATH . '../assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $game_data['character_avatar'] . '.jpg';
+		$game_data['character_avatar_path'] = 'assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.jpg';
+		$game_data['character_avatar_thumb_path'] = 'assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $game_data['character_avatar'] . '.jpg';
 		$game_data['character_gender_long'] = ($game_data['character_gender'] == 'M') ? 'male' : 'female';
 		
 		$town_info = $this->config->item('towns');

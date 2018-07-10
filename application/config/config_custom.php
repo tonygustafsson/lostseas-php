@@ -4,7 +4,7 @@ $config['site_name']				=	'Lost Seas';
 $config['timezone']					=	'Europe/Stockholm';
 $config['email']					=	'info@lostseas.com';
 
-$config['google_analytics_id']		=	'UA-40457155-1';
+$config['google_analytics_id']		=	'X'; // UA-40457155-1
 
 $config['ship_types'] 				= array(
 										'brig' => array(
@@ -182,6 +182,3 @@ $config['prices'] 				= array(
 											'sell' => 5
 										)
 								  );
-									
-/* End of file config_custom.php */
-/* Location: ./application/config/config_custom.php */

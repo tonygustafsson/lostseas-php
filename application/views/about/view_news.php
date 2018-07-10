@@ -1,12 +1,12 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="News">
-	<? if (! $logged_in): ?>
-		<img class="header" src="<?echo base_url()?>assets/images/design/game_start.jpg" alt="Front image">
+	<?php if (! $logged_in): ?>
+		<img class="header" src="<?php echo base_url()?>assets/images/design/game_start.jpg" alt="Front image">
 		<h2>News</h2>
 		
 		<form id="register" method="post" action="<?php echo base_url('account/register_temp')?>">
@@ -39,15 +39,15 @@
 			</fieldset>
 		</form>
 
-	<? else: ?>
+	<?php else: ?>
 		<h3>News</h3>
-	<? endif; ?>
+	<?php endif; ?>
 </header>
 
 <section class="actions">
-	<? if (! $logged_in): ?>
+	<?php if (! $logged_in): ?>
 		<a class="ajaxHTML" title="Presentation about the game" href="<?php echo base_url('about/presentation')?>"><img src="<?php echo base_url('assets/images/icons/presentation.png')?>" alt="Start" width="32" height="32">Start</a>
-	<? endif; ?>
+	<?php endif; ?>
 	<a class="ajaxHTML" title="A complete guide for this game" href="<?php echo base_url('about/guide_supplies')?>"><img src="<?php echo base_url('assets/images/icons/guide.png')?>" alt="Guide" width="32" height="32">Guide</a>
 	<a class="ajaxHTML" title="What's new in here?" href="<?php echo base_url('about/news')?>"><img src="<?php echo base_url('assets/images/icons/about_news.png')?>" alt="News" width="32" height="32">News</a>
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
@@ -56,7 +56,7 @@
 
 <div id="msg"></div>
 
-<? if (isset($user) && $user['admin'] == 1): ?>
+<?php if (isset($user) && $user['admin'] == 1): ?>
 	<section id="news_form_section">
 		<form method="post" id="news_form" class="ajaxJSON" action="<?php echo base_url('about/news_post')?>">
 			<fieldset>
@@ -72,33 +72,33 @@
 			</fieldset>
 		</form>
 	</section>
-<? endif; ?>
+<?php endif; ?>
 
 <p class="center"><?php echo $pages?></p>
 
 <section id="news_entries">
-	<? if (count($news) > 0): ?>
-		<? foreach ($news as $this_news): ?>
+	<?php if (count($news) > 0): ?>
+		<?php foreach ($news as $this_news): ?>
 			<section id="entry-<?php echo $this_news['id']?>">
 				<time datetime="<?php echo date("Y-m-d")?>"></time>
 				<h3><?php echo date("jS F, Y", $this_news['unix_time'])?></h3>
 				<ul>
-					<? foreach ($this_news['entry'] as $row): ?>
+					<?php foreach ($this_news['entry'] as $row): ?>
 						<li><?php echo htmlspecialchars($row)?></li>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</ul>
 				
-				<? if (isset($user) && $user['admin'] == 1): ?>
+				<?php if (isset($user) && $user['admin'] == 1): ?>
 					<p style="padding-left: 1em;">
 						<a class="ajaxJSON" href="<?php echo base_url('about/edit_news/' . $this_news['id'])?>"><img src="<?php echo base_url()?>assets/images/icons/edit.png" width="16"></a>
 						<a class="ajaxJSON" rel="Are you sure you want to delete this?" href="<?php echo base_url('about/erase_news/' . $this_news['id'])?>"><img src="<?php echo base_url('assets/images/icons/erase.png')?>" width="16"></a>
 					</p>
-				<? endif; ?>	
+				<?php endif; ?>	
 			</section>	
-		<? endforeach; ?>
-	<? else: ?>
+		<?php endforeach; ?>
+	<?php else: ?>
 		<p>No news yet...</p>
-	<? endif; ?>
+	<?php endif; ?>
 </section>
 
 <p class="center"><?php echo $pages?></p>

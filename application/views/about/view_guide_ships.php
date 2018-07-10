@@ -1,12 +1,12 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Guide: Ships">
-	<? if (! $logged_in): ?>
-		<img class="header" src="<?echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
+	<?php if (! $logged_in): ?>
+		<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
 		<h2>Guide: Ships</h2>
 	
 		<form id="register" method="post" action="<?php echo base_url('account/register_temp')?>">
@@ -39,15 +39,15 @@
 			</fieldset>
 		</form>
 
-	<? else: ?>
+	<?php else: ?>
 		<h3>Guide: Ships</h3>
-	<? endif; ?>
+	<?php endif; ?>
 </header>
 
 <section class="actions">
-	<? if (! $logged_in): ?>
+	<?php if (! $logged_in): ?>
 		<a class="ajaxHTML" title="Presentation about the game" href="<?php echo base_url('about/presentation')?>"><img src="<?php echo base_url('assets/images/icons/presentation.png')?>" alt="Start" width="32" height="32">Start</a>
-	<? endif; ?>
+	<?php endif; ?>
 	<a class="ajaxHTML" title="A complete guide for this game" href="<?php echo base_url('about/guide_supplies')?>"><img src="<?php echo base_url('assets/images/icons/guide.png')?>" alt="Guide" width="32" height="32">Guide</a>
 	<a class="ajaxHTML" title="What's new in here?" href="<?php echo base_url('about/news')?>"><img src="<?php echo base_url('assets/images/icons/about_news.png')?>" alt="News" width="32" height="32">News</a>
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
@@ -71,7 +71,7 @@
 
 <h3>The need for ships</h3>
 
-<img src="<?echo base_url()?>assets/images/design/about_shipyard.jpg" alt="Shipyard" align="left" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
+<img src="<?php echo base_url()?>assets/images/design/about_shipyard.jpg" alt="Shipyard" align="left" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
 
 <p>If you lose in battle, and only have one ship you would have to swim to land with nothing at all (if you don't have any rafts).
 If you don't have any money at your bank account you will have to take a loan, or maybe reset the game and start over. Not fun at all!</p>

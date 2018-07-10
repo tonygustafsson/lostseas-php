@@ -1,8 +1,8 @@
-﻿<? if (isset($json)): ?>
+﻿<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Character settings">
 	<h3>Character Settings</h3>

@@ -2,7 +2,7 @@
 	<h3>Register</h3>
 </header>
 
-<? if ($user['email'] != ""): ?>
+<?php if ($user['email'] != ""): ?>
 	<div class="info">
 		<p>
 			You have already registered with the email address <?php echo $user['email']?>, you have to verify your
@@ -10,7 +10,7 @@
 			registering again.
 		</p>
 	</div>
-<? endif; ?>
+<?php endif; ?>
 
 <p>To be able to save this game you have to register. You will recieve an email verification, when you
 have done so, you will be a registered member. You can continue playing while you wait if you want to.</p>
@@ -44,19 +44,19 @@ have done so, you will be a registered member. You can continue playing while yo
 		<select name="day">
 			<? for ($x = 1; $x <= 31; $x++): ?>
 				<option value="<?php echo $x?>"><?php echo $x?></option>
-			<? endfor; ?>
+			<?php endfor; ?>
 		</select>
 		
 		<select name="month">
-			<? foreach ($months as $number => $month): ?>
+			<?php foreach ($months as $number => $month): ?>
 				<option value="<?php echo $number?>"><?php echo $month?></option>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 		</select>
 		
 		<select name="year">
 			<? for ($x = 1930; $x <= 2010; $x++): ?>
-				<option value="<?php echo $x?>"<?echo ($x == 1985) ? 'selected' : ''?>><?php echo $x?></option>
-			<? endfor; ?>
+				<option value="<?php echo $x?>"<?php echo ($x == 1985) ? 'selected' : ''?>><?php echo $x?></option>
+			<?php endfor; ?>
 		</select>
 		
 		<label for="presentation">Presentation</label>

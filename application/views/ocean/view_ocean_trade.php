@@ -1,27 +1,27 @@
 <? $prices = array('food' => 16, 'water' => 12) ?>
 <? list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(NULL); ?>
 
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Ocean Trade">
 	<h2>Caribbean Sea</h2>
-	<img src="<?echo base_url('assets/images/places/ocean_trade.jpg')?>" class="header">
+	<img src="<?php echo base_url('assets/images/places/ocean_trade.jpg')?>" class="header">
 </header>
 
-<? if (isset($game['info'])): ?>
+<?php if (isset($game['info'])): ?>
 	<div class="info"><p><?php echo $game['info']?></p></div>
 	<section class="actions">
 		<a class="ajaxHTML nopic" href="<?php echo base_url($game['place'])?>">Okay!</a>
 	</section>
-<? endif; ?>
+<?php endif; ?>
 
 <div id="msg"></div>
 
-<? if ($trade_worth !== NULL): ?>
+<?php if ($trade_worth !== NULL): ?>
 	<p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.
 	Porcelain, silk and spices will be traded away first.</p>
 
@@ -32,24 +32,24 @@
 		<a class="nopic positive" href="javascript:if($('#trade').submit());">Trade</a>
 	</section>
 	
-	<form class="ajaxJSON" method="post" id="trade" action="<?echo base_url('ocean/trade_transfer')?>">
+	<form class="ajaxJSON" method="post" id="trade" action="<?php echo base_url('ocean/trade_transfer')?>">
 		<input type="hidden" name="trade_worth" id="trade_worth" value="<?php echo $trade_worth?>">
 		<input type="hidden" name="load_max" id="load_max" value="<?php echo $game['load_max']?>">
 		<input type="hidden" name="load_current" id="load_current" value="<?php echo $game['load_current']?>">
 		<input type="hidden" name="needed_food" id="needed_food" value="<?php echo $game['needed_food'] * 5?>">
 		<input type="hidden" name="needed_water" id="needed_water" value="<?php echo $game['needed_water'] * 5?>">
-		<input type="hidden" name="load_barter_goods" id="load_barter_goods" value="<?echo $game['porcelain'] + $game['spices'] + $game['silk'] + $game['medicine'] + $game['tobacco'] + $game['rum']?>">
+		<input type="hidden" name="load_barter_goods" id="load_barter_goods" value="<?php echo $game['porcelain'] + $game['spices'] + $game['silk'] + $game['medicine'] + $game['tobacco'] + $game['rum']?>">
 
-		<? foreach ($prices as $product => $price): ?>
+		<?php foreach ($prices as $product => $price): ?>
 			<input type="hidden" id="<?php echo $product?>_price" value="<?php echo $price?>">
-		<? endforeach; ?>
+		<?php endforeach; ?>
 
 		<fieldset>
-			<legend><img src="<?echo base_url('assets/images/icons/market_browse.png')?>" alt="Food" width="32" height="32"> Food</legend>
+			<legend><img src="<?php echo base_url('assets/images/icons/market_browse.png')?>" alt="Food" width="32" height="32"> Food</legend>
 			<p style="margin: 0 auto; width: 90%">Food is needed for traveling at sea. A half a carton per crew member and week.
-			<? if ($game['food'] < ($game['needed_food'] * 5)): ?>
+			<?php if ($game['food'] < ($game['needed_food'] * 5)): ?>
 				To last 5 more weeks, you should have at least <strong><? echo ($game['needed_food'] * 5) ?></strong> cartons!
-			<? endif; ?>
+			<?php endif; ?>
 			</p>
 			<div id="food-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
@@ -63,11 +63,11 @@
 		</fieldset>
 
 		<fieldset>
-			<legend><img src="<?echo base_url('assets/images/icons/water.png')?>" alt="Water" width="32" height="32"> Water</legend>
+			<legend><img src="<?php echo base_url('assets/images/icons/water.png')?>" alt="Water" width="32" height="32"> Water</legend>
 			<p style="margin: 0 auto; width: 90%">Water is needed for traveling at sea. 1 barrel per crew member and week.
-			<? if ($game['water'] < ($game['needed_water'] * 5)): ?>
+			<?php if ($game['water'] < ($game['needed_water'] * 5)): ?>
 				To last 5 more weeks, you should have at least <strong><? echo ($game['needed_water'] * 5) ?></strong> barrels!
-			<? endif; ?>
+			<?php endif; ?>
 			</p>
 			<div id="water-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
@@ -81,4 +81,4 @@
 		</fieldset>
 
 	</form>
-<? endif; ?>
+<?php endif; ?>

@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Presentation">
 	<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
@@ -42,9 +42,9 @@
 <div id="msg"></div>
 
 <section class="actions">
-	<? if (! $logged_in): ?>
+	<?php if (! $logged_in): ?>
 		<a class="ajaxHTML" title="Presentation about the game" href="<?php echo base_url('about/presentation')?>"><img src="<?php echo base_url('assets/images/icons/presentation.png')?>" alt="Start" width="32" height="32">Start</a>
-	<? endif; ?>
+	<?php endif; ?>
 	<a class="ajaxHTML" title="A complete guide for this game" href="<?php echo base_url('about/guide_supplies')?>"><img src="<?php echo base_url('assets/images/icons/guide.png')?>" alt="Guide" width="32" height="32">Guide</a>
 	<a class="ajaxHTML" title="What's new in here?" href="<?php echo base_url('about/news')?>"><img src="<?php echo base_url('assets/images/icons/about_news.png')?>" alt="News" width="32" height="32">News</a>
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
@@ -59,9 +59,9 @@
 	<div class="error"><p>This game is not supported by Internet Explorer 8 or lower.</p></div>
 <![endif]-->
 
-<? if ($this->session->userdata('session_id') == ""): ?>
+<?php if ($this->session->userdata('session_id') == ""): ?>
 	<div class="error"><p>Cookies needs to be enabled to play this game!</p></div>
-<? endif; ?>
+<?php endif; ?>
 
 <h3>Presentation</h3>
 

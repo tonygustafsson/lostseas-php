@@ -1,8 +1,8 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="The Ocean">
 	<h2>Caribbean Sea</h2>
@@ -11,36 +11,36 @@
 
 <div id="msg"></div>
 
-<? if (isset($game['won'])): ?>
+<?php if (isset($game['won'])): ?>
 	<p><?php echo $game['won']?></p>
-<? endif; ?>
+<?php endif; ?>
 
-<? if (isset($game['lost'])): ?>
+<?php if (isset($game['lost'])): ?>
 	<p><?php echo $game['lost']?></p>
-<? endif; ?>
+<?php endif; ?>
 
-<? if (isset($game['good'])): ?>
+<?php if (isset($game['good'])): ?>
 	<ul>
-	<? foreach ($game['good'] as $image => $msg): ?>
-		<li class="attack_good" style="list-style-image: url('<?echo base_url('assets/images/icons/' . $image . '.png')?>');"><?php echo $msg?></li>
-	<? endforeach; ?>
+	<?php foreach ($game['good'] as $image => $msg): ?>
+		<li class="attack_good" style="list-style-image: url('<?php echo base_url('assets/images/icons/' . $image . '.png')?>');"><?php echo $msg?></li>
+	<?php endforeach; ?>
 	</ul>
-<? endif; ?>
+<?php endif; ?>
 
-<? if (isset($game['bad'])): ?>
+<?php if (isset($game['bad'])): ?>
 	<ul>
-	<? foreach ($game['bad'] as $image => $msg): ?>
-		<li class="attack_bad" style="list-style-image: url('<?echo base_url('assets/images/icons/' . $image . '.png')?>');"><?php echo $msg?></li>
-	<? endforeach; ?>
+	<?php foreach ($game['bad'] as $image => $msg): ?>
+		<li class="attack_bad" style="list-style-image: url('<?php echo base_url('assets/images/icons/' . $image . '.png')?>');"><?php echo $msg?></li>
+	<?php endforeach; ?>
 	</ul>
-<? endif; ?>
+<?php endif; ?>
 
-<? if (! isset($game['good']) && ! isset($game['bad'])): ?>
+<?php if (! isset($game['good']) && ! isset($game['bad'])): ?>
 	<p><?php echo $game['greeting']?></p>
-<? endif; ?>
+<?php endif; ?>
 
 <p class="center">
-	<img src="<?echo base_url('assets/images/spanish_main.jpg')?>" usemap="#image_map" width="500" height="256" alt="The spanish main">
+	<img src="<?php echo base_url('assets/images/spanish_main.jpg')?>" usemap="#image_map" width="500" height="256" alt="The spanish main">
 </p>
 
 <map id="image_map" name="image_map">

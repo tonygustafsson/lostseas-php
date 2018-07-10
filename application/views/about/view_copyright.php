@@ -1,12 +1,12 @@
-<? if (isset($json)): ?>
+<?php if (isset($json)): ?>
 	<script type="text/javascript">
 		gameManipulateDOM(<?php echo $json?>);
 	</script>
-<? endif; ?>
+<?php endif; ?>
 
 <header title="Copyright">
-	<? if (! $logged_in): ?>
-		<img class="header" src="<?echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
+	<?php if (! $logged_in): ?>
+		<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
 		<h2>Copyright</h2>
 		
 	<form id="register" method="post" action="<?php echo base_url('account/register_temp')?>">
@@ -38,9 +38,9 @@
 			</section>
 		</fieldset>
 	</form>
-	<? else: ?>
+	<?php else: ?>
 		<h3>Copyright</h3>
-	<? endif; ?>
+	<?php endif; ?>
 </header>
 
 <p>You are free to use the information and graphics as you like. I've actually stolen a large portion of the graphics from other sites, without asking.

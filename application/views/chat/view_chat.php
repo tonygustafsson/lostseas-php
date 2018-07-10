@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/chat.css?201309081542')?>" type="text/css" media="all">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()?>/assets/images/icons/favicon.ico">
 
-	<? if (strpos(base_url(), 'test') === FALSE): ?>
+	<?php if (strpos(base_url(), 'test') === FALSE): ?>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,7 +25,7 @@
 			ga('create', 'UA-40457155-1', 'lostseas.com');
 			ga('send', 'pageview');
 		</script>
-	<? endif; ?>
+	<?php endif; ?>
 	
 	<script type="text/javascript" src="<?php echo base_url('assets/javascript/jquery.custom.min.js?201309081542')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/javascript/main.js?201309081542')?>"></script>
