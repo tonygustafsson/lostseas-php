@@ -1,12 +1,12 @@
 <? if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?=$json?>);
+		gameManipulateDOM(<?php echo $json?>);
 	</script>
 <? endif; ?>
 
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -17,44 +17,44 @@
 
 <div id="msg"></div>
 
-<p><?=$game['greeting']?></p>
+<p><?php echo $game['greeting']?></p>
 
 <h3>Fixings</h3>
 
 <form method="post" class="ajaxJSON" id="buy" action="<?echo base_url()?>shipyard/fixings_post">
-	<input type="hidden" name="current_money" id="current_money" value="<?=$game['doubloons']?>">
+	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">
 
 	<? foreach ($prices as $product => $price): ?>
-		<input type="hidden" id="<?=$product?>_buy" value="<?=$price['buy']?>">
-		<input type="hidden" id="<?=$product?>_sell" value="<?=$price['sell']?>">
+		<input type="hidden" id="<?php echo $product?>_buy" value="<?php echo $price['buy']?>">
+		<input type="hidden" id="<?php echo $product?>_sell" value="<?php echo $price['sell']?>">
 	<? endforeach; ?>
 	
 	<fieldset style="margin-bottom: 0;">
-		<legend><img src="<?echo base_url()?>assets/images/icons/shipyard_fixings.png"> Cannons (<?=$prices['cannons']['buy']?>/<?=floor($prices['cannons']['sell'] * 0.7)?> dbl)</legend>
+		<legend><img src="<?echo base_url()?>assets/images/icons/shipyard_fixings.png"> Cannons (<?php echo $prices['cannons']['buy']?>/<?php echo floor($prices['cannons']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">It's your cannons that make you win at sea battles! You need 2 crew members per cannon though, or else it will not be used.</p>
 		<div id="cannons-slider" style="width: 90%; margin: 20px;"></div>
 
 		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Cannons</td><td><span id="cannons_new_quantity_presenter"><?=$game['cannons']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?=$game['doubloons']?></span> dbl</td></tr>
+			<tr><td>Cannons</td><td><span id="cannons_new_quantity_presenter"><?php echo $game['cannons']?></span> pcs</td></tr>
+			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
 		</table>
 
-		<input type="hidden" name="cannons_quantity" id="cannons_quantity" value="<?=$game['cannons']?>">
-		<input type="hidden" name="cannons_new_quantity" id="cannons_new_quantity" value="<?=$game['cannons']?>">
+		<input type="hidden" name="cannons_quantity" id="cannons_quantity" value="<?php echo $game['cannons']?>">
+		<input type="hidden" name="cannons_new_quantity" id="cannons_new_quantity" value="<?php echo $game['cannons']?>">
 	</fieldset>
 	
 	<fieldset style="margin-bottom: 0;">
-		<legend><img src="<?echo base_url()?>assets/images/icons/raft.png"> Rafts (<?=$prices['rafts']['buy']?>/<?=floor($prices['rafts']['sell'] * 0.7)?> dbl)</legend>
+		<legend><img src="<?echo base_url()?>assets/images/icons/raft.png"> Rafts (<?php echo $prices['rafts']['buy']?>/<?php echo floor($prices['rafts']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">If all your ships are destroyed at sea, you can save 10 crew members per raft.</p>
 		<div id="rafts-slider" style="width: 90%; margin: 20px;"></div>
 
 		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Rafts</td><td><span id="rafts_new_quantity_presenter"><?=$game['rafts']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?=$game['doubloons']?></span> dbl</td></tr>
+			<tr><td>Rafts</td><td><span id="rafts_new_quantity_presenter"><?php echo $game['rafts']?></span> pcs</td></tr>
+			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
 		</table>
 
-		<input type="hidden" name="rafts_quantity" id="rafts_quantity" value="<?=$game['rafts']?>">
-		<input type="hidden" name="rafts_new_quantity" id="rafts_new_quantity" value="<?=$game['rafts']?>">
+		<input type="hidden" name="rafts_quantity" id="rafts_quantity" value="<?php echo $game['rafts']?>">
+		<input type="hidden" name="rafts_new_quantity" id="rafts_new_quantity" value="<?php echo $game['rafts']?>">
 	</fieldset>
 
 	<p style="text-align: right;">
@@ -68,21 +68,21 @@
 <p>Buy ships by clicking the images, see their specifications below...</p>
 
 <section class="actions">
-	<a class="ajaxJSON largepic" href="<?=base_url('shipyard/buy_ship/brig')?>" rel="Do you really want to buy this brig?">
-		<img src="<?=base_url('assets/images/ships/brig.jpg')?>" title="A standard ship, affordable.">Brig<br>
-		<?=$prices['brig']['buy']?> dbl
+	<a class="ajaxJSON largepic" href="<?php echo base_url('shipyard/buy_ship/brig')?>" rel="Do you really want to buy this brig?">
+		<img src="<?php echo base_url('assets/images/ships/brig.jpg')?>" title="A standard ship, affordable.">Brig<br>
+		<?php echo $prices['brig']['buy']?> dbl
 	</a>
-	<a class="ajaxJSON largepic" href="<?=base_url('shipyard/buy_ship/merchantman')?>" rel="Do you really want to buy this merchantman?">
-		<img src="<?=base_url('assets/images/ships/merchantman.jpg')?>" title="A ship that is great for loading a lot of cartons.">Merchantman<br>
-		<?=$prices['merchantman']['buy']?> dbl
+	<a class="ajaxJSON largepic" href="<?php echo base_url('shipyard/buy_ship/merchantman')?>" rel="Do you really want to buy this merchantman?">
+		<img src="<?php echo base_url('assets/images/ships/merchantman.jpg')?>" title="A ship that is great for loading a lot of cartons.">Merchantman<br>
+		<?php echo $prices['merchantman']['buy']?> dbl
 	</a>
-	<a class="ajaxJSON largepic" href="<?=base_url('shipyard/buy_ship/galleon')?>" rel="Do you really want to buy this galleon?">
-		<img src="<?=base_url('assets/images/ships/galleon.jpg')?>" title="A war ship.">Galleon<br>
-		<?=$prices['galleon']['buy']?> dbl
+	<a class="ajaxJSON largepic" href="<?php echo base_url('shipyard/buy_ship/galleon')?>" rel="Do you really want to buy this galleon?">
+		<img src="<?php echo base_url('assets/images/ships/galleon.jpg')?>" title="A war ship.">Galleon<br>
+		<?php echo $prices['galleon']['buy']?> dbl
 	</a>
-	<a class="ajaxJSON largepic" href="<?=base_url('shipyard/buy_ship/frigate')?>" rel="Do you really want to buy this frigate?">
-		<img src="<?=base_url('assets/images/ships/frigate.jpg')?>" title="The biggest and strongest war ship.">Frigate<br>
-		<?=$prices['frigate']['buy']?> dbl
+	<a class="ajaxJSON largepic" href="<?php echo base_url('shipyard/buy_ship/frigate')?>" rel="Do you really want to buy this frigate?">
+		<img src="<?php echo base_url('assets/images/ships/frigate.jpg')?>" title="The biggest and strongest war ship.">Frigate<br>
+		<?php echo $prices['frigate']['buy']?> dbl
 	</a>
 </section>
 

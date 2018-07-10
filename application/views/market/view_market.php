@@ -1,6 +1,6 @@
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -16,5 +16,5 @@
 <div id="msg"></div>
 
 <p>
-	<?=$game['greeting']?>
+	<?php echo $game['greeting']?>
 </p>

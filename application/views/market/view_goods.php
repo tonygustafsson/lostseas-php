@@ -1,8 +1,8 @@
 <? if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned') { list($item, $quantity, $cost, $total_cost) = explode('###', $this->user['game']['event_market_goods']); } ?>
 
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -20,12 +20,12 @@
 <? if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned'): ?>
 	<? if ($game['doubloons'] < $total_cost): ?>
 		<p id="offer">
-			You find <?=$quantity?> cartons of <?=$item?> for <?=$total_cost?> dbl! (<?=$cost?> dbl/pcs) You don't have enough money though.
+			You find <?php echo $quantity?> cartons of <?php echo $item?> for <?php echo $total_cost?> dbl! (<?php echo $cost?> dbl/pcs) You don't have enough money though.
 		</p>
 	<? else: ?>
 		<section id="offer" class="actions">
 			<p>
-				You find <?=$quantity?> cartons of <?=$item?> for <?=$total_cost?> dbl! (<?=$cost?> dbl/pcs) Do you wan't to buy?
+				You find <?php echo $quantity?> cartons of <?php echo $item?> for <?php echo $total_cost?> dbl! (<?php echo $cost?> dbl/pcs) Do you wan't to buy?
 			</p>
 
 			<a class="ajaxJSON nopic positive" href="market/goods_post/yes" title="Yes please!">Yes</a>

@@ -3,7 +3,7 @@
 
 <? if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?=$json?>);
+		gameManipulateDOM(<?php echo $json?>);
 	</script>
 <? endif; ?>
 
@@ -13,9 +13,9 @@
 </header>
 
 <? if (isset($game['info'])): ?>
-	<div class="info"><p><?=$game['info']?></p></div>
+	<div class="info"><p><?php echo $game['info']?></p></div>
 	<section class="actions">
-		<a class="ajaxHTML nopic" href="<?=base_url($game['place'])?>">Okay!</a>
+		<a class="ajaxHTML nopic" href="<?php echo base_url($game['place'])?>">Okay!</a>
 	</section>
 <? endif; ?>
 
@@ -28,20 +28,20 @@
 	<section class="actions">
 		<a class="nopic" href="javascript:tradeNecessities();">Take necessities</a>
 		<a class="nopic" href="javascript:tradeAll();">Take all</a><br>
-		<a class="ajaxHTML nopic negative" href="<?=base_url('ocean/trade_cancel')?>">No thanks</a>
+		<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/trade_cancel')?>">No thanks</a>
 		<a class="nopic positive" href="javascript:if($('#trade').submit());">Trade</a>
 	</section>
 	
 	<form class="ajaxJSON" method="post" id="trade" action="<?echo base_url('ocean/trade_transfer')?>">
-		<input type="hidden" name="trade_worth" id="trade_worth" value="<?=$trade_worth?>">
-		<input type="hidden" name="load_max" id="load_max" value="<?=$game['load_max']?>">
-		<input type="hidden" name="load_current" id="load_current" value="<?=$game['load_current']?>">
-		<input type="hidden" name="needed_food" id="needed_food" value="<?=$game['needed_food'] * 5?>">
-		<input type="hidden" name="needed_water" id="needed_water" value="<?=$game['needed_water'] * 5?>">
+		<input type="hidden" name="trade_worth" id="trade_worth" value="<?php echo $trade_worth?>">
+		<input type="hidden" name="load_max" id="load_max" value="<?php echo $game['load_max']?>">
+		<input type="hidden" name="load_current" id="load_current" value="<?php echo $game['load_current']?>">
+		<input type="hidden" name="needed_food" id="needed_food" value="<?php echo $game['needed_food'] * 5?>">
+		<input type="hidden" name="needed_water" id="needed_water" value="<?php echo $game['needed_water'] * 5?>">
 		<input type="hidden" name="load_barter_goods" id="load_barter_goods" value="<?echo $game['porcelain'] + $game['spices'] + $game['silk'] + $game['medicine'] + $game['tobacco'] + $game['rum']?>">
 
 		<? foreach ($prices as $product => $price): ?>
-			<input type="hidden" id="<?=$product?>_price" value="<?=$price?>">
+			<input type="hidden" id="<?php echo $product?>_price" value="<?php echo $price?>">
 		<? endforeach; ?>
 
 		<fieldset>
@@ -53,13 +53,13 @@
 			</p>
 			<div id="food-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
-				<tr><td>Food cartons</td><td><span id="food_new_quantity_presenter"><?=$game['food']?></span> pcs</td></tr>
-				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?=$trade_worth?></span> dbl</td></tr>
-				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?=$game['load_current']?></span> cartons</td></tr>
+				<tr><td>Food cartons</td><td><span id="food_new_quantity_presenter"><?php echo $game['food']?></span> pcs</td></tr>
+				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
+				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
 			</table>
 			
-			<input type="hidden" name="food_quantity" id="food_quantity" value="<?=$game['food']?>">
-			<input type="hidden" id="food_new_quantity" name="food_new_quantity" value="<?=$game['food']?>">
+			<input type="hidden" name="food_quantity" id="food_quantity" value="<?php echo $game['food']?>">
+			<input type="hidden" id="food_new_quantity" name="food_new_quantity" value="<?php echo $game['food']?>">
 		</fieldset>
 
 		<fieldset>
@@ -71,13 +71,13 @@
 			</p>
 			<div id="water-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
-				<tr><td>Water barrels</td><td><span id="water_new_quantity_presenter"><?=$game['water']?></span> pcs</td></tr>
-				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?=$trade_worth?></span> dbl</td></tr>
-				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?=$game['load_current']?></span> cartons</td></tr>
+				<tr><td>Water barrels</td><td><span id="water_new_quantity_presenter"><?php echo $game['water']?></span> pcs</td></tr>
+				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
+				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
 			</table>
 			
-			<input type="hidden" name="water_quantity" id="water_quantity" value="<?=$game['water']?>">
-			<input type="hidden" id="water_new_quantity" name="water_new_quantity" value="<?=$game['water']?>">
+			<input type="hidden" name="water_quantity" id="water_quantity" value="<?php echo $game['water']?>">
+			<input type="hidden" id="water_new_quantity" name="water_new_quantity" value="<?php echo $game['water']?>">
 		</fieldset>
 
 	</form>

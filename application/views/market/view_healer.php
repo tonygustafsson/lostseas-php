@@ -1,8 +1,8 @@
 <h2><?echo $game['town_human'] . ' ' . $game['place']?></h2>
 
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/healer_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/healer_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -19,7 +19,7 @@
 
 <? if ($game['doubloons'] < $cost): ?>
 	<p>
-		<?=$injured_crew?> of your crew is injured, but you do not have <?=$cost?> dbl.
+		<?php echo $injured_crew?> of your crew is injured, but you do not have <?php echo $cost?> dbl.
 	</p>
 <? elseif ($injured_crew < 1): ?>
 	<p>
@@ -28,7 +28,7 @@
 <? else: ?>
 	<section id="offer" class="actions">
 		<p>
-			I can heal your <?=$injured_crew?> injured crew members. It will cost you <?=$cost?> dbl.
+			I can heal your <?php echo $injured_crew?> injured crew members. It will cost you <?php echo $cost?> dbl.
 		</p>
 		
 		<a class="ajaxJSON nopic positive" href="market/healer_post/yes" title="Please heal us!">Yes</a>

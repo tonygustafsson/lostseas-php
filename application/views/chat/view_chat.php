@@ -9,11 +9,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 	
-	<base href="<?=base_url()?>">
+	<base href="<?php echo base_url()?>">
 
-	<link rel="stylesheet" href="<?=base_url('assets/stylesheets/screen.css?201309081542')?>" type="text/css" media="all">
-	<link rel="stylesheet" href="<?=base_url('assets/stylesheets/chat.css?201309081542')?>" type="text/css" media="all">
-	<link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>/assets/images/icons/favicon.ico">
+	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/screen.css?201309081542')?>" type="text/css" media="all">
+	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/chat.css?201309081542')?>" type="text/css" media="all">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()?>/assets/images/icons/favicon.ico">
 
 	<? if (strpos(base_url(), 'test') === FALSE): ?>
 		<script>
@@ -27,14 +27,14 @@
 		</script>
 	<? endif; ?>
 	
-	<script type="text/javascript" src="<?=base_url('assets/javascript/jquery.custom.min.js?201309081542')?>"></script>
-	<script type="text/javascript" src="<?=base_url('assets/javascript/main.js?201309081542')?>"></script>
-	<script type="text/javascript" src="<?=base_url('assets/javascript/chat.js?201309081542')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/javascript/jquery.custom.min.js?201309081542')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/javascript/main.js?201309081542')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/javascript/chat.js?201309081542')?>"></script>
 	<!--[if lt IE 9]>
-		<script type="text/javascript" src="<?=base_url('assets/javascript/html5shiv.js')?>"></script>
+		<script type="text/javascript" src="<?php echo base_url('assets/javascript/html5shiv.js')?>"></script>
 	<![endif]-->
 	
-	<title>Chat - <?=$this->config->item('site_name')?></title>
+	<title>Chat - <?php echo $this->config->item('site_name')?></title>
 </head>
 
 <body class="chat">
@@ -44,7 +44,7 @@
 </section>
 
 <section id="chat_input">
-	<form id="chat_form" method="post" action="<?=base_url('chat/post_chat')?>">
+	<form id="chat_form" method="post" action="<?php echo base_url('chat/post_chat')?>">
 		<input type="text" id="entry" name="entry" autocomplete="off">
 		<input class="small" type="submit" value="Talk">
 	</form>

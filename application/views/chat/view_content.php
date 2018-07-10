@@ -2,11 +2,11 @@
 	<? foreach ($online_users as $this_user): ?>
 		<p>
 			<? if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $this_user['id'] . '_thumb.jpg')): ?>
-				<img src="<?=APPPATH . '../assets/images/profile_pictures/' . $this_user['id'] . '_thumb.jpg'?>" alt="<?=$this_user['name']?>">
+				<img src="<?php echo APPPATH . '../assets/images/profile_pictures/' . $this_user['id'] . '_thumb.jpg'?>" alt="<?php echo $this_user['name']?>">
 			<? else: ?>
-				<img src="<?=APPPATH . '../assets/images/profile_pictures/nopic_thumb.jpg'?>" alt="<?=$this_user['name']?>">
+				<img src="<?php echo APPPATH . '../assets/images/profile_pictures/nopic_thumb.jpg'?>" alt="<?php echo $this_user['name']?>">
 			<? endif; ?>
-			<span><?=$this_user['name']?></span>
+			<span><?php echo $this_user['name']?></span>
 		</p>
 	<? endforeach; ?>
 </section>
@@ -16,14 +16,14 @@
 		<div class="entry">
 			<div style="float: left; min-width: 50px;">
 			<? if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $row['user_id'] . '_thumb.jpg')): ?>
-				<img src="<?=APPPATH . '../assets/images/profile_pictures/' . $row['user_id'] . '_thumb.jpg'?>" alt="<?=$row['name']?>">
+				<img src="<?php echo APPPATH . '../assets/images/profile_pictures/' . $row['user_id'] . '_thumb.jpg'?>" alt="<?php echo $row['name']?>">
 			<? else: ?>
-				<img src="<?=APPPATH . '../assets/images/profile_pictures/nopic_thumb.jpg'?>" alt="<?=$row['name']?>">
+				<img src="<?php echo APPPATH . '../assets/images/profile_pictures/nopic_thumb.jpg'?>" alt="<?php echo $row['name']?>">
 			<? endif; ?>
 			</div>
 			
 			<div style="float: left; clear: right; width: 90%">
-				<span class="timestamp">[<?=substr($row['time'], 0, -3)?>] <?=$row['name']?>:</span> <?=$row['entry']?>
+				<span class="timestamp">[<?php echo substr($row['time'], 0, -3)?>] <?php echo $row['name']?>:</span> <?php echo $row['entry']?>
 			</div>
 		</div>
 	<? endforeach; ?>

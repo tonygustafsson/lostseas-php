@@ -1,12 +1,12 @@
 <? if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?=$json?>);
+		gameManipulateDOM(<?php echo $json?>);
 	</script>
 <? endif; ?>
 
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -23,10 +23,10 @@ You can sell your ships here.
 
 <section class="actions">
 	<? foreach($ship as $this_ship): ?>
-		<a id="ship_<?=$this_ship['id']?>" class="ajaxJSON largepic" style="" rel="Do you really want to sell this <?=$this_ship['type']?>?" title="Sell this <?=$this_ship['type']?>" href="<?=base_url('shipyard/sell_ship/' . $this_ship['id'])?>">
+		<a id="ship_<?php echo $this_ship['id']?>" class="ajaxJSON largepic" style="" rel="Do you really want to sell this <?php echo $this_ship['type']?>?" title="Sell this <?php echo $this_ship['type']?>" href="<?php echo base_url('shipyard/sell_ship/' . $this_ship['id'])?>">
 			<img src="<?echo base_url('assets/images/ships/' . $this_ship['type'] . '.jpg')?>?>">
-			<?=$this_ship['name']?><br>
-			(<?=$this_ship['type']?>, <?=$prices[$this_ship['type']]['sell']?> dbl)
+			<?php echo $this_ship['name']?><br>
+			(<?php echo $this_ship['type']?>, <?php echo $prices[$this_ship['type']]['sell']?> dbl)
 		</a>
 	<? endforeach; ?>
 </section>

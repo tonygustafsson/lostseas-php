@@ -1,8 +1,8 @@
 <? if (! empty($this->user['game']['event_market_slaves']) && $this->user['game']['event_market_slaves'] != 'banned') { list($slaves, $health, $cost) = explode('###', $this->user['game']['event_market_slaves']); } ?>
 
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/slaves_' . $game['nation'] . '.jpg')?>" class="header">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
+	<img src="<?php echo base_url('assets/images/places/slaves_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
 <section class="actions">
@@ -20,12 +20,12 @@
 <? if (! empty($this->user['game']['event_market_slaves']) && $this->user['game']['event_market_slaves'] != 'banned'): ?>
 	<? if ($game['doubloons'] < $cost): ?>
 		<p>
-			You find <?=$slaves?> slaves with a health of <?=$health?>% for <?=$cost?> dbl! You don't have enough money though.
+			You find <?php echo $slaves?> slaves with a health of <?php echo $health?>% for <?php echo $cost?> dbl! You don't have enough money though.
 		</p>
 	<? else: ?>
 		<section id="offer" class="actions">
 			<p>
-				You find <?=$slaves?> slaves with a health of <?=$health?>% for <?=$cost?> dbl! Do you wan't to buy?
+				You find <?php echo $slaves?> slaves with a health of <?php echo $health?>% for <?php echo $cost?> dbl! Do you wan't to buy?
 			</p>
 			
 			<a class="ajaxJSON nopic positive" href="market/slaves_post/yes" title="Yes, give me these find looking slaves!">Yes</a>
