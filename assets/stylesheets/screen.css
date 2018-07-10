@@ -68,10 +68,7 @@ a#nav_top_button {
 
 nav#nav_top {
     background: rgba(255, 255, 255, 0.8);
-    box-shadow: inset 0 0 3px #000;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
+    border: 1px #d0d0d0 solid;
     margin-top: 1em;
     margin-bottom: 0.5em;
 }
@@ -90,7 +87,7 @@ nav#nav_top li a {
     padding: 15px 15px 15px 50px;
     color: #fce854;
     text-decoration: none;
-    border-right: 1px solid #888;
+    border-right: 1px solid #d0d0d0;
     text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
     letter-spacing: 0.15em;
     font-weight: bold;
@@ -143,10 +140,6 @@ nav#nav_top li a#nav_about:hover,
 nav#nav_top li a#nav_settings:hover,
 nav#nav_top li a#nav_logout:hover {
     background-color: #e5e5eb;
-    box-shadow: 0 0 2px #000;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
 }
 
 nav#nav_top li a.disabled {
@@ -160,13 +153,13 @@ nav#nav_top li a.disabled:hover {
 
 article {
     display: block;
-    box-shadow: inset 0 0 3px #000;
-    border-radius: 6px;
+    border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
     margin-top: 1em;
     margin-bottom: 3em;
     min-height: 400px;
     height: auto;
+    box-sizing: border-box;
 }
 
 article a,
@@ -216,7 +209,6 @@ article h2 {
     text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
     background: rgba(0, 0, 0, 0.5);
     width: 80%;
-    border-radius: 4px;
     padding: 0 0.5em;
     clear: both;
 }
@@ -249,7 +241,6 @@ article form#register {
     height: 210px;
     padding: 1em 1.5em;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
 }
 
 article form#register fieldset {
@@ -263,7 +254,6 @@ article form#register legend {
     font-size: 1.4em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
-    border-radius: 4px;
     margin: 0;
 }
 
@@ -300,7 +290,6 @@ article form#register input[type='submit'] {
 article img.header {
     width: 90%;
     border: 1px black solid;
-    border-radius: 8px;
     margin: 1em 5% 0 5%;
     z-index: 1;
 }
@@ -318,25 +307,17 @@ article section.actions a {
     display: inline-block;
     text-align: center;
     margin: 6px;
-    padding: 8px 0 12px 0;
+    padding: 14px 0;
     height: 2.8em;
     width: 4.8em;
     line-height: 0.4em;
     background-color: rgb(220, 224, 226);
-    border: 1px #ecf2f8 solid;
-    box-shadow: 2px 2px 2px #000;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
+    border: 1px #d0d0d0 solid;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     text-shadow: 2px 2px 3px #e5e1dd;
     font-size: 1.2em;
     color: #000;
     text-decoration: none;
-    -webkit-transition: background 100ms ease;
-    -moz-transition: background 100ms ease;
-    -ms-transition: background 100ms ease;
-    transition: background 100ms ease;
 }
 
 article section.actions a img {
@@ -396,9 +377,6 @@ article ul li.attack_good {
     min-width: 90%;
     background: #71de58;
     font-weight: bold;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     padding: 0em 1em 1em 1em;
     margin: 0 2em 1em 2em;
     border: 1px #3bb120 solid;
@@ -408,9 +386,6 @@ article ul li.attack_bad {
     width: 90%;
     background: #d96868;
     font-weight: bold;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     padding: 0em 1em 1em 1em;
     margin: 0 2em 1em 2em;
     border: 1px #c63636 solid;
@@ -423,14 +398,14 @@ a#action_panel_button {
 }
 
 aside#action_panel {
-    box-shadow: inset 0 0 3px #000;
-    border-radius: 6px;
+    border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
     margin-top: 1em;
     padding-bottom: 1em;
     padding-top: 1em;
     min-height: 400px;
     height: auto;
+    box-sizing: border-box;
 }
 
 aside#action_panel h3 {
@@ -445,20 +420,12 @@ aside#action_panel h3 {
 
 aside#action_panel div {
     float: left;
-    width: 90%;
-    margin: 0.2em 5%;
+    width: 100%;
+    margin: 0.2em 0;
     line-height: 50%;
     background: #fff;
-    box-shadow: 0px 0px 1px #222;
-    border: 1px #888 solid;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
+    border: 1px #d0d0d0 solid;
     opacity: 0.85;
-    -webkit-transition: all 100ms ease;
-    -moz-transition: all 100ms ease;
-    -ms-transition: all 100ms ease;
-    transition: all 100ms ease;
 }
 
 aside#action_panel div:hover {
@@ -491,8 +458,7 @@ a#inventory_panel_button {
 }
 
 aside#inventory_panel {
-    box-shadow: inset 0 0 3px #000;
-    border-radius: 6px;
+    border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
     margin-top: 1em;
     margin-bottom: 1em;
@@ -500,6 +466,7 @@ aside#inventory_panel {
     min-height: 360px;
     height: auto;
     text-align: center;
+    box-sizing: border-box;
 }
 
 aside#inventory_panel div.inventory_user {
@@ -509,13 +476,11 @@ aside#inventory_panel div.inventory_user {
 
 aside#inventory_panel div.inventory_user a {
     font-size: 0.8em;
-    text-decororation: none;
     color: #000;
 }
 
 aside#inventory_panel div.inventory_user img {
     border: none;
-    border-radius: 4px;
     float: left;
     margin-right: 5px;
     width: 40px;
@@ -535,21 +500,15 @@ aside#inventory_panel h3 {
 
 aside#inventory_panel div.inventory_item {
     font-family: georgia;
-    width: 95%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     height: 14px;
     background-color: #fff;
     margin-bottom: 12px;
     text-align: left;
-    border-radius: 10px;
-    border: 1px #888 solid;
-    box-shadow: 0px 2px 2px #888;
+    border: 1px #d0d0d0 solid;
     opacity: 0.85;
-    -webkit-transition: all 100ms ease;
-    -moz-transition: all 100ms ease;
-    -ms-transition: all 100ms ease;
-    transition: all 100ms ease;
 }
 
 aside#inventory_panel div.inventory_item:hover {
@@ -577,13 +536,13 @@ aside#inventory_panel form {
 
 /* ------ LOG PANEL ----------*/
 aside#log_panel {
-    box-shadow: inset 0 0 3px #000;
-    border-radius: 6px;
+    border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
     padding: 1em 0 0 0;
     margin-bottom: 2em;
     min-height: 300px;
     height: auto;
+    box-sizing: border-box;
 }
 
 aside#log_panel h3 {
@@ -631,9 +590,6 @@ fieldset table td:first-child {
 table td,
 table th {
     border: 1px #333 solid;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
     padding: 0 4px 0 4px;
 }
 
@@ -670,9 +626,6 @@ img {
 }
 
 form fieldset {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
     padding: 5px 0 20px 0;
     margin: 10px 5% 40px 5%;
     float: left;
@@ -704,9 +657,6 @@ form select,
 form textarea,
 form input[type='email'],
 form input[type='url'] {
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     height: 20px;
     margin-bottom: 5px;
     margin-left: 10px;
@@ -750,9 +700,6 @@ button {
     font-size: 1.4em;
     box-shadow: 2px 2px 2px #888;
     height: 36px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
     cursor: pointer;
     margin: 0.5em;
     padding: 0 0.5em;
@@ -841,9 +788,6 @@ div.url_error {
     width: 70%;
     background: rgba(217, 104, 104, 0.7);
     border: 1px #c63636 solid;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 0.5em 15%;
     padding: 0.5em 1em;
     z-index: 100;
@@ -858,9 +802,6 @@ div.info {
     background: #e0db58 url('../images/icons/info.png') no-repeat 10px 50%;
     font-weight: bold;
     border: 1px #c4bf33 solid;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 0.5em 5%;
     padding: 0 1.5em;
     clear: both;
@@ -875,9 +816,6 @@ div.success {
     background: #71de58 url('../images/icons/success.png') no-repeat 10px 50%;
     font-weight: bold;
     border: 1px #3bb120 solid;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 0.5em 5%;
     padding: 0 1.5em;
     clear: both;
@@ -892,9 +830,6 @@ div.error {
     background: #d96868 url('../images/icons/error.png') no-repeat 10px 50%;
     font-weight: bold;
     border: 1px #c63636 solid;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
     margin: 0.5em 5%;
     padding: 0 1.5em;
     clear: both;
