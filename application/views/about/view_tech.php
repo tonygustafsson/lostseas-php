@@ -54,18 +54,15 @@
 	<a class="ajaxHTML" title="About web technologies used to create this game" href="<?php echo base_url('about/tech')?>"><img src="<?php echo base_url('assets/images/icons/about_tech.png')?>" alt="Tech" width="32" height="32">Tech</a>
 </section>
 
-<h3>CodeIgniter 2.1</h3>
+<h3>CodeIgniter 3.1.9</h3>
 <p>
-	<?php echo $this->config->item('site_name')?> is using the PHP framework <a href="http://codeigniter.com/">CodeIgniter</a> to simplify a lot of stuff that takes unnecessary time in PHP.
+	<?php echo $this->config->item('site_name')?> is using the PHP framework <a href="http://codeigniter.com/">CodeIgniter</a> to simplify a lot of stuff that wastes unnecessary time in PHP.
 	I choose CodeIgniter because it's fast, and doesn't load a lot of crap when you don't need it. The MVC approach is also very helpful in big projects.
 </p>
 
-<h3>jQuery 2.0</h3>
+<h3>jQuery 3</h3>
 <p>
-	The second framework that is being used is <a href="http://jquery.com/">jQuery</a>, that makes Javascript a lot easier.
-	While PHP is somewhat simple, Javascript kan be a real mess! To do the advanced things that is necessary for this game, a framework was needed.
-	jQuery 2.0 doesn't support Internet Explorer 8 and below, which is ok for me because i'm focusing on modern browsers only.
-	A lot of other features in this game is too cutting edge for Internet Explorer 8 anyway :)
+	This will probably change in the future, to react.
 </p>
 
 <p>
@@ -73,22 +70,10 @@
 	Instead, just the important pieces of the page is updated. This makes things a lot faster, and let's you play music without interruption.
 </p>
 
-<h3>html5</h3>
+<h3>Wen standards</h3>
 <p>
 	This game <a href="http://validator.w3.org/check?uri=http%3A%2F%2Flostseas.com">validates as HTML5</a>.
 	It has some nice features like pushState, new form elements and SEO friendliness that I use.
-</p>
-
-<h3>CSS3</h3>
-<p>
-	Well, you could play this game while only supporting CSS2, but it would not look very good.
-	I like rounded corners, but It's not worth the hassle of trying to trick the browser to render this.
-	It makes to many HTTP requests to load a lot of images to simulate this.
-</p>
-
-<p>
-	The CSS won't validate without some warnings. I know, and I don't care. This is some browser specific styles that actually work and
-	won't hurt anyone.
 </p>
 
 <h3>Speed</h3>
