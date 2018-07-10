@@ -13,7 +13,7 @@
 
 						<div id="avatar_selector_div" title="Avatar selector" data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"></div>
 
-						<img id="current_avatar_img" style="border-radius: 4px; border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
+						<img id="current_avatar_img" style="border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
 						<button type="button" id="change_avatar_button">Change</button>
 					</div>
 

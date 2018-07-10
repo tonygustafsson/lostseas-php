@@ -22,7 +22,7 @@
 <h4>Player: <?php echo $player['user']['name']?></h4>
 
 <div style="float: left; width: 10%; padding: 2em;">
-	<img style="border-radius: 4px; border: 1px black solid;" src="<?php echo $player['user']['profile_picture']?>" alt="<?php echo $player['user']['name']?>">
+	<img style="border: 1px black solid;" src="<?php echo $player['user']['profile_picture']?>" alt="<?php echo $player['user']['name']?>">
 </div>
 
 <div style="float: left; width: 75%; padding: 1em; clear: right;">
@@ -79,7 +79,7 @@
 <h4 id="character">Character: <?php echo $player['game']['character_name']?></h4>
 
 <div style="float: left; width: 10%; padding: 2em;">
-	<img style="border-radius: 4px; border: 1px black solid;" src="<?php echo $player['game']['character_avatar_path']?>" alt="<?php echo $player['game']['character_name']?>">
+	<img style="border: 1px black solid;" src="<?php echo $player['game']['character_avatar_path']?>" alt="<?php echo $player['game']['character_name']?>">
 </div>
 
 <div style="float: left; width: 75%; padding: 1em; clear: right;">

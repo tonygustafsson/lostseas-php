@@ -3,13 +3,53 @@
     src: url('../fonts/Bridgnorth.otf');
 }
 
+.grid-container {
+	display: grid;
+	height: 100%;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 10% 1fr;
+	grid-template-areas: "header header header header header header header header header header header header" "content content content content content content content content content content content content";
+	grid-gap: 0;
+	width: 100%;
+	margin: 0;
+  }
+  
+@media screen and (min-width: 960px) {
+	.grid-container {
+		grid-template-rows: 15% 1fr;
+		grid-template-areas: "header header header header header header header header header header header header" "actions actions content content content content content content content content inventory inventory";
+		grid-gap: 10px;
+		column-gap: 10px;
+		width: 90%;
+		margin: 0 auto;
+		max-width: 1920px;
+	  }
+}
+
+  .header {
+	grid-area: header;
+  }
+  
+  .actions {
+	grid-area: actions;
+  }
+  
+  .inventory {
+	grid-area: inventory;
+  }
+  
+  .content {
+	grid-area: content;
+  }
+
+  /*
 * {
     font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
     color: #000;
     line-height: 1.3;
     margin: 0;
     padding: 0;
-}
+}*/
 
 body {
     background-color: #e5f0f6;
@@ -18,7 +58,12 @@ body {
     background-repeat: repeat-x, repeat-x;
     background-attachment: fixed, fixed;
     background-size: 100% 35%, 100% 60%;
-    font-size: 100%;
+	font-size: 100%;
+    font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
+    color: #000;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
 }
 
 body.loading * {
@@ -44,13 +89,13 @@ body.loading:after {
 }
 
 header {
-    padding-top: 3em;
+	padding-top: 1em;
+	position: relative;
 }
 
 header h1 {
-    margin-left: 1em;
+	margin-left: 1em;
     text-shadow: 2px 2px 2px #000;
-    filter: dropshadow(color=#000, offx=1, offy=1);
 }
 
 header h1 a {
@@ -69,12 +114,16 @@ a#nav_top_button {
 nav#nav_top {
     background: rgba(255, 255, 255, 0.8);
     border: 1px #d0d0d0 solid;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+	height: 50px;
 }
 
 nav#nav_top p {
     margin: 1em;
+}
+
+nav#nav_top ul {
+	margin: 0;
+	padding: 0;
 }
 
 nav#nav_top ul li {
@@ -155,7 +204,6 @@ article {
     display: block;
     border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
-    margin-top: 1em;
     margin-bottom: 3em;
     min-height: 400px;
     height: auto;
@@ -205,12 +253,12 @@ article h2 {
     color: #fff6b5;
     font-size: 1.8em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    margin-left: 1em;
+    margin-left: 3%;
     text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
-    background: rgba(0, 0, 0, 0.5);
-    width: 80%;
+    background: rgba(0, 0, 0, 0.75);
+    width: 86%;
     padding: 0 0.5em;
-    clear: both;
+	clear: both;
 }
 
 article h3 {
@@ -218,7 +266,6 @@ article h3 {
     color: #000;
     font-size: 1.7em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    text-shadow: 2px 2px 4px #fce854;
     clear: both;
 }
 
@@ -227,7 +274,6 @@ article h4 {
     color: #000;
     font-size: 1.3em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    text-shadow: 2px 2px 4px #fce854;
     clear: both;
 }
 
@@ -236,11 +282,11 @@ article form#register {
     position: absolute;
     top: 100px;
     left: 40px;
-    margin-left: 1em;
-    width: 78%;
+    margin-left: 2%;
+    width: 84%;
     height: 210px;
-    padding: 1em 1.5em;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 3em 1.5em;
+    background: rgba(0, 0, 0, 0.75);
 }
 
 article form#register fieldset {
@@ -253,7 +299,6 @@ article form#register legend {
     color: #fff6b5;
     font-size: 1.4em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
     margin: 0;
 }
 
@@ -400,16 +445,14 @@ a#action_panel_button {
 aside#action_panel {
     border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
-    margin-top: 1em;
     padding-bottom: 1em;
     padding-top: 1em;
-    min-height: 400px;
+    min-height: 450px;
     height: auto;
     box-sizing: border-box;
 }
 
 aside#action_panel h3 {
-    padding-bottom: 1em;
     color: #fce854;
     font-size: 1.2em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
@@ -460,7 +503,6 @@ a#inventory_panel_button {
 aside#inventory_panel {
     border: 1px #d0d0d0 solid;
     background: rgba(255, 255, 255, 0.8);
-    margin-top: 1em;
     margin-bottom: 1em;
     padding: 1em 0;
     min-height: 360px;
@@ -493,7 +535,8 @@ aside#inventory_panel h3 {
     font-size: 1.2em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     text-align: left;
-    margin-left: 1em;
+	margin-left: 1em;
+	margin-top: 0;
     text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
     letter-spacing: 0.1em;
 }
@@ -522,7 +565,8 @@ aside#inventory_panel div.inventory_item a {
     text-align: left;
     padding-left: 0.3em;
     position: relative;
-    top: -12px;
+	top: -12px;
+	color: #000;
 }
 
 aside#inventory_panel div.inventory_item img {
@@ -589,13 +633,13 @@ fieldset table td:first-child {
 
 table td,
 table th {
-    border: 1px #333 solid;
-    padding: 0 4px 0 4px;
+	border: 1px #d0d0d0 solid;
+    padding: 4px;
 }
 
 table th,
 table tr {
-    background: #e5e1dd;
+    background: #f7f7f7;
 }
 
 table tr:nth-child(even) {
@@ -625,13 +669,17 @@ img {
     border: none;
 }
 
+.pagination a {
+	margin: 0 0.25em;
+}
+
 form fieldset {
     padding: 5px 0 20px 0;
     margin: 10px 5% 40px 5%;
     float: left;
     width: 90%;
     display: block;
-    border: 1px solid #5a779b;
+	border: 1px #d0d0d0 solid;
 }
 
 form fieldset legend {
@@ -694,24 +742,17 @@ form input[type='submit'],
 form input[type='button'],
 button {
     background-color: #e5e1dd;
-    border: 1px #ecf2f8 solid;
     color: #000;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     font-size: 1.4em;
-    box-shadow: 2px 2px 2px #888;
-    height: 36px;
     cursor: pointer;
     margin: 0.5em;
-    padding: 0 0.5em;
-    -webkit-transition: background 250ms ease;
-    -moz-transition: background 250ms ease;
-    -ms-transition: background 250ms ease;
-    transition: background 250ms ease;
+	padding: 0.5em 1em;
+	border: 1px #d0d0d0 solid;
 }
 
 form input[type='submit'].small {
     font-size: 1.2em;
-    height: 30px;
 }
 
 form input[type='submit']:hover,
@@ -757,20 +798,21 @@ div.slider_container {
     float: left;
     clear: both;
     width: 90%;
-    margin: 0 5%;
+	margin: 0 5%;
+	text-align: center;
 }
 
 div.shop_slider {
-    float: left;
     height: 240px;
-    margin: 18px 0;
+    margin: 24px 0;
 }
 
 .slider_info {
     text-align: center;
-    float: left;
     width: 40px;
-    margin: 1em 1.3em;
+	margin: 1em 1.3em;
+	display: inline-block;
+
 }
 
 .slider_info span {
@@ -890,29 +932,33 @@ strong {
         background-repeat: repeat-x, no-repeat;
         background-attachment: fixed, fixed;
         background-size: 100% 15%, 100% 50%;
-    }
-
-    header h1 {
-        padding-top: 0.5em;
-    }
+	}
+	
+	header {
+		padding-top: 0;
+	}
 
     article header h2 {
         margin: 0;
         padding: 0;
     }
 
+	header h1 {
+		margin-bottom: 0;
+	}
+
     a#nav_top_button,
     a#action_panel_button,
     a#inventory_panel_button {
         display: block;
-        float: left;
+		float: left;
     }
 
     a#nav_top_button img,
     a#action_panel_button img,
     a#inventory_panel_button img {
         padding: 0;
-        margin: 0;
+		margin: 0;
     }
 
     article#main,
@@ -929,21 +975,31 @@ strong {
     aside#action_panel,
     aside#inventory_panel,
     aside#log_panel {
-        width: 12em !important;
+        width: 100% !important;
         min-height: auto !important;
-        margin: 0.5em 3%;
+        margin: 0.5em 0;
         display: none;
         position: absolute;
         top: 9em;
-        z-index: 1000;
-    }
+		z-index: 1000;
+		background: #fff;
+	}
+	
+	.actions {
+		grid-area: none;
+	}
 
     nav#nav_top ul li {
         width: 100%;
         float: left;
         clear: both;
-        opacity: 1;
-    }
+		opacity: 1;
+		background: #fff;
+	}
+	
+	nav#nav_top ul li a {
+		border: 0 !important;
+	}
 
     aside#inventory_panel div.inventory_item {
         width: 11em;

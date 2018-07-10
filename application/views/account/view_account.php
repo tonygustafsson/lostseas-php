@@ -24,7 +24,7 @@
 
 		<div style="width: 100px; height: 100px; padding: 1em;" id="image_preview">
 			<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg')): ?>
-				<img style="border-radius: 4px" src="<?php echo 'assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
+				<img src="<?php echo 'assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
 			<?php endif; ?>
 		</div>
 	

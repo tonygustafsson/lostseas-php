@@ -352,7 +352,7 @@ class Tavern extends Main {
 				$data['changeElements'] = $result['changeElements'];
 			}
 			
-			$data['changeElements']['current_money'] = $new_money;
+			$data['changeElements']['current_money']['val'] = $new_money;
 			
 			$data['runJS'] = 'tavernGambleSet(' . $next_bet . ');';
 

@@ -3,7 +3,7 @@
 		<?php if (isset($user)): ?>
 			<? /* For logged in users! */ ?>
 
-			<aside id="inventory_panel" class="grid_2">
+			<aside id="inventory_panel" class="inventory">
 				<h3>Inventory</h3>
 				
 				<?php if ( ! isset($no_menu)): ?>
@@ -173,7 +173,7 @@
 
 		<?php else: ?>
 			<?php /* For logged out users! */ ?>
-			<aside id="inventory_panel" class="grid_4">
+			<aside id="inventory_panel" class="actions">
 				<form method="post" action="<?php echo base_url('account/login')?>" style="width: 100%; margin: 0; padding: 0;">
 					<fieldset>
 						<legend>Log in</legend>
@@ -181,7 +181,7 @@
 						<?php if ($this->session->userdata('email') || $this->session->userdata('password')): ?>
 								<? $this->session->unset_userdata('email') ?>
 								<? $this->session->unset_userdata('password') ?>
-								<p style="margin: 0.2em 1em; background: #d96868; padding: 0.3em; border-radius: 4px;">Your login was denied...</p>
+								<p style="margin: 0.2em 1em; background: #d96868; padding: 0.3em;">Your login was denied...</p>
 						<?php endif; ?>
 						
 						<?php if (isset($user['success'])): ?>
@@ -194,7 +194,7 @@
 						<label for="login_password">Password</label>
 						<input type="password" id="login_password" name="login_password" style="width: 100%">
 						
-						<p style="font-size: 12px; margin: 0 1em;"><a class="ajaxHTML" href="<?php echo base_url('account/password_forgotten')?>">Have you forgotten your password?</a></p>
+						<p style="font-size: 12px; margin: 0 1em;"><a style="color: #000" class="ajaxHTML" href="<?php echo base_url('account/password_forgotten')?>">Have you forgotten your password?</a></p>
 						
 						<input class="small" type="submit" value="Log in" style="margin-top: 1em;">
 					</fieldset>
@@ -205,7 +205,7 @@
 				</p>
 			</aside>
 			
-			<aside id="log_panel" class="grid_4">
+			<aside id="log_panel" class="inventory">
 				<h3>What's going on?</h3>
 				
 				<?php if (isset($log_entries)): ?>
@@ -213,7 +213,7 @@
 					
 					<?php foreach ($log_entries as $entry): ?>
 						<p>
-							<img style="float: left; margin: 0.3em 0.5em 0.5em 0; border-radius: 4px;" src="<?php echo base_url('assets/images/avatars/' . (($entry['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $entry['character_avatar'] . '.jpg')?>" alt="Avatar of <?php echo $entry['character_name']?>" width="40" height="40">
+							<img style="float: left; margin: 0.3em 0.5em 0.5em 0;" src="<?php echo base_url('assets/images/avatars/' . (($entry['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $entry['character_avatar'] . '.jpg')?>" alt="Avatar of <?php echo $entry['character_name']?>" width="40" height="40">
 							<time style="font-weight: bold"><?php echo $entry['time']?></time><br>
 							<?php echo $entry['character_name']?> <?php echo $entry['entry']?>
 						</p>
@@ -227,6 +227,5 @@
 		</footer>
 		
 	</div>
-
 </body>
 </html>
