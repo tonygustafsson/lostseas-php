@@ -27,12 +27,10 @@
 		</script>
 	<?php endif; ?>
 	
-	<script type="text/javascript" src="<?php echo base_url('assets/javascript/jquery.custom.min.js?201309081542')?>"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/javascript/main.js?201309081542')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/javascript/chat.js?201309081542')?>"></script>
-	<!--[if lt IE 9]>
-		<script type="text/javascript" src="<?php echo base_url('assets/javascript/html5shiv.js')?>"></script>
-	<![endif]-->
 	
 	<title>Chat - <?php echo $this->config->item('site_name')?></title>
 </head>
