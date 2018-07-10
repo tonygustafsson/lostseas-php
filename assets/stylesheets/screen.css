@@ -144,20 +144,6 @@ nav#nav_top li a {
     font-size: 1em;
 }
 
-nav#nav_top li a,
-nav#nav_top li a#nav_game,
-nav#nav_top li a#nav_register,
-nav#nav_top li a#nav_players,
-nav#nav_top li a#nav_chat,
-nav#nav_top li a#nav_about,
-nav#nav_top li a#nav_settings,
-nav#nav_top li a#nav_logout {
-    -webkit-transition: background 100ms ease;
-    -moz-transition: background 100ms ease;
-    -ms-transition: background 100ms ease;
-    transition: background 100ms ease;
-}
-
 nav#nav_top li a#nav_game {
     background: url('../images/icons/game.png') no-repeat 10px 6px;
 }
@@ -398,10 +384,6 @@ article section.actions input[type='submit'],
 article section.actions button {
     width: 100px;
     height: 50px;
-    -webkit-transition: background 100ms ease;
-    -moz-transition: background 100ms ease;
-    -ms-transition: background 100ms ease;
-    transition: background 100ms ease;
 }
 
 article section.actions a:hover,
