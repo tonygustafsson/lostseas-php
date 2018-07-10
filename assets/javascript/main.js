@@ -222,7 +222,12 @@ function ajaxGameRequest(event) {
 
 function toggleVisibility(id) {
     var element = $('#' + id);
+
     if (element.css('display') == 'none') {
+        $('#inventory_panel').css('display', 'none');
+        $('#action_panel').css('display', 'none');
+        $('#nav_top').css('display', 'none');
+
         element.css('display', 'block');
     } else {
         element.css('display', 'none');
