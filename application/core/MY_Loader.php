@@ -18,16 +18,16 @@ class MY_Loader extends CI_Loader
 			$town = (isset($vars['game']['town'])) ? $vars['game']['town'] : FALSE;
 			$place = ($CI->uri->segment(1) != "") ? $CI->uri->segment(1) : 'Presentation';
 			$vars['page_title'] = $this->url_to_title($town, $place, $CI->uri->segment(2)) . ' - ' . $CI->config->item('site_name');
-			$this->_ci_load(array('_ci_view' => 'html_top', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+			$this->_ci_load(array('_ci_view' => 'html_top', '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 		}
 
 		//Load the normal page requested
-		$this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+		$this->_ci_load(array('_ci_view' => $view, '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 
 		if ($CI->input->is_ajax_request() !== TRUE)
 		{
 			//If its not an AJAX request, load the HTML bottom
-			$this->_ci_load(array('_ci_view' => 'html_bottom', '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
+			$this->_ci_load(array('_ci_view' => 'html_bottom', '_ci_vars' => $this->_ci_prepare_view_vars($vars), '_ci_return' => $return));
 		}
 	}
 

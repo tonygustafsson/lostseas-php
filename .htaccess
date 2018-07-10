@@ -1,10 +1,10 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
-	RewriteBase /test/
+	RewriteBase /lostseas.com/
 	
 	#Redirect non www request to www for SEO
-	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+	#RewriteCond %{HTTP_HOST} !^www\.
+	#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 	#Removes access to the system folder
 	RewriteCond %{REQUEST_URI} ^system.*
