@@ -21,12 +21,12 @@ body {
     font-size: 100%;
 }
 
-body.wait * {
+body.loading * {
     cursor: wait !important;
     opacity: 0.8;
 }
 
-body.wait:after {
+body.loading:after {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -35,14 +35,11 @@ body.wait:after {
     height: 60px;
     width: 160px;
     font-size: 2.5em;
-    padding: 0.25em;
+    padding: 0.25em 1em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    background-color: #e5e1dd;
+    background-color: #fff;
     color: #000;
     border: 2px #000 solid;
-    border-radius: 4px;
-    text-shadow: 4px 4px 4px #333;
-    box-shadow: 6px 6px 6px #fff, -6px -6px 6px #fff;
     content: 'Loading...';
 }
 

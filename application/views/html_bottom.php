@@ -223,7 +223,7 @@
 		<?php endif; ?>
 		
 		<footer>
-			<p><a href="about/copyright" class="ajaxHTML">&copy; <?php echo $this->config->item('site_name')?>, <?php echo date("Y")?></a></p>
+			<p><a href="about/copyright" class="ajaxHTML"><?php echo $this->config->item('site_name')?> &copy;<?php echo date("Y")?></a></p>
 		</footer>
 		
 	</div>

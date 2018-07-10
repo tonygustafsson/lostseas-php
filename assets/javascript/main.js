@@ -196,7 +196,7 @@ function ajaxGameRequest(event) {
         data: myData,
         dataType: 'json',
         beforeSend: function() {
-            $('body').addClass('wait');
+            $('body').addClass('loading');
         },
         success: function(data) {
             gameManipulateDOM(data);
@@ -214,7 +214,7 @@ function ajaxGameRequest(event) {
             $('div#msg').prepend(errorMsg);
         },
         complete: function() {
-            $('body').removeClass('wait');
+            $('body').removeClass('loading');
             $('html, body').animate({ scrollTop: 0 }, 'normal');
         }
     });
@@ -411,7 +411,7 @@ $(document).on('click', '.ajaxHTML', function(e) {
         url: url,
         cache: false,
         beforeSend: function() {
-            $('body').addClass('wait');
+            $('body').addClass('loading');
         },
         success: function(data) {
             $('article#main').html(data);
@@ -441,7 +441,7 @@ $(document).on('click', '.ajaxHTML', function(e) {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
             }
 
-            $('body').removeClass('wait');
+            $('body').removeClass('loading');
         },
         error: function(xhr, ajaxOptions, thrownError) {
             var errorDiv = $(
@@ -452,7 +452,7 @@ $(document).on('click', '.ajaxHTML', function(e) {
                 .fadeIn(300)
                 .delay(4000)
                 .fadeOut(300);
-            $('body').removeClass('wait');
+            $('body').removeClass('loading');
         }
     });
 
@@ -472,7 +472,7 @@ $(window).on('popstate', function(e) {
         url: location.pathname,
         cache: false,
         beforeSend: function() {
-            $('body').addClass('wait');
+            $('body').addClass('loading');
         },
         success: function(data) {
             $('article#main').html(data);
@@ -494,7 +494,7 @@ $(window).on('popstate', function(e) {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
             }
 
-            $('body').removeClass('wait');
+            $('body').removeClass('loading');
         },
         error: function(xhr, ajaxOptions, thrownError) {
             var errorDiv = $(
@@ -505,7 +505,7 @@ $(window).on('popstate', function(e) {
                 .fadeIn(300)
                 .delay(4000)
                 .fadeOut(300);
-            $('body').removeClass('wait');
+            $('body').removeClass('loading');
         }
     });
 });
