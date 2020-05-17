@@ -7,7 +7,7 @@
     display: grid;
     height: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: 146px 1fr;
     grid-template-areas: 'header header header header header header header header header header header header' 'content content content content content content content content content content content content';
     grid-gap: 0;
     width: 100%;
@@ -16,7 +16,7 @@
 
 @media screen and (min-width: 960px) {
     .grid-container {
-        grid-template-rows: 15% 1fr;
+        grid-template-rows: 174px 1fr;
         grid-template-areas: 'header header header header header header header header header header header header' 'actions actions content content content content content content content content inventory inventory';
         grid-gap: 10px;
         column-gap: 10px;
