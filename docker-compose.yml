@@ -9,6 +9,7 @@ services:
             - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./docker/nginx/sites/:/etc/nginx/sites-available
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d
+            - ./docker/php-fpm/sessions:/opt/bitnami/php/sessions
         links:
             - php-fpm
         depends_on:
@@ -19,8 +20,9 @@ services:
         image: 'bitnami/php-fpm:latest'
         volumes:
             - .:/var/www
-            - './docker/php-fpm/conf.d/php.ini:/opt/bitnami/php/etc/php.ini'
-            - './docker/php-fpm/logs:/opt/bitnami/logs'
+            - ./docker/php-fpm/conf.d/php.ini:/opt/bitnami/php/etc/php.ini
+            - ./docker/php-fpm/sessions:/opt/bitnami/php/sessions
+            - ./docker/php-fpm/logs:/opt/bitnami/logs
         networks:
             default:
                 aliases:
