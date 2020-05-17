@@ -4,45 +4,45 @@
 }
 
 .grid-container {
-	display: grid;
-	height: 100%;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	grid-template-rows: 10% 1fr;
-	grid-template-areas: "header header header header header header header header header header header header" "content content content content content content content content content content content content";
-	grid-gap: 0;
-	width: 100%;
-	margin: 0;
-  }
-  
-@media screen and (min-width: 960px) {
-	.grid-container {
-		grid-template-rows: 15% 1fr;
-		grid-template-areas: "header header header header header header header header header header header header" "actions actions content content content content content content content content inventory inventory";
-		grid-gap: 10px;
-		column-gap: 10px;
-		width: 90%;
-		margin: 0 auto;
-		max-width: 1920px;
-	  }
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 10% 1fr;
+    grid-template-areas: 'header header header header header header header header header header header header' 'content content content content content content content content content content content content';
+    grid-gap: 0;
+    width: 100%;
+    margin: 0;
 }
 
-  .header {
-	grid-area: header;
-  }
-  
-  .actions {
-	grid-area: actions;
-  }
-  
-  .inventory {
-	grid-area: inventory;
-  }
-  
-  .content {
-	grid-area: content;
-  }
+@media screen and (min-width: 960px) {
+    .grid-container {
+        grid-template-rows: 15% 1fr;
+        grid-template-areas: 'header header header header header header header header header header header header' 'actions actions content content content content content content content content inventory inventory';
+        grid-gap: 10px;
+        column-gap: 10px;
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1920px;
+    }
+}
 
-  /*
+.header {
+    grid-area: header;
+}
+
+.actions {
+    grid-area: actions;
+}
+
+.inventory {
+    grid-area: inventory;
+}
+
+.content {
+    grid-area: content;
+}
+
+/*
 * {
     font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
     color: #000;
@@ -58,7 +58,7 @@ body {
     background-repeat: repeat-x, repeat-x;
     background-attachment: fixed, fixed;
     background-size: 100% 35%, 100% 60%;
-	font-size: 100%;
+    font-size: 100%;
     font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
     color: #000;
     line-height: 1.3;
@@ -89,12 +89,12 @@ body.loading:after {
 }
 
 header {
-	padding-top: 1em;
-	position: relative;
+    padding-top: 1em;
+    position: relative;
 }
 
 header h1 {
-	margin-left: 1em;
+    margin-left: 1em;
     text-shadow: 2px 2px 2px #000;
 }
 
@@ -114,7 +114,7 @@ a#nav_top_button {
 nav#nav_top {
     background: rgba(255, 255, 255, 0.8);
     border: 1px #d0d0d0 solid;
-	height: 50px;
+    height: 50px;
 }
 
 nav#nav_top p {
@@ -122,8 +122,8 @@ nav#nav_top p {
 }
 
 nav#nav_top ul {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 nav#nav_top ul li {
@@ -244,7 +244,7 @@ article h2 {
     background: rgba(0, 0, 0, 0.75);
     width: 86%;
     padding: 0 0.5em;
-	clear: both;
+    clear: both;
 }
 
 article h3 {
@@ -367,7 +367,7 @@ article section.actions a.largepic {
 article section.actions a.nopic {
     height: 26px;
     width: 150px;
-    padding: 20px 0 0 0;
+    padding: 12px 0 0 0;
 }
 
 article section.actions a.positive,
@@ -517,8 +517,8 @@ aside#inventory_panel h3 {
     font-size: 1.2em;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     text-align: left;
-	margin-left: 1em;
-	margin-top: 0;
+    margin-left: 1em;
+    margin-top: 0;
     text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
     letter-spacing: 0.1em;
 }
@@ -547,8 +547,8 @@ aside#inventory_panel div.inventory_item a {
     text-align: left;
     padding-left: 0.3em;
     position: relative;
-	top: -12px;
-	color: #000;
+    top: -12px;
+    color: #000;
 }
 
 aside#inventory_panel div.inventory_item img {
@@ -615,7 +615,7 @@ fieldset table td:first-child {
 
 table td,
 table th {
-	border: 1px #d0d0d0 solid;
+    border: 1px #d0d0d0 solid;
     padding: 4px;
 }
 
@@ -652,7 +652,7 @@ img {
 }
 
 .pagination a {
-	margin: 0 0.25em;
+    margin: 0 0.25em;
 }
 
 form fieldset {
@@ -661,7 +661,7 @@ form fieldset {
     float: left;
     width: 90%;
     display: block;
-	border: 1px #d0d0d0 solid;
+    border: 1px #d0d0d0 solid;
 }
 
 form fieldset legend {
@@ -729,8 +729,8 @@ button {
     font-size: 1.4em;
     cursor: pointer;
     margin: 0.5em;
-	padding: 0.5em 1em;
-	border: 1px #d0d0d0 solid;
+    padding: 1em;
+    border: 1px #d0d0d0 solid;
 }
 
 form input[type='submit'].small {
@@ -780,8 +780,8 @@ div.slider_container {
     float: left;
     clear: both;
     width: 90%;
-	margin: 0 5%;
-	text-align: center;
+    margin: 0 5%;
+    text-align: center;
 }
 
 div.shop_slider {
@@ -792,9 +792,8 @@ div.shop_slider {
 .slider_info {
     text-align: center;
     width: 40px;
-	margin: 1em 1.3em;
-	display: inline-block;
-
+    margin: 1em 1.3em;
+    display: inline-block;
 }
 
 .slider_info span {
@@ -914,33 +913,33 @@ strong {
         background-repeat: repeat-x, no-repeat;
         background-attachment: fixed, fixed;
         background-size: 100% 15%, 100% 50%;
-	}
-	
-	header {
-		padding-top: 0;
-	}
+    }
+
+    header {
+        padding-top: 0;
+    }
 
     article header h2 {
         margin: 0;
         padding: 0;
     }
 
-	header h1 {
-		margin-bottom: 0;
-	}
+    header h1 {
+        margin-bottom: 0;
+    }
 
     a#nav_top_button,
     a#action_panel_button,
     a#inventory_panel_button {
         display: block;
-		float: left;
+        float: left;
     }
 
     a#nav_top_button img,
     a#action_panel_button img,
     a#inventory_panel_button img {
         padding: 0;
-		margin: 0;
+        margin: 0;
     }
 
     article#main,
@@ -963,25 +962,25 @@ strong {
         display: none;
         position: absolute;
         top: 9em;
-		z-index: 1000;
-		background: #fff;
-	}
-	
-	.actions {
-		grid-area: none;
-	}
+        z-index: 1000;
+        background: #fff;
+    }
+
+    .actions {
+        grid-area: none;
+    }
 
     nav#nav_top ul li {
         width: 100%;
         float: left;
         clear: both;
-		opacity: 1;
-		background: #fff;
-	}
-	
-	nav#nav_top ul li a {
-		border: 0 !important;
-	}
+        opacity: 1;
+        background: #fff;
+    }
+
+    nav#nav_top ul li a {
+        border: 0 !important;
+    }
 
     aside#inventory_panel div.inventory_item {
         width: 11em;

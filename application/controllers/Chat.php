@@ -1,6 +1,6 @@
 <?PHP
 
-include('main.php');
+include('Main.php');
 
 class Chat extends Main {
 

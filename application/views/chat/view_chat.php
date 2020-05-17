@@ -11,8 +11,8 @@
 	
 	<base href="<?php echo base_url()?>">
 
-	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/screen.css?201309081542')?>" type="text/css" media="all">
-	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/chat.css?201309081542')?>" type="text/css" media="all">
+	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/screen.css?201810172201')?>" type="text/css" media="all">
+	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/chat.css?201810172201')?>" type="text/css" media="all">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url()?>/assets/images/icons/favicon.ico">
 
 	<?php if (strpos(base_url(), 'test') === FALSE): ?>

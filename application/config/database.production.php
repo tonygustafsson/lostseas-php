@@ -91,8 +91,8 @@ switch ($environment) {
 	default:
 		$db['default']['hostname'] = "localhost";
 		$db['default']['database'] = "177202-lostseas";
-		$db['default']['username'] = "lostseas";
-		$db['default']['password'] = "aiC2teO7RVdl!";
+		$db['default']['username'] = "root";
+		$db['default']['password'] = "";
 }
 
 $db['default']['dbdriver'] = "mysqli";

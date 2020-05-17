@@ -78,7 +78,7 @@
 		</form>
 	</section>
 
-	<div class="demo-container" style="float: left; clear: both; padding: 2em auto; margin: 1em 100px; width: 550px; height: 300px">
+	<div class="demo-container" style="clear: both; margin: 1em auto; width: 550px; height: 300px">
 		<div id="placeholder" class="demo-placeholder" style="width: 100%; height: 100%;"></div>
 	</div>
 
