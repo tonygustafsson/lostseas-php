@@ -89,10 +89,10 @@ switch ($environment) {
 		$db['default']['password'] = "0HoyPirateDataBase!";
 		break;
 	default:
-		$db['default']['hostname'] = "localhost";
-		$db['default']['database'] = "177202-lostseas";
+		$db['default']['hostname'] = "db";
+		$db['default']['database'] = "lostseas";
 		$db['default']['username'] = "lostseas";
-		$db['default']['password'] = "aiC2teO7RVdl!";
+		$db['default']['password'] = "lostseas";
 }
 
 $db['default']['dbdriver'] = "mysqli";
