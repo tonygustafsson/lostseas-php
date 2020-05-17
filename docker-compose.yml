@@ -19,8 +19,8 @@ services:
         image: 'bitnami/php-fpm:latest'
         volumes:
             - .:/var/www
-            - './docker/php-fpm/conf.d:/opt/bitnami/php/etc/conf.d/'
-            - './docker/php-fpm/logs:/opt/bitnami/php/etc/logs/'
+            - './docker/php-fpm/conf.d/php.ini:/opt/bitnami/php/etc/php.ini'
+            - './docker/php-fpm/logs:/opt/bitnami/logs'
         networks:
             default:
                 aliases:
