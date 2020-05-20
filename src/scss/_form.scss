@@ -1,0 +1,119 @@
+form fieldset {
+    padding: 5px 0 20px 0;
+    margin: 10px 5% 40px 5%;
+    float: left;
+    width: 90%;
+    display: block;
+    border: 1px #d0d0d0 solid;
+}
+
+form fieldset legend {
+    font-size: 1.4em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    padding: 0 5px;
+}
+
+form label {
+    display: block;
+    height: 20px;
+    font-size: 1em;
+    padding-bottom: 4px;
+    margin-left: 10px;
+}
+
+form input[type='text'],
+form input[type='number'],
+form input[type='email'],
+form input[type='password'],
+form input[type='file'],
+form select,
+form textarea,
+form input[type='email'],
+form input[type='url'] {
+    height: 20px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: 1px solid #aaa;
+    padding: 4px 0 1px 5px;
+    color: #000;
+    background: #fdfdfd;
+    max-width: 90%;
+}
+
+form select {
+    height: 26px;
+    vertical-align: middle;
+    color: #000;
+}
+
+form select option {
+    color: #000;
+}
+
+form textarea {
+    height: 160px;
+    width: 500px;
+    color: #000;
+}
+
+form input[type='text'],
+form input[type='password'],
+form input[type='email'],
+form input[type='number'] {
+    width: 250px;
+}
+
+form input[type='submit'],
+form input[type='button'],
+button {
+    background-color: #e5e1dd;
+    color: #000;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    font-size: 1.4em;
+    cursor: pointer;
+    margin: 0.5em;
+    padding: 1em;
+    border: 1px #d0d0d0 solid;
+}
+
+form input[type='submit'].small {
+    font-size: 1.2em;
+}
+
+form input[type='submit']:hover,
+button:hover {
+    background: #b7c8cf;
+}
+
+form input[type='checkbox'] {
+    margin-left: 1em;
+}
+
+form#register input#character_description,
+form#form_suggestion input#name {
+    /* Honeypot attempt to block some bots */
+    display: none;
+}
+
+table input[type='text'] {
+    width: auto;
+}
+
+table.godmode th img {
+    padding-top: 4px;
+}
+
+table.godmode td {
+    text-align: center;
+}
+
+table.godmode td:first-child {
+    width: 25%;
+    text-align: left;
+}
+
+table.godmode input[type='text'],
+table.godmode input[type='number'] {
+    width: 80% !important;
+    margin: 0.5em 0;
+}

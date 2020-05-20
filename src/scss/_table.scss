@@ -1,0 +1,34 @@
+table {
+    width: 90%;
+    margin: 1em 5%;
+}
+
+fieldset table td:first-child {
+    width: 35% !important;
+}
+
+table td,
+table th {
+    border: 1px #d0d0d0 solid;
+    padding: 4px;
+}
+
+table th,
+table tr {
+    background: #f7f7f7;
+}
+
+table tr:nth-child(even) {
+    background: #fff;
+}
+
+table th,
+table th a {
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+}
+
+table td a {
+    color: #000;
+}

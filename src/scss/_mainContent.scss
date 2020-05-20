@@ -1,0 +1,233 @@
+article a,
+aside a {
+    text-decoration: none;
+}
+
+article header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+article p {
+    margin: 1em 2em;
+}
+
+article a {
+    color: #c23a3a;
+    text-decoration: underline;
+}
+
+article a:hover {
+    color: #ff2828;
+}
+
+article div.divider {
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 30px;
+    margin: 1em auto 1em auto;
+    background: url('../../assets/images/design/divider.png') transparent no-repeat;
+    background-position: 50% 0;
+}
+
+article h2 {
+    z-index: 20;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: #fff6b5;
+    font-size: 1.8em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    margin-left: 3%;
+    text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
+    background: rgba(0, 0, 0, 0.75);
+    width: 86%;
+    padding: 0 0.5em;
+    clear: both;
+}
+
+article h3 {
+    margin: 1em 2em 0 2em;
+    color: #000;
+    font-size: 1.7em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    clear: both;
+}
+
+article h4 {
+    margin: 1em 2em 0 2em;
+    color: #000;
+    font-size: 1.3em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    clear: both;
+}
+
+article form#register {
+    z-index: 20;
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    margin-left: 2%;
+    width: 84%;
+    height: 210px;
+    padding: 3em 1.5em;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+article form#register fieldset {
+    margin: 0;
+    width: 100%;
+    border: none;
+}
+
+article form#register legend {
+    color: #fff6b5;
+    font-size: 1.4em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    margin: 0;
+}
+
+article form#register label {
+    color: #fff;
+}
+
+article form#register p {
+    color: #fff;
+    margin: 0 0 0 1em;
+}
+
+article form#register img {
+    margin: -0.4em 0em;
+}
+
+article form#register section#register_left {
+    float: left;
+    width: auto;
+    width: 75%;
+}
+
+article form#register section#register_right {
+    float: left;
+    margin-left: 1em;
+    width: auto;
+}
+
+article form#register input[type='submit'] {
+    height: 100px;
+    width: 100px;
+}
+
+article img.header {
+    width: 90%;
+    border: 1px black solid;
+    margin: 1em 5% 0 5%;
+    z-index: 1;
+}
+
+article section.actions {
+    float: left;
+    clear: both;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 5%;
+    text-align: center;
+}
+
+article section.actions a {
+    display: inline-block;
+    text-align: center;
+    margin: 6px;
+    padding: 14px 0;
+    height: 2.8em;
+    width: 4.8em;
+    line-height: 0.4em;
+    background-color: rgb(220, 224, 226);
+    border: 1px #d0d0d0 solid;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    text-shadow: 2px 2px 3px #e5e1dd;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none;
+}
+
+article section.actions a img {
+    display: block;
+    margin: 0.1em auto 0.5em auto;
+    clear: both;
+}
+
+article section.actions a.largepic {
+    padding: 0.5em 2em;
+    width: 136px;
+    height: auto;
+    line-height: 100%;
+}
+
+article section.actions a.nopic {
+    height: 26px;
+    width: 150px;
+    padding: 12px 0 0 0;
+}
+
+article section.actions a.positive,
+article section.actions button.positive {
+    border: 2px #3bb120 solid;
+}
+
+article section.actions a.negative,
+article section.actions button.negative {
+    border: 2px #c63636 solid;
+}
+
+article section.actions input[type='submit'],
+article section.actions button {
+    width: 100px;
+    height: 50px;
+}
+
+article section.actions a:hover,
+article section.actions button:hover {
+    background: rgba(168, 172, 185, 1);
+}
+
+article ul {
+    width: 80%;
+    margin: 1em 10%;
+}
+
+article ul li {
+    padding-bottom: 0.8em;
+}
+
+article ul li.attack_good {
+    min-width: 90%;
+    background: #71de58;
+    font-weight: bold;
+    padding: 0em 1em 1em 1em;
+    margin: 0 2em 1em 2em;
+    border: 1px #3bb120 solid;
+}
+
+article ul li.attack_bad {
+    width: 90%;
+    background: #d96868;
+    font-weight: bold;
+    padding: 0em 1em 1em 1em;
+    margin: 0 2em 1em 2em;
+    border: 1px #c63636 solid;
+}
+
+p.actions {
+    text-align: center;
+}
+
+p.actions img {
+    margin-left: 0.5em;
+}
+
+.pagination a {
+    margin: 0 0.25em;
+}

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Bridgnorth';
+    src: url('../../assets/fonts/Bridgnorth.otf');
+}
+
+body {
+    background-color: #e5f0f6;
+    background-image: url('../../assets/images/design/back_ship.png'), url('../../assets/images/design/back_sky.jpg');
+    background-position: 90% 100%, top left;
+    background-repeat: repeat-x, repeat-x;
+    background-attachment: fixed, fixed;
+    background-size: 100% 35%, 100% 60%;
+    font-size: 100%;
+    font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
+    color: #000;
+    line-height: 1.3;
+    margin: 0;
+    padding: 0;
+}
+
+body.loading * {
+    cursor: wait !important;
+    opacity: 0.8;
+}
+
+body.loading:after {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -80px;
+    margin-top: -30px;
+    height: 60px;
+    width: 160px;
+    font-size: 2.5em;
+    padding: 0.25em 1em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    background-color: #fff;
+    color: #000;
+    border: 2px #000 solid;
+    content: 'Loading...';
+}
+
+article {
+    display: block;
+    border: 1px #d0d0d0 solid;
+    background: rgba(255, 255, 255, 0.8);
+    margin-bottom: 3em;
+    min-height: 400px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+strong {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+img {
+    border: none;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}

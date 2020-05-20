@@ -24,7 +24,6 @@
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('assets/images/icons/favicon.ico')?>">
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo base_url('feed')?>">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" media="all">
-	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/screen.css?201810172140')?>" type="text/css" media="all">
 
 	<?php if (strpos(base_url(), 'test') === FALSE): ?>
 		<script>
@@ -40,6 +39,7 @@
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/styles.js?202005171562')?>"></script>
 	<script type="text/javascript" src="<?php echo base_url('assets/js/main.js?202005171562')?>"></script>
 	
 	<title><?php echo $page_title?></title>

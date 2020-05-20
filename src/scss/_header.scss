@@ -1,0 +1,97 @@
+header {
+    padding-top: 1em;
+    position: relative;
+}
+
+header h1 {
+    margin-left: 1em;
+    text-shadow: 2px 2px 2px #000;
+}
+
+header h1 a {
+    color: #fce854;
+    font-size: 1.5em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+
+a#nav_top_button {
+    display: none;
+    padding: 1em;
+}
+
+nav#nav_top {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px #d0d0d0 solid;
+    height: 50px;
+}
+
+nav#nav_top p {
+    margin: 1em;
+}
+
+nav#nav_top ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav#nav_top ul li {
+    list-style-type: none;
+}
+
+nav#nav_top li a {
+    display: block;
+    float: left;
+    padding: 15px 15px 15px 50px;
+    color: #fce854;
+    text-decoration: none;
+    border-right: 1px solid #d0d0d0;
+    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+    letter-spacing: 0.15em;
+    font-weight: bold;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    font-size: 1em;
+}
+
+nav#nav_top li a#nav_game {
+    background: url('../../assets/images/icons/game.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_register {
+    background: url('../../assets/images/icons/register.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_players {
+    background: url('../../assets/images/icons/players.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_chat {
+    background: url('../../assets/images/icons/chat.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_about {
+    background: url('../../assets/images/icons/about_faq.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_settings {
+    background: url('../../assets/images/icons/settings.png') no-repeat 10px 6px;
+}
+nav#nav_top li a#nav_logout {
+    background: url('../../assets/images/icons/logout.png') no-repeat 10px 6px;
+}
+
+nav#nav_top li a:hover,
+nav#nav_top li a#nav_game:hover,
+nav#nav_top li a#nav_register:hover,
+nav#nav_top li a#nav_players:hover,
+nav#nav_top li a#nav_chat:hover,
+nav#nav_top li a#nav_about:hover,
+nav#nav_top li a#nav_settings:hover,
+nav#nav_top li a#nav_logout:hover {
+    background-color: #e5e5eb;
+}
+
+nav#nav_top li a.disabled {
+    opacity: 0.6;
+}
+
+nav#nav_top li a.disabled:hover {
+    background-color: transparent !important;
+    cursor: default;
+}

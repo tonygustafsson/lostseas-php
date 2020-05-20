@@ -1,0 +1,56 @@
+a#action_panel_button {
+    display: none;
+    padding: 1em;
+}
+
+aside#action_panel {
+    border: 1px #d0d0d0 solid;
+    background: rgba(255, 255, 255, 0.8);
+    padding-bottom: 1em;
+    padding-top: 1em;
+    min-height: 450px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+aside#action_panel h3 {
+    color: #fce854;
+    font-size: 1.2em;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    margin-left: 1em;
+    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+    letter-spacing: 0.1em;
+}
+
+aside#action_panel div {
+    float: left;
+    width: 100%;
+    margin: 0.2em 0;
+    line-height: 50%;
+    background: #fff;
+    border: 1px #d0d0d0 solid;
+    opacity: 0.85;
+}
+
+aside#action_panel div:hover {
+    background: #f1ebeb;
+    opacity: 1;
+}
+
+aside#action_panel img {
+    margin: 4px 8px;
+    float: left;
+}
+
+aside#action_panel div a {
+    font-size: 0.8em;
+    font-family: georgia;
+    color: #333;
+    line-height: 3.4em;
+    text-decoration: none;
+    display: block;
+}
+
+aside#action_panel div a:hover {
+    border: none;
+}

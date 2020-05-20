@@ -5,23 +5,40 @@ const watch = true;
 
 module.exports = [
     {
-        name: 'game',
+        name: 'scripts',
         entry: './src/js/main.js',
         mode: mode,
         watch: watch,
         output: {
             filename: 'main.js',
-            path: path.resolve(__dirname, 'assets', 'js'),
+            path: path.resolve(__dirname, 'assets', 'js')
+        },
+        plugins: []
+    },
+    {
+        name: 'styles',
+        entry: './src/scss/main.scss',
+        mode: mode,
+        watch: watch,
+        output: {
+            filename: 'styles.js',
+            path: path.resolve(__dirname, 'assets', 'js')
         },
         module: {
             rules: [
                 {
-                    test: /.js$/,
-                    exclude: /node_modules/,
-                    use: ['babel-loader'],
+                    test: /\.s[ac]ss$/i,
+                    use: ['style-loader', 'css-loader', 'sass-loader']
                 },
-            ],
+                {
+                    test: /\.(png|jpe?g|gif|otf)$/i,
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]'
+                    }
+                }
+            ]
         },
-        plugins: [],
-    },
+        plugins: []
+    }
 ];
