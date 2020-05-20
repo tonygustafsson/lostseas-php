@@ -1,5 +1,7 @@
 import './manipulateDom';
 import './ajaxRequest';
+import './lastActivity';
+import './mobileMenu';
 import './godmode';
 import './sound';
 import './account';
