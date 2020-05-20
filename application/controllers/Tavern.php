@@ -24,9 +24,6 @@ class Tavern extends Main {
 
 	function index()
 	{
-		$data['loadJSFile'] = base_url('assets/javascript/tavern.js');
-		$this->user['json'] = json_encode($data);
-		
 		$this->user['prices'] = $this->config->item('prices');
 	
 		$this->load->view_ajax('tavern/view_tavern', $this->user);
@@ -34,9 +31,6 @@ class Tavern extends Main {
 
 	function buy()
 	{
-		$data['loadJSFile'] = base_url('assets/javascript/tavern.js');
-		$this->user['json'] = json_encode($data);
-		
 		$this->user['prices'] = $this->config->item('prices');
 	
 		$this->load->view_ajax('tavern/view_tavern', $this->user);
@@ -173,11 +167,7 @@ class Tavern extends Main {
 				{
 					$data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
 				}
-				
-				$data['loadJSFile'] = base_url('assets/javascript/tavern.js');
-				
-				$this->user['json'] = json_encode($data);
-
+						
 				$log_input['entry'] = 'fought with some sailors and took ' . $loot . ' dbl.';
 				$this->Log->create($log_input);
 				
@@ -212,13 +202,10 @@ class Tavern extends Main {
 					$data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
 
 					$data['pushState'] = base_url('tavern');
-					$data['loadJSFile'] = base_url('assets/javascript/tavern.js');
 					
 					$game_updates['event_sailors'] = 'banned';
 					$game_result = $this->Game->update($game_updates);
-					
-					$this->user['json'] = json_encode($data);
-					
+								
 					$this->Log->create($log_input);
 					
 					$this->load->view_ajax('tavern/view_sailors', $this->user);
@@ -290,8 +277,8 @@ class Tavern extends Main {
 	function gamble()
 	{
 		$this->user['game']['next_bet'] = floor($this->user['game']['doubloons'] * 0.1);
-		
-		$data['loadJSFile'] = base_url('assets/javascript/tavern.js');
+			
+		$data['runJS'] = 'window.runTavern()';
 		$this->user['json'] = json_encode($data);
 		
 		$this->load->view_ajax('tavern/view_gamble', $this->user);

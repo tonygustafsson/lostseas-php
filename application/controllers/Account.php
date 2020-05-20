@@ -213,11 +213,7 @@ class Account extends Main {
 			$months[] = 'May'; $months[] = 'Jun'; $months[] = 'Jul'; $months[] = 'Aug';
 			$months[] = 'Sep'; $months[] = 'Oct'; $months[] = 'Nov'; $months[] = 'Dec';
 			$this->user['months'] = $months;
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			
-			$this->user['json'] = json_encode($data);
-			
+						
 			$this->load->view_ajax('account/view_account', $this->user);
 		}
 	}
@@ -381,10 +377,7 @@ class Account extends Main {
 	{
 		if ($this->user['user']['verified'] == 1)
 		{
-			//Settings for the character
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
-			
+			//Settings for the character	
 			$this->load->view_ajax('account/view_character', $this->user);
 		}
 	}

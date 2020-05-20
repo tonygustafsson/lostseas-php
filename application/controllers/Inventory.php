@@ -82,10 +82,7 @@ class Inventory extends Main {
 					$graph_data .= "[" . $history['week'] . "," . $history[$this->user['data_type']] . "],";
 				}
 			}
-			
-			$data['loadJSFile'][] = base_url('assets/javascript/jquery.flot.js');
-			$data['loadJSFile'][] = base_url('assets/javascript/inventory.js');
-			
+					
 			$data['runJS'] = '
 					var graphData = [' . $graph_data . '];
 					
@@ -133,9 +130,6 @@ class Inventory extends Main {
 			$this->user['player']['crew'] = $this->Crew->get(array('user_id' => $this->user['player']['user']['id']));
 		}
 		
-		$data['loadJSFile'][] = base_url('assets/javascript/inventory.js');
-		$this->user['json'] = json_encode($data);
-
 		$this->load->view_ajax('inventory/view_crew', $this->user);
 	}
 	
@@ -364,7 +358,7 @@ class Inventory extends Main {
 		$config['total_rows'] = $this->user['player']['log']['num_rows'];
 		$config['per_page'] = 50;
 		$config['num_links'] = 14;
-		$config['anchor_class'] = 'class="ajaxHTML" ';
+		$config['attributes'] = array('class' => 'ajaxHTML');
 		$this->pagination->initialize($config);
 
 		//Unset this to now make it show up in the log results

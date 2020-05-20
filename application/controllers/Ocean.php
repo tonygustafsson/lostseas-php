@@ -109,7 +109,6 @@ class Ocean extends Main {
 			}
 		}
 		
-		$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 		$this->user['json'] = json_encode($data);
 		
 		$view = (! empty($this->user['game']['event_ship']) || ! empty($this->user['game']['event_ocean_trade'])) ? 'ocean/view_ship_meeting' : $this->user['game']['place'] . '/view_' . $this->user['game']['place'];
@@ -126,9 +125,7 @@ class Ocean extends Main {
 			$data['changeElements']['nav_ocean']['visibility'] = 'none';
 			$data['changeElements']['nav_harbor']['visibility'] = 'none';
 			$data['changeElements']['nav_dock']['visibility'] = 'none';
-			
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
-			
+					
 			$this->user['json'] = json_encode($data);
 			
 			$this->load->view_ajax('ocean/view_ship_meeting', $this->user);
@@ -416,9 +413,7 @@ class Ocean extends Main {
 			{
 				$data['pushState'] = base_url($controller);
 			}
-			
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
-			
+					
 			$this->user['json'] = json_encode($data);
 
 			$log_input['entry'] = $log_msg;
@@ -440,7 +435,6 @@ class Ocean extends Main {
 	{
 		if (! empty($this->user['game']['event_ship_won']))
 		{
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 			$this->user['json'] = json_encode($data);
 			$this->load->view_ajax('ocean/view_ship_won', $this->user);
 		}
@@ -549,7 +543,6 @@ class Ocean extends Main {
 			$data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
 			$data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
 			
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 			$data['loadView'] = $this->load->view($view, $this->user, TRUE);
 			$data['pushState'] = base_url($this->user['game']['place']);
 			
@@ -579,7 +572,6 @@ class Ocean extends Main {
 			$data['info'] = 'You decided not to loot anything.';
 			
 			$data['pushState'] = base_url($this->user['game']['place']);
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 			
 			$this->user['json'] = json_encode($data);
 			
@@ -616,7 +608,6 @@ class Ocean extends Main {
 			$data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
 			$data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
 
-			$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 			$data['pushState'] = base_url($this->user['game']['place']);
 			
 			$this->user['json'] = json_encode($data);
@@ -662,7 +653,6 @@ class Ocean extends Main {
 				$data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
 
 				$data['pushState'] = base_url($this->user['game']['place']);
-				$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 
 				$this->user['json'] = json_encode($data);
 				
@@ -727,7 +717,6 @@ class Ocean extends Main {
 				
 				$result = $this->Game->update($updates);
 				
-				$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 				$this->user['json'] = json_encode($data);
 
 				$this->load->view_ajax('ocean/view_ocean_trade', $this->user);
@@ -827,7 +816,6 @@ class Ocean extends Main {
 				$view = ($this->user['game']['place'] == 'ocean') ? 'ocean/view_ocean' : 'harbor/view_harbor';
 				$data['loadView'] = $this->load->view($view, $this->user, TRUE);
 				$data['pushState'] = base_url($this->user['game']['place']);
-				$data['loadJSFile'] = base_url('assets/javascript/ocean.js');
 
 				echo json_encode($data);
 			}

@@ -1,6 +1,8 @@
 <?php if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?php echo $json?>);
+		$(document).ready(function () {
+			gameManipulateDOM(<?php echo $json?>);
+		});
 	</script>
 <?php endif; ?>
 
@@ -83,7 +85,7 @@
 				<select name="action[]">
 					<?php foreach ($actions as $current_action => $description): ?>
 						<?php if ((isset($player['game'][$current_action]) && $player['game'][$current_action] > 0) || $current_action == 'discard'): ?>
-							<option value="<?php echo $current_action?>" <? echo (($action == $current_action) ? 'selected="selected"' : '') ?>><?php echo $description?></option>
+							<option value="<?php echo $current_action?>" <?php echo (($action == $current_action) ? 'selected="selected"' : '') ?>><?php echo $description?></option>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</select>

@@ -3,6 +3,10 @@
 include('Main.php');
 
 class Chat extends Main {
+	function __construct()
+	{
+		parent::__construct();
+	}
 
 	function index()
 	{

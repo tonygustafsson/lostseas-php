@@ -15,10 +15,7 @@ class About extends Main {
 	{
 		$this->user['logged_in'] = (isset($this->user['user'])) ? TRUE : FALSE;
 		$this->user['character'] = $this->gamelib->generate_character();
-		
-		$data['loadJSFile'] = base_url('assets/javascript/account.js');
-		$this->user['json'] = json_encode($data);
-		
+			
 		if ($this->user['logged_in'] === FALSE)
 		{
 			$log_input['entries'] = 8;
@@ -48,7 +45,7 @@ class About extends Main {
 		$pagination_config['total_rows'] = $this->user['news']['num_rows'];
 		$pagination_config['per_page'] = $entries_per_page;
 		$pagination_config['num_links'] = 5;
-		$pagination_config['anchor_class'] = 'class="ajaxHTML" ';
+		$pagination_config['attributes'] = array('class' => 'ajaxHTML');
 		$this->pagination->initialize($pagination_config);
 		$this->user['pages'] = $this->pagination->create_links();
 
@@ -57,10 +54,7 @@ class About extends Main {
 
 		$this->user['logged_in'] = (isset($this->user['user'])) ? TRUE : FALSE;
 		$this->user['character'] = $this->gamelib->generate_character();
-		
-		$data['loadJSFile'] = base_url('assets/javascript/account.js');
-		$this->user['json'] = json_encode($data);
-		
+				
 		if ($this->user['logged_in'] === FALSE)
 		{
 			$log_input['entries'] = 8;
@@ -224,9 +218,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-	
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_supplies', $this->user);
@@ -245,9 +236,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_ships', $this->user);
@@ -266,9 +254,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_crew', $this->user);
@@ -287,9 +272,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_titles', $this->user);
@@ -308,9 +290,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_economy', $this->user);
@@ -329,9 +308,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_traveling', $this->user);
@@ -350,9 +326,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_players', $this->user);
@@ -371,9 +344,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_guide_settings', $this->user);
@@ -392,9 +362,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-		
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_ideas', $this->user);
@@ -413,9 +380,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_tech', $this->user);
@@ -434,9 +398,6 @@ class About extends Main {
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
 		}
 		
 		$this->load->view_ajax('about/view_copyright', $this->user);

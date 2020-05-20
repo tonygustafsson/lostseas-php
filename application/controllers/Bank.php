@@ -24,9 +24,9 @@ class Bank extends Main {
 
 	function index()
 	{
-		$data['loadJSFile'] = base_url('assets/javascript/bank.js');
+		$data['runJS'] = 'window.runBank()';
 		$this->user['json'] = json_encode($data);
-		
+
 		$this->load->view_ajax('bank/view_bank', $this->user);
 	}
 	
@@ -91,9 +91,9 @@ class Bank extends Main {
 
 	function loan()
 	{
-		$data['loadJSFile'] = base_url('assets/javascript/bank.js');
+		$data['runJS'] = 'window.runBank()';
 		$this->user['json'] = json_encode($data);
-	
+		
 		$this->load->view_ajax('bank/view_loan', $this->user);
 	}
 

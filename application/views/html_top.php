@@ -40,13 +40,21 @@
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/javascript/main.js?202005171542')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/main.js?202005171562')?>"></script>
 	
 	<title><?php echo $page_title?></title>
 </head>
 
 <body>
-		<div class="grid-container">
+	<?php if (!isset($_SESSION['user_session_id'])): ?>
+		<div class="error"><p>Cookies needs to be enabled to play this game!</p></div>
+	<?php endif; ?>
+
+	<noscript>
+		<div class="error"><p>This game needs JavaScript to be activated in your web browser. You can turn it on at the browser preferences.</p></div>
+	</noscript>
+
+	<div class="grid-container">
 		<?php if (strpos(base_url(), 'test') !== FALSE): ?>
 			<section style="position: absolute; top: 10px; left: 10px;">
 				<p style="color: red; background: #fff">T E S T</p>

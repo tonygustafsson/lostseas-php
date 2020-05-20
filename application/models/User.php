@@ -53,7 +53,7 @@ class User extends CI_Model {
 		}
 
 		$sql .= " ORDER BY game.last_activity DESC";
-	
+
 		$result = $this->db->query($sql)->result_array();
 
 		return $result;

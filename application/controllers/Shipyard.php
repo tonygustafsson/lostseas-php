@@ -25,10 +25,7 @@ class Shipyard extends Main {
 	function index()
 	{
 		$this->user['prices'] = $this->config->item('prices');
-		
-		$data['loadJSFile'] = base_url('assets/javascript/shipyard.js');
-		$this->user['json'] = json_encode($data);
-		
+			
 		$this->load->view_ajax('shipyard/view_shipyard', $this->user);
 	}
 
@@ -96,10 +93,7 @@ class Shipyard extends Main {
 	function sell()
 	{
 		$this->user['prices'] = $this->config->item('prices');
-	
-		$data['loadJSFile'] = base_url('assets/javascript/shipyard.js');
-		$this->user['json'] = json_encode($data);
-	
+		
 		$this->load->view_ajax('shipyard/view_sell', $this->user);
 	}
 
@@ -153,8 +147,6 @@ class Shipyard extends Main {
 
 	function repair()
 	{
-		$data['loadJSFile'] = base_url('assets/javascript/shipyard.js');
-		$this->user['json'] = json_encode($data);
 		$this->user['prices'] = $this->config->item('prices');
 	
 		$this->load->view_ajax('shipyard/view_repair', $this->user);

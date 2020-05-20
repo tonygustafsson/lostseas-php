@@ -2,7 +2,9 @@
 
 <?php if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?php echo $json?>);
+		$(document).ready(function () {
+			gameManipulateDOM(<?php echo $json?>);
+		});
 	</script>
 <?php endif; ?>
 

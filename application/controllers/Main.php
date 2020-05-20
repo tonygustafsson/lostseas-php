@@ -49,10 +49,7 @@ class Main extends CI_Controller {
 			//Not logged in, accessing start page
 			$this->user['logged_in'] = (isset($this->user['user'])) ? TRUE : FALSE;
 			$this->user['character'] = $this->gamelib->generate_character();
-			
-			$data['loadJSFile'] = base_url('assets/javascript/account.js');
-			$this->user['json'] = json_encode($data);
-			
+					
 			$log_input['entries'] = 8;
 			$log_input['get_num_rows'] = FALSE;
 			$this->user['log_entries'] = $this->Log->get($log_input);

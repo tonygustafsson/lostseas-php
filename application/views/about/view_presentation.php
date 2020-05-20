@@ -1,6 +1,8 @@
 <?php if (isset($json)): ?>
 	<script type="text/javascript">
-		gameManipulateDOM(<?php echo $json?>);
+		$(document).ready(function () {
+			gameManipulateDOM(<?php echo $json?>);
+		});
 	</script>
 <?php endif; ?>
 
@@ -50,18 +52,6 @@
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
 	<a class="ajaxHTML" title="About web technologies used to create this game" href="<?php echo base_url('about/tech')?>"><img src="<?php echo base_url('assets/images/icons/about_tech.png')?>" alt="Tech" width="32" height="32">Tech</a>
 </section>
-
-<noscript>
-	<div class="error"><p>This game needs JavaScript to be activated in your web browser. You can turn it on at the browser preferences.</p></div>
-</noscript>
-
-<!--[if lt IE 9]>
-	<div class="error"><p>This game is not supported by Internet Explorer 8 or lower.</p></div>
-<![endif]-->
-
-<?php if ($this->session->userdata('session_id') == ""): ?>
-	<div class="error"><p>Cookies needs to be enabled to play this game!</p></div>
-<?php endif; ?>
 
 <h3>Presentation</h3>
 

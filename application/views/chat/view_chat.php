@@ -8,7 +8,6 @@
 	<meta name="keywords" content="online game, web game, pirate game, html5 game, ajax game, pirates gold, caribbean sea, spanish main">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-	
 	<base href="<?php echo base_url()?>">
 
 	<link rel="stylesheet" href="<?php echo base_url('assets/stylesheets/screen.css?201810172201')?>" type="text/css" media="all">
@@ -27,10 +26,9 @@
 		</script>
 	<?php endif; ?>
 	
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/javascript/main.js?201309081542')?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/javascript/chat.js?201309081542')?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/js/main.js?202005171562')?>"></script>
 	
 	<title>Chat - <?php echo $this->config->item('site_name')?></title>
 </head>
