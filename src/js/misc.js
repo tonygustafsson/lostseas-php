@@ -8,7 +8,6 @@ var appdir = $('base').attr('href');
 var windowFocus = true;
 var firstFocus = true;
 var updateTimeout;
-var gameMusic = new Audio();
 
 //------------------
 // Functions
@@ -29,12 +28,12 @@ function gameManipulateDOM(data) {
         'inventory_rum',
         'inventory_bank_account',
         'inventory_bank_loan',
-        'inventory_new_messages'
+        'inventory_new_messages',
     ];
 
     if (data.changeElements) {
-        $.each(data.changeElements, function(element, attribute) {
-            $.each(attribute, function(changedAttr, changedValue) {
+        $.each(data.changeElements, function (element, attribute) {
+            $.each(attribute, function (changedAttr, changedValue) {
                 if (changedAttr == 'text') {
                     if ($('#' + element).text() != changedValue) {
                         $('#' + element).text(changedValue);
@@ -84,10 +83,7 @@ function gameManipulateDOM(data) {
     if (data.loadView) {
         $('article#main').html(data.loadView);
 
-        var title =
-            $(data.loadView.trim())
-                .filter('header')
-                .attr('title') + ' - Lost Seas';
+        var title = $(data.loadView.trim()).filter('header').attr('title') + ' - Lost Seas';
         if (title) {
             document.title = title;
         }
@@ -112,62 +108,28 @@ function gameManipulateDOM(data) {
         sound.play();
     }
 
-    if (data.loadJSFile && data.runJS) {
-        //Run the runJS after loading the new JS files to avoid errors
-        if ($.isArray(data.loadJSFile)) {
-            //Load multiple JS files from an array
-            $.each(data.loadJSFile, function(key, currentFile) {
-                $.getScript(currentFile).done(function() {
-                    eval(data.runJS);
-                });
-            });
-        } else {
-            //Load only one JS file from string
-            $.getScript(data.loadJSFile).done(function() {
-                eval(data.runJS);
-            });
-        }
-    } else if (data.loadJSFile) {
-        //Only load JS files, no runJS
-        if ($.isArray(data.loadJSFile)) {
-            //Load multiple JS files from an array
-
-            $.each(data.loadJSFile, function(key, currentFile) {
-                $.getScript(currentFile);
-            });
-        } else {
-            //Load only one JS file from string
-            $.getScript(data.loadJSFile);
-        }
-    } else if (data.runJS) {
-        //Just runJS, no JS files to load
+    if (data.runJS) {
+        //Just runJS
         eval(data.runJS);
     }
 
     if (data.success) {
         $('div#msg').prepend('<div class="success"><p>' + data.success + '</p></div>');
-        $('div#msg div')
-            .not(':first-child')
-            .delay(3000)
-            .slideUp(250);
+        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
     }
 
     if (data.info) {
         $('div#msg').prepend('<div class="info"><p>' + data.info + '</p></div>');
-        $('div#msg div')
-            .not(':first-child')
-            .delay(3000)
-            .slideUp(250);
+        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
     }
 
     if (data.error) {
         $('div#msg').prepend('<div class="error"><p>' + data.error + '</p></div>');
-        $('div#msg div')
-            .not(':first-child')
-            .delay(3000)
-            .slideUp(250);
+        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
     }
 }
+
+window.gameManipulateDOM = gameManipulateDOM;
 
 function ajaxGameRequest(event) {
     event.preventDefault();
@@ -195,10 +157,10 @@ function ajaxGameRequest(event) {
         url: url,
         data: myData,
         dataType: 'json',
-        beforeSend: function() {
+        beforeSend: function () {
             $('body').addClass('loading');
         },
-        success: function(data) {
+        success: function (data) {
             gameManipulateDOM(data);
 
             //Google analytics, virtual pageview
@@ -209,14 +171,14 @@ function ajaxGameRequest(event) {
                 ga('send', 'pageview', gaURL.pathname);
             }
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             var errorMsg = '<div class="error"><p>Failed to send data: ' + thrownError + '</p></div>';
             $('div#msg').prepend(errorMsg);
         },
-        complete: function() {
+        complete: function () {
             $('body').removeClass('loading');
             $('html, body').animate({ scrollTop: 0 }, 'normal');
-        }
+        },
     });
 }
 
@@ -245,142 +207,28 @@ function updateLastActivity() {
             url: appdir + 'account/update_activity',
             cache: false,
             dataType: 'json',
-            success: function(data) {
+            success: function (data) {
                 gameManipulateDOM(data);
-            }
+            },
         });
     }
 
     updateTimeout = window.setTimeout(updateLastActivity, 30000);
 }
 
-function changeSong() {
-    var newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
-
-    $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
-
-    if (gameMusic.canPlayType('audio/ogg')) {
-        //Play OGG files
-        gameMusic.src = newSong + '.ogg';
-        gameMusic.type = 'audio/ogg';
-    } else if (gameMusic.canPlayType('audio/mp4')) {
-        //MP4 if Safari or Internet Explorer
-        gameMusic.src = newSong + '.mp4';
-        gameMusic.type = 'audio/mp4';
-    }
-
-    if (typeof ga == typeof Function) {
-        ga('send', 'event', 'MusicSong', gameMusic.src);
-    }
-
-    var musicVolume = $('#music_control').data('musicvolume');
-
-    gameMusic.volume = musicVolume / 100;
-    gameMusic.load();
-    gameMusic.addEventListener('canplay', gameMusic.play(), false);
-}
-
-function musicControl() {
-    if (gameMusic.paused || gameMusic.src == '') {
-        $.ajax({
-            url: appdir + 'account/music/1',
-            success: function() {
-                if (gameMusic.src == '') {
-                    changeSong();
-
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'Music', 'TurnOn');
-                    }
-                } else {
-                    gameMusic.play();
-
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'Music', 'Play');
-                    }
-                }
-
-                $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
-                $('#music_link').attr('title', 'Pause game music');
-            }
-        });
-    } else {
-        gameMusic.pause();
-
-        $.ajax({
-            url: appdir + 'account/music/0',
-            success: function() {
-                if (typeof ga == typeof Function) {
-                    ga('send', 'event', 'Music', 'Pause');
-                }
-
-                $('#music_icon').attr('src', appdir + 'assets/images/icons/music_play.png');
-                $('#music_link').attr('title', 'Play game music');
-            }
-        });
-    }
-}
-
 //------------------
 // Event handelers
 //------------------
 
-$(document).ready(function() {
+$(document).ready(function () {
     window.setTimeout(updateLastActivity, 60000);
-
-    var autoPlay = $('#music_control').data('autoplay');
-    if (autoPlay == 'yes') {
-        changeSong();
-    }
-
-    $('#sound_controls').dialog({
-        autoOpen: false,
-        resizable: false,
-        open: function() {
-            $('#music_link').blur();
-        }
-    });
-
-    $('#sound_controls_icon').click(function() {
-        if ($('#sound_controls').dialog('isOpen')) {
-            $('#sound_controls').dialog('close');
-        } else {
-            $('#sound_controls').dialog('open');
-        }
-        return false;
-    });
-
-    var musicVolue = $('#music_control').data('musicvolume');
-
-    $('#music_volume_slider').slider({
-        value: musicVolue,
-        step: 1,
-        min: 0,
-        max: 100,
-        animate: 'fast',
-        change: function() {
-            var volume = $('#music_volume_slider').slider('value');
-
-            $.ajax({
-                url: appdir + 'account/music_volume/' + volume,
-                success: function() {
-                    gameMusic.volume = volume / 100;
-
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'MusicVolume', volume);
-                    }
-
-                    $('#music_control').data('musicvolume', volume);
-                }
-            });
-        }
-    });
 
     if ($('#initial_page_load').length != 0) {
         $('#initial_page_load').fadeOut(3000);
     }
 });
 
-$(window).on('focus blur', function(e) {
+$(window).on('focus blur', function (e) {
     //Detects if game has focus or not, discontinues automatic updates
     var prevType = $(this).data('prevType');
 
@@ -408,17 +256,17 @@ $(window).on('focus blur', function(e) {
     $(this).data('prevType', e.type);
 });
 
-$(document).on('click', '.ajaxHTML', function(e) {
+$(document).on('click', '.ajaxHTML', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
 
     $.ajax({
         url: url,
         cache: false,
-        beforeSend: function() {
+        beforeSend: function () {
             $('body').addClass('loading');
         },
-        success: function(data) {
+        success: function (data) {
             $('article#main').html(data);
 
             if (window.location.hash) {
@@ -430,10 +278,7 @@ $(document).on('click', '.ajaxHTML', function(e) {
             }
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
-            var title =
-                $(data.trim())
-                    .filter('header')
-                    .attr('title') + ' - Lost Seas';
+            var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
             if (title) {
                 document.title = title;
             }
@@ -448,17 +293,12 @@ $(document).on('click', '.ajaxHTML', function(e) {
 
             $('body').removeClass('loading');
         },
-        error: function(xhr, ajaxOptions, thrownError) {
-            var errorDiv = $(
-                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
-            ).hide();
+        error: function (xhr, ajaxOptions, thrownError) {
+            var errorDiv = $('<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>').hide();
             $('body').append(errorDiv);
-            errorDiv
-                .fadeIn(300)
-                .delay(4000)
-                .fadeOut(300);
+            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
             $('body').removeClass('loading');
-        }
+        },
     });
 
     if (url != window.location) {
@@ -468,7 +308,7 @@ $(document).on('click', '.ajaxHTML', function(e) {
     return false;
 });
 
-$(window).on('popstate', function(e) {
+$(window).on('popstate', function (e) {
     if (!e.originalEvent.state) {
         return;
     }
@@ -476,17 +316,14 @@ $(window).on('popstate', function(e) {
     $.ajax({
         url: location.pathname,
         cache: false,
-        beforeSend: function() {
+        beforeSend: function () {
             $('body').addClass('loading');
         },
-        success: function(data) {
+        success: function (data) {
             $('article#main').html(data);
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
-            var title =
-                $(data.trim())
-                    .filter('header')
-                    .attr('title') + ' - Lost Seas';
+            var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
             if (title) {
                 document.title = title;
             }
@@ -501,88 +338,66 @@ $(window).on('popstate', function(e) {
 
             $('body').removeClass('loading');
         },
-        error: function(xhr, ajaxOptions, thrownError) {
-            var errorDiv = $(
-                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
-            ).hide();
+        error: function (xhr, ajaxOptions, thrownError) {
+            var errorDiv = $('<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>').hide();
             $('body').append(errorDiv);
-            errorDiv
-                .fadeIn(300)
-                .delay(4000)
-                .fadeOut(300);
+            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
             $('body').removeClass('loading');
-        }
+        },
     });
 });
-
-$(document).on('change', '#sound_effects input', function() {
-    var value = $('#sound_effects input:checked').val();
-
-    $.ajax({
-        url: appdir + 'account/sound_effects/' + value,
-        success: function() {
-            var googleValue = value === 1 ? 'TurnOn' : 'TurnOff';
-
-            if (typeof ga == typeof Function) {
-                ga('send', 'event', 'SoundFX', googleValue);
-            }
-        }
-    });
-});
-
-gameMusic.addEventListener('ended', changeSong, false);
 
 $(document).on('submit', 'form.ajaxJSON', ajaxGameRequest);
 
 $(document).on('click', 'a.ajaxJSON', ajaxGameRequest);
 
-$(document).on('click', 'a.disabled', function() {
+$(document).on('click', 'a.disabled', function () {
     return false;
 });
 
-$(document).on('change', '#godmode_change_user', function() {
+$(document).on('change', '#godmode_change_user', function () {
     var chosenUser = $('select[name=godmode_change_user]').val();
     var baseURL = $('#godmode_change_user_url').data('baseurl');
     $('#godmode_change_user_url').attr('href', baseURL + '/' + chosenUser);
 });
 
-$(document).on('click', '#nav_top_button', function() {
+$(document).on('click', '#nav_top_button', function () {
     toggleVisibility('nav_top');
     return false;
 });
 
-$(document).on('click', 'nav#nav_top a', function() {
+$(document).on('click', 'nav#nav_top a', function () {
     if (window.innerWidth < 959) {
         //Collapse this panel if mobile view is used
         $('nav#nav_top').css('display', 'none');
     }
 });
 
-$(document).on('click', '#action_panel_button', function() {
+$(document).on('click', '#action_panel_button', function () {
     toggleVisibility('action_panel');
     return false;
 });
 
-$(document).on('click', '#action_panel a', function() {
+$(document).on('click', '#action_panel a', function () {
     if (window.innerWidth < 959) {
         //Collapse this panel if mobile view is used
         $('#action_panel').css('display', 'none');
     }
 });
 
-$(document).on('click', '#inventory_panel_button', function() {
+$(document).on('click', '#inventory_panel_button', function () {
     toggleVisibility('inventory_panel');
     return false;
 });
 
-$(document).on('click', '#inventory_panel a', function() {
+$(document).on('click', '#inventory_panel a', function () {
     if (window.innerWidth < 959) {
         //Collapse this panel if mobile view is used
         $('#inventory_panel').css('display', 'none');
     }
 });
 
-$(document).on('click', 'a.newWindow', function(e) {
+$(document).on('click', 'a.newWindow', function (e) {
     e.preventDefault();
 
     var url = $(this).attr('href');
