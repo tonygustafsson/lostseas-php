@@ -14,7 +14,7 @@ const runChat = () => {
             error: function () {
                 var errorMsg = 'Could not post data. Please try again!';
                 window.alert(errorMsg);
-            },
+            }
         });
 
         chatUpdateTimeout = window.setTimeout(updateChat, 15000);
@@ -35,7 +35,7 @@ const runChat = () => {
             error: function () {
                 var errorMsg = 'Could not post data. Please try again!';
                 window.alert(errorMsg);
-            },
+            }
         });
 
         return false;

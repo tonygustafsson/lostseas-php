@@ -77,7 +77,7 @@ const runShop = () => {
             max: maximum,
             slide: function (event, ui) {
                 shopChangeSlider(inputId, ui.value);
-            },
+            }
         });
     }
 

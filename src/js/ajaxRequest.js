@@ -52,7 +52,7 @@ const ajaxJsonRequest = (event) => {
         complete: function () {
             $('body').removeClass('loading');
             $('html, body').animate({ scrollTop: 0 }, 'normal');
-        },
+        }
     });
 };
 
@@ -101,11 +101,13 @@ const ajaxHtmlRequest = (e) => {
             $('body').removeClass('loading');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            var errorDiv = $('<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>').hide();
+            var errorDiv = $(
+                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
+            ).hide();
             $('body').append(errorDiv);
             errorDiv.fadeIn(300).delay(4000).fadeOut(300);
             $('body').removeClass('loading');
-        },
+        }
     });
 
     if (url != window.location) {
@@ -146,11 +148,13 @@ const onPopState = (e) => {
             $('body').removeClass('loading');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            var errorDiv = $('<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>').hide();
+            var errorDiv = $(
+                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
+            ).hide();
             $('body').append(errorDiv);
             errorDiv.fadeIn(300).delay(4000).fadeOut(300);
             $('body').removeClass('loading');
-        },
+        }
     });
 };
 

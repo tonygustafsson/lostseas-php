@@ -13,7 +13,7 @@ const updateLastActivity = () => {
             dataType: 'json',
             success: function (data) {
                 gameManipulateDOM(data);
-            },
+            }
         });
     }
 

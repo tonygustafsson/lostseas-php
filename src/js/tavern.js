@@ -14,7 +14,7 @@ const runTavern = () => {
 
                 var currentMoney = parseInt($('#current_money').val(), 10);
                 $('span.money_left').html(currentMoney - ui.value);
-            },
+            }
         });
     }
 

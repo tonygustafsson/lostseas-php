@@ -13,11 +13,14 @@ const runBank = () => {
                 var currentMoneyBankLoan = parseInt($('#current_money_bank_loan').val(), 10);
 
                 var newMoney = currentMoney + ui.value;
-                var moneyBankLoan = ui.value < 0 ? Math.floor(currentMoneyBankLoan + ui.value) : Math.floor(currentMoneyBankLoan + ui.value * 1.15);
+                var moneyBankLoan =
+                    ui.value < 0
+                        ? Math.floor(currentMoneyBankLoan + ui.value)
+                        : Math.floor(currentMoneyBankLoan + ui.value * 1.15);
 
                 $('span.money_after').html(newMoney);
                 $('span.loan_after').html(moneyBankLoan);
-            },
+            }
         });
     }
 
@@ -35,11 +38,14 @@ const runBank = () => {
                 var currentMoneyBank = parseInt($('#current_money_bank').val(), 10);
 
                 var newMoney = currentMoney - ui.value;
-                var moneyBank = ui.value < 0 ? Math.floor(currentMoneyBank + ui.value) : Math.floor(currentMoneyBank + ui.value * 0.95);
+                var moneyBank =
+                    ui.value < 0
+                        ? Math.floor(currentMoneyBank + ui.value)
+                        : Math.floor(currentMoneyBank + ui.value * 0.95);
 
                 $('span.money_after').html(newMoney);
                 $('span.account_after').html(moneyBank);
-            },
+            }
         });
     }
 

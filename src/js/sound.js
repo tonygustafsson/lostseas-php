@@ -48,7 +48,7 @@ function musicControl() {
 
                 $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
                 $('#music_link').attr('title', 'Pause game music');
-            },
+            }
         });
     } else {
         gameMusic.pause();
@@ -62,7 +62,7 @@ function musicControl() {
 
                 $('#music_icon').attr('src', appdir + 'assets/images/icons/music_play.png');
                 $('#music_link').attr('title', 'Play game music');
-            },
+            }
         });
     }
 }
@@ -80,7 +80,7 @@ $(document).on('change', '#sound_effects input', function () {
             if (typeof ga == typeof Function) {
                 ga('send', 'event', 'SoundFX', googleValue);
             }
-        },
+        }
     });
 });
 
@@ -95,7 +95,7 @@ $(document).ready(function () {
         resizable: false,
         open: function () {
             $('#music_link').blur();
-        },
+        }
     });
 
     $('#sound_controls_icon').click(function () {
@@ -128,9 +128,9 @@ $(document).ready(function () {
                     }
 
                     $('#music_control').data('musicvolume', volume);
-                },
+                }
             });
-        },
+        }
     });
 });
 
