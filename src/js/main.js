@@ -1,3 +1,6 @@
+import './manipulateDom';
+import './ajaxRequest';
+import './godmode';
 import './sound';
 import './account';
 import './bank';
