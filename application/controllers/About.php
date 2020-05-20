@@ -367,24 +367,6 @@ class About extends Main {
 		$this->load->view_ajax('about/view_ideas', $this->user);
 	}
 
-	function tech()
-	{
-		$this->user['logged_in'] = (isset($this->user['user'])) ? TRUE : FALSE;
-		$this->user['character'] = $this->gamelib->generate_character();
-		
-		$this->user['meta_description'] = "About the technologies for creating this game, like CodeIgniter, HTML5, jQuery and CSS3.";
-		$this->user['meta_keywords'] = "lost seas, tech, technlogogies, html5, jquery, css3, web, ajax";
-		
-		if ($this->user['logged_in'] === FALSE)
-		{
-			$log_input['entries'] = 8;
-			$log_input['get_num_rows'] = FALSE;
-			$this->user['log_entries'] = $this->Log->get($log_input);
-		}
-		
-		$this->load->view_ajax('about/view_tech', $this->user);
-	}
-
 	function copyright()
 	{
 		$this->user['logged_in'] = (isset($this->user['user'])) ? TRUE : FALSE;
@@ -402,42 +384,6 @@ class About extends Main {
 		
 		$this->load->view_ajax('about/view_copyright', $this->user);
 	}
-	
-	function send_suggestion()
-	{
-		//Validate form data
-		$form_rules['email'] 				= array('name' => 'Email address', 'email' => TRUE);
-		$form_rules['your_name'] 			= array('name' => 'Name', 'min_length' => 3);
-		$form_rules['suggestion'] 			= array('name' => 'Suggestion', 'min_length' => 10);
-		
-		$data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
-		
-		if ($this->input->post('name') != "")
-		{
-			//Honeypot, probably a bot...
-			exit();
-		}
-
-		//Check if the inputs are OK
-		if (! $data['error'])
-		{
-			$this->load->library('email');
-			$this->email->from($this->input->post('email'), $this->input->post('your_name'));
-			$this->email->reply_to($this->input->post('email'), $this->input->post('your_name'));
-			$this->email->to($this->config->item('email'));
-			$this->email->subject('A suggestion has been posted!');
-
-			$message = "This suggestion is from " . $this->input->post('your_name') . " (" . $this->input->post('email') . "):\n\n";
-			$message .= $this->input->post('suggestion');
-			$this->email->message($message);
-			$this->email->send();
-
-			$data['success'] = 'Your suggestion has been emailed successfully.';
-		}
-		
-		echo json_encode($data);
-	}
-
 }
 
 /*  End of about.php */
