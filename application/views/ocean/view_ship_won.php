@@ -1,4 +1,4 @@
-<? list($msg, $looted_money, $food, $water, $porcelain, $spices, $silk, $medicine, $tobacco, $rum, $new_crew, $prisoners, $sunken_ships, $killed_crew) = (! empty($this->user['game']['event_ship_won'])) ? explode('###', $this->user['game']['event_ship_won']) : array(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL); ?>
+<?php list($msg, $looted_money, $food, $water, $porcelain, $spices, $silk, $medicine, $tobacco, $rum, $new_crew, $prisoners, $sunken_ships, $killed_crew) = (! empty($this->user['game']['event_ship_won'])) ? explode('###', $this->user['game']['event_ship_won']) : array(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL); ?>
 
 <?php if (isset($json)): ?>
 	<script type="text/javascript">
@@ -15,7 +15,7 @@
 
 <div id="msg"></div>
 
-<?php if ($msg !== NULL && $looted_money !== NULL && $food !== NULL && $water !== NULL && $porcelain !== NULL && $spices !== NULL && $silk !== NULL && $medicine !== NULL && $tobacco !== NULL && $rum !== NULL && $new_crew !== NULL && $prisoners !== NULL && $sunken_ships !== NULL && $killed_crew !== NULL): ?>
+<?php if (isset($msg) && $looted_money !== NULL && $food !== NULL && $water !== NULL && $porcelain !== NULL && $spices !== NULL && $silk !== NULL && $medicine !== NULL && $tobacco !== NULL && $rum !== NULL && $new_crew !== NULL && $prisoners !== NULL && $sunken_ships !== NULL && $killed_crew !== NULL): ?>
 
 	<p><?php echo $msg?></p>
 

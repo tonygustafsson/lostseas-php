@@ -111,6 +111,8 @@ const runShop = () => {
         }
     }
 
+    window.sellBarterGoods = sellBarterGoods;
+
     function buyNecessities() {
         var currentFood = $('#food-slider').slider('option', 'value');
         var currentWater = $('#water-slider').slider('option', 'value');
@@ -138,6 +140,8 @@ const runShop = () => {
         }
     }
 
+    window.buyNecessities = buyNecessities;
+
     function resetSliders() {
         var x, product, currentValue;
 
@@ -150,6 +154,8 @@ const runShop = () => {
             }
         }
     }
+
+    window.resetSliders = resetSliders;
 
     setTimeout(createSliders, 100);
 };

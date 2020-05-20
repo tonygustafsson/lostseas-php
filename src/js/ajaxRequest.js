@@ -61,7 +61,7 @@ const ajaxHtmlRequest = (e) => {
 
     var $element = $(e.target);
 
-    if ($element.prop('tagName') !== 'A') {
+    if ($element.prop('tagName') !== 'A' && $element.prop('tagName') !== 'AREA') {
         $element = $element.closest('a');
     }
 

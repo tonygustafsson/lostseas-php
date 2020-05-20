@@ -380,6 +380,7 @@ class Ocean extends Main {
 				$this->user['game']['bad']['coast'] = $ship_output['ship_destroyed_count'] . ' of your ships crashed because of ship damages!';
 			}
 			
+			$data['runJS'] = 'window.runOcean()';
 			$data['changeElements'] = array_merge($data['changeElements'], $ship_output['changeElements']);
 
 			//Give crew less health and decrease mood
@@ -435,7 +436,9 @@ class Ocean extends Main {
 	{
 		if (! empty($this->user['game']['event_ship_won']))
 		{
+			$data['runJS'] = 'window.runOcean()';
 			$this->user['json'] = json_encode($data);
+			
 			$this->load->view_ajax('ocean/view_ship_won', $this->user);
 		}
 		else
@@ -543,6 +546,7 @@ class Ocean extends Main {
 			$data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
 			$data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
 			
+			$data['runJS'] = 'window.runOcean()';
 			$data['loadView'] = $this->load->view($view, $this->user, TRUE);
 			$data['pushState'] = base_url($this->user['game']['place']);
 			
