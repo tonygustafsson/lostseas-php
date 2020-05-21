@@ -24,11 +24,11 @@
 <div id="msg"></div>
 
 <section class="actions">
-	<?php foreach($ship as $this_ship): ?>
+	<?php foreach ($ship as $this_ship): ?>
 		<?php if ($this_ship['health'] < 100): ?>
-			<a id="ship_<?php echo $this_ship['id']?>" class="ajaxJSON largepic" rel="Do you really want to repair this ship?" title="Repair this <?php echo $this_ship['type']?>. Damaged by <?php echo (100 - $this_ship['health'])?> %" href="<?php echo base_url('shipyard/repair_ship/' . $this_ship['id'])?>">
+			<a id="ship_<?php echo $this_ship['id']?>" class="ajaxJSON largepic" rel="Do you really want to repair this ship?" title="Repair this <?php echo $this_ship['type']?>. Damaged by <?php echo(100 - $this_ship['health'])?> %" href="<?php echo base_url('shipyard/repair_ship/' . $this_ship['id'])?>">
 				<img src="<?php echo base_url('assets/images/ships/' . $this_ship['type'] . '.jpg')?>">
-				<?php echo $this_ship['name']?><br>(<?php echo (100 - $this_ship['health']) * $prices['ship_repair']['buy']?> dbl)
+				<?php echo $this_ship['name']?><br>(<?php echo(100 - $this_ship['health']) * $prices['ship_repair']['buy']?> dbl)
 			</a>
 		<?php endif; ?>
 	<?php endforeach; ?>

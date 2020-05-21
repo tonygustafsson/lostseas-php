@@ -1,4 +1,6 @@
-<?php if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned') { list($item, $quantity, $cost, $total_cost) = explode('###', $this->user['game']['event_market_goods']); } ?>
+<?php if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned') {
+    list($item, $quantity, $cost, $total_cost) = explode('###', $this->user['game']['event_market_goods']);
+} ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>

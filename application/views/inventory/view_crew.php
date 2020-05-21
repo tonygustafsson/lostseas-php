@@ -34,7 +34,7 @@
 <div id="msg"></div>
 
 <?php if ($this->uri->segment(4) != ""): ?>
-	<? list($order, $direction) = explode("_", $this->uri->segment(4)); ?>
+	<?php list($order, $direction) = explode("_", $this->uri->segment(4)); ?>
 <?php endif; ?>
 
 <?php if ($game['crew_members'] > 0): ?>
@@ -85,7 +85,7 @@
 				<select name="action[]">
 					<?php foreach ($actions as $current_action => $description): ?>
 						<?php if ((isset($player['game'][$current_action]) && $player['game'][$current_action] > 0) || $current_action == 'discard'): ?>
-							<option value="<?php echo $current_action?>" <?php echo (($action == $current_action) ? 'selected="selected"' : '') ?>><?php echo $description?></option>
+							<option value="<?php echo $current_action?>" <?php echo(($action == $current_action) ? 'selected="selected"' : '') ?>><?php echo $description?></option>
 						<?php endif; ?>
 					<?php endforeach; ?>
 				</select>

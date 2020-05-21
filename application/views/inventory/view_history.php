@@ -84,7 +84,7 @@
 		<div id="placeholder" class="demo-placeholder" style="width: 100%; height: 100%;"></div>
 	</div>
 
-	<?php if ($history !== FALSE): ?>
+	<?php if ($history !== false): ?>
 		<table style="padding-bottom: 2em;">
 			<?php foreach ($history as $row): ?>
 				<tr>

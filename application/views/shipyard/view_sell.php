@@ -24,7 +24,7 @@ You can sell your ships here.
 </p>
 
 <section class="actions">
-	<?php foreach($ship as $this_ship): ?>
+	<?php foreach ($ship as $this_ship): ?>
 		<a id="ship_<?php echo $this_ship['id']?>" class="ajaxJSON largepic" style="" rel="Do you really want to sell this <?php echo $this_ship['type']?>?" title="Sell this <?php echo $this_ship['type']?>" href="<?php echo base_url('shipyard/sell_ship/' . $this_ship['id'])?>">
 			<img src="<?php echo base_url('assets/images/ships/' . $this_ship['type'] . '.jpg')?>?>">
 			<?php echo $this_ship['name']?><br>

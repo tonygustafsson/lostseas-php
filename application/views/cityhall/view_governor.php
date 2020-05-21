@@ -23,7 +23,7 @@
 
 <div id="msg"></div>
 
-<?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === TRUE): ?>
+<?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === true): ?>
 	<section id="offer">
 		<section class="actions">
 				<a href="cityhall/citizenship_accept" class="ajaxJSON nopic positive" title="Become a citizen!">Yes</a>

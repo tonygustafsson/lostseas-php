@@ -8,7 +8,7 @@
 
 <header title="The Ocean">
 	<h2>Caribbean Sea</h2>
-	<img src="<?php echo base_url('assets/images/places/ocean_' . rand(1,7) . '.jpg')?>" class="header">
+	<img src="<?php echo base_url('assets/images/places/ocean_' . rand(1, 7) . '.jpg')?>" class="header">
 </header>
 
 <div id="msg"></div>

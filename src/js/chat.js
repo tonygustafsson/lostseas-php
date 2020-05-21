@@ -3,13 +3,21 @@ const runChat = () => {
     var chatUpdateTimeout;
 
     function updateChat() {
+        if (!$('#dynamic_chat').length) {
+            // Only run in chat
+            clearTimeout(chatUpdateTimeout);
+            return;
+        }
+
         $.ajax({
             url: appdir + 'chat/update_chat',
             cache: false,
             success: function (data) {
                 $('#dynamic_chat').html(data);
-                $('#chat').prop({ scrollTop: $('article#chat').prop('scrollHeight') });
-                $('#entry').focus();
+                setTimeout(() => {
+                    $('#chat_content').prop({ scrollTop: $('#chat_content').prop('scrollHeight') });
+                    $('#entry').focus();
+                }, 10);
             },
             error: function () {
                 var errorMsg = 'Could not post data. Please try again!';
@@ -17,35 +25,33 @@ const runChat = () => {
             }
         });
 
-        chatUpdateTimeout = window.setTimeout(updateChat, 15000);
+        chatUpdateTimeout = window.setTimeout(updateChat, 10000);
     }
 
-    $(document).on('submit', '#chat_form', function () {
-        var url = $(this).attr('action');
+    $(document)
+        .off('submit', '#chat_form')
+        .on('submit', '#chat_form', function () {
+            var url = $(this).attr('action');
 
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: $('#entry').serialize(),
-            success: function () {
-                $('#entry').val('');
-                clearTimeout(chatUpdateTimeout);
-                updateChat();
-            },
-            error: function () {
-                var errorMsg = 'Could not post data. Please try again!';
-                window.alert(errorMsg);
-            }
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: $('#entry').serialize(),
+                success: function () {
+                    $('#entry').val('');
+                    clearTimeout(chatUpdateTimeout);
+                    updateChat();
+                },
+                error: function () {
+                    var errorMsg = 'Could not post data. Please try again!';
+                    window.alert(errorMsg);
+                }
+            });
+
+            return false;
         });
 
-        return false;
-    });
-
-    $(document).ready(function () {
-        updateChat();
-    });
+    updateChat();
 };
 
-$(document).ready(function () {
-    runChat();
-});
+window.runChat = runChat;

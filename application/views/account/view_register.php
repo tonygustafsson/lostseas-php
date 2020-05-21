@@ -42,7 +42,7 @@ have done so, you will be a registered member. You can continue playing while yo
 		
 		<label for="day, month, year">Birthday</label>
 		<select name="day">
-			<? for ($x = 1; $x <= 31; $x++): ?>
+			<?php for ($x = 1; $x <= 31; $x++): ?>
 				<option value="<?php echo $x?>"><?php echo $x?></option>
 			<?php endfor; ?>
 		</select>
@@ -54,7 +54,7 @@ have done so, you will be a registered member. You can continue playing while yo
 		</select>
 		
 		<select name="year">
-			<? for ($x = 1930; $x <= 2010; $x++): ?>
+			<?php for ($x = 1930; $x <= 2010; $x++): ?>
 				<option value="<?php echo $x?>"<?php echo ($x == 1985) ? 'selected' : ''?>><?php echo $x?></option>
 			<?php endfor; ?>
 		</select>

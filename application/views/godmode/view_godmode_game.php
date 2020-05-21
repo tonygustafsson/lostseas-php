@@ -14,7 +14,7 @@
 <section class="actions">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">
-			<?php foreach($players as $this_player): ?>
+			<?php foreach ($players as $this_player): ?>
 				<?php if (empty($this_player['name'])): ?>
 					<?php if ($player['user']['id'] === $this_player['id']): ?>
 						<option value="<?php echo $this_player['id']?>" selected>TempUser (<?php echo $this_player['id']?>)</option>

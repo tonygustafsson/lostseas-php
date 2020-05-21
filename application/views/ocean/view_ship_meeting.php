@@ -1,4 +1,6 @@
-<?php if (! empty($this->user['game']['event_ship'])) { list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']); } ?>
+<?php if (! empty($this->user['game']['event_ship'])) {
+    list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']);
+} ?>
 
 <?php if (isset($json)): ?>
 	<script type="text/javascript">

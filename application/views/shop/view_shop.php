@@ -108,7 +108,7 @@
 		<legend>Overview</legend>
 		<table style="margin: 0 auto; width: 90%">
 			<tr><td><span id="transfer_type">Cost</span></td><td><span id="total_cost">0</span> dbl</td></tr>
-			<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span>/<?php echo $game['load_max']?> cartons</td></tr>
+			<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span>/<?php echo $game['load_max']?> cartons</td></tr>
 		</table>
 
 		<p id="shop_overview" style="text-align: right;">

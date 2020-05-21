@@ -38,7 +38,7 @@
 
 		<table style="margin: 0 auto; width: 90%">
 			<tr><td>Cannons</td><td><span id="cannons_new_quantity_presenter"><?php echo $game['cannons']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
+			<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
 		</table>
 
 		<input type="hidden" name="cannons_quantity" id="cannons_quantity" value="<?php echo $game['cannons']?>">
@@ -52,7 +52,7 @@
 
 		<table style="margin: 0 auto; width: 90%">
 			<tr><td>Rafts</td><td><span id="rafts_new_quantity_presenter"><?php echo $game['rafts']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <? echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
+			<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
 		</table>
 
 		<input type="hidden" name="rafts_quantity" id="rafts_quantity" value="<?php echo $game['rafts']?>">

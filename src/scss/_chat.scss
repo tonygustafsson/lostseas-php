@@ -1,45 +1,42 @@
-body.chat {
-    background-color: #e5f0f6;
-    background-image: url('../../assets/images/design/back_sky.jpg');
-    background-position: top left;
-    background-repeat: repeat-x;
-    background-attachment: fixed;
-    background-size: 100% 60%;
-}
-
-section#chat_users {
+#chat_users {
     float: left;
-    width: 140px;
-    height: 470px;
+    width: 20%;
+    height: 600px;
     background: rgba(255, 255, 255, 0.5);
+
+    p {
+        background: rgba(255, 255, 255, 0.8);
+        margin: 0.5em 0 0.5em 0.5em;
+        overflow: hidden;
+
+        img {
+            float: left;
+            height: 100%;
+            clear: both;
+            padding-right: 0.5em;
+        }
+    }
 }
 
-section#chat_users p {
-    background: rgba(255, 255, 255, 0.8);
-    margin: 0.5em 0 0.5em 0.5em;
-    overflow: hidden;
+.chat-wrapper {
+    margin: 2em 1em;
+    min-height: 650px;
 }
 
-section#chat_users p img {
-    float: left;
-    height: 100%;
-    clear: both;
-    padding-right: 0.5em;
-}
-
-article#chat {
+#chat_content {
     float: left;
     text-align: left;
-    width: 660px;
-    height: 470px;
+    width: 80%;
+    height: 600px;
     padding: 10px;
     margin: 0;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background: rgba(255, 255, 255, 0.5);
     box-shadow: none;
 }
 
-article#chat div.entry {
+.chat-entry {
     width: 95%;
     height: auto;
     overflow: hidden;
@@ -47,38 +44,34 @@ article#chat div.entry {
     margin: 0.5em;
     padding: 0.5em;
     background: rgba(255, 255, 255, 0.7);
+
+    .timestamp {
+        color: #555;
+    }
 }
 
-article#chat div.entry span.timestamp {
-    color: #555;
-}
-
-section#chat_input {
-    width: 99%;
+#chat_input {
+    width: 100%;
     height: 40px;
-    position: absolute;
-    top: 460px;
-    left: 5px;
     padding: 0;
     margin: 0;
     text-align: left;
-}
 
-section#chat_input input[type='text'] {
-    width: 100%;
-    background: #f0f0f0;
-    color: #000;
-    border: 1px #999 solid;
-    height: 24px;
-    padding: 0 0.5em 0 0.5em;
-    margin: 0;
-}
+    input[type='text'] {
+        width: 100%;
+        background: #fff;
+        color: #000;
+        border: 1px #999 solid;
+        height: 24px;
+        padding: 0.25em 0.5em;
+        margin: 1em 0;
+    }
 
-section#chat_input input[type='submit'] {
-    background: #000;
-    border: 1px #999 solid;
-    height: 30px;
-    margin: 0;
-    color: #fff;
-    padding: 4px;
+    input[type='submit'] {
+        border: 1px #999 solid;
+        margin: 1em 0;
+        color: #000;
+        padding: 0.5em;
+        vertical-align: middle;
+    }
 }

@@ -1,5 +1,5 @@
-<? $prices = array('food' => 16, 'water' => 12) ?>
-<? list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(NULL); ?>
+<?php $prices = array('food' => 16, 'water' => 12) ?>
+<?php list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(null); ?>
 
 <?php if (isset($json)): ?>
 	<script type="text/javascript">
@@ -23,7 +23,7 @@
 
 <div id="msg"></div>
 
-<?php if ($trade_worth !== NULL): ?>
+<?php if ($trade_worth !== null): ?>
 	<p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.
 	Porcelain, silk and spices will be traded away first.</p>
 
@@ -50,14 +50,14 @@
 			<legend><img src="<?php echo base_url('assets/images/icons/market_browse.png')?>" alt="Food" width="32" height="32"> Food</legend>
 			<p style="margin: 0 auto; width: 90%">Food is needed for traveling at sea. A half a carton per crew member and week.
 			<?php if ($game['food'] < ($game['needed_food'] * 5)): ?>
-				To last 5 more weeks, you should have at least <strong><? echo ($game['needed_food'] * 5) ?></strong> cartons!
+				To last 5 more weeks, you should have at least <strong><?php echo($game['needed_food'] * 5) ?></strong> cartons!
 			<?php endif; ?>
 			</p>
 			<div id="food-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
 				<tr><td>Food cartons</td><td><span id="food_new_quantity_presenter"><?php echo $game['food']?></span> pcs</td></tr>
-				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
-				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <?php echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
+				<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
 			</table>
 			
 			<input type="hidden" name="food_quantity" id="food_quantity" value="<?php echo $game['food']?>">
@@ -68,14 +68,14 @@
 			<legend><img src="<?php echo base_url('assets/images/icons/water.png')?>" alt="Water" width="32" height="32"> Water</legend>
 			<p style="margin: 0 auto; width: 90%">Water is needed for traveling at sea. 1 barrel per crew member and week.
 			<?php if ($game['water'] < ($game['needed_water'] * 5)): ?>
-				To last 5 more weeks, you should have at least <strong><? echo ($game['needed_water'] * 5) ?></strong> barrels!
+				To last 5 more weeks, you should have at least <strong><?php echo($game['needed_water'] * 5) ?></strong> barrels!
 			<?php endif; ?>
 			</p>
 			<div id="water-slider" style="width: 90%; margin: 20px;"></div>
 			<table style="margin: 0 auto; width: 90%">
 				<tr><td>Water barrels</td><td><span id="water_new_quantity_presenter"><?php echo $game['water']?></span> pcs</td></tr>
-				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <? echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
-				<tr><td>Ship load</td><td><span class="load_total" style="color: <? echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+				<tr><td>Trade worth</td><td><span class="trade_worth_left" style="color: <?php echo ($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?php echo $trade_worth?></span> dbl</td></tr>
+				<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
 			</table>
 			
 			<input type="hidden" name="water_quantity" id="water_quantity" value="<?php echo $game['water']?>">

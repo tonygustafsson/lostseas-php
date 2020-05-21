@@ -36,7 +36,7 @@
 			<?php $entry = $player['log'][$x]; ?>
 			
 			<?php if ($entry['week'] < $current_week): ?>
-				<? $current_week = $entry['week']; ?>
+				<?php $current_week = $entry['week']; ?>
 				</ul>
 				<h3>Week <?php echo $entry['week']?></h3>
 				<ul>

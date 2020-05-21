@@ -31,7 +31,7 @@
 			<td width="40"><img width="40" height="40" alt="Avatar of <?php echo $this_player['character_name']?>" src="<?php echo base_url('assets/images/avatars/' . (($this_player['character_gender'] == 'M') ? 'male_thumb' : 'female_thumb') . '/avatar_' . $this_player['character_avatar'] . '.jpg')?>"></td>
 			<td><?php echo $this_player['character_name']?></td>
 			<td><?php echo $this_player['week']?></td>
-			<td><span<?php echo (($this_player['last_activity_unix'] > (time() - 500)) ? ' style="color: #0FB308"' : '')?>><?php echo substr($this_player['last_activity'], 0, -3)?></span></td>
+			<td><span<?php echo(($this_player['last_activity_unix'] > (time() - 500)) ? ' style="color: #0FB308"' : '')?>><?php echo substr($this_player['last_activity'], 0, -3)?></span></td>
 		</tr>
 	<?php endforeach; ?>
 </table>

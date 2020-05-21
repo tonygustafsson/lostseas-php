@@ -1,12 +1,12 @@
 		</article>
 		
 		<?php if (isset($user)): ?>
-			<? /* For logged in users! */ ?>
+			<?php /* For logged in users! */ ?>
 
 			<aside id="inventory_panel" class="inventory">
 				<h3>Inventory</h3>
 				
-				<?php if ( ! isset($no_menu)): ?>
+				<?php if (! isset($no_menu)): ?>
 					<div class="inventory_user">
 						<a class="ajaxHTML" href="inventory/player/<?php echo $user['id']?>#character">
 							<div style="height: 100%; width: 40px">
@@ -25,15 +25,31 @@
 						</a>
 					</div>
 					
-					<?php if ($game['crew_health_lowest'] <= 25) { $crew_health_symbol = 'crew_health_25'; } ?>
-					<?php if ($game['crew_health_lowest'] > 25 && $game['crew_health_lowest'] <= 50) { $crew_health_symbol = 'crew_health_50'; } ?>
-					<?php if ($game['crew_health_lowest'] > 50 && $game['crew_health_lowest'] <= 75) { $crew_health_symbol = 'crew_health_75'; } ?>
-					<?php if ($game['crew_health_lowest'] > 75) { $crew_health_symbol = 'crew_health_100'; } ?>
+					<?php if ($game['crew_health_lowest'] <= 25) {
+    $crew_health_symbol = 'crew_health_25';
+} ?>
+					<?php if ($game['crew_health_lowest'] > 25 && $game['crew_health_lowest'] <= 50) {
+    $crew_health_symbol = 'crew_health_50';
+} ?>
+					<?php if ($game['crew_health_lowest'] > 50 && $game['crew_health_lowest'] <= 75) {
+    $crew_health_symbol = 'crew_health_75';
+} ?>
+					<?php if ($game['crew_health_lowest'] > 75) {
+    $crew_health_symbol = 'crew_health_100';
+} ?>
 				
-					<?php if ($game['ship_health_lowest'] <= 25) { $ship_health_symbol = 'ship_health_25'; } ?>
-					<?php if ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) { $ship_health_symbol = 'ship_health_50'; } ?>
-					<?php if ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) { $ship_health_symbol = 'ship_health_75'; } ?>
-					<?php if ($game['ship_health_lowest'] > 75) { $ship_health_symbol = 'ship_health_100'; } ?>
+					<?php if ($game['ship_health_lowest'] <= 25) {
+    $ship_health_symbol = 'ship_health_25';
+} ?>
+					<?php if ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) {
+    $ship_health_symbol = 'ship_health_50';
+} ?>
+					<?php if ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) {
+    $ship_health_symbol = 'ship_health_75';
+} ?>
+					<?php if ($game['ship_health_lowest'] > 75) {
+    $ship_health_symbol = 'ship_health_100';
+} ?>
 					
 					<!-- Section: Game status -->
 					
@@ -179,8 +195,8 @@
 						<legend>Log in</legend>
 						
 						<?php if ($this->session->userdata('email') || $this->session->userdata('password')): ?>
-								<? $this->session->unset_userdata('email') ?>
-								<? $this->session->unset_userdata('password') ?>
+								<?php $this->session->unset_userdata('email') ?>
+								<?php $this->session->unset_userdata('password') ?>
 								<p style="margin: 0.2em 1em; background: #d96868; padding: 0.3em;">Your login was denied...</p>
 						<?php endif; ?>
 						
@@ -209,7 +225,7 @@
 				<h3>What's going on?</h3>
 				
 				<?php if (isset($log_entries)): ?>
-					<? unset($log_entries['num_rows']); ?>
+					<?php unset($log_entries['num_rows']); ?>
 					
 					<?php foreach ($log_entries as $entry): ?>
 						<p>

@@ -25,7 +25,7 @@
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php echo base_url('feed')?>">
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" media="all">
 
-	<?php if (strpos(base_url(), 'test') === FALSE): ?>
+	<?php if (strpos(base_url(), 'test') === false): ?>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -55,13 +55,13 @@
 	</noscript>
 
 	<div class="grid-container">
-		<?php if (strpos(base_url(), 'test') !== FALSE): ?>
+		<?php if (strpos(base_url(), 'test') !== false): ?>
 			<section style="position: absolute; top: 10px; left: 10px;">
 				<p style="color: red; background: #fff">T E S T</p>
 			</section>
 		<?php endif; ?>
 		
-		<?php if ($this->input->is_ajax_request() === FALSE && isset($user['admin']) && $user['admin'] == 1): ?>
+		<?php if ($this->input->is_ajax_request() === false && isset($user['admin']) && $user['admin'] == 1): ?>
 			<section id="initial_page_load" style="position: absolute; top: 10px; left: 10px;">
 				<p style="color: red; background: #fff">Initial page load!</p>
 			</section>
@@ -105,7 +105,7 @@
 						<?php endif; ?>
 						<?php if ($user['verified'] == 1): ?>
 							<li><a class="ajaxHTML" id="nav_players" title="Other players" href="<?php echo base_url('inventory/players')?>">Players</a></li>
-							<li><a class="newWindow" id="nav_chat" title="Chat" href="<?php echo base_url('chat')?>">Chat</a></li>
+							<li><a class="ajaxHTML" id="nav_chat" title="Chat" href="<?php echo base_url('chat')?>">Chat</a></li>
 						<?php else: ?>
 							<li><a class="disabled" id="nav_players" title="This option will be enabled when you are registered!" href="<?php echo base_url('inventory/players')?>">Players</a></li>
 							<li><a class="disabled" id="nav_chat" title="This option will be enabled when you are registered!" href="<?php echo base_url('chat')?>">Chat</a></li>
@@ -173,7 +173,13 @@
 					<div><a class="ajaxHTML" title="Explore the ocean" href="<?php echo base_url('ocean')?>"><img src="<?php echo base_url('assets/images/icons/coast.png')?>" alt="Explore" width="32" height="32">Explore</a></div>
 				</nav>
 				
-				<?php if (! empty($this->user['game']['event_ship'])) { list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']); } else { $nation = NULL; } ?>
+				<?php
+                    if (! empty($this->user['game']['event_ship'])) {
+                        list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']);
+                    } else {
+                        $nation = null;
+                    }
+                ?>
 			
 				<nav id="nav_ship_meeting_unfriendly" style="<?php echo (! empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy'])) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Attack this ship!" href="<?php echo base_url('ocean/attack')?>"><img src="<?php echo base_url('assets/images/icons/attack.png')?>" alt="Attack" width="32" height="32">Attack</a></div>
@@ -186,7 +192,7 @@
 					<div><a class="ajaxHTML" title="Ignore this ship" href="<?php echo base_url('ocean/ignore')?>"><img src="<?php echo base_url('assets/images/icons/flee.png')?>" alt="Ignore" width="32" height="32">Ignore</a></div>
 				</nav>
 				
-				<nav id="nav_ship_meeting_neutral" style="<?php echo (! empty($game['event_ship']) && ($nation != $game['nationality']) && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== NULL) ? 'display: block; ' : 'display: none; '?>">
+				<nav id="nav_ship_meeting_neutral" style="<?php echo (! empty($game['event_ship']) && ($nation != $game['nationality']) && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== null) ? 'display: block; ' : 'display: none; '?>">
 					<div><a class="ajaxHTML" title="Attack this ship!" href="<?php echo base_url('ocean/attack')?>"><img src="<?php echo base_url('assets/images/icons/attack.png')?>" alt="Attack" width="32" height="32">Attack</a></div>
 					<div><a class="ajaxHTML" title="Ignore this ship" href="<?php echo base_url('ocean/ignore')?>"><img src="<?php echo base_url('assets/images/icons/flee.png')?>" alt="Ignore" width="32" height="32">Ignore</a></div>
 				</nav>
