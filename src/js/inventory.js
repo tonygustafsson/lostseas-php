@@ -6,7 +6,7 @@ function checkAll(name) {
         $("input[name='" + name + "[]']")
             .parent()
             .parent()
-            .css('background', '#b9bfc5');
+            .css('background', '#e5f0f6');
     } else {
         $("input[name='" + name + "[]']").prop('checked', false);
         $("input[name='" + name + "[]']")
@@ -27,14 +27,14 @@ $(document).on('click', '#crew_form tr td:not(:first-child)', function () {
             $(this).parent().css('background', 'transparent');
         } else {
             thisCheckbox.prop('checked', true);
-            $(this).parent().css('background', '#b9bfc5');
+            $(this).parent().css('background', '#e5f0f6');
         }
     }
 });
 
 $(document).on('change', '#crew_form input[type=checkbox]', function () {
     if ($(this).is(':checked')) {
-        $(this).parent().parent().css('background', '#b9bfc5');
+        $(this).parent().parent().css('background', '#e5f0f6');
     } else {
         $(this).parent().parent().css('background', 'transparent');
     }

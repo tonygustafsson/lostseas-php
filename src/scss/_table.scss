@@ -11,6 +11,11 @@ table td,
 table th {
     border: 1px $lightgrey solid;
     padding: 4px;
+
+    img {
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
 }
 
 table th,
