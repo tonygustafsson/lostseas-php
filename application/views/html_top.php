@@ -151,7 +151,7 @@
 		<?php if (isset($user)): ?>
 			<?php /* For logged in users! */ ?>	
 			<aside id="action_panel" class="actions">
-				<h3>Action</h3>
+				<h3>Actions</h3>
 
 				<?php $in_town = array('dock', 'shop', 'tavern', 'shipyard', 'cityhall', 'market', 'bank'); ?>
 				<nav id="nav_dock" style="<?php echo (in_array($game['place'], $in_town)) ? 'display: block; ' : 'display: none; '?>">

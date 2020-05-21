@@ -1,123 +1,63 @@
-article a,
-aside a {
-    text-decoration: none;
-}
+article {
+    header {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    p {
+        margin: 1em 2em;
+    }
 
-article header {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
+    a {
+        color: $darkred;
+        text-decoration: underline;
 
-article p {
-    margin: 1em 2em;
-}
+        &:hover {
+            color: $red;
+        }
+    }
 
-article a {
-    color: #c23a3a;
-    text-decoration: underline;
-}
+    .divider {
+        display: block;
+        float: left;
+        clear: both;
+        width: 100%;
+        height: 30px;
+        margin: 1em auto 1em auto;
+        background: url('../../assets/images/design/divider.png') transparent no-repeat;
+        background-position: 50% 0;
+    }
 
-article a:hover {
-    color: #ff2828;
-}
+    h2 {
+        z-index: 20;
+        position: absolute;
+        top: 30px;
+        left: 60px;
+        color: $yellow;
+        font-size: 1.8em;
+        font-family: $font-bridgnorth;
+        background: $blackglass;
+        width: 85.5%;
+        height: 42px;
+        padding: 0 0.5em;
+        clear: both;
+    }
 
-article div.divider {
-    display: block;
-    float: left;
-    clear: both;
-    width: 100%;
-    height: 30px;
-    margin: 1em auto 1em auto;
-    background: url('../../assets/images/design/divider.png') transparent no-repeat;
-    background-position: 50% 0;
-}
+    h3 {
+        margin: 1em 2em 0 2em;
+        color: #000;
+        font-size: 1.7em;
+        font-family: $font-bridgnorth;
+        clear: both;
+    }
 
-article h2 {
-    z-index: 20;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    color: #fff6b5;
-    font-size: 1.8em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    margin-left: 3%;
-    text-shadow: 2px 2px 2px #000, 4px 4px 6px #000;
-    background: rgba(0, 0, 0, 0.75);
-    width: 86%;
-    padding: 0 0.5em;
-    clear: both;
-}
-
-article h3 {
-    margin: 1em 2em 0 2em;
-    color: #000;
-    font-size: 1.7em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    clear: both;
-}
-
-article h4 {
-    margin: 1em 2em 0 2em;
-    color: #000;
-    font-size: 1.3em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    clear: both;
-}
-
-article form#register {
-    z-index: 20;
-    position: absolute;
-    top: 100px;
-    left: 40px;
-    margin-left: 2%;
-    width: 84%;
-    height: 210px;
-    padding: 3em 1.5em;
-    background: rgba(0, 0, 0, 0.75);
-}
-
-article form#register fieldset {
-    margin: 0;
-    width: 100%;
-    border: none;
-}
-
-article form#register legend {
-    color: #fff6b5;
-    font-size: 1.4em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    margin: 0;
-}
-
-article form#register label {
-    color: #fff;
-}
-
-article form#register p {
-    color: #fff;
-    margin: 0 0 0 1em;
-}
-
-article form#register img {
-    margin: -0.4em 0em;
-}
-
-article form#register section#register_left {
-    float: left;
-    width: auto;
-    width: 75%;
-}
-
-article form#register section#register_right {
-    float: left;
-    margin-left: 1em;
-    width: auto;
-}
-
-article form#register input[type='submit'] {
-    height: 100px;
-    width: 100px;
+    h4 {
+        margin: 1em 2em 0 2em;
+        color: #000;
+        font-size: 1.3em;
+        font-family: $font-bridgnorth;
+        clear: both;
+    }
 }
 
 article img.header {
@@ -144,10 +84,9 @@ article section.actions a {
     height: 2.8em;
     width: 4.8em;
     line-height: 0.4em;
-    background-color: rgb(220, 224, 226);
-    border: 1px #d0d0d0 solid;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    text-shadow: 2px 2px 3px #e5e1dd;
+    background-color: #fff;
+    border: 1px $lightgrey solid;
+    font-family: $font-bridgnorth;
     font-size: 1.2em;
     color: #000;
     text-decoration: none;
@@ -190,7 +129,7 @@ article section.actions button {
 
 article section.actions a:hover,
 article section.actions button:hover {
-    background: rgba(168, 172, 185, 1);
+    background: $lightblue;
 }
 
 article ul {

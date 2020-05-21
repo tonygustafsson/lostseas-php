@@ -1,26 +1,26 @@
-aside#log_panel {
-    border: 1px #d0d0d0 solid;
-    background: rgba(255, 255, 255, 0.8);
+#log_panel {
+    border: 1px $lightgrey solid;
+    background: $whiteglass;
     padding: 1em 0 0 0;
     margin-bottom: 2em;
     min-height: 300px;
     height: auto;
     box-sizing: border-box;
-}
 
-aside#log_panel h3 {
-    color: #000;
-    font-size: 1.2em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    text-align: left;
-    margin-left: 1.3em;
-    letter-spacing: 0.1em;
-}
+    h3 {
+        color: #000;
+        font-size: 1.2em;
+        font-family: $font-bridgnorth;
+        text-align: left;
+        margin-left: 1.3em;
+        letter-spacing: 0.1em;
+    }
 
-aside#log_panel strong {
-    font-size: 100%;
-}
+    strong {
+        font-size: 100%;
+    }
 
-aside#log_panel p {
-    margin: 1em;
+    p {
+        margin: 1em;
+    }
 }

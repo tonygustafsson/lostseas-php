@@ -4,8 +4,8 @@ a#inventory_panel_button {
 }
 
 aside#inventory_panel {
-    border: 1px #d0d0d0 solid;
-    background: rgba(255, 255, 255, 0.8);
+    border: 1px $lightgrey solid;
+    background-color: $whiteglass;
     margin-bottom: 1em;
     padding: 1em 0;
     min-height: 360px;
@@ -15,7 +15,7 @@ aside#inventory_panel {
 }
 
 aside#inventory_panel div.inventory_user {
-    padding: 0 0.5em 2em 0.5em;
+    padding: 0 0.5em 2.5em 0.5em;
     text-align: left;
 }
 
@@ -34,32 +34,30 @@ aside#inventory_panel div.inventory_user img {
 
 aside#inventory_panel h3 {
     padding-bottom: 1em;
-    color: #fce854;
+    color: #000;
     font-size: 1.2em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    font-family: $font-bridgnorth;
     text-align: left;
-    margin-left: 1em;
-    margin-top: 0;
-    text-shadow: 1px 1px 2px #000, -1px -1px 2px #000;
+    margin: 0.5em 1em 0.75em 0.5em;
     letter-spacing: 0.1em;
 }
 
 aside#inventory_panel div.inventory_item {
-    font-family: georgia;
     width: 100%;
+    font-size: 90%;
     margin-left: auto;
     margin-right: auto;
-    height: 14px;
+    height: 16px;
     background-color: #fff;
     margin-bottom: 12px;
     text-align: left;
-    border: 1px #d0d0d0 solid;
-    opacity: 0.85;
+    border-top: 1px $lightgrey solid;
+    border-bottom: 1px $lightgrey solid;
+    box-sizing: border-box;
 }
 
 aside#inventory_panel div.inventory_item:hover {
-    background-color: #f1ebeb;
-    opacity: 1;
+    background-color: $lightblue;
 }
 
 aside#inventory_panel div.inventory_item a {
@@ -70,6 +68,7 @@ aside#inventory_panel div.inventory_item a {
     position: relative;
     top: -12px;
     color: #000;
+    text-decoration: none;
 }
 
 aside#inventory_panel div.inventory_item img {

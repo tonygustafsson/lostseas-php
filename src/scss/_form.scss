@@ -4,12 +4,12 @@ form fieldset {
     float: left;
     width: 90%;
     display: block;
-    border: 1px #d0d0d0 solid;
+    border: 1px $lightgrey solid;
 }
 
 form fieldset legend {
     font-size: 1.4em;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    font-family: $font-bridgnorth;
     padding: 0 5px;
 }
 
@@ -33,10 +33,10 @@ form input[type='url'] {
     height: 20px;
     margin-bottom: 5px;
     margin-left: 10px;
-    border: 1px solid #aaa;
+    border: 1px solid $lightgrey;
     padding: 4px 0 1px 5px;
     color: #000;
-    background: #fdfdfd;
+    background: #fff;
     max-width: 90%;
 }
 
@@ -66,14 +66,15 @@ form input[type='number'] {
 form input[type='submit'],
 form input[type='button'],
 button {
-    background-color: #e5e1dd;
+    background-color: #fff;
     color: #000;
     font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
     font-size: 1.4em;
+    line-height: 0.5;
     cursor: pointer;
     margin: 0.5em;
     padding: 1em;
-    border: 1px #d0d0d0 solid;
+    border: 1px $lightgrey solid;
 }
 
 form input[type='submit'].small {
@@ -82,7 +83,7 @@ form input[type='submit'].small {
 
 form input[type='submit']:hover,
 button:hover {
-    background: #b7c8cf;
+    background: $lightblue;
 }
 
 form input[type='checkbox'] {

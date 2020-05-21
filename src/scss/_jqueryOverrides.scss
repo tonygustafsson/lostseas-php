@@ -1,8 +1,16 @@
 .ui-tooltip {
-    border: 1px #444 solid;
+    border: 1px $grey solid;
     opacity: 0.9;
 }
 
 .ui-tooltip-content {
     font-size: 85%;
+}
+
+.ui-slider-vertical .ui-slider-handle {
+    left: -2px !important;
+}
+
+.ui-slider .ui-widget-header {
+    background-color: $green;
 }

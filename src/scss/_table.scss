@@ -9,13 +9,13 @@ fieldset table td:first-child {
 
 table td,
 table th {
-    border: 1px #d0d0d0 solid;
+    border: 1px $lightgrey solid;
     padding: 4px;
 }
 
 table th,
 table tr {
-    background: #f7f7f7;
+    background-color: $lightestgrey;
 }
 
 table tr:nth-child(even) {
