@@ -16,6 +16,8 @@ function checkAll(name) {
     }
 }
 
+window.checkAll = checkAll;
+
 $(document).on('click', '#crew_form tr td:not(:first-child)', function () {
     var thisCheckbox = $(this).parent().find('td:first-child').find('input[type="checkbox"]');
 
