@@ -61,10 +61,10 @@ article {
 }
 
 article img.header {
-    width: 90%;
-    border: 1px black solid;
-    margin: 1em 5% 0 5%;
+    width: 95%;
+    margin: 1em 2.5% 0 2.5%;
     z-index: 1;
+    filter: sepia(0.7);
 }
 
 article section.actions {
