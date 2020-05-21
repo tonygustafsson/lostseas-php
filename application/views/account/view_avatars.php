@@ -4,7 +4,7 @@
 </div>
 
 <?php for ($x = 1; $x <= $number_of_avatars; $x++): ?>
-	<a href="#" class="select_avatar_link" style="text-decoration: none" data-gender="<?php echo $gender?>" data-character="<?php echo $x?>" data-imagebasepath="<?php echo APPPATH . '../assets/images/avatars/' . $gender . '/'?>">
+	<a href="#" class="select_avatar_link" style="text-decoration: none" data-gender="<?php echo $gender?>" data-character="<?php echo $x?>" data-imagebasepath="<?php echo base_url('/assets/images/avatars/' . $gender . '/')?>">
 		<img src="<?php echo 'assets/images/avatars/' . $gender . '/avatar_' . $x . '.jpg'?>" alt="Avatar <?php echo $x?>" style="margin-left: 0.5em; border: 1px black solid;" width="120" height="120">
 	</a>
 <?php endfor; ?>
