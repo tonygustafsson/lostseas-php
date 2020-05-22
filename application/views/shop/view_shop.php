@@ -1,12 +1,4 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
-<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>" place="<?php echo $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/shop_' . $game['nation'] . '.jpg')?>" class="header" alt="The shop">
 </header>
@@ -28,10 +20,9 @@
 		<input type="hidden" id="<?php echo $product?>_sell" value="<?php echo $price['sell']?>">
 	<?php endforeach; ?>
 	
-	<div class="slider_container">
-	
-		<div class="slider_info">
-			<div id="food-slider" class="shop_slider"></div>
+	<div class="slider-container">
+		<div class="slider-wrapper">
+			<div id="food-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/market_browse.png')?>" alt="Food" width="32" height="32" title="Needed for traveling at sea. Buy: <?php echo $prices['food']['buy']?> dbl, Sell: <?php echo $prices['food']['sell']?> dbl.">
 			<span>Food</span><br>
 			<span id="food_new_quantity_presenter"><?php echo $game['food']?></span>
@@ -39,8 +30,8 @@
 			<input type="hidden" id="food_new_quantity" name="food_new_quantity" value="<?php echo $game['food']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="water-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="water-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/water.png')?>" alt="Water" width="32" height="32" title="Needed for traveling at sea. Buy: <?php echo $prices['water']['buy']?> dbl, Sell: <?php echo $prices['water']['sell']?> dbl.">
 			<span>Water</span><br>
 			<span id="water_new_quantity_presenter"><?php echo $game['water']?></span>
@@ -48,8 +39,8 @@
 			<input type="hidden" id="water_new_quantity" name="water_new_quantity" value="<?php echo $game['water']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="porcelain-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="porcelain-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/porcelain.png')?>" alt="Porcelain" width="32" height="32" title="For trading. Buy: <?php echo $prices['porcelain']['buy']?> dbl, Sell: <?php echo $prices['porcelain']['sell']?> dbl.">
 			<span>Porcelain</span><br>
 			<span id="porcelain_new_quantity_presenter"><?php echo $game['porcelain']?></span>
@@ -57,8 +48,8 @@
 			<input type="hidden" id="porcelain_new_quantity" name="porcelain_new_quantity" value="<?php echo $game['porcelain']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="spices-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="spices-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/spices.png')?>" alt="Spices" width="32" height="32" title="For trading. Buy: <?php echo $prices['spices']['buy']?> dbl, Sell: <?php echo $prices['spices']['sell']?> dbl.">
 			<span>Spices</span><br>
 			<span id="spices_new_quantity_presenter"><?php echo $game['spices']?></span>
@@ -66,8 +57,8 @@
 			<input type="hidden" id="spices_new_quantity" name="spices_new_quantity" value="<?php echo $game['spices']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="silk-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="silk-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/silk.png')?>" alt="Silk" width="32" height="32" title="For trading. Buy: <?php echo $prices['silk']['buy']?> dbl, Sell: <?php echo $prices['silk']['sell']?> dbl.">
 			<span>Silk</span><br>
 			<span id="silk_new_quantity_presenter"><?php echo $game['silk']?></span>
@@ -75,8 +66,8 @@
 			<input type="hidden" id="silk_new_quantity" name="silk_new_quantity" value="<?php echo $game['silk']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="medicine-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="medicine-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/medicine.png')?>" alt="Medicine" width="32" height="32" title="Can heal individual crew members. Buy: <?php echo $prices['medicine']['buy']?> dbl, Sell: <?php echo $prices['medicine']['sell']?> dbl.">
 			<span>Medicine</span><br>
 			<span id="medicine_new_quantity_presenter"><?php echo $game['medicine']?></span>
@@ -84,8 +75,8 @@
 			<input type="hidden" id="medicine_new_quantity" name="medicine_new_quantity" value="<?php echo $game['medicine']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="tobacco-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="tobacco-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/tobacco.png')?>" alt="Tobacco" width="32" height="32" title="Can increase your crew members mood. Buy: <?php echo $prices['tobacco']['buy']?> dbl, Sell: <?php echo $prices['tobacco']['sell']?> dbl.">
 			<span>Tobacco</span><br>
 			<span id="tobacco_new_quantity_presenter"><?php echo $game['tobacco']?></span>
@@ -93,8 +84,8 @@
 			<input type="hidden" id="tobacco_new_quantity" name="tobacco_new_quantity" value="<?php echo $game['tobacco']?>">
 		</div>
 		
-		<div class="slider_info">
-			<div id="rum-slider" class="shop_slider"></div>
+		<div class="slider-wrapper">
+			<div id="rum-slider" class="slider"></div>
 			<img src="<?php echo base_url('assets/images/icons/rum.png')?>" alt="Rum" width="32" height="32" title="Can increase your crew members mood. Buy: <?php echo $prices['rum']['buy']?> dbl, Sell: <?php echo $prices['rum']['sell']?> dbl.">
 			<span>Rum</span><br>
 			<span id="rum_new_quantity_presenter"><?php echo $game['rum']?></span>
@@ -106,15 +97,17 @@
 	
 	<fieldset>
 		<legend>Overview</legend>
+		
 		<table style="margin: 0 auto; width: 90%">
 			<tr><td><span id="transfer_type">Cost</span></td><td><span id="total_cost">0</span> dbl</td></tr>
 			<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span>/<?php echo $game['load_max']?> cartons</td></tr>
 		</table>
 
 		<p id="shop_overview" style="text-align: right;">
-			<a href="javascript:buyNecessities()" title="Buy as much food and water you'll need for 5 days at sea"><img src="<?php echo base_url('assets/images/icons/buy_necessities.png')?>" alt="Buy necessities"></a>
-			<a href="javascript:sellBarterGoods()" title="Sell all items you won't need at sea"><img src="<?php echo base_url('assets/images/icons/sell_barter_goods.png')?>" alt="Sell barter goods"></a>
-			<a href="javascript:resetSliders()" title="Start over, reset this form"><img src="<?php echo base_url('assets/images/icons/reset.png')?>" alt="Reset"></a>
+			<a href="#" class="shop-buy-necessities" title="Buy as much food and water you'll need for 5 days at sea"><img src="<?php echo base_url('assets/images/icons/buy_necessities.png')?>" alt="Buy necessities"></a>
+			<a href="#" class="shop-sell-barter-goods" title="Sell all items you won't need at sea"><img src="<?php echo base_url('assets/images/icons/sell_barter_goods.png')?>" alt="Sell barter goods"></a>
+			<a href="#" class="shop-reset" title="Start over, reset this form"><img src="<?php echo base_url('assets/images/icons/reset.png')?>" alt="Reset"></a>
+			
 			<input title="Make the deal" type="submit" value="Transfer" style="display: block; margin-top: -35px;">
 		</p>
 	</fieldset>

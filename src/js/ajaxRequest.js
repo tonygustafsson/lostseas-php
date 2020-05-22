@@ -86,6 +86,8 @@ const ajaxHtmlRequest = (e) => {
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
             var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
+            var place = $(data.trim()).filter('header').attr('place');
+
             if (title) {
                 document.title = title;
             }
@@ -96,6 +98,14 @@ const ajaxHtmlRequest = (e) => {
 
             if (typeof ga == typeof Function) {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
+            }
+
+            if (url != window.location) {
+                window.history.pushState({ path: url }, '', url);
+            }
+
+            if (place) {
+                window.dispatchEvent(new Event(`page_${place}`));
             }
 
             $('body').removeClass('loading');
@@ -109,10 +119,6 @@ const ajaxHtmlRequest = (e) => {
             $('body').removeClass('loading');
         }
     });
-
-    if (url != window.location) {
-        window.history.pushState({ path: url }, '', url);
-    }
 
     return false;
 };
@@ -133,6 +139,8 @@ const onPopState = (e) => {
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
             var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
+            var place = $(data.trim()).filter('header').attr('place');
+
             if (title) {
                 document.title = title;
             }
@@ -143,6 +151,10 @@ const onPopState = (e) => {
 
             if (typeof ga == typeof Function) {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
+            }
+
+            if (place) {
+                window.dispatchEvent(new Event(`page_${place}`));
             }
 
             $('body').removeClass('loading');
@@ -158,10 +170,15 @@ const onPopState = (e) => {
     });
 };
 
-$(document).on('submit', 'form.ajaxJSON', ajaxJsonRequest);
+$(document).on('submit', '.ajaxJSON', ajaxJsonRequest);
 
 $(document).on('click', 'a.ajaxJSON', ajaxJsonRequest);
 
 $(document).on('click', '.ajaxHTML', ajaxHtmlRequest);
 
 $(window).on('popstate', onPopState);
+
+document.addEventListener('DOMContentLoaded', () => {
+    var place = $('#main > header').attr('place');
+    window.dispatchEvent(new Event(`page_${place}`));
+});

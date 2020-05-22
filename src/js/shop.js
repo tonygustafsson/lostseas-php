@@ -1,163 +1,205 @@
-const runShop = () => {
-    var products = ['food', 'water', 'porcelain', 'spices', 'silk', 'medicine', 'tobacco', 'rum'];
+import * as noUiSlider from 'nouislider';
 
-    $('#shop_overview a').tooltip();
-    $('.slider_container img').tooltip();
+const products = ['food', 'water', 'porcelain', 'spices', 'silk', 'medicine', 'tobacco', 'rum'];
 
-    function shopChangeSlider(inputId, sliderValue) {
-        $(inputId).val(sliderValue);
-        $(inputId + '_presenter').html(sliderValue);
+$('#shop_overview a').tooltip();
+$('.slider_container img').tooltip();
 
-        var currentMoney = $('#current_money').val();
-        currentMoney = parseInt(currentMoney, 10);
+const onSliderChange = (inputId, sliderValue) => {
+    const input = document.getElementById(inputId);
+    const presenter = document.getElementById(inputId + '_presenter');
 
-        var loadMax = $('#load_max').val();
-        loadMax = parseInt(loadMax, 10);
+    const currentMoneyEl = document.getElementById('current_money');
+    const currentMoney = parseInt(currentMoneyEl.value, 10);
 
-        var totalCost = 0;
-        var totalLoad = 0;
+    const loadMaxEl = document.getElementById('load_max');
+    const loadMax = parseInt(loadMaxEl.value, 10);
+    const loadTotalEl = document.querySelector('.load_total');
 
-        var x, product, newQuantity, currentQuantity, productPrice;
+    const totalLoadEl = document.querySelector('.load_total');
+    const totalCostEl = document.getElementById('total_cost');
+    const transferTypeEl = document.getElementById('transfer_type');
 
-        for (x = 0; x < products.length; x = x + 1) {
-            product = products[x];
+    input.value = sliderValue;
+    presenter.innerHTML = sliderValue;
 
-            newQuantity = $('#' + product + '_new_quantity').val();
-            newQuantity = parseInt(newQuantity, 10);
+    let totalCost = 0;
+    let totalLoad = 0;
 
-            currentQuantity = $('#' + product + '_quantity').val();
-            currentQuantity = parseInt(currentQuantity, 10);
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
 
-            if (newQuantity > currentQuantity) {
-                //User want's to buy
-                productPrice = $('#' + product + '_buy').val();
-                productPrice = parseInt(productPrice, 10);
+        let newQuantityValue = $('#' + product + '_new_quantity').val();
+        let newQuantity = parseInt(newQuantityValue, 10);
 
-                totalCost += productPrice * (newQuantity - currentQuantity);
-            } else {
-                //User want's to sell
-                productPrice = $('#' + product + '_sell').val();
-                productPrice = parseInt(productPrice, 10);
+        let currentQuantityValue = $('#' + product + '_quantity').val();
+        let currentQuantity = parseInt(currentQuantityValue, 10);
 
-                totalCost -= productPrice * (currentQuantity - newQuantity);
-            }
+        let productPrice = 0;
 
-            totalLoad += newQuantity;
+        if (newQuantity > currentQuantity) {
+            // User want's to buy
+            const productPriceValue = $('#' + product + '_buy').val();
+            productPrice = parseInt(productPriceValue, 10);
+
+            totalCost += productPrice * (newQuantity - currentQuantity);
+        } else if (currentQuantity > newQuantity) {
+            // User want's to sell
+            const productPriceValue = $('#' + product + '_sell').val();
+            const productPrice = parseInt(productPriceValue, 10);
+
+            totalCost -= productPrice * (currentQuantity - newQuantity);
         }
 
-        $('span.load_total').html(totalLoad);
-        $('#total_cost').html(Math.abs(totalCost));
-
-        if (totalCost < 0) {
-            $('span#transfer_type').html('Profit');
-        } else {
-            $('span#transfer_type').html('Cost');
-        }
-
-        if (currentMoney - totalCost < 0) {
-            $('#total_cost').css('color', '#d52525');
-        } else {
-            $('#total_cost').css('color', '#000');
-        }
-
-        if (loadMax - totalLoad < 0) {
-            $('span.load_total').css('color', '#d52525');
-        } else {
-            $('span.load_total').css('color', '#000');
-        }
+        totalLoad += newQuantity;
     }
 
-    function shopSlider(sliderId, inputId, standard, minimum, maximum) {
-        $(sliderId).slider({
-            orientation: 'vertical',
-            range: 'min',
-            animate: 'fast',
-            value: standard,
-            min: minimum,
-            max: maximum,
-            slide: function (event, ui) {
-                shopChangeSlider(inputId, ui.value);
-            }
-        });
+    totalLoadEl.innerHTML = totalLoad;
+    totalCostEl.innerHTML = Math.abs(totalCost);
+
+    if (totalCost < 0) {
+        transferTypeEl.innerHTML = 'Profit';
+    } else {
+        transferTypeEl.innerHTML = 'Cost';
     }
 
-    function createSliders() {
-        if ($('#rum-slider').length) {
-            var x, product, amount, maxSlider;
-
-            for (x = 0; x < products.length; x = x + 1) {
-                product = products[x];
-                amount = parseInt($('#' + product + '_quantity').val(), 10);
-                if (amount > 100) {
-                    maxSlider = Math.floor(amount * 2);
-                } else {
-                    maxSlider = Math.floor(amount + 100);
-                }
-
-                shopSlider('#' + product + '-slider', '#' + product + '_new_quantity', amount, 0, maxSlider);
-            }
-        }
+    if (currentMoney - totalCost < 0) {
+        totalCostEl.style.color = '#d52525';
+    } else {
+        totalCostEl.style.color = '#000';
     }
 
-    function sellBarterGoods() {
-        var x, product;
-
-        for (x = 0; x < products.length; x = x + 1) {
-            product = products[x];
-
-            if (product != 'food' && product != 'water' && $('#' + product + '-slider').slider('option', 'value', 0)) {
-                shopChangeSlider('#' + product + '_new_quantity', 0);
-            }
-        }
+    if (loadMax - totalLoad < 0) {
+        loadTotalEl.style.color = '#d52525';
+    } else {
+        loadTotalEl.style.color = '#000';
     }
-
-    window.sellBarterGoods = sellBarterGoods;
-
-    function buyNecessities() {
-        var currentFood = $('#food-slider').slider('option', 'value');
-        var currentWater = $('#water-slider').slider('option', 'value');
-        var neededFood = $('#needed_food').val();
-        neededFood = parseInt(neededFood, 10);
-        var neededWater = $('#needed_water').val();
-        neededWater = parseInt(neededWater, 10);
-
-        if (currentFood < neededFood) {
-            if ($('#food-slider').slider('option', 'max') < neededFood) {
-                $('#food-slider').slider('option', 'max', neededFood + 100);
-            }
-            if ($('#food-slider').slider('option', 'value', neededFood)) {
-                shopChangeSlider('#food_new_quantity', neededFood);
-            }
-        }
-
-        if (currentWater < neededWater) {
-            if ($('#water-slider').slider('option', 'max') < neededWater) {
-                $('#water-slider').slider('option', 'max', neededWater + 100);
-            }
-            if ($('#water-slider').slider('option', 'value', neededWater)) {
-                shopChangeSlider('#water_new_quantity', neededWater);
-            }
-        }
-    }
-
-    window.buyNecessities = buyNecessities;
-
-    function resetSliders() {
-        var x, product, currentValue;
-
-        for (x = 0; x < products.length; x = x + 1) {
-            product = products[x];
-            currentValue = $('#' + product + '_quantity').val();
-
-            if ($('#' + product + '-slider').slider('option', 'value', currentValue)) {
-                shopChangeSlider('#' + product + '_new_quantity', currentValue);
-            }
-        }
-    }
-
-    window.resetSliders = resetSliders;
-
-    setTimeout(createSliders, 100);
 };
 
-window.runShop = runShop;
+const createSlider = (sliderId, inputId, presenterId, start, minimum, maximum) => {
+    const sliderEl = document.getElementById(sliderId);
+    const input = document.getElementById(inputId);
+    const presenter = document.getElementById(presenterId);
+
+    if (!sliderEl) {
+        return;
+    }
+
+    const slider = noUiSlider
+        .create(sliderEl, {
+            start: start,
+            connect: 'lower',
+            direction: 'rtl',
+            step: 1,
+            orientation: 'vertical',
+            range: {
+                min: minimum,
+                max: maximum
+            }
+        })
+        .on('update', (value) => {
+            onSliderChange(inputId, parseInt(value, 10));
+        });
+};
+
+const createSliders = () => {
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+        let amount = parseInt($('#' + product + '_quantity').val(), 10);
+        let maxSlider = amount > 100 ? Math.floor(amount * 2) : Math.floor(amount + 100);
+
+        createSlider(
+            product + '-slider',
+            product + '_new_quantity',
+            product + '_new_quantity_presenter',
+            amount,
+            0,
+            maxSlider
+        );
+    }
+};
+
+const sellBarterGoods = (e) => {
+    e.preventDefault();
+
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+
+        if (product != 'food' && product != 'water') {
+            let currentSliderEl = document.getElementById(product + '-slider');
+            currentSliderEl.noUiSlider.set(0);
+        }
+    }
+};
+
+const buyNecessities = (e) => {
+    e.preventDefault();
+
+    const currentFoodEl = document.getElementById('food_new_quantity');
+    const currentWaterEl = document.getElementById('water_new_quantity');
+    const neededFoodEl = document.getElementById('needed_food');
+    const neededWaterEl = document.getElementById('needed_water');
+
+    const currentFood = currentFoodEl.value;
+    const currentWater = currentWaterEl.value;
+    const neededFood = parseInt(neededFoodEl.value, 10);
+    const neededWater = parseInt(neededWaterEl.value, 10);
+
+    const foodSliderEl = document.getElementById('food-slider');
+    const waterSliderEl = document.getElementById('water-slider');
+    const foodSlider = foodSliderEl.noUiSlider;
+    const waterSlider = waterSliderEl.noUiSlider;
+    const foodMax = foodSlider.options.range.max;
+    const waterMax = waterSlider.options.range.max;
+
+    if (currentFood < neededFood) {
+        if (foodMax < neededFood) {
+            foodSlider.updateOptions({
+                range: {
+                    max: neededFood + 100
+                }
+            });
+        }
+
+        foodSlider.set(neededFood);
+    }
+
+    if (currentWater < neededWater) {
+        if (waterMax < neededWater) {
+            waterSlider.updateOptions({
+                range: {
+                    min: 0,
+                    max: neededWater + 100
+                }
+            });
+        }
+
+        waterSlider.set(neededWater);
+    }
+};
+
+const reset = (e) => {
+    e.preventDefault();
+
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+        let currentValueEl = document.getElementById(product + '_quantity');
+        let currentValue = currentValueEl.value;
+
+        let currentSliderEl = document.getElementById(product + '-slider');
+        currentSliderEl.noUiSlider.set(currentValue);
+    }
+};
+
+window.addEventListener('page_shop', (e) => {
+    const buyNecessitiesTrigger = document.querySelector('.shop-buy-necessities');
+    buyNecessitiesTrigger.addEventListener('click', buyNecessities);
+
+    const sellBartGoodsTrigger = document.querySelector('.shop-sell-barter-goods');
+    sellBartGoodsTrigger.addEventListener('click', sellBarterGoods);
+
+    const resetTrigger = document.querySelector('.shop-reset');
+    resetTrigger.addEventListener('click', reset);
+
+    createSliders();
+});
