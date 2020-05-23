@@ -76,10 +76,9 @@ const onSliderChange = (inputId, sliderValue) => {
     }
 };
 
-const createSlider = (sliderId, inputId, presenterId, start, minimum, maximum) => {
+const createSlider = (sliderId, inputId, start, minimum, maximum) => {
     const sliderEl = document.getElementById(sliderId);
     const input = document.getElementById(inputId);
-    const presenter = document.getElementById(presenterId);
 
     if (!sliderEl) {
         return;
@@ -108,14 +107,7 @@ const createSliders = () => {
         let amount = parseInt($('#' + product + '_quantity').val(), 10);
         let maxSlider = amount > 100 ? Math.floor(amount * 2) : Math.floor(amount + 100);
 
-        createSlider(
-            product + '-slider',
-            product + '_new_quantity',
-            product + '_new_quantity_presenter',
-            amount,
-            0,
-            maxSlider
-        );
+        createSlider(product + '-slider', product + '_new_quantity', amount, 0, maxSlider);
     }
 };
 
