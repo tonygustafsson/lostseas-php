@@ -2,10 +2,9 @@ import * as noUiSlider from 'nouislider';
 
 $('.actions img').tooltip();
 
-const createSlider = (sliderId, inputId, presenterId, start, minimum, maximum) => {
+const createSlider = (sliderId, inputId, start, minimum, maximum) => {
     const sliderEl = document.getElementById(sliderId);
     const input = document.getElementById(inputId);
-    const presenter = document.getElementById(presenterId);
 
     if (!sliderEl) {
         return;
@@ -34,7 +33,7 @@ const createSliders = () => {
     const currentMoney = parseInt(currentMoneyEl.value, 10);
     const lastBet = parseInt(lastBetEl.value, 10);
 
-    createSlider('gamble-slider', 'bet', 'bet_presenter', lastBet, 0, currentMoney);
+    createSlider('gamble-slider', 'bet', lastBet, 0, currentMoney);
 };
 
 const onSliderChange = (inputId, value) => {
@@ -48,22 +47,6 @@ const onSliderChange = (inputId, value) => {
 
     const currentMoney = parseInt(currentMoneyEl.value, 10);
     moneyLeftEl.innerHTML = currentMoney - value;
-};
-
-const tavernReset = () => {
-    if ($('#dinner-slider').slider('option', 'value', 0)) {
-        tavernChangeSlider('#dinner_quantity', 0);
-    }
-
-    if ($('#wine-slider').slider('option', 'value', 0)) {
-        tavernChangeSlider('#wine_quantity', 0);
-    }
-
-    if ($('#rum-slider').slider('option', 'value', 0)) {
-        tavernChangeSlider('#rum_quantity', 0);
-    }
-
-    return false;
 };
 
 const gambleBetSet = (e) => {
