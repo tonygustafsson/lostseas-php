@@ -11,6 +11,10 @@ form fieldset legend {
     font-size: 1.4em;
     font-family: $font-bridgnorth;
     padding: 0 5px;
+
+    img {
+        vertical-align: middle;
+    }
 }
 
 form label {
