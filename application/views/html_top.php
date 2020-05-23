@@ -99,7 +99,7 @@
 			<nav id="nav_top">
 				<?php if (isset($user)): ?>
 					<ul>
-						<li><a class="ajaxHTML" id="nav_game" title="Continue playing" href="<?php echo base_url()?>">Game</a></li>
+						<li><a id="nav_game" title="Continue playing" href="<?php echo base_url()?>">Game</a></li>
 						<?php if ($user['verified'] == 0): ?>
 							<li><a class="ajaxHTML" id="nav_register" title="Please register to save this game!" href="<?php echo base_url('account/register')?>">Register</a></li>
 						<?php endif; ?>

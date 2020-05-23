@@ -1,3 +1,12 @@
+const triggerEventFromUrl = () => {
+    const pathName = window.location.pathname.substr(1);
+    const eventName = pathName.replace('/', '-');
+
+    console.log('Event: ' + eventName);
+
+    window.dispatchEvent(new Event(eventName));
+};
+
 const ajaxJsonRequest = (event) => {
     event.preventDefault();
 
@@ -91,7 +100,6 @@ const ajaxHtmlRequest = (e) => {
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
             var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
-            var place = $(data.trim()).filter('header').attr('place');
 
             if (title) {
                 document.title = title;
@@ -109,9 +117,7 @@ const ajaxHtmlRequest = (e) => {
                 window.history.pushState({ path: url }, '', url);
             }
 
-            if (place) {
-                window.dispatchEvent(new Event(`page_${place}`));
-            }
+            triggerEventFromUrl();
 
             $('body').removeClass('loading');
         },
@@ -144,7 +150,6 @@ const onPopState = (e) => {
 
             //Change document title from <header title=""> on source, trim is needed for pages starting with tab
             var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
-            var place = $(data.trim()).filter('header').attr('place');
 
             if (title) {
                 document.title = title;
@@ -158,9 +163,7 @@ const onPopState = (e) => {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
             }
 
-            if (place) {
-                window.dispatchEvent(new Event(`page_${place}`));
-            }
+            triggerEventFromUrl();
 
             $('body').removeClass('loading');
         },
@@ -175,7 +178,7 @@ const onPopState = (e) => {
     });
 };
 
-$(document).on('submit', '.ajaxJSON', ajaxJsonRequest);
+$(document).on('submit', 'form.ajaxJSON', ajaxJsonRequest);
 
 $(document).on('click', 'a.ajaxJSON', ajaxJsonRequest);
 
@@ -184,6 +187,5 @@ $(document).on('click', '.ajaxHTML', ajaxHtmlRequest);
 $(window).on('popstate', onPopState);
 
 document.addEventListener('DOMContentLoaded', () => {
-    var place = $('#main > header').attr('place');
-    window.dispatchEvent(new Event(`page_${place}`));
+    triggerEventFromUrl();
 });

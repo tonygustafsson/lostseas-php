@@ -192,7 +192,7 @@ const reset = (e) => {
     }
 };
 
-window.addEventListener('page_shop', (e) => {
+window.addEventListener('shop', (e) => {
     const buyNecessitiesTrigger = document.querySelector('.shop-buy-necessities');
     buyNecessitiesTrigger.addEventListener('click', buyNecessities);
 

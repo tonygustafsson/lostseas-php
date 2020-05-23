@@ -84,7 +84,7 @@ const gambleBetSet = (e) => {
     gambleSlider.set(bet);
 };
 
-window.addEventListener('page_tavern', (e) => {
+window.addEventListener('tavern-gamble', (e) => {
     const gambleBetSetTriggers = document.querySelectorAll('.js-tavern-bet-set');
 
     Array.from(gambleBetSetTriggers).forEach((setter) => {
