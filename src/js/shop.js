@@ -156,6 +156,7 @@ const buyNecessities = (e) => {
         if (foodMax < neededFood) {
             foodSlider.updateOptions({
                 range: {
+                    min: 0,
                     max: neededFood + 100
                 }
             });

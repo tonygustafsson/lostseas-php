@@ -24,9 +24,6 @@ class Shop extends Main
     {
         $this->user['prices'] = $this->config->item('prices');
         
-        $data['runJS'] = 'window.runShop()';
-        $this->user['json'] = json_encode($data);
-
         $this->load->view_ajax('shop/view_shop', $this->user);
     }
 
