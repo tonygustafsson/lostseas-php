@@ -189,7 +189,7 @@
 
 		<?php else: ?>
 			<?php /* For logged out users! */ ?>
-			<aside id="inventory_panel" class="actions">
+			<aside id="inventory_panel" class="action-panel">
 				<form method="post" action="<?php echo base_url('account/login')?>" style="width: 100%; margin: 0; padding: 0;">
 					<fieldset>
 						<legend>Log in</legend>

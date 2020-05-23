@@ -37,6 +37,7 @@
     article header h2 {
         margin: 0;
         padding: 0;
+        left: 27px;
     }
 
     header h1 {
@@ -81,7 +82,7 @@
         background: #fff;
     }
 
-    .actions {
+    .action-panel {
         grid-area: none;
     }
 

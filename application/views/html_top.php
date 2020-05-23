@@ -150,7 +150,7 @@
 		
 		<?php if (isset($user)): ?>
 			<?php /* For logged in users! */ ?>	
-			<aside id="action_panel" class="actions">
+			<aside id="action_panel" class="action-panel">
 				<h3>Actions</h3>
 
 				<?php $in_town = array('dock', 'shop', 'tavern', 'shipyard', 'cityhall', 'market', 'bank'); ?>
