@@ -2,7 +2,7 @@
 	<h3>God mode: Game</h3>
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Change user parameters" href="godmode/user/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/players_user.png')?>" alt="User" width="32" height="32">User</a>
 	<a class="ajaxHTML" title="Change game parameters" href="godmode/index/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/settings_character.png')?>" alt="Game" width="32" height="32">Game</a>
 	<a class="ajaxHTML" title="Change ship parameters" href="godmode/ship/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/shipyard_sell.png')?>" alt="Ship" width="32" height="32">Ships</a>
@@ -11,7 +11,7 @@
 
 <div id="msg"></div>
 
-<section class="actions">
+<section class="action-buttons">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">
 			<?php foreach ($players as $this_player): ?>

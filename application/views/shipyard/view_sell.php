@@ -11,7 +11,7 @@
 	<img src="<?php echo base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Buy ships and equipments" href="shipyard"><img src="<?php echo base_url()?>assets/images/icons/shipyard_buy.png" alt="Buy" width="32" height="32">Buy</a>
 	<a class="ajaxHTML" title="Sell ships and equipments" href="shipyard/sell"><img src="<?php echo base_url()?>assets/images/icons/shipyard_sell.png" alt="Sell" width="32" height="32">Sell</a>
 	<a class="ajaxHTML" title="Repair damaged ships" href="shipyard/repair"><img src="<?php echo base_url()?>assets/images/icons/shipyard_repair.png" alt="Repair" width="32" height="32">Repair</a>
@@ -23,7 +23,7 @@
 You can sell your ships here.
 </p>
 
-<section class="actions">
+<section class="action-buttons">
 	<?php foreach ($ship as $this_ship): ?>
 		<a id="ship_<?php echo $this_ship['id']?>" class="ajaxJSON largepic" style="" rel="Do you really want to sell this <?php echo $this_ship['type']?>?" title="Sell this <?php echo $this_ship['type']?>" href="<?php echo base_url('shipyard/sell_ship/' . $this_ship['id'])?>">
 			<img src="<?php echo base_url('assets/images/ships/' . $this_ship['type'] . '.jpg')?>?>">

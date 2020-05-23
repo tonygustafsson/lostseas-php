@@ -11,7 +11,7 @@
 	<img src="<?php echo base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Buy ships and equipments" href="shipyard"><img src="<?php echo base_url()?>assets/images/icons/shipyard_buy.png" alt="Buy" width="32" height="32">Buy</a>
 	<a class="ajaxHTML" title="Sell ships and equipments" href="shipyard/sell"><img src="<?php echo base_url()?>assets/images/icons/shipyard_sell.png" alt="Sell" width="32" height="32">Sell</a>
 	<a class="ajaxHTML" title="Repair damaged ships" href="shipyard/repair"><img src="<?php echo base_url()?>assets/images/icons/shipyard_repair.png" alt="Repair" width="32" height="32">Repair</a>
@@ -69,7 +69,7 @@
 
 <p>Buy ships by clicking the images, see their specifications below...</p>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxJSON largepic" href="<?php echo base_url('shipyard/buy_ship/brig')?>" rel="Do you really want to buy this brig?">
 		<img src="<?php echo base_url('assets/images/ships/brig.jpg')?>" title="A standard ship, affordable.">Brig<br>
 		<?php echo $prices['brig']['buy']?> dbl

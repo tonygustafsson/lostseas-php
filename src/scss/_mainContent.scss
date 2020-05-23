@@ -67,71 +67,6 @@ article img.header {
     filter: sepia(0.7);
 }
 
-article section.actions {
-    float: left;
-    clear: both;
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px 5%;
-    text-align: center;
-}
-
-article section.actions a {
-    display: inline-block;
-    text-align: center;
-    margin: 6px;
-    padding: 14px 0;
-    height: 2.8em;
-    width: 4.8em;
-    line-height: 0.4em;
-    background-color: #fff;
-    border: 1px $lightgrey solid;
-    font-family: $font-bridgnorth;
-    font-size: 1.2em;
-    color: #000;
-    text-decoration: none;
-}
-
-article section.actions a img {
-    display: block;
-    margin: 0.1em auto 0.5em auto;
-    clear: both;
-}
-
-article section.actions a.largepic {
-    padding: 0.5em 2em;
-    width: 136px;
-    height: auto;
-    line-height: 100%;
-}
-
-article section.actions a.nopic {
-    height: 26px;
-    width: 150px;
-    padding: 12px 0 0 0;
-}
-
-article section.actions a.positive,
-article section.actions button.positive {
-    border: 2px #3bb120 solid;
-}
-
-article section.actions a.negative,
-article section.actions button.negative {
-    border: 2px #c63636 solid;
-}
-
-article section.actions input[type='submit'],
-article section.actions button {
-    width: 100px;
-    height: 50px;
-}
-
-article section.actions a:hover,
-article section.actions button:hover {
-    background: $lightblue;
-}
-
 article ul {
     width: 80%;
     margin: 1em 10%;
@@ -157,14 +92,6 @@ article ul li.attack_bad {
     padding: 0em 1em 1em 1em;
     margin: 0 2em 1em 2em;
     border: 1px #c63636 solid;
-}
-
-p.actions {
-    text-align: center;
-}
-
-p.actions img {
-    margin-left: 0.5em;
 }
 
 .pagination a {

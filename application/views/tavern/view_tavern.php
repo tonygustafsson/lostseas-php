@@ -15,7 +15,7 @@
 	<?php echo $game['greeting']?>
 </p>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern"><img src="<?php echo base_url('assets/images/icons/tavern_buy.png')?>" alt="Buy" width="32" height="32">Buy</a>
 	<?php if ($game['event_sailors'] != 'banned'): ?>
 		<a id="actions_sailors" class="ajaxHTML" title="Talk to the sailors at the bar" href="<?php echo base_url('tavern/sailors')?>"><img src="<?php echo base_url('assets/images/icons/tavern_sailor.png')?>" alt="Sailors" width="32" height="32">Sailors</a>
@@ -30,7 +30,7 @@
 	the number of crew members.
 </p>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxJSON largepic" title="Buy dinners for you and your crew members" href="<?php echo base_url('tavern/buy_post/dinners')?>">
 		<img src="<?php echo base_url('assets/images/icons/tavern_dinner.jpg')?>" title="Increases your crew members health by +25 and their mood by +3">
 		Dinners<br><?php echo floor($prices['tavern_dinners']['buy'] * ($game['crew_members'] + 1))?> dbl

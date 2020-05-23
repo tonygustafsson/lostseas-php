@@ -11,7 +11,7 @@
 	<img src="<?php echo base_url('assets/images/places/governor_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Talk to the governor" href="<?php echo base_url('cityhall/governor')?>"><img src="<?php echo base_url('assets/images/icons/cityhall_governor.png')?>" alt="Governor" width="32" height="32">Governor</a>
 	<?php if ($this->user['game']['event_work'] != 'banned'): ?>
 		<a class="ajaxHTML" id="actions_work" title="Work to get some money" href="<?php echo base_url('cityhall/work')?>"><img src="<?php echo base_url('assets/images/icons/cityhall_work.png')?>" alt="Work" width="32" height="32">Work</a>
@@ -25,7 +25,7 @@
 
 <?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === true): ?>
 	<section id="offer">
-		<section class="actions">
+		<section class="action-buttons">
 				<a href="cityhall/citizenship_accept" class="ajaxJSON nopic positive" title="Become a citizen!">Yes</a>
 				<a href="cityhall" class="nopic negative" title="Turn the governor down">No</a>
 		</section>

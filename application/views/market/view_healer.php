@@ -5,7 +5,7 @@
 	<img src="<?php echo base_url('assets/images/places/healer_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<?php if ($game['event_market_goods'] != 'banned'): ?>
 		<a class="ajaxHTML" title="Browse goods" id="action_goods" href="market/goods"><img src="<?php echo base_url()?>assets/images/icons/market_browse.png" alt="Goods" width="32" height="32">Goods</a>
 	<?php endif; ?>
@@ -26,7 +26,7 @@
 		Your crew seems kind of healthy too me... you don't need me!
 	</p>
 <?php else: ?>
-	<section id="offer" class="actions">
+	<section id="offer" class="action-buttons">
 		<p>
 			I can heal your <?php echo $injured_crew?> injured crew members. It will cost you <?php echo $cost?> dbl.
 		</p>

@@ -7,7 +7,7 @@
 	<img src="<?php echo base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<?php if ($game['event_market_goods'] != 'banned'): ?>
 		<a class="ajaxHTML" title="Browse goods" id="action_goods" href="market/goods"><img src="<?php echo base_url()?>assets/images/icons/market_browse.png" alt="Goods" width="32" height="32">Goods</a>
 	<?php endif; ?>
@@ -25,7 +25,7 @@
 			You find <?php echo $quantity?> cartons of <?php echo $item?> for <?php echo $total_cost?> dbl! (<?php echo $cost?> dbl/pcs) You don't have enough money though.
 		</p>
 	<?php else: ?>
-		<section id="offer" class="actions">
+		<section id="offer" class="action-buttons">
 			<p>
 				You find <?php echo $quantity?> cartons of <?php echo $item?> for <?php echo $total_cost?> dbl! (<?php echo $cost?> dbl/pcs) Do you wan't to buy?
 			</p>

@@ -11,7 +11,7 @@
 	<img src="<?php echo base_url('assets/images/places/bank_' . $game['nation'] . '.jpg')?>" class="header" alt="The bank">
 </header>
 
-<section class="actions">
+<section class="action-buttons">
 	<a class="ajaxHTML" title="Transfer money to and from your bank account" href="bank"><img src="<?php echo base_url('assets/images/icons/money_bank.png')?>" alt="Account" width="32" height="32">Account</a>
 	<a class="ajaxHTML" title="Take or pay back a loan" href="bank/loan"><img src="<?php echo base_url('assets/images/icons/money_bank_loan.png')?>" alt="Loans" width="32" height="32">Loans</a>
 </section>

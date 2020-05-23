@@ -16,7 +16,7 @@
 
 <?php if (isset($game['info'])): ?>
 	<div class="info"><p><?php echo $game['info']?></p></div>
-	<section class="actions">
+	<section class="action-buttons">
 		<a class="ajaxHTML nopic" href="<?php echo base_url($game['place'])?>">Okay!</a>
 	</section>
 <?php endif; ?>
@@ -27,7 +27,7 @@
 	<p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.
 	Porcelain, silk and spices will be traded away first.</p>
 
-	<section class="actions">
+	<section class="action-buttons">
 		<a class="nopic" href="javascript:tradeNecessities();">Take necessities</a>
 		<a class="nopic" href="javascript:tradeAll();">Take all</a><br>
 		<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/trade_cancel')?>">No thanks</a>

@@ -1,0 +1,62 @@
+.action-buttons {
+    float: left;
+    clear: both;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 5%;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        text-align: center;
+        margin: 6px;
+        padding: 14px 0;
+        height: 2.8em;
+        width: 4.8em;
+        line-height: 0.4em;
+        background-color: #fff;
+        border: 1px $lightgrey solid;
+        font-family: $font-bridgnorth;
+        font-size: 1.2em;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            color: #000;
+            background: $lightblue;
+        }
+
+        &.largepic {
+            padding: 0.5em 2em;
+            width: 136px;
+            height: auto;
+            line-height: 100%;
+        }
+
+        &.nopic {
+            height: 26px;
+            width: 150px;
+            padding: 12px 0 0 0;
+        }
+
+        input[type='submit'],
+        button {
+            width: 100px;
+            height: 50px;
+        }
+
+        &.positive {
+            border: 2px $green solid;
+        }
+
+        &.negative {
+            border: 2px $red solid;
+        }
+
+        img {
+            display: block;
+            margin: 0.1em auto 0.5em auto;
+            clear: both;
+        }
+    }
+}

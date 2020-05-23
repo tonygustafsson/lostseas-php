@@ -48,7 +48,7 @@
 
 <div id="msg"></div>
 
-<section class="actions">
+<section class="action-buttons">
 	<?php if (! $logged_in): ?>
 		<a class="ajaxHTML" title="Presentation about the game" href="<?php echo base_url('about/presentation')?>"><img src="<?php echo base_url('assets/images/icons/presentation.png')?>" alt="Start" width="32" height="32">Start</a>
 	<?php endif; ?>

@@ -39,7 +39,7 @@
 		<?php endif; ?>
 	</ul>
 
-	<section class="actions">
+	<section class="action-buttons">
 		<?php if ($food > 0 || $water > 0 || $porcelain > 0 || $spices > 0 || $silk > 0 || $medicine > 0 || $tobacco > 0 || $rum > 0 || $new_crew > 0): ?>
 			<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/ship_won_cancel')?>">No thanks</a>
 			<a class="nopic" href="javascript:lootTakeAll();">Take All</a>
