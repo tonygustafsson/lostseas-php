@@ -1,14 +1,9 @@
 .action-buttons {
-    float: left;
-    clear: both;
-    width: 90%;
-    margin: 0 auto;
     padding: 20px 5%;
     text-align: center;
 
-    a {
+    & > a {
         display: inline-block;
-        text-align: center;
         margin: 6px;
         padding: 14px 0;
         height: 2.8em;
@@ -56,7 +51,6 @@
         img {
             display: block;
             margin: 0.1em auto 0.5em auto;
-            clear: both;
         }
     }
 }
