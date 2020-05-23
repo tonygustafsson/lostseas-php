@@ -73,7 +73,7 @@
 			</section>
 		<?php endif; ?>
 
-		<div class="header">
+		<div class="header-panel">
 			<header>
 				<h1><a title="Go back to start page" href="<?php echo base_url()?>"><?php echo $this->config->item('site_name')?></a></h1>
 			</header>
@@ -83,15 +83,15 @@
 					<img src="<?php echo base_url('assets/images/icons/game.png')?>" alt="Game menu">
 				</a>
 				
-				<a id="action_panel_button" href="#">
+				<a id="action_panel_button" class="action-panel-button" href="#">
 					<img src="<?php echo base_url('assets/images/icons/action.png')?>" alt="Action menu">
 				</a>
 				
-				<a id="inventory_panel_button" href="#">
+				<a id="inventory_panel_button" class="inventory-panel-button" href="#">
 					<img src="<?php echo base_url('assets/images/icons/food.png')?>" alt="Inventory menu">
 				</a>
 			<?php else: ?>
-				<a id="inventory_panel_button" href="#">
+				<a id="inventory_panel_button" class="inventory-panel-button" href="#">
 					<img src="<?php echo base_url('assets/images/icons/login.png')?>" alt="Login menu">
 				</a>
 			<?php endif; ?>
@@ -200,4 +200,4 @@
 			</aside>
 		<?php endif; ?>
 
-		<article id="main" class="content">
+		<article id="main" class="content-panel">

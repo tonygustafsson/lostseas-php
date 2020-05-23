@@ -3,7 +3,7 @@
 		<?php if (isset($user)): ?>
 			<?php /* For logged in users! */ ?>
 
-			<aside id="inventory_panel" class="inventory">
+			<aside id="inventory_panel" class="inventory-panel">
 				<h3>Inventory</h3>
 				
 				<?php if (! isset($no_menu)): ?>
@@ -221,7 +221,7 @@
 				</p>
 			</aside>
 			
-			<aside id="log_panel" class="inventory">
+			<aside id="log_panel" class="inventory-panel">
 				<h3>What's going on?</h3>
 				
 				<?php if (isset($log_entries)): ?>

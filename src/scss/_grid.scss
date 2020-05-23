@@ -21,7 +21,7 @@
     }
 }
 
-.header {
+.header-panel {
     grid-area: header;
 }
 
@@ -29,10 +29,10 @@
     grid-area: actions;
 }
 
-.inventory {
+.inventory-panel {
     grid-area: inventory;
 }
 
-.content {
+.content-panel {
     grid-area: content;
 }

@@ -3,11 +3,7 @@
 @import 'variables';
 @import 'base';
 @import 'grid';
-@import 'header';
 @import 'chat';
-@import 'actionPanel';
-@import 'inventoryPanel';
-@import 'logPanel';
 @import 'notifications';
 @import 'jqueryOverrides';
 @import 'mainContent';
@@ -17,4 +13,13 @@
 @import 'mobile';
 @import 'footer';
 @import 'registerForm';
-@import 'actionButtons';
+
+// Panels
+@import 'panels/headerPanel';
+@import 'panels/actionPanel';
+@import 'panels/inventoryPanel';
+@import 'panels/logPanel';
+@import 'panels/contentPanel';
+
+// Components
+@import 'components/actionButtons';

@@ -40,16 +40,6 @@ body.loading:after {
     content: 'Loading...';
 }
 
-article {
-    display: block;
-    border: 1px $lightgrey solid;
-    background: $whiteglass;
-    margin-bottom: 1em;
-    min-height: 100vh;
-    height: auto;
-    box-sizing: border-box;
-}
-
 strong {
     font-size: 120%;
     font-weight: bold;
