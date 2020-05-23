@@ -252,10 +252,7 @@ class Tavern extends Main
     public function gamble()
     {
         $this->user['game']['next_bet'] = floor($this->user['game']['doubloons'] * 0.1);
-            
-        $data['runJS'] = 'window.runTavern()';
-        $this->user['json'] = json_encode($data);
-        
+
         $this->load->view_ajax('tavern/view_gamble', $this->user);
     }
 
@@ -300,7 +297,8 @@ class Tavern extends Main
             
             $new_money = floor($prev_money - $bet);
             $new_money = (isset($won)) ? $new_money + $won : $new_money;
-            $next_bet = ($new_money > 0) ? round(($bet / $new_money) * 100) : 0;
+            $bet_percentage = ($new_money > 0) ? $bet / $prev_money : 0;
+            $next_bet = floor($new_money * $bet_percentage);
 
             $updates['doubloons']['value'] = $new_money;
             $result = $this->Game->update($updates);
@@ -310,8 +308,8 @@ class Tavern extends Main
             }
             
             $data['changeElements']['current_money']['val'] = $new_money;
-            
-            $data['runJS'] = 'tavernGambleSet(' . $next_bet . ');';
+            $data['changeElements']['last_bet']['value'] = $next_bet;
+            $data['event'] = 'tavern-gamble-post';
 
             $this->Log->create($log_input);
         }

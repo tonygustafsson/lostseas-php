@@ -37,6 +37,11 @@ const ajaxJsonRequest = (event) => {
         success: function (data) {
             gameManipulateDOM(data);
 
+            // Send JS event
+            if (data.event) {
+                window.dispatchEvent(new Event(data.event));
+            }
+
             //Google analytics, virtual pageview
             var gaURL = document.createElement('a');
             gaURL.href = url;

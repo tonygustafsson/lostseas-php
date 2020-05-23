@@ -1,5 +1,28 @@
 /* NoUiSlider overrides */
 .noUi {
+    &-horizontal {
+        .noUi-handle {
+            width: 24px;
+            height: 24px;
+            top: -4px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:before {
+                top: 4px;
+                left: 7px;
+                height: 14px;
+            }
+
+            &:after {
+                top: 4px;
+                left: 14px;
+                height: 14px;
+            }
+        }
+    }
     &-vertical {
         .noUi-handle {
             width: 24px;
@@ -33,7 +56,7 @@
 
     &-container {
         width: 90%;
-        margin: 0 auto;
+        margin: 20px auto;
         text-align: center;
     }
 

@@ -6,7 +6,7 @@
 	</script>
 <?php endif; ?>
 
-<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>" place="<?php echo $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/gamble_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
@@ -31,21 +31,25 @@
 	
 	<fieldset>
 		<legend><img src="<?php echo base_url()?>assets/images/icons/tavern_gamble.png" alt="Gamble" width="32" height="32"> Gamble with dices</legend>
-		<div id="gamble-slider" style="width: 90%; margin: 20px;"></div>
-		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Bet</td><td><span id="bet_presenter"><?php echo $game['next_bet']?></span> dbl</td></tr>
-			<tr><td>Doubloons left if you lose</td><td><span class="money_left"><?php echo $game['doubloons'] - $game['next_bet']?></span> dbl</td></tr>
-			<input type="hidden" id="bet" name="bet" value="<?php echo $game['next_bet']?>">
-		</table>
-	
+		
+		<div class="slider-container">
+			<div id="gamble-slider"></div>
+			
+			<table>
+				<tr><td>Bet</td><td><span id="bet_presenter"><?php echo $game['next_bet']?></span> dbl</td></tr>
+				<tr><td>Doubloons left if you lose</td><td><span class="money_left"><?php echo $game['doubloons'] - $game['next_bet']?></span> dbl</td></tr>
+				<input type="hidden" id="bet" name="bet" value="<?php echo $game['next_bet']?>">
+			</table>
+		</div>
 	</fieldset>
 	
 	<p style="text-align: right;">
-		<button type="button" onclick="return tavernGambleSet(10);">10%</button>
-		<button type="button" onclick="return tavernGambleSet(25);">25%</button>
-		<button type="button" onclick="return tavernGambleSet(50);">50%</button>
-		<button type="button" onclick="return tavernGambleSet(75);">75%</button>
+		<button type="button" class="js-tavern-bet-set" data-value="10">10%</button>
+		<button type="button" class="js-tavern-bet-set" data-value="25">25%</button>
+		<button type="button" class="js-tavern-bet-set" data-value="50">50%</button>
+		<button type="button" class="js-tavern-bet-set" data-value="75">75%</button>
+		<button type="button" class="js-tavern-bet-set" data-value="100">100%</button>
+
 		<input type="submit" value="Gamble!">
 	</p>
-
 </form>

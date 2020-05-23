@@ -1,103 +1,105 @@
-const runTavern = () => {
-    $('.actions img').tooltip();
+import * as noUiSlider from 'nouislider';
 
-    function tavernGambleSlider(sliderId, inputId, standard, minimum, maximum) {
-        $(sliderId).slider({
-            range: 'min',
-            animate: 'fast',
-            value: standard,
-            min: minimum,
-            max: maximum,
-            slide: function (event, ui) {
-                $(inputId).val(ui.value);
-                $(inputId + '_presenter').html(ui.value);
+$('.actions img').tooltip();
 
-                var currentMoney = parseInt($('#current_money').val(), 10);
-                $('span.money_left').html(currentMoney - ui.value);
+const createSlider = (sliderId, inputId, presenterId, start, minimum, maximum) => {
+    const sliderEl = document.getElementById(sliderId);
+    const input = document.getElementById(inputId);
+    const presenter = document.getElementById(presenterId);
+
+    if (!sliderEl) {
+        return;
+    }
+
+    const slider = noUiSlider
+        .create(sliderEl, {
+            start: start,
+            connect: 'lower',
+            direction: 'ltr',
+            step: 1,
+            orientation: 'horizontal',
+            range: {
+                min: minimum,
+                max: maximum
             }
+        })
+        .on('update', (value) => {
+            onSliderChange(inputId, parseInt(value, 10));
         });
-    }
-
-    function createSliders() {
-        if ($('#gamble-slider').length) {
-            var currentMoney = parseInt($('#current_money').val(), 10);
-            var lastBet = parseInt($('#last_bet').val(), 10);
-            tavernGambleSlider('#gamble-slider', '#bet', lastBet, 0, currentMoney);
-        }
-    }
-
-    function tavernChangeSlider(inputId, sliderValue) {
-        $(inputId).val(sliderValue);
-        $(inputId + '_presenter').html(sliderValue);
-
-        var numberOfMen = parseInt($('#number_of_men').val(), 10);
-        var currentMoney = parseInt($('#current_money').val(), 10);
-
-        var crewLowestMood = parseInt($('#crew_lowest_mood').val(), 10);
-        var crewLowestHealth = parseInt($('#crew_lowest_health').val(), 10);
-
-        var dinnerQuantity = parseInt($('#dinner_quantity').val(), 10);
-        var wineQuantity = parseInt($('#wine_quantity').val(), 10);
-        var rumQuantity = parseInt($('#rum_quantity').val(), 10);
-
-        var totalCost = (dinnerQuantity * 10 + wineQuantity * 15 + rumQuantity * 20) * numberOfMen;
-        var newMood = dinnerQuantity + wineQuantity * 2 + rumQuantity * 3;
-        var newHealth = dinnerQuantity * 10;
-
-        var totalMood = crewLowestMood + newMood;
-        if (totalMood > 40) {
-            totalMood = 40;
-        }
-
-        var totalHealth = crewLowestHealth + newHealth;
-        if (totalHealth > 100) {
-            totalHealth = 100;
-        }
-
-        $('span.money_left').html(currentMoney - totalCost);
-        $('span.crew_new_mood').html(totalMood);
-        $('span.crew_new_health').html(totalHealth);
-
-        if (currentMoney - totalCost < 0) {
-            $('span.money_left').css('color', '#d52525');
-        } else {
-            $('span.money_left').css('color', '#000');
-        }
-    }
-
-    function tavernReset() {
-        if ($('#dinner-slider').slider('option', 'value', 0)) {
-            tavernChangeSlider('#dinner_quantity', 0);
-        }
-
-        if ($('#wine-slider').slider('option', 'value', 0)) {
-            tavernChangeSlider('#wine_quantity', 0);
-        }
-
-        if ($('#rum-slider').slider('option', 'value', 0)) {
-            tavernChangeSlider('#rum_quantity', 0);
-        }
-
-        return false;
-    }
-
-    setTimeout(createSliders, 100);
 };
 
-const tavernGambleSet = (percent) => {
-    var currentMoney = parseInt($('#current_money').val(), 10);
-    var theBet = Math.floor(currentMoney * (percent / 100));
+const createSliders = () => {
+    const currentMoneyEl = document.getElementById('current_money');
+    const lastBetEl = document.getElementById('last_bet');
+    const currentMoney = parseInt(currentMoneyEl.value, 10);
+    const lastBet = parseInt(lastBetEl.value, 10);
 
-    $('#gamble-slider').slider('option', 'max', currentMoney);
+    createSlider('gamble-slider', 'bet', 'bet_presenter', lastBet, 0, currentMoney);
+};
 
-    if ($('#gamble-slider').slider('option', 'value', theBet)) {
-        $('#bet_presenter').html(theBet);
-        $('#bet').val(theBet);
-        $('span.money_left').html(currentMoney - theBet);
+const onSliderChange = (inputId, value) => {
+    const inputEl = document.getElementById(inputId);
+    const presenterEl = document.getElementById(inputId + '_presenter');
+    const currentMoneyEl = document.getElementById('current_money');
+    const moneyLeftEl = document.querySelector('.money_left');
+
+    inputEl.value = value;
+    presenterEl.innerHTML = value;
+
+    const currentMoney = parseInt(currentMoneyEl.value, 10);
+    moneyLeftEl.innerHTML = currentMoney - value;
+};
+
+const tavernReset = () => {
+    if ($('#dinner-slider').slider('option', 'value', 0)) {
+        tavernChangeSlider('#dinner_quantity', 0);
+    }
+
+    if ($('#wine-slider').slider('option', 'value', 0)) {
+        tavernChangeSlider('#wine_quantity', 0);
+    }
+
+    if ($('#rum-slider').slider('option', 'value', 0)) {
+        tavernChangeSlider('#rum_quantity', 0);
     }
 
     return false;
 };
 
-window.runTavern = runTavern;
-window.tavernGambleSet = tavernGambleSet;
+const gambleBetSet = (e) => {
+    const percent = parseInt(e.target.dataset.value, 10);
+    const percentMoneyEl = document.getElementById('current_money');
+    const currentMoney = parseInt(percentMoneyEl.value, 10);
+    const gambleSliderEl = document.getElementById('gamble-slider');
+    const gambleSlider = gambleSliderEl.noUiSlider;
+    const bet = Math.floor(currentMoney * (percent / 100));
+
+    gambleSlider.updateOptions({
+        range: {
+            min: 0,
+            max: currentMoney
+        }
+    });
+
+    gambleSlider.set(bet);
+};
+
+window.addEventListener('page_tavern', (e) => {
+    const gambleBetSetTriggers = document.querySelectorAll('.js-tavern-bet-set');
+
+    Array.from(gambleBetSetTriggers).forEach((setter) => {
+        setter.addEventListener('click', gambleBetSet);
+    });
+
+    createSliders();
+});
+
+window.addEventListener('tavern-gamble-post', (e) => {
+    // Destroy old slider
+    const gambleSliderEl = document.getElementById('gamble-slider');
+    const gambleSlider = gambleSliderEl.noUiSlider;
+    gambleSlider.destroy();
+
+    // Recreate the slider
+    createSliders();
+});
