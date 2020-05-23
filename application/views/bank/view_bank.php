@@ -32,21 +32,24 @@
 <form method="post" class="ajaxJSON" id="transfer_form" action="<?php echo base_url('bank/account_post')?>">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">
 	<input type="hidden" name="current_money_bank" id="current_money_bank" value="<?php echo $game['bank_account']?>">
-	
+	<input type="hidden" name="transfer" id="transfer" value="0">
+
 	<fieldset>
 		<legend><img src="<?php echo base_url('assets/images/icons/bank.png')?>" alt="Bank Account" width="32" height="32"> Bank account</legend>
-		<div id="account-slider" style="width: 90%; margin: 20px;"></div>
+		
+		<div class="slider-container">
+			<div id="account-slider"></div>
 
-		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Transfer</td><td><span id="transfer_presenter">0</span> dbl</td></tr>
-			<tr><td>Doubloons (Cash)</td><td><span class="money_after"><?php echo $game['doubloons']?></span> dbl</td></tr>
-			<tr><td>Account</td><td><span class="account_after"><?php echo $game['bank_account']?></span> dbl</td></tr>
-		</table>
-		<input type="hidden" name="transfer" id="transfer" value="0">
+			<table>
+				<tr><td>Transfer</td><td><span id="transfer_presenter">0</span> dbl</td></tr>
+				<tr><td>Doubloons (Cash)</td><td><span class="money_after"><?php echo $game['doubloons']?></span> dbl</td></tr>
+				<tr><td>Account</td><td><span class="account_after"><?php echo $game['bank_account']?></span> dbl</td></tr>
+			</table>
+		</div>
 	</fieldset>
 
 	<p style="text-align: right;">
-		<button type="button" onclick="return bankAccountReset()">Reset</button>
+		<button type="button" class="js-bank-account-reset">Reset</button>
 		<input type="submit" value="Transfer">
 	</p>
 </form>

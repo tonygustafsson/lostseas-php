@@ -22,9 +22,6 @@ class Bank extends Main
 
     public function index()
     {
-        $data['runJS'] = 'window.runBank()';
-        $this->user['json'] = json_encode($data);
-
         $this->load->view_ajax('bank/view_bank', $this->user);
     }
     
@@ -39,6 +36,9 @@ class Bank extends Main
         } elseif ($transfer == 0) {
             $data['info'] = 'You didn\'t transfer any money!';
         } else {
+            $new_bank_money = 0;
+            $new_money = 0;
+
             if ($transfer > 0) {
                 //Transfer into bank account
                 $updates['doubloons']['sub'] = true;
@@ -46,10 +46,11 @@ class Bank extends Main
                 $updates['bank_account']['add'] = true;
                 $updates['bank_account']['value'] = floor($transfer * 0.95);
                 
+                $new_bank_money = $this->user['game']['bank_account'] + floor($transfer * 0.95);
+                $new_money = $this->user['game']['doubloons'] - floor($transfer);
+
                 $data['success'] = 'You transfered ' . $transfer . ' dbl to your bank account. ' . floor($transfer * 0.05) . ' dbl were taken as tax.';
                 $log_input['entry'] = 'transfered ' . $transfer . ' dbl to the bank account.';
-                
-                $data['runJS'] = '$("#account-slider").slider("option", "min", ' . round(0 - floor($this->user['game']['bank_account'] + floor($transfer * 0.95))) . '); $("#account-slider").slider("option", "max", ' . floor($this->user['game']['doubloons'] - $transfer) . ');';
             } else {
                 //Transfer from bank account
                 $transfer = abs($transfer);
@@ -59,16 +60,21 @@ class Bank extends Main
                 $updates['bank_account']['sub'] = true;
                 $updates['bank_account']['value'] = $transfer;
                 
+                $new_bank_money = $this->user['game']['bank_account'] - abs($transfer);
+                $new_money = $this->user['game']['doubloons'] + abs($transfer);
+
                 $data['success'] = 'You transfered ' . $transfer . ' dbl from your bank account.';
                 $log_input['entry'] = 'transfered ' . abs($transfer) . ' dbl from the bank account.';
-                
-                $data['runJS'] = '$("#account-slider").slider("option", "min", ' . round(0 - floor($this->user['game']['bank_account'] - $transfer)) . '); $("#account-slider").slider("option", "max", ' . floor($this->user['game']['doubloons'] + $transfer) . ');';
             }
             
             $result = $this->Game->update($updates);
             
             $data['changeElements'] = $result['changeElements'];
-            
+            $data['changeElements']['current_money']['value'] = $new_money;
+            $data['changeElements']['current_money_bank']['value'] = $new_bank_money;
+
+            $data['event'] = 'bank-account-post';
+
             if ($this->user['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'coins';
             }
@@ -81,9 +87,6 @@ class Bank extends Main
 
     public function loan()
     {
-        $data['runJS'] = 'window.runBank()';
-        $this->user['json'] = json_encode($data);
-        
         $this->load->view_ajax('bank/view_loan', $this->user);
     }
 
