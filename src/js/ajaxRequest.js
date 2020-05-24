@@ -48,6 +48,7 @@ const ajaxJsonRequest = (event) => {
 
             // Send JS event
             if (data.event) {
+                console.log('Event: ' + data.event);
                 window.dispatchEvent(new Event(data.event));
             }
 
