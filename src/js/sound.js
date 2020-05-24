@@ -1,7 +1,9 @@
-var appdir = $('base').attr('href');
-var gameMusic = new Audio();
+import * as noUiSlider from 'nouislider';
 
-function changeSong() {
+const appdir = $('base').attr('href');
+const gameMusic = new Audio();
+
+const changeSong = () => {
     var newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
 
     $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
@@ -25,9 +27,9 @@ function changeSong() {
     gameMusic.volume = musicVolume / 100;
     gameMusic.load();
     gameMusic.addEventListener('canplay', gameMusic.play(), false);
-}
+};
 
-function musicControl() {
+const musicControl = () => {
     if (gameMusic.paused || gameMusic.src == '') {
         $.ajax({
             url: appdir + 'account/music/1',
@@ -65,7 +67,24 @@ function musicControl() {
             }
         });
     }
-}
+};
+
+const onSliderChange = (value) => {
+    const volume = value;
+
+    $.ajax({
+        url: appdir + 'account/music_volume/' + volume,
+        success: function () {
+            gameMusic.volume = volume / 100;
+
+            if (typeof ga == typeof Function) {
+                ga('send', 'event', 'MusicVolume', volume);
+            }
+
+            $('#music_control').data('musicvolume', volume);
+        }
+    });
+};
 
 gameMusic.addEventListener('ended', changeSong, false);
 
@@ -107,31 +126,24 @@ $(document).ready(function () {
         return false;
     });
 
-    var musicVolue = $('#music_control').data('musicvolume');
+    const sliderEl = document.getElementById('music_volume_slider');
+    const musicVolue = $('#music_control').data('musicvolume');
 
-    $('#music_volume_slider').slider({
-        value: musicVolue,
-        step: 1,
-        min: 0,
-        max: 100,
-        animate: 'fast',
-        change: function () {
-            var volume = $('#music_volume_slider').slider('value');
-
-            $.ajax({
-                url: appdir + 'account/music_volume/' + volume,
-                success: function () {
-                    gameMusic.volume = volume / 100;
-
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'MusicVolume', volume);
-                    }
-
-                    $('#music_control').data('musicvolume', volume);
-                }
-            });
-        }
-    });
+    const slider = noUiSlider
+        .create(sliderEl, {
+            start: musicVolue,
+            connect: 'lower',
+            direction: 'ltr',
+            step: 1,
+            orientation: 'horizontal',
+            range: {
+                min: 0,
+                max: 100
+            }
+        })
+        .on('set', (value) => {
+            onSliderChange(parseInt(value, 10));
+        });
 });
 
 window.musicControl = musicControl;

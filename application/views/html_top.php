@@ -133,7 +133,9 @@
 						<a title="Next song, please" style="padding-left: 0.5em;" href="javascript:changeSong();"><img src="<?php echo base_url('assets/images/icons/music_next.png')?>" alt="Change track"></a>
 						
 						<p>Volume:</p>
-						<div id="music_volume_slider"></div>
+						<div class="slider-container">
+							<div id="music_volume_slider" class="slider"></div>
+						</div>
 						
 						<h3 style="margin: 0.5em 0;">Sound effects</h3>
 						<p id="sound_effects">
