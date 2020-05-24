@@ -129,6 +129,10 @@ $(document).ready(function () {
     const sliderEl = document.getElementById('music_volume_slider');
     const musicVolue = $('#music_control').data('musicvolume');
 
+    if (!sliderEl) {
+        return;
+    }
+
     const slider = noUiSlider
         .create(sliderEl, {
             start: musicVolue,
