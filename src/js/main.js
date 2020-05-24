@@ -13,6 +13,7 @@ import './jquery.flot';
 import './misc';
 import './ocean';
 import './oceanLoot';
+import './oceanTrade';
 import './shipyard';
 import './shop';
 import './tavern';
