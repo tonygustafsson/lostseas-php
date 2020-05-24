@@ -29,24 +29,24 @@ const onSliderChange = (inputId, sliderValue) => {
     for (let x = 0; x < products.length; x++) {
         let product = products[x];
 
-        let newQuantityValue = $('#' + product + '_new_quantity').val();
-        let newQuantity = parseInt(newQuantityValue, 10);
+        let newQuantityEl = document.getElementById(product + '_new_quantity');
+        let newQuantity = parseInt(newQuantityEl.value, 10);
 
-        let currentQuantityValue = $('#' + product + '_quantity').val();
-        let currentQuantity = parseInt(currentQuantityValue, 10);
+        let currentQuantityEl = document.getElementById(product + '_quantity');
+        let currentQuantity = parseInt(currentQuantityEl.value, 10);
 
         let productPrice = 0;
 
         if (newQuantity > currentQuantity) {
             // User want's to buy
-            const productPriceValue = $('#' + product + '_buy').val();
-            productPrice = parseInt(productPriceValue, 10);
+            let productPriceEl = document.getElementById(product + '_buy');
+            productPrice = parseInt(productPriceEl.value, 10);
 
             totalCost += productPrice * (newQuantity - currentQuantity);
         } else if (currentQuantity > newQuantity) {
             // User want's to sell
-            const productPriceValue = $('#' + product + '_sell').val();
-            const productPrice = parseInt(productPriceValue, 10);
+            let productPriceEl = document.getElementById(product + '_sell');
+            productPrice = parseInt(productPriceEl.value, 10);
 
             totalCost -= productPrice * (currentQuantity - newQuantity);
         }
@@ -104,7 +104,8 @@ const createSlider = (sliderId, inputId, start, minimum, maximum) => {
 const createSliders = () => {
     for (let x = 0; x < products.length; x++) {
         let product = products[x];
-        let amount = parseInt($('#' + product + '_quantity').val(), 10);
+        let amountEl = document.getElementById(product + '_quantity');
+        let amount = parseInt(amountEl.value, 10);
         let maxSlider = amount > 100 ? Math.floor(amount * 2) : Math.floor(amount + 100);
 
         createSlider(product + '-slider', product + '_new_quantity', amount, 0, maxSlider);

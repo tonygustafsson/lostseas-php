@@ -22,7 +22,7 @@
 	
 	<div class="slider-container">
 		<div class="slider-wrapper">
-			<div id="food-slider" class="slider"></div>
+			<div id="food-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/market_browse.png')?>" alt="Food" width="32" height="32" title="Needed for traveling at sea. Buy: <?php echo $prices['food']['buy']?> dbl, Sell: <?php echo $prices['food']['sell']?> dbl.">
 			<span>Food</span><br>
 			<span id="food_new_quantity_presenter"><?php echo $game['food']?></span>
@@ -31,7 +31,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="water-slider" class="slider"></div>
+			<div id="water-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/water.png')?>" alt="Water" width="32" height="32" title="Needed for traveling at sea. Buy: <?php echo $prices['water']['buy']?> dbl, Sell: <?php echo $prices['water']['sell']?> dbl.">
 			<span>Water</span><br>
 			<span id="water_new_quantity_presenter"><?php echo $game['water']?></span>
@@ -40,7 +40,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="porcelain-slider" class="slider"></div>
+			<div id="porcelain-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/porcelain.png')?>" alt="Porcelain" width="32" height="32" title="For trading. Buy: <?php echo $prices['porcelain']['buy']?> dbl, Sell: <?php echo $prices['porcelain']['sell']?> dbl.">
 			<span>Porcelain</span><br>
 			<span id="porcelain_new_quantity_presenter"><?php echo $game['porcelain']?></span>
@@ -49,7 +49,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="spices-slider" class="slider"></div>
+			<div id="spices-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/spices.png')?>" alt="Spices" width="32" height="32" title="For trading. Buy: <?php echo $prices['spices']['buy']?> dbl, Sell: <?php echo $prices['spices']['sell']?> dbl.">
 			<span>Spices</span><br>
 			<span id="spices_new_quantity_presenter"><?php echo $game['spices']?></span>
@@ -58,7 +58,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="silk-slider" class="slider"></div>
+			<div id="silk-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/silk.png')?>" alt="Silk" width="32" height="32" title="For trading. Buy: <?php echo $prices['silk']['buy']?> dbl, Sell: <?php echo $prices['silk']['sell']?> dbl.">
 			<span>Silk</span><br>
 			<span id="silk_new_quantity_presenter"><?php echo $game['silk']?></span>
@@ -67,7 +67,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="medicine-slider" class="slider"></div>
+			<div id="medicine-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/medicine.png')?>" alt="Medicine" width="32" height="32" title="Can heal individual crew members. Buy: <?php echo $prices['medicine']['buy']?> dbl, Sell: <?php echo $prices['medicine']['sell']?> dbl.">
 			<span>Medicine</span><br>
 			<span id="medicine_new_quantity_presenter"><?php echo $game['medicine']?></span>
@@ -76,7 +76,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="tobacco-slider" class="slider"></div>
+			<div id="tobacco-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/tobacco.png')?>" alt="Tobacco" width="32" height="32" title="Can increase your crew members mood. Buy: <?php echo $prices['tobacco']['buy']?> dbl, Sell: <?php echo $prices['tobacco']['sell']?> dbl.">
 			<span>Tobacco</span><br>
 			<span id="tobacco_new_quantity_presenter"><?php echo $game['tobacco']?></span>
@@ -85,7 +85,7 @@
 		</div>
 		
 		<div class="slider-wrapper">
-			<div id="rum-slider" class="slider"></div>
+			<div id="rum-slider" class="slider slider-vertical"></div>
 			<img src="<?php echo base_url('assets/images/icons/rum.png')?>" alt="Rum" width="32" height="32" title="Can increase your crew members mood. Buy: <?php echo $prices['rum']['buy']?> dbl, Sell: <?php echo $prices['rum']['sell']?> dbl.">
 			<span>Rum</span><br>
 			<span id="rum_new_quantity_presenter"><?php echo $game['rum']?></span>

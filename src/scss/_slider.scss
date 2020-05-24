@@ -51,8 +51,10 @@
 }
 
 .slider {
-    height: 240px;
-    margin: 24px auto;
+    &-vertical {
+        height: 240px;
+        margin: 24px auto;
+    }
 
     &-container {
         width: 90%;

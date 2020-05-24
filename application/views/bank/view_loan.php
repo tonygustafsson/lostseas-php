@@ -31,7 +31,7 @@
 		<legend><img src="<?php echo base_url('assets/images/icons/bank.png')?>" alt="Bank Loan" width="32" height="32"> Bank loan</legend>
 		
 		<div class="slider-container">
-			<div id="loan-slider"></div>
+			<div id="loan-slider" class="slider"></div>
 			
 			<table>
 				<tr><td>Transfer</td><td><span id="transfer_presenter">0</span> dbl</td></tr>

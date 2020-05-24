@@ -33,7 +33,7 @@
 		<legend><img src="<?php echo base_url()?>assets/images/icons/tavern_gamble.png" alt="Gamble" width="32" height="32"> Gamble with dices</legend>
 		
 		<div class="slider-container">
-			<div id="gamble-slider"></div>
+			<div id="gamble-slider" class="slider"></div>
 			
 			<table>
 				<tr><td>Bet</td><td><span id="bet_presenter"><?php echo $game['next_bet']?></span> dbl</td></tr>
