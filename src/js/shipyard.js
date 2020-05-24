@@ -1,89 +1,112 @@
-'use strict';
+import * as noUiSlider from 'nouislider';
 
-var appdir = $('base').attr('href');
-var products = ['cannons', 'rafts'];
+const products = ['cannons', 'rafts'];
 
 $('.actions img').tooltip();
 
-function shipyardChangeSlider(inputId, sliderValue) {
-    $(inputId).val(sliderValue);
-    $(inputId + '_presenter').html(sliderValue);
+const onSliderChange = (inputId, sliderValue) => {
+    const input = document.getElementById(inputId);
+    const presenter = document.getElementById(inputId + '_presenter');
 
-    var totalCost = 0;
-    var currentMoney = $('#current_money').val();
-    var x, product, newQuantity, currentQuantity, productPrice;
+    const currentMoneyEl = document.getElementById('current_money');
+    const currentMoney = parseInt(currentMoneyEl.value, 10);
 
-    for (x = 0; x < products.length; x = x + 1) {
-        product = products[x];
+    input.value = sliderValue;
+    presenter.innerHTML = sliderValue;
 
-        newQuantity = $('#' + product + '_new_quantity').val();
-        newQuantity = parseInt(newQuantity, 10);
+    let totalCost = 0;
 
-        currentQuantity = $('#' + product + '_quantity').val();
-        currentQuantity = parseInt(currentQuantity, 10);
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+
+        let newQuantityEl = document.getElementById(product + '_new_quantity');
+        let newQuantity = parseInt(newQuantityEl.value, 10);
+
+        let currentQuantityEl = document.getElementById(product + '_quantity');
+        let currentQuantity = parseInt(currentQuantityEl.value, 10);
+
+        let productPrice = 0;
 
         if (newQuantity > currentQuantity) {
-            //User want's to buy
-            productPrice = $('#' + product + '_buy').val();
-            productPrice = parseInt(productPrice, 10);
+            // User want's to buy
+            let productPriceEl = document.getElementById(product + '_buy');
+            productPrice = parseInt(productPriceEl.value, 10);
 
             totalCost += productPrice * (newQuantity - currentQuantity);
-        } else {
-            //User want's to sell
-            productPrice = $('#' + product + '_sell').val();
-            productPrice = parseInt(productPrice, 10);
+        } else if (currentQuantity > newQuantity) {
+            // User want's to sell
+            let productPriceEl = document.getElementById(product + '_sell');
+            productPrice = parseInt(productPriceEl.value, 10);
 
             totalCost -= productPrice * (currentQuantity - newQuantity);
         }
     }
 
-    $('span.money_left').html(currentMoney - totalCost);
+    const moneyLeftEls = document.querySelectorAll('.money_left');
 
-    if (currentMoney - totalCost < 0) {
-        $('span.money_left').css('color', '#d52525');
-    } else {
-        $('span.money_left').css('color', '#000');
-    }
-}
+    Array.from(moneyLeftEls).forEach((el) => {
+        el.innerHTML = currentMoney - totalCost;
 
-function shipyardCannonsSlider(sliderId, inputId, standard, minimum, maximum) {
-    $(sliderId).slider({
-        range: 'min',
-        animate: 'fast',
-        value: standard,
-        min: minimum,
-        max: maximum,
-        slide: function (event, ui) {
-            shipyardChangeSlider(inputId, ui.value);
+        if (currentMoney - totalCost < 0) {
+            el.style.color = '#d52525';
+        } else {
+            el.style.color = '#000';
         }
     });
-}
+};
 
-function createSliders() {
-    if ($('#rafts-slider').length) {
-        var x, product, amount;
+const createSlider = (sliderId, inputId, start, minimum, maximum) => {
+    const sliderEl = document.getElementById(sliderId);
+    const input = document.getElementById(inputId);
 
-        for (x = 0; x < products.length; x = x + 1) {
-            product = products[x];
-            amount = parseInt($('#' + product + '_quantity').val(), 10);
-            shipyardCannonsSlider('#' + product + '-slider', '#' + product + '_new_quantity', amount, 0, amount + 25);
-        }
-    }
-}
-
-function shipyardReset() {
-    var x, product, currentValue;
-
-    for (x = 0; x < products.length; x = x + 1) {
-        product = products[x];
-        currentValue = $('#' + product + '_quantity').val();
-
-        if ($('#' + product + '-slider').slider('option', 'value', currentValue)) {
-            shipyardChangeSlider('#' + product + '_new_quantity', currentValue);
-        }
+    if (!sliderEl) {
+        return;
     }
 
-    return false;
-}
+    const slider = noUiSlider
+        .create(sliderEl, {
+            start: start,
+            connect: 'lower',
+            direction: 'ltr',
+            step: 1,
+            orientation: 'horizontal',
+            range: {
+                min: minimum,
+                max: maximum
+            }
+        })
+        .on('update', (value) => {
+            onSliderChange(inputId, parseInt(value, 10));
+        });
+};
 
-setTimeout(createSliders, 100);
+const createSliders = () => {
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+        let amountEl = document.getElementById(product + '_quantity');
+        let amount = parseInt(amountEl.value, 10);
+        let maxSlider = amount + 25;
+
+        createSlider(product + '-slider', product + '_new_quantity', amount, 0, maxSlider);
+    }
+};
+
+const reset = (e) => {
+    e.preventDefault();
+
+    for (let x = 0; x < products.length; x++) {
+        let product = products[x];
+        let currentValueEl = document.getElementById(product + '_quantity');
+        let currentValue = currentValueEl.value;
+
+        let currentSliderEl = document.getElementById(product + '-slider');
+        currentSliderEl.noUiSlider.set(currentValue);
+    }
+};
+
+window.addEventListener('shipyard', (e) => {
+    const resetTrigger = document.querySelector('.js-shipyard-reset');
+    resetTrigger.addEventListener('click', reset);
+
+    createSliders();
+});

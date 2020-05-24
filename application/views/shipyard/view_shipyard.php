@@ -34,12 +34,15 @@
 	<fieldset style="margin-bottom: 0;">
 		<legend><img src="<?php echo base_url()?>assets/images/icons/shipyard_fixings.png"> Cannons (<?php echo $prices['cannons']['buy']?>/<?php echo floor($prices['cannons']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">It's your cannons that make you win at sea battles! You need 2 crew members per cannon though, or else it will not be used.</p>
-		<div id="cannons-slider" style="width: 90%; margin: 20px;"></div>
+		
+		<div class="slider-container">
+			<div id="cannons-slider" class="slider"></div>
 
-		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Cannons</td><td><span id="cannons_new_quantity_presenter"><?php echo $game['cannons']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
-		</table>
+			<table>
+				<tr><td>Cannons</td><td><span id="cannons_new_quantity_presenter"><?php echo $game['cannons']?></span> pcs</td></tr>
+				<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
+			</table>
+		</div>
 
 		<input type="hidden" name="cannons_quantity" id="cannons_quantity" value="<?php echo $game['cannons']?>">
 		<input type="hidden" name="cannons_new_quantity" id="cannons_new_quantity" value="<?php echo $game['cannons']?>">
@@ -48,19 +51,22 @@
 	<fieldset style="margin-bottom: 0;">
 		<legend><img src="<?php echo base_url()?>assets/images/icons/raft.png"> Rafts (<?php echo $prices['rafts']['buy']?>/<?php echo floor($prices['rafts']['sell'] * 0.7)?> dbl)</legend>
 		<p style="margin: 0 auto; width: 90%">If all your ships are destroyed at sea, you can save 10 crew members per raft.</p>
-		<div id="rafts-slider" style="width: 90%; margin: 20px;"></div>
+		
+		<div class="slider-container">
+			<div id="rafts-slider" class="slider"></div>
 
-		<table style="margin: 0 auto; width: 90%">
-			<tr><td>Rafts</td><td><span id="rafts_new_quantity_presenter"><?php echo $game['rafts']?></span> pcs</td></tr>
-			<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
-		</table>
+			<table>
+				<tr><td>Rafts</td><td><span id="rafts_new_quantity_presenter"><?php echo $game['rafts']?></span> pcs</td></tr>
+				<tr><td>Doubloons</td><td><span class="money_left" style="color: <?php echo ($game['doubloons'] < 0) ? '#d52525' : '#000'; ?>;"><?php echo $game['doubloons']?></span> dbl</td></tr>
+			</table>
+		</div>
 
 		<input type="hidden" name="rafts_quantity" id="rafts_quantity" value="<?php echo $game['rafts']?>">
 		<input type="hidden" name="rafts_new_quantity" id="rafts_new_quantity" value="<?php echo $game['rafts']?>">
 	</fieldset>
 
 	<p style="text-align: right;">
-		<button type="button" onclick="return shipyardReset();">Reset</button>
+		<button type="button" class="js-shipyard-reset">Reset</button>
 		<input type="submit" value="Transfer">
 	</p>
 </form>
