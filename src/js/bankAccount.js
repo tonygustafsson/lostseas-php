@@ -1,7 +1,6 @@
 import * as noUiSlider from 'nouislider';
 
-const onAccountSliderChange = (inputId, value) => {
-    const inputEl = document.getElementById(inputId);
+const onSliderChange = (inputId, value) => {
     const currentMoneyEl = document.getElementById('current_money');
     const currentMoneyBankEl = document.getElementById('current_money_bank');
     const moneyAfterEl = document.querySelector('.money_after');
@@ -20,7 +19,7 @@ const onAccountSliderChange = (inputId, value) => {
     accountAfterEl.innerHTML = moneyBank;
 };
 
-const createAccountSlider = () => {
+const createSlider = () => {
     const inputId = 'transfer';
     const sliderEl = document.getElementById('account-slider');
 
@@ -50,7 +49,7 @@ const createAccountSlider = () => {
             }
         })
         .on('update', (value) => {
-            onAccountSliderChange(inputId, parseInt(value, 10));
+            onSliderChange(inputId, parseInt(value, 10));
         });
 };
 
@@ -64,7 +63,7 @@ window.addEventListener('bank', (e) => {
     const bankAccountResetTriggerEl = document.querySelector('.js-bank-account-reset');
     bankAccountResetTriggerEl.addEventListener('click', bankAccountReset);
 
-    createAccountSlider();
+    createSlider();
 });
 
 window.addEventListener('bank-account-post', (e) => {
@@ -74,5 +73,5 @@ window.addEventListener('bank-account-post', (e) => {
     slider.destroy();
 
     // Recreate the slider
-    createAccountSlider();
+    createSlider();
 });

@@ -106,6 +106,9 @@ class Bank extends Main
         } elseif ($transfer == 0) {
             $data['info'] = 'You didn\'t transfer any money!';
         } else {
+            $new_bank_loan = 0;
+            $new_money = 0;
+
             if ($transfer > 0) {
                 //Taking a loan
                 $updates['doubloons']['add'] = true;
@@ -113,9 +116,11 @@ class Bank extends Main
                 $updates['bank_loan']['add'] = true;
                 $updates['bank_loan']['value'] = floor($transfer * 1.15);
                 
+                $new_bank_loan = $this->user['game']['bank_loan'] + floor($transfer * 1.15);
+                $new_money = $this->user['game']['doubloons'] + floor($transfer);
+
                 $data['success'] = 'You took a loan of ' . $transfer . ' dbl! ' . floor($transfer * 0.15) . ' dbl were taken as intrest.';
                 $input_log['entry'] = 'took a loan of ' . $transfer . ' dbl from the bank.';
-                $data['runJS'] = '$("#loan-slider").slider("option", "min", ' . round(0 - floor($this->user['game']['bank_loan'] + floor($transfer * 1.15))) . '); $("#account-slider").slider("option", "max", ' . floor($this->user['game']['doubloons'] - $transfer) . ');';
             } else {
                 //Paying off a loan
                 $transfer = abs($transfer);
@@ -124,16 +129,22 @@ class Bank extends Main
                 $updates['doubloons']['value'] = $transfer;
                 $updates['bank_loan']['sub'] = true;
                 $updates['bank_loan']['value'] = $transfer;
+
+                $new_bank_loan = $this->user['game']['bank_loan'] - floor($transfer);
+                $new_money = $this->user['game']['doubloons'] - floor($transfer);
                 
                 $data['success'] = 'You payed back ' . abs($transfer) . ' dbl of your loan!';
                 $input_log['entry'] = 'payed back ' . abs($transfer) . ' dbl of the bank loan.';
-                $data['runJS'] = '$("#loan-slider").slider("option", "min", ' . round(0 - floor($this->user['game']['bank_loan'] - $transfer)) . '); $("#account-slider").slider("option", "max", ' . floor($this->user['game']['doubloons'] + $transfer) . ');';
             }
         
             $result = $this->Game->update($updates);
             
             $data['changeElements'] = $result['changeElements'];
-            
+            $data['changeElements']['current_money']['value'] = $new_money;
+            $data['changeElements']['current_money_bank_loan']['value'] = $new_bank_loan;
+
+            $data['event'] = 'bank-loan-post';
+
             if ($this->user['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'coins';
             }
