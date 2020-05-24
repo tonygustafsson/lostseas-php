@@ -4,100 +4,6 @@ const runOcean = () => {
     var appdir = $('base').attr('href');
     var sliders = ['food', 'water', 'porcelain', 'spices', 'silk', 'medicine', 'tobacco', 'rum', 'crew'];
 
-    function oceanChangeSlider(inputId, sliderValue) {
-        var x, product, productPrice, newQuantity, currentQuantity, newCrewQuantity, maxCrewQuantity, newCrew;
-
-        $(inputId).val(sliderValue);
-        $(inputId + '_presenter').html(sliderValue);
-
-        var tradeWorth = $('#trade_worth').length > 0 ? parseInt($('#trade_worth').val(), 10) : false;
-
-        var totalCost = 0;
-        var totalLoad = parseInt($('#load_current').val(), 10);
-        var currentMoney = tradeWorth !== false ? tradeWorth : 0;
-        var loadMax = parseInt($('#load_max').val(), 10);
-
-        for (x = 0; x < sliders.length; x = x + 1) {
-            product = sliders[x];
-
-            if ($('#' + product + '-slider').length && product != 'crew') {
-                productPrice = tradeWorth !== false ? parseInt($('#' + product + '_price').val(), 10) : 0;
-                newQuantity = parseInt($('#' + product + '_new_quantity').val(), 10);
-                currentQuantity = parseInt($('#' + product + '_quantity').val(), 10);
-
-                totalCost += productPrice * (newQuantity - currentQuantity);
-                totalLoad += newQuantity - currentQuantity;
-            }
-
-            if ($('#' + product + '-slider').length && product == 'crew') {
-                newCrewQuantity = parseInt($('#' + product + '_new_quantity').val(), 10);
-                maxCrewQuantity = parseInt($('#crew_max').val(), 10);
-                newCrew = parseInt($('#new_crew').val(), 10);
-
-                if (newCrewQuantity > maxCrewQuantity - newCrew) {
-                    $('span.max_crew').css('color', '#d52525');
-                } else {
-                    $('span.max_crew').css('color', '#000');
-                }
-            }
-        }
-
-        $('span.load_total').html(totalLoad);
-
-        if (tradeWorth) {
-            $('span.trade_worth_left').html(currentMoney - totalCost);
-        }
-
-        if (tradeWorth && currentMoney - totalCost < 0) {
-            $('span.trade_worth_left').css('color', '#d52525');
-        } else {
-            $('span.trade_worth_left').css('color', '#000');
-        }
-
-        if (loadMax - totalLoad < 0) {
-            $('span.load_total').css('color', '#d52525');
-        } else {
-            $('span.load_total').css('color', '#000');
-        }
-    }
-
-    function oceanSlider(sliderId, inputId, standard, minimum, maximum) {
-        $(sliderId).slider({
-            range: 'min',
-            animate: 'fast',
-            value: standard,
-            min: minimum,
-            max: maximum,
-            slide: function (event, ui) {
-                oceanChangeSlider(inputId, ui.value);
-            }
-        });
-    }
-
-    function createSliders() {
-        var tradeWorth = $('#trade_worth').length > 0 ? parseInt($('#trade_worth').val(), 10) : false;
-        var x, product, amount, maxSlider;
-
-        if ($('#crew-slider').length) {
-            amount = parseInt($('#crew_quantity').val(), 10);
-            maxSlider = amount + parseInt($('#new_crew').val(), 10);
-            oceanSlider('#crew-slider', '#crew_new_quantity', amount, amount, maxSlider);
-        }
-
-        for (x = 0; x < sliders.length; x = x + 1) {
-            product = sliders[x];
-
-            if ($('#' + product + '-slider').length && product != 'crew') {
-                amount = parseInt($('#' + product + '_quantity').val(), 10);
-                maxSlider =
-                    tradeWorth !== false
-                        ? amount + Math.floor(tradeWorth / parseInt($('#' + product + '_price').val(), 10))
-                        : parseInt($('#' + product + '_max').val(), 10);
-                oceanSlider('#' + product + '-slider', '#' + product + '_new_quantity', amount, amount, maxSlider);
-            }
-        }
-    }
-
     function tradeNecessities() {
         var currentFood = $('#food-slider').slider('option', 'value');
         var currentWater = $('#water-slider').slider('option', 'value');
@@ -162,28 +68,6 @@ const runOcean = () => {
     }
 
     window.tradeAll = tradeAll;
-
-    function lootTakeAll() {
-        var x, product, currentLoad, maxLoad, sliderMax, amount;
-
-        for (x = 0; x < sliders.length; x = x + 1) {
-            product = sliders[x];
-            currentLoad = parseInt($('#load_current'), 10);
-            maxLoad = parseInt($('#load_max'), 10);
-
-            if ($('#' + product + '-slider').length) {
-                sliderMax = parseInt($('#' + product + '-slider').slider('option', 'max'), 10);
-                amount = parseInt($('#' + product + '_quantity').val(), 10);
-                amount = amount + currentLoad > maxLoad ? maxLoad - currentLoad : sliderMax;
-
-                if ($('#' + product + '-slider').slider('option', 'value', amount)) {
-                    oceanChangeSlider('#' + product + '_new_quantity', amount);
-                }
-            }
-        }
-    }
-
-    window.lootTakeAll = lootTakeAll;
 
     $(document).on('mouseover', 'area', function () {
         if ($('#town_info').length === 0) {

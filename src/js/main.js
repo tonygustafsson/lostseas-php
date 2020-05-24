@@ -12,6 +12,7 @@ import './inventory';
 import './jquery.flot';
 import './misc';
 import './ocean';
+import './oceanLoot';
 import './shipyard';
 import './shop';
 import './tavern';

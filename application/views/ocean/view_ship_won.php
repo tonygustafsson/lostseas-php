@@ -42,7 +42,7 @@
 	<section class="action-buttons">
 		<?php if ($food > 0 || $water > 0 || $porcelain > 0 || $spices > 0 || $silk > 0 || $medicine > 0 || $tobacco > 0 || $rum > 0 || $new_crew > 0): ?>
 			<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/ship_won_cancel')?>">No thanks</a>
-			<a class="nopic" href="javascript:lootTakeAll();">Take All</a>
+			<a class="nopic js-ocean-loot-take-all" href="#">Take All</a>
 			<a class="nopic positive" href="javascript:if($('#won_form').submit());">Transfer</a>
 		<?php else: ?>
 			<a class="ajaxHTML nopic positive" href="<?php echo base_url('ocean/ship_won_cancel')?>">Sail away</a>
@@ -64,11 +64,15 @@
 				<legend><img src="<?php echo base_url()?>assets/images/icons/tavern_sailor.png" alt="Food" width="32" height="32"> Crew recruits</legend>
 				<p style="margin: 0 auto; width: 90%"><?php echo $new_crew?> sailors want's to join your crew. How many would you like to take in?
 				</p>
-				<div id="crew-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Crew members</td><td><span id="crew_new_quantity_presenter" style="color: <?php echo ($game['crew_members'] > $game['max_crew']) ? '#d52525' : '#000'; ?>;"><?php echo $game['crew_members']?></span> members</td></tr>
-					<tr><td>Max crew</td><td><span class="max_crew"><?php echo $game['max_crew']?></span> members</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="crew-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Crew members</td><td><span id="crew_new_quantity_presenter" style="color: <?php echo ($game['crew_members'] > $game['max_crew']) ? '#d52525' : '#000'; ?>;"><?php echo $game['crew_members']?></span> members</td></tr>
+						<tr><td>Max crew</td><td><span class="max_crew"><?php echo $game['max_crew']?></span> members</td></tr>
+					</table>
+				</div>
 				
 				<input type="hidden" name="new_crew" id="new_crew" value="<?php echo $new_crew?>">
 				<input type="hidden" name="crew_max" id="crew_max" value="<?php echo $game['max_crew'] + $new_crew?>">
@@ -85,11 +89,15 @@
 					To last 5 more weeks, you should have at least <strong><?php echo($game['needed_food'] * 5) ?></strong> cartons!
 				<?php endif; ?>
 				</p>
-				<div id="food-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Food cartons</td><td><span id="food_new_quantity_presenter"><?php echo $game['food']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="food-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Food cartons</td><td><span id="food_new_quantity_presenter"><?php echo $game['food']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 				
 				<input type="hidden" name="food_max" id="food_max" value="<?php echo $game['food'] + $food?>">
 				<input type="hidden" name="food_quantity" id="food_quantity" value="<?php echo $game['food']?>">
@@ -105,11 +113,15 @@
 					To last 5 more weeks, you should have at least <strong><?php echo($game['needed_water'] * 5) ?></strong> barrels!
 				<?php endif; ?>
 				</p>
-				<div id="water-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Water barrels</td><td><span id="water_new_quantity_presenter"><?php echo $game['water']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="water-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Water barrels</td><td><span id="water_new_quantity_presenter"><?php echo $game['water']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="water_max" id="water_max" value="<?php echo $game['water'] + $water?>">
 				<input type="hidden" name="water_quantity" id="water_quantity" value="<?php echo $game['water']?>">
@@ -120,12 +132,15 @@
 		<?php if ($porcelain > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/porcelain.png" alt="porcelain" width="32" height="32"> Porcelain</legend>
-				</p>
-				<div id="porcelain-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Porcelain barrels</td><td><span id="porcelain_new_quantity_presenter"><?php echo $game['porcelain']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="porcelain-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Porcelain barrels</td><td><span id="porcelain_new_quantity_presenter"><?php echo $game['porcelain']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="porcelain_max" id="porcelain_max" value="<?php echo $game['porcelain'] + $porcelain?>">
 				<input type="hidden" name="porcelain_quantity" id="porcelain_quantity" value="<?php echo $game['porcelain']?>">
@@ -136,12 +151,15 @@
 		<?php if ($spices > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/spices.png" alt="spices" width="32" height="32"> Spices</legend>
-				</p>
-				<div id="spices-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Spices barrels</td><td><span id="spices_new_quantity_presenter"><?php echo $game['spices']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="spices-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Spices barrels</td><td><span id="spices_new_quantity_presenter"><?php echo $game['spices']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="spices_max" id="spices_max" value="<?php echo $game['spices'] + $spices?>">
 				<input type="hidden" name="spices_quantity" id="spices_quantity" value="<?php echo $game['spices']?>">
@@ -152,12 +170,15 @@
 		<?php if ($silk > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/silk.png" alt="silk" width="32" height="32"> Silk</legend>
-				</p>
-				<div id="silk-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Silk barrels</td><td><span id="silk_new_quantity_presenter"><?php echo $game['silk']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="silk-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Silk barrels</td><td><span id="silk_new_quantity_presenter"><?php echo $game['silk']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="silk_max" id="silk_max" value="<?php echo $game['silk'] + $silk?>">
 				<input type="hidden" name="silk_quantity" id="silk_quantity" value="<?php echo $game['silk']?>">
@@ -168,12 +189,15 @@
 		<?php if ($medicine > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/medicine.png" alt="medicine" width="32" height="32"> Medicine</legend>
-				</p>
-				<div id="medicine-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Medicine barrels</td><td><span id="medicine_new_quantity_presenter"><?php echo $game['medicine']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="medicine-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Medicine barrels</td><td><span id="medicine_new_quantity_presenter"><?php echo $game['medicine']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="medicine_max" id="medicine_max" value="<?php echo $game['medicine'] + $medicine?>">
 				<input type="hidden" name="medicine_quantity" id="medicine_quantity" value="<?php echo $game['medicine']?>">
@@ -184,12 +208,15 @@
 		<?php if ($tobacco > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/tobacco.png" alt="tobacco" width="32" height="32"> Tobacco</legend>
-				</p>
-				<div id="tobacco-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Tobacco barrels</td><td><span id="tobacco_new_quantity_presenter"><?php echo $game['tobacco']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="tobacco-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Tobacco barrels</td><td><span id="tobacco_new_quantity_presenter"><?php echo $game['tobacco']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="tobacco_max" id="tobacco_max" value="<?php echo $game['tobacco'] + $tobacco?>">
 				<input type="hidden" name="tobacco_quantity" id="tobacco_quantity" value="<?php echo $game['tobacco']?>">
@@ -200,12 +227,15 @@
 		<?php if ($rum > 0): ?>
 			<fieldset>
 				<legend><img src="<?php echo base_url()?>assets/images/icons/rum.png" alt="rum" width="32" height="32"> Rum</legend>
-				</p>
-				<div id="rum-slider" style="width: 90%; margin: 20px;"></div>
-				<table style="margin: 0 auto; width: 90%">
-					<tr><td>Rum barrels</td><td><span id="rum_new_quantity_presenter"><?php echo $game['rum']?></span> pcs</td></tr>
-					<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
-				</table>
+
+				<div class="slider-container">
+					<div id="rum-slider" class="slider"></div>
+
+					<table>
+						<tr><td>Rum barrels</td><td><span id="rum_new_quantity_presenter"><?php echo $game['rum']?></span> pcs</td></tr>
+						<tr><td>Ship load</td><td><span class="load_total" style="color: <?php echo ($game['load_current'] > $game['load_max']) ? '#d52525' : '#000'; ?>;"><?php echo $game['load_current']?></span> cartons</td></tr>
+					</table>
+				</div>
 
 				<input type="hidden" name="rum_max" id="rum_max" value="<?php echo $game['rum'] + $rum?>">
 				<input type="hidden" name="rum_quantity" id="rum_quantity" value="<?php echo $game['rum']?>">
@@ -214,5 +244,4 @@
 		<?php endif; ?>
 
 	</form>
-
 <?php endif; ?>
