@@ -60,21 +60,17 @@
 					<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
 						<td><input type="checkbox" id="box_<?php echo $man['id']?>" name="crew[]" value="<?php echo $man['id']?>"></td>
 					<?php endif; ?>
-					<td title="<?php echo $man['description']?>"><span class="crew_info"><img src="<?php echo base_url('assets/images/icons/crew_' . $man['gender'] . '.png')?>" alt="Crew member" width="16" height="17" title="<?php echo ucfirst($man['gender'])?>"> <?php echo $man['name']?></span></td>
+					<td>
+						<span class="tooltip-multiline tooltip-bottom-left" data-tooltip="<?php echo $man['description']?>">
+							<img src="<?php echo base_url('assets/images/icons/crew_' . $man['gender'] . '.png')?>" alt="Crew member" width="16" height="17">
+							<?php echo $man['name']?>
+						</span>
+					</td>
 					<td><?php echo ucfirst($man['nationality'])?></td>
 					<td>Week <?php echo $man['created']?></td>
 					<td><span id="crew_doubloons_<?php echo $man['id']?>"><?php echo $man['doubloons']?></span> dbl</td>
 					<td><span id="crew_friendly_mood_<?php echo $man['id']?>"><?php echo ucfirst($man['friendly_mood'])?></span> (<span id="crew_mood_<?php echo $man['id']?>"><?php echo $man['mood']?></span>)</td>
 					<td><span id="crew_health_<?php echo $man['id']?>"><?php echo $man['health']?></span> %</td>
-					<td id="crew_info" style="display: none">
-						<div style="width: 30%; float: left;">
-							<img style="width: 100%;" src="<?php echo base_url('assets/images/icons/crew_member_' . $man['gender'] . '.png')?>" alt="Crew member">
-						</div>
-						<div style="padding-left: 5%; width: 65%; float: left;">
-							<p><strong><?php echo $man['name']?></strong></p>
-							<p style="font-size: 80%;"><?php echo $man['description']?></p>
-						</div>
-					</td>
 				</tr>
 			<?php endforeach; ?>
 

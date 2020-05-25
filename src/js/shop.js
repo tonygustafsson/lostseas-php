@@ -2,9 +2,6 @@ import * as noUiSlider from 'nouislider';
 
 const products = ['food', 'water', 'porcelain', 'spices', 'silk', 'medicine', 'tobacco', 'rum'];
 
-$('#shop_overview a').tooltip();
-$('.slider_container img').tooltip();
-
 const onSliderChange = (inputId, sliderValue) => {
     const input = document.getElementById(inputId);
     const presenter = document.getElementById(inputId + '_presenter');

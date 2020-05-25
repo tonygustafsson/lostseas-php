@@ -1,7 +1,5 @@
 import * as noUiSlider from 'nouislider';
 
-$('.actions img').tooltip();
-
 const createSlider = (sliderId, inputId, start, minimum, maximum) => {
     const sliderEl = document.getElementById(sliderId);
     const input = document.getElementById(inputId);

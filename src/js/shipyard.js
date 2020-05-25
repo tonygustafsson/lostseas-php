@@ -2,8 +2,6 @@ import * as noUiSlider from 'nouislider';
 
 const products = ['cannons', 'rafts'];
 
-$('.actions img').tooltip();
-
 const onSliderChange = (inputId, sliderValue) => {
     const input = document.getElementById(inputId);
     const presenter = document.getElementById(inputId + '_presenter');

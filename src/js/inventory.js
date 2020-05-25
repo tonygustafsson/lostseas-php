@@ -40,14 +40,6 @@ $(document).on('change', '#crew_form input[type=checkbox]', function () {
     }
 });
 
-$(document).tooltip({
-    items: 'span.crew_info',
-    content: function () {
-        var newContent = $(this).parent().parent().find('td:last-child').html();
-        return newContent;
-    }
-});
-
 $(document).on('change', '#history_weeks', function () {
     var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
     $('#history_update_link').attr('href', url);
