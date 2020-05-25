@@ -2,14 +2,14 @@
     /* This is needed for display the panels if the user has hidden them in the mobile view
 	   and then changed the browser window again */
     nav#nav_top,
-    aside#action_panel,
-    aside#inventory_panel {
+    .action-panel,
+    .inventory-panel {
         display: block !important;
     }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1140px) {
-    article form#register {
+    .content-panel form#register {
         position: relative;
         top: 0;
         left: 0;
@@ -34,7 +34,7 @@
         padding-top: 0;
     }
 
-    article header h2 {
+    .content-panel header h2 {
         margin: 0;
         padding: 0;
         left: 27px;
@@ -47,7 +47,7 @@
     a#nav_top_button,
     a#action_panel_button,
     a#inventory_panel_button {
-        display: block;
+        display: block !important;
         float: left;
     }
 
@@ -58,9 +58,15 @@
         margin: 0;
     }
 
-    article#main,
-    aside#inventory_panel,
-    aside#log_panel {
+    #music_control {
+        background: white;
+        width: 100%;
+        padding-bottom: 15px;
+    }
+
+    .content-panel,
+    .inventory-panel,
+    .log-panel {
         width: 94%;
         float: left;
         clear: both;
@@ -69,9 +75,9 @@
     }
 
     nav#nav_top,
-    aside#action_panel,
-    aside#inventory_panel,
-    aside#log_panel {
+    .action-panel,
+    .inventory-panel,
+    .log-panel {
         width: 100% !important;
         min-height: auto !important;
         margin: 0.5em 0;
@@ -98,7 +104,7 @@
         border: 0 !important;
     }
 
-    aside#inventory_panel div.inventory_item {
+    .inventory-panel .inventory_item {
         width: 11em;
         margin: 0.5em;
         float: left;
@@ -108,7 +114,7 @@
         display: none;
     }
 
-    article form#register {
+    .content-panel form#register {
         position: relative;
         width: auto !important;
         top: auto;
@@ -117,13 +123,13 @@
         background: none;
     }
 
-    article form#register label,
-    article form#register legend,
-    article form#register p {
+    .content-panel form#register label,
+    .content-panel form#register legend,
+    .content-panel form#register p {
         color: #000;
     }
 
-    article form#register input[type='submit'] {
+    .content-panel form#register input[type='submit'] {
         margin: 0.5em 1em 0 -1em;
     }
 
