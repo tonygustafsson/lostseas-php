@@ -2,7 +2,7 @@
     display: none;
 
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -24,9 +24,9 @@
     }
 
     &-title {
-        font-size: 22px;
-        margin: 0;
-        margin-top: -8px;
+        font-size: 22px !important;
+        margin: 0 !important;
+        margin-top: -8px !important;
         padding-bottom: 10px;
         border-bottom: 1px $lightgrey solid;
         cursor: default;

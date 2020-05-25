@@ -19,10 +19,8 @@
 					<input type="hidden" id="character_avatar" name="character_avatar" value="<?php echo $character['character_avatar']?>">
 					<input type="hidden" id="character_gender" name="character_gender" value="<?php echo $character['character_gender']?>">
 
-					<div id="avatar_selector_div" title="Avatar selector" data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"></div>
-
 					<img id="current_avatar_img" style="border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
-					<button type="button" id="change_avatar_button">Change</button>
+					<button type="button" id="js-start-avatar-selector-trigger">Change</button>
 				</div>
 
 				<label for="character_name">Character name</label>
@@ -69,3 +67,14 @@
 <p>
 	Please read the <a href="<?php echo base_url('about/guide_supplies')?>">guide</a> if you want to know more before you start playing!
 </p>
+
+<div
+	id="js-start-avatar-selector-dialog"
+	class="dialog"
+	tabindex="-1"
+	role="dialog"
+	data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"
+	>
+	<h3 class="dialog-title">Choose an avatar</h3>
+	<div class="avatar-selector-wrapper"></div>
+</div>

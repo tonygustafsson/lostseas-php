@@ -27,12 +27,12 @@ const closeDialog = (e, dialogEl) => {
 };
 
 const dialog = (options) => {
-    const { dialogElementId, dialogTriggerElementId } = options;
+    const { dialogElementId, dialogTriggerElementId, onLoad } = options;
 
     const dialogEl = document.getElementById(dialogElementId);
     const triggerEl = document.getElementById(dialogTriggerElementId);
 
-    if (!dialogEl) {
+    if (!dialogEl || !triggerEl) {
         // Dialog element did not exist
         return;
     }
@@ -48,6 +48,10 @@ const dialog = (options) => {
 
     triggerEl.addEventListener('click', (e) => {
         showDialog(e, dialogEl);
+
+        if (onLoad) {
+            onLoad();
+        }
     });
 };
 

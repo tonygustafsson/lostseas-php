@@ -20,10 +20,8 @@
 						<input type="hidden" id="character_avatar" name="character_avatar" value="<?php echo $character['character_avatar']?>">
 						<input type="hidden" id="character_gender" name="character_gender" value="<?php echo $character['character_gender']?>">
 
-						<div id="avatar_selector_div" title="Avatar selector" data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"></div>
-
 						<img id="current_avatar_img" style="border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
-						<button type="button" id="change_avatar_button">Change</button>
+						<button type="button" id="js-start-avatar-selector-trigger">Change</button>
 					</div>
 
 					<label for="character_name">Character name</label>
@@ -134,3 +132,14 @@ you will still only be able to use 15 of them.</p>
 <h3>Rafts</h3>
 
 <p>Rafts are used to save your life when you lose and only had one ship. One raft can save 10 crew members.</p>
+
+<div
+	id="js-start-avatar-selector-dialog"
+	class="dialog"
+	tabindex="-1"
+	role="dialog"
+	data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"
+	>
+	<h3 class="dialog-title">Choose an avatar</h3>
+	<div class="avatar-selector-wrapper"></div>
+</div>

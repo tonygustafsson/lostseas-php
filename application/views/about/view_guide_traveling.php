@@ -20,10 +20,8 @@
 						<input type="hidden" id="character_avatar" name="character_avatar" value="<?php echo $character['character_avatar']?>">
 						<input type="hidden" id="character_gender" name="character_gender" value="<?php echo $character['character_gender']?>">
 
-						<div id="avatar_selector_div" title="Avatar selector" data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"></div>
-
 						<img id="current_avatar_img" style="border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
-						<button type="button" id="change_avatar_button">Change</button>
+						<button type="button" id="js-start-avatar-selector-trigger">Change</button>
 					</div>
 
 					<label for="character_name">Character name</label>
@@ -122,3 +120,14 @@ for food and water, which make it possible to travel for a longer period of time
 
 <p>Depending on how much food and water you are choosing to take, you pay this of with porcelain, spices and silk first, because you cannot use this
 for anything but trading anyway. If that's not enough, you will also trade away medicine, tobacco and rum which could be used to please your crew instead.</p>
+
+<div
+	id="js-start-avatar-selector-dialog"
+	class="dialog"
+	tabindex="-1"
+	role="dialog"
+	data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"
+	>
+	<h3 class="dialog-title">Choose an avatar</h3>
+	<div class="avatar-selector-wrapper"></div>
+</div>

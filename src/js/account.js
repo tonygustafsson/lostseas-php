@@ -1,4 +1,4 @@
-'use strict';
+import dialog from './components/dialog.js';
 
 $(document).on('change', '#profile_picture_select', function () {
     var imageToUpload = document.getElementById('profile_picture_select').files[0];
@@ -59,21 +59,34 @@ $(document).on('submit', '#profile_picture_form', function () {
     return false;
 });
 
-$(document).on('click', '#change_avatar_button', function () {
-    var url = $('#avatar_selector_div').data('url');
-
-    $('#avatar_selector_div').dialog({
-        autoOpen: false,
-        height: 500,
-        width: 600
+const initAvatarDialog = () => {
+    const avatarDialog = dialog({
+        dialogElementId: 'js-start-avatar-selector-dialog',
+        dialogTriggerElementId: 'js-start-avatar-selector-trigger',
+        onLoad: () => {
+            var url = $('#js-start-avatar-selector-dialog').data('url');
+            $('.avatar-selector-wrapper').load(url);
+        }
     });
+};
 
-    $('#avatar_selector_div').load(url).dialog('open');
+window.addEventListener('about-presentation', initAvatarDialog);
+window.addEventListener('about-news', initAvatarDialog);
+window.addEventListener('about-ideas', initAvatarDialog);
+window.addEventListener('about-guide_supplies', initAvatarDialog);
+window.addEventListener('about-guide_ships', initAvatarDialog);
+window.addEventListener('about-guide_crew', initAvatarDialog);
+window.addEventListener('about-guide_titles', initAvatarDialog);
+window.addEventListener('about-guide_economy', initAvatarDialog);
+window.addEventListener('about-guide_traveling', initAvatarDialog);
+window.addEventListener('about-guide_players', initAvatarDialog);
+window.addEventListener('about-guide_settings', initAvatarDialog);
+window.addEventListener('account-password_forgotten', initAvatarDialog);
+window.addEventListener('about-copyright', initAvatarDialog);
 
-    return false;
-});
+$(document).on('click', '.avatar-selector-item', function (e) {
+    e.preventDefault();
 
-$(document).on('click', 'a.select_avatar_link', function () {
     var gender = $(this).data('gender');
     var shortGender = gender == 'male' ? 'M' : 'F';
 
@@ -85,14 +98,10 @@ $(document).on('click', 'a.select_avatar_link', function () {
     $('#current_avatar_img').attr('src', imagePath);
     $('#character_avatar').val(gender + '###' + selectedAvatar);
     $('#character_gender').val(shortGender);
-
-    $('#avatar_selector_div').dialog('close');
-
-    return false;
 });
 
-$(document).on('click', 'button.gender_select_button', function () {
+$(document).on('click', '.avatar-selector-change-gender', function () {
     var url = $(this).data('url');
 
-    $('#avatar_selector_div').load(url);
+    $('.avatar-selector-wrapper').load(url);
 });

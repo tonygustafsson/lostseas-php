@@ -1,6 +1,10 @@
 const triggerEventFromUrl = () => {
     const pathName = window.location.pathname.substr(1);
-    const eventName = pathName.replace('/', '-');
+    let eventName = pathName.replace('/', '-');
+
+    if (!eventName) {
+        eventName = 'about-presentation';
+    }
 
     console.log('Event: ' + eventName);
 
