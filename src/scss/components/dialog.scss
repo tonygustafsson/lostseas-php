@@ -1,0 +1,69 @@
+.dialog {
+    display: none;
+
+    position: fixed;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: auto;
+    max-width: 85%;
+    max-height: 80%;
+    z-index: 100;
+    overflow-y: auto;
+
+    background-color: #fff;
+    padding: 20px;
+    border: 2px #000 solid;
+    box-shadow: 0 0 40px 12px #000;
+
+    &.show {
+        display: block;
+    }
+
+    &-title {
+        font-size: 22px;
+        margin: 0;
+        margin-top: -8px;
+        padding-bottom: 10px;
+        border-bottom: 1px $lightgrey solid;
+        cursor: default;
+    }
+
+    &-backdrop {
+        content: '';
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 90;
+    }
+
+    &-close-btn {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: 0;
+        position: absolute;
+        top: 7px;
+        right: 10px;
+        font-size: 32px;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    @media screen and (max-height: 400px) {
+        top: 5%;
+    }
+}
