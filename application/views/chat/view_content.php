@@ -1,17 +1,17 @@
-<section id="chat_users">
+<div id="chat_users" class="chat-users">
 	<?php foreach ($online_users as $this_user): ?>
-		<p>
+		<div>
 			<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $this_user['id'] . '_thumb.jpg')): ?>
 				<img src="<?php echo base_url('/assets/images/profile_pictures/' . $this_user['id'] . '_thumb.jpg')?>" alt="<?php echo $this_user['name']?>">
 			<?php else: ?>
 				<img src="<?php echo base_url('/assets/images/profile_pictures/nopic_thumb.jpg')?>" alt="<?php echo $this_user['name']?>">
 			<?php endif; ?>
 			<span><?php echo $this_user['name']?></span>
-		</p>
+		</div>
 	<?php endforeach; ?>
-</section>
+</div>
 
-<article id="chat_content">
+<div id="chat_content" class="chat-content">
 	<?php foreach ($chat as $row): ?>
 		<div class="chat-entry">
 			<div style="float: left; min-width: 50px;">
@@ -27,4 +27,4 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
-</article>
+</div>

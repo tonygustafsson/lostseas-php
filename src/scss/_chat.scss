@@ -1,38 +1,44 @@
-#chat_users {
-    float: left;
-    width: 20%;
-    height: 600px;
+.chat {
+    display: flex;
+    width: 98%;
 
-    p {
-        background: #fff;
-        margin: 0.5em 0 0.5em 0.5em;
-        overflow: hidden;
+    &-users {
+        flex: 1 0 20%;
+        width: 20%;
+        height: 600px;
 
-        img {
-            float: left;
-            height: 100%;
-            clear: both;
-            padding-right: 0.5em;
+        & > div {
+            background: #fff;
+            margin: 0.5em 0 0.5em 0.5em;
+            overflow: hidden;
+
+            img {
+                float: left;
+                height: 100%;
+                clear: both;
+                padding-right: 0.5em;
+            }
         }
+    }
+
+    &-content {
+        flex: 1 0 80%;
+        width: 80%;
+        text-align: left;
+        width: 80%;
+        height: 600px;
+        padding: 10px;
+        margin: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: #fff;
+        box-shadow: none;
     }
 }
 
 .chat-wrapper {
     margin: 2em 1em;
     min-height: 650px;
-}
-
-#chat_content {
-    float: left;
-    text-align: left;
-    width: 80%;
-    height: 600px;
-    padding: 10px;
-    margin: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background: #fff;
-    box-shadow: none;
 }
 
 .chat-entry {
