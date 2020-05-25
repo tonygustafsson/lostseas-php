@@ -25,31 +25,32 @@
 						</a>
 					</div>
 					
-					<?php if ($game['crew_health_lowest'] <= 25) {
-    $crew_health_symbol = 'crew_health_25';
-} ?>
-					<?php if ($game['crew_health_lowest'] > 25 && $game['crew_health_lowest'] <= 50) {
-    $crew_health_symbol = 'crew_health_50';
-} ?>
-					<?php if ($game['crew_health_lowest'] > 50 && $game['crew_health_lowest'] <= 75) {
-    $crew_health_symbol = 'crew_health_75';
-} ?>
-					<?php if ($game['crew_health_lowest'] > 75) {
-    $crew_health_symbol = 'crew_health_100';
-} ?>
-				
-					<?php if ($game['ship_health_lowest'] <= 25) {
-    $ship_health_symbol = 'ship_health_25';
-} ?>
-					<?php if ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) {
-    $ship_health_symbol = 'ship_health_50';
-} ?>
-					<?php if ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) {
-    $ship_health_symbol = 'ship_health_75';
-} ?>
-					<?php if ($game['ship_health_lowest'] > 75) {
-    $ship_health_symbol = 'ship_health_100';
-} ?>
+					<?php
+                        if ($game['crew_health_lowest'] <= 25) {
+                            $crew_health_symbol = 'crew_health_25';
+                        }
+                        if ($game['crew_health_lowest'] > 25 && $game['crew_health_lowest'] <= 50) {
+                            $crew_health_symbol = 'crew_health_50';
+                        }
+                        if ($game['crew_health_lowest'] > 50 && $game['crew_health_lowest'] <= 75) {
+                            $crew_health_symbol = 'crew_health_75';
+                        }
+                        if ($game['crew_health_lowest'] > 75) {
+                            $crew_health_symbol = 'crew_health_100';
+                        }
+                        if ($game['ship_health_lowest'] <= 25) {
+                            $ship_health_symbol = 'ship_health_25';
+                        }
+                        if ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) {
+                            $ship_health_symbol = 'ship_health_50';
+                        }
+                        if ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) {
+                            $ship_health_symbol = 'ship_health_75';
+                        }
+                        if ($game['ship_health_lowest'] > 75) {
+                            $ship_health_symbol = 'ship_health_100';
+                        }
+                    ?>
 					
 					<!-- Section: Game status -->
 					
@@ -242,6 +243,31 @@
 			<p><a href="about/copyright" class="ajaxHTML"><?php echo $this->config->item('site_name')?> &copy;<?php echo date("Y")?></a></p>
 		</footer>
 		
+		<?php if (isset($user)): ?>
+			<div id="sound_controls" class="dialog" tabindex="-1" role="dialog">
+				<h3 class="dialog-title">Sound control</h3>
+
+				<h4>Track</h4>
+
+				<?php if ($user['music_play'] == 1): ?>
+					<a id="music_link" title="Pause game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_pause.png')?>" alt="Pause"></a>
+				<?php else: ?>
+					<a id="music_link" title="Play game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_play.png')?>" alt="Play"></a>
+				<?php endif; ?>
+				<a title="Next song, please" style="padding-left: 0.5em;" href="javascript:changeSong();"><img src="<?php echo base_url('assets/images/icons/music_next.png')?>" alt="Change track"></a>
+				
+				<h4>Volume</h4>
+
+				<div id="music_volume_slider" class="slider"></div>
+				
+				<h4>Sound effects</h4>
+
+				<span id="sound_effects">
+					On <input type="radio" name="sound_effects" value="1"<?php echo ($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
+					Off <input type="radio" name="sound_effects" value="0"<?php echo ($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
+				</span>
+			</div>
+		<?php endif; ?>
 	</div>
 </body>
 </html>

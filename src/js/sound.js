@@ -1,4 +1,5 @@
 import * as noUiSlider from 'nouislider';
+import dialog from './components/dialog.js';
 
 const appdir = $('base').attr('href');
 const gameMusic = new Audio();
@@ -109,21 +110,9 @@ $(document).ready(function () {
         changeSong();
     }
 
-    $('#sound_controls').dialog({
-        autoOpen: false,
-        resizable: false,
-        open: function () {
-            $('#music_link').blur();
-        }
-    });
-
-    $('#sound_controls_icon').click(function () {
-        if ($('#sound_controls').dialog('isOpen')) {
-            $('#sound_controls').dialog('close');
-        } else {
-            $('#sound_controls').dialog('open');
-        }
-        return false;
+    const modal = dialog({
+        dialogElementId: 'sound_controls',
+        dialogTriggerElementId: 'music_control'
     });
 
     const sliderEl = document.getElementById('music_volume_slider');

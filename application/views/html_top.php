@@ -122,28 +122,6 @@
 					<div id="music_control" style="display: inline-table; padding-left: 20px; padding-top: 15px;" data-autoplay="<?php echo ($user['music_play'] == 1) ? 'yes' : 'no';?>" data-musicvolume="<?php echo $user['music_volume']?>">
 						<a href="#" id="sound_controls_icon" title="Control music and sound effects"><img src="<?php echo base_url('assets/images/icons/sound_controls.png')?>" alt="Sound controls"></a>
 					</div>
-					
-					<div id="sound_controls" title="Sound control">
-						<h3 style="margin-bottom: 0.5em;">Music</h3>
-						<?php if ($user['music_play'] == 1): ?>
-							<a id="music_link" title="Pause game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_pause.png')?>" alt="Pause"></a>
-						<?php else: ?>
-							<a id="music_link" title="Play game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_play.png')?>" alt="Play"></a>
-						<?php endif; ?>
-						<a title="Next song, please" style="padding-left: 0.5em;" href="javascript:changeSong();"><img src="<?php echo base_url('assets/images/icons/music_next.png')?>" alt="Change track"></a>
-						
-						<p>Volume:</p>
-						<div class="slider-container">
-							<div id="music_volume_slider" class="slider"></div>
-						</div>
-						
-						<h3 style="margin: 0.5em 0;">Sound effects</h3>
-						<p id="sound_effects">
-							On <input type="radio" name="sound_effects" value="1"<?php echo ($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
-							Off <input type="radio" name="sound_effects" value="0"<?php echo ($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
-						</p>
-					</div>
-
 				<?php else: ?>
 					<p style="padding-left: 2em;"><em>A pirate influenced web game.</em></p>
 				<?php endif; ?>
