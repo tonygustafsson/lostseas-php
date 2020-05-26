@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 const triggerEventFromUrl = () => {
     // Take path name, remove first /
     const pathName = window.location.pathname.substr(1);
@@ -15,6 +19,7 @@ const triggerEventFromUrl = () => {
     console.log('Event: ' + eventName);
 
     window.dispatchEvent(new Event(eventName));
+    window.dispatchEvent(new Event('updated-dom'));
 };
 
 const ajaxJsonRequest = (event) => {
@@ -45,21 +50,21 @@ const ajaxJsonRequest = (event) => {
         }
     }
 
-    $.ajax({
-        type: 'POST',
+    $('body').addClass('loading');
+
+    axios({
+        method: 'post',
         url: url,
         data: myData,
-        dataType: 'json',
-        beforeSend: function () {
-            $('body').addClass('loading');
-        },
-        success: function (data) {
-            gameManipulateDOM(data);
+        responseType: 'json'
+    })
+        .then((response) => {
+            gameManipulateDOM(response.data);
 
             // Send JS event
-            if (data.event) {
-                console.log('Event: ' + data.event);
-                window.dispatchEvent(new Event(data.event));
+            if (response.data.event) {
+                console.log('Event: ' + response.data.event);
+                window.dispatchEvent(new Event(response.data.event));
             }
 
             //Google analytics, virtual pageview
@@ -69,16 +74,67 @@ const ajaxJsonRequest = (event) => {
             if (typeof ga == typeof Function) {
                 ga('send', 'pageview', gaURL.pathname);
             }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            var errorMsg = '<div class="error"><p>Failed to send data: ' + thrownError + '</p></div>';
+        })
+        .catch((err) => {
+            var errorMsg = '<div class="error"><p>Failed to send data: ' + err.toString() + '</p></div>';
             $('div#msg').prepend(errorMsg);
-        },
-        complete: function () {
+        })
+        .then((_) => {
             $('body').removeClass('loading');
             $('html, body').animate({ scrollTop: 0 }, 'normal');
-        }
-    });
+        });
+};
+
+const fetchHtmlAndUpdateDom = (url) => {
+    $('body').addClass('loading');
+
+    axios({
+        url: url,
+        method: 'get',
+        responseType: 'text'
+    })
+        .then((response) => {
+            $('article#main').html(response.data);
+
+            //Change document title from <header title=""> on source, trim is needed for pages starting with tab
+            var title = $(response.data.trim()).filter('header').attr('title') + ' - Lost Seas';
+
+            if (title) {
+                document.title = title;
+            }
+
+            //Google analytics, virtual pageview
+            var gaURL = document.createElement('a');
+            gaURL.href = url;
+
+            if (typeof ga == typeof Function) {
+                ga('send', 'pageview', { page: gaURL.pathname, title: title });
+            }
+
+            triggerEventFromUrl();
+        })
+        .catch((err) => {
+            var errorDiv = $(
+                '<div class="url_error">Something went wrong when recieving HTML: ' + err.toString() + '</div>'
+            ).hide();
+            $('body').append(errorDiv);
+            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
+            $('body').removeClass('loading');
+        })
+        .then((_) => {
+            $('body').removeClass('loading');
+
+            if (window.location.hash) {
+                //Handle internal links (hash)
+                var $hash = $('#' + window.location.hash.substring(1));
+
+                if ($hash.length) {
+                    $(document).scrollTop($hash.offset().top);
+                }
+            } else {
+                $('html, body').animate({ scrollTop: 0 }, 'normal');
+            }
+        });
 };
 
 const ajaxHtmlRequest = (e) => {
@@ -90,113 +146,46 @@ const ajaxHtmlRequest = (e) => {
         $element = $element.closest('a');
     }
 
-    var url = $element.attr('href');
+    const url = $element.attr('href');
 
-    $.ajax({
-        url: url,
-        cache: false,
-        beforeSend: function () {
-            $('body').addClass('loading');
-        },
-        success: function (data) {
-            $('article#main').html(data);
+    fetchHtmlAndUpdateDom(url);
 
-            if (window.location.hash) {
-                //Handle internal links (hash)
-                var hash = $('#' + window.location.hash.substring(1));
-                if ($(hash).offset()) {
-                    $(document).scrollTop($(hash).offset().top);
-                }
-            }
-
-            //Change document title from <header title=""> on source, trim is needed for pages starting with tab
-            var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
-
-            if (title) {
-                document.title = title;
-            }
-
-            //Google analytics, virtual pageview
-            var gaURL = document.createElement('a');
-            gaURL.href = url;
-
-            if (typeof ga == typeof Function) {
-                ga('send', 'pageview', { page: gaURL.pathname, title: title });
-            }
-
-            if (url != window.location) {
-                window.history.pushState({ path: url }, '', url);
-            }
-
-            triggerEventFromUrl();
-
-            $('body').removeClass('loading');
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            var errorDiv = $(
-                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
-            ).hide();
-            $('body').append(errorDiv);
-            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
-            $('body').removeClass('loading');
-        }
-    });
-
-    return false;
+    if (url != window.location) {
+        window.history.pushState({ path: url }, '', url);
+    }
 };
 
 const onPopState = (e) => {
-    if (!e.originalEvent.state) {
-        return;
-    }
+    const url = location.pathname;
 
-    $.ajax({
-        url: location.pathname,
-        cache: false,
-        beforeSend: function () {
-            $('body').addClass('loading');
-        },
-        success: function (data) {
-            $('article#main').html(data);
+    fetchHtmlAndUpdateDom(url);
+};
 
-            //Change document title from <header title=""> on source, trim is needed for pages starting with tab
-            var title = $(data.trim()).filter('header').attr('title') + ' - Lost Seas';
+const addEventListeners = () => {
+    const ajaxJsonFormEls = Array.from(document.querySelectorAll('form.ajaxJSON'));
+    const ajaxJsonLinkEls = Array.from(document.querySelectorAll('a.ajaxJSON'));
+    const ajaxHtmlLinkEls = Array.from(document.querySelectorAll('a.ajaxHTML'));
 
-            if (title) {
-                document.title = title;
-            }
+    ajaxJsonFormEls.forEach((el) => {
+        el.addEventListener('submit', ajaxJsonRequest);
+    });
 
-            //Google analytics, virtual pageview
-            var gaURL = document.createElement('a');
-            gaURL.href = location.pathname;
+    ajaxJsonLinkEls.forEach((el) => {
+        el.addEventListener('click', ajaxJsonRequest);
+    });
 
-            if (typeof ga == typeof Function) {
-                ga('send', 'pageview', { page: gaURL.pathname, title: title });
-            }
-
-            triggerEventFromUrl();
-
-            $('body').removeClass('loading');
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            var errorDiv = $(
-                '<div class="url_error">Something went wrong when recieving HTML: ' + thrownError + '</div>'
-            ).hide();
-            $('body').append(errorDiv);
-            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
-            $('body').removeClass('loading');
-        }
+    ajaxHtmlLinkEls.forEach((el) => {
+        el.addEventListener('click', ajaxHtmlRequest);
     });
 };
 
-$(document).on('submit', 'form.ajaxJSON', ajaxJsonRequest);
+window.addEventListener('updated-dom', () => {
+    addEventListeners();
+});
 
-$(document).on('click', 'a.ajaxJSON', ajaxJsonRequest);
-
-$(document).on('click', '.ajaxHTML', ajaxHtmlRequest);
-
-$(window).on('popstate', onPopState);
+window.addEventListener('popstate', onPopState);
 
 document.addEventListener('DOMContentLoaded', () => {
     triggerEventFromUrl();
+    addEventListeners();
 });
