@@ -1,6 +1,12 @@
+@import 'variables';
+
+// NoUISlider
 @import '/node_modules/nouislider/distribute/nouislider.css';
 
-@import 'variables';
+// Chartist
+@import 'chartist-settings';
+@import 'chartist/dist/scss/chartist';
+
 @import 'base';
 @import 'grid';
 @import 'chat';

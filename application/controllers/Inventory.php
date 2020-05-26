@@ -67,38 +67,25 @@ class Inventory extends Main
             $history_input['user_id'] = $this->user['player']['user']['id'];
             $history_data = $this->history->get($history_input);
             $this->user['history'] = $history_data;
-            $graph_data = "";
+            $chart_data = array();
+            $chart_labels = array();
             
             if ($history_data) {
-                foreach ($history_data as $history) {
-                    $graph_data .= "[" . $history['week'] . "," . $history[$this->user['data_type']] . "],";
+                foreach ($history_data as $index => $history) {
+                    if ($index % 4) {
+                        continue;
+                    }
+
+                    $chart_data[] = $history[$this->user['data_type']];
+                    $chart_labels[] = 'W' . $history['week'];
                 }
             }
+
+            $chart_data = join(",", $chart_data);
+            $chart_labels = join(",", $chart_labels);
                     
-            $data['runJS'] = '
-					var graphData = [' . $graph_data . '];
-					
-					var options = {
-						series: {
-							lines: { show: true },
-							points: { show: true }
-						},
-						xaxis: {
-							axisLabel: "Week",
-							color: "#888",
-							tickDecimals: 0
-						},
-						yaxis: {
-							axisLabel: "' . $this->user['data_title'] . '",
-							color: "#888",
-							tickDecimals: 0
-						}
-					};
-					
-					$.plot("#placeholder", [ { data: graphData } ], options);
-			';
-            
-            $this->user['json'] = json_encode($data);
+            $this->user['chart_data'] = $chart_data;
+            $this->user['chart_labels'] = $chart_labels;
         }
     
         $this->load->view_ajax('inventory/view_history', $this->user);

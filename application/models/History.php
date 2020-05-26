@@ -9,7 +9,7 @@ class History extends CI_Model
     
         $sql = "SELECT * FROM " . $this->db->history_table . " WHERE user_id = '" . $input['user_id'] . "' ORDER BY created DESC LIMIT " . $input['weeks'];
         $history_data = $this->db->query($sql);
-        $history_data = ($history_data->num_rows() > 0) ? $history_data->result_array() : false;
+        $history_data = ($history_data->num_rows() > 0) ? array_reverse($history_data->result_array()) : false;
         
         return $history_data;
     }

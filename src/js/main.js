@@ -9,7 +9,6 @@ import './bankAccount';
 import './bankLoan';
 import './chat';
 import './inventory';
-import './jquery.flot';
 import './misc';
 import './ocean';
 import './oceanLoot';

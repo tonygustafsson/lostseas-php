@@ -80,9 +80,7 @@
 		</form>
 	</section>
 
-	<div class="demo-container" style="clear: both; margin: 1em auto; width: 550px; height: 300px">
-		<div id="placeholder" class="demo-placeholder" style="width: 100%; height: 100%;"></div>
-	</div>
+	<div class="js-chartist-history" width="750" height="400" data-chart-labels="<?php echo $chart_labels?>" data-chart-data="<?php echo $chart_data?>"></div>
 
 	<?php if ($history !== false): ?>
 		<table style="padding-bottom: 2em;">
