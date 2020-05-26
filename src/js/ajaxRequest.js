@@ -1,6 +1,12 @@
 const triggerEventFromUrl = () => {
+    // Take path name, remove first /
     const pathName = window.location.pathname.substr(1);
-    let eventName = pathName.replace('/', '-');
+
+    // Take the first two segments of the URL as segments
+    const segments = pathName.split('/').slice(0, 2);
+
+    // Make it a string, so /about/me/random1/random2 becomes about-me
+    let eventName = segments.join('-');
 
     if (!eventName) {
         eventName = 'about-presentation';
