@@ -1,12 +1,4 @@
-﻿<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
-<header title="Chat">
+﻿<header title="Chat">
 	<h3>Chat</h3>
 </header>
 

@@ -12,9 +12,6 @@ class Chat extends Main
     public function index()
     {
         if ($this->user['user']['verified'] == 1) {
-            $data['runJS'] = 'runChat()';
-            $this->user['json'] = json_encode($data);
-
             $this->load->view_ajax('chat/view_chat.php', $this->user);
         }
     }

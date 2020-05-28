@@ -1,57 +1,74 @@
-const runChat = () => {
-    var appdir = $('base').attr('href');
-    var chatUpdateTimeout;
+import snackbar from './components/snackbar';
+import axios from 'axios';
 
-    function updateChat() {
-        if (!$('#dynamic_chat').length) {
-            // Only run in chat
-            clearTimeout(chatUpdateTimeout);
-            return;
-        }
+const appdir = $('base').attr('href');
+let chatUpdateTimeout = null;
 
-        $.ajax({
-            url: appdir + 'chat/update_chat',
-            cache: false,
-            success: function (data) {
-                $('#dynamic_chat').html(data);
-                setTimeout(() => {
-                    $('#chat_content').prop({ scrollTop: $('#chat_content').prop('scrollHeight') });
-                    $('#entry').focus();
-                }, 10);
-            },
-            error: function () {
-                var errorMsg = 'Could not post data. Please try again!';
-                window.alert(errorMsg);
-            }
-        });
+const updateChat = () => {
+    const chatWrapper = document.getElementById('dynamic_chat');
+    const input = document.getElementById('entry');
 
-        chatUpdateTimeout = window.setTimeout(updateChat, 10000);
+    if (!chatWrapper) {
+        // Only run in chat
+        clearTimeout(chatUpdateTimeout);
+        return;
     }
 
-    $(document)
-        .off('submit', '#chat_form')
-        .on('submit', '#chat_form', function () {
-            var url = $(this).attr('action');
+    const url = appdir + 'chat/update_chat';
 
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: $('#entry').serialize(),
-                success: function () {
-                    $('#entry').val('');
-                    clearTimeout(chatUpdateTimeout);
-                    updateChat();
-                },
-                error: function () {
-                    var errorMsg = 'Could not post data. Please try again!';
-                    window.alert(errorMsg);
-                }
-            });
+    axios({
+        method: 'get',
+        url: url,
+        responseType: 'json'
+    })
+        .then((response) => {
+            chatWrapper.innerHTML = response.data.content;
 
-            return false;
+            setTimeout(() => {
+                const chatContent = document.getElementById('chat_content');
+                chatContent.scrollTop = chatContent.scrollHeight;
+
+                input.focus();
+            }, 10);
+        })
+        .catch((err) => {
+            debugger;
+            snackbar({ text: `Could not update chat. ${err.toString()}`, level: 'error' });
         });
 
-    updateChat();
+    chatUpdateTimeout = window.setTimeout(updateChat, 10000);
 };
 
-window.runChat = runChat;
+const postChat = (e) => {
+    e.preventDefault();
+
+    const chatForm = e.target;
+    const url = chatForm.action;
+    const input = document.getElementById('entry');
+
+    axios({
+        method: 'post',
+        url: url,
+        data: new FormData(chatForm)
+    })
+        .then(() => {
+            input.value = '';
+
+            clearTimeout(chatUpdateTimeout);
+
+            updateChat();
+        })
+        .catch((err) => {
+            snackbar({ text: `Could not post to chat. ${err.toString()}`, level: 'error' });
+        });
+};
+
+window.addEventListener('chat', () => {
+    updateChat();
+
+    const chatForm = document.getElementById('chat_form');
+
+    if (chatForm) {
+        chatForm.addEventListener('submit', postChat);
+    }
+});
