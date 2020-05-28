@@ -1,4 +1,4 @@
-import dialog from './components/dialog.js';
+import axios from 'axios';
 import snackbar from './components/snackbar';
 import manipulateDom from './manipulateDom';
 
@@ -56,51 +56,4 @@ $(document).on('submit', '#profile_picture_form', function () {
     }
 
     return false;
-});
-
-const initAvatarDialog = () => {
-    const avatarDialog = dialog({
-        dialogElementId: 'js-start-avatar-selector-dialog',
-        dialogTriggerElementId: 'js-start-avatar-selector-trigger',
-        onLoad: () => {
-            var url = $('#js-start-avatar-selector-dialog').data('url');
-            $('.avatar-selector-wrapper').load(url);
-        }
-    });
-};
-
-window.addEventListener('about-presentation', initAvatarDialog);
-window.addEventListener('about-news', initAvatarDialog);
-window.addEventListener('about-ideas', initAvatarDialog);
-window.addEventListener('about-guide_supplies', initAvatarDialog);
-window.addEventListener('about-guide_ships', initAvatarDialog);
-window.addEventListener('about-guide_crew', initAvatarDialog);
-window.addEventListener('about-guide_titles', initAvatarDialog);
-window.addEventListener('about-guide_economy', initAvatarDialog);
-window.addEventListener('about-guide_traveling', initAvatarDialog);
-window.addEventListener('about-guide_players', initAvatarDialog);
-window.addEventListener('about-guide_settings', initAvatarDialog);
-window.addEventListener('account-password_forgotten', initAvatarDialog);
-window.addEventListener('about-copyright', initAvatarDialog);
-
-$(document).on('click', '.avatar-selector-item', function (e) {
-    e.preventDefault();
-
-    var gender = $(this).data('gender');
-    var shortGender = gender == 'male' ? 'M' : 'F';
-
-    var imageBasePath = $(this).data('imagebasepath');
-    var selectedAvatar = $(this).data('character');
-
-    var imagePath = imageBasePath + 'avatar_' + selectedAvatar + '.jpg';
-
-    $('#current_avatar_img').attr('src', imagePath);
-    $('#character_avatar').val(gender + '###' + selectedAvatar);
-    $('#character_gender').val(shortGender);
-});
-
-$(document).on('click', '.avatar-selector-change-gender', function () {
-    var url = $(this).data('url');
-
-    $('.avatar-selector-wrapper').load(url);
 });

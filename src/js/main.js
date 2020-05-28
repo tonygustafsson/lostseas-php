@@ -4,6 +4,7 @@ import './lastActivity';
 import './mobileMenu';
 import './godmode';
 import './sound';
+import './avatar';
 import './account';
 import './bankAccount';
 import './bankLoan';
