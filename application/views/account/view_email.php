@@ -19,8 +19,6 @@ adress to continue playing <?php echo $this->config->item('site_name')?>!
 <form id="settings" class="ajaxJSON" method="post" action="<?php echo base_url('account/send_email_verification')?>">
 
 <fieldset>
-	<div id="msg"></div>
-	
 	<legend>Change email</legend>
 	
 	<label for="new_email">New email address</label>

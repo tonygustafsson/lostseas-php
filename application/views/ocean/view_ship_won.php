@@ -1,19 +1,9 @@
 <?php list($msg, $looted_money, $food, $water, $porcelain, $spices, $silk, $medicine, $tobacco, $rum, $new_crew, $prisoners, $sunken_ships, $killed_crew) = (! empty($this->user['game']['event_ship_won'])) ? explode('###', $this->user['game']['event_ship_won']) : array(null, null, null, null, null, null, null, null, null, null, null, null, null, null); ?>
 
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Ship victory">
 	<h2>Caribbean Sea</h2>
 	<img src="<?php echo base_url('assets/images/places/ocean_trade.jpg')?>" class="header">
 </header>
-
-<div id="msg"></div>
 
 <?php if (isset($msg) && $looted_money !== null && $food !== null && $water !== null && $porcelain !== null && $spices !== null && $silk !== null && $medicine !== null && $tobacco !== null && $rum !== null && $new_crew !== null && $prisoners !== null && $sunken_ships !== null && $killed_crew !== null): ?>
 
@@ -39,21 +29,21 @@
 		<?php endif; ?>
 	</ul>
 
-	<section class="action-buttons">
-		<?php if ($food > 0 || $water > 0 || $porcelain > 0 || $spices > 0 || $silk > 0 || $medicine > 0 || $tobacco > 0 || $rum > 0 || $new_crew > 0): ?>
-			<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/ship_won_cancel')?>">No thanks</a>
-			<a class="nopic js-ocean-loot-take-all" href="#">Take All</a>
-			<a class="nopic positive" href="javascript:if($('#won_form').submit());">Transfer</a>
-		<?php else: ?>
-			<a class="ajaxHTML nopic positive" href="<?php echo base_url('ocean/ship_won_cancel')?>">Sail away</a>
-		<?php endif; ?>
-	</section>
-
-	<?php if (isset($game['error'])): ?>
-		<div class="error"><p><?php echo $game['error']?></p></div>
-	<?php endif; ?>
-
 	<form method="post" class="ajaxJSON" id="won_form" action="<?php echo base_url('ocean/ship_won_transfer')?>">
+		<section class="action-buttons">
+			<?php if ($food > 0 || $water > 0 || $porcelain > 0 || $spices > 0 || $silk > 0 || $medicine > 0 || $tobacco > 0 || $rum > 0 || $new_crew > 0): ?>
+				<a class="ajaxHTML nopic negative" href="<?php echo base_url('ocean/ship_won_cancel')?>">No thanks</a>
+				<a class="nopic js-ocean-loot-take-all" href="#">Take All</a>
+				<button type="submit" class="nopic positive">Transfer</button>
+			<?php else: ?>
+				<a class="ajaxHTML nopic positive" href="<?php echo base_url('ocean/ship_won_cancel')?>">Sail away</a>
+			<?php endif; ?>
+		</section>
+
+		<?php if (isset($game['error'])): ?>
+			<div class="error"><p><?php echo $game['error']?></p></div>
+		<?php endif; ?>
+
 		<input type="hidden" name="load_max" id="load_max" value="<?php echo $game['load_max']?>">
 		<input type="hidden" name="load_current" id="load_current" value="<?php echo $game['load_current']?>">
 		<input type="hidden" name="needed_food" id="needed_food" value="<?php echo $game['needed_food'] * 5?>">

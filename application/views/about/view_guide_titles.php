@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Guide: Titles">
 	<?php if (! $logged_in): ?>
 		<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">

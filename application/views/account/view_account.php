@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Account settings">
 	<h3>Account Settings</h3>
 </header>
@@ -17,8 +9,6 @@
 	<a class="ajaxHTML" title="Change your password for login" href="<?php echo base_url('account/settings_password')?>"><img src="<?php echo base_url('assets/images/icons/settings_password.png')?>" alt="Password" width="32" height="32">Password</a>
 	<a class="ajaxHTML" title="Unregister from this game" href="<?php echo base_url('account/unregister')?>"><img src="<?php echo base_url('assets/images/icons/settings_unregister.png')?>" alt="Unregister" width="32" height="32">Unregister</a>
 </section>
-
-<div id="msg"></div>
 
 <form id="profile_picture_form" action="<?php echo base_url('account/upload_profile_picture')?>" method="POST" enctype="multipart/form-data">
 	<fieldset>

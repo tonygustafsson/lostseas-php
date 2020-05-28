@@ -9,8 +9,6 @@
 	<a class="ajaxHTML" title="Change crew parameters" href="godmode/crew/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/tavern_sailor.png')?>" alt="Crew" width="32" height="32">Crew</a>
 </section>
 
-<div id="msg"></div>
-
 <section class="action-buttons">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">

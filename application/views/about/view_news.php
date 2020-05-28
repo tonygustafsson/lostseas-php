@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="News">
 	<?php if (! $logged_in): ?>
 		<img class="header" src="<?php echo base_url()?>assets/images/design/game_start.jpg" alt="Front image">
@@ -52,8 +44,6 @@
 	<a class="ajaxHTML" title="What's new in here?" href="<?php echo base_url('about/news')?>"><img src="<?php echo base_url('assets/images/icons/about_news.png')?>" alt="News" width="32" height="32">News</a>
 	<a class="ajaxHTML" title="Ideas for the future of the game" href="<?php echo base_url('about/ideas')?>"><img src="<?php echo base_url('assets/images/icons/about_ideas.png')?>" alt="Ideas" width="32" height="32">Ideas</a>
 </section>
-
-<div id="msg"></div>
 
 <?php if (isset($user) && $user['admin'] == 1): ?>
 	<section id="news_form_section">

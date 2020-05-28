@@ -19,9 +19,7 @@ have done so, you will be a registered member. You can continue playing while yo
 
 	<fieldset>
 		<legend>Account settings</legend>
-		
-		<div id="msg"></div>
-		
+				
 		<label for="name">Email address</label>
 		<input type="email" name="email">
 		

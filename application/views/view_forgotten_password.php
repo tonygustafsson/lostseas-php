@@ -43,8 +43,6 @@
 	get the change to retype your password.
 </p>
 
-<div id="msg"></div>
-
 <form class="ajaxJSON" style="margin: 1em;" method="post" action="<?php echo base_url('account/password_send_reset_link')?>">
 	<fieldset>
 		<legend>Reset password</legend>

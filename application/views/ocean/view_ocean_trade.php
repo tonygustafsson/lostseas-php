@@ -3,14 +3,6 @@
     list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(null);
 ?>
 
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Ocean Trade">
 	<h2>Caribbean Sea</h2>
 	<img src="<?php echo base_url('assets/images/places/ocean_trade.jpg')?>" class="header">
@@ -22,8 +14,6 @@
 		<a class="ajaxHTML nopic" href="<?php echo base_url($game['place'])?>">Okay!</a>
 	</section>
 <?php endif; ?>
-
-<div id="msg"></div>
 
 <?php if ($trade_worth !== null): ?>
 	<p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.

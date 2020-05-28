@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/shipyard_' . $game['nation'] . '.jpg')?>" class="header">
@@ -20,8 +12,6 @@
 <p>
 	You can repair your ships here. You will only see your damaged ships.
 </p>
-
-<div id="msg"></div>
 
 <section class="action-buttons">
 	<?php foreach ($ship as $this_ship): ?>

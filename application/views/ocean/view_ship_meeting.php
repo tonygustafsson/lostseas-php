@@ -2,14 +2,6 @@
     list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']);
 } ?>
 
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Ship Meeting">
 	<h2>Caribbean Sea</h2>
 	<img src="<?php echo base_url()?>assets/images/places/ship_meeting_<?php echo $nation?>.jpg" class="header">

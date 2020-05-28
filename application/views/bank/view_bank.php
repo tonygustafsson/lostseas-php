@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/bank_' . $game['nation'] . '.jpg')?>" class="header" alt="The bank">
@@ -26,8 +18,6 @@
 </p>
 
 <p><strong>The bank will keep 5 percent of what you put in your account...</strong></p>
-
-<div id="msg"></div>
 
 <form method="post" class="ajaxJSON" id="transfer_form" action="<?php echo base_url('bank/account_post')?>">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">

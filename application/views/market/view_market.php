@@ -13,8 +13,6 @@
 	<a class="ajaxHTML" title="Heal your crew" href="market/healer"><img src="<?php echo base_url()?>assets/images/icons/market_healer.png" alt="Healer" width="32" height="32">Healer</a>
 </section>
 
-<div id="msg"></div>
-
 <p>
 	<?php echo $game['greeting']?>
 </p>

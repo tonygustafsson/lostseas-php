@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/tavern_' . $game['nation'] . '.jpg')?>" class="header">
@@ -22,8 +14,6 @@
 	<?php endif; ?>
 	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble"><img src="<?php echo base_url('assets/images/icons/tavern_gamble.png')?>" alt="Gamble" width="32" height="32">Gamble</a>
 </section>
-
-<div id="msg"></div>
 
 <p>
 	These items are bought for you and <em>all</em> your crew members. Therefore, the price will depend on

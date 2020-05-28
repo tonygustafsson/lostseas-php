@@ -4,8 +4,6 @@
 
 <p>Here you can check out other players and contact them. They are sorted after activity.</p>
 
-<div id="msg"></div>
-
 <table style="padding-bottom: 2em;">
 	<tr>
 		<th></th>

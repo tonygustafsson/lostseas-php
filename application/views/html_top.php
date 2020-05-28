@@ -43,7 +43,7 @@
 	<title><?php echo $page_title?></title>
 </head>
 
-<body>
+<body id="body">
 	<?php if (!isset($_SESSION['user_session_id'])): ?>
 		<div class="error"><p>Cookies needs to be enabled to play this game!</p></div>
 	<?php endif; ?>

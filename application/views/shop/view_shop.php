@@ -1,4 +1,4 @@
-<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>" place="<?php echo $game['place']?>">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/shop_' . $game['nation'] . '.jpg')?>" class="header" alt="The shop">
 </header>
@@ -6,8 +6,6 @@
 <p>
 	<?php echo $game['greeting']?>
 </p>
-
-<div id="msg"></div>
 
 <form method="post" class="ajaxJSON" action="<?php echo base_url('shop/transfer_post')?>">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">

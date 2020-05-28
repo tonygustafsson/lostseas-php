@@ -1,12 +1,4 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
-<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>" place="<?php echo $game['place']?>">
+<header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/gamble_' . $game['nation'] . '.jpg')?>" class="header">
 </header>
@@ -22,8 +14,6 @@
 <p>
 	Here you can gamble with dices! There is 1/6 chance that you should win, and the prize depends. If you are lucky you may even win the jackpot!
 </p>
-
-<div id="msg"></div>
 
 <form class="ajaxJSON" method="post" action="<?php echo base_url()?>tavern/gamble_post">
 	<input type="hidden" name="current_money" id="current_money" value="<?php echo $game['doubloons']?>">

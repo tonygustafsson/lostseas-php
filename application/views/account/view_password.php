@@ -13,8 +13,6 @@
 <form id="settings" class="ajaxJSON" method="post" action="<?php echo base_url('account/settings_password_post')?>">
 
 <fieldset>
-	<div id="msg"></div>
-	
 	<legend>Change password</legend>
 	
 	<label for="old_password">Current password</label>

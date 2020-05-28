@@ -17,8 +17,6 @@
 	<a class="ajaxHTML" title="Heal your crew" href="market/healer"><img src="<?php echo base_url()?>assets/images/icons/market_healer.png" alt="Healer" width="32" height="32">Healer</a>
 </section>
 
-<div id="msg"></div>
-
 <?php if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned'): ?>
 	<?php if ($game['doubloons'] < $total_cost): ?>
 		<p id="offer">

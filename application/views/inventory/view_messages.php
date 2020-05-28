@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <?php if ($user['id'] == $player['user']['id']): ?>
 	<header title="Inventory: Crew">
 		<h3>Inventory: Messages</h3>
@@ -26,8 +18,6 @@
 	<?php endif; ?>
 	<a class="ajaxHTML" title="Say something to <?php echo $player['user']['name']?>" href="inventory/messages/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/players_messages.png')?>" alt="Messages" width="32" height="32">Messages</a>
 </section>
-
-<div id="msg"></div>
 
 <?php if ($player['user']['id'] != $this->user['user']['id']): ?>
 	<form method="post" class="ajaxJSON" id="write_form" action="<?php echo base_url('inventory/messages_post/' . $player['user']['id'])?>">

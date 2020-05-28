@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="Presentation">
 	<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
 	<h2>Welcome!</h2>
@@ -38,8 +30,6 @@
 		</fieldset>
 	</form>
 </header>
-
-<div id="msg"></div>
 
 <section class="action-buttons">
 	<?php if (! $logged_in): ?>

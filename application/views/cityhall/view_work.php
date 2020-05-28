@@ -18,8 +18,6 @@
 	occupation (chance), the number of crew members and their health.
 </p>
 
-<div id="msg"></div>
-
 <?php if (! empty($this->user['game']['event_work']) && $this->user['game']['event_work'] != 'banned'): ?>
 	<section id="offer" class="action-buttons">
 		<p>You and your crew gets a job offer as <?php echo $occupation?> for <strong><?php echo $salary?> dbl</strong>. Take the offer?</p>

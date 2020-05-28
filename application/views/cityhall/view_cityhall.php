@@ -13,8 +13,6 @@
 	<?php endif; ?>
 </section>
 
-<div id="msg"></div>
-
 <p>
 	<?php echo $game['greeting']?>
 </p>

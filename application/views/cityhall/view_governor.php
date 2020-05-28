@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
 	<h2><?php echo $game['town_human'] . ' ' . $game['place']?></h2>
 	<img src="<?php echo base_url('assets/images/places/governor_' . $game['nation'] . '.jpg')?>" class="header">
@@ -20,8 +12,6 @@
 		<a id="action_prisoners" class="ajaxJSON" title="Hand over your prisoner and get a ransom" href="<?php echo base_url('cityhall/prisoners')?>"><img src="<?php echo base_url('assets/images/icons/cityhall_prisoners.png')?>" alt="Prisoners" width="32" height="32">Prisoners</a>
 	<?php endif; ?>
 </section>
-
-<div id="msg"></div>
 
 <?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === true): ?>
 	<section id="offer">

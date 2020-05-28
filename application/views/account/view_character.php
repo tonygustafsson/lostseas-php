@@ -1,12 +1,4 @@
-﻿<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
-<header title="Character settings">
+﻿<header title="Character settings">
 	<h3>Character Settings</h3>
 </header>
 
@@ -21,8 +13,6 @@
 <form id="settings" class="ajaxJSON" method="post" action="<?php echo base_url('account/settings_character_post')?>">
 
 <fieldset>
-	<div id="msg"></div>
-	
 	<legend>Your character</legend>
 	
 	<div style="float: left; padding: 0.5em 0.5em 0.5em 1em">

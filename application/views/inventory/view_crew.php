@@ -1,11 +1,3 @@
-<?php if (isset($json)): ?>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			gameManipulateDOM(<?php echo $json?>);
-		});
-	</script>
-<?php endif; ?>
-
 <?php if ($user['id'] == $player['user']['id']): ?>
 	<header title="Inventory: Crew">
 		<h3>Inventory: Crew</h3>
@@ -30,8 +22,6 @@
 <h4>Crew members</h4>
 
 <p>You get more info about your crew members by holding your mouse over their names.</p>
-
-<div id="msg"></div>
 
 <?php if ($this->uri->segment(4) != ""): ?>
 	<?php list($order, $direction) = explode("_", $this->uri->segment(4)); ?>

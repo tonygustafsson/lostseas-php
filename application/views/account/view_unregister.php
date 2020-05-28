@@ -17,8 +17,6 @@
 <form id="settings" class="ajaxJSON" method="post" action="<?php echo base_url('account/unregister_post')?>">
 
 <fieldset>
-	<div id="msg"></div>
-
 	<legend>Unregister</legend>
 	
 	<label for="password">Password</label>
