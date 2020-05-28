@@ -1,4 +1,6 @@
 import axios from 'axios';
+import snackbar from './components/snackbar';
+import manipulateDom from './manipulateDom';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -22,27 +24,26 @@ const triggerEventFromUrl = () => {
     window.dispatchEvent(new Event('updated-dom'));
 };
 
-const ajaxJsonRequest = (event) => {
-    event.preventDefault();
+const ajaxJsonRequest = (e) => {
+    e.preventDefault();
 
-    var $element = $(event.target);
-    var elementType = $element.prop('tagName');
+    var element = e.target;
+    var elementType = element.tagName;
     var url;
-    var myData;
+    var myData = null;
 
     if (elementType === 'IMG') {
         // Find closest link for the image
-        $element = $element.closest('a');
-        var elementType = $element.prop('tagName');
+        element = element.closest('a');
+        elementType = element.tagName;
     }
 
-    if (elementType == 'FORM') {
-        url = $element.attr('action');
-        myData = $element.serialize();
-    } else if (elementType == 'A') {
-        url = $element.attr('href');
-        var question = $element.attr('rel');
-        myData = false;
+    if (elementType === 'FORM') {
+        url = element.action;
+        myData = new FormData(element);
+    } else if (elementType === 'A') {
+        url = element.href;
+        var question = element.rel;
 
         if (question && !window.confirm(question)) {
             //I put confirm questions in a rel="", if it exists and is not verified - do nothing
@@ -50,7 +51,8 @@ const ajaxJsonRequest = (event) => {
         }
     }
 
-    $('body').addClass('loading');
+    const body = document.getElementById('body');
+    body.classList.add('loading');
 
     axios({
         method: 'post',
@@ -59,7 +61,7 @@ const ajaxJsonRequest = (event) => {
         responseType: 'json'
     })
         .then((response) => {
-            gameManipulateDOM(response.data);
+            manipulateDom(response.data);
 
             // Send JS event
             if (response.data.event) {
@@ -68,7 +70,7 @@ const ajaxJsonRequest = (event) => {
             }
 
             //Google analytics, virtual pageview
-            var gaURL = document.createElement('a');
+            const gaURL = document.createElement('a');
             gaURL.href = url;
 
             if (typeof ga == typeof Function) {
@@ -76,28 +78,31 @@ const ajaxJsonRequest = (event) => {
             }
         })
         .catch((err) => {
-            var errorMsg = '<div class="error"><p>Failed to send data: ' + err.toString() + '</p></div>';
-            $('div#msg').prepend(errorMsg);
+            snackbar({ text: `Failed to send data. ${err.toString()}`, level: 'error' });
         })
         .then((_) => {
-            $('body').removeClass('loading');
-            $('html, body').animate({ scrollTop: 0 }, 'normal');
+            body.classList.remove('loading');
         });
 };
 
 const fetchHtmlAndUpdateDom = (url) => {
-    $('body').addClass('loading');
+    const body = document.getElementById('body');
+    body.classList.add('loading');
 
     axios({
         url: url,
         method: 'get',
-        responseType: 'text'
+        responseType: 'json'
     })
         .then((response) => {
-            $('article#main').html(response.data);
+            const main = document.getElementById('main');
+            main.innerHTML = response.data.content;
 
-            //Change document title from <header title=""> on source, trim is needed for pages starting with tab
-            var title = $(response.data.trim()).filter('header').attr('title') + ' - Lost Seas';
+            if (response.data.manipulateDom) {
+                manipulateDom(JSON.parse(response.data.manipulateDom));
+            }
+
+            var title = response.data.title;
 
             if (title) {
                 document.title = title;
@@ -114,25 +119,20 @@ const fetchHtmlAndUpdateDom = (url) => {
             triggerEventFromUrl();
         })
         .catch((err) => {
-            var errorDiv = $(
-                '<div class="url_error">Something went wrong when recieving HTML: ' + err.toString() + '</div>'
-            ).hide();
-            $('body').append(errorDiv);
-            errorDiv.fadeIn(300).delay(4000).fadeOut(300);
-            $('body').removeClass('loading');
+            snackbar({ text: `Could not revieve HTML: ${err.toString()}` });
         })
         .then((_) => {
-            $('body').removeClass('loading');
+            body.classList.remove('loading');
 
             if (window.location.hash) {
                 //Handle internal links (hash)
-                var $hash = $('#' + window.location.hash.substring(1));
+                var scrollToEl = document.getElementById(window.location.hash.substring(1));
 
-                if ($hash.length) {
-                    $(document).scrollTop($hash.offset().top);
+                if (scrollToEl) {
+                    scrollToEl.scrollIntoView({ alignToTop: true, behavior: 'smooth' });
                 }
             } else {
-                $('html, body').animate({ scrollTop: 0 }, 'normal');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
 };
@@ -140,13 +140,13 @@ const fetchHtmlAndUpdateDom = (url) => {
 const ajaxHtmlRequest = (e) => {
     e.preventDefault();
 
-    var $element = $(e.target);
+    let element = e.target;
 
-    if ($element.prop('tagName') !== 'A' && $element.prop('tagName') !== 'AREA') {
-        $element = $element.closest('a');
+    if (element.tagName !== 'A' && element.tagName !== 'AREA') {
+        element = element.closest('a');
     }
 
-    const url = $element.attr('href');
+    const url = element.href;
 
     fetchHtmlAndUpdateDom(url);
 

@@ -1,6 +1,8 @@
+import snackbar from './components/snackbar';
+
 const appdir = $('base').attr('href');
 
-const gameManipulateDOM = (data) => {
+const manipulateDom = (data) => {
     var x;
     var toggleVisibility = [
         'inventory_ship_health',
@@ -107,19 +109,16 @@ const gameManipulateDOM = (data) => {
     }
 
     if (data.success) {
-        $('div#msg').prepend('<div class="success"><p>' + data.success + '</p></div>');
-        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
+        snackbar({ text: data.success, level: 'success' });
     }
 
     if (data.info) {
-        $('div#msg').prepend('<div class="info"><p>' + data.info + '</p></div>');
-        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
+        snackbar({ text: data.info, level: 'info' });
     }
 
     if (data.error) {
-        $('div#msg').prepend('<div class="error"><p>' + data.error + '</p></div>');
-        $('div#msg div').not(':first-child').delay(3000).slideUp(250);
+        snackbar({ text: data.error, level: 'error' });
     }
 };
 
-window.gameManipulateDOM = gameManipulateDOM;
+export default manipulateDom;

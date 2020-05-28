@@ -1,3 +1,5 @@
+import manipulateDom from './manipulateDom';
+
 const appdir = $('base').attr('href');
 const timerTimeout = 60000;
 
@@ -12,7 +14,7 @@ const updateLastActivity = () => {
             cache: false,
             dataType: 'json',
             success: function (data) {
-                gameManipulateDOM(data);
+                manipulateDom(data);
             }
         });
     }

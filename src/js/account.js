@@ -1,4 +1,6 @@
 import dialog from './components/dialog.js';
+import snackbar from './components/snackbar';
+import manipulateDom from './manipulateDom';
 
 $(document).on('change', '#profile_picture_select', function () {
     var imageToUpload = document.getElementById('profile_picture_select').files[0];
@@ -35,11 +37,9 @@ $(document).on('submit', '#profile_picture_form', function () {
     var data = {};
 
     if (imageToUpload.type != 'image/jpeg') {
-        data.error = 'You can only upload JPEG images.';
-        gameManipulateDOM(data);
+        snackbar({ text: 'You can only upload JPEG images.', level: 'error' });
     } else if (imageToUpload.size > 1000000) {
-        data.error = 'The image cannot be larger than 1 MB.';
-        gameManipulateDOM(data);
+        snackbar({ text: 'The image cannot be larger than 1 MB.', level: 'error' });
     } else {
         $.ajax({
             type: 'POST',
@@ -50,8 +50,7 @@ $(document).on('submit', '#profile_picture_form', function () {
             contentType: false,
             processData: false,
             success: function (data) {
-                console.log(data);
-                gameManipulateDOM(data);
+                manipulateDom(data);
             }
         });
     }
