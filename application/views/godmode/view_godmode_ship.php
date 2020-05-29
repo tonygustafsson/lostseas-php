@@ -41,9 +41,9 @@
 	<table class="godmode" id="ship_table">
 		<tr>
 			<th>Name</th>
-			<th>Type <a href="javascript:godmodeChangeAll('type')" title="Change type for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
-			<th>Age <a href="javascript:godmodeChangeAll('age')" title="Change age for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
-			<th>Health <a href="javascript:godmodeChangeAll('health')" title="Change health for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Type <a class="js-godmode-change-all-in-column" data-change-for="type" href="#" title="Change type for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Age <a class="js-godmode-change-all-in-column" data-change-for="age" href="#" title="Change age for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#" title="Change health for all ships"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
 		</tr>
 		
 		<?php foreach ($player_ships as $current_ship): ?>

@@ -41,9 +41,9 @@
 	<table id="crew_table" class="godmode">
 		<tr>
 			<th>Name</th>
-			<th>Mood <a href="javascript:godmodeChangeAll('mood')" title="Change mood for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
-			<th>Health <a href="javascript:godmodeChangeAll('health')" title="Change health for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
-			<th>Doubloons <a href="javascript:godmodeChangeAll('doubloons')" title="Change doubloons for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Mood <a class="js-godmode-change-all-in-column" data-change-for="mood" href="#" title="Change mood for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#" title="Change health for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
+			<th>Doubloons <a class="js-godmode-change-all-in-column" data-change-for="doubloons" href="#" title="Change doubloons for all crew members"><img src="<?php echo base_url('assets/images/icons/change_all.png')?>" alt="Change all"></a></th>
 		</tr>
 		
 		<?php foreach ($crew as $current_crew): ?>
