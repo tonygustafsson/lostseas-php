@@ -1,6 +1,7 @@
 import manipulateDom from './manipulateDom';
 
-const appdir = $('base').attr('href');
+const base = document.getElementsByTagName('base')[0];
+const appdir = base.href;
 const timerTimeout = 60000;
 
 let windowFocus = true;

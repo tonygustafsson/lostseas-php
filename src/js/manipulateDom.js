@@ -1,6 +1,7 @@
 import snackbar from './components/snackbar';
 
-const appdir = $('base').attr('href');
+const base = document.getElementsByTagName('base')[0];
+const appdir = base.href;
 
 const manipulateDom = (data) => {
     if (!data) {

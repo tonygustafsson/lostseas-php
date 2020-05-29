@@ -1,4 +1,5 @@
-const appdir = $('base').attr('href');
+const base = document.getElementsByTagName('base')[0];
+const appdir = base.href;
 
 const areaMouseOver = (e) => {
     const $element = $(e.target);
