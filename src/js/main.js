@@ -10,6 +10,7 @@ import './bankAccount';
 import './bankLoan';
 import './chat';
 import './inventory';
+import './history';
 import './misc';
 import './ocean';
 import './oceanLoot';
