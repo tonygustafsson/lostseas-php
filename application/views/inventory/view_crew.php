@@ -34,7 +34,7 @@
 		<table style="padding-bottom: 30px;">
 			<tr>
 				<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
-					<th><input type="checkbox" name="check_all" onchange="checkAll('crew')"></th>
+					<th><input class="js-inventory-check-all" data-select="crew" type="checkbox" name="check_all" /></th>
 				<?php endif; ?>
 				<th><a class="ajaxHTML" href="<?php echo base_url('inventory/crew/' . $player['user']['id']) . '/name_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Name</a></th>
 				<th><a class="ajaxHTML" href="<?php echo base_url('inventory/crew/' . $player['user']['id']) . '/nationality_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Nationality</a></th>
@@ -48,7 +48,7 @@
 				<?php $man['gender'] = ($man['gender'] == 'M') ? 'man' : 'woman'?>
 				<tr id="crew_<?php echo $man['id']?>">
 					<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
-						<td><input type="checkbox" id="box_<?php echo $man['id']?>" name="crew[]" value="<?php echo $man['id']?>"></td>
+						<td><input type="checkbox" id="crew-checkbox-<?php echo $man['id']?>" name="crew[]" value="<?php echo $man['id']?>"></td>
 					<?php endif; ?>
 					<td>
 						<span class="tooltip-multiline tooltip-bottom-left" data-tooltip="<?php echo $man['description']?>">

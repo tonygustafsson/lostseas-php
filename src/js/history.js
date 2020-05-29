@@ -56,3 +56,13 @@ const createInventoryGraph = () => {
 };
 
 window.addEventListener('inventory-history', createInventoryGraph);
+
+$(document).on('change', '#history_weeks', function () {
+    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
+    $('#history_update_link').attr('href', url);
+});
+
+$(document).on('change', '#history_data', function () {
+    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
+    $('#history_update_link').attr('href', url);
+});

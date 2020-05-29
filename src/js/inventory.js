@@ -1,49 +1,67 @@
-function checkAll(name) {
-    if ($("input[name='check_all']").is(':checked')) {
-        $("input[name='" + name + "[]']").prop('checked', true);
-        $("input[name='" + name + "[]']")
-            .parent()
-            .parent()
-            .css('background', '#e5f0f6');
-    } else {
-        $("input[name='" + name + "[]']").prop('checked', false);
-        $("input[name='" + name + "[]']")
-            .parent()
-            .parent()
-            .css('background', 'transparent');
+const checkAll = (e) => {
+    const checkbox = e.target;
+    const selectType = checkbox.dataset.select;
+    const isChecked = checkbox.checked;
+
+    const correspondingCheckboxes = Array.from(document.querySelectorAll(`input[name='${selectType}[]']`));
+
+    correspondingCheckboxes.forEach((box) => {
+        box.checked = isChecked;
+        const row = box.closest('tr');
+        const color = isChecked ? '#e5f0f6' : 'transparent';
+
+        row.style.backgroundColor = color;
+    });
+};
+
+const initCheckAll = () => {
+    const trigger = document.querySelector('.js-inventory-check-all');
+    trigger.addEventListener('change', checkAll);
+};
+
+const changeRowBackgroundColor = (e) => {
+    const checkbox = e.target;
+    const isChecked = checkbox.checked;
+    const row = checkbox.closest('tr');
+    const color = isChecked ? '#e5f0f6' : 'transparent';
+
+    row.style.backgroundColor = color;
+};
+
+const initRowBackgroundColor = () => {
+    const selectType = 'crew';
+    const checkboxes = Array.from(document.querySelectorAll(`input[name='${selectType}[]']`));
+
+    checkboxes.forEach((box) => {
+        box.addEventListener('change', changeRowBackgroundColor);
+    });
+};
+
+const clickRow = (e) => {
+    if (e.target.tagName === 'INPUT') {
+        // Ignore click on checkboxes
+        return;
     }
-}
 
-window.checkAll = checkAll;
+    const row = e.target.closest('tr');
+    const checkbox = row.querySelector('input[type=checkbox]');
+    const isChecked = checkbox.checked;
+    const color = !isChecked ? '#e5f0f6' : 'transparent';
 
-$(document).on('click', '#crew_form tr td:not(:first-child)', function () {
-    var thisCheckbox = $(this).parent().find('td:first-child').find('input[type="checkbox"]');
+    row.style.backgroundColor = color;
+    checkbox.checked = !isChecked;
+};
 
-    if (thisCheckbox.length !== 0) {
-        if (thisCheckbox.is(':checked')) {
-            thisCheckbox.prop('checked', false);
-            $(this).parent().css('background', 'transparent');
-        } else {
-            thisCheckbox.prop('checked', true);
-            $(this).parent().css('background', '#e5f0f6');
-        }
-    }
-});
+const initRowClick = () => {
+    const rows = Array.from(document.querySelectorAll('#crew_form tr'));
 
-$(document).on('change', '#crew_form input[type=checkbox]', function () {
-    if ($(this).is(':checked')) {
-        $(this).parent().parent().css('background', '#e5f0f6');
-    } else {
-        $(this).parent().parent().css('background', 'transparent');
-    }
-});
+    rows.forEach((row) => {
+        row.addEventListener('click', clickRow);
+    });
+};
 
-$(document).on('change', '#history_weeks', function () {
-    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
-    $('#history_update_link').attr('href', url);
-});
-
-$(document).on('change', '#history_data', function () {
-    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
-    $('#history_update_link').attr('href', url);
+window.addEventListener('inventory-crew', () => {
+    initCheckAll();
+    initRowBackgroundColor();
+    initRowClick();
 });
