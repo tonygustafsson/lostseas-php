@@ -293,9 +293,9 @@ class Account extends Main
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
             
-            $data['success'] = 'Successfully uploaded profile picture.';
+            $data['manipulateDom']['success'] = 'Successfully uploaded profile picture.';
         } else {
-            $data['error'] = 'Could not upload profile picture';
+            $data['manipulateDom']['error'] = 'Could not upload profile picture';
         }
         
         echo json_encode($data);

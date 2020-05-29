@@ -3,6 +3,10 @@ import snackbar from './components/snackbar';
 const appdir = $('base').attr('href');
 
 const manipulateDom = (data) => {
+    if (!data) {
+        return;
+    }
+
     var x;
     var toggleVisibility = [
         'inventory_ship_health',

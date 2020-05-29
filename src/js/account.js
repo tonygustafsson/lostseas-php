@@ -2,58 +2,88 @@ import axios from 'axios';
 import snackbar from './components/snackbar';
 import manipulateDom from './manipulateDom';
 
-$(document).on('change', '#profile_picture_select', function () {
-    var imageToUpload = document.getElementById('profile_picture_select').files[0];
+const changeProfilePic = (e) => {
+    const selectEl = e.target;
+    var imageToUpload = selectEl.files[0];
 
-    if (imageToUpload.type == 'image/jpeg') {
-        var image = document.createElement('img');
-        var thumbnail = document.getElementById('image_preview');
-        image.file = imageToUpload;
-        image.width = 120;
-        image.height = 120;
-        thumbnail.innerHTML = '';
-        thumbnail.appendChild(image);
-        thumbnail.style.display = 'block';
+    if (imageToUpload.type !== 'image/jpeg') {
+        snackbar({ text: 'You must choose a JPEG image', level: 'error' });
+        return;
+    }
 
-        var reader = new FileReader();
+    const image = document.createElement('img');
+    const thumbnail = document.getElementById('image_preview');
 
-        reader.onload = (function (aImg) {
-            return function (e) {
-                aImg.src = e.target.result;
-            };
-        })(image);
+    image.file = imageToUpload;
+    image.width = 120;
+    image.height = 120;
+    thumbnail.innerHTML = '';
+    thumbnail.appendChild(image);
+    thumbnail.style.display = 'block';
 
-        var ret = reader.readAsDataURL(imageToUpload);
-        var canvas = document.createElement('canvas');
-        var ctx = canvas.getContext('2d');
-        image.onload = function () {
-            ctx.drawImage(image, 120, 120);
+    var reader = new FileReader();
+
+    reader.onload = (function (aImg) {
+        return function (e) {
+            aImg.src = e.target.result;
         };
-    }
-});
+    })(image);
 
-$(document).on('submit', '#profile_picture_form', function () {
-    var imageToUpload = document.getElementById('profile_picture_select').files[0];
-    var data = {};
+    var ret = reader.readAsDataURL(imageToUpload);
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
 
-    if (imageToUpload.type != 'image/jpeg') {
+    image.onload = function () {
+        ctx.drawImage(image, 120, 120);
+    };
+};
+
+const uploadProfilePic = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const imageToUpload = document.getElementById('profile_picture_select').files[0];
+
+    if (imageToUpload.type !== 'image/jpeg') {
         snackbar({ text: 'You can only upload JPEG images.', level: 'error' });
-    } else if (imageToUpload.size > 1000000) {
-        snackbar({ text: 'The image cannot be larger than 1 MB.', level: 'error' });
-    } else {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            data: imageToUpload,
-            url: $(this).attr('action'),
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                manipulateDom(data);
-            }
-        });
+        return;
     }
 
-    return false;
+    if (imageToUpload.size > 1000000) {
+        snackbar({ text: 'The image cannot be larger than 1 MB.', level: 'error' });
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('profile_picture_select', imageToUpload);
+
+    axios({
+        method: 'post',
+        responseType: 'json',
+        data: formData,
+        url: form.action,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+        .then((response) => {
+            manipulateDom(response.data.manipulateDom);
+        })
+        .catch((err) => {
+            snackbar({ text: `Could not upload image. ${err.toString()}`, level: 'error' });
+        });
+};
+
+const initProfilePictureSelector = () => {
+    const profilePicSelectEl = document.getElementById('profile_picture_select');
+
+    profilePicSelectEl.addEventListener('change', changeProfilePic);
+
+    const profilePicFormEl = document.getElementById('profile_picture_form');
+
+    profilePicFormEl.addEventListener('submit', uploadProfilePic);
+};
+
+window.addEventListener('account-settings_account', () => {
+    initProfilePictureSelector();
 });
