@@ -1,6 +1,6 @@
 import { Line as ChartistLine } from 'chartist';
 
-const createInventoryGraph = () => {
+const initGraph = () => {
     const chartHistoryEl = document.querySelector('.js-chartist-history');
 
     if (!chartHistoryEl || !chartHistoryEl.dataset.chartData || !chartHistoryEl.dataset.chartLabels) {
@@ -55,14 +55,26 @@ const createInventoryGraph = () => {
     new ChartistLine(chartHistoryEl, data, options, responsiveOptions);
 };
 
-window.addEventListener('inventory-history', createInventoryGraph);
+const graphSettingsLinkClick = (e) => {
+    e.preventDefault();
 
-$(document).on('change', '#history_weeks', function () {
-    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
-    $('#history_update_link').attr('href', url);
-});
+    const link = e.target;
+    const baseUrl = document.getElementById('base_url').value;
+    const weeksSettingsEl = document.getElementById('history_weeks');
+    const dataTypeEl = document.getElementById('history_data');
+    const url = `${baseUrl}/${dataTypeEl.value}/${weeksSettingsEl.value}`;
 
-$(document).on('change', '#history_data', function () {
-    var url = $('#base_url').val() + '/' + $('#history_data').val() + '/' + $('#history_weeks').val();
-    $('#history_update_link').attr('href', url);
+    link.href = url;
+    link.click();
+};
+
+const initGraphSettingsChange = () => {
+    const link = document.getElementById('history_update_link');
+
+    link.addEventListener('click', graphSettingsLinkClick);
+};
+
+window.addEventListener('inventory-history', () => {
+    initGraph();
+    initGraphSettingsChange();
 });
