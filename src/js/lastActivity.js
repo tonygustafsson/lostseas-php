@@ -3,7 +3,7 @@ import manipulateDom from './manipulateDom';
 
 const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
-const updateActivityEveryMs = 1000;
+const updateActivityEveryMs = 60000;
 
 let updateInterval;
 
