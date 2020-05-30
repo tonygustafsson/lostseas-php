@@ -1,58 +1,40 @@
+import axios from 'axios';
 import manipulateDom from './manipulateDom';
 
 const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
-const timerTimeout = 60000;
+const updateActivityEveryMs = 1000;
 
-let windowFocus = true;
-let firstFocus = true;
-let updateTimeout;
+let updateInterval;
 
 const updateLastActivity = () => {
-    if (windowFocus && $('#nav_logout').length != 0) {
-        $.ajax({
-            url: appdir + 'account/update_activity',
-            cache: false,
-            dataType: 'json',
-            success: function (data) {
-                manipulateDom(data);
-            }
-        });
-    }
+    const loggOutBtnEl = document.getElementById('nav_logout');
+    const url = appdir + 'account/update_activity';
 
-    updateTimeout = window.setTimeout(updateLastActivity, timerTimeout);
+    axios({
+        method: 'post',
+        url: url
+    }).then((result) => {
+        manipulateDom(result.data.manipulateDom);
+    });
+
+    updateInterval = setTimeout(updateLastActivity, updateActivityEveryMs);
 };
 
-const toggleLastActivityCheck = (e) => {
-    //Detects if game has focus or not, discontinues automatic updates
-    var prevType = $(this).data('prevType');
-
-    if (prevType != e.type) {
-        //reduce double fire issues
-
-        switch (e.type) {
-            case 'blur':
-                windowFocus = false;
-                firstFocus = false;
-
-                break;
-            case 'focus':
-                windowFocus = true;
-
-                if (firstFocus == false) {
-                    clearTimeout(updateTimeout);
-                    updateLastActivity();
-                }
-
-                break;
-        }
-    }
-
-    $(this).data('prevType', e.type);
+const startChecks = (e) => {
+    updateInterval = setTimeout(updateLastActivity, updateActivityEveryMs);
 };
 
-$(window).on('focus blur', toggleLastActivityCheck);
+const stopChecks = (e) => {
+    clearInterval(updateInterval);
+};
 
-$(document).ready(function () {
-    window.setTimeout(updateLastActivity, timerTimeout);
-});
+window.addEventListener('focus', startChecks);
+window.addEventListener('blur', stopChecks);
+
+const logOutBtnEl = document.getElementById('nav_logout');
+
+if (logOutBtnEl) {
+    // Only run if logged in
+    startChecks();
+}
