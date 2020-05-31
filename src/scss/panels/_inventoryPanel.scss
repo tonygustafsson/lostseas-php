@@ -1,3 +1,32 @@
+@keyframes shake {
+    0% {
+        background-color: transparent;
+    }
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+    100% {
+        background-color: $yellow;
+    }
+}
+
 .inventory-panel {
     border: 1px $lightgrey solid;
     background-color: $whiteglass;
@@ -54,6 +83,7 @@
         border-top: 1px $lightgrey solid;
         border-bottom: 1px $lightgrey solid;
         box-sizing: border-box;
+        transition: transform 1000ms;
 
         a {
             display: block;
@@ -73,6 +103,10 @@
 
         &:hover {
             background-color: $lightblue;
+        }
+
+        &--updated {
+            animation: shake 500ms both;
         }
     }
 

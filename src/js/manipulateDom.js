@@ -8,8 +8,7 @@ const manipulateDom = (data) => {
         return;
     }
 
-    var x;
-    var toggleVisibility = [
+    const invisibleElementsIfValueZero = [
         'inventory_ship_health',
         'inventory_rafts',
         'inventory_crew_mood',
@@ -26,49 +25,68 @@ const manipulateDom = (data) => {
     ];
 
     if (data.changeElements) {
-        $.each(data.changeElements, function (element, attribute) {
-            $.each(attribute, function (changedAttr, changedValue) {
-                if (changedAttr == 'text') {
-                    if ($('#' + element).text() != changedValue) {
-                        $('#' + element).text(changedValue);
+        Object.keys(data.changeElements).forEach((elementId) => {
+            Object.keys(data.changeElements[elementId]).forEach((attribute, i) => {
+                let value = Object.values(data.changeElements[elementId])[i];
+                let element = document.getElementById(elementId);
 
-                        if (toggleVisibility.indexOf(element) > -1) {
-                            //If the text is in an element that should be invisible if 0, or not
-                            if (changedValue == 0) {
-                                $('#' + element)
-                                    .parent()
-                                    .parent()
-                                    .css('display', 'none');
-                            } else {
-                                $('#' + element)
-                                    .parent()
-                                    .parent()
-                                    .css('display', 'block');
-                            }
+                if (!element) {
+                    return;
+                }
+
+                switch (attribute) {
+                    case 'text':
+                        if (element.innerText === value.toString()) {
+                            // Ignore if the same value already set
+                            return;
                         }
 
-                        /* Nice effect for getting users attention */
-                        for (x = 0; x < 5; x = x + 1) {
-                            $('#' + element).slideToggle(100);
-                            $('#' + element).slideToggle(100);
+                        element.innerText = value;
+
+                        let container = element.parentElement.parentElement;
+
+                        if (invisibleElementsIfValueZero.includes(elementId)) {
+                            // If the text is in an element that should be invisible if 0, or not
+                            let displayValue = value <= 0 ? 'none' : 'block';
+
+                            container.style.display = displayValue;
                         }
-                    }
-                } else if (changedAttr == 'html') {
-                    $('#' + element).html(changedValue);
-                } else if (changedAttr == 'val') {
-                    $('#' + element).val(changedValue);
-                } else if (changedAttr == 'checked') {
-                    $('#' + element).prop('checked', changedValue);
-                } else if (changedAttr == 'prepend') {
-                    $('#' + element).prepend(changedValue);
-                } else if (changedAttr == 'append') {
-                    $('#' + element).append(changedValue);
-                } else if (changedAttr == 'visibility') {
-                    $('#' + element).css('display', changedValue);
-                } else if (changedAttr == 'remove') {
-                    $('#' + element).remove();
-                } else {
-                    $('#' + element).attr(changedAttr, changedValue);
+
+                        // Nice effect for getting users attention
+                        container.classList.add('inventory_item--updated');
+
+                        setTimeout(() => {
+                            container.classList.remove('inventory_item--updated');
+                        }, 1000);
+
+                        break;
+                    case 'html':
+                        element.innerHTML = value;
+                        break;
+                    case 'val':
+                        element.value = value;
+                        break;
+                    case 'checked':
+                        element.checked = value;
+                        break;
+                    case 'prepend':
+                        let prependElement = document.createElement('div');
+                        prependElement.innerHTML = value;
+                        element.prepend(prependElement);
+                        break;
+                    case 'append':
+                        let appendElement = document.createElement('div');
+                        appendElement.innerHTML = value;
+                        element.appendChild(appendElement);
+                        break;
+                    case 'visibility':
+                        element.style.display = value;
+                        break;
+                    case 'remove':
+                        element.remove();
+                        break;
+                    case 'default':
+                        snackbar({ text: `Attribute ${attribute} is not possible to change.`, level: 'error' });
                 }
             });
         });
