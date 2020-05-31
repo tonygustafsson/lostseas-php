@@ -93,12 +93,8 @@ const manipulateDom = (data) => {
     }
 
     if (data.loadView) {
-        $('article#main').html(data.loadView);
-
-        var title = $(data.loadView.trim()).filter('header').attr('title') + ' - Lost Seas';
-        if (title) {
-            document.title = title;
-        }
+        const container = document.getElementById('main');
+        container.innerHTML = data.loadView;
     }
 
     if (data.pushState) {
