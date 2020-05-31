@@ -1,0 +1,19 @@
+.init-page-load {
+    opacity: 0;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: opacity 250ms;
+
+    p {
+        color: $red;
+        background: $whiteglass;
+        padding: 0.5em 1em;
+        z-index: 1000;
+        position: relative;
+    }
+
+    &--active {
+        opacity: 1;
+    }
+}

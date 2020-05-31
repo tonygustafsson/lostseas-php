@@ -51,6 +51,10 @@ img {
 
 a {
     outline: none;
+
+    &.disabled {
+        pointer-events: none;
+    }
 }
 
 .right {

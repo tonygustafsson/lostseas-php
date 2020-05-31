@@ -11,7 +11,7 @@ import './bankLoan';
 import './chat';
 import './inventory';
 import './history';
-import './misc';
+import './initPageLoad';
 import './ocean';
 import './oceanLoot';
 import './oceanTrade';

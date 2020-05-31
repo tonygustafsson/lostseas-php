@@ -60,8 +60,8 @@
 		<?php endif; ?>
 		
 		<?php if ($this->input->is_ajax_request() === false && isset($user['admin']) && $user['admin'] == 1): ?>
-			<section id="initial_page_load" style="position: absolute; top: 10px; left: 10px;">
-				<p style="color: red; background: #fff">Initial page load!</p>
+			<section class="init-page-load init-page-load--active">
+				<p>Initial page load</p>
 			</section>
 		<?php endif; ?>
 
