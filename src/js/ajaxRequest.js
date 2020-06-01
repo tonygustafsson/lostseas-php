@@ -185,7 +185,7 @@ window.addEventListener('updated-dom', () => {
 
 window.addEventListener('popstate', onPopState);
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     triggerEventFromUrl();
     addEventListeners();
 });
