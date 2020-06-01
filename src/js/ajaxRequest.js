@@ -164,7 +164,7 @@ const onPopState = (e) => {
 const addEventListeners = () => {
     const ajaxJsonFormEls = Array.from(document.querySelectorAll('form.ajaxJSON'));
     const ajaxJsonLinkEls = Array.from(document.querySelectorAll('a.ajaxJSON'));
-    const ajaxHtmlLinkEls = Array.from(document.querySelectorAll('a.ajaxHTML'));
+    const ajaxHtmlLinkEls = Array.from(document.querySelectorAll('.ajaxHTML'));
 
     ajaxJsonFormEls.forEach((el) => {
         el.addEventListener('submit', ajaxJsonRequest);
@@ -185,7 +185,7 @@ window.addEventListener('updated-dom', () => {
 
 window.addEventListener('popstate', onPopState);
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     triggerEventFromUrl();
     addEventListeners();
 });
