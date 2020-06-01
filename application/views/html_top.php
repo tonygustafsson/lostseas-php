@@ -36,9 +36,6 @@
 		</script>
 	<?php endif; ?>
 	
-	<script type="text/javascript" src="<?php echo base_url('assets/js/styles.js?202005171562')?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/js/main.js?202005171562')?>"></script>
-	
 	<title><?php echo $page_title?></title>
 </head>
 
@@ -59,7 +56,7 @@
 		<?php endif; ?>
 		
 		<?php if ($this->input->is_ajax_request() === false && isset($user['admin']) && $user['admin'] == 1): ?>
-			<section class="init-page-load init-page-load--active">
+			<section class="init-page-load">
 				<p>Initial page load</p>
 			</section>
 		<?php endif; ?>
