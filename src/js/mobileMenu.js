@@ -1,49 +1,77 @@
-const toggleVisibility = (id) => {
-    var $element = $('#' + id);
+const deviceMobileMax = 960;
 
-    if ($element.css('display') == 'none') {
-        $('#inventory_panel').css('display', 'none');
-        $('#action_panel').css('display', 'none');
-        $('#nav_top').css('display', 'none');
+const show = (elementId) => {
+    const element = document.getElementById(elementId);
 
-        $element.css('display', 'block');
+    if (!element) {
+        return;
+    }
+
+    element.style.display = 'block';
+};
+
+const hide = (elementId) => {
+    const element = document.getElementById(elementId);
+
+    if (!element) {
+        return;
+    }
+
+    element.style.display = 'none';
+};
+
+const toggle = (elementId) => {
+    const element = document.getElementById(elementId);
+
+    if (!element) {
+        return;
+    }
+
+    if (element.style.display === 'none' || !element.style.display) {
+        hide('inventory_panel');
+        hide('action_panel');
+        hide('nav_top');
+
+        show(element.id);
     } else {
-        $element.css('display', 'none');
+        hide(element.id);
     }
 };
 
-$(document).on('click', '#nav_top_button', function () {
-    toggleVisibility('nav_top');
-    return false;
-});
+const initMenu = (triggerBtnId, panelId) => {
+    const triggerBtn = document.getElementById(triggerBtnId);
+    const panel = document.getElementById(panelId);
 
-$(document).on('click', 'nav#nav_top a', function () {
-    if (window.innerWidth < 959) {
-        //Collapse this panel if mobile view is used
-        $('nav#nav_top').css('display', 'none');
+    if (!triggerBtn || !panel) {
+        return;
     }
+
+    const links = Array.from(panel.getElementsByTagName('a'));
+
+    triggerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggle(panel.id);
+    });
+
+    links.forEach((link) => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= deviceMobileMax) {
+                hide(panel.id);
+            }
+        });
+    });
+};
+
+window.addEventListener('load', () => {
+    initMenu('nav_top_button', 'nav_top');
+    initMenu('action_panel_button', 'action_panel');
+    initMenu('inventory_panel_button', 'inventory_panel');
 });
 
-$(document).on('click', '#action_panel_button', function () {
-    toggleVisibility('action_panel');
-    return false;
-});
-
-$(document).on('click', '#action_panel a', function () {
-    if (window.innerWidth < 959) {
-        //Collapse this panel if mobile view is used
-        $('#action_panel').css('display', 'none');
-    }
-});
-
-$(document).on('click', '#inventory_panel_button', function () {
-    toggleVisibility('inventory_panel');
-    return false;
-});
-
-$(document).on('click', '#inventory_panel a', function () {
-    if (window.innerWidth < 959) {
-        //Collapse this panel if mobile view is used
-        $('#inventory_panel').css('display', 'none');
+window.addEventListener('resize', (e) => {
+    if (window.innerWidth >= deviceMobileMax) {
+        show('inventory_panel');
+        show('action_panel');
+        show('nav_top');
     }
 });

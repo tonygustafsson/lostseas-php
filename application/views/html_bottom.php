@@ -218,7 +218,7 @@
 				</form>
 				
 				<p>
-					<a href="https://www.facebook.com/lostseas" title="Visit us on Facebook"><img src="<?php echo base_url('assets/images/design/facebook.png')?>" alt="Visit us on facebook"></a>
+					<a href="https://www.facebook.com/lostseas" class="fb-like-box" title="Visit us on Facebook"><img src="<?php echo base_url('assets/images/design/facebook.png')?>" alt="Visit us on facebook"></a>
 				</p>
 			</aside>
 			
