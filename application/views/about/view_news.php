@@ -47,7 +47,7 @@
 
 <?php if (isset($user) && $user['admin'] == 1): ?>
 	<section id="news_form_section">
-		<form method="post" id="news_form" class="ajaxJSON" action="<?php echo base_url('about/news_post')?>">
+		<form method="post" id="news_form" class="ajaxJSON news-form" action="<?php echo base_url('about/news_post')?>">
 			<fieldset>
 				<legend>Post news</legend>
 				

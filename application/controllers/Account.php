@@ -482,7 +482,7 @@ class Account extends Main
                     $log_input['week'] = 1;
                     $this->Log->create($log_input);
                     
-                    $data['runJS'] = 'location.reload();';
+                    $data['reloadPage'] = true;
                 }
 
                 //Update the game database
@@ -556,7 +556,7 @@ class Account extends Main
                 $this->session->sess_destroy();
                 
                 $data['pushState'] = '/';
-                $data['runJS'] = 'location.reload();';
+                $data['reloadPage'] = true;
             }
             
             echo json_encode($data);

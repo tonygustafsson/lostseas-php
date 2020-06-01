@@ -79,7 +79,6 @@ class About extends Main
                 $new_news = $this->News->create($news);
                 
                 $data['changeElements']['news_entries']['prepend'] = $new_news;
-                $data['runJS'] = '$("#news_form")[0].reset();';
 
                 $data['success'] = 'Successfully created news!';
             }

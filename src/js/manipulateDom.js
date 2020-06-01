@@ -116,9 +116,8 @@ const manipulateDom = (data) => {
         sound.play();
     }
 
-    if (data.runJS) {
-        //Just runJS
-        eval(data.runJS);
+    if (data.reloadPage) {
+        window.location.reload();
     }
 
     if (data.consoleLog) {
