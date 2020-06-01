@@ -1,14 +1,22 @@
 import * as noUiSlider from 'nouislider';
+import axios from 'axios';
 import dialog from './components/dialog.js';
+import snackbar from './components/snackbar';
 
 const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
 const gameMusic = new Audio();
 
-const changeSong = () => {
-    var newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
+const changeSong = (e) => {
+    if (e) {
+        e.preventDefault();
+    }
 
-    $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
+    const newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
+    const musicControlEl = document.getElementById('music_control');
+
+    const musicIcon = document.getElementById('music_icon');
+    musicIcon.src = appdir + 'assets/images/icons/music_pause.png';
 
     if (gameMusic.canPlayType('audio/ogg')) {
         //Play OGG files
@@ -24,19 +32,26 @@ const changeSong = () => {
         ga('send', 'event', 'MusicSong', gameMusic.src);
     }
 
-    var musicVolume = $('#music_control').data('musicvolume');
+    const musicVolume = musicControlEl.dataset.musicvolume;
 
     gameMusic.volume = musicVolume / 100;
     gameMusic.load();
     gameMusic.addEventListener('canplay', gameMusic.play(), false);
 };
 
-const musicControl = () => {
-    if (gameMusic.paused || gameMusic.src == '') {
-        $.ajax({
-            url: appdir + 'account/music/1',
-            success: function () {
-                if (gameMusic.src == '') {
+const musicToggle = (e) => {
+    e.preventDefault();
+
+    const musicIcon = document.getElementById('music_icon');
+    const musicLink = document.getElementById('music_link');
+
+    if (gameMusic.paused || gameMusic.src === '') {
+        axios({
+            method: 'post',
+            url: `${appdir}/account/music/1`
+        })
+            .then((result) => {
+                if (gameMusic.src === '') {
                     changeSong();
 
                     if (typeof ga == typeof Function) {
@@ -50,74 +65,112 @@ const musicControl = () => {
                     }
                 }
 
-                $('#music_icon').attr('src', appdir + 'assets/images/icons/music_pause.png');
-                $('#music_link').attr('title', 'Pause game music');
-            }
-        });
+                musicIcon.src = appdir + 'assets/images/icons/music_pause.png';
+                musicLink.title = 'Pause the music';
+            })
+            .catch((err) => {
+                snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+            });
     } else {
         gameMusic.pause();
 
-        $.ajax({
-            url: appdir + 'account/music/0',
-            success: function () {
+        axios({
+            method: 'post',
+            url: `${appdir}/account/music/0`
+        })
+            .then((result) => {
                 if (typeof ga == typeof Function) {
                     ga('send', 'event', 'Music', 'Pause');
                 }
 
-                $('#music_icon').attr('src', appdir + 'assets/images/icons/music_play.png');
-                $('#music_link').attr('title', 'Play game music');
-            }
-        });
+                musicIcon.src = appdir + 'assets/images/icons/music_play.png';
+                musicLink.title = 'Play the music';
+            })
+            .catch((err) => {
+                snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+            });
     }
 };
 
 const onSliderChange = (value) => {
     const volume = value;
+    const musicControlEl = document.getElementById('music_control');
 
-    $.ajax({
-        url: appdir + 'account/music_volume/' + volume,
-        success: function () {
+    axios({
+        method: 'post',
+        url: `${appdir}account/music_volume/${volume}`
+    })
+        .then((result) => {
             gameMusic.volume = volume / 100;
 
             if (typeof ga == typeof Function) {
                 ga('send', 'event', 'MusicVolume', volume);
             }
 
-            $('#music_control').data('musicvolume', volume);
-        }
-    });
+            musicControlEl.dataset.musicvolume = volume;
+        })
+        .catch((err) => {
+            snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+        });
 };
 
 gameMusic.addEventListener('ended', changeSong, false);
 
-$(document).on('change', '#sound_effects input', function () {
-    var value = $('#sound_effects input:checked').val();
+const changeSoundEffects = (e) => {
+    const checkbox = e.target;
+    const value = checkbox.value;
 
-    $.ajax({
-        url: appdir + 'account/sound_effects/' + value,
-        success: function () {
+    axios({
+        method: 'post',
+        url: `${appdir}account/sound_effects/${value}`
+    })
+        .then((result) => {
             var googleValue = value === 1 ? 'TurnOn' : 'TurnOff';
 
             if (typeof ga == typeof Function) {
                 ga('send', 'event', 'SoundFX', googleValue);
             }
-        }
-    });
-});
+        })
+        .catch((err) => {
+            snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+        });
+};
 
-$(document).ready(function () {
-    var autoPlay = $('#music_control').data('autoplay');
-    if (autoPlay == 'yes') {
+window.addEventListener('load', () => {
+    // Enable music toggle
+    const musicToggles = Array.from(document.querySelectorAll('.js-music-toggle-state'));
+
+    musicToggles.forEach((toggle) => {
+        toggle.addEventListener('click', musicToggle);
+    });
+
+    // Enable music next
+    const musicNextBtn = document.querySelector('.js-music-next');
+
+    musicNextBtn.addEventListener('click', changeSong);
+
+    // Auto play music if turned on
+    const musicControlEl = document.getElementById('music_control');
+
+    if (musicControlEl.dataset.autoplay && musicControlEl.dataset.autoplay === 'yes') {
         changeSong();
     }
 
+    // Enable sound effect triggers
+    const soundEffectCheckboxes = Array.from(document.querySelectorAll('#sound_effects input'));
+
+    soundEffectCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', changeSoundEffects);
+    });
+
+    // Enable modal on click
     const modal = dialog({
         dialogElementId: 'sound_controls',
         dialogTriggerElementId: 'music_control'
     });
 
     const sliderEl = document.getElementById('music_volume_slider');
-    const musicVolue = $('#music_control').data('musicvolume');
+    const musicVolue = musicControlEl.dataset.musicvolume;
 
     if (!sliderEl) {
         return;
@@ -139,6 +192,3 @@ $(document).ready(function () {
             onSliderChange(parseInt(value, 10));
         });
 });
-
-window.musicControl = musicControl;
-window.changeSong = changeSong;

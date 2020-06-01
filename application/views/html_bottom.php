@@ -250,11 +250,11 @@
 				<h4>Track</h4>
 
 				<?php if ($user['music_play'] == 1): ?>
-					<a id="music_link" title="Pause game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_pause.png')?>" alt="Pause"></a>
+					<a id="music_link" title="Pause game music" class="js-music-toggle-state" href="#"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_pause.png')?>" alt="Pause"></a>
 				<?php else: ?>
-					<a id="music_link" title="Play game music" href="javascript:musicControl();"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_play.png')?>" alt="Play"></a>
+					<a id="music_link" title="Play game music" class="js-music-toggle-state" href="#"><img id="music_icon" src="<?php echo base_url('assets/images/icons/music_play.png')?>" alt="Play"></a>
 				<?php endif; ?>
-				<a title="Next song, please" style="padding-left: 0.5em;" href="javascript:changeSong();"><img src="<?php echo base_url('assets/images/icons/music_next.png')?>" alt="Change track"></a>
+				<a title="Next song, please" style="padding-left: 0.5em;" class="js-music-next" href="#"><img src="<?php echo base_url('assets/images/icons/music_next.png')?>" alt="Change track"></a>
 				
 				<h4>Volume</h4>
 
