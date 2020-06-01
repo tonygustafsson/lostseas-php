@@ -35,7 +35,7 @@
 	<img src="<?php echo base_url('assets/images/spanish_main.jpg')?>" usemap="#image_map" width="500" height="256" alt="The spanish main">
 </p>
 
-<map id="image_map" name="image_map">
+<map id="image_map" class="ocean-map" name="image_map">
 	<area class="ajaxHTML" shape="rect" coords="198,4,215,21" href="<?php echo base_url('harbor/charles_towne')?>" alt="Charles Towne" rel="england">
 	<area class="ajaxHTML" shape="rect" coords="96,31,113,48" href="<?php echo base_url('harbor/biloxi')?>" alt="Biloxi" rel="france">
 	<area class="ajaxHTML" shape="rect" coords="167,91,184,108" href="<?php echo base_url('harbor/havana')?>" alt="Havana" rel="spain">

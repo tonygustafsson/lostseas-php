@@ -12,7 +12,7 @@ import './chat';
 import './inventory';
 import './history';
 import './initPageLoad';
-import './ocean';
+import './oceanMap';
 import './oceanLoot';
 import './oceanTrade';
 import './shipyard';

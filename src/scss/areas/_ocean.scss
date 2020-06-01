@@ -1,0 +1,16 @@
+.ocean-map {
+    area {
+        outline: none;
+    }
+}
+
+.town-info {
+    position: absolute;
+    background: $whiteglass;
+    border: 1px $grey solid;
+    padding: 4px;
+
+    img {
+        padding-right: 8px;
+    }
+}
