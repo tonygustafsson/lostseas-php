@@ -51,6 +51,17 @@ const areaClick = () => {
     townInfo.remove();
 };
 
+window.addEventListener('ocean-battle-transfer-done', () => {
+    const areas = Array.from(document.querySelectorAll('area'));
+
+    areas.forEach((area) => {
+        area.addEventListener('mousemove', areaMouseMove);
+        area.addEventListener('mouseover', areaMouseOver);
+        area.addEventListener('mouseout', areaMouseOut);
+        area.addEventListener('click', areaClick);
+    });
+});
+
 window.addEventListener('ocean', () => {
     const areas = Array.from(document.querySelectorAll('area'));
 

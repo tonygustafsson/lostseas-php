@@ -326,6 +326,7 @@ class Ocean extends Main
             }
             
             //Below is happening either you win or lose
+            $data['event'] = 'ocean-battle-over';
             
             //Ship health decrease
             $ship_output = $this->Ship->update($ship_updates);
@@ -494,7 +495,8 @@ class Ocean extends Main
             
             $data['loadView'] = $this->load->view($view, $this->user, true);
             $data['pushState'] = base_url($this->user['game']['place']);
-            
+            $data['event'] = 'ocean-battle-transfer-done';
+
             echo json_encode($data);
         } else {
             redirect(base_url($this->user['game']['place']));
