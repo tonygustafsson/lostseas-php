@@ -5,6 +5,8 @@ window.addEventListener('load', () => {
         return;
     }
 
+    initPageLoadEl.classList.add('init-page-load--active');
+
     setTimeout(() => {
         initPageLoadEl.classList.remove('init-page-load--active');
     }, 2000);

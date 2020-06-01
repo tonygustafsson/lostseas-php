@@ -1,9 +1,8 @@
 .init-page-load {
-    opacity: 0;
+    display: none;
     position: absolute;
     top: 10px;
     left: 10px;
-    transition: opacity 250ms;
 
     p {
         color: $red;
@@ -14,6 +13,6 @@
     }
 
     &--active {
-        opacity: 1;
+        display: block;
     }
 }
