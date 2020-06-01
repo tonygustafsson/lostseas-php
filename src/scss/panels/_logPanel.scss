@@ -23,4 +23,17 @@
     p {
         margin: 1em;
     }
+
+    @include mobile {
+        float: left;
+        clear: both;
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 0.5em 0;
+        display: none;
+        position: absolute;
+        top: 9em;
+        z-index: 1000;
+        background: #fff;
+    }
 }

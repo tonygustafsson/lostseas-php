@@ -1,3 +1,4 @@
+// Colors
 $lightblue: #e5f0f6;
 $lightestgrey: #f7f7f7;
 $lightgrey: #d0d0d0;
@@ -10,5 +11,10 @@ $red: #ff2828;
 $blackglass: rgba(0, 0, 0, 0.8);
 $green: #74ce60;
 
+// Fonts
 $font-trebuchet: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, sans-serif;
 $font-bridgnorth: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+
+// Resolutions
+$device-mobile-max: 960px;
+$device-desktop-min: 1200px;

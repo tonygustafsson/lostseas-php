@@ -1,4 +1,11 @@
+// Variables
 @import 'variables';
+
+// Mixins
+@import 'mixins/mixins';
+
+// Animations
+@import 'animations/animations';
 
 // NoUISlider
 @import '/node_modules/nouislider/distribute/nouislider.css';
@@ -16,7 +23,6 @@
 @import 'table';
 @import 'form';
 @import 'slider';
-@import 'mobile';
 @import 'footer';
 @import 'registerForm';
 @import 'account';

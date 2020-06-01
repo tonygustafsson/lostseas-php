@@ -60,4 +60,23 @@
     #js-start-avatar-selector-trigger {
         margin-left: 0;
     }
+
+    @include tablet {
+        position: relative;
+        width: auto !important;
+        top: auto;
+        left: auto;
+        margin: 1em 0;
+        background: none;
+
+        label,
+        legend,
+        p {
+            color: #000;
+        }
+
+        input[type='submit'] {
+            margin: 0.5em 1em 0 -1em;
+        }
+    }
 }

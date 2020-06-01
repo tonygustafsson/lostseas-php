@@ -1,30 +1,59 @@
 header {
     padding-top: 1em;
     position: relative;
-}
 
-header h1 {
-    margin-left: 1em;
-    text-shadow: 2px 2px 2px #000;
-}
+    h1 {
+        margin-left: 1em;
+        text-shadow: 2px 2px 2px #000;
 
-header h1 a {
-    color: $yellow;
-    font-size: 1.5em;
-    font-family: $font-bridgnorth;
-    text-decoration: none;
-    letter-spacing: 0.1em;
+        a {
+            color: $yellow;
+            font-size: 1.5em;
+            font-family: $font-bridgnorth;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        @include mobile {
+            margin-bottom: 0;
+        }
+    }
+
+    @include mobile {
+        padding-top: 0;
+    }
 }
 
 a#nav_top_button {
     display: none;
     padding: 1em;
+
+    @include mobile {
+        display: block !important;
+        float: left;
+
+        img {
+            padding: 0;
+            margin: 0;
+        }
+    }
 }
 
 nav#nav_top {
     background-color: $whiteglass;
     border: 1px $lightgrey solid;
     height: 50px;
+
+    @include mobile {
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 0.5em 0;
+        display: none;
+        position: absolute;
+        top: 9em;
+        z-index: 1000;
+        background: #fff;
+    }
 }
 
 nav#nav_top p {
@@ -38,6 +67,14 @@ nav#nav_top ul {
 
 nav#nav_top ul li {
     list-style-type: none;
+
+    @include mobile {
+        width: 100%;
+        float: left;
+        clear: both;
+        opacity: 1;
+        background: #fff;
+    }
 }
 
 nav#nav_top li a {
@@ -53,6 +90,10 @@ nav#nav_top li a {
     font-size: 1em;
     background: #fff no-repeat 10px 6px;
     background-size: 32px;
+
+    @include mobile {
+        border: 0 !important;
+    }
 }
 
 nav#nav_top li a#nav_game {
@@ -95,4 +136,12 @@ nav#nav_top li a.disabled {
 nav#nav_top li a.disabled:hover {
     background-color: transparent !important;
     cursor: default;
+}
+
+#music_control {
+    @include mobile {
+        background: white;
+        width: 100%;
+        padding-bottom: 15px;
+    }
 }
