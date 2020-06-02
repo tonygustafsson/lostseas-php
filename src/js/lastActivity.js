@@ -32,9 +32,11 @@ const stopChecks = (e) => {
 window.addEventListener('focus', startChecks);
 window.addEventListener('blur', stopChecks);
 
-const logOutBtnEl = document.getElementById('nav_logout');
+window.addEventListener('load', () => {
+    const logOutBtnEl = document.getElementById('nav_logout');
 
-if (logOutBtnEl) {
-    // Only run if logged in
-    startChecks();
-}
+    if (logOutBtnEl) {
+        // Only run if logged in
+        startChecks();
+    }
+});
