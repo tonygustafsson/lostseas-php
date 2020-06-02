@@ -48,8 +48,8 @@ class Log extends CI_Model
 
     public function create($input)
     {
-        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->user['user']['id'];
-        $input['week'] = (isset($input['week'])) ? $input['week'] : $this->user['game']['week'];
+        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->data['user']['id'];
+        $input['week'] = (isset($input['week'])) ? $input['week'] : $this->data['game']['week'];
         $input['time'] = (isset($input['time'])) ? $input['time'] : date('Y-m-d H:i:s', time());
         
         $this->db->insert($this->db->log_table, $input);

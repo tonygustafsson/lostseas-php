@@ -5,7 +5,7 @@
 
 <section class="action-buttons">
 	<a class="ajaxHTML" title="Talk to the governor" href="<?php echo base_url('cityhall/governor')?>"><img src="<?php echo base_url('assets/images/icons/cityhall_governor.png')?>" alt="Governor" width="32" height="32">Governor</a>
-	<?php if ($this->user['game']['event_work'] != 'banned'): ?>
+	<?php if ($this->data['game']['event_work'] != 'banned'): ?>
 		<a class="ajaxHTML" id="actions_work" title="Work to get some money" href="<?php echo base_url('cityhall/work')?>"><img src="<?php echo base_url('assets/images/icons/cityhall_work.png')?>" alt="Work" width="32" height="32">Work</a>
 	<?php endif; ?>
 	<?php if ($game['prisoners'] > 0 && $game['nation'] == $game['nationality']): ?>

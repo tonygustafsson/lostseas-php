@@ -4,7 +4,7 @@ class History extends CI_Model
 {
     public function get($input)
     {
-        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->user['user']['id'];
+        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->data['user']['id'];
         $input['weeks'] = (isset($input['weeks'])) ? $input['weeks'] : 20;
     
         $sql = "SELECT * FROM " . $this->db->history_table . " WHERE user_id = '" . $input['user_id'] . "' ORDER BY created DESC LIMIT " . $input['weeks'];
@@ -19,17 +19,17 @@ class History extends CI_Model
         $prices = $this->config->item('prices');
     
         //Register history data
-        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->user['user']['id'];
-        $input['week'] = (isset($input['week'])) ? $input['week'] : $this->user['game']['week'];
-        $input['doubloons'] = (isset($input['doubloons'])) ? $input['doubloons'] : ($this->user['game']['doubloons'] + $this->user['game']['bank_account']) - $this->user['game']['bank_loan'];
-        $input['ships'] = (isset($input['ships'])) ? $input['ships'] : $this->user['game']['ships'];
-        $input['crew_members'] = (isset($input['crew_members'])) ? $input['crew_members'] : $this->user['game']['crew_members'];
-        $input['crew_mood'] = (isset($input['crew_mood'])) ? $input['crew_mood'] : $this->user['game']['crew_lowest_mood'];
-        $input['crew_health'] = (isset($input['crew_health'])) ? $input['crew_health'] : $this->user['game']['crew_health_lowest'];
-        $input['cannons'] = (isset($input['cannons'])) ? $input['cannons'] : $this->user['game']['cannons'];
-        $input['stock_value'] = (isset($input['stock_value'])) ? $input['stock_value'] : ($this->user['game']['food'] * $prices['food']['sell']) + ($this->user['game']['water'] * $prices['water']['sell']) + ($this->user['game']['porcelain'] * $prices['porcelain']['sell']) + ($this->user['game']['spices'] * $prices['spices']['sell']) + ($this->user['game']['silk'] * $prices['silk']['sell']) + ($this->user['game']['tobacco'] * $prices['tobacco']['sell']) + ($this->user['game']['rum'] * $prices['rum']['sell']) + ($this->user['game']['medicine'] * $prices['medicine']['sell']);
-        $input['level'] = (isset($input['level'])) ? $input['level'] : $this->user['game']['level'];
-        $input['victories'] = (isset($input['victories'])) ? $input['victories'] : $this->user['game']['total_victories'];
+        $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->data['user']['id'];
+        $input['week'] = (isset($input['week'])) ? $input['week'] : $this->data['game']['week'];
+        $input['doubloons'] = (isset($input['doubloons'])) ? $input['doubloons'] : ($this->data['game']['doubloons'] + $this->data['game']['bank_account']) - $this->data['game']['bank_loan'];
+        $input['ships'] = (isset($input['ships'])) ? $input['ships'] : $this->data['game']['ships'];
+        $input['crew_members'] = (isset($input['crew_members'])) ? $input['crew_members'] : $this->data['game']['crew_members'];
+        $input['crew_mood'] = (isset($input['crew_mood'])) ? $input['crew_mood'] : $this->data['game']['crew_lowest_mood'];
+        $input['crew_health'] = (isset($input['crew_health'])) ? $input['crew_health'] : $this->data['game']['crew_health_lowest'];
+        $input['cannons'] = (isset($input['cannons'])) ? $input['cannons'] : $this->data['game']['cannons'];
+        $input['stock_value'] = (isset($input['stock_value'])) ? $input['stock_value'] : ($this->data['game']['food'] * $prices['food']['sell']) + ($this->data['game']['water'] * $prices['water']['sell']) + ($this->data['game']['porcelain'] * $prices['porcelain']['sell']) + ($this->data['game']['spices'] * $prices['spices']['sell']) + ($this->data['game']['silk'] * $prices['silk']['sell']) + ($this->data['game']['tobacco'] * $prices['tobacco']['sell']) + ($this->data['game']['rum'] * $prices['rum']['sell']) + ($this->data['game']['medicine'] * $prices['medicine']['sell']);
+        $input['level'] = (isset($input['level'])) ? $input['level'] : $this->data['game']['level'];
+        $input['victories'] = (isset($input['victories'])) ? $input['victories'] : $this->data['game']['total_victories'];
         
         $this->db->insert($this->db->history_table, $input);
     }

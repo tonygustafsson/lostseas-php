@@ -19,7 +19,7 @@
 	<a class="ajaxHTML" title="Say something to <?php echo $player['user']['name']?>" href="inventory/messages/<?php echo $this->uri->segment(3)?>"><img src="<?php echo base_url('assets/images/icons/players_messages.png')?>" alt="Messages" width="32" height="32">Messages</a>
 </section>
 
-<?php if ($player['user']['id'] != $this->user['user']['id']): ?>
+<?php if ($player['user']['id'] != $this->data['user']['id']): ?>
 	<form method="post" class="ajaxJSON" id="write_form" action="<?php echo base_url('inventory/messages_post/' . $player['user']['id'])?>">
 		<fieldset>
 			<legend>New message</legend>
@@ -42,7 +42,7 @@
 						<a href="inventory/messages/<?php echo $row['writer_id']?>" title="Answer this post"><img src="<?php echo base_url()?>assets/images/icons/answer.png" alt="Answer" width="16" height="16"></a>
 					<?php endif; ?>
 					<?php if ($user['id'] === $row['writer_id'] || $user['id'] === $row['user_id']): ?>
-						<a class="ajaxJSON" rel="Are you sure you wan't do delete this message?" href="<?php echo base_url('inventory/message_remove/' . $this->user['player']['user']['id'] . '/' . $row['id'])?>" title="Erase this post">
+						<a class="ajaxJSON" rel="Are you sure you wan't do delete this message?" href="<?php echo base_url('inventory/message_remove/' . $this->data['player']['user']['id'] . '/' . $row['id'])?>" title="Erase this post">
 							<img src="<?php echo base_url('assets/images/icons/erase.png')?>" alt="Erase" width="16" height="16">
 						</a>
 					<?php endif; ?>

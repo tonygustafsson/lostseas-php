@@ -33,7 +33,7 @@
 
 		<table style="padding-bottom: 30px;">
 			<tr>
-				<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
+				<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 					<th><input class="js-inventory-check-all" data-select="crew" type="checkbox" name="check_all" /></th>
 				<?php endif; ?>
 				<th><a class="ajaxHTML" href="<?php echo base_url('inventory/crew/' . $player['user']['id']) . '/name_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Name</a></th>
@@ -47,7 +47,7 @@
 			<?php foreach ($player['crew'] as $man): ?>
 				<?php $man['gender'] = ($man['gender'] == 'M') ? 'man' : 'woman'?>
 				<tr id="crew_<?php echo $man['id']?>">
-					<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
+					<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 						<td><input type="checkbox" id="crew-checkbox-<?php echo $man['id']?>" name="crew[]" value="<?php echo $man['id']?>"></td>
 					<?php endif; ?>
 					<td>
@@ -66,7 +66,7 @@
 
 		</table>
 
-		<?php if ($this->user['user']['id'] == $this->user['player']['user']['id']): ?>
+		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 			<p style="text-align: right;">
 				<select name="action[]">
 					<?php foreach ($actions as $current_action => $description): ?>

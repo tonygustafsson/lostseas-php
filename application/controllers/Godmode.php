@@ -8,7 +8,7 @@ class Godmode extends Main
     {
         parent::__construct();
     
-        if ($this->user['user']['admin'] < 1) {
+        if ($this->data['user']['admin'] < 1) {
             //Don't let unautherized users access this feature
             exit;
         }
@@ -16,20 +16,20 @@ class Godmode extends Main
 
     public function index()
     {
-        $this->user['players'] = $this->User->get_players();
-        $this->user['player'] = ($this->uri->segment(3) != $this->user['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->user;
+        $this->data['players'] = $this->User->get_players();
+        $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
 
-        $this->load->view_ajax('godmode/view_godmode_game', $this->user);
+        $this->load->view_ajax('godmode/view_godmode_game', $this->data);
     }
     
     public function game_update()
     {
         $change_msg = '';
-        $this->user['player'] = ($this->input->post('user_id') !== $this->user['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->user;
+        $this->data['player'] = ($this->input->post('user_id') !== $this->data['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->data;
     
         if ($this->input->post()) {
             foreach ($this->input->post() as $key => $val) {
-                if ($this->user['player']['game'][$key] !== $val) {
+                if ($this->data['player']['game'][$key] !== $val) {
                     $change_msg .= 'You have changed ' . $key . ' to \'' . $val . '\'. ';
                     $updates[$key] = $val;
                 }
@@ -43,7 +43,7 @@ class Godmode extends Main
             if (! isset($game_result['error'])) {
                 $data['success'] = 'Success. ' . $change_msg;
                 
-                if ($this->user['user']['id'] === $this->user['player']['user']['id']) {
+                if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
                     //Only update inventory if it's your own user
                     $data['changeElements'] = $game_result['changeElements'];
                 }
@@ -59,24 +59,24 @@ class Godmode extends Main
     
     public function user()
     {
-        $this->user['players'] = $this->User->get_players();
-        $this->user['player'] = ($this->uri->segment(3) != $this->user['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->user;
+        $this->data['players'] = $this->User->get_players();
+        $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
 
-        $this->load->view_ajax('godmode/view_godmode_user', $this->user);
+        $this->load->view_ajax('godmode/view_godmode_user', $this->data);
     }
     
     public function user_update()
     {
         $change_msg = '';
-        $this->user['player'] = ($this->input->post('id') !== $this->user['user']['id']) ? $this->get_user_data($this->input->post('id')) : $this->user;
+        $this->data['player'] = ($this->input->post('id') !== $this->data['user']['id']) ? $this->get_user_data($this->input->post('id')) : $this->data;
     
         if ($this->input->post()) {
             foreach ($this->input->post() as $key => $val) {
-                if ($this->user['player']['user'][$key] !== $val) {
+                if ($this->data['player']['user'][$key] !== $val) {
                     $change_msg .= 'You have changed ' . $key . ' to \'' . $val . '\'. ';
                     unset($user_updates);
                     $user_updates[$key] = $val;
-                    $this->User->update('id', $this->user['player']['user']['id'], $user_updates);
+                    $this->User->update('id', $this->data['player']['user']['id'], $user_updates);
                 }
             }
         }
@@ -92,12 +92,12 @@ class Godmode extends Main
     
     public function ship()
     {
-        $this->user['players'] = $this->User->get_players();
-        $this->user['player'] = ($this->uri->segment(3) != $this->user['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->user;
+        $this->data['players'] = $this->User->get_players();
+        $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
     
-        $this->user['player_ships'] = $this->Ship->get($this->user['player']['user']['id']);
+        $this->data['player_ships'] = $this->Ship->get($this->data['player']['user']['id']);
     
-        $this->load->view_ajax('godmode/view_godmode_ship', $this->user);
+        $this->load->view_ajax('godmode/view_godmode_ship', $this->data);
     }
     
     public function ship_create()
@@ -108,7 +108,7 @@ class Godmode extends Main
         if ($ship_output['success'] === true) {
             $data['success'] = 'Created a new ship!';
         
-            if ($this->user['user']['id'] === $input['user_id']) {
+            if ($this->data['user']['id'] === $input['user_id']) {
                 //Update inventory if it's your own user
                 $data['changeElements'] = $ship_output['changeElements'];
             }
@@ -135,26 +135,26 @@ class Godmode extends Main
     public function ship_update()
     {
         if ($this->input->post()) {
-            $this->user['player'] = ($this->input->post('user_id') !== $this->user['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->user;
+            $this->data['player'] = ($this->input->post('user_id') !== $this->data['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->data;
         
             foreach ($this->input->post() as $key => $val) {
                 if ($key != "user_id") {
                     $key = explode("_", $key);
                     $ship_id = $key[0];
-                    $ship_name = $this->user['player']['ship'][$ship_id]['name'];
+                    $ship_name = $this->data['player']['ship'][$ship_id]['name'];
                     $ship_key = $key[1];
                     $key = implode("_", $key);
                     
                     //Remove convert + and - to right numbers before sending it back to view
                     if (substr($val, 0, 1) == "+") {
-                        $returnVal = $this->user['player']['ship'][$ship_id][$ship_key] + substr($val, 1);
+                        $returnVal = $this->data['player']['ship'][$ship_id][$ship_key] + substr($val, 1);
                     } elseif (substr($val, 0, 1) == "-") {
-                        $returnVal = $this->user['player']['ship'][$ship_id][$ship_key] - substr($val, 1);
+                        $returnVal = $this->data['player']['ship'][$ship_id][$ship_key] - substr($val, 1);
                     } else {
                         $returnVal = $val;
                     }
                     
-                    if ($this->user['player']['ship'][$ship_id][$ship_key] !== $val) {
+                    if ($this->data['player']['ship'][$ship_id][$ship_key] !== $val) {
                         $updates[$ship_id][$ship_key] = $val;
                     }
                 }
@@ -162,11 +162,11 @@ class Godmode extends Main
         }
         
         if (isset($updates)) {
-            $updates['player'] = $this->user['player'];
+            $updates['player'] = $this->data['player'];
             $update_result = $this->Ship->update($updates);
             
             if ($update_result['success']) {
-                if ($this->user['user']['id'] === $this->user['player']['user']['id']) {
+                if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
                     //Update inventory if it's your own user
                     $data['changeElements'] = $update_result['changeElements'];
                 }
@@ -198,7 +198,7 @@ class Godmode extends Main
         if ($ship_output['action'] == 'single') {
             $data['success'] = 'Deleted ship with ID ' . $ship_output['id'] . '!';
             
-            if (isset($this->user['ship'][$input['id']])) {
+            if (isset($this->data['ship'][$input['id']])) {
                 //Update inventory if it's your own ship
                 $data['changeElements'] = $ship_output['changeElements'];
             }
@@ -213,11 +213,11 @@ class Godmode extends Main
     
     public function crew()
     {
-        $this->user['players'] = $this->User->get_players();
-        $this->user['player'] = ($this->uri->segment(3) != $this->user['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->user;
+        $this->data['players'] = $this->User->get_players();
+        $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
     
-        $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['player']['user']['id']));
-        $this->load->view_ajax('godmode/view_godmode_crew', $this->user);
+        $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['player']['user']['id']));
+        $this->load->view_ajax('godmode/view_godmode_crew', $this->data);
     }
     
     public function crew_create()
@@ -252,28 +252,28 @@ class Godmode extends Main
     
     public function crew_update()
     {
-        $this->user['player'] = ($this->input->post('user_id') !== $this->user['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->user;
-        $this->user['player']['crew'] = $this->Crew->get(array('user_id' => $this->input->post('user_id')));
+        $this->data['player'] = ($this->input->post('user_id') !== $this->data['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->data;
+        $this->data['player']['crew'] = $this->Crew->get(array('user_id' => $this->input->post('user_id')));
 
         if ($this->input->post()) {
             foreach ($this->input->post() as $key => $val) {
                 if ($key != 'user_id') {
                     $key = explode("_", $key);
                     $crew_id = $key[0];
-                    $crew_name = $this->user['player']['crew'][$crew_id]['name'];
+                    $crew_name = $this->data['player']['crew'][$crew_id]['name'];
                     $crew_key = $key[1];
                     $key = implode("_", $key);
                     
                     //Remove convert + and - to right numbers before sending it back to view
                     if (substr($val, 0, 1) == "+") {
-                        $returnVal = $this->user['player']['crew'][$crew_id][$crew_key] + substr($val, 1);
+                        $returnVal = $this->data['player']['crew'][$crew_id][$crew_key] + substr($val, 1);
                     } elseif (substr($val, 0, 1) == "-") {
-                        $returnVal = $this->user['player']['crew'][$crew_id][$crew_key] - substr($val, 1);
+                        $returnVal = $this->data['player']['crew'][$crew_id][$crew_key] - substr($val, 1);
                     } else {
                         $returnVal = $val;
                     }
                     
-                    if ($this->user['player']['crew'][$crew_id][$crew_key] !== $val) {
+                    if ($this->data['player']['crew'][$crew_id][$crew_key] !== $val) {
                         $updates[$crew_id][$crew_key] = $val;
                     }
                 }
@@ -281,11 +281,11 @@ class Godmode extends Main
         }
         
         if (isset($updates)) {
-            $updates['player'] = $this->user['player'];
+            $updates['player'] = $this->data['player'];
             $update_result = $this->Crew->update($updates);
 
             if ($update_result['success']) {
-                if ($this->user['user']['id'] === $this->user['player']['user']['id']) {
+                if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
                     //Only update the inventory if it's your own user
                     $data['changeElements'] = $update_result['changeElements'];
                 }

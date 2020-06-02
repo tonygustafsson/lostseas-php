@@ -10,25 +10,25 @@ class Market extends Main
 
         $this_place = 'market';
         
-        if ($this->user['game']['place'] != $this_place) {
+        if ($this->data['game']['place'] != $this_place) {
             $updates['place'] = $this_place;
             $result = $this->Game->update($updates);
             
             if (! isset($result['error'])) {
-                $this->user['game']['place'] = $this_place;
+                $this->data['game']['place'] = $this_place;
             }
         }
     }
 
     public function index()
     {
-        $this->load->view_ajax('market/view_market', $this->user);
+        $this->load->view_ajax('market/view_market', $this->data);
     }
 
     public function goods()
     {
-        if ($this->user['game']['event_market_goods'] != 'banned') {
-            list($item, $quantity, $cost, $total_cost) = (! empty($this->user['game']['event_market_goods'])) ? explode('###', $this->user['game']['event_market_goods']) : array(null, null, null, null);
+        if ($this->data['game']['event_market_goods'] != 'banned') {
+            list($item, $quantity, $cost, $total_cost) = (! empty($this->data['game']['event_market_goods'])) ? explode('###', $this->data['game']['event_market_goods']) : array(null, null, null, null);
 
             if ($item === null || $quantity === null || $cost === null || $total_cost === null) {
                 $items = array(
@@ -46,25 +46,25 @@ class Market extends Main
                 $quantity = rand(1, 50);
                 $total_cost = $quantity * $cost;
 
-                $this->user['game']['event_market_goods'] = $updates['event_market_goods'] = $item . '###' . $quantity . '###' . $cost . '###' . $total_cost;
+                $this->data['game']['event_market_goods'] = $updates['event_market_goods'] = $item . '###' . $quantity . '###' . $cost . '###' . $total_cost;
 
                 $this->Game->update($updates);
             }
 
-            $this->load->view_ajax('market/view_goods', $this->user);
+            $this->load->view_ajax('market/view_goods', $this->data);
         }
     }
 
     public function goods_post()
     {
-        if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned') {
+        if (! empty($this->data['game']['event_market_goods']) && $this->data['game']['event_market_goods'] != 'banned') {
             $data['changeElements'] = array();
             $answer = $this->uri->segment(3);
         
             if ($answer == 'yes') {
-                list($item, $quantity, $cost, $total_cost) = explode('###', $this->user['game']['event_market_goods']);
+                list($item, $quantity, $cost, $total_cost) = explode('###', $this->data['game']['event_market_goods']);
 
-                if ($cost <= $this->user['game']['doubloons']) {
+                if ($cost <= $this->data['game']['doubloons']) {
                     $data['success'] = 'You bought ' . $quantity . ' cartons of ' . $item . ' for ' . $total_cost . ' dbl at the market!';
 
                     $updates['event_market_goods'] = 'banned';
@@ -76,7 +76,7 @@ class Market extends Main
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
                     
-                    if ($this->user['user']['sound_effects_play'] == 1) {
+                    if ($this->data['user']['sound_effects_play'] == 1) {
                         $data['playSound'] = 'coins';
                     }
                     
@@ -97,37 +97,37 @@ class Market extends Main
 
     public function slaves()
     {
-        if ($this->user['game']['event_market_slaves'] != 'banned') {
-            list($slaves, $health, $cost) = (! empty($this->user['game']['event_market_slaves'])) ? explode('###', $this->user['game']['event_market_slaves']) : array(null, null, null);
+        if ($this->data['game']['event_market_slaves'] != 'banned') {
+            list($slaves, $health, $cost) = (! empty($this->data['game']['event_market_slaves'])) ? explode('###', $this->data['game']['event_market_slaves']) : array(null, null, null);
 
             if ($slaves === null || $health === null || $cost === null) {
-                $slaves = ($this->user['game']['crew_members'] < 10) ? rand(1, 3) : rand(1, 12);
+                $slaves = ($this->data['game']['crew_members'] < 10) ? rand(1, 3) : rand(1, 12);
                 $health = rand(20, 100);
                 $cost = round($slaves * rand(200, 1200));
 
-                $this->user['game']['event_market_slaves'] = $updates['event_market_slaves'] = $slaves . '###' . $health . '###' . $cost;
+                $this->data['game']['event_market_slaves'] = $updates['event_market_slaves'] = $slaves . '###' . $health . '###' . $cost;
 
                 $result = $this->Game->update($updates);
             }
 
-            $this->load->view_ajax('market/view_slaves', $this->user);
+            $this->load->view_ajax('market/view_slaves', $this->data);
         }
     }
 
     public function slaves_post()
     {
-        if (! empty($this->user['game']['event_market_slaves']) && $this->user['game']['event_market_slaves'] != 'banned') {
+        if (! empty($this->data['game']['event_market_slaves']) && $this->data['game']['event_market_slaves'] != 'banned') {
             $answer = $this->uri->segment(3);
             $data['changeElements'] = array();
         
             if ($answer == 'yes') {
-                list($slaves, $health, $cost) = explode('###', $this->user['game']['event_market_slaves']);
+                list($slaves, $health, $cost) = explode('###', $this->data['game']['event_market_slaves']);
 
-                if ($cost <= $this->user['game']['doubloons']) {
-                    $crew_input['user_id'] = $this->user['user']['id'];
+                if ($cost <= $this->data['game']['doubloons']) {
+                    $crew_input['user_id'] = $this->data['user']['id'];
                     $crew_input['number_of_men'] = $slaves;
-                    $crew_input['week'] = $this->user['game']['week'];
-                    $crew_input['nationality'] = $this->user['game']['nation'];
+                    $crew_input['week'] = $this->data['game']['week'];
+                    $crew_input['nationality'] = $this->data['game']['nation'];
                     $crew_input['health'] = $health;
                     $crew_result = $this->Crew->create($crew_input);
                     
@@ -142,7 +142,7 @@ class Market extends Main
                         $game_result = $this->Game->update($updates);
                         $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
                         
-                        if ($this->user['user']['sound_effects_play'] == 1) {
+                        if ($this->data['user']['sound_effects_play'] == 1) {
                             $data['playSound'] = 'coins';
                         }
                         
@@ -169,19 +169,19 @@ class Market extends Main
         $injured_crew = 0;
         $total_injury = 0;
         
-        $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['user']['id']));
+        $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
 
-        foreach ($this->user['crew'] as $man) {
+        foreach ($this->data['crew'] as $man) {
             if ($man['health'] < 100) {
                 $injured_crew++;
                 $total_injury += 100 - $man['health'];
             }
         }
 
-        $this->user['cost'] = floor($total_injury * 0.75);
-        $this->user['injured_crew'] = $injured_crew;
+        $this->data['cost'] = floor($total_injury * 0.75);
+        $this->data['injured_crew'] = $injured_crew;
 
-        $this->load->view_ajax('market/view_healer', $this->user);
+        $this->load->view_ajax('market/view_healer', $this->data);
     }
 
     public function healer_post()
@@ -193,9 +193,9 @@ class Market extends Main
             $injured_crew = 0;
             $total_injury = 0;
 
-            $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['user']['id']));
+            $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
 
-            foreach ($this->user['crew'] as $man) {
+            foreach ($this->data['crew'] as $man) {
                 if ($man['health'] < 100) {
                     $injured_crew++;
                     $total_injury += 100 - $man['health'];
@@ -204,7 +204,7 @@ class Market extends Main
 
             $cost = floor($total_injury * 0.75);
 
-            if ($injured_crew > 0 && $cost <= $this->user['game']['doubloons']) {
+            if ($injured_crew > 0 && $cost <= $this->data['game']['doubloons']) {
                 $crew_updates['all']['health'] = 100;
                 $crew_output = $this->Crew->update($crew_updates);
 
@@ -221,7 +221,7 @@ class Market extends Main
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
 
-                    if ($this->user['user']['sound_effects_play'] == 1) {
+                    if ($this->data['user']['sound_effects_play'] == 1) {
                         $data['playSound'] = 'healing';
                     }
                     

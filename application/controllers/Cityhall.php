@@ -10,34 +10,34 @@ class Cityhall extends Main
 
         $this_place = 'cityhall';
         
-        if ($this->user['game']['place'] != $this_place) {
+        if ($this->data['game']['place'] != $this_place) {
             $updates['place'] = $this_place;
             $result = $this->Game->update($updates);
             
             if (! isset($result['error'])) {
-                $this->user['game']['place'] = $this_place;
+                $this->data['game']['place'] = $this_place;
             }
         }
     }
 
     public function index()
     {
-        $this->load->view_ajax('cityhall/view_cityhall', $this->user);
+        $this->load->view_ajax('cityhall/view_cityhall', $this->data);
     }
 
     public function governor()
     {
-        $town_victories = $this->user['game']['victories_' . $this->user['game']['nation']];
-        $enemy_victories = $this->user['game']['victories_' . $this->user['game']['towns_enemy']];
+        $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
+        $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
 
-        if ($this->user['game']['nationality'] == $this->user['game']['nation']) {
+        if ($this->data['game']['nationality'] == $this->data['game']['nation']) {
             //The users home nation
-            $title_input['level'] = $this->user['game']['level'];
+            $title_input['level'] = $this->data['game']['level'];
             $title_info = $this->gamelib->get_title($title_input);
             $new_title = $title_info['title'];
             $better_than = $title_info['better_than'];
 
-            if ($new_title != $this->user['game']['title'] && in_array($this->user['game']['title'], $better_than)) {
+            if ($new_title != $this->data['game']['title'] && in_array($this->data['game']['title'], $better_than)) {
                 //Promotion!
                 $reward = $title_info['reward'];
                 
@@ -50,73 +50,73 @@ class Cityhall extends Main
                 
                 $data['changeElements'] = $result['changeElements'];
                 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'fanfare';
                 }
                 
-                $this->user['json'] = json_encode($data);
+                $this->data['json'] = json_encode($data);
                 
                 $log_input['entry'] = 'is promoted to ' . $new_title . '! A reward of ' . $reward . ' doubloons is given.';
                 $this->Log->create($log_input);
             } else {
                 //Say thank you!
                 if ($enemy_victories > 0) {
-                    $data['info'] = 'Thank you ' . $this->user['game']['title'] . ' ' . ucfirst($this->user['game']['character_name']) . '! We are thankful for your ' . $enemy_victories . ' victories over enemy ships from ' . ucfirst($this->user['game']['enemy']) . '. Keep up the good work and you will be greatly rewarded!';
+                    $data['info'] = 'Thank you ' . $this->data['game']['title'] . ' ' . ucfirst($this->data['game']['character_name']) . '! We are thankful for your ' . $enemy_victories . ' victories over enemy ships from ' . ucfirst($this->data['game']['enemy']) . '. Keep up the good work and you will be greatly rewarded!';
                 } elseif ($enemy_victories == 0) {
-                    $data['info'] = 'It is good to see you as our citizen, but you have not proved your loyalty yet. Please sink some ships from ' . ucfirst($this->user['game']['enemy']) . ' and come back here!';
+                    $data['info'] = 'It is good to see you as our citizen, but you have not proved your loyalty yet. Please sink some ships from ' . ucfirst($this->data['game']['enemy']) . ' and come back here!';
                 } else {
-                    $data['info'] = 'Well, ' . $this->user['game']['title'] . ' ' . ucfirst($this->user['game']['character_name']) . '... It seems to me that you do not want to fight for your nation. You have sunken ' . $enemy_victories . ' ships from ' . ucfirst($this->user['game']['nationality']) . '. and we do not take lightly on this kind of behavior.';
+                    $data['info'] = 'Well, ' . $this->data['game']['title'] . ' ' . ucfirst($this->data['game']['character_name']) . '... It seems to me that you do not want to fight for your nation. You have sunken ' . $enemy_victories . ' ships from ' . ucfirst($this->data['game']['nationality']) . '. and we do not take lightly on this kind of behavior.';
                 }
                 
-                $this->user['json'] = json_encode($data);
+                $this->data['json'] = json_encode($data);
             }
         } else {
             //Not the users home nation
             if ($enemy_victories >= floor($town_victories + 10)) {
                 //Offer citizenship if the player has won 10 more over the towns enemies than over the town
                 $data['info'] = 'It\'s an honor to meet you good sir! As a thank you for the ' . $enemy_victories . ' enemy ships you sunken, I can offer you a citizenzip. Will you accept?';
-                $this->user['game']['event_change_citizenship'] = true;
+                $this->data['game']['event_change_citizenship'] = true;
             } elseif ($enemy_victories > $town_victories) {
                 //Be nice to the player
                 $data['info'] = 'Welcome good sir! We thank you for the ' . $enemy_victories . ' enemy ships you sunken! Please keep up your good work.';
             } elseif ($town_victories == $enemy_victories) {
                 //Neutral to the town
-                $data['info'] = 'Welcome sir! Help us fight ' . ucfirst($this->user['game']['towns_enemy']) . ' and you will be rewarded!';
+                $data['info'] = 'Welcome sir! Help us fight ' . ucfirst($this->data['game']['towns_enemy']) . ' and you will be rewarded!';
             } else {
                 //Enemy to the town
                 $data['info'] = 'I consider you my enemy! You have sunken ' . $town_victories . ' of our ships! Please go now!';
             }
         }
         
-        $this->user['json'] = json_encode($data);
+        $this->data['json'] = json_encode($data);
         
-        $this->load->view_ajax('cityhall/view_governor', $this->user);
+        $this->load->view_ajax('cityhall/view_governor', $this->data);
     }
 
     public function citizenship_accept()
     {
-        $town_victories = $this->user['game']['victories_' . $this->user['game']['nation']];
-        $enemy_victories = $this->user['game']['victories_' . $this->user['game']['towns_enemy']];
+        $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
+        $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
         $title_input['level'] = $enemy_victories - $town_victories;
         $title_info = $this->gamelib->get_title($title_input);
         $new_title = $title_info['title'];
 
-        $data['success'] = 'I am pleased to see you as a citizen! You are now known as a ' . $this->user['game']['nation'] . ' ' . $new_title . '!';
+        $data['success'] = 'I am pleased to see you as a citizen! You are now known as a ' . $this->data['game']['nation'] . ' ' . $new_title . '!';
         $data['changeElements']['inventory_title']['text'] = $new_title;
-        $data['changeElements']['inventory_nationality']['text'] = $this->user['game']['nation'];
+        $data['changeElements']['inventory_nationality']['text'] = $this->data['game']['nation'];
         $data['changeElements']['offer']['remove'] = true;
         
         $updates['title'] = $new_title;
-        $updates['nationality'] = $this->user['game']['nation'];
+        $updates['nationality'] = $this->data['game']['nation'];
         $result = $this->Game->update($updates);
         
         $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
         
-        if ($this->user['user']['sound_effects_play'] == 1) {
+        if ($this->data['user']['sound_effects_play'] == 1) {
             $data['playSound'] = 'fanfare';
         }
         
-        $log_input['entry'] = 'changed citizenship to ' . $this->user['game']['nation'] . ', and were given the title ' . $new_title . '.';
+        $log_input['entry'] = 'changed citizenship to ' . $this->data['game']['nation'] . ', and were given the title ' . $new_title . '.';
         $this->Log->create($log_input);
 
         echo json_encode($data);
@@ -124,8 +124,8 @@ class Cityhall extends Main
 
     public function work()
     {
-        if ($this->user['game']['event_work'] != 'banned') {
-            list($occupation, $salary) = (! empty($this->user['game']['event_work']) && $this->user['game']['event_work'] != 'banned') ? explode('###', $this->user['game']['event_work']) : array(null, null);
+        if ($this->data['game']['event_work'] != 'banned') {
+            list($occupation, $salary) = (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') ? explode('###', $this->data['game']['event_work']) : array(null, null);
 
             if ($occupation === null || $salary === null) {
                 $occupations = array(
@@ -144,25 +144,25 @@ class Cityhall extends Main
                 $rand_occupation = rand(0, count($occupations) - 1);
                 $salary = $occupations[$rand_occupation]['salary'];
                 $occupation = $occupations[$rand_occupation]['occupation'];
-                $salary = floor(($salary * $this->user['game']['crew_members']) * ($this->user['game']['crew_health_lowest'] / 100));
+                $salary = floor(($salary * $this->data['game']['crew_members']) * ($this->data['game']['crew_health_lowest'] / 100));
 
-                $this->user['game']['event_work'] = $updates['event_work'] = $occupation . '###' . $salary;
+                $this->data['game']['event_work'] = $updates['event_work'] = $occupation . '###' . $salary;
                 $result = $this->Game->update($updates);
             }
 
-            $this->user['salary'] = $salary;
-            $this->user['occupation'] = $occupation;
+            $this->data['salary'] = $salary;
+            $this->data['occupation'] = $occupation;
             
-            $this->load->view_ajax('cityhall/view_work', $this->user);
+            $this->load->view_ajax('cityhall/view_work', $this->data);
         }
     }
 
     public function work_accept()
     {
-        if (! empty($this->user['game']['event_work']) && $this->user['game']['event_work'] != 'banned') {
-            list($occupation, $salary) = explode('###', $this->user['game']['event_work']);
+        if (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') {
+            list($occupation, $salary) = explode('###', $this->data['game']['event_work']);
             
-            $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['user']['id']));
+            $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
 
             $updates['event_work'] = 'banned';
             $updates['doubloons']['add'] = true;
@@ -183,11 +183,11 @@ class Cityhall extends Main
                 $data['success'] = 'You and your crew worked for a week as ' . $occupation . ' and made ' . $salary . ' dbl!';
 
                 //We have to check the new lowest mood
-                $this->user['game']['crew_mood_lowest'] = $crew_output['min_mood'];
+                $this->data['game']['crew_mood_lowest'] = $crew_output['min_mood'];
                 
                 $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'tired';
                 }
                 
@@ -201,8 +201,8 @@ class Cityhall extends Main
 
     public function prisoners()
     {
-        if ($this->user['game']['prisoners'] > 0 && $this->user['game']['nation'] == $this->user['game']['nationality']) {
-            $reward = floor(rand(300, 1000) * $this->user['game']['prisoners']);
+        if ($this->data['game']['prisoners'] > 0 && $this->data['game']['nation'] == $this->data['game']['nationality']) {
+            $reward = floor(rand(300, 1000) * $this->data['game']['prisoners']);
             
             $updates['prisoners'] = 0;
             $updates['doubloons']['add'] = true;
@@ -211,11 +211,11 @@ class Cityhall extends Main
             
             $data['changeElements'] = $result['changeElements'];
             
-            $data['success'] = 'You handed in ' . $this->user['game']['prisoners'] . ' prisoners and got a reward of ' . $reward . ' dbl!';
+            $data['success'] = 'You handed in ' . $this->data['game']['prisoners'] . ' prisoners and got a reward of ' . $reward . ' dbl!';
 
             $data['changeElements']['action_prisoners']['remove'] = true;
 
-            $log_input['entry'] = 'handed in ' . $this->user['game']['prisoners'] . ' prisoners and got a reward of ' . $reward . ' dbl.';
+            $log_input['entry'] = 'handed in ' . $this->data['game']['prisoners'] . ' prisoners and got a reward of ' . $reward . ' dbl.';
             $this->Log->create($log_input);
     
             echo json_encode($data);

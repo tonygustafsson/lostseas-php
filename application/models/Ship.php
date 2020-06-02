@@ -54,11 +54,11 @@ class Ship extends CI_Model
         $new_ship = $this->get_latest($input['user_id']);
         $ship_data['id'] = $new_ship['id'];
 
-        $output['ships'] = (isset($this->user['game']['ships'])) ? $this->user['game']['ships'] + 1 : 1;
+        $output['ships'] = (isset($this->data['game']['ships'])) ? $this->data['game']['ships'] + 1 : 1;
         $output['created_ship'] = $ship_data;
         
         //Fix for temp users that don't have ship_health_lowest
-        $ship_health_lowest = (isset($this->user['game']['ship_health_lowest'])) ? $this->user['game']['ship_health_lowest'] : 100;
+        $ship_health_lowest = (isset($this->data['game']['ship_health_lowest'])) ? $this->data['game']['ship_health_lowest'] : 100;
         $output['new_lowest_health'] = ($ship_data['health'] < $ship_health_lowest) ? $ship_data['health'] : $ship_health_lowest;
         $output['changeElements'] = $this->gamelib->get_inventory_ship($output['ships'], $output['new_lowest_health']);
         
@@ -78,8 +78,8 @@ class Ship extends CI_Model
             unset($updates['player']);
         } else {
             //Get your own info
-            $all_ships = $this->user['ship'];
-            $user_id = $this->user['user']['id'];
+            $all_ships = $this->data['ship'];
+            $user_id = $this->data['user']['id'];
         }
         
         if (isset($updates['all'])) {
@@ -167,7 +167,7 @@ class Ship extends CI_Model
             $output['id'] = $input['id'];
             
             $output['new_lowest_health'] = 100;
-            foreach ($this->user['ship'] as $this_ship) {
+            foreach ($this->data['ship'] as $this_ship) {
                 if ($this_ship['id'] != $input['id'] && $this_ship['health'] < $output['new_lowest_health']) {
                     $output['new_lowest_health'] = $this_ship['health'];
                 }
@@ -175,7 +175,7 @@ class Ship extends CI_Model
         }
         
         //Get the new ships
-        $new_ships = $this->get($this->user['user']['id']);
+        $new_ships = $this->get($this->data['user']['id']);
         $output['ships'] = count($new_ships);
 
         $output['changeElements'] = $this->gamelib->get_inventory_ship($output['ships'], $output['new_lowest_health']);

@@ -23,10 +23,10 @@ class Account extends Main
     public function update_activity()
     {
         //Manually updates the last activity to be able to track online users
-        $game_sql = "UPDATE " . $this->db->game_table . " SET last_activity = now() WHERE user_id = '" . $this->user['user']['id'] . "'";
+        $game_sql = "UPDATE " . $this->db->game_table . " SET last_activity = now() WHERE user_id = '" . $this->data['user']['id'] . "'";
         $this->db->query($game_sql);
         
-        $user_sql = "SELECT new_messages FROM " . $this->db->user_table . " WHERE id = '" . $this->user['user']['id'] . "'";
+        $user_sql = "SELECT new_messages FROM " . $this->db->user_table . " WHERE id = '" . $this->data['user']['id'] . "'";
         $messages = $this->db->query($user_sql);
         $messages = $messages->row_array();
         $data['changeElements']['inventory_new_messages']['text'] = $messages['new_messages'];
@@ -102,7 +102,7 @@ class Account extends Main
     
     public function register()
     {
-        if ($this->user['user']['verified'] == 0) {
+        if ($this->data['user']['verified'] == 0) {
             //Settings for the user
             $months[1] = 'Jan';
             $months[] = 'Feb';
@@ -116,15 +116,15 @@ class Account extends Main
             $months[] = 'Oct';
             $months[] = 'Nov';
             $months[] = 'Dec';
-            $this->user['months'] = $months;
+            $this->data['months'] = $months;
 
-            $this->load->view_ajax('account/view_register', $this->user);
+            $this->load->view_ajax('account/view_register', $this->data);
         }
     }
     
     public function register_post()
     {
-        if ($this->user['user']['verified'] == 0) {
+        if ($this->data['user']['verified'] == 0) {
             //Validate form data
             $form_rules['email'] 				= array('name' => 'Email address', 'email' => true);
             $form_rules['password'] 			= array('name' => 'Desired password', 'min_length' => 6);
@@ -155,7 +155,7 @@ class Account extends Main
                 $password_pin = uniqid();
                 $user_input['password_pin'] = $password_pin;
                 
-                $this->User->update('id', $this->user['user']['id'], $user_input);
+                $this->User->update('id', $this->data['user']['id'], $user_input);
                 
                 //Send out an email for activation
                 $verification = base_url('account/activate/' . $password_pin);
@@ -203,7 +203,7 @@ class Account extends Main
     
     public function settings_account()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Settings for the account
             $months[1] = 'Jan';
             $months[] = 'Feb';
@@ -217,15 +217,15 @@ class Account extends Main
             $months[] = 'Oct';
             $months[] = 'Nov';
             $months[] = 'Dec';
-            $this->user['months'] = $months;
+            $this->data['months'] = $months;
                         
-            $this->load->view_ajax('account/view_account', $this->user);
+            $this->load->view_ajax('account/view_account', $this->data);
         }
     }
     
     public function settings_account_post()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Validate form data
             $form_rules['name'] 				= array('name' => 'Full name', 'min_length' => 3);
             $form_rules['gender']				= array('name' => 'Gender', 'exact_match' => array('M', 'F'));
@@ -249,7 +249,7 @@ class Account extends Main
                 
                 $data['success'] = 'Successfully updated your settings.';
                 
-                $this->User->update('id', $this->user['user']['id'], $user_input);
+                $this->User->update('id', $this->data['user']['id'], $user_input);
             }
             
             echo json_encode($data);
@@ -263,8 +263,8 @@ class Account extends Main
         
         if ($contents) {
             //Save temporary uploaded file to right place
-            $filename = APPPATH . '../assets/images/profile_pictures/' . $this->user['user']['id'] . '.jpg';
-            $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->user['user']['id'] . '_thumb.jpg';
+            $filename = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg';
+            $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
             file_put_contents($filename, $contents);
             
             //Resize the image
@@ -303,9 +303,9 @@ class Account extends Main
     
     public function settings_email()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Settings for the password
-            $this->load->view_ajax('account/view_email', $this->user);
+            $this->load->view_ajax('account/view_email', $this->data);
         }
     }
     
@@ -315,7 +315,7 @@ class Account extends Main
         $form_rules['new_email']		= array('name' => 'New email', 'email' => true);
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
 
-        if ($this->user['user']['email'] != $this->input->post('new_email')) {
+        if ($this->data['user']['email'] != $this->input->post('new_email')) {
             if ($this->User->user_exists($this->input->post('new_email'))) {
                 $data['error'] = 'This email address is already registered. If it is yours, you can logout and reset your password.
 								  You will then lose this game data and retrieve your old data for that user.';
@@ -337,7 +337,7 @@ class Account extends Main
                 //Write in database the email the user want's to change too
                 $user_updates['new_email'] = $this->input->post('new_email');
                 $user_updates['email_pin'] = $email_pin;
-                $this->User->update('id', $this->user['user']['id'], $user_updates);
+                $this->User->update('id', $this->data['user']['id'], $user_updates);
                 
                 $data['success'] = 'An verification link has been sent to ' . $this->input->post('new_email') . '.';
             }
@@ -368,9 +368,9 @@ class Account extends Main
 
     public function settings_character()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Settings for the character
-            $this->load->view_ajax('account/view_character', $this->user);
+            $this->load->view_ajax('account/view_character', $this->data);
         }
     }
     
@@ -389,16 +389,16 @@ class Account extends Main
     
     public function avatar_selector()
     {
-        $this->user['gender'] = $this->uri->segment(3);
-        $avatars = glob(APPPATH . "../assets/images/avatars/" . $this->user['gender'] . "/avatar_*.jpg");
-        $this->user['number_of_avatars'] = count($avatars);
+        $this->data['gender'] = $this->uri->segment(3);
+        $avatars = glob(APPPATH . "../assets/images/avatars/" . $this->data['gender'] . "/avatar_*.jpg");
+        $this->data['number_of_avatars'] = count($avatars);
 
-        $this->load->view_ajax('account/view_avatars', $this->user);
+        $this->load->view_ajax('account/view_avatars', $this->data);
     }
     
     public function settings_character_post()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Change character settings
             $form_rules['character_name'] 		= array('name' => 'Character name', 'min_length' => 3);
             $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'min_length' => 3);
@@ -452,31 +452,31 @@ class Account extends Main
                     $updates['event_ship_won'] = '';
                     $updates['event_ocean_trade'] = '';
 
-                    $ship_input['user_id'] = $this->user['user']['id'];
+                    $ship_input['user_id'] = $this->data['user']['id'];
                     $ship_input['delete_all'] = true;
                     $this->Ship->erase($ship_input);
 
-                    $crew_input['user_id'] = $this->user['user']['id'];
+                    $crew_input['user_id'] = $this->data['user']['id'];
                     $crew_input['delete_all'] = true;
                     $this->Crew->erase($crew_input);
                     
                     //Create a brig ship
-                    $ship_data['user_id'] = $this->user['user']['id'];
+                    $ship_data['user_id'] = $this->data['user']['id'];
                     $ship_data['type'] = 'brig';
                     $this->Ship->create($ship_data);
                     
                     //Create four crew members
-                    $crew_data['user_id'] = $this->user['user']['id'];
+                    $crew_data['user_id'] = $this->data['user']['id'];
                     $crew_data['nationality'] = $updates['nationality'];
                     $crew_data['number_of_men'] = 4;
                     $this->Crew->create($crew_data);
 
                     $data['success'] .= ' Your character was resetted. Good luck with your new one! You got a brig, four crew members and 300 dbl.';
 
-                    $this->Log->erase($this->user['user']['id']);
+                    $this->Log->erase($this->data['user']['id']);
                     
                     $this->load->model('History');
-                    $this->History->erase($this->user['user']['id']);
+                    $this->History->erase($this->data['user']['id']);
                     
                     $log_input['entry'] = 'resetted the account. A new brig is crafted, four crew members joins and brings 300 dbl.';
                     $log_input['week'] = 1;
@@ -496,23 +496,23 @@ class Account extends Main
     
     public function settings_password()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Settings for the password
-            $this->load->view_ajax('account/view_password', $this->user);
+            $this->load->view_ajax('account/view_password', $this->data);
         }
     }
     
     public function settings_password_post()
     {
         //Change a users password from settings
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Change character settings
             $form_rules['new_password']			= array('name' => 'New password', 'min_length' => 6);
             $form_rules['repeated_new_password']= array('name' => 'Repeated new password', 'exact_match' => array($this->input->post('new_password')));
             
             $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
             
-            if (md5($this->input->post('old_password')) !== $this->user['user']['password']) {
+            if (md5($this->input->post('old_password')) !== $this->data['user']['password']) {
                 $data['error'] = '* <em>Old password</em> did not match your current password';
             }
 
@@ -521,7 +521,7 @@ class Account extends Main
                 $user_input['password'] = md5($this->input->post('new_password'));
                 
                 //Update users with the new info
-                $this->User->update('id', $this->user['user']['id'], $user_input);
+                $this->User->update('id', $this->data['user']['id'], $user_input);
                 
                 $this->session->set_userdata('password', $this->input->post('new_password'));
 
@@ -534,24 +534,24 @@ class Account extends Main
     
     public function unregister()
     {
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             //Unregister user
-            $this->load->view_ajax('account/view_unregister', $this->user);
+            $this->load->view_ajax('account/view_unregister', $this->data);
         }
     }
     
     public function unregister_post()
     {
         //Really unregister...
-        if ($this->user['user']['verified'] == 1) {
+        if ($this->data['user']['verified'] == 1) {
             $data['error'] = false;
         
-            if (md5($this->input->post('password')) !== $this->user['user']['password']) {
+            if (md5($this->input->post('password')) !== $this->data['user']['password']) {
                 $data['error'] = '* <em>Password</em> did not match your current password';
             }
 
             if (! $data['error']) {
-                $this->User->erase($this->user['user']['id']);
+                $this->User->erase($this->data['user']['id']);
                 
                 $this->session->sess_destroy();
                 
@@ -566,15 +566,15 @@ class Account extends Main
     public function password_forgotten()
     {
         //View for sending email adress link
-        $this->user['character'] = $this->gamelib->generate_character();
+        $this->data['character'] = $this->gamelib->generate_character();
         
-        $this->user['meta_description'] = "If you have forgotten your password, you can recollect it here.";
-        $this->user['meta_keywords'] = "lost password, forgotten password";
+        $this->data['meta_description'] = "If you have forgotten your password, you can recollect it here.";
+        $this->data['meta_keywords'] = "lost password, forgotten password";
         
         $log_input['entries'] = 8;
-        $this->user['log_entries'] = $this->Log->get($log_input);
+        $this->data['log_entries'] = $this->Log->get($log_input);
 
-        $this->load->view_ajax('view_forgotten_password', $this->user);
+        $this->load->view_ajax('view_forgotten_password', $this->data);
     }
 
     public function password_send_reset_link()
@@ -653,19 +653,19 @@ class Account extends Main
     public function music()
     {
         $value = $this->uri->segment(3);
-        $this->User->update('id', $this->user['user']['id'], array('music_play' => $value));
+        $this->User->update('id', $this->data['user']['id'], array('music_play' => $value));
     }
 
     public function music_volume()
     {
         $volume = $this->uri->segment(3);
-        $this->User->update('id', $this->user['user']['id'], array('music_volume' => $volume));
+        $this->User->update('id', $this->data['user']['id'], array('music_volume' => $volume));
     }
     
     public function sound_effects()
     {
         $value = $this->uri->segment(3);
-        $this->User->update('id', $this->user['user']['id'], array('sound_effects_play' => $value));
+        $this->User->update('id', $this->data['user']['id'], array('sound_effects_play' => $value));
     }
     
     public function erase_temp_users()
@@ -679,9 +679,9 @@ class Account extends Main
     public function logged_out()
     {
         $log_input['entries'] = 8;
-        $this->user['log_entries'] = $this->Log->get($log_input);
+        $this->data['log_entries'] = $this->Log->get($log_input);
     
-        $this->load->view_ajax('view_logged_out', $this->user);
+        $this->load->view_ajax('view_logged_out', $this->data);
     }
 }
 

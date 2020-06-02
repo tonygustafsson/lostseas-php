@@ -114,9 +114,9 @@ class Crew extends CI_Model
         
         $output = array();
         
-        if (isset($this->user['user']['id'])) {
+        if (isset($this->data['user']['id'])) {
             //Return new crew data for the inventory, if it's not a temp user
-            $new_crew = $this->get_brief($this->user['user']['id']);
+            $new_crew = $this->get_brief($this->data['user']['id']);
         
             $new_health_symbol = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
             $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
@@ -153,8 +153,8 @@ class Crew extends CI_Model
             unset($updates['player']);
         } else {
             //Get your own info
-            $all_crew = $this->user['crew'];
-            $user_id = $this->user['user']['id'];
+            $all_crew = $this->data['crew'];
+            $user_id = $this->data['user']['id'];
         }
     
         if (isset($updates['all'])) {
@@ -254,7 +254,7 @@ class Crew extends CI_Model
         }
         
         //Return new crew data for the inventory
-        $new_crew = $this->get_brief($this->user['user']['id']);
+        $new_crew = $this->get_brief($this->data['user']['id']);
         
         $new_health_symbol = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
         $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];

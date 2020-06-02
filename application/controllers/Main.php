@@ -11,15 +11,15 @@ class Main extends CI_Controller
         //$this->output->enable_profiler(TRUE);
 
         $this->public_page = $this->public_page($this->uri->segment(1), $this->uri->segment(2));
-        $this->user = $this->get_user_data();
+        $this->data = $this->get_user_data();
 
         //Set HTTP headers
         $this->output->set_header("Content-Type: text/html; charset=utf-8");
         
-        if ($this->user || $this->public_page) {
+        if ($this->data || $this->public_page) {
             //Get greeting
-            $place = ($this->uri->segment(1)) ? $this->uri->segment(1) : $this->user['game']['place'];
-            $this->user['game']['greeting'] = $this->gamelib->random_greeting($place, $this->user['game']['character_name'], $this->user['game']['character_gender'], $this->user['game']['character_age']);
+            $place = ($this->uri->segment(1)) ? $this->uri->segment(1) : $this->data['game']['place'];
+            $this->data['game']['greeting'] = $this->gamelib->random_greeting($place, $this->data['game']['character_name'], $this->data['game']['character_gender'], $this->data['game']['character_age']);
         } else {
             if ($this->uri->segment(1) != "") {
                 redirect("/account/logged_out");
@@ -29,23 +29,23 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $event_method = $this->event_method($this->user['game']);
+        $event_method = $this->event_method($this->data['game']);
         if ($event_method) {
             //An action event
             redirect($event_method);
-        } elseif (file_exists(APPPATH . 'views/' . $this->user['game']['place'] . '/view_' . $this->user['game']['place'] . '.php')) {
+        } elseif (file_exists(APPPATH . 'views/' . $this->data['game']['place'] . '/view_' . $this->data['game']['place'] . '.php')) {
             //A page view
-            redirect($this->user['game']['place']);
-        } elseif (! $this->user['user']) {
+            redirect($this->data['game']['place']);
+        } elseif (! $this->data['user']) {
             //Not logged in, accessing start page
-            $this->user['logged_in'] = (isset($this->user['user'])) ? true : false;
-            $this->user['character'] = $this->gamelib->generate_character();
+            $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
+            $this->data['character'] = $this->gamelib->generate_character();
                     
             $log_input['entries'] = 8;
             $log_input['get_num_rows'] = false;
-            $this->user['log_entries'] = $this->Log->get($log_input);
+            $this->data['log_entries'] = $this->Log->get($log_input);
             
-            $this->load->view_ajax('about/view_presentation', $this->user);
+            $this->load->view_ajax('about/view_presentation', $this->data);
         } else {
             //This place does not exist...
             $data['header'] = 'You are lost!';
@@ -189,7 +189,12 @@ class Main extends CI_Controller
         $game_data['load_current'] = $game_data['food'] + $game_data['water'] + $game_data['porcelain'] + $game_data['spices'] + $game_data['silk'] + $game_data['medicine'] + $game_data['tobacco'] + $game_data['rum'];
         $game_data['load_left'] = $game_data['load_max'] - $game_data['load_current'];
 
-        return array('user' => $user_data, 'game' => $game_data, 'ship' => $ship_data, 'crew' => $crew_data);
+        return array(
+            'user' => $user_data,
+            'game' => $game_data,
+            'ship' => $ship_data,
+            'crew' => $crew_data
+        );
     }
     
     public function error_404()

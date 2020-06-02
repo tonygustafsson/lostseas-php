@@ -1,4 +1,4 @@
-<?php list($msg, $looted_money, $food, $water, $porcelain, $spices, $silk, $medicine, $tobacco, $rum, $new_crew, $prisoners, $sunken_ships, $killed_crew) = (! empty($this->user['game']['event_ship_won'])) ? explode('###', $this->user['game']['event_ship_won']) : array(null, null, null, null, null, null, null, null, null, null, null, null, null, null); ?>
+<?php list($msg, $looted_money, $food, $water, $porcelain, $spices, $silk, $medicine, $tobacco, $rum, $new_crew, $prisoners, $sunken_ships, $killed_crew) = (! empty($this->data['game']['event_ship_won'])) ? explode('###', $this->data['game']['event_ship_won']) : array(null, null, null, null, null, null, null, null, null, null, null, null, null, null); ?>
 
 <header title="Ship victory">
 	<h2>Caribbean Sea</h2>

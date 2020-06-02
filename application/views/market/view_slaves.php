@@ -1,5 +1,5 @@
-<?php if (! empty($this->user['game']['event_market_slaves']) && $this->user['game']['event_market_slaves'] != 'banned') {
-    list($slaves, $health, $cost) = explode('###', $this->user['game']['event_market_slaves']);
+<?php if (! empty($this->data['game']['event_market_slaves']) && $this->data['game']['event_market_slaves'] != 'banned') {
+    list($slaves, $health, $cost) = explode('###', $this->data['game']['event_market_slaves']);
 } ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
@@ -17,7 +17,7 @@
 	<a class="ajaxHTML" title="Heal your crew" href="market/healer"><img src="<?php echo base_url()?>assets/images/icons/market_healer.png" alt="Healer" width="32" height="32">Healer</a>
 </section>
 
-<?php if (! empty($this->user['game']['event_market_slaves']) && $this->user['game']['event_market_slaves'] != 'banned'): ?>
+<?php if (! empty($this->data['game']['event_market_slaves']) && $this->data['game']['event_market_slaves'] != 'banned'): ?>
 	<?php if ($game['doubloons'] < $cost): ?>
 		<p>
 			You find <?php echo $slaves?> slaves with a health of <?php echo $health?>% for <?php echo $cost?> dbl! You don't have enough money though.

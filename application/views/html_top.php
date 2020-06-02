@@ -148,8 +148,8 @@
 				</nav>
 				
 				<?php
-                    if (! empty($this->user['game']['event_ship'])) {
-                        list($nation, $type, $crew, $cannons) = explode('###', $this->user['game']['event_ship']);
+                    if (! empty($this->data['game']['event_ship'])) {
+                        list($nation, $type, $crew, $cannons) = explode('###', $this->data['game']['event_ship']);
                     } else {
                         $nation = null;
                     }

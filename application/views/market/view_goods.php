@@ -1,5 +1,5 @@
-<?php if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned') {
-    list($item, $quantity, $cost, $total_cost) = explode('###', $this->user['game']['event_market_goods']);
+<?php if (! empty($this->data['game']['event_market_goods']) && $this->data['game']['event_market_goods'] != 'banned') {
+    list($item, $quantity, $cost, $total_cost) = explode('###', $this->data['game']['event_market_goods']);
 } ?>
 
 <header title="<?php echo $game['town_human'] . ' ' . $game['place']?>">
@@ -17,7 +17,7 @@
 	<a class="ajaxHTML" title="Heal your crew" href="market/healer"><img src="<?php echo base_url()?>assets/images/icons/market_healer.png" alt="Healer" width="32" height="32">Healer</a>
 </section>
 
-<?php if (! empty($this->user['game']['event_market_goods']) && $this->user['game']['event_market_goods'] != 'banned'): ?>
+<?php if (! empty($this->data['game']['event_market_goods']) && $this->data['game']['event_market_goods'] != 'banned'): ?>
 	<?php if ($game['doubloons'] < $total_cost): ?>
 		<p id="offer">
 			You find <?php echo $quantity?> cartons of <?php echo $item?> for <?php echo $total_cost?> dbl! (<?php echo $cost?> dbl/pcs) You don't have enough money though.

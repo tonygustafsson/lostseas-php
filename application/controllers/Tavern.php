@@ -10,28 +10,28 @@ class Tavern extends Main
 
         $this_place = 'tavern';
 
-        if ($this->user['game']['place'] != $this_place) {
+        if ($this->data['game']['place'] != $this_place) {
             $updates['place'] = $this_place;
             $result = $this->Game->update($updates);
             
             if (! isset($result['error'])) {
-                $this->user['game']['place'] = $this_place;
+                $this->data['game']['place'] = $this_place;
             }
         }
     }
 
     public function index()
     {
-        $this->user['prices'] = $this->config->item('prices');
+        $this->data['prices'] = $this->config->item('prices');
     
-        $this->load->view_ajax('tavern/view_tavern', $this->user);
+        $this->load->view_ajax('tavern/view_tavern', $this->data);
     }
 
     public function buy()
     {
-        $this->user['prices'] = $this->config->item('prices');
+        $this->data['prices'] = $this->config->item('prices');
     
-        $this->load->view_ajax('tavern/view_tavern', $this->user);
+        $this->load->view_ajax('tavern/view_tavern', $this->data);
     }
 
     public function buy_post()
@@ -40,10 +40,10 @@ class Tavern extends Main
         $product = $this->uri->segment(3);
         
         if (in_array($product, $products)) {
-            $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['user']['id']));
+            $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
 
             $prices = $this->config->item('prices');
-            $cost = floor(($this->user['game']['crew_members'] + 1) * $prices['tavern_' . $product]['buy']);
+            $cost = floor(($this->data['game']['crew_members'] + 1) * $prices['tavern_' . $product]['buy']);
 
             switch ($product) {
                 case 'dinners':
@@ -62,7 +62,7 @@ class Tavern extends Main
                     break;
             }
             
-            if ($cost > $this->user['game']['doubloons']) {
+            if ($cost > $this->data['game']['doubloons']) {
                 $data['error'] = 'You don\'t have enough money!';
             } else {
                 $data['success'] = 'You bought ' . $product . ' for yourself and your crew members.';
@@ -96,7 +96,7 @@ class Tavern extends Main
                 if ($result['doubloons']['success']) {
                     $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
                     
-                    if ($this->user['user']['sound_effects_play'] == 1) {
+                    if ($this->data['user']['sound_effects_play'] == 1) {
                         $data['playSound'] = 'coins';
                     }
                 }
@@ -110,13 +110,13 @@ class Tavern extends Main
 
     public function sailors()
     {
-        if ($this->user['game']['event_sailors'] != 'banned') {
-            if ($this->user['game']['crew_members'] < 11) {
-                $sailors = round($this->user['game']['crew_members'] * (rand(10, 25) / 100));
-            } elseif ($this->user['game']['crew_members'] > 11 && $this->user['game']['crew_members'] < 20) {
-                $sailors = round($this->user['game']['crew_members'] * (rand(8, 15) / 100));
+        if ($this->data['game']['event_sailors'] != 'banned') {
+            if ($this->data['game']['crew_members'] < 11) {
+                $sailors = round($this->data['game']['crew_members'] * (rand(10, 25) / 100));
+            } elseif ($this->data['game']['crew_members'] > 11 && $this->data['game']['crew_members'] < 20) {
+                $sailors = round($this->data['game']['crew_members'] * (rand(8, 15) / 100));
             } else {
-                $sailors = round($this->user['game']['crew_members'] * (rand(4, 10) / 100));
+                $sailors = round($this->data['game']['crew_members'] * (rand(4, 10) / 100));
             }
             if ($sailors < 1) {
                 $sailors = 1;
@@ -126,22 +126,22 @@ class Tavern extends Main
 
             if ($action <= 50) {
                 //The sailors will ask to join your crew
-                $this->user['game']['event_sailors'] = $sailors;
+                $this->data['game']['event_sailors'] = $sailors;
                 
-                $updates['user_id'] = $this->user['user']['id'];
+                $updates['user_id'] = $this->data['user']['id'];
                 $updates['event_sailors'] = $sailors;
                 $result = $this->Game->update($updates);
                 
-                $this->load->view_ajax('tavern/view_sailors', $this->user);
+                $this->load->view_ajax('tavern/view_sailors', $this->data);
             } elseif ($action > 50 && $action <= 85) {
                 //The sailors will fight you and you will win
                 $loot = $sailors * rand(10, 100);
-                $updates['user_id'] = $this->user['user']['id'];
+                $updates['user_id'] = $this->data['user']['id'];
                 $updates['doubloons']['add'] = true;
                 $updates['doubloons']['value'] = $loot;
                 $updates['event_sailors'] = 'banned';
 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'sword_fight';
                 }
                 $data['success'] = 'You fight with some sailors and take ' . $loot . ' dbl!';
@@ -157,10 +157,10 @@ class Tavern extends Main
                 $log_input['entry'] = 'fought with some sailors and took ' . $loot . ' dbl.';
                 $this->Log->create($log_input);
                 
-                $this->load->view_ajax('tavern/view_sailors', $this->user);
+                $this->load->view_ajax('tavern/view_sailors', $this->data);
             } elseif ($action > 85) {
                 //The sailors will fight you and you will lose
-                $this->user['crew'] = $this->Crew->get(array('user_id' => $this->user['user']['id']));
+                $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
                 
                 $health_loss = 0 - rand(10, 30);
             
@@ -176,12 +176,12 @@ class Tavern extends Main
                         $log_input['entry'] .= $crew_result['death_count'] . ' of the crew members died because of injuries.';
                     }
                     
-                    if ($this->user['user']['sound_effects_play'] == 1) {
+                    if ($this->data['user']['sound_effects_play'] == 1) {
                         $data['playSound'] = 'sword_fight';
                     }
                     $data['changeElements']['actions_sailors']['remove'] = true;
                     
-                    $this->user['game']['crew_health_lowest'] = $crew_result['min_health'];
+                    $this->data['game']['crew_health_lowest'] = $crew_result['min_health'];
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
 
@@ -192,25 +192,25 @@ class Tavern extends Main
                                 
                     $this->Log->create($log_input);
                     
-                    $this->load->view_ajax('tavern/view_sailors', $this->user);
+                    $this->load->view_ajax('tavern/view_sailors', $this->data);
                 }
             }
         } else {
-            redirect($this->user['game']['place']);
+            redirect($this->data['game']['place']);
         }
     }
 
     public function sailors_post()
     {
-        if (! empty($this->user['game']['event_sailors']) && $this->user['game']['event_sailors'] != 'banned') {
-            $sailors = (! empty($this->user['game']['event_sailors']) && $this->user['game']['event_sailors'] != 'banned') ? $this->user['game']['event_sailors'] : null;
+        if (! empty($this->data['game']['event_sailors']) && $this->data['game']['event_sailors'] != 'banned') {
+            $sailors = (! empty($this->data['game']['event_sailors']) && $this->data['game']['event_sailors'] != 'banned') ? $this->data['game']['event_sailors'] : null;
             $answer = ($this->uri->segment(3) == 'yes') ? 'Yes' : 'No';
 
             if ($sailors && $answer == 'Yes') {
-                $crew_input['user_id'] = $this->user['user']['id'];
+                $crew_input['user_id'] = $this->data['user']['id'];
                 $crew_input['number_of_men'] = $sailors;
-                $crew_input['week'] = $this->user['game']['week'];
-                $crew_input['nation'] = $this->user['game']['nation'];
+                $crew_input['week'] = $this->data['game']['week'];
+                $crew_input['nation'] = $this->data['game']['nation'];
                 $crew_output = $this->Crew->create($crew_input);
 
                 if ($crew_output['created_crew_count'] == $sailors) {
@@ -222,7 +222,7 @@ class Tavern extends Main
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                     
-                    $manned_cannons = (floor(($this->user['game']['crew_members'] + $sailors) / 2) > $this->user['game']['cannons']) ? $this->user['game']['cannons'] : floor(($this->user['game']['crew_members'] + $sailors) / 2);
+                    $manned_cannons = (floor(($this->data['game']['crew_members'] + $sailors) / 2) > $this->data['game']['cannons']) ? $this->data['game']['cannons'] : floor(($this->data['game']['crew_members'] + $sailors) / 2);
                     $data['changeElements']['inventory_manned_cannons']['text'] = $manned_cannons;
                     
                     $log_input['entry'] = 'took ' . $sailors . ' sailors from the tavern in as crew members.';
@@ -239,9 +239,9 @@ class Tavern extends Main
             }
             
             
-            $this->user['game']['event_sailors'] = 'banned';
+            $this->data['game']['event_sailors'] = 'banned';
 
-            $updates['user_id'] = $this->user['user']['id'];
+            $updates['user_id'] = $this->data['user']['id'];
             $updates['event_sailors'] = 'banned';
             $result = $this->Game->update($updates);
             
@@ -251,15 +251,15 @@ class Tavern extends Main
 
     public function gamble()
     {
-        $this->user['game']['next_bet'] = floor($this->user['game']['doubloons'] * 0.1);
+        $this->data['game']['next_bet'] = floor($this->data['game']['doubloons'] * 0.1);
 
-        $this->load->view_ajax('tavern/view_gamble', $this->user);
+        $this->load->view_ajax('tavern/view_gamble', $this->data);
     }
 
     public function gamble_post()
     {
         $bet = $this->input->post('bet');
-        $prev_money = $this->user['game']['doubloons'];
+        $prev_money = $this->data['game']['doubloons'];
         $chance = rand(1, 42);
 
         if ($bet > $prev_money) {
@@ -273,7 +273,7 @@ class Tavern extends Main
                 $data['success'] = 'You made a bet for ' . $bet . ' doubloons and won ' . $won . ' doubloons!';
                 $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and won ' . $won . ' dbl.';
                 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'cheering';
                 }
             } elseif ($chance == 42) {
@@ -282,7 +282,7 @@ class Tavern extends Main
                 $data['success'] = 'JACKPOT!! You made a bet for ' . $bet . ' doubloons and won ' . $won . ' doubloons!';
                 $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and won ' . $won . ' dbl.';
                 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'cheering';
                 }
             } else {
@@ -290,7 +290,7 @@ class Tavern extends Main
                 $data['info'] = 'You made a bet for ' . $bet . ' doubloons and lost.';
                 $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and lost.';
                 
-                if ($this->user['user']['sound_effects_play'] == 1) {
+                if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'dices';
                 }
             }

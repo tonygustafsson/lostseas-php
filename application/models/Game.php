@@ -31,7 +31,7 @@ class Game extends CI_Model
         //Updating game database
         $sql_updates = array();
         $output['changeElements'] = array();
-        $updates['user_id'] = (isset($updates['user_id'])) ? $updates['user_id'] : $this->user['user']['id'];
+        $updates['user_id'] = (isset($updates['user_id'])) ? $updates['user_id'] : $this->data['user']['id'];
         
         if (isset($updates['user_id'])) {
             $standard = array('character_name', 'character_gender', 'character_age', 'character_description',
@@ -46,7 +46,7 @@ class Game extends CI_Model
             
             foreach ($standard as $item) {
                 if (isset($updates[$item])) {
-                    $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->user['game'][$item], 0) : $updates[$item];
+                    $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
 
                     $sql_updates[$item] = $value;
                     
@@ -61,7 +61,7 @@ class Game extends CI_Model
             if (isset($updates['character_avatar'])) {
                 $item = 'character_avatar';
             
-                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->user['game'][$item], 0) : $updates[$item];
+                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
             
                 list($gender, $avatar) = explode("###", $value);
             
@@ -76,7 +76,7 @@ class Game extends CI_Model
             if (isset($updates['week'])) {
                 $item = 'week';
             
-                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->user['game'][$item], 0) : $updates[$item];
+                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
                 
                 $sql_updates[$item] = $value;
                 
@@ -91,14 +91,14 @@ class Game extends CI_Model
             if (isset($updates['cannons'])) {
                 $item = 'cannons';
             
-                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->user['game'][$item], 0) : $updates[$item];
+                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
                 
                 $sql_updates[$item] = $value;
                 
                 $output[$item]['success'] = $value;
                 $output['changeElements']['inventory_' . $item]['text'] = $value;
                 
-                $manned_cannons = (floor($this->user['game']['crew_members'] / 2) > $value) ? $value : floor($this->user['game']['crew_members'] / 2);
+                $manned_cannons = (floor($this->data['game']['crew_members'] / 2) > $value) ? $value : floor($this->data['game']['crew_members'] / 2);
                 $output['changeElements']['inventory_manned_cannons']['text'] = $manned_cannons;
                 $output['changeElements']['inventory_cannons_link']['title'] = 'You own ' . $value . ' cannons, ' . $manned_cannons . ' are manned';
             }
@@ -123,7 +123,7 @@ class Game extends CI_Model
                 $harbor_places_goto = array('shop', 'tavern', 'bank', 'market', 'dock', 'cityhall', 'shipyard', 'harbor');
                 $ocean_places_goto = array('ocean', 'harbor');
 
-                if ((in_array($this->user['game']['place'], $town_places) && in_array($updates['place'], $town_places_goto)) || ($this->user['game']['place'] == 'harbor' && in_array($updates['place'], $harbor_places_goto)) || ($this->user['game']['place'] == 'ocean' && in_array($updates['place'], $ocean_places_goto))) {
+                if ((in_array($this->data['game']['place'], $town_places) && in_array($updates['place'], $town_places_goto)) || ($this->data['game']['place'] == 'harbor' && in_array($updates['place'], $harbor_places_goto)) || ($this->data['game']['place'] == 'ocean' && in_array($updates['place'], $ocean_places_goto))) {
                     $sql_updates[$item] = $updates['place'];
                     $output['place']['success'] = $updates['place'];
                 } else {
