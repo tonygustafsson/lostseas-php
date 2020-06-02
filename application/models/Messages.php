@@ -11,7 +11,10 @@ class Messages extends CI_Model
         $sql .= " WHERE user_id = '" . $id . "'";
         $sql .= " GROUP BY " . $this->db->messages_table . ".id";
         $sql .= " ORDER BY time DESC";
-        $sql .= " LIMIT " . $first_entry . "," . $last_entry;
+
+        if ($first_entry !== false && $last_entry !== false) {
+            $sql .= " LIMIT " . $first_entry . "," . $last_entry;
+        }
         
         $messages_result = $this->db->query($sql);
         $messages = $messages_result->result_array();
