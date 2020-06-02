@@ -2,7 +2,11 @@ const generateId = () => `snack-${new Date().getTime()}`;
 const autoRemoveTimeMs = 4000;
 const autoHideTimeMs = 3500;
 
+let zIndex = 1000;
+
 const show = (msg) => {
+    zIndex++;
+
     msg.id = generateId();
 
     if (!msg.level) {
@@ -14,6 +18,7 @@ const show = (msg) => {
     snack.classList.add('snackbar-item');
     snack.classList.add(`snackbar-item--${msg.level}`);
     snack.innerHTML = msg.text;
+    snack.style.zIndex = zIndex;
 
     document.body.prepend(snack);
 
