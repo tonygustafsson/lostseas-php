@@ -23,6 +23,7 @@ services:
             - ./docker/php-fpm/sessions:/opt/bitnami/php/sessions
             - ./docker/php-fpm/logs:/opt/bitnami/php/logs
             - ./docker/php-fpm/logs:/bitnami/php-fpm/logs
+        restart: 'always'
         networks:
             default:
                 aliases:
