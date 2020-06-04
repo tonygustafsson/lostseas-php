@@ -36,9 +36,12 @@
             background-color: $lightblue;
         }
 
-        img {
+        img,
+        svg {
             margin: 5px 10px;
             float: left;
+            width: 30px;
+            height: 30px;
         }
     }
 
