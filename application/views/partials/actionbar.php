@@ -3,15 +3,16 @@
     $nav_dock_display = in_array($game['place'], $in_town) ? 'block' : 'none';
     $nav_harbor_display = $game['place'] == 'harbor' && empty($game['event_ship']) ? 'block' : 'none';
     
-    if (! empty($this->data['game']['event_ship'])) {
+    if (!empty($this->data['game']['event_ship'])) {
         list($nation, $type, $crew, $cannons) = explode('###', $this->data['game']['event_ship']);
     } else {
         $nation = null;
     }
-    
-    $nav_unfriendly_ship_display = (!empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy'])) ? 'block' : 'none';
-    $nav_friendly_ship_display = (!empty($game['event_ship']) && ($nation == $game['nationality'])) ? 'block' : 'none';
-    $nav_neutral_ship_display = (!empty($game['event_ship']) && ($nation != $game['nationality']) && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== null) ? 'block' : 'none';
+
+    $nav_ocean_display = $game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade'])) ? 'block' : 'none';
+    $nav_unfriendly_ship_display = !empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy']) ? 'block' : 'none';
+    $nav_friendly_ship_display = !empty($game['event_ship']) && $nation == $game['nationality'] ? 'block' : 'none';
+    $nav_neutral_ship_display = !empty($game['event_ship']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== null ? 'block' : 'none';
 ?>
 
 <aside id="action_panel" class="action-panel">
@@ -19,7 +20,7 @@
 
 	<nav id="nav_dock" style="display: <?=$nav_dock_display?>">
 		<div>
-			<a class=" ajaxHTML" title="Visit the shop"
+			<a class="ajaxHTML" title="Visit the shop"
 				href="<?php echo base_url('shop')?>">
 				<svg alt="Shop" width="28" height="28">
 					<use xlink:href="#shop"></use>
@@ -44,7 +45,7 @@
 				<svg alt="CityHall" width="28" height="28">
 					<use xlink:href="#cityhall"></use>
 				</svg>
-				Tavern
+				City Hall
 			</a>
 		</div>
 
@@ -53,7 +54,8 @@
 				href="<?php echo base_url('bank')?>">
 				<svg alt="Tavern" width="28" height="28">
 					<use xlink:href="#bank"></use>
-				</svg> Bank
+				</svg>
+				Bank
 			</a>
 		</div>
 
@@ -62,7 +64,8 @@
 				href="<?php echo base_url('shipyard')?>">
 				<svg alt="Shipyard" width="28" height="28">
 					<use xlink:href="#shipyard"></use>
-				</svg> Shipyard
+				</svg>
+				Shipyard
 			</a>
 		</div>
 
@@ -71,7 +74,8 @@
 				href="<?php echo base_url('market')?>">
 				<svg alt="Market" width="28" height="28">
 					<use xlink:href="#market"></use>
-				</svg> Market
+				</svg>
+				Market
 			</a>
 		</div>
 
@@ -80,7 +84,8 @@
 				href="<?php echo base_url('harbor')?>">
 				<svg alt="Harbor" width="28" height="28">
 					<use xlink:href="#harbor"></use>
-				</svg> Harbor
+				</svg>
+				Harbor
 			</a>
 		</div>
 	</nav>
@@ -89,28 +94,31 @@
 		<div>
 			<a class="ajaxHTML" title="Explore the ocean"
 				href="<?php echo base_url('ocean')?>">
-				<img src="<?php echo base_url('assets/images/icons/svg/explore.svg')?>"
-					alt="Explore" width="32" height="32">
+				<svg alt="Explore" width="28" height="28">
+					<use xlink:href="#explore"></use>
+				</svg>
 				Explore
 			</a>
 		</div>
 
-		<div><a class="ajaxHTML" title="Land at this town"
+		<div>
+			<a class="ajaxHTML" title="Land at this town"
 				href="<?php echo base_url('dock')?>">
-				<img src="<?php echo base_url('assets/images/icons/svg/harbor.svg')?>"
-					alt="Land" width="32" height="32">
+				<svg alt="Harbor" width="28" height="28">
+					<use xlink:href="#harbor"></use>
+				</svg>
 				Land
 			</a>
 		</div>
 	</nav>
 
-	<nav id="nav_ocean"
-		style="<?php echo ($game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade']))) ? 'display: block; ' : 'display: none; '?>">
+	<nav id="nav_ocean" style="display: <?=$nav_ocean_display?>">
 		<div>
 			<a class="ajaxHTML" title="Explore the ocean"
 				href="<?php echo base_url('ocean')?>">
-				<img src="<?php echo base_url('assets/images/icons/svg/harbor.svg')?>"
-					alt="Explore" width="32" height="32">
+				<svg alt="Explore" width="28" height="28">
+					<use xlink:href="#explore"></use>
+				</svg>
 				Explore
 			</a>
 		</div>
