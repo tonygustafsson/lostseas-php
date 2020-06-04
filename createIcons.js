@@ -27,7 +27,9 @@ const svgToObj = (dir, destination) => {
 
     fs.readdir(dir, function (err, files) {
         files.forEach(parse);
-        fs.writeFileSync(destination, $.html());
+
+        const output = $('svg').parent().html();
+        fs.writeFileSync(destination, output);
     });
 };
 
