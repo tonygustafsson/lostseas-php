@@ -11,8 +11,8 @@
         ?>
 
 		<footer>
-			<p><a href="about/copyright" class="ajaxHTML"><?php echo $this->config->item('site_name')?>
-					&copy;<?php echo date("Y")?></a>
+			<p><a href="about/copyright" class="ajaxHTML"><?=$this->config->item('site_name')?>
+					&copy;<?=date("Y")?></a>
 			</p>
 		</footer>
 
@@ -27,10 +27,10 @@
 		<?php include('./assets/images/icon-map.svg') ?>
 
 		<script type="text/javascript"
-			src="<?php echo base_url('assets/js/styles.js?202005171562')?>">
+			src="<?=base_url('assets/js/styles.js?202005171562')?>">
 		</script>
 		<script type="text/javascript"
-			src="<?php echo base_url('assets/js/main.js?202005171562')?>">
+			src="<?=base_url('assets/js/main.js?202005171562')?>">
 		</script>
 
 		</body>

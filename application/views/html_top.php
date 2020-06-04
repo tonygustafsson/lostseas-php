@@ -9,24 +9,23 @@
 	<meta name="description"
 		content="A pirate influenced web game! Defeat enemy ships and get a higher rank, or just travel from town to town to explore.">
 	<?php else: ?>
-	<meta name="description"
-		content="<?php echo $meta_description?>">
+	<meta name="description" content="<?=$meta_description?>">
 	<?php endif; ?>
 
 	<?php if (! isset($meta_keywords)): ?>
 	<meta name="keywords" content="lost seas, online game, web game, pirate game, html5 game, ajax game, pirates gold">
 	<?php else: ?>
-	<meta name="keywords" content="<?php echo $meta_keywords?>">
+	<meta name="keywords" content="<?=$meta_keywords?>">
 	<?php endif; ?>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<base href="<?php echo base_url()?>">
+	<base href="<?=base_url()?>">
 
 	<link rel="shortcut icon" type="image/x-icon"
-		href="<?php echo base_url('assets/images/icons/favicon.ico')?>">
+		href="<?=base_url('assets/images/icons/favicon.ico')?>">
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
-		href="<?php echo base_url('feed')?>">
+		href="<?=base_url('feed')?>">
 
 	<?php if (strpos(base_url(), 'test') === false): ?>
 	<script>
@@ -47,7 +46,7 @@
 	</script>
 	<?php endif; ?>
 
-	<title><?php echo $page_title?>
+	<title><?=$page_title?>
 	</title>
 </head>
 
@@ -81,8 +80,8 @@
 		<?php if (isset($user['admin']) && $user['admin'] == 1): ?>
 		<section style="position: absolute; top: 10px; right: 10px;">
 			<a class="ajaxHTML" title="Enter God Mode!"
-				href="<?php echo base_url('godmode/index/' . $user['id'])?>"><img
-					src="<?php echo base_url('assets/images/icons/godmode.png')?>"
+				href="<?=base_url('godmode/index/' . $user['id'])?>"><img
+					src="<?=base_url('assets/images/icons/godmode.png')?>"
 					alt="God mode"></a>
 		</section>
 		<?php endif; ?>

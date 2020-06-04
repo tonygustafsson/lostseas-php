@@ -1,28 +1,28 @@
 <header title="Copyright">
 	<?php if (! $logged_in): ?>
-		<img class="header" src="<?php echo base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
+		<img class="header" src="<?=base_url('assets/images/design/game_start.jpg')?>" alt="Front image">
 		<h2>Copyright</h2>
 		
-	<form id="register" method="post" action="<?php echo base_url('account/register_temp')?>">
+	<form id="register" method="post" action="<?=base_url('account/register_temp')?>">
 		<fieldset>
 			<legend>Start playing right now...</legend>
 						
 			<section id="register_left">
 				<div style="float: left; padding: 0.5em 0.8em 0.5em 1em">
-					<input type="hidden" id="character_avatar" name="character_avatar" value="<?php echo $character['character_avatar']?>">
-					<input type="hidden" id="character_gender" name="character_gender" value="<?php echo $character['character_gender']?>">
+					<input type="hidden" id="character_avatar" name="character_avatar" value="<?=$character['character_avatar']?>">
+					<input type="hidden" id="character_gender" name="character_gender" value="<?=$character['character_gender']?>">
 
-					<img id="current_avatar_img" style=" border: 1px black solid;" src="<?php echo $character['character_avatar_path']?>" alt="Avatar"><br>
+					<img id="current_avatar_img" style=" border: 1px black solid;" src="<?=$character['character_avatar_path']?>" alt="Avatar"><br>
 					<button type="button" id="js-start-avatar-selector-trigger">Change</button>
 				</div>
 
 				<label for="character_name">Character name</label>
-				<input id="character_name" type="text" name="character_name" value="<?php echo $character['character_name']?>">
+				<input id="character_name" type="text" name="character_name" value="<?=$character['character_name']?>">
 				
 				<label for="character_age">Character age</label>
-				<input id="character_age" type="number" min="15" max="80" style="width: 50px;" name="character_age" value="<?php echo $character['character_age']?>"><br>
+				<input id="character_age" type="number" min="15" max="80" style="width: 50px;" name="character_age" value="<?=$character['character_age']?>"><br>
 
-				<a class="ajaxJSON" href="<?php echo base_url('account/generate_character')?>" title="Generate random character"><img src="<?php echo base_url('assets/images/icons/tavern_gamble.png')?>" alt="Random" style="padding: 1em"></a><br>
+				<a class="ajaxJSON" href="<?=base_url('account/generate_character')?>" title="Generate random character"><img src="<?=base_url('assets/images/icons/tavern_gamble.png')?>" alt="Random" style="padding: 1em"></a><br>
 			</section>
 			
 			<section id="register_right">
@@ -52,7 +52,7 @@ I actually consider this helpful if you tell me afterwards. But of course it's n
 	class="dialog"
 	tabindex="-1"
 	role="dialog"
-	data-url="<?php echo base_url('account/avatar_selector/')?>/<?php echo $character['character_gender_long']?>"
+	data-url="<?=base_url('account/avatar_selector/')?>/<?=$character['character_gender_long']?>"
 	>
 	<h3 class="dialog-title">Choose an avatar</h3>
 	<div class="avatar-selector-wrapper"></div>

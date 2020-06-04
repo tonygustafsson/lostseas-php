@@ -1,6 +1,6 @@
 <aside id="inventory_panel" class="action-panel">
     <form method="post"
-        action="<?php echo base_url('account/login')?>"
+        action="<?=base_url('account/login')?>"
         style="width: 100%; margin: 0; padding: 0;">
         <fieldset>
             <legend>Log in</legend>
@@ -13,7 +13,7 @@
 
             <?php if (isset($user['success'])): ?>
             <div class="success">
-                <p>You are now registered with the username: <?php echo $user['success']?>!
+                <p>You are now registered with the username: <?=$user['success']?>!
                     Please log in.</p>
             </div>
             <?php endif; ?>
@@ -25,7 +25,7 @@
             <input type="password" value="Tony19831528" id="login_password" name="login_password" style="width: 100%">
 
             <p style="font-size: 12px; margin: 0 1em;"><a style="color: #000" class="ajaxHTML"
-                    href="<?php echo base_url('account/password_forgotten')?>">Have
+                    href="<?=base_url('account/password_forgotten')?>">Have
                     you forgotten your password?</a></p>
 
             <input class="small" type="submit" value="Log in" style="margin-top: 1em;">
@@ -34,7 +34,7 @@
 
     <p>
         <a href="https://www.facebook.com/lostseas" class="fb-like-box" title="Visit us on Facebook"><img
-                src="<?php echo base_url('assets/images/design/facebook.png')?>"
+                src="<?=base_url('assets/images/design/facebook.png')?>"
                 alt="Visit us on facebook"></a>
     </p>
 </aside>

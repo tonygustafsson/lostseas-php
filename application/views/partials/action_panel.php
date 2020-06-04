@@ -21,7 +21,7 @@
 	<nav id="nav_dock" style="display: <?=$nav_dock_display?>">
 		<div>
 			<a class="ajaxHTML" title="Visit the shop"
-				href="<?php echo base_url('shop')?>">
+				href="<?=base_url('shop')?>">
 				<svg alt="Shop" width="28" height="28">
 					<use xlink:href="#shop"></use>
 				</svg>
@@ -31,7 +31,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Visit the tavern"
-				href="<?php echo base_url('tavern')?>">
+				href="<?=base_url('tavern')?>">
 				<svg alt="Tavern" width="28" height="28">
 					<use xlink:href="#tavern"></use>
 				</svg>
@@ -41,7 +41,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Visit the city hall"
-				href="<?php echo base_url('cityhall')?>">
+				href="<?=base_url('cityhall')?>">
 				<svg alt="CityHall" width="28" height="28">
 					<use xlink:href="#cityhall"></use>
 				</svg>
@@ -51,7 +51,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Visit the bank"
-				href="<?php echo base_url('bank')?>">
+				href="<?=base_url('bank')?>">
 				<svg alt="Tavern" width="28" height="28">
 					<use xlink:href="#bank"></use>
 				</svg>
@@ -61,7 +61,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Visit the shipyard"
-				href="<?php echo base_url('shipyard')?>">
+				href="<?=base_url('shipyard')?>">
 				<svg alt="Shipyard" width="28" height="28">
 					<use xlink:href="#shipyard"></use>
 				</svg>
@@ -71,7 +71,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Visit the market"
-				href="<?php echo base_url('market')?>">
+				href="<?=base_url('market')?>">
 				<svg alt="Market" width="28" height="28">
 					<use xlink:href="#market"></use>
 				</svg>
@@ -81,7 +81,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Go out to sea!"
-				href="<?php echo base_url('harbor')?>">
+				href="<?=base_url('harbor')?>">
 				<svg alt="Harbor" width="28" height="28">
 					<use xlink:href="#harbor"></use>
 				</svg>
@@ -93,7 +93,7 @@
 	<nav id="nav_harbor" style="display: <?=$nav_harbor_display?>">
 		<div>
 			<a class="ajaxHTML" title="Explore the ocean"
-				href="<?php echo base_url('ocean')?>">
+				href="<?=base_url('ocean')?>">
 				<svg alt="Explore" width="28" height="28">
 					<use xlink:href="#explore"></use>
 				</svg>
@@ -103,7 +103,7 @@
 
 		<div>
 			<a class="ajaxHTML" title="Land at this town"
-				href="<?php echo base_url('dock')?>">
+				href="<?=base_url('dock')?>">
 				<svg alt="Harbor" width="28" height="28">
 					<use xlink:href="#harbor"></use>
 				</svg>
@@ -115,7 +115,7 @@
 	<nav id="nav_ocean" style="display: <?=$nav_ocean_display?>">
 		<div>
 			<a class="ajaxHTML" title="Explore the ocean"
-				href="<?php echo base_url('ocean')?>">
+				href="<?=base_url('ocean')?>">
 				<svg alt="Explore" width="28" height="28">
 					<use xlink:href="#explore"></use>
 				</svg>
@@ -128,8 +128,8 @@
 		style="display: <?=$nav_unfriendly_ship_display?>">
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
-				href="<?php echo base_url('ocean/attack')?>">
-				<img src="<?php echo base_url('assets/images/icons/attack.png')?>"
+				href="<?=base_url('ocean/attack')?>">
+				<img src="<?=base_url('assets/images/icons/attack.png')?>"
 					alt="Attack" width="32" height="32">
 				Attack
 			</a>
@@ -137,8 +137,8 @@
 
 		<div>
 			<a class="ajaxHTML" title="Try to flee!"
-				href="<?php echo base_url('ocean/flee')?>">
-				<img src="<?php echo base_url('assets/images/icons/flee.png')?>"
+				href="<?=base_url('ocean/flee')?>">
+				<img src="<?=base_url('assets/images/icons/flee.png')?>"
 					alt="Flee" width="32" height="32">
 				Flee
 			</a>
@@ -149,8 +149,8 @@
 		style="display: <?=$nav_friendly_ship_display?>">
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
-				href="<?php echo base_url('ocean/attack')?>">
-				<img src="<?php echo base_url('assets/images/icons/attack.png')?>"
+				href="<?=base_url('ocean/attack')?>">
+				<img src="<?=base_url('assets/images/icons/attack.png')?>"
 					alt="Attack" width="32" height="32">
 				Attack
 			</a>
@@ -158,8 +158,8 @@
 
 		<div>
 			<a class="ajaxHTML" title="Trade with these sea men"
-				href="<?php echo base_url('ocean/trade')?>">
-				<img src="<?php echo base_url('assets/images/icons/trade.png')?>"
+				href="<?=base_url('ocean/trade')?>">
+				<img src="<?=base_url('assets/images/icons/trade.png')?>"
 					alt="Trade" width="32" height="32">
 				Trade
 			</a>
@@ -167,8 +167,8 @@
 
 		<div>
 			<a class="ajaxHTML" title="Ignore this ship"
-				href="<?php echo base_url('ocean/ignore')?>">
-				<img src="<?php echo base_url('assets/images/icons/flee.png')?>"
+				href="<?=base_url('ocean/ignore')?>">
+				<img src="<?=base_url('assets/images/icons/flee.png')?>"
 					alt="Ignore" width="32" height="32">
 				Ignore
 			</a>
@@ -179,8 +179,8 @@
 		style="display: <?=$nav_neutral_ship_display?>">
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
-				href="<?php echo base_url('ocean/attack')?>">
-				<img src="<?php echo base_url('assets/images/icons/attack.png')?>"
+				href="<?=base_url('ocean/attack')?>">
+				<img src="<?=base_url('assets/images/icons/attack.png')?>"
 					alt="Attack" width="32" height="32">
 				Attack
 			</a>
@@ -188,8 +188,8 @@
 
 		<div>
 			<a class="ajaxHTML" title="Ignore this ship"
-				href="<?php echo base_url('ocean/ignore')?>">
-				<img src="<?php echo base_url('assets/images/icons/flee.png')?>"
+				href="<?=base_url('ocean/ignore')?>">
+				<img src="<?=base_url('assets/images/icons/flee.png')?>"
 					alt="Ignore" width="32" height="32">
 				Ignore
 			</a>

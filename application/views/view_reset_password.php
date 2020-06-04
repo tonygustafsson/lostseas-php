@@ -2,11 +2,11 @@
 	Type in your new password twice to reset your current one.
 </p>
 
-<form method="post" class="ajaxJSON" action="<?php echo base_url('account/password_change')?>">
+<form method="post" class="ajaxJSON" action="<?=base_url('account/password_change')?>">
 	<fieldset>
 		<legend>Reset password</legend>
 	
-		<input type="hidden" name="verification" value="<?php echo $verification?>">
+		<input type="hidden" name="verification" value="<?=$verification?>">
 	
 		<label for="new_password">New password</label>
 		<input type="password" name="new_password">
