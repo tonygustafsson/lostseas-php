@@ -12,7 +12,7 @@
     $nav_ocean_display = $game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade'])) ? 'block' : 'none';
     $nav_unfriendly_ship_display = !empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy']) ? 'block' : 'none';
     $nav_friendly_ship_display = !empty($game['event_ship']) && $nation == $game['nationality'] ? 'block' : 'none';
-    $nav_neutral_ship_display = !empty($game['event_ship']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['nationality'] && $nation !== null ? 'block' : 'none';
+    $nav_neutral_ship_display = !empty($game['event_ship']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['enemy'] && $nation !== null ? 'block' : 'none';
 ?>
 
 <aside id="action_panel" class="action-panel">
@@ -95,7 +95,7 @@
 			<a class="ajaxHTML" title="Explore the ocean"
 				href="<?=base_url('ocean')?>">
 				<svg alt="Explore" width="28" height="28">
-					<use xlink:href="#explore"></use>
+					<use xlink:href="#compass"></use>
 				</svg>
 				Explore
 			</a>
@@ -117,7 +117,7 @@
 			<a class="ajaxHTML" title="Explore the ocean"
 				href="<?=base_url('ocean')?>">
 				<svg alt="Explore" width="28" height="28">
-					<use xlink:href="#explore"></use>
+					<use xlink:href="#compass"></use>
 				</svg>
 				Explore
 			</a>
@@ -129,8 +129,9 @@
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
 				href="<?=base_url('ocean/attack')?>">
-				<img src="<?=base_url('assets/images/icons/attack.png')?>"
-					alt="Attack" width="32" height="32">
+				<svg alt="Attack" width="28" height="28">
+					<use xlink:href="#cannon"></use>
+				</svg>
 				Attack
 			</a>
 		</div>
@@ -138,8 +139,9 @@
 		<div>
 			<a class="ajaxHTML" title="Try to flee!"
 				href="<?=base_url('ocean/flee')?>">
-				<img src="<?=base_url('assets/images/icons/flee.png')?>"
-					alt="Flee" width="32" height="32">
+				<svg alt="Flee" width="28" height="28">
+					<use xlink:href="#steer"></use>
+				</svg>
 				Flee
 			</a>
 		</div>
@@ -150,8 +152,9 @@
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
 				href="<?=base_url('ocean/attack')?>">
-				<img src="<?=base_url('assets/images/icons/attack.png')?>"
-					alt="Attack" width="32" height="32">
+				<svg alt="Attack" width="28" height="28">
+					<use xlink:href="#cannon"></use>
+				</svg>
 				Attack
 			</a>
 		</div>
@@ -159,8 +162,9 @@
 		<div>
 			<a class="ajaxHTML" title="Trade with these sea men"
 				href="<?=base_url('ocean/trade')?>">
-				<img src="<?=base_url('assets/images/icons/trade.png')?>"
-					alt="Trade" width="32" height="32">
+				<svg alt="Flee" width="28" height="28">
+					<use xlink:href="#barrels"></use>
+				</svg>
 				Trade
 			</a>
 		</div>
@@ -168,8 +172,9 @@
 		<div>
 			<a class="ajaxHTML" title="Ignore this ship"
 				href="<?=base_url('ocean/ignore')?>">
-				<img src="<?=base_url('assets/images/icons/flee.png')?>"
-					alt="Ignore" width="32" height="32">
+				<svg alt="Flee" width="28" height="28">
+					<use xlink:href="#steer"></use>
+				</svg>
 				Ignore
 			</a>
 		</div>
@@ -180,8 +185,9 @@
 		<div>
 			<a class="ajaxHTML" title="Attack this ship!"
 				href="<?=base_url('ocean/attack')?>">
-				<img src="<?=base_url('assets/images/icons/attack.png')?>"
-					alt="Attack" width="32" height="32">
+				<svg alt="Attack" width="28" height="28">
+					<use xlink:href="#cannon"></use>
+				</svg>
 				Attack
 			</a>
 		</div>
@@ -189,8 +195,9 @@
 		<div>
 			<a class="ajaxHTML" title="Ignore this ship"
 				href="<?=base_url('ocean/ignore')?>">
-				<img src="<?=base_url('assets/images/icons/flee.png')?>"
-					alt="Ignore" width="32" height="32">
+				<svg alt="Flee" width="28" height="28">
+					<use xlink:href="#steer"></use>
+				</svg>
 				Ignore
 			</a>
 		</div>
