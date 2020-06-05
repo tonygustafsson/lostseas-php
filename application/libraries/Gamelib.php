@@ -199,19 +199,23 @@ class GAMELIB
     
     public function get_inventory_ship($number_of_ships, $ship_health)
     {
+        $data['changeElements']['inventory_ships_health_25']['visibility'] = 'none';
+        $data['changeElements']['inventory_ships_health_50']['visibility'] = 'none';
+        $data['changeElements']['inventory_ships_health_75']['visibility'] = 'none';
+        $data['changeElements']['inventory_ships_health_100']['visibility'] = 'none';
+
         if ($ship_health <= 25) {
-            $health_symbol = 'ship_health_25';
+            $data['changeElements']['inventory_ships_health_25']['visibility'] = 'block';
         } elseif ($ship_health > 25 && $ship_health <= 50) {
-            $health_symbol = 'ship_health_50';
+            $data['changeElements']['inventory_ships_health_50']['visibility'] = 'block';
         } elseif ($ship_health > 50 && $ship_health <= 75) {
-            $health_symbol = 'ship_health_75';
+            $data['changeElements']['inventory_ships_health_75']['visibility'] = 'block';
         } else {
-            $health_symbol = 'ship_health_100';
+            $data['changeElements']['inventory_ships_health_100']['visibility'] = 'block';
         }
         
         $data['changeElements']['inventory_ships']['text'] = $number_of_ships;
         $data['changeElements']['inventory_ships_health_link']['title'] = 'You own ' . $number_of_ships . ' ships with the health ' . $ship_health . '%';
-        $data['changeElements']['inventory_ships_health_img']['src'] = base_url('assets/images/icons/' . $health_symbol . '.png');
         
         return $data['changeElements'];
     }

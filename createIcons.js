@@ -33,7 +33,6 @@ const svgToObj = (dir, destination) => {
     });
 };
 
-const svgSymbolsBin = path.resolve(__dirname, './node_modules/svg-symbols/index.js');
 const source = path.resolve(__dirname, './src/svg');
 const destination = path.resolve(__dirname, './assets/images/icon-map.svg');
 

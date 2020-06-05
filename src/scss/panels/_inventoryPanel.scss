@@ -77,9 +77,20 @@
             text-decoration: none;
         }
 
-        img {
+        img,
+        svg {
             position: relative;
             top: 6px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .addon-icon {
+            position: absolute;
+            left: 3px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
         }
 
         &:hover {

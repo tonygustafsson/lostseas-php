@@ -11,17 +11,24 @@
     if ($game['crew_health_lowest'] > 75) {
         $crew_health_symbol = 'crew_health_100';
     }
+
+    $ship_health_img_25_display = 'none';
+    $ship_health_img_50_display = 'none';
+    $ship_health_img_75_display = 'none';
+    $ship_health_img_100_display = 'none';
+
     if ($game['ship_health_lowest'] <= 25) {
         $ship_health_symbol = 'ship_health_25';
-    }
-    if ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) {
+        $ship_health_img_25_display = 'block';
+    } elseif ($game['ship_health_lowest'] > 25 && $game['ship_health_lowest'] <= 50) {
         $ship_health_symbol = 'ship_health_50';
-    }
-    if ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) {
+        $ship_health_img_50_display = 'block';
+    } elseif ($game['ship_health_lowest'] > 50 && $game['ship_health_lowest'] <= 75) {
         $ship_health_symbol = 'ship_health_75';
-    }
-    if ($game['ship_health_lowest'] > 75) {
+        $ship_health_img_75_display = 'block';
+    } elseif ($game['ship_health_lowest'] > 75) {
         $ship_health_symbol = 'ship_health_100';
+        $ship_health_img_100_display = 'block';
     }
 ?>
 
@@ -131,9 +138,25 @@
         <a class="ajaxHTML" id="inventory_ships_health_link"
             title="You own <?=$game['ships']?> ships with the health <?=$game['ship_health_lowest']?>%"
             href="inventory/ships/<?=$user['id']?>">
-            <img id="inventory_ships_health_img"
-                src="<?=base_url('assets/images/icons/' . $ship_health_symbol . '.png')?>"
-                alt="Ships" width="24" height="24">
+            <svg alt="Ships" width="24" height="24">
+                <use xlink:href="#ship"></use>
+            </svg>
+            <svg id="inventory_ships_health_25" alt="Ship Health" width="24" height="24" class="addon-icon"
+                style="display: <?=$ship_health_img_25_display?>">
+                <use xlink:href="#heart-25"></use>
+            </svg>
+            <svg id="inventory_ships_health_50" alt="Ship Health" width="24" height="24" class="addon-icon"
+                style="display: <?=$ship_health_img_50_display?>">
+                <use xlink:href="#heart-50"></use>
+            </svg>
+            <svg id="inventory_ships_health_75" alt="Ship Health" width="24" height="24" class="addon-icon"
+                style="display: <?=$ship_health_img_75_display?>">
+                <use xlink:href="#heart-75"></use>
+            </svg>
+            <svg id="inventory_ships_health_100" alt="Ship Health" width="24" height="24" class="addon-icon"
+                style="display: <?=$ship_health_img_100_display?>">
+                <use xlink:href="#heart-100"></use>
+            </svg>
             <span id="inventory_ships"><?=$game['ships']?></span>
             <?=($game['ships'] > 1) ? 'ships' : 'ship'; ?>
         </a>
