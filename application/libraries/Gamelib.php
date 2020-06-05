@@ -147,6 +147,32 @@ class GAMELIB
         
         return $ship;
     }
+
+    public function get_crew_mood_symbol($crew_mood)
+    {
+        $data['changeElements']['inventory_crew_mood_aggressive']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_mood_grumpy']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_mood_calm']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_mood_cheerful']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_mood_happy']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_mood_euphoric']['visibility'] = 'none';
+      
+        if ($crew_mood <= -10) {
+            $data['changeElements']['inventory_crew_mood_aggressive']['visibility'] = 'inline-block';
+        } elseif ($crew_mood <= 0) {
+            $data['changeElements']['inventory_crew_mood_grumpy']['visibility'] = 'inline-block';
+        } elseif ($crew_mood <= 5) {
+            $data['changeElements']['inventory_crew_mood_calm']['visibility'] = 'inline-block';
+        } elseif ($crew_mood <= 10) {
+            $data['changeElements']['inventory_crew_mood_cheerful']['visibility'] = 'inline-block';
+        } elseif ($crew_mood <= 18) {
+            $data['changeElements']['inventory_crew_mood_happy']['visibility'] = 'inline-block';
+        } else {
+            $data['changeElements']['inventory_crew_mood_euphoric']['visibility'] = 'inline-block';
+        }
+
+        return $data['changeElements'];
+    }
     
     public function get_crew_friendly_mood($crew_mood)
     {

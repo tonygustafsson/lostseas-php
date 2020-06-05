@@ -1,4 +1,5 @@
 <?php
+    // Crew health
     $crew_health_img_25_display = 'none';
     $crew_health_img_50_display = 'none';
     $crew_health_img_75_display = 'none';
@@ -14,6 +15,29 @@
         $crew_health_img_100_display = 'block';
     }
 
+    // Crew mood
+    $crew_mood_aggressive_display = 'none';
+    $crew_mood_grumpy_display = 'none';
+    $crew_mood_calm_display = 'none';
+    $crew_mood_cheerful_display = 'none';
+    $crew_mood_happy_display = 'none';
+    $crew_mood_euphoric_display = 'none';
+    
+    if ($game['crew_lowest_mood'] <= -10) {
+        $crew_mood_aggressive_display = 'inline-block';
+    } elseif ($game['crew_lowest_mood'] <= 0) {
+        $crew_mood_grumpy_display = 'inline-block';
+    } elseif ($game['crew_lowest_mood'] <= 5) {
+        $crew_mood_calm_display = 'inline-block';
+    } elseif ($game['crew_lowest_mood'] <= 10) {
+        $crew_mood_cheerful_display = 'inline-block';
+    } elseif ($game['crew_lowest_mood'] <= 18) {
+        $crew_mood_happy_display = 'inline-block';
+    } else {
+        $crew_mood_euphoric_display = 'inline-block';
+    }
+
+    // Ship health
     $ship_health_img_25_display = 'none';
     $ship_health_img_50_display = 'none';
     $ship_health_img_75_display = 'none';
@@ -97,9 +121,30 @@
         <a class="ajaxHTML" id="inventory_crew_mood_link"
             title="Your crew is <?=$game['crew_lowest_friendly_mood']?> (Mood <?=$game['crew_lowest_mood']?>)"
             href="inventory/crew/<?=$user['id']?>">
-            <img id="inventory_crew_mood_img"
-                src="<?=base_url('assets/images/icons/smiley_' . $game['crew_lowest_friendly_mood'] . '.png')?>"
-                alt="Mood" width="24" height="24">
+            <svg id="inventory_crew_mood_aggressive" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_aggressive_display?>">
+                <use xlink:href="#mood-aggressive"></use>
+            </svg>
+            <svg id="inventory_crew_mood_grumpy" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_grumpy_display?>">
+                <use xlink:href="#mood-grumpy"></use>
+            </svg>
+            <svg id="inventory_crew_mood_calm" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_calm_display?>">
+                <use xlink:href="#mood-calm"></use>
+            </svg>
+            <svg id="inventory_crew_mood_cheerful" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_cheerful_display?>">
+                <use xlink:href="#mood-cheerful"></use>
+            </svg>
+            <svg id="inventory_crew_mood_happy" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_happy_display?>">
+                <use xlink:href="#mood-happy"></use>
+            </svg>
+            <svg id="inventory_crew_mood_euphoric" alt="Mood" width="24" height="24"
+                style="display: <?=$crew_mood_euphoric_display?>">
+                <use xlink:href="#mood-euphoric"></use>
+            </svg>
             <span id="inventory_crew_mood"><?=$game['crew_lowest_friendly_mood']?></span>
         </a>
     </div>

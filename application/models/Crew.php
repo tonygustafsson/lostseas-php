@@ -123,10 +123,12 @@ class Crew extends CI_Model
             $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
             $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
 
+            $crew_mood_elements['changeElements'] = $this->gamelib->get_crew_mood_symbol($new_crew['min_mood']);
+            $output['changeElements'] = array_merge($crew_mood_elements['changeElements'], $output['changeElements']);
+
             $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
             $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
             $output['changeElements']['inventory_crew_mood_link']['title'] = 'Your crew is ' . $new_friendly_mood . ' (Mood ' . $new_crew['min_mood'] . ')';
-            $output['changeElements']['inventory_crew_mood_img']['src'] = base_url('assets/images/icons/smiley_' . $new_friendly_mood . '.png');
         
             //Return some other statistics
             $output['success'] = true;
@@ -213,10 +215,12 @@ class Crew extends CI_Model
         $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
         $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
 
+        $crew_mood_elements['changeElements'] = $this->gamelib->get_crew_mood_symbol($new_crew['min_mood']);
+        $output['changeElements'] = array_merge($crew_mood_elements['changeElements'], $output['changeElements']);
+
         $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
         $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
         $output['changeElements']['inventory_crew_mood_link']['title'] = 'Your crew is ' . $new_friendly_mood . ' (Mood ' . $new_crew['min_mood'] . ')';
-        $output['changeElements']['inventory_crew_mood_img']['src'] = base_url('assets/images/icons/smiley_' . $new_friendly_mood . '.png');
         
         //Return some other statistics
         $output['success'] = true;
@@ -261,10 +265,12 @@ class Crew extends CI_Model
         $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
         $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
 
+        $crew_mood_elements['changeElements'] = $this->gamelib->get_crew_mood_symbol($new_crew['min_mood']);
+        $output['changeElements'] = array_merge($crew_mood_elements['changeElements'], $output['changeElements']);
+
         $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
         $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
         $output['changeElements']['inventory_crew_mood_link']['title'] = 'Your crew is ' . $new_friendly_mood . ' (Mood ' . $new_crew['min_mood'] . ')';
-        $output['changeElements']['inventory_crew_mood_img']['src'] = base_url('assets/images/icons/smiley_' . $new_friendly_mood . '.png');
         
         return $output;
     }
