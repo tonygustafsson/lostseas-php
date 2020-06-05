@@ -118,10 +118,10 @@ class Crew extends CI_Model
             //Return new crew data for the inventory, if it's not a temp user
             $new_crew = $this->get_brief($this->data['user']['id']);
         
-            $new_health_symbol = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+            $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+
             $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
             $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
-            $output['changeElements']['inventory_crew_health_img']['src'] = base_url('assets/images/icons/' . $new_health_symbol . '.png');
 
             $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
             $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
@@ -208,10 +208,10 @@ class Crew extends CI_Model
         //Return new crew data for the inventory
         $new_crew = $this->get_brief($user_id);
         
-        $new_health_symbol = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+        $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+
         $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
         $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
-        $output['changeElements']['inventory_crew_health_img']['src'] = base_url('assets/images/icons/' . $new_health_symbol . '.png');
 
         $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
         $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
@@ -256,10 +256,10 @@ class Crew extends CI_Model
         //Return new crew data for the inventory
         $new_crew = $this->get_brief($this->data['user']['id']);
         
-        $new_health_symbol = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+        $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
+
         $output['changeElements']['inventory_crew']['text'] = $new_crew['num_crew'];
         $output['changeElements']['inventory_crew_health_link']['title'] = 'You have ' . $new_crew['num_crew'] . ' crew members with the health ' . $new_crew['min_health'] . '%';
-        $output['changeElements']['inventory_crew_health_img']['src'] = base_url('assets/images/icons/' . $new_health_symbol . '.png');
 
         $new_friendly_mood = $this->gamelib->get_crew_friendly_mood($new_crew['min_mood']);
         $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;

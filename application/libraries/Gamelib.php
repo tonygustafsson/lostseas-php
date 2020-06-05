@@ -170,18 +170,22 @@ class GAMELIB
     
     public function get_crew_health_symbol($crew_health)
     {
-        switch ($crew_health) {
-            case ($crew_health <= 25):
-                return 'crew_health_25';
-            case ($crew_health > 25 && $crew_health <= 50):
-                return 'crew_health_50';
-            case ($crew_health > 50 && $crew_health <= 75):
-                return 'crew_health_75';
-            case ($crew_health > 75):
-                return 'crew_health_100';
-            default:
-                return "unknown"; //Should never happen...
+        $data['changeElements']['inventory_crew_health_25']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_health_50']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_health_75']['visibility'] = 'none';
+        $data['changeElements']['inventory_crew_health_100']['visibility'] = 'none';
+
+        if ($crew_health <= 25) {
+            $data['changeElements']['inventory_crew_health_25']['visibility'] = 'block';
+        } elseif ($crew_health > 25 && $crew_health <= 50) {
+            $data['changeElements']['inventory_crew_health_50']['visibility'] = 'block';
+        } elseif ($crew_health > 50 && $crew_health <= 75) {
+            $data['changeElements']['inventory_crew_health_75']['visibility'] = 'block';
+        } else {
+            $data['changeElements']['inventory_crew_health_100']['visibility'] = 'block';
         }
+        
+        return $data['changeElements'];
     }
     
     public function report_crew_unhappiness($crew)
