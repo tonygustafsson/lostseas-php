@@ -77,8 +77,9 @@
         style="display: <?=($user['new_messages'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="You have new messages!"
             href="inventory/messages/<?=$user['id']?>">
-            <img src="<?=base_url('assets/images/icons/players_messages.png')?>"
-                alt="Messages" width="24" height="24">
+            <svg alt="Message" width="24" height="24">
+                <use xlink:href="#message"></use>
+            </svg>
             <span id="inventory_new_messages"><?=$user['new_messages']?></span>
             <?=($user['new_messages'] > 1) ? 'messages' : 'message'; ?>
         </a>
@@ -152,8 +153,9 @@
     <div class="inventory_item">
         <a class="ajaxHTML" title="Doubloons that you can use immediately"
             href="inventory/player/<?=$user['id']?>#capital">
-            <img src="<?=base_url('assets/images/icons/bank.png')?>"
-                alt="Money" width="24" height="24">
+            <svg alt="Doubloons" width="24" height="24">
+                <use xlink:href="#doubloons"></use>
+            </svg>
             <span id="inventory_doubloons"><?=$game['doubloons']?></span>
             dbl
         </a>
@@ -163,8 +165,9 @@
         style="display: <?=($game['bank_account'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Doubloons in your bank account"
             href="inventory/player/<?=$user['id']?>#capital">
-            <img src="<?=base_url('assets/images/icons/money_bank.png')?>"
-                alt="Account" width="24" height="24">
+            <svg alt="Savings" width="24" height="24">
+                <use xlink:href="#savings"></use>
+            </svg>
             <span id="inventory_bank_account"><?=$game['bank_account']?></span>
             dbl
         </a>
@@ -174,8 +177,9 @@
         style="display: <?=($game['bank_loan'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your bank loan amount"
             href="inventory/player/<?=$user['id']?>#capital">
-            <img src="<?=base_url('assets/images/icons/money_bank_loan.png')?>"
-                alt="Bank loan" width="24" height="24">
+            <svg alt="Loan" width="24" height="24">
+                <use xlink:href="#loan"></use>
+            </svg>
             <span id="inventory_bank_loan"><?=$game['bank_loan']?></span>
             dbl
         </a>
@@ -184,8 +188,9 @@
     <div class="inventory_item">
         <a class="ajaxHTML" title="Amount of weeks that has passed, see log book"
             href="inventory/log/<?=$user['id']?>">
-            <img src="<?=base_url('assets/images/icons/about_news.png')?>"
-                alt="Log book" width="24" height="24">
+            <svg alt="Log book" width="24" height="24">
+                <use xlink:href="#logbook"></use>
+            </svg>
             week <span id="inventory_week"><?=$game['week']?></span>
         </a>
     </div>
@@ -225,8 +230,9 @@
         <a class="ajaxHTML" id="inventory_cannons_link"
             title="You own <?=$game['cannons']?> cannons, <?=$game['manned_cannons']?> are manned"
             href="inventory/ships/<?=$user['id']?>">
-            <img src="<?=base_url('assets/images/icons/shipyard_fixings.png')?>"
-                alt="Cannons" width="24" height="24">
+            <svg alt="Cannon" width="24" height="24">
+                <use xlink:href="#cannon"></use>
+            </svg>
             <span id="inventory_manned_cannons"><?=$game['manned_cannons']?></span>/<span
                 id="inventory_cannons"><?=$game['cannons']?></span>
             cannons
@@ -237,8 +243,9 @@
         style="display: <?=($game['rafts'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your life boats, used in shipwreck"
             href="inventory/ships/<?=$user['id']?>">
-            <img src="<?=base_url('assets/images/icons/raft.png')?>"
-                alt="Raft" width="24" height="24">
+            <svg alt="Raft" width="24" height="24">
+                <use xlink:href="#raft"></use>
+            </svg>
             <span id="inventory_rafts"><?=$game['rafts']?></span>
             <?=($game['rafts'] > 1) ? 'rafts' : 'raft'; ?>
         </a>
@@ -251,8 +258,9 @@
         style="display: <?=($game['prisoners'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your prisoners, can be left in City Hall for a ransom"
             href="inventory/ships/<?=$user['id']?>">
-            <img src="<?=base_url('assets/images/icons/cityhall_prisoners.png')?>"
-                alt="Prisoners" width="24" height="24">
+            <svg alt="Raft" width="24" height="24">
+                <use xlink:href="#prisoners"></use>
+            </svg>
             <span id="inventory_prisoners"><?=$game['prisoners']?></span>
             prisoners
         </a>
@@ -261,8 +269,9 @@
     <div class="inventory_item">
         <a class="ajaxHTML" title="Your food, used by crew members for sea traveling"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/market_browse.png')?>"
-                alt="Food" width="24" height="24">
+            <svg alt="Food" width="24" height="24">
+                <use xlink:href="#food"></use>
+            </svg>
             <span id="inventory_food"><?=$game['food']?></span> food
         </a>
     </div>
@@ -270,8 +279,9 @@
     <div class="inventory_item">
         <a class="ajaxHTML" title="Your water, used by crew members for sea traveling"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/water.png')?>"
-                alt="Water" width="24" height="24">
+            <svg alt="Water" width="24" height="24">
+                <use xlink:href="#water"></use>
+            </svg>
             <span id="inventory_water"><?=$game['water']?></span>
             water
         </a>
@@ -281,8 +291,9 @@
         style="display: <?=($game['porcelain'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your porcelain, used as barter goods"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/porcelain.png')?>"
-                alt="Porcelain" width="24" height="24">
+            <svg alt="Porcelain" width="24" height="24">
+                <use xlink:href="#porcelain"></use>
+            </svg>
             <span id="inventory_porcelain"><?=$game['porcelain']?></span>
             porcelain
         </a>
@@ -292,8 +303,9 @@
         style="display: <?=($game['spices'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your spices, used as barter goods"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/spices.png')?>"
-                alt="Spices" width="24" height="24">
+            <svg alt="Spices" width="24" height="24">
+                <use xlink:href="#spices"></use>
+            </svg>
             <span id="inventory_spices"><?=$game['spices']?></span>
             spices
         </a>
@@ -303,8 +315,9 @@
         style="display: <?=($game['silk'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your silk, used as barter goods"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/silk.png')?>"
-                alt="Silk" width="24" height="24">
+            <svg alt="Silk" width="24" height="24">
+                <use xlink:href="#silk"></use>
+            </svg>
             <span id="inventory_silk"><?=$game['silk']?></span> silk
         </a>
     </div>
@@ -313,8 +326,9 @@
         style="display: <?=($game['medicine'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your medicine, can heal crew members"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/medicine.png')?>"
-                alt="Medicine" width="24" height="24">
+            <svg alt="Medicine" width="24" height="24">
+                <use xlink:href="#medicine"></use>
+            </svg>
             <span id="inventory_medicine"><?=$game['medicine']?></span>
             medicine
         </a>
@@ -324,8 +338,9 @@
         style="display: <?=($game['tobacco'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your tobacco, used as barter goods and can raise crew members mood"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/tobacco.png')?>"
-                alt="Tobacco" width="24" height="24">
+            <svg alt="Tobacco" width="24" height="24">
+                <use xlink:href="#tobacco"></use>
+            </svg>
             <span id="inventory_tobacco"><?=$game['tobacco']?></span>
             tobacco
         </a>
@@ -335,8 +350,9 @@
         style="display: <?=($game['rum'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your rum, used as barter goods and can raise crew members mood"
             href="inventory/player/<?=$user['id']?>#stock">
-            <img src="<?=base_url('assets/images/icons/rum.png')?>"
-                alt="Rum" width="24" height="24">
+            <svg alt="Rum" width="24" height="24">
+                <use xlink:href="#rum"></use>
+            </svg>
             <span id="inventory_rum"><?=$game['rum']?></span> rum
         </a>
     </div>
