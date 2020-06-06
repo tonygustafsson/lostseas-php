@@ -11,12 +11,31 @@ Just now I realized that I need to do one thing at a time.
 I would like to separate the backend logic from the frontend. The backend could still use CodeIgniter,
 but be abstracted so that I could use NodeJS in the future. The frontend would be react with redux.
 
-## Start this piraty shit up
 
-1. Restore DB backup from ./backup
-2. Make necessary changes to ./application/config/config.php, most likely base_url.
-3. Make necessary changes to ./application/config/database.php
-4. Try it out
+## Requirements for develop environment
+
+- Docker
+- Docker Compose
+- Node JS
+
+## Setup develop environment
+
+```
+npm install -g webpack webpack-cli
+npm install
+sudo chmod +777 ./docker/php-fpm/sessions/
+```
+## Restore database backup
+```
+docker-compose up
+```
+
+Then visit http://localhost:8000/ and restore the database backup in ./backup
+
+## Start develop environment
+```
+npm start
+```
 
 ## Demo
 http://www.lostseas.com/
