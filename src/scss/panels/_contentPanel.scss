@@ -87,24 +87,6 @@
 
         li {
             padding-bottom: 0.8em;
-
-            &.attack_good {
-                min-width: 90%;
-                background: #71de58;
-                font-weight: bold;
-                padding: 0em 1em 1em 1em;
-                margin: 0 2em 1em 2em;
-                border: 1px #3bb120 solid;
-            }
-
-            &.attack_bad {
-                width: 90%;
-                background: #d96868;
-                font-weight: bold;
-                padding: 0em 1em 1em 1em;
-                margin: 0 2em 1em 2em;
-                border: 1px #c63636 solid;
-            }
         }
     }
 

@@ -1,6 +1,3 @@
-<h2><?=$game['town_human'] . ' ' . $game['place']?>
-</h2>
-
 <header
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
 	<h2><?=$game['town_human'] . ' ' . $game['place']?>
