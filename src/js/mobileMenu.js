@@ -1,13 +1,14 @@
 const deviceMobileMax = 960;
 
-const show = (elementId) => {
+const show = (elementId, displayType) => {
     const element = document.getElementById(elementId);
+    displayType = displayType ? displayType : 'block';
 
     if (!element) {
         return;
     }
 
-    element.style.display = 'block';
+    element.style.display = displayType;
 };
 
 const hide = (elementId) => {
@@ -30,7 +31,7 @@ const toggle = (elementId) => {
     if (element.style.display === 'none' || !element.style.display) {
         hide('inventory_panel');
         hide('action_panel');
-        hide('nav_top');
+        hide('nav_top_panel');
 
         show(element.id);
     } else {
@@ -63,7 +64,7 @@ const initMenu = (triggerBtnId, panelId) => {
 };
 
 window.addEventListener('load', () => {
-    initMenu('nav_top_button', 'nav_top');
+    initMenu('nav_top_button', 'nav_top_panel');
     initMenu('action_panel_button', 'action_panel');
     initMenu('inventory_panel_button', 'inventory_panel');
 });
@@ -72,6 +73,10 @@ window.addEventListener('resize', (e) => {
     if (window.innerWidth >= deviceMobileMax) {
         show('inventory_panel');
         show('action_panel');
-        show('nav_top');
+        show('nav_top_panel', 'flex');
+    } else {
+        hide('inventory_panel');
+        hide('action_panel');
+        hide('nav_top_panel');
     }
 });
