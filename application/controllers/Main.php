@@ -29,14 +29,19 @@ class Main extends CI_Controller
 
     public function index()
     {
-        $event_method = $this->event_method($this->data['game']);
+        $event_method = false;
+
+        if (isset($this->data['game'])) {
+            $event_method = $this->event_method($this->data['game']);
+        }
+
         if ($event_method) {
             //An action event
             redirect($event_method);
-        } elseif (file_exists(APPPATH . 'views/' . $this->data['game']['place'] . '/view_' . $this->data['game']['place'] . '.php')) {
+        } elseif (isset($this->data['game']) && file_exists(APPPATH . 'views/' . $this->data['game']['place'] . '/view_' . $this->data['game']['place'] . '.php')) {
             //A page view
             redirect($this->data['game']['place']);
-        } elseif (! $this->data['user']) {
+        } elseif (!isset($this->data['user'])) {
             //Not logged in, accessing start page
             $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
             $this->data['character'] = $this->gamelib->generate_character();
