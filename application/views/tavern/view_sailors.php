@@ -1,23 +1,44 @@
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/sailors_' . $game['nation'] . '.jpg')?>" class="header">
+<header
+	title="<?=$game['town_human'] . ' ' . $game['place']?>">
+	<h2><?=$game['town_human'] . ' ' . $game['place']?>
+	</h2>
+	<img src="<?=base_url('assets/images/places/sailors_' . $game['nation'] . '.jpg')?>"
+		class="header">
 </header>
 
 <section class="action-buttons">
-	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern"><img src="<?=base_url('assets/images/icons/tavern_buy.png')?>" alt="Buy" width="32" height="32">Buy</a>
+	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern">
+		<svg width="32" height="32" alt="Buy">
+			<use xlink:href="#rum"></use>
+		</svg>
+		Buy
+	</a>
 	<?php if ($game['event_sailors'] != 'banned'): ?>
-		<a id="actions_sailors" class="ajaxHTML" title="Talk to the sailors at the bar" href="<?=base_url('tavern/sailors')?>"><img src="<?=base_url('assets/images/icons/tavern_sailor.png')?>" alt="Sailors" width="32" height="32">Sailors</a>
+	<a id="actions_sailors" class="ajaxHTML" title="Talk to the sailors at the bar"
+		href="<?=base_url('tavern/sailors')?>">
+		<svg width="32" height="32" alt="Sailors">
+			<use xlink:href="#pirate"></use>
+		</svg>
+		Sailors
+	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble"><img src="<?=base_url('assets/images/icons/tavern_gamble.png')?>" alt="Gamble" width="32" height="32">Gamble</a>
+	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble">
+		<svg width="32" height="32" alt="Gamble">
+			<use xlink:href="#dices"></use>
+		</svg>
+		Gamble
+	</a>
 </section>
 
 <?php if (! empty($game['event_sailors']) && is_numeric($game['event_sailors'])): ?>
-	<section id="offer">
-		<p>You talk to <?=$game['event_sailors']?> sailors. After a while they decides to join your crew. Do you want to take them in?</p>
+<section id="offer">
+	<p>You talk to <?=$game['event_sailors']?>
+		sailors. After a while they decides to join your crew. Do you want to take them in?</p>
 
-		<section class="action-buttons">
-			<a href="tavern/sailors_post/yes" class="ajaxJSON nopic positive" title="Take these sailors in!">Yes</a>
-			<a href="tavern/sailors_post/no" class="ajaxJSON nopic negative" title="Tell them to mind their own business">No</a>
-		</section>
+	<section class="action-buttons">
+		<a href="tavern/sailors_post/yes" class="ajaxJSON nopic positive" title="Take these sailors in!">Yes</a>
+		<a href="tavern/sailors_post/no" class="ajaxJSON nopic negative"
+			title="Tell them to mind their own business">No</a>
 	</section>
-<?php endif; ?>
+</section>
+<?php endif;
