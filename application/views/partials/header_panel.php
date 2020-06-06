@@ -5,27 +5,32 @@
                 </h1>
         </header>
 
-        <?php if (isset($user)): ?>
-        <a id="nav_top_button" class="inventory-panel-button" href="#">
-                <img src="<?=base_url('assets/images/icons/game.png')?>"
-                        alt="Game menu">
-        </a>
+        <nav class="nav-top-mobile-panel">
+                <?php if (isset($user)): ?>
+                <a id="nav_top_button" class="nav-top-mobile-panel--item" href="#">
+                        <svg width="32" height="32" alt="Game menu">
+                                <use xlink:href="#swords"></use>
+                        </svg>
+                </a>
 
-        <a id="action_panel_button" class="inventory-panel-button" href="#">
-                <img src="<?=base_url('assets/images/icons/action.png')?>"
-                        alt="Action menu">
-        </a>
+                <a id="action_panel_button" class="nav-top-mobile-panel--item" href="#">
+                        <svg width="32" height="32" alt="Actions menu">
+                                <use xlink:href="#compass"></use>
+                        </svg>
+                </a>
 
-        <a id="inventory_panel_button" class="inventory-panel-button" href="#">
-                <img src="<?=base_url('assets/images/icons/food.png')?>"
-                        alt="Inventory menu">
-        </a>
-        <?php else: ?>
-        <a id="inventory_panel_button" class="inventory-panel-button" href="#">
-                <img src="<?=base_url('assets/images/icons/login.png')?>"
-                        alt="Login menu">
-        </a>
-        <?php endif; ?>
+                <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
+                        <svg width="32" height="32" alt="Inventory menu">
+                                <use xlink:href="#barrels"></use>
+                        </svg>
+                </a>
+                <?php else: ?>
+                <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
+                        <img src="<?=base_url('assets/images/icons/login.png')?>"
+                                alt="Login menu">
+                </a>
+                <?php endif; ?>
+        </nav>
 
         <nav id="nav_top_panel" class="top-nav-panel">
                 <?php if (isset($user)): ?>

@@ -24,20 +24,24 @@ header {
     }
 }
 
-a#top-nav-panel_button {
-    display: none;
-    padding: 1em;
+.nav-top-mobile-panel {
+    display: flex;
 
-    @include mobile {
-        display: block !important;
-        float: left;
-
-        img {
-            padding: 0;
-            margin: 0;
+    &--item {
+        display: none;
+        padding: 1em;
+    
+        @include mobile {
+            display: block !important;
+    
+            img {
+                padding: 0;
+                margin: 0;
+            }
         }
     }
 }
+
 
 .top-nav-panel {
     background-color: $whiteglass;

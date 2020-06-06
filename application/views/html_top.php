@@ -80,9 +80,11 @@
 		<?php if (isset($user['admin']) && $user['admin'] == 1): ?>
 		<section style="position: absolute; top: 10px; right: 10px;">
 			<a class="ajaxHTML" title="Enter God Mode!"
-				href="<?=base_url('godmode/index/' . $user['id'])?>"><img
-					src="<?=base_url('assets/images/icons/godmode.png')?>"
-					alt="God mode"></a>
+				href="<?=base_url('godmode/index/' . $user['id'])?>">
+				<svg width="32" height="32" class="God mode">
+					<use xlink:href="#parrot-front"></use>
+				</svg>
+			</a>
 		</section>
 		<?php endif; ?>
 
