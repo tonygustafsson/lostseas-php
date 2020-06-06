@@ -26,6 +26,11 @@
             width: 136px;
             height: auto;
             line-height: 100%;
+
+            img {
+                width: 128px;
+                height: 128px;
+            }
         }
 
         &.nopic {
@@ -48,8 +53,10 @@
             border: 2px $red solid;
         }
 
-        img {
+        img, svg {
             display: block;
+            width: 32px;
+            height: 32px;
             margin: 0.1em auto 0.5em auto;
         }
     }

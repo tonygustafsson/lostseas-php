@@ -11,18 +11,27 @@
 </p>
 
 <section class="action-buttons">
-	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern"><img
-			src="<?=base_url('assets/images/icons/tavern_buy.png')?>"
-			alt="Buy" width="32" height="32">Buy</a>
+	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern">
+		<svg width="32" height="32" alt="Buy">
+			<use xlink:href="#rum"></use>
+		</svg>
+		Buy
+	</a>
 	<?php if ($game['event_sailors'] != 'banned'): ?>
 	<a id="actions_sailors" class="ajaxHTML" title="Talk to the sailors at the bar"
-		href="<?=base_url('tavern/sailors')?>"><img
-			src="<?=base_url('assets/images/icons/tavern_sailor.png')?>"
-			alt="Sailors" width="32" height="32">Sailors</a>
+		href="<?=base_url('tavern/sailors')?>">
+		<svg width="32" height="32" alt="Sailors">
+			<use xlink:href="#pirate"></use>
+		</svg>
+		Sailors
+	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble"><img
-			src="<?=base_url('assets/images/icons/tavern_gamble.png')?>"
-			alt="Gamble" width="32" height="32">Gamble</a>
+	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble">
+		<svg width="32" height="32" alt="Gamble">
+			<use xlink:href="#dices"></use>
+		</svg>
+		Gamble
+	</a>
 </section>
 
 <p>
