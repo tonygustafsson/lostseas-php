@@ -12,8 +12,8 @@ form fieldset legend {
     font-family: $font-bridgnorth;
     padding: 0 5px;
 
-    img {
-        vertical-align: middle;
+    img, svg {
+        vertical-align: top;
     }
 }
 
