@@ -45,15 +45,15 @@ class Dock extends Main
         }
 
         if ($this->data['game']['ships'] < 1) {
-            $this->data['game']['todo'][]['coast'] = 'You do not own a ship, you must buy a new one! Take a loan if you have to!';
+            $this->data['game']['todo'][]['ship'] = 'You do not own a ship, you must buy a new one! Take a loan if you have to!';
         }
 
         if ($this->data['game']['ship_health_lowest'] < 80) {
-            $this->data['game']['todo'][]['coast'] = 'Some of your ships is in need of repair. You should visit the shipyard...';
+            $this->data['game']['todo'][]['ship'] = 'Some of your ships is in need of repair. You should visit the shipyard...';
         }
 
         if (rand(1, 3) == 1 && $this->data['game']['ships'] < 2) {
-            $this->data['game']['todo'][]['coast'] = 'You only own one ship, which make you vulnerable if you lose a battle. You should save up some money and buy a new one  at the shipyard.';
+            $this->data['game']['todo'][]['ship'] = 'You only own one ship, which make you vulnerable if you lose a battle. You should save up some money and buy a new one  at the shipyard.';
         }
 
         if ($this->data['game']['food'] < ($this->data['game']['needed_food'] * 5)) {
@@ -65,23 +65,23 @@ class Dock extends Main
         }
 
         if (floor($this->data['game']['crew_members'] / 2) > $this->data['game']['cannons']) {
-            $this->data['game']['todo'][]['shipyard_fixings'] = 'You have more crew members than usable cannons, if possible, you should buy ' . (floor($this->data['game']['crew_members'] / 2) - $this->data['game']['cannons']) . ' more cannons.';
+            $this->data['game']['todo'][]['cannon'] = 'You have more crew members than usable cannons, if possible, you should buy ' . (floor($this->data['game']['crew_members'] / 2) - $this->data['game']['cannons']) . ' more cannons.';
         }
 
         if ($this->data['game']['crew_members'] < 1) {
-            $this->data['game']['todo'][]['tavern_sailor'] = 'You do not have any crew members, you have to get new onces. Try the tavern or the market!';
+            $this->data['game']['todo'][]['crew-member'] = 'You do not have any crew members, you have to get new onces. Try the tavern or the market!';
         }
 
         if ($this->data['game']['crew_lowest_mood'] < 6) {
-            $this->data['game']['todo'][]['tavern_sailor'] = 'Some of your crew is not that happy. You should buy them something to drink before you leave.';
+            $this->data['game']['todo'][]['crew-member'] = 'Some of your crew is not that happy. You should buy them something to drink before you leave.';
         }
 
         if ($this->data['game']['crew_health_lowest'] < 80) {
-            $this->data['game']['todo'][]['tavern_sailor'] = 'Some of your crew is not totally healthy. You should visit the healer, or buy them some dinners at the tavern.';
+            $this->data['game']['todo'][]['crew-member'] = 'Some of your crew is not totally healthy. You should visit the healer, or buy them some dinners at the tavern.';
         }
 
         if ($this->data['game']['prisoners'] > 0 && $this->data['game']['nation'] == $this->data['game']['nationality']) {
-            $this->data['game']['todo'][]['cityhall_prisoners'] = 'You have ' . $this->data['game']['prisoners'] . ' prisoners to deliver to the City Hall.';
+            $this->data['game']['todo'][]['prisoners'] = 'You have ' . $this->data['game']['prisoners'] . ' prisoners to deliver to the City Hall.';
         }
 
         $barter_goods = array('porcelain' => 'cartons', 'spices' => 'cartons', 'silk' => 'cartons', 'medicine' => 'boxes', 'tobacco' => 'cartons', 'rum' => 'barrels');
@@ -93,7 +93,7 @@ class Dock extends Main
         }
         
         if (! empty($barter_msg)) {
-            $this->data['game']['todo'][]['tobacco'] = 'You could sell' . substr($barter_msg, 0, -1) . '.';
+            $this->data['game']['todo'][]['barrels'] = 'You could sell' . substr($barter_msg, 0, -1) . '.';
         }
 
         if ($this->data['user']['sound_effects_play'] == 1 && ($this->data['user']['email'] != "" || (time() - strtotime($this->data['user']['created'])) > 180)) {
