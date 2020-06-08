@@ -117,6 +117,12 @@
 		</tr>
 
 		<tr>
+			<td>Verified</td>
+			<td><input type="number" id="verified" name="verified"
+					value="<?=$player['user']['verified']?>">
+			</td>
+		</tr>
+		<tr>
 			<td>admin</td>
 			<td><input type="number" id="admin" name="admin"
 					value="<?=$player['user']['admin']?>">
