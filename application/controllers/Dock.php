@@ -69,15 +69,15 @@ class Dock extends Main
         }
 
         if ($this->data['game']['crew_members'] < 1) {
-            $this->data['game']['todo'][]['crew-member'] = 'You do not have any crew members, you have to get new onces. Try the tavern or the market!';
+            $this->data['game']['todo'][]['crew-man'] = 'You do not have any crew members, you have to get new onces. Try the tavern or the market!';
         }
 
         if ($this->data['game']['crew_lowest_mood'] < 6) {
-            $this->data['game']['todo'][]['crew-member'] = 'Some of your crew is not that happy. You should buy them something to drink before you leave.';
+            $this->data['game']['todo'][]['crew-man'] = 'Some of your crew is not that happy. You should buy them something to drink before you leave.';
         }
 
         if ($this->data['game']['crew_health_lowest'] < 80) {
-            $this->data['game']['todo'][]['crew-member'] = 'Some of your crew is not totally healthy. You should visit the healer, or buy them some dinners at the tavern.';
+            $this->data['game']['todo'][]['crew-man'] = 'Some of your crew is not totally healthy. You should visit the healer, or buy them some dinners at the tavern.';
         }
 
         if ($this->data['game']['prisoners'] > 0 && $this->data['game']['nation'] == $this->data['game']['nationality']) {

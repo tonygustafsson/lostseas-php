@@ -123,11 +123,11 @@ class Harbor extends Main
         }
         
         if ($this->data['game']['crew_members'] < $this->data['game']['min_crew']) {
-            $warnings[]['crew-member'] = 'You need at least ' . $this->data['game']['min_crew'] . ' crew members to sail out. Get more men or sell a ship.';
+            $warnings[]['crew-man'] = 'You need at least ' . $this->data['game']['min_crew'] . ' crew members to sail out. Get more men or sell a ship.';
         }
         
         if ($this->data['game']['crew_members'] > $this->data['game']['max_crew']) {
-            $warnings[]['crew-member'] = 'Your ship only supports ' . $this->data['game']['max_crew'] . ' crew members at this time. Discard crew members or buy more ships.';
+            $warnings[]['crew-man'] = 'Your ship only supports ' . $this->data['game']['max_crew'] . ' crew members at this time. Discard crew members or buy more ships.';
         }
         
         if ($this->data['game']['ships'] < 1) {
