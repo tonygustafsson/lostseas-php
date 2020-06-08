@@ -117,11 +117,6 @@ class About extends Main
     
                     $new_html .= '
                         </ul>
-                        
-                        <p style="padding-left: 1em;">
-                            <a class="ajaxJSON" href="' . base_url('about/edit_news/' . $id) . '"><img src="' . base_url('assets/images/icons/edit.png') . '" width="16"></a>
-                            <a class="ajaxJSON" rel="Are you sure you want to delete this?" href="' . base_url('about/erase_news/' . $id) . '"><img src="' . base_url('assets/images/icons/erase.png') . '" width="16"></a>
-                        </p>
                     ';
     
                     $data['success'] = 'Successfully edited news entry!';

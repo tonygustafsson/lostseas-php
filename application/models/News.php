@@ -57,11 +57,6 @@ class News extends CI_Model
 
         $output .= '
 				</ul>
-				
-				<p style="padding-left: 1em;">
-					<a class="ajaxJSON" href="' . base_url('about/edit_news/' . $new_entry['id']) . '"><img src="' . base_url('assets/images/icons/edit.png') . '" width="16"></a>
-					<a class="ajaxJSON" rel="Are you sure you want to delete this?" href="' . base_url('about/erase_news/' . $new_entry['id']) . '"><img src="' . base_url('assets/images/icons/erase.png') . '" width="16"></a>
-				</p>
 			</section>
 		';
         
