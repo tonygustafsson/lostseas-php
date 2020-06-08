@@ -331,23 +331,6 @@ class About extends Main
         $this->load->view_ajax('about/view_guide_settings', $this->data);
     }
 
-    public function ideas()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "The future plans for this game. A todo list of features that we would like to see. You can also add requests.";
-        $this->data['meta_keywords'] = "lost seas, ideas, requests, game, features, future";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_ideas', $this->data);
-    }
-
     public function copyright()
     {
         $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;

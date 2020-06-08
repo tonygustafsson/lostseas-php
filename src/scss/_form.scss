@@ -12,7 +12,8 @@ form fieldset legend {
     font-family: $font-bridgnorth;
     padding: 0 5px;
 
-    img, svg {
+    img,
+    svg {
         vertical-align: top;
         margin: 0 0.25em;
     }
@@ -95,8 +96,7 @@ form td input[type='checkbox'] {
     margin-left: 1em;
 }
 
-form#register input#character_description,
-form#form_suggestion input#name {
+form#register input#character_description {
     /* Honeypot attempt to block some bots */
     display: none;
 }

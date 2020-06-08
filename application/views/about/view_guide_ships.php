@@ -5,7 +5,7 @@
 		alt="Front image">
 	<h2>Guide: Ships</h2>
 
-		<?php include(__DIR__ . '/../partials/register_form.php'); ?>
+	<?php include(__DIR__ . '/../partials/register_form.php'); ?>
 	<?php else: ?>
 	<h3>Guide: Ships</h3>
 	<?php endif; ?>
@@ -26,10 +26,6 @@
 		href="<?=base_url('about/news')?>"><img
 			src="<?=base_url('assets/images/icons/about_news.png')?>"
 			alt="News" width="32" height="32">News</a>
-	<a class="ajaxHTML" title="Ideas for the future of the game"
-		href="<?=base_url('about/ideas')?>"><img
-			src="<?=base_url('assets/images/icons/about_ideas.png')?>"
-			alt="Ideas" width="32" height="32">Ideas</a>
 </section>
 
 <div class="divider"></div>

@@ -63,7 +63,6 @@ const initAvatarDialog = () => {
 
 window.addEventListener('about-presentation', initAvatarDialog);
 window.addEventListener('about-news', initAvatarDialog);
-window.addEventListener('about-ideas', initAvatarDialog);
 window.addEventListener('about-guide_supplies', initAvatarDialog);
 window.addEventListener('about-guide_ships', initAvatarDialog);
 window.addEventListener('about-guide_crew', initAvatarDialog);
