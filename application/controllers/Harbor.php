@@ -98,7 +98,7 @@ class Harbor extends Main
                     }
                 } else {
                     $data['error'] = 'You cannot leave just yet...';
-                    $this->data['game']['harbor_errors'] = $town_to_harbor_access;
+                    $this->data['game']['warnings'] = $town_to_harbor_access;
                     $data['pushState'] = base_url('dock');
                     $this->data['game']['place'] = $updates['place'] = 'dock';
                 }
@@ -116,42 +116,42 @@ class Harbor extends Main
 
     public function check_access()
     {
-        $errors = array();
+        $warnings = array();
     
         if ($this->data['game']['angry_crew'] > 0) {
-            $errors[]['smiley_aggressive.png'] = $this->data['game']['angry_crew'] . ' of your crew members are angry and do not want to leave town! You should please them or discard them.';
+            $warnings[]['mood-aggressive'] = $this->data['game']['angry_crew'] . ' of your crew members are angry and do not want to leave town! You should please them or discard them.';
         }
         
         if ($this->data['game']['crew_members'] < $this->data['game']['min_crew']) {
-            $errors[]['tavern_sailor'] = 'You need at least ' . $this->data['game']['min_crew'] . ' crew members to sail out. Get more men or sell a ship.';
+            $warnings[]['crew-member'] = 'You need at least ' . $this->data['game']['min_crew'] . ' crew members to sail out. Get more men or sell a ship.';
         }
         
         if ($this->data['game']['crew_members'] > $this->data['game']['max_crew']) {
-            $errors[]['tavern_sailor'] = 'Your ship only supports ' . $this->data['game']['max_crew'] . ' crew members at this time. Discard crew members or buy more ships.';
+            $warnings[]['crew-member'] = 'Your ship only supports ' . $this->data['game']['max_crew'] . ' crew members at this time. Discard crew members or buy more ships.';
         }
         
         if ($this->data['game']['ships'] < 1) {
-            $errors[]['shipyard_sell'] = 'You don\'t own a ship. You should buy one. Take a loan if you cannot afford it.';
+            $warnings[]['ship'] = 'You don\'t own a ship. You should buy one. Take a loan if you cannot afford it.';
         }
         
         if ($this->data['game']['load_left'] < 0) {
-            $errors[]['shipyard_sell'] = 'Your ship can only carry ' . $this->data['game']['load_max'] . ' cartons, and you carry ' . $this->data['game']['load_current'] . '.';
+            $warnings[]['ship'] = 'Your ship can only carry ' . $this->data['game']['load_max'] . ' cartons, and you carry ' . $this->data['game']['load_current'] . '.';
         }
         
         if ($this->data['game']['cannons'] > $this->data['game']['max_cannons']) {
-            $errors[]['shipyard_fixings'] = 'You cannot load more than ' . $this->data['game']['max_cannons']. ' cannons! Sell some cannons or buy new ships.';
+            $warnings[]['cannon'] = 'You cannot load more than ' . $this->data['game']['max_cannons']. ' cannons! Sell some cannons or buy new ships.';
         }
         
         if ($this->data['game']['food'] < $this->data['game']['needed_food']) {
-            $errors[]['market_browse'] = 'You need at least ' . $this->data['game']['needed_food'] . ' cartons of food, or you will starve out there.';
+            $warnings[]['food'] = 'You need at least ' . $this->data['game']['needed_food'] . ' cartons of food, or you will starve out there.';
         }
         
         if ($this->data['game']['water'] < $this->data['game']['needed_water']) {
-            $errors[]['water'] = 'You need at least ' . $this->data['game']['needed_water'] . ' barrels of water, or you will thirst do death out there.';
+            $warnings[]['water'] = 'You need at least ' . $this->data['game']['needed_water'] . ' barrels of water, or you will thirst do death out there.';
         }
         
-        if (count($errors) > 0) {
-            return $errors;
+        if (count($warnings) > 0) {
+            return $warnings;
         } else {
             return true;
         }

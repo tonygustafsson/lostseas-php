@@ -20,30 +20,26 @@
     padding: 0;
 
     li {
-        position: relative;
+        display: flex;
+        align-items: center;
+        min-width: 90%;
+        padding: 0.5em;
+        margin: 0.5em 1em;
 
         svg {
-            position: absolute;
-            top: 10px;
-            left: -4em;
+            vertical-align: middle;
+            margin-right: 1em;
         }
 
         &.positive {
-            min-width: 90%;
             background: $green;
-            font-weight: bold;
-            padding: 1em;
-            margin: 0 2em 1em 2em;
             border: 1px $darkgreen solid;
         }
 
         &.negative {
-            width: 90%;
             background: $red;
-            font-weight: bold;
-            padding: 1em;
-            margin: 0 2em 1em 2em;
             border: 1px $darkred solid;
+            color: #fff;
         }
     }
 }

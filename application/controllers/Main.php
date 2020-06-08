@@ -19,7 +19,9 @@ class Main extends CI_Controller
         if ($this->data || $this->public_page) {
             //Get greeting
             $place = ($this->uri->segment(1)) ? $this->uri->segment(1) : $this->data['game']['place'];
-            $this->data['game']['greeting'] = $this->gamelib->random_greeting($place, $this->data['game']['character_name'], $this->data['game']['character_gender'], $this->data['game']['character_age']);
+            if (isset($this->data['game'])) {
+                $this->data['game']['greeting'] = $this->gamelib->random_greeting($place, $this->data['game']['character_name'], $this->data['game']['character_gender'], $this->data['game']['character_age']);
+            }
         } else {
             if ($this->uri->segment(1) != "") {
                 redirect("/account/logged_out");
