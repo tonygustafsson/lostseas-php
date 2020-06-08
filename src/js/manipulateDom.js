@@ -75,7 +75,14 @@ const manipulateDom = (data) => {
                         element.prepend(prependElement);
                         break;
                     case 'append':
-                        let appendElement = document.createElement('div');
+                        const elementType = element.tagName.toLowerCase();
+                        let newElementType = 'div';
+
+                        if (elementType === 'table') {
+                            newElementType = 'tr';
+                        }
+
+                        let appendElement = document.createElement(newElementType);
                         appendElement.innerHTML = value;
                         element.appendChild(appendElement);
                         break;
