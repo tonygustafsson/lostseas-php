@@ -15,8 +15,11 @@ const changeSong = (e) => {
     const newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
     const musicControlEl = document.getElementById('music_control');
 
-    const musicIcon = document.getElementById('music_icon');
-    musicIcon.src = appdir + 'assets/images/icons/music_pause.png';
+    const musicPlayIcon = document.getElementById('music_link_play');
+    const musicPauseIcon = document.getElementById('music_link_pause');
+
+    musicPlayIcon.style.display = 'none';
+    musicPauseIcon.style.display = 'inline-block';
 
     if (gameMusic.canPlayType('audio/ogg')) {
         //Play OGG files
@@ -42,8 +45,8 @@ const changeSong = (e) => {
 const musicToggle = (e) => {
     e.preventDefault();
 
-    const musicIcon = document.getElementById('music_icon');
-    const musicLink = document.getElementById('music_link');
+    const musicPlayIcon = document.getElementById('music_link_play');
+    const musicPauseIcon = document.getElementById('music_link_pause');
 
     if (gameMusic.paused || gameMusic.src === '') {
         axios({
@@ -65,8 +68,8 @@ const musicToggle = (e) => {
                     }
                 }
 
-                musicIcon.src = appdir + 'assets/images/icons/music_pause.png';
-                musicLink.title = 'Pause the music';
+                musicPlayIcon.style.display = 'none';
+                musicPauseIcon.style.display = 'inline-block';
             })
             .catch((err) => {
                 snackbar({ text: 'Could not save sound effects settings', level: 'error' });
@@ -83,8 +86,8 @@ const musicToggle = (e) => {
                     ga('send', 'event', 'Music', 'Pause');
                 }
 
-                musicIcon.src = appdir + 'assets/images/icons/music_play.png';
-                musicLink.title = 'Play the music';
+                musicPlayIcon.style.display = 'inline-block';
+                musicPauseIcon.style.display = 'none';
             })
             .catch((err) => {
                 snackbar({ text: 'Could not save sound effects settings', level: 'error' });
