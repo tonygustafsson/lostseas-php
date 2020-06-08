@@ -65,25 +65,71 @@ class About extends Main
 
     public function news_post()
     {
-        if ($this->data['user']['admin'] == 1) {
-            $form_rules['time']		= array('name' => 'Time', 'date' => true);
-            $form_rules['news_entry']	= array('name' => 'The news', 'min_length' => 10);
-            
-            $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
-            
-            if (! $data['error']) {
-                $this->load->model('News');
-                
-                $news['time'] = $this->input->post('time');
-                $news['entry'] = $this->input->post('news_entry');
-                $new_news = $this->News->create($news);
-                
-                $data['changeElements']['news_entries']['prepend'] = $new_news;
+        $existing_news_id = $this->input->post('news_id');
 
-                $data['success'] = 'Successfully created news!';
-            }
+        if (!$existing_news_id) {
+            if ($this->data['user']['admin'] == 1) {
+                $form_rules['time']		= array('name' => 'Time', 'date' => true);
+                $form_rules['news_entry']	= array('name' => 'The news', 'min_length' => 10);
             
-            echo json_encode($data);
+                $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
+            
+                if (! $data['error']) {
+                    $this->load->model('News');
+                
+                    $news['time'] = $this->input->post('time');
+                    $news['entry'] = $this->input->post('news_entry');
+                    $new_news = $this->News->create($news);
+                
+                    $data['changeElements']['news_entries']['prepend'] = $new_news;
+
+                    $data['success'] = 'Successfully created news!';
+                }
+            
+                echo json_encode($data);
+            }
+        } else {
+            // Editing existing news post
+            if ($this->data['user']['admin'] == 1) {
+                $form_rules['news_id']		= array('name' => 'News ID', 'numeric' => true);
+                $form_rules['time']			= array('name' => 'Time', 'date' => true);
+                $form_rules['news_entry']	= array('name' => 'The news', 'min_length' => 10);
+                
+                $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
+                
+                if (! $data['error']) {
+                    $this->load->model('News');
+    
+                    $id = $this->input->post('news_id');
+                    $changes['time'] = $this->input->post('time');
+                    $changes['entry'] = $this->input->post('news_entry');
+                    $this->News->update($id, $changes);
+                    $rows = explode("\n\n", $this->input->post('news_entry'));
+                    
+                    $new_html = '
+                        <h3>' . date("jS F, Y", strtotime($this->input->post('time'))) . '</h3>
+                        <ul>
+                    ';
+                    
+                    foreach ($rows as $row) {
+                        $new_html .= '<li>' . $row . '</li>';
+                    }
+    
+                    $new_html .= '
+                        </ul>
+                        
+                        <p style="padding-left: 1em;">
+                            <a class="ajaxJSON" href="' . base_url('about/edit_news/' . $id) . '"><img src="' . base_url('assets/images/icons/edit.png') . '" width="16"></a>
+                            <a class="ajaxJSON" rel="Are you sure you want to delete this?" href="' . base_url('about/erase_news/' . $id) . '"><img src="' . base_url('assets/images/icons/erase.png') . '" width="16"></a>
+                        </p>
+                    ';
+    
+                    $data['success'] = 'Successfully edited news entry!';
+                    $data['changeElements']['entry-' . $id]['html'] = $new_html;
+                }
+                
+                echo json_encode($data);
+            }
         }
     }
     
@@ -94,74 +140,16 @@ class About extends Main
 
             $id = $this->uri->segment(3);
             $this_entry = $this->News->get($id);
-        
-            $new_form = '
-				<form method="post" class="ajaxJSON" action="' . base_url('about/edit_news_post') . '">
-					<fieldset>
-						<legend>Edit news</legend>
-						<input type="hidden" name="news_id" value="' . $this_entry['id'] . '">
-						
-						<label for="time">Time</label>
-						<input type="text" name="time" value="' . date("Y-m-d", $this_entry['unix_time']) . '">
-						
-						<label for="news_entry">The news</label>
-						<textarea name="news_entry">' . $this_entry['entry'] . '</textarea>
-						
-						<input type="submit" value="Edit">
-					</fieldset>
-				</form>
-			';
-            
-            $data['changeElements']['news_form_section']['html'] = $new_form;
-        
+              
+            $data['changeElements']['news_form_post_id']['val'] = $this_entry['id'];
+            $data['changeElements']['news_form_entry']['val'] = $this_entry['entry'];
+            $data['changeElements']['news_form_time']['val'] = date("Y-m-d", $this_entry['unix_time']);
+            $data['changeElements']['news_form_legend']['text'] = 'Edit news post';
+
             echo json_encode($data);
         }
     }
-
-    public function edit_news_post()
-    {
-        if ($this->data['user']['admin'] == 1) {
-            $form_rules['news_id']		= array('name' => 'News ID', 'numeric' => true);
-            $form_rules['time']			= array('name' => 'Time', 'date' => true);
-            $form_rules['news_entry']	= array('name' => 'The news', 'min_length' => 10);
-            
-            $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
-            
-            if (! $data['error']) {
-                $this->load->model('News');
-
-                $id = $this->input->post('news_id');
-                $changes['time'] = $this->input->post('time');
-                $changes['entry'] = $this->input->post('news_entry');
-                $this->News->update($id, $changes);
-                $rows = explode("\n\n", $this->input->post('news_entry'));
-                
-                $new_html = '
-					<h3>' . date("jS F, Y", strtotime($this->input->post('time'))) . '</h3>
-					<ul>
-				';
-                
-                foreach ($rows as $row) {
-                    $new_html .= '<li>' . $row . '</li>';
-                }
-
-                $new_html .= '
-					</ul>
-					
-					<p style="padding-left: 1em;">
-						<a class="ajaxJSON" href="' . base_url('about/edit_news/' . $id) . '"><img src="' . base_url('assets/images/icons/edit.png') . '" width="16"></a>
-						<a class="ajaxJSON" rel="Are you sure you want to delete this?" href="' . base_url('about/erase_news/' . $id) . '"><img src="' . base_url('assets/images/icons/erase.png') . '" width="16"></a>
-					</p>
-				';
-
-                $data['success'] = 'Successfully edited news entry!';
-                $data['changeElements']['entry-' . $id]['html'] = $new_html;
-            }
-            
-            echo json_encode($data);
-        }
-    }
-    
+   
     public function erase_news()
     {
         if ($this->data['user']['admin'] == 1 && $this->uri->segment(3) != '') {

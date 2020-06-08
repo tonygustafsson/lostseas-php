@@ -32,7 +32,7 @@ const ajaxJsonRequest = (e) => {
     var url;
     var myData = null;
 
-    if (elementType === 'img' || elementType === 'use') {
+    if (elementType === 'img' || elementType === 'svg' || elementType === 'use') {
         // Find closest link for the image
         element = element.closest('a');
         elementType = element.tagName.toLowerCase();

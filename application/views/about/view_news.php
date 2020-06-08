@@ -40,17 +40,19 @@
 
 <?php if (isset($user) && $user['admin'] == 1): ?>
 <section id="news_form_section">
-	<form method="post" id="news_form" class="ajaxJSON news-form"
+	<form method="POST" id="news_form" class="ajaxJSON news-form"
 		action="<?=base_url('about/news_post')?>">
 		<fieldset>
-			<legend>Post news</legend>
+			<input type="hidden" value="" name="news_id" id="news_form_post_id" />
+			<legend id="news_form_legend">Post news</legend>
 
 			<label for="time">Time</label>
 			<input type="text" name="time"
-				value="<?=date('Y-m-d', time())?>">
+				value="<?=date('Y-m-d', time())?>"
+				id="news_form_time">
 
 			<label for="news_entry">The news</label>
-			<textarea name="news_entry"></textarea>
+			<textarea name="news_entry" id="news_form_entry"></textarea>
 
 			<input type="submit" value="Post">
 		</fieldset>
@@ -79,13 +81,19 @@
 		<?php if (isset($user) && $user['admin'] == 1): ?>
 		<p style="padding-left: 1em;">
 			<a class="ajaxJSON"
-				href="<?=base_url('about/edit_news/' . $this_news['id'])?>"><img
-					src="<?=base_url()?>assets/images/icons/edit.png"
-					width="16"></a>
+				href="<?=base_url('about/edit_news/' . $this_news['id'])?>"
+				title="Edit">
+				<svg width="24" height="24" alt="Edit">
+					<use xlink:href="#pencil"></use>
+				</svg>
+			</a>
 			<a class="ajaxJSON" rel="Are you sure you want to delete this?"
-				href="<?=base_url('about/erase_news/' . $this_news['id'])?>"><img
-					src="<?=base_url('assets/images/icons/erase.png')?>"
-					width="16"></a>
+				href="<?=base_url('about/erase_news/' . $this_news['id'])?>"
+				title="Remove">
+				<svg width="24" height="24" alt="Remove">
+					<use xlink:href="#broom"></use>
+				</svg>
+			</a>
 		</p>
 		<?php endif; ?>
 	</section>
