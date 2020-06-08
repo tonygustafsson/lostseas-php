@@ -115,7 +115,7 @@ class Godmode extends Main
         
             $table_row = '	<tr id="' . $ship_output['created_ship']['id'] . '_row">
 								<td>
-									<a class="ajaxJSON" href="' . base_url('godmode/ship_delete/' . $ship_output['created_ship']['id']) . '" title="Delete ship"><img src="' . base_url('assets/images/icons/delete.png') . '" alt="Delete"></a>
+									<a class="ajaxJSON" href="' . base_url('godmode/ship_delete/' . $ship_output['created_ship']['id']) . '" title="Delete ship"><svg width="16" height="16" alt="Change all"><use xlink:href="#broom"></use></svg></a>
 									<input type="text" id="' . $ship_output['created_ship']['id'] . '_name" name="' . $ship_output['created_ship']['id'] . '_name" value="' . $ship_output['created_ship']['name'] . '">
 								</td>
 								<td><input type="text" id="' . $ship_output['created_ship']['id'] . '_type" name="' . $ship_output['created_ship']['id'] . '_type" value="' . $ship_output['created_ship']['type'] . '"></td>
@@ -231,7 +231,7 @@ class Godmode extends Main
             foreach ($crew_output['created_crew'] as $crew_member) {
                 $table_row = '	<tr id="' . $crew_member['id'] . '_row">
 									<td>
-										<a class="ajaxJSON" href="' . base_url('godmode/crew_delete/' . $crew_member['id']) . '" title="Delete crew member"><img src="' . base_url('assets/images/icons/delete.png') . '" alt="Delete"></a>
+										<a class="ajaxJSON" href="' . base_url('godmode/crew_delete/' . $crew_member['id']) . '" title="Delete crew member"><svg width="16" height="16" alt="Change all"><use xlink:href="#broom"></use></svg></a>
 										<input type="text" id="' . $crew_member['id'] . '_name" name="' . $crew_member['id'] . '_name" value="' . $crew_member['name'] . '">
 									</td>
 									<td><input type="number" id="' . $crew_member['id'] . '_mood" name="' . $crew_member['id'] . '_mood" value="' . $crew_member['mood'] . '"></td>

@@ -400,7 +400,7 @@ class Inventory extends Main
 					<p style="margin-top: 0;">' . $gb_entry['entry'] . '</p>
 					<p>
 						<a class="ajaxJSON" rel="Are you sure you wan\'t do delete this message?" href="' . base_url('inventory/message_remove/' . $this->data['player']['user']['id'] . '/' . $new_entry['id']) . '" title="Erase this post">
-							<img src="' . base_url('assets/images/icons/erase.png') . '" alt="Erase" width="16" height="16">
+                            <svg width="16" height="16" alt="Change all"><use xlink:href="#broom"></use></svg>
 						</a>
 					</p>
 				</section>

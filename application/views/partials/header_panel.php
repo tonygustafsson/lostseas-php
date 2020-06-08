@@ -26,8 +26,9 @@
                 </a>
                 <?php else: ?>
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
-                        <img src="<?=base_url('assets/images/icons/login.png')?>"
-                                alt="Login menu">
+                        <svg width="32" height="32" alt="Login">
+                                <use xlink:href="#key"></use>
+                        </svg>
                 </a>
                 <?php endif; ?>
         </nav>

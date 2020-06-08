@@ -63,9 +63,12 @@
 				value="<?=$game['character_name']?>">
 			<a class="ajaxJSON"
 				href="<?=base_url('account/generate_character')?>"
-				title="Generate random character"><img
-					src="<?=base_url('assets/images/icons/tavern_gamble.png')?>"
-					alt="Random"></a><br>
+				title="Generate random character">
+				<svg width="24" height="24" alt="Randomize">
+					<use xlink:href="#dices"></use>
+				</svg>
+			</a>
+			<br />
 
 			<label for="character_age">Age</label>
 			<input id="character_age" type="number" name="character_age" placeholder="Character age"

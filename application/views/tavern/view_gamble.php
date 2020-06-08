@@ -43,9 +43,12 @@
 		value="<?=$game['next_bet']?>">
 
 	<fieldset>
-		<legend><img
-				src="<?=base_url()?>assets/images/icons/tavern_gamble.png"
-				alt="Gamble" width="32" height="32"> Gamble with dices</legend>
+		<legend>
+			<svg width="32" height="32" alt="Gamble">
+				<use xlink:href="#dices"></use>
+			</svg>
+			Gamble with dices
+		</legend>
 
 		<div class="slider-container">
 			<div id="gamble-slider" class="slider"></div>

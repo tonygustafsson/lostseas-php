@@ -87,9 +87,11 @@
 		<p>
 			<?php if ($user['verified'] == 1 && $user['id'] !== $row['writer_id']): ?>
 			<a href="inventory/messages/<?=$row['writer_id']?>"
-				title="Answer this post"><img
-					src="<?=base_url()?>assets/images/icons/answer.png"
-					alt="Answer" width="16" height="16"></a>
+				title="Answer this post">
+				<svg width="16" height="16" alt="Answer">
+					<use xlink:href="#message"></use>
+				</svg>
+			</a>
 			<?php endif; ?>
 			<?php if ($user['id'] === $row['writer_id'] || $user['id'] === $row['user_id']): ?>
 			<a class="ajaxJSON" rel="Are you sure you wan't do delete this message?"
