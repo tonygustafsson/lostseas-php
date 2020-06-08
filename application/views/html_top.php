@@ -24,8 +24,6 @@
 
 	<link rel="shortcut icon" type="image/x-icon"
 		href="<?=base_url('assets/images/icons/favicon.ico')?>">
-	<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
-		href="<?=base_url('feed')?>">
 
 	<?php if (strpos(base_url(), 'test') === false): ?>
 	<script>

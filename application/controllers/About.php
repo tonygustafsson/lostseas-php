@@ -177,24 +177,6 @@ class About extends Main
         }
     }
     
-    public function news_feed()
-    {
-        $this->load->helper('xml');
-
-        $data['encoding'] = 'utf-8';
-        $data['feed_name'] = $this->config->item('site_name');
-        $data['feed_url'] = base_url();
-        $data['page_description'] = 'The web based adventure game with a piraty spirit!';
-        $data['page_language'] = 'en-us';
-        $data['creator_email'] = $this->config->item('email');
-
-        $this->load->model('News');
-        $data['posts'] = $this->News->get('rss');
-
-        header("Content-Type: application/rss+xml");
-        $this->load->view('about/view_news_rss', $data);
-    }
-
     public function guide_supplies()
     {
         $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;

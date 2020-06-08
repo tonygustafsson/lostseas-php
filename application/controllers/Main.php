@@ -67,9 +67,8 @@ class Main extends CI_Controller
         $segment2 = (! empty($segment2)) ? $segment2 : 'ROOT';
 
         $public_pages = array(
-            'about' => array('ROOT', 'presentation', 'news', 'news_feed', 'guide_supplies', 'guide_ships', 'guide_crew', 'guide_titles', 'guide_economy', 'guide_traveling', 'guide_players', 'guide_settings', 'copyright', '404'),
-            'account' => array('ROOT', 'login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_send_reset_link', 'generate_character', 'avatar_selector', 'erase_temp_users', 'logged_out'),
-            'feed' => array('ROOT')
+            'about' => array('ROOT', 'presentation', 'news', 'guide_supplies', 'guide_ships', 'guide_crew', 'guide_titles', 'guide_economy', 'guide_traveling', 'guide_players', 'guide_settings', 'copyright', '404'),
+            'account' => array('ROOT', 'login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_send_reset_link', 'generate_character', 'avatar_selector', 'erase_temp_users', 'logged_out')
         );
 
         if (array_key_exists($segment1, $public_pages)) {

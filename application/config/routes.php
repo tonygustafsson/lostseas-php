@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -53,6 +53,5 @@ $route['default_controller'] = "main";
 $route['404_override'] = "main/error_404";
 
 $route['harbor/(:any)'] = "harbor/index/$1";
-$route['feed'] = "about/news_feed";
 
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = false;
