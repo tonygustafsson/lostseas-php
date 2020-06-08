@@ -30,7 +30,8 @@
 	<a class="ajaxHTML nopic negative"
 		href="<?=base_url('ocean/trade_cancel')?>">No
 		thanks</a>
-	<a class="nopic positive" href="javascript:if($('#trade').submit());">Trade</a>
+	<a class="ajaxHTML nopic positive"
+		href="<?=base_url('ocean/trade_transfer')?>">Trade</a>
 </section>
 
 <form class="ajaxJSON" method="post" id="trade"

@@ -17,8 +17,10 @@
 <?php if (isset($game['good'])): ?>
 <ul class="ocean-event-results">
 	<?php foreach ($game['good'] as $image => $msg): ?>
-	<li class="positive"
-		style="list-style-image: url('<?=base_url('assets/images/icons/' . $image . '.png')?>');">
+	<li class="positive">
+		<svg width="32" height="32" alt="<?=$svg_id?>">
+			<use xlink:href="#<?=$svg_id?>"></use>
+		</svg>
 		<?=$msg?>
 	</li>
 	<?php endforeach; ?>
@@ -28,8 +30,10 @@
 <?php if (isset($game['bad'])): ?>
 <ul>
 	<?php foreach ($game['bad'] as $image => $msg): ?>
-	<li class="negative"
-		style="list-style-image: url('<?=base_url('assets/images/icons/' . $image . '.png')?>');">
+	<li class="negative">
+		<svg width="32" height="32" alt="<?=$svg_id?>">
+			<use xlink:href="#<?=$svg_id?>"></use>
+		</svg>
 		<?=$msg?>
 	</li>
 	<?php endforeach; ?>
