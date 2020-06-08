@@ -31,7 +31,7 @@
 		title="See <?=$player['game']['character_name']?>s crew members"
 		href="inventory/crew/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Crew members">
-			<use xlink:href="#crew-member"></use>
+			<use xlink:href="#crew-man"></use>
 		</svg>
 		Crew
 	</a>

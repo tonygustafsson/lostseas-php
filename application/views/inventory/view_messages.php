@@ -31,7 +31,7 @@
 		title="See <?=$player['game']['character_name']?>s crew members"
 		href="inventory/crew/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Crew members">
-			<use xlink:href="#crew-member"></use>
+			<use xlink:href="#crew-man"></use>
 		</svg>
 		Crew
 	</a>
@@ -81,8 +81,7 @@
 	<?php if (count($messages) > 0): ?>
 	<?php foreach ($messages as $key => $row): ?>
 	<section id="entry-<?=$row['id']?>">
-		<h4><?=$row['name']?> at <?=$row['time']?>
-		</h4>
+		<p><strong><?=$row['name']?> at <?=$row['time']?></strong></p>
 		<p style="margin-top: 0;"><?=$row['entry']?>
 		</p>
 		<p>
@@ -96,8 +95,9 @@
 			<a class="ajaxJSON" rel="Are you sure you wan't do delete this message?"
 				href="<?=base_url('inventory/message_remove/' . $this->data['player']['user']['id'] . '/' . $row['id'])?>"
 				title="Erase this post">
-				<img src="<?=base_url('assets/images/icons/erase.png')?>"
-					alt="Erase" width="16" height="16">
+				<svg width="16" height="16" class="Remove">
+					<use xlink:href="#trashcan"></use>
+				</svg>
 			</a>
 			<?php endif; ?>
 		</p>

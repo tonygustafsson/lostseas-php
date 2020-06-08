@@ -74,7 +74,7 @@
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('inventory/players')?>">
                         <svg width="32" height="32" class="Players">
-                                <use xlink:href="#crew-member"></use>
+                                <use xlink:href="#crew-man"></use>
                         </svg>
                         Players
                 </a>

@@ -42,7 +42,7 @@
 	<?php if ($killed_crew > 0): ?>
 	<li class="negative">
 		<svg width="32" height="32" alt="Crew">
-			<use xlink:href="#crew-member"></use>
+			<use xlink:href="#crew-man"></use>
 		</svg>
 		<?=$killed_crew?> of your crew members died in battle.</li>
 	<?php endif; ?>
@@ -84,7 +84,7 @@
 	<fieldset>
 		<legend>
 			<svg width="32" height="32" alt="Crew members">
-				<use xlink:href="#crew-member"></use>
+				<use xlink:href="#crew-man"></use>
 			</svg>
 			Crew recruits
 		</legend>

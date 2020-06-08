@@ -31,7 +31,7 @@
 		title="See <?=$player['game']['character_name']?>s crew members"
 		href="inventory/crew/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Crew members">
-			<use xlink:href="#crew-member"></use>
+			<use xlink:href="#crew-man"></use>
 		</svg>
 		Crew
 	</a>
@@ -113,8 +113,11 @@
 			<td>
 				<span class="tooltip-multiline tooltip-bottom-left"
 					data-tooltip="<?=$man['description']?>">
-					<img src="<?=base_url('assets/images/icons/crew_' . $man['gender'] . '.png')?>"
-						alt="Crew member" width="16" height="17">
+					<svg width="24" height="24" class="Game">
+						<use
+							xlink:href="#crew-<?=$man['gender']?>">
+						</use>
+					</svg>
 					<?=$man['name']?>
 				</span>
 			</td>

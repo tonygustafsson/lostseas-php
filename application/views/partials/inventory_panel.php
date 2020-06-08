@@ -94,7 +94,7 @@
             title="You have <?=$game['crew_members']?> crew members with the health <?=$game['crew_health_lowest']?>%"
             href="inventory/crew/<?=$user['id']?>">
             <svg alt="Ships" width="24" height="24">
-                <use xlink:href="#crew-member"></use>
+                <use xlink:href="#crew-man"></use>
             </svg>
             <svg id="inventory_crew_health_25" alt="Crew Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$crew_health_img_25_display?>">
