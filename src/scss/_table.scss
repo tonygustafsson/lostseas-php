@@ -12,8 +12,10 @@ table th {
     border: 1px $lightgrey solid;
     padding: 4px;
 
-    img, svg {
-        vertical-align: text-bottom;
+    img,
+    svg {
+        vertical-align: middle;
+        margin-top: -4px;
         margin-right: 0.5em;
     }
 }
@@ -32,8 +34,4 @@ table th a {
     color: #000 !important;
     text-align: left;
     text-decoration: none !important;
-}
-
-table td a {
-    color: #000 !important;
 }

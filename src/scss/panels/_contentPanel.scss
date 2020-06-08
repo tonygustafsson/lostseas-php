@@ -19,10 +19,11 @@
 
     a {
         color: $darkred;
-        text-decoration: underline;
+        text-decoration: none;
 
         &:hover {
             color: $red;
+            text-decoration: underline;
         }
     }
 

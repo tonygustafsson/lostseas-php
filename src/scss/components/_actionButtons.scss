@@ -19,6 +19,7 @@
         &:hover {
             color: #000;
             background: $lightblue;
+            text-decoration: none;
         }
 
         &.largepic {
@@ -53,7 +54,8 @@
             border: 2px $red solid;
         }
 
-        img, svg {
+        img,
+        svg {
             display: block;
             width: 32px;
             height: 32px;
