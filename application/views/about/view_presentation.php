@@ -8,20 +8,29 @@
 </header>
 
 <section class="action-buttons">
-	<?php if (! $logged_in): ?>
+	<?php if (!$logged_in): ?>
 	<a class="ajaxHTML" title="Presentation about the game"
-		href="<?=base_url('about/presentation')?>"><img
-			src="<?=base_url('assets/images/icons/presentation.png')?>"
-			alt="Start" width="32" height="32">Start</a>
+		href="<?=base_url('about/presentation')?>">
+		<svg width="32" height="32" class="Start">
+			<use xlink:href="#swords"></use>
+		</svg>
+		Start
+	</a>
 	<?php endif; ?>
 	<a class="ajaxHTML" title="A complete guide for this game"
-		href="<?=base_url('about/guide_supplies')?>"><img
-			src="<?=base_url('assets/images/icons/guide.png')?>"
-			alt="Guide" width="32" height="32">Guide</a>
+		href="<?=base_url('about/guide_supplies')?>">
+		<svg width="32" height="32" class="Guide">
+			<use xlink:href="#logbook"></use>
+		</svg>
+		Guide
+	</a>
 	<a class="ajaxHTML" title="What's new in here?"
-		href="<?=base_url('about/news')?>"><img
-			src="<?=base_url('assets/images/icons/about_news.png')?>"
-			alt="News" width="32" height="32">News</a>
+		href="<?=base_url('about/news')?>">
+		<svg width="32" height="32" class="News">
+			<use xlink:href="#magazine"></use>
+		</svg>
+		News
+	</a>
 </section>
 
 <h3>Presentation</h3>
