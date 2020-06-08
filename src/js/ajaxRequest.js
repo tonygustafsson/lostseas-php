@@ -28,20 +28,20 @@ const ajaxJsonRequest = (e) => {
     e.preventDefault();
 
     var element = e.target;
-    var elementType = element.tagName;
+    var elementType = element.tagName.toLowerCase();
     var url;
     var myData = null;
 
-    if (elementType === 'IMG') {
+    if (elementType === 'img' || elementType === 'use') {
         // Find closest link for the image
         element = element.closest('a');
-        elementType = element.tagName;
+        elementType = element.tagName.toLowerCase();
     }
 
-    if (elementType === 'FORM') {
+    if (elementType === 'form') {
         url = element.action;
         myData = new FormData(element);
-    } else if (elementType === 'A') {
+    } else if (elementType === 'a') {
         url = element.href;
         var question = element.rel;
 

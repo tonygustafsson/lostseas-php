@@ -56,7 +56,7 @@
                 <a class="top-nav-panel__item ajaxHTML" title="Other players"
                         href="<?=base_url('inventory/players')?>">
                         <svg width="32" height="32" class="Players">
-                                <use xlink:href="#crew-member"></use>
+                                <use xlink:href="#player"></use>
                         </svg>
                         Players
                 </a>
