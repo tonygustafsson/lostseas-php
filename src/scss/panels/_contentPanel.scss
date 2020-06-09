@@ -38,48 +38,22 @@
         background-position: 50% 0;
     }
 
-    h2 {
-        z-index: 20;
-        position: absolute;
-        top: 30px;
-        left: 60px;
-        color: $yellow;
-        font-size: 1.8em;
+    h1, h2, h3, h4 {
         font-family: $font-bridgnorth;
-        background: $blackglass;
-        width: 85.5%;
-        height: 42px;
-        padding: 0 0.5em;
-        clear: both;
+    }
 
-        @include mobile {
-            margin: 0;
-            padding: 0;
-            left: 27px;
-        }
+    h2 {
+        font-size: 1.8em;
     }
 
     h3 {
         margin: 1em 2em 0 2em;
-        color: #000;
         font-size: 1.7em;
-        font-family: $font-bridgnorth;
-        clear: both;
     }
 
     h4 {
         margin: 1em 2em 0 2em;
-        color: #000;
         font-size: 1.3em;
-        font-family: $font-bridgnorth;
-        clear: both;
-    }
-
-    img.header {
-        width: 95%;
-        margin: 1em 2.5% 0 2.5%;
-        z-index: 1;
-        filter: sepia(0.7);
     }
 
     ul {

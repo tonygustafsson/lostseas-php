@@ -1,4 +1,4 @@
-<header title="Unregister">
+<header class="area-header" class="area-header" title="Unregister">
 	<h3>Unregister</h3>
 </header>
 

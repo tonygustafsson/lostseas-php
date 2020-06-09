@@ -1,4 +1,4 @@
-<header title="Account settings">
+<header class="area-header" class="area-header" title="Account settings">
 	<h3>Account Settings</h3>
 </header>
 

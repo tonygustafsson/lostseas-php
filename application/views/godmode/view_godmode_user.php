@@ -1,4 +1,4 @@
-<header title="God Mode: User">
+<header class="area-header" class="area-header" title="God Mode: User">
 	<h3>God mode: User</h3>
 </header>
 

@@ -1,8 +1,8 @@
-<header title="Presentation">
-	<img class="header"
+<header class="area-header" class="area-header" title="Presentation">
+	<img class="area-header__img"
 		src="<?=base_url('assets/images/design/game_start.jpg')?>"
 		alt="Front image">
-	<h2>Welcome!</h2>
+	<h2 class="area-header__heading">Welcome!</h2>
 
 	<?php include(__DIR__ . '/../partials/register_form.php'); ?>
 </header>

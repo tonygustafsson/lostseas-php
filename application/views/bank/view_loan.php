@@ -1,9 +1,9 @@
-<header
+<header class="area-header"
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
 	<h2 title="bank_account"><?=$game['town_human'] . ' ' . $game['place']?>
 	</h2>
 	<img src="<?=base_url('assets/images/places/bank_' . $game['nation'] . '.jpg')?>"
-		class="header" alt="The bank">
+		class="area-header__img" alt="The bank">
 </header>
 
 <section class="action-buttons">

@@ -1,7 +1,7 @@
-<header title="The Ocean">
-	<h2>Caribbean Sea</h2>
+<header class="area-header" class="area-header" title="The Ocean">
+	<h2 class="area-header__heading">Caribbean Sea</h2>
 	<img src="<?=base_url('assets/images/places/ocean_' . rand(1, 7) . '.jpg')?>"
-		class="header">
+		class="area-header__img">
 </header>
 
 <?php if (isset($game['won'])): ?>

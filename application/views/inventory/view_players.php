@@ -1,4 +1,4 @@
-<header title="Players">
+<header class="area-header" class="area-header" title="Players">
 	<h3>Players</h3>
 </header>
 

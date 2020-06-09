@@ -3,10 +3,10 @@
     list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(null);
 ?>
 
-<header title="Ocean Trade">
-	<h2>Caribbean Sea</h2>
+<header class="area-header" class="area-header" title="Ocean Trade">
+	<h2 class="area-header__heading">Caribbean Sea</h2>
 	<img src="<?=base_url('assets/images/places/ocean_trade.jpg')?>"
-		class="header">
+		class="area-header__img">
 </header>
 
 <?php if (isset($game['info'])): ?>

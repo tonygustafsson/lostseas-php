@@ -1,9 +1,9 @@
-<header title="Guide: Crew">
+<header class="area-header" class="area-header" title="Guide: Crew">
 	<?php if (! $logged_in): ?>
-	<img class="header"
+	<img class="area-header__img"
 		src="<?=base_url('assets/images/design/game_start.jpg')?>"
 		alt="Front image">
-	<h2>Guide: Crew</h2>
+	<h2 class="area-header__heading">Guide: Crew</h2>
 
 	<?php include(__DIR__ . '/../partials/register_form.php'); ?>
 	<?php else: ?>

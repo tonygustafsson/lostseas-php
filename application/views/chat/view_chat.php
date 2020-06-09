@@ -1,4 +1,4 @@
-﻿<header title="Chat">
+﻿<header class="area-header" class="area-header" title="Chat">
 	<h3>Chat</h3>
 </header>
 

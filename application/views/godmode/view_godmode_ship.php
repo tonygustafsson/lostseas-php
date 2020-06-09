@@ -1,4 +1,4 @@
-<header title="God Mode: Ship">
+<header class="area-header" class="area-header" title="God Mode: Ship">
 	<h3>God mode: Ship</h3>
 </header>
 

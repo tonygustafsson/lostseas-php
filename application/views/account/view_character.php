@@ -1,4 +1,4 @@
-﻿<header title="Character settings">
+﻿<header class="area-header" class="area-header" title="Character settings">
 	<h3>Character Settings</h3>
 </header>
 

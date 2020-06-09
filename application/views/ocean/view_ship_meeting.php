@@ -2,9 +2,9 @@
     list($nation, $type, $crew, $cannons) = explode('###', $this->data['game']['event_ship']);
 } ?>
 
-<header title="Ship Meeting">
-	<h2>Caribbean Sea</h2>
-	<img src="<?=base_url()?>assets/images/places/ship_meeting_<?=$nation?>.jpg" class="header">
+<header class="area-header" class="area-header" title="Ship Meeting">
+	<h2 class="area-header__heading">Caribbean Sea</h2>
+	<img src="<?=base_url()?>assets/images/places/ship_meeting_<?=$nation?>.jpg" class="area-header__img">
 </header>
 
 <?php if (isset($game['msg'])): ?>

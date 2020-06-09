@@ -1,4 +1,4 @@
-<header title="God Mode: Game">
+<header class="area-header" class="area-header" title="God Mode: Game">
 	<h3>God mode: Game</h3>
 </header>
 

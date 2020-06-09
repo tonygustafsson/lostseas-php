@@ -1,7 +1,7 @@
-﻿<header title="Forgotten password">
-	<img class="header"
+﻿<header class="area-header" class="area-header" title="Forgotten password">
+	<img class="area-header__img"
 		src="<?=base_url('assets/images/design/game_start.jpg')?>">
-	<h2>Forgotten password</h2>
+	<h2 class="area-header__heading">Forgotten password</h2>
 
 	<?php include(__DIR__ . '/partials/register_form.php'); ?>
 </header>

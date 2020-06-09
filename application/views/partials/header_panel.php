@@ -1,5 +1,5 @@
 <div class="header-panel">
-        <header>
+        <header class="area-header">
                 <h1><a title="Go back to start page"
                                 href="<?=base_url()?>"><?=$this->config->item('site_name')?></a>
                 </h1>

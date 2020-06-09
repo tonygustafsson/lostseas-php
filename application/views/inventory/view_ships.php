@@ -1,9 +1,9 @@
 <?php if ($user['id'] == $player['user']['id']): ?>
-<header title="Inventory: Ships">
+<header class="area-header" class="area-header" title="Inventory: Ships">
 	<h3>Inventory: Ships</h3>
 </header>
 <?php else: ?>
-<header
+<header class="area-header"
 	title="About <?=$player['user']['name']?>">
 	<h3>About <?=$player['user']['name']?>:
 		Ships</h3>

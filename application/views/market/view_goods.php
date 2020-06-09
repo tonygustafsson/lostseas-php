@@ -2,12 +2,12 @@
     list($item, $quantity, $cost, $total_cost) = explode('###', $this->data['game']['event_market_goods']);
 } ?>
 
-<header
+<header class="area-header"
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?>
+	<h2 class="area-header__heading"><?=$game['town_human'] . ' ' . $game['place']?>
 	</h2>
 	<img src="<?=base_url('assets/images/places/market_' . $game['nation'] . '.jpg')?>"
-		class="header">
+		class="area-header__img">
 </header>
 
 <section class="action-buttons">

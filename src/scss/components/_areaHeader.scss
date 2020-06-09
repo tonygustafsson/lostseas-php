@@ -1,0 +1,29 @@
+.area-header {
+    &__img {
+        width: 98%;
+        margin: 10px 10px 0 10px;
+        z-index: 1;
+        filter: sepia(0.7);
+    }
+
+    &__heading {
+        z-index: 20;
+        position: absolute;
+        top: 22px;
+        left: 44px;
+        color: $yellow;
+        font-size: 1.8em;
+        font-family: $font-bridgnorth;
+        background: $blackglass;
+        width: calc(100% - 88px);
+        height: 48px;
+        padding: 0 0.5em;
+        box-sizing: border-box;
+
+        @include mobile {
+            margin: 0;
+            padding: 0;
+            left: 27px;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-﻿<header title="Change email">
+﻿<header class="area-header" class="area-header" title="Change email">
 	<h3>Change email</h3>
 </header>
 

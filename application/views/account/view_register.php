@@ -1,4 +1,4 @@
-<header title="Register">
+<header class="area-header" class="area-header" title="Register">
 	<h3>Register</h3>
 </header>
 
