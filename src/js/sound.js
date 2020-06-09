@@ -143,6 +143,11 @@ window.addEventListener('load', () => {
     // Enable music toggle
     const musicToggles = Array.from(document.querySelectorAll('.js-music-toggle-state'));
 
+    if (musicToggles.length <= 0) {
+        // Not logged in
+        return;
+    }
+
     musicToggles.forEach((toggle) => {
         toggle.addEventListener('click', musicToggle);
     });
