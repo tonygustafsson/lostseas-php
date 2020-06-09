@@ -9,8 +9,12 @@ const createTownInfo = (element) => {
     townInfo.id = 'town_info';
     townInfo.classList.add('town-info');
 
-    const flag = document.createElement('img');
-    flag.src = `${appdir}assets/images/icons/flag-${lang}.png`;
+    const flag = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    flag.style.width = '24px';
+    flag.style.height = '12px';
+    const flagUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    flagUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#flag-${lang}`);
+    flag.appendChild(flagUse);
 
     const info = document.createElement('span');
     info.innerText = areaText;
