@@ -118,6 +118,7 @@ header {
         flex-direction: column;
         align-items: flex-start;
         width: 90vw;
+        max-width: 450px;
         height: 100vh;
         transform: translateX(-100vw);
         position: fixed;

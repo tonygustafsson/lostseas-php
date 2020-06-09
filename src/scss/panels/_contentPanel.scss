@@ -96,10 +96,6 @@
     }
 
     @include mobile {
-        width: 94%;
-        float: left;
-        clear: both;
-        margin: 0.5em 3%;
-        min-height: auto !important;
+        width: 100%;
     }
 }

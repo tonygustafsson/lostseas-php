@@ -1,4 +1,10 @@
 <aside id="inventory_panel" class="action-panel">
+    <a class="js-panel-close top-nav-panel__close-btn">
+        <svg width="20" height="20" alt="Close">
+            <use xlink:href="#close"></use>
+        </svg>
+    </a>
+
     <form method="post"
         action="<?=base_url('account/login')?>"
         style="width: 100%; margin: 0; padding: 0;">
@@ -32,9 +38,9 @@
         </fieldset>
     </form>
 
-    <p>
-        <a href="https://www.facebook.com/lostseas" class="fb-like-box" title="Visit us on Facebook"><img
-                src="<?=base_url('assets/images/design/facebook.png')?>"
-                alt="Visit us on facebook"></a>
-    </p>
+    <a href="https://www.facebook.com/lostseas" class="action-panel__facebook-logo" title="Visit us on Facebook">
+        <svg width="32" height="32" alt="Facebook">
+            <use xlink:href="#facebook"></use>
+        </svg>
+    </a>
 </aside>
