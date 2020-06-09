@@ -1,1 +1,0 @@
-[21-May-2020 07:46:07 UTC] PHP Fatal error:  Cannot use temporary expression in write context in /var/www/application/controllers/Chat.php on line 16
