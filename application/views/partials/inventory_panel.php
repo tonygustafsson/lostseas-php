@@ -55,6 +55,12 @@
 ?>
 
 <aside id="inventory_panel" class="inventory-panel">
+    <a class="js-panel-close top-nav-panel__close-btn">
+        <svg width="20" height="20" alt="Close">
+            <use xlink:href="#close"></use>
+        </svg>
+    </a>
+
     <h3>Inventory</h3>
 
     <div class="inventory_user">
@@ -84,8 +90,6 @@
             <?=($user['new_messages'] > 1) ? 'messages' : 'message'; ?>
         </a>
     </div>
-
-
 
     <!-- Section: Game status -->
 

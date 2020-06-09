@@ -34,6 +34,12 @@
         </nav>
 
         <nav id="nav_top_panel" class="top-nav-panel">
+                <a class="js-panel-close top-nav-panel__close-btn">
+                        <svg width="20" height="20" alt="Close">
+                                <use xlink:href="#close"></use>
+                        </svg>
+                </a>
+
                 <?php if (isset($user)): ?>
                 <a class="top-nav-panel__item" title="Continue playing"
                         href="<?=base_url()?>">

@@ -30,10 +30,10 @@ header {
     &--item {
         display: none;
         padding: 1em;
-    
+
         @include mobile {
             display: block !important;
-    
+
             img {
                 padding: 0;
                 margin: 0;
@@ -42,16 +42,22 @@ header {
     }
 }
 
-
 .top-nav-panel {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
     background-color: $whiteglass;
     border: 1px $lightgrey solid;
     height: 50px;
-    display: flex;
-    align-items: center;
+    overflow-y: auto;
 
     p {
         margin: 1em;
+    }
+
+    &__close-btn {
+        display: none;
     }
 
     &__item {
@@ -100,17 +106,36 @@ header {
 
         @include mobile {
             border: 0 !important;
+            height: auto;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 
     @include mobile {
-        width: 100% !important;
-        min-height: auto !important;
-        margin: 0.5em 0;
-        display: none;
-        position: absolute;
-        top: 9em;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90vw;
+        height: 100vh;
+        transform: translateX(-100vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
         z-index: 1000;
         background: #fff;
+
+        &__close-btn {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        &.show {
+            transform: translateX(0);
+        }
     }
 }

@@ -7,6 +7,11 @@
     height: auto;
     text-align: center;
     box-sizing: border-box;
+    overflow-y: auto;
+
+    &__close-btn {
+        display: none;
+    }
 
     &-button {
         display: none;
@@ -39,6 +44,10 @@
             margin-right: 5px;
             width: 40px;
             height: 40px;
+        }
+
+        @include mobile {
+            padding-bottom: 3em;
         }
     }
 
@@ -103,9 +112,10 @@
         }
 
         @include mobile {
-            width: 11em;
-            margin: 0.5em;
-            float: left;
+            border-top: none;
+            padding-bottom: 22px;
+            border-color: $lightestgrey;
+            margin: 14px 4px;
         }
     }
 
@@ -114,15 +124,28 @@
     }
 
     @include mobile {
-        float: left;
-        clear: both;
-        width: 100% !important;
-        min-height: auto !important;
-        margin: 0.5em 0;
-        display: none;
-        position: absolute;
-        top: 9em;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90vw;
+        height: 100vh;
+        transform: translateX(-100vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
         z-index: 1000;
         background: #fff;
+
+        &__close-btn {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        &.show {
+            transform: translateX(0);
+        }
     }
 }

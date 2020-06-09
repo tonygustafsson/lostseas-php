@@ -8,7 +8,7 @@ const show = (elementId, displayType) => {
         return;
     }
 
-    element.style.display = displayType;
+    element.classList.add('show');
 };
 
 const hide = (elementId) => {
@@ -18,7 +18,7 @@ const hide = (elementId) => {
         return;
     }
 
-    element.style.display = 'none';
+    element.classList.remove('show');
 };
 
 const toggle = (elementId) => {
@@ -42,6 +42,9 @@ const toggle = (elementId) => {
 const initMenu = (triggerBtnId, panelId) => {
     const triggerBtn = document.getElementById(triggerBtnId);
     const panel = document.getElementById(panelId);
+
+    // Avoid animation on page load
+    panel.style.transition = 'transform 250ms';
 
     if (!triggerBtn || !panel) {
         return;
@@ -67,6 +70,16 @@ window.addEventListener('load', () => {
     initMenu('nav_top_button', 'nav_top_panel');
     initMenu('action_panel_button', 'action_panel');
     initMenu('inventory_panel_button', 'inventory_panel');
+
+    const panelCloseTriggerEls = Array.from(document.querySelectorAll('.js-panel-close'));
+
+    panelCloseTriggerEls.forEach((closer) => {
+        closer.addEventListener('click', () => {
+            hide('inventory_panel');
+            hide('action_panel');
+            hide('nav_top_panel');
+        });
+    });
 });
 
 window.addEventListener('resize', (e) => {

@@ -6,6 +6,7 @@
     min-height: 450px;
     height: auto;
     box-sizing: border-box;
+    overflow-y: auto;
 
     h3 {
         color: #000;
@@ -15,33 +16,45 @@
         letter-spacing: 0.1em;
     }
 
-    div {
-        float: left;
-        width: 100%;
-        margin: 0.2em 0;
-        background-color: #fff;
-        border-top: 1px $lightgrey solid;
-        border-bottom: 1px $lightgrey solid;
-        box-sizing: border-box;
+    &__close-btn {
+        display: none;
+    }
 
-        a {
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+
+        .action-panel__item {
+            width: 100%;
+            margin: 0.2em 0;
+            background-color: #fff;
+            border-top: 1px $lightgrey solid;
+            border-bottom: 1px $lightgrey solid;
+            box-sizing: border-box;
+
             font-family: $font-bridgnorth;
             color: #000;
             line-height: 2.5em;
             text-decoration: none;
             display: block;
-        }
 
-        &:hover {
-            background-color: $lightblue;
-        }
+            &:hover {
+                background-color: $lightblue;
+            }
 
-        img,
-        svg {
-            margin: 5px 10px;
-            float: left;
-            width: 30px;
-            height: 30px;
+            img,
+            svg {
+                margin: 5px 10px;
+                float: left;
+                width: 30px;
+                height: 30px;
+            }
+
+            @include mobile {
+                border: none;
+            }
         }
     }
 
@@ -67,15 +80,28 @@
     }
 
     @include mobile {
-        grid-area: none;
-
-        width: 100% !important;
-        min-height: auto !important;
-        margin: 0.5em 0;
-        display: none;
-        position: absolute;
-        top: 9em;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90vw;
+        height: 100vh;
+        transform: translateX(-100vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
         z-index: 1000;
         background: #fff;
+
+        &__close-btn {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        &.show {
+            transform: translateX(0);
+        }
     }
 }
