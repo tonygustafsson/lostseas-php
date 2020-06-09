@@ -29,7 +29,15 @@
     grid-area: actions;
 }
 
+.login-panel {
+    grid-area: actions;
+}
+
 .inventory-panel {
+    grid-area: inventory;
+}
+
+.log-panel {
     grid-area: inventory;
 }
 

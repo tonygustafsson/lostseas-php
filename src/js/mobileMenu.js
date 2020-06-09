@@ -43,12 +43,12 @@ const initMenu = (triggerBtnId, panelId) => {
     const triggerBtn = document.getElementById(triggerBtnId);
     const panel = document.getElementById(panelId);
 
-    // Avoid animation on page load
-    panel.style.transition = 'transform 250ms';
-
     if (!triggerBtn || !panel) {
         return;
     }
+
+    // Avoid animation on page load
+    panel.style.transition = 'transform 250ms';
 
     const links = Array.from(panel.getElementsByTagName('a'));
 

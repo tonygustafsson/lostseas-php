@@ -1,8 +1,7 @@
-#log_panel {
+.log-panel {
     border: 1px $lightgrey solid;
     background: $whiteglass;
-    padding: 1em 0 0 0;
-    margin-bottom: 2em;
+    padding: 0.5em;
     min-height: 300px;
     height: auto;
     box-sizing: border-box;
@@ -12,7 +11,6 @@
         font-size: 1.2em;
         font-family: $font-bridgnorth;
         text-align: left;
-        margin-left: 1.3em;
         letter-spacing: 0.1em;
     }
 
@@ -20,8 +18,14 @@
         font-size: 100%;
     }
 
-    p {
-        margin: 1em;
+    &__item {
+        margin: 1em 0;
+        text-align: left;
+
+        &__img {
+            float: left;
+            margin: 0.3em 0.5em 0.5em 0;
+        }
     }
 
     @include mobile {
