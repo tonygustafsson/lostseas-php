@@ -22,8 +22,8 @@
 
 	<base href="<?=base_url()?>">
 
-	<link rel="shortcut icon" type="image/x-icon"
-		href="<?=base_url('assets/images/icons/favicon.ico')?>">
+	<link rel="icon" type="image/svg+xml"
+		href="<?=base_url('assets/images/favicon.svg')?>">
 
 	<?php if (strpos(base_url(), 'test') === false): ?>
 	<script>
