@@ -1,0 +1,21 @@
+input[type='submit'],
+input[type='button'],
+button {
+    background-color: #fff;
+    color: #000;
+    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
+    font-size: 1.4em;
+    line-height: 0.5;
+    cursor: pointer;
+    margin: 0.5em;
+    padding: 1em;
+    border: 1px $lightgrey solid;
+
+    &.small {
+        font-size: 1.2em;
+    }
+
+    &:hover {
+        background: $lightblue;
+    }
+}

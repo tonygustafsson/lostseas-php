@@ -1,4 +1,4 @@
-form fieldset {
+fieldset {
     padding: 5px 0 20px 0;
     margin: 10px 5% 40px 5%;
     float: left;
@@ -7,7 +7,7 @@ form fieldset {
     border: 1px $lightgrey solid;
 }
 
-form fieldset legend {
+legend {
     font-size: 1.4em;
     font-family: $font-bridgnorth;
     padding: 0 5px;
@@ -19,7 +19,7 @@ form fieldset legend {
     }
 }
 
-form label {
+label {
     display: block;
     height: 20px;
     font-size: 1em;
@@ -27,15 +27,13 @@ form label {
     margin-left: 10px;
 }
 
-form input[type='text'],
-form input[type='number'],
-form input[type='email'],
-form input[type='password'],
-form input[type='file'],
-form select,
-form textarea,
-form input[type='email'],
-form input[type='url'] {
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='file'],
+input[type='email'],
+input[type='url'] {
     height: 20px;
     margin-bottom: 5px;
     margin-left: 10px;
@@ -43,71 +41,60 @@ form input[type='url'] {
     padding: 4px 0 1px 5px;
     color: #000;
     background: #fff;
+    width: 250px;
     max-width: 90%;
 }
 
-form select {
-    height: 26px;
+select {
+    height: 28px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: 1px solid $lightgrey;
+    padding: 4px 0 1px 5px;
+    color: #000;
+    background: #fff;
+    max-width: 90%;
     vertical-align: middle;
     color: #000;
+
+    option {
+        color: #000;
+    }
 }
 
-form select option {
+textarea {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: 1px solid $lightgrey;
+    padding: 4px 0 1px 5px;
     color: #000;
-}
-
-form textarea {
+    background: #fff;
+    max-width: 90%;
     height: 160px;
     width: 500px;
     color: #000;
 }
 
-form input[type='text'],
-form input[type='password'],
-form input[type='email'],
-form input[type='number'] {
-    width: 250px;
-}
+table {
+    input[type='text'] {
+        width: auto;
+    }
 
-form input[type='submit'],
-form input[type='button'],
-button {
-    background-color: #fff;
-    color: #000;
-    font-family: 'Bridgnorth', 'Lucida Sans Unicode', 'Georgia', 'sans-serif';
-    font-size: 1.4em;
-    line-height: 0.5;
-    cursor: pointer;
-    margin: 0.5em;
-    padding: 1em;
-    border: 1px $lightgrey solid;
-}
+    &.godmode {
+        td:first-child {
+            width: 25%;
+        }
 
-form input[type='submit'].small {
-    font-size: 1.2em;
-}
-
-form input[type='submit']:hover,
-button:hover {
-    background: $lightblue;
+        input[type='text'],
+        input[type='number'],
+        textarea {
+            width: 85%;
+            margin: 0.5em 0;
+        }
+    }
 }
 
 form#register input#character_description {
     /* Honeypot attempt to block some bots */
     display: none;
-}
-
-table input[type='text'] {
-    width: auto;
-}
-
-table.godmode td:first-child {
-    width: 25%;
-}
-
-table.godmode input[type='text'],
-table.godmode input[type='number'],
-table.godmode textarea {
-    width: 85%;
-    margin: 0.5em 0;
 }
