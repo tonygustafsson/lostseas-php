@@ -79,7 +79,8 @@
 	<table style="padding-bottom: 30px;">
 		<tr>
 			<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-			<th><input class="js-inventory-check-all" data-select="crew" type="checkbox" name="check_all" /></th>
+			<th class="text-center"><input class="js-inventory-check-all" data-select="crew" type="checkbox"
+					name="check_all" /></th>
 			<?php endif; ?>
 			<th><a class="ajaxHTML"
 					href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/name_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Name</a>
@@ -105,7 +106,7 @@
 		<?php $man['gender'] = ($man['gender'] == 'M') ? 'man' : 'woman'?>
 		<tr id="crew_<?=$man['id']?>">
 			<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-			<td><input type="checkbox"
+			<td class="text-center"><input type="checkbox"
 					id="crew-checkbox-<?=$man['id']?>"
 					name="crew[]"
 					value="<?=$man['id']?>"></td>

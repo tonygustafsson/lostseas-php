@@ -66,62 +66,64 @@
 <h4>Player: <?=$player['user']['name']?>
 </h4>
 
-<div style="float: left; width: 10%; padding: 2em;">
-	<img style="border: 1px black solid;"
-		src="<?=$player['user']['profile_picture']?>"
-		alt="<?=$player['user']['name']?>">
-</div>
+<div class="flex" style="margin: 1em 2em;">
+	<div style="padding-top: 1em;">
+		<img style="border: 1px black solid;"
+			src="<?=$player['user']['profile_picture']?>"
+			alt="<?=$player['user']['name']?>">
+	</div>
 
-<div style="float: left; width: 75%; padding: 1em; clear: right;">
-	<table>
+	<div>
+		<table class="table-fixed">
 
-		<?php if ($player['user']['email'] != "" && $player['user']['show_email'] == 1): ?>
-		<tr>
-			<td>Email</td>
-			<td><a
-					href="mailto:<?=$player['user']['email']?>"><?=$player['user']['email']?></a>
-			</td>
-		</tr>
-		<?php endif; ?>
+			<?php if ($player['user']['email'] != "" && $player['user']['show_email'] == 1): ?>
+			<tr>
+				<td>Email</td>
+				<td><a
+						href="mailto:<?=$player['user']['email']?>"><?=$player['user']['email']?></a>
+				</td>
+			</tr>
+			<?php endif; ?>
 
-		<?php if ($player['user']['gender'] != "" && $player['user']['show_gender'] == 1): ?>
-		<tr>
-			<td>Gender</td>
-			<td><?=ucfirst($player['user']['gender_long'])?>
-			</td>
-		</tr>
-		<?php endif; ?>
+			<?php if ($player['user']['gender'] != "" && $player['user']['show_gender'] == 1): ?>
+			<tr>
+				<td>Gender</td>
+				<td><?=ucfirst($player['user']['gender_long'])?>
+				</td>
+			</tr>
+			<?php endif; ?>
 
-		<?php if (isset($player['user']['age']) && $player['user']['birthday'] != "" && $player['user']['show_age'] == 1): ?>
-		<tr>
-			<td>Age</td>
-			<td><?=$player['user']['age']?>
-				years old</td>
-		</tr>
-		<?php endif; ?>
+			<?php if (isset($player['user']['age']) && $player['user']['birthday'] != "" && $player['user']['show_age'] == 1): ?>
+			<tr>
+				<td>Age</td>
+				<td><?=$player['user']['age']?>
+					years old</td>
+			</tr>
+			<?php endif; ?>
 
-		<?php if (! empty($player['user']['facebook'])): ?>
-		<tr>
-			<td>Facebook</td>
-			<td><a
-					href="<?=$player['user']['facebook']?>"><?=$player['user']['facebook']?></a>
-			</td>
-		</tr>
-		<?php endif; ?>
+			<?php if (! empty($player['user']['facebook'])): ?>
+			<tr>
+				<td>Facebook</td>
+				<td><a
+						href="<?=$player['user']['facebook']?>"><?=$player['user']['facebook']?></a>
+				</td>
+			</tr>
+			<?php endif; ?>
 
-		<tr>
-			<td>Last activity</td>
-			<td><?=$player['game']['last_activity']?>
-			</td>
-		</tr>
+			<tr>
+				<td>Last activity</td>
+				<td><?=$player['game']['last_activity']?>
+				</td>
+			</tr>
 
-		<tr>
-			<td>Account created</td>
-			<td><?=$player['user']['created']?>
-			</td>
-		</tr>
+			<tr>
+				<td>Account created</td>
+				<td><?=$player['user']['created']?>
+				</td>
+			</tr>
 
-	</table>
+		</table>
+	</div>
 </div>
 
 <?php if (! empty($player['user']['presentation'])): ?>
@@ -135,58 +137,60 @@
 <h4 id="character">Character: <?=$player['game']['character_name']?>
 </h4>
 
-<div style="float: left; width: 10%; padding: 2em;">
-	<img style="border: 1px black solid;"
-		src="<?=$player['game']['character_avatar_path']?>"
-		alt="<?=$player['game']['character_name']?>">
-</div>
+<div class="flex" style="margin: 1em 2em;">
+	<div style="padding-top: 1em;">
+		<img style="border: 1px black solid;"
+			src="<?=$player['game']['character_avatar_path']?>"
+			alt="<?=$player['game']['character_name']?>">
+	</div>
 
-<div style="float: left; width: 75%; padding: 1em; clear: right;">
-	<table id="inventory" style="padding-bottom: 2em;">
+	<div>
+		<table class="table-fixed" id="inventory" style="padding-bottom: 2em;">
 
-		<tr>
-			<td>Title</td>
-			<td><?=ucfirst($player['game']['title'])?>
-				from <?=ucfirst($player['game']['nationality'])?>
-			</td>
-		</tr>
+			<tr>
+				<td>Title</td>
+				<td><?=ucfirst($player['game']['title'])?>
+					from <?=ucfirst($player['game']['nationality'])?>
+				</td>
+			</tr>
 
-		<tr>
-			<td>Enemy</td>
-			<td><?=ucfirst($player['game']['enemy'])?>
-			</td>
-		</tr>
+			<tr>
+				<td>Enemy</td>
+				<td><?=ucfirst($player['game']['enemy'])?>
+				</td>
+			</tr>
 
-		<tr>
-			<td>Gender</td>
-			<td><?=ucfirst($player['game']['character_gender_long'])?>
-			</td>
-		</tr>
+			<tr>
+				<td>Gender</td>
+				<td><?=ucfirst($player['game']['character_gender_long'])?>
+				</td>
+			</tr>
 
-		<tr>
-			<td>Age</td>
-			<td><?=$player['game']['character_real_age']?>
-				years old</td>
-		</tr>
+			<tr>
+				<td>Age</td>
+				<td><?=$player['game']['character_real_age']?>
+					years old</td>
+			</tr>
 
-		<tr>
-			<td>Location</td>
-			<?php if ($player['game']['place'] == 'ocean'): ?>
-			<td>Caribbean Sea</td>
-			<?php else: ?>
-			<td><?=ucwords($player['game']['town_human']) . ' ' . $player['game']['place']?>
-				(<?=ucfirst($player['game']['nation'])?>)
-			</td>
-			<?php endif; ?>
-		</tr>
+			<tr>
+				<td>Location</td>
+				<?php if ($player['game']['place'] == 'ocean'): ?>
+				<td>Caribbean Sea</td>
+				<?php else: ?>
+				<td><?=ucwords($player['game']['town_human']) . ' ' . $player['game']['place']?>
+					(<?=ucfirst($player['game']['nation'])?>)
+				</td>
+				<?php endif; ?>
+			</tr>
 
-		<tr>
-			<td>Played for</td>
-			<td><?=$player['game']['week']?>
-				weeks</td>
-		</tr>
+			<tr>
+				<td>Played for</td>
+				<td><?=$player['game']['week']?>
+					weeks</td>
+			</tr>
 
-	</table>
+		</table>
+	</div>
 </div>
 
 <?php if (! empty($player['game']['character_description'])): ?>
@@ -198,7 +202,7 @@
 
 <p>You can transfer doubloons at the bank.</p>
 
-<table id="money" style="padding-bottom: 2em;">
+<table class="table-fixed" id="money" style="padding-bottom: 2em;">
 
 	<tr>
 		<td>
@@ -239,7 +243,7 @@
 
 <p>You can buy and sell groceries at the shop.</p>
 
-<table id="stock" style="padding-bottom: 2em;">
+<table class="table-fixed" id="stock" style="padding-bottom: 2em;">
 
 	<tr>
 		<td>
@@ -333,7 +337,7 @@
 
 <h4>Victories</h4>
 
-<table id="inventory" style="padding-bottom: 2em;">
+<table class="table-fixed" id="inventory" style="padding-bottom: 2em;">
 
 	<tr>
 		<td>
@@ -395,5 +399,4 @@
 		<td><?=$player['game']['total_victories']?>
 			victories total</td>
 	</tr>
-
 </table>

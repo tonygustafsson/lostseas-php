@@ -1,37 +1,47 @@
 table {
-    width: 90%;
-    margin: 1em 5%;
+    width: calc(100% - 4em);
+    margin: 1em 2em;
+    border-spacing: 0;
+
+    &.table-fixed {
+        table-layout: fixed;
+    }
+
+    tr {
+        background-color: $lightestgrey;
+
+        &.selected {
+            background-color: $lightblue !important;
+        }
+
+        &:nth-child(even) {
+            background-color: #fff;
+        }
+    }
+
+    th {
+        background-color: $lightestgrey;
+        text-align: left;
+        padding: 4px;
+
+        a {
+            color: #000 !important;
+            vertical-align: middle;
+        }
+    }
+
+    td {
+        padding: 4px;
+
+        img,
+        svg {
+            vertical-align: middle;
+            margin-top: -2px;
+            margin-right: 0.5em;
+        }
+    }
 }
 
 fieldset table td:first-child {
     width: 35% !important;
-}
-
-table td,
-table th {
-    border: 1px $lightgrey solid;
-    padding: 4px;
-
-    img,
-    svg {
-        vertical-align: middle;
-        margin-top: -2px;
-        margin-right: 0.5em;
-    }
-}
-
-table th,
-table tr {
-    background-color: $lightestgrey;
-}
-
-table tr:nth-child(even) {
-    background: #fff;
-}
-
-table th,
-table th a {
-    color: #000 !important;
-    text-align: left;
-    text-decoration: none !important;
 }

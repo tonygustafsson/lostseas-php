@@ -170,7 +170,7 @@
 	<fieldset>
 		<legend>Overview</legend>
 
-		<table style="margin: 0 auto; width: 90%">
+		<table>
 			<tr>
 				<td><span id="transfer_type">Cost</span></td>
 				<td><span id="total_cost">0</span> dbl</td>

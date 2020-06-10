@@ -8,9 +8,12 @@ const checkAll = (e) => {
     correspondingCheckboxes.forEach((box) => {
         box.checked = isChecked;
         const row = box.closest('tr');
-        const color = isChecked ? '#e5f0f6' : 'transparent';
 
-        row.style.backgroundColor = color;
+        if (isChecked) {
+            row.classList.add('selected');
+        } else {
+            row.classList.remove('selected');
+        }
     });
 };
 
@@ -23,9 +26,12 @@ const changeRowBackgroundColor = (e) => {
     const checkbox = e.target;
     const isChecked = checkbox.checked;
     const row = checkbox.closest('tr');
-    const color = isChecked ? '#e5f0f6' : 'transparent';
 
-    row.style.backgroundColor = color;
+    if (isChecked) {
+        row.classList.add('selected');
+    } else {
+        row.classList.remove('selected');
+    }
 };
 
 const initRowBackgroundColor = () => {
@@ -46,9 +52,13 @@ const clickRow = (e) => {
     const row = e.target.closest('tr');
     const checkbox = row.querySelector('input[type=checkbox]');
     const isChecked = checkbox.checked;
-    const color = !isChecked ? '#e5f0f6' : 'transparent';
 
-    row.style.backgroundColor = color;
+    if (!isChecked) {
+        row.classList.add('selected');
+    } else {
+        row.classList.remove('selected');
+    }
+
     checkbox.checked = !isChecked;
 };
 
