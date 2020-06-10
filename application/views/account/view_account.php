@@ -46,14 +46,14 @@
 	<fieldset>
 		<legend>Profile picture</legend>
 
-		<div style="width: 100px; height: 100px; padding: 1em;" id="image_preview">
+		<div>
 			<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg')): ?>
 			<img
 				src="<?='assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
 			<?php endif; ?>
 		</div>
 
-		<input type="file" id="profile_picture_select" name="profile_picture_select[]">
+		<input type="file" id="profile_picture_select" name="profile_picture_select[]" />
 
 		<input type="submit" value="Upload">
 	</fieldset>
@@ -66,19 +66,19 @@
 		<legend>Account settings</legend>
 
 		<label for="name">Full name</label>
-		<input type="text" name="name"
-			value="<?=$user['name']?>">
+
+		<input type="text" id="name" name="name"
+			value="<?=$user['name']?>" />
 
 		<label for="gender">Gender</label>
-		<p>
-			<?php if ($user['gender'] == 'M'): ?>
-			Male: <input type="radio" name="gender" value="M" checked>
-			Female: <input type="radio" name="gender" value="F">
-			<?php else: ?>
-			Male: <input type="radio" name="gender" value="M">
-			Female: <input type="radio" name="gender" value="F" checked>
-			<?php endif; ?>
-		</p>
+
+		<?php if ($user['gender'] == 'M'): ?>
+		<input type="radio" name="gender" value="M" id="male" checked /> <label for="male">Male</label><br />
+		<input type="radio" name="gender" value="F" id="female" /> <label for="female">Female</label>
+		<?php else: ?>
+		<input type="radio" name="gender" value="M" id="male" /> <label for="male">Male</label><br />
+		<input type="radio" name="gender" value="F" id="female" checked /> <label for="female">Female</label>
+		<?php endif; ?>
 
 		<label for="day, month, year">Birthday</label>
 		<select name="day">
@@ -96,32 +96,30 @@
 		</select>
 
 		<select name="year">
-			<?php for ($x = 1930; $x <= 2010; $x++): ?>
+			<?php for ($x = 1930; $x <= 2015; $x++): ?>
 			<option value="<?=$x?>" <?=(date("Y", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?=$x?>
 			</option>
 			<?php endfor; ?>
 		</select>
 
 		<label for="presentation">Presentation</label>
-		<textarea
-			name="presentation"><?=$user['presentation']?></textarea>
+		<textarea name="presentation"
+			id="presentation"><?=$user['presentation']?></textarea>
 
-		<label for="notify_new_messages">Email me messages from other players</label>
-		<input type="checkbox" name="notify_new_messages" <?=($user['notify_new_messages'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" id="notify_new_messages" name="notify_new_messages" <?=($user['notify_new_messages'] == 1) ? 'checked' : '' ?>>
+		<label for="notify_new_messages">Email me messages from other players</label><br />
 
-		<p><strong>Privacy settings</strong></p>
+		<input type="checkbox" id="show_email" name="show_email" <?=($user['show_email'] == 1) ? 'checked' : '' ?>>
+		<label for="show_email">Show my email address</label><br />
 
-		<label for="show_email">Show my email address</label>
-		<input type="checkbox" name="show_email" <?=($user['show_email'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" id="show_gender" name="show_gender" <?=($user['show_gender'] == 1) ? 'checked' : '' ?>>
+		<label for="show_gender">Show my gender</label><br />
 
-		<label for="show_gender">Show my gender</label>
-		<input type="checkbox" name="show_gender" <?=($user['show_gender'] == 1) ? 'checked' : '' ?>>
+		<input type="checkbox" id="show_age" name="show_age" <?=($user['show_age'] == 1) ? 'checked' : '' ?>>
+		<label for="show_age">Show my age</label><br />
 
-		<label for="show_age">Show my age</label>
-		<input type="checkbox" name="show_age" <?=($user['show_age'] == 1) ? 'checked' : '' ?>>
-
+		<input type="checkbox" id="show_history" name="show_history" <?=($user['show_history'] == 1) ? 'checked' : '' ?>>
 		<label for="show_history">Show my log book and history data</label>
-		<input type="checkbox" name="show_history" <?=($user['show_history'] == 1) ? 'checked' : '' ?>>
 
 		<br><input type="submit" value="Save">
 	</fieldset>

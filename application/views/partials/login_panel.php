@@ -25,16 +25,19 @@
             <?php endif; ?>
 
             <label for="login_email">Email</label>
-            <input type="text" value="mail@tonyg.se" id="login_email" name="login_email" autofocus style="width: 100%">
+            <input type="text" value="mail@tonyg.se" id="login_email" name="login_email" autofocus />
 
             <label for="login_password">Password</label>
-            <input type="password" value="Tony19831528" id="login_password" name="login_password" style="width: 100%">
+            <input type="password" value="Tony19831528" id="login_password" name="login_password" />
 
-            <p style="font-size: 12px; margin: 0 1em;"><a style="color: #000" class="ajaxHTML"
+            <p style="font-size: 12px; margin: 0 1em;">
+                <a style="color: #000" class="ajaxHTML"
                     href="<?=base_url('account/password_forgotten')?>">Have
-                    you forgotten your password?</a></p>
+                    you forgotten your password?
+                </a>
+            </p>
 
-            <input class="small" type="submit" value="Log in" style="margin-top: 1em;">
+            <input class="small" type="submit" value="Log in" style="margin-top: 1em;" />
         </fieldset>
     </form>
 

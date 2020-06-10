@@ -45,44 +45,50 @@
 	<fieldset>
 		<legend>Your character</legend>
 
-		<div style="float: left; padding: 0.5em 0.5em 0.5em 1em">
-			<input type="hidden" id="character_avatar" name="character_avatar"
-				value="<?=$game['character_gender_long'] . '###' . $game['character_avatar']?>">
-			<input type="hidden" id="character_gender" name="character_gender"
-				value="<?=$game['character_gender']?>">
+		<div class="flex">
+			<div class="text-center">
+				<input type="hidden" id="character_avatar" name="character_avatar"
+					value="<?=$game['character_gender_long'] . '###' . $game['character_avatar']?>">
+				<input type="hidden" id="character_gender" name="character_gender"
+					value="<?=$game['character_gender']?>">
 
-			<img id="current_avatar_img" style="border: 1px black solid;"
-				src="<?=$game['character_avatar_path']?>"
-				alt="Avatar"><br>
-			<button type="button" id="js-start-avatar-selector-trigger">Change</button>
-		</div>
+				<img id="current_avatar_img" style="border: 1px black solid;"
+					src="<?=$game['character_avatar_path']?>"
+					alt="Avatar"><br>
 
-		<div style="float: left;">
-			<label for="character_name">Name</label>
-			<input id="character_name" type="text" name="character_name"
-				value="<?=$game['character_name']?>">
-			<a class="ajaxJSON"
-				href="<?=base_url('account/generate_character')?>"
-				title="Generate random character">
-				<svg width="24" height="24" alt="Randomize">
-					<use xlink:href="#dices"></use>
-				</svg>
-			</a>
-			<br />
+				<button type="button" id="js-start-avatar-selector-trigger">Change</button><br />
 
-			<label for="character_age">Age</label>
-			<input id="character_age" type="number" name="character_age" placeholder="Character age"
-				value="<?=$game['character_age']?>"><br>
+				<a class="ajaxJSON"
+					href="<?=base_url('account/generate_character')?>"
+					title="Generate random character">
+					<svg width="32" height="32" alt="Randomize">
+						<use xlink:href="#dices"></use>
+					</svg>
+				</a>
+			</div>
 
-			<label for="character_description">Description</label>
-			<textarea
-				name="character_description"><?=$game['character_description']?></textarea>
+			<div class="flex-full">
+				<label for="character_name">Name</label>
+				<input id="character_name" type="text" name="character_name"
+					value="<?=$game['character_name']?>" />
 
-			<label for="reset_game" title="You will get 4 crew members, 1 ship and 300 dbl">Reset the game</label>
-			<input type="checkbox" name="reset_game"
-				onchange="alert('Warning! Your character will be replaced by a new one. You will lose all your possessions and start of again with 1 ship, 4 crew members. 2 cannons and 300 dbl.');">
+				<label for="character_age">Age</label>
+				<input id="character_age" type="number" name="character_age" placeholder="Character age"
+					value="<?=$game['character_age']?>"><br>
 
-			<input type="submit" value="Save" />
+				<label for="character_description">Description</label>
+				<textarea name="character_description"
+					id="character_description"><?=$game['character_description']?></textarea>
+
+				<input type="checkbox" name="reset_game" id="reset_game"
+					onchange="alert('Warning! Your character will be replaced by a new one. You will lose all your possessions and start of again with 1 ship, 4 crew members. 2 cannons and 300 dbl.');" />
+				<label for="reset_game" title="You will get 4 crew members, 1 ship and 300 dbl">Reset the
+					game</label>
+
+				<br />
+
+				<input type="submit" value="Save" />
+			</div>
 		</div>
 	</fieldset>
 </form>

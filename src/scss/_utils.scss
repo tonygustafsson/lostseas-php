@@ -8,4 +8,21 @@
 
 .flex {
     display: flex;
+    flex-direction: row;
+
+    & > div:first-child {
+        margin-right: 8px;
+    }
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
+.flex-full {
+    flex: 1 0 0;
+}
+
+.flex-align-center {
+    align-items: center;;
 }

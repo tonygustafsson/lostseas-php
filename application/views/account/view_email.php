@@ -53,8 +53,8 @@
 		<legend>Change email</legend>
 
 		<label for="new_email">New email address</label>
-		<input type="email" name="new_email"
-			value="<?=$user['email']?>">
+		<input type="email" name="new_email" id="new_email"
+			value="<?=$user['email']?>" />
 
 		<input type="submit" value="Save">
 	</fieldset>

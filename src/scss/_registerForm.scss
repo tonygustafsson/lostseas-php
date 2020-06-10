@@ -2,11 +2,12 @@
     z-index: 20;
     position: absolute;
     top: 100px;
-    left: 60px;
-    width: 83.5%;
-    height: 210px;
-    padding: 1em 1.5em 10em 1.5em;
+    left: 44px;
+    width: calc(100% - 88px);
+    min-height: 210px;
+    padding: 16px 8px;
     background-color: $blackglass;
+    box-sizing: border-box;
 
     fieldset {
         margin: 0;
@@ -35,30 +36,12 @@
         margin: -0.4em 0em;
     }
 
-    #register_left {
-        float: left;
-        width: auto;
-        width: 75%;
-    }
-
-    #register_right {
-        float: left;
-        margin-left: 1em;
-        width: auto;
-    }
-
-    input[type='text'],
-    input[type='number'] {
+    #js-start-avatar-selector-trigger {
         margin-left: 0;
     }
 
     input[type='submit'] {
-        height: 100px;
-        width: 100px;
-    }
-
-    #js-start-avatar-selector-trigger {
-        margin-left: 0;
+        margin: 12px 0;
     }
 
     @include tablet {
@@ -73,10 +56,6 @@
         legend,
         p {
             color: #000;
-        }
-
-        input[type='submit'] {
-            margin: 0.5em 1em 0 -1em;
         }
     }
 }

@@ -112,17 +112,19 @@
 		<?php foreach ($player_ships as $current_ship): ?>
 		<tr id="<?=$current_ship['id']?>_row">
 			<td>
-				<a class="ajaxJSON"
-					href="<?=base_url('godmode/ship_delete')?>/<?=$current_ship['id']?>"
-					title="Delete ship">
-					<svg width="16" height="16" alt="Delete">
-						<use xlink:href="#broom"></use>
-					</svg>
-				</a>
-				<input type="text"
-					id="<?=$current_ship['id']?>_name"
-					name="<?=$current_ship['id']?>_name"
-					value="<?=$current_ship['name']?>">
+				<div class="flex flex-align-center">
+					<a class="ajaxJSON"
+						href="<?=base_url('godmode/ship_delete')?>/<?=$current_ship['id']?>"
+						title="Delete ship">
+						<svg width="16" height="16" alt="Delete">
+							<use xlink:href="#broom"></use>
+						</svg>
+					</a>
+					<input type="text"
+						id="<?=$current_ship['id']?>_name"
+						name="<?=$current_ship['id']?>_name"
+						value="<?=$current_ship['name']?>">
+				</div>
 			</td>
 			<td><input type="text"
 					id="<?=$current_ship['id']?>_type"

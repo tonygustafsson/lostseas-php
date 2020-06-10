@@ -1,10 +1,14 @@
 fieldset {
-    padding: 5px 0 20px 0;
-    margin: 10px 5% 40px 5%;
-    float: left;
     width: 90%;
-    display: block;
+    padding: 16px;
+    margin: 10px 5% 40px 5%;
     border: 1px $lightgrey solid;
+    box-sizing: border-box;
+
+    @include mobile {
+        width: 98%;
+        margin: 10px 1% 20px 1%;
+    }
 }
 
 legend {
@@ -21,58 +25,62 @@ legend {
 
 label {
     display: block;
-    height: 20px;
-    font-size: 1em;
-    padding-bottom: 4px;
-    margin-left: 10px;
+    padding: 8px 0;
+    margin: 8px 0 4px 0;
+    font-size: 1.2rem;
+    user-select: none;
 }
 
-input[type='text'],
-input[type='number'],
-input[type='email'],
-input[type='password'],
-input[type='file'],
-input[type='email'],
-input[type='url'] {
-    height: 20px;
-    margin-bottom: 5px;
-    margin-left: 10px;
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="email"],
+input[type="url"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    font-size: 1rem;
+    margin: 6px 0;
     border: 1px solid $lightgrey;
-    padding: 4px 0 1px 5px;
     color: #000;
-    background: #fff;
-    width: 250px;
-    max-width: 90%;
-}
+    background-color: #fff;
 
-select {
-    height: 28px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    border: 1px solid $lightgrey;
-    padding: 4px 0 1px 5px;
-    color: #000;
-    background: #fff;
-    max-width: 90%;
-    vertical-align: middle;
-    color: #000;
-
-    option {
-        color: #000;
+    &:focus {
+        outline-color: $lightgrey;
     }
 }
 
-textarea {
+input[type="radio"],
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+
+    & + label {
+        display: inline-block;
+        margin: 0 8px;
+    }
+}
+
+select {
+    min-width: 100px;
+    font-size: 1rem;
     margin-bottom: 5px;
-    margin-left: 10px;
     border: 1px solid $lightgrey;
-    padding: 4px 0 1px 5px;
-    color: #000;
-    background: #fff;
-    max-width: 90%;
+    background-color: #fff;
+    margin: 0;
+    margin-right: 8px;
+    padding: 6px 12px;
+}
+
+textarea {
+    width: calc(100% - 16px);
     height: 160px;
-    width: 500px;
+    font-size: 1.2rem;
+    border: 1px solid $lightgrey;
+    padding: 8px;
     color: #000;
+    background-color: #fff;
 }
 
 table {

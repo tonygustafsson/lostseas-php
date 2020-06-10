@@ -47,13 +47,13 @@
 		<legend>Change password</legend>
 
 		<label for="old_password">Current password</label>
-		<input type="password" name="old_password">
+		<input type="password" name="old_password" id="old_password" />
 
 		<label for="new_password">New password</label>
-		<input type="password" name="new_password">
+		<input type="password" name="new_password" id="new_password" />
 
 		<label for="repeated_new_password">Repeat new password</label>
-		<input type="password" name="repeated_new_password">
+		<input type="password" name="repeated_new_password" id="repeated_new_password" />
 
 		<br><input type="submit" value="Save">
 	</fieldset>

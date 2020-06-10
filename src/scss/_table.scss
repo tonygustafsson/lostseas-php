@@ -28,6 +28,10 @@ table {
             color: #000 !important;
             vertical-align: middle;
         }
+
+        svg {
+            margin-left: 0.5em;
+        }
     }
 
     td {
@@ -40,6 +44,7 @@ table {
             margin-right: 0.5em;
         }
     }
+
 }
 
 fieldset table td:first-child {

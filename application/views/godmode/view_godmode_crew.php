@@ -112,17 +112,19 @@
 		<?php foreach ($crew as $current_crew): ?>
 		<tr id="<?=$current_crew['id']?>_row">
 			<td>
-				<a class="ajaxJSON"
-					href="<?=base_url('godmode/crew_delete')?>/<?=$current_crew['id']?>"
-					title="Delete crew member">
-					<svg width="16" height="16" alt="Delete">
-						<use xlink:href="#broom"></use>
-					</svg>
-				</a>
-				<input type="text"
-					id="<?=$current_crew['id']?>_name"
-					name="<?=$current_crew['id']?>_name"
-					value="<?=$current_crew['name']?>">
+				<div class="flex flex-align-center">
+					<a class="ajaxJSON"
+						href="<?=base_url('godmode/crew_delete')?>/<?=$current_crew['id']?>"
+						title="Delete crew member">
+						<svg width="16" height="16" alt="Delete">
+							<use xlink:href="#broom"></use>
+						</svg>
+					</a>
+					<input type="text"
+						id="<?=$current_crew['id']?>_name"
+						name="<?=$current_crew['id']?>_name"
+						value="<?=$current_crew['name']?>">
+				</div>
 			</td>
 			<td><input type="number"
 					id="<?=$current_crew['id']?>_mood"
