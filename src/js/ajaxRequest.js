@@ -85,7 +85,7 @@ const ajaxJsonRequest = (e) => {
         });
 };
 
-const fetchHtmlAndUpdateDom = (url) => {
+const fetchHtmlAndUpdateDom = (url, updateLocation) => {
     const body = document.getElementById('body');
     body.classList.add('loading');
 
@@ -116,10 +116,20 @@ const fetchHtmlAndUpdateDom = (url) => {
                 ga('send', 'pageview', { page: gaURL.pathname, title: title });
             }
 
+            if (updateLocation) {
+                if (url != window.location) {
+                    window.history.pushState({ path: url }, '', url);
+                }
+            }
+
             triggerEventFromUrl();
         })
         .catch((err) => {
-            snackbar({ text: `Could not revieve HTML: ${err.toString()}` });
+            if (err.response.status === 404) {
+                snackbar({ text: `Page not found: ${err.toString()}`, level: 'error' });
+            } else {
+                snackbar({ text: `Could not revieve HTML: ${err.toString()}`, level: 'error' });
+            }
         })
         .then((_) => {
             body.classList.remove('loading');
@@ -148,11 +158,7 @@ const ajaxHtmlRequest = (e) => {
 
     const url = element.href;
 
-    fetchHtmlAndUpdateDom(url);
-
-    if (url != window.location) {
-        window.history.pushState({ path: url }, '', url);
-    }
+    fetchHtmlAndUpdateDom(url, true);
 };
 
 const onPopState = (e) => {

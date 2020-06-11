@@ -205,7 +205,9 @@ class Main extends CI_Controller
     
     public function error_404()
     {
-        $this->load->view_ajax('view_404');
+        $this->output->set_status_header('404');
+
+        $this->load->view('view_404');
     }
 }
 
