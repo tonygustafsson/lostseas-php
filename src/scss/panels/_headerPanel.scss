@@ -7,6 +7,12 @@ header {
             color: $yellow;
             text-decoration: none;
             letter-spacing: 0.1em;
+
+            &:hover,
+            &:focus {
+                color: $yellow;
+                text-decoration: none;
+            }
         }
 
         @include mobile {
