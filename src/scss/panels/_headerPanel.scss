@@ -1,21 +1,17 @@
 header {
-    padding-top: 1em;
-    position: relative;
-
     h1 {
         margin-left: 1em;
         text-shadow: 2px 2px 2px #000;
 
         a {
             color: $yellow;
-            font-size: 1.5em;
-            font-family: $font-bridgnorth;
             text-decoration: none;
             letter-spacing: 0.1em;
         }
 
         @include mobile {
             margin-bottom: 0;
+            margin-left: 0.5em;
         }
     }
 
@@ -50,7 +46,6 @@ header {
     background-color: $whiteglass;
     border: 1px $lightgrey solid;
     height: 50px;
-    overflow-y: auto;
 
     p {
         margin: 1em;
@@ -72,8 +67,7 @@ header {
         border-right: 1px solid $lightgrey;
         letter-spacing: 0.15em;
         font-weight: bold;
-        font-family: $font-bridgnorth;
-        font-size: 1em;
+        font-size: 1rem;
 
         svg {
             margin-right: 8px;
@@ -81,6 +75,8 @@ header {
 
         &:hover {
             background-color: $lightblue;
+            color: #000;
+            text-decoration: none;
         }
 
         &--disabled {
@@ -127,6 +123,7 @@ header {
         padding: 20px 0;
         z-index: 1000;
         background: #fff;
+        overflow-y: auto;
 
         &__close-btn {
             display: block;

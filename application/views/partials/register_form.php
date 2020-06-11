@@ -1,7 +1,7 @@
 <form id="register" method="post"
     action="<?=base_url('account/register_temp')?>">
     <fieldset>
-        <legend>Start playing right now...</legend>
+        <legend>Start playing without signing up...</legend>
 
         <div class="flex">
             <div class="text-center">

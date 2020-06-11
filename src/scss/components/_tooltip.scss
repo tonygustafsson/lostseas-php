@@ -33,8 +33,7 @@ $animation-speed: 175ms;
         padding: $tooltip-padding;
         white-space: nowrap;
         bottom: 100%;
-        font-family: $font-trebuchet;
-        font-size: 13px;
+        font-size: 1rem;
 
         @if ($roundness != 0) {
             border-radius: $roundness;

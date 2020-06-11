@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Bridgnorth';
-    src: url('../../assets/fonts/Bridgnorth.otf');
-}
-
 body {
     background-color: $lightblue;
     background-image: url('../../assets/images/design/back_ship.png'), url('../../assets/images/design/back_sky.jpg');
@@ -10,8 +5,8 @@ body {
     background-repeat: repeat-x, repeat-x;
     background-attachment: fixed, fixed;
     background-size: 100% 35%, 100% 60%;
-    font-size: 100%;
-    font-family: $font-trebuchet;
+    font-size: $font-size-default;
+    font-family: $font-montaga;
     color: #000;
     line-height: 1.3;
     margin: 0;
@@ -31,12 +26,12 @@ body {
             margin-top: -30px;
             height: 60px;
             width: 160px;
-            font-size: 2.5em;
+            font-size: 2.5rem;
             padding: 0.25em 1em;
-            font-family: $font-bridgnorth;
             background-color: #fff;
             color: #000;
             border: 2px #000 solid;
+            box-shadow: 0 0 20px $blackglass;
             content: 'Loading...';
         }
     }
@@ -48,34 +43,64 @@ body {
         background-repeat: repeat-x, no-repeat;
         background-attachment: fixed, fixed;
         background-size: 100% 15%, 100% 50%;
-    }
-}
 
-strong {
-    font-size: 120%;
-    font-weight: bold;
+        font-size: $font-size-default-mobile;
+    }
 }
 
 img {
     border: none;
 }
 
+h1 {
+    font-size: 3rem;
+
+    @include mobile {
+        font-size: 2.5rem;
+    }
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+    margin-bottom: 0.25em;
+}
+
+h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25em;
+}
+
+ul {
+    width: 90%;
+    margin: 0 auto;
+
+    li {
+        margin-bottom: 0.5em;
+    }
+}
+
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
 a {
+    color: $darkred;
+    text-decoration: none;
     outline: none;
+
+    &:hover {
+        color: $red;
+        text-decoration: underline;
+    }
 
     &.disabled {
         pointer-events: none;
     }
-}
-
-.right {
-    text-align: right;
-}
-
-.left {
-    text-align: left;
-}
-
-.center {
-    text-align: center;
 }

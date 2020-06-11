@@ -8,19 +8,15 @@
 
     h3 {
         color: #000;
-        font-size: 1.2em;
-        font-family: $font-bridgnorth;
+        font-size: 1.25rem;
         text-align: left;
         letter-spacing: 0.1em;
-    }
-
-    strong {
-        font-size: 100%;
     }
 
     &__item {
         margin: 1em 0;
         text-align: left;
+        font-size: 1rem;
 
         &__img {
             float: left;

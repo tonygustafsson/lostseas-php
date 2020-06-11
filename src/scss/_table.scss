@@ -1,7 +1,8 @@
 table {
-    width: calc(100% - 4em);
-    margin: 1em 2em;
+    width: 100%;
+    margin: 1em 0;
     border-spacing: 0;
+    font-size: 1rem;
 
     &.table-fixed {
         table-layout: fixed;
@@ -44,7 +45,6 @@ table {
             margin-right: 0.5em;
         }
     }
-
 }
 
 fieldset table td:first-child {

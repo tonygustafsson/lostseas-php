@@ -3,29 +3,10 @@
     border: 1px $lightgrey solid;
     background: $whiteglass;
     margin-bottom: 1em;
+    padding: 2em;
     min-height: 100vh;
     height: auto;
     box-sizing: border-box;
-
-    header {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-    }
-
-    p {
-        margin: 1em 2em;
-    }
-
-    a {
-        color: $darkred;
-        text-decoration: none;
-
-        &:hover {
-            color: $red;
-            text-decoration: underline;
-        }
-    }
 
     .divider {
         display: block;
@@ -38,38 +19,12 @@
         background-position: 50% 0;
     }
 
-    h1, h2, h3, h4 {
-        font-family: $font-bridgnorth;
-    }
-
-    h2 {
-        font-size: 1.8em;
-    }
-
-    h3 {
-        margin: 1em 2em 0 2em;
-        font-size: 1.7em;
-    }
-
-    h4 {
-        margin: 1em 2em 0 2em;
-        font-size: 1.3em;
-    }
-
-    ul {
-        width: 80%;
-        margin: 1em 10%;
-
-        li {
-            padding-bottom: 0.8em;
-        }
-    }
-
     .pagination a {
         margin: 0 0.25em;
     }
 
     @include mobile {
         width: 100%;
+        padding: 1em;
     }
 }

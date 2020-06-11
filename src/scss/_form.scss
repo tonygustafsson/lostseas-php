@@ -1,7 +1,7 @@
 fieldset {
-    width: 90%;
+    width: 100%;
     padding: 16px;
-    margin: 10px 5% 40px 5%;
+    margin: 10px 0 40px 0;
     border: 1px $lightgrey solid;
     box-sizing: border-box;
 
@@ -12,8 +12,7 @@ fieldset {
 }
 
 legend {
-    font-size: 1.4em;
-    font-family: $font-bridgnorth;
+    font-size: 1.4rem;
     padding: 0 5px;
 
     img,
@@ -31,13 +30,13 @@ label {
     user-select: none;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="password"],
-input[type="file"],
-input[type="email"],
-input[type="url"] {
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+input[type='file'],
+input[type='email'],
+input[type='url'] {
     width: calc(100% - 24px);
     padding: 12px;
     font-size: 1rem;
@@ -45,14 +44,15 @@ input[type="url"] {
     border: 1px solid $lightgrey;
     color: #000;
     background-color: #fff;
+    font-family: $font-montaga;
 
     &:focus {
         outline-color: $lightgrey;
     }
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type='radio'],
+input[type='checkbox'] {
     width: 16px;
     height: 16px;
 
@@ -63,7 +63,7 @@ input[type="checkbox"] {
 }
 
 select {
-    min-width: 100px;
+    min-width: 90px;
     font-size: 1rem;
     margin-bottom: 5px;
     border: 1px solid $lightgrey;
@@ -71,6 +71,7 @@ select {
     margin: 0;
     margin-right: 8px;
     padding: 6px 12px;
+    font-family: $font-montaga;
 }
 
 textarea {
@@ -81,6 +82,11 @@ textarea {
     padding: 8px;
     color: #000;
     background-color: #fff;
+    font-family: $font-montaga;
+
+    @include mobile {
+        font-size: 1rem;
+    }
 }
 
 table {

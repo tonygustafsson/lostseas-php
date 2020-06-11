@@ -9,6 +9,10 @@
     background-color: $blackglass;
     box-sizing: border-box;
 
+    .flex > div:first-child {
+        min-width: 15%;
+    }
+
     fieldset {
         margin: 0;
         width: 100%;
@@ -17,14 +21,14 @@
 
     legend {
         color: $yellow;
-        font-size: 1.4em;
-        font-family: $font-bridgnorth;
+        font-size: 1.4rem;
         margin: 0;
         margin-bottom: 0.5em;
     }
 
     label {
         color: #fff;
+        margin-bottom: 0;
     }
 
     p {
@@ -38,10 +42,6 @@
 
     #js-start-avatar-selector-trigger {
         margin-left: 0;
-    }
-
-    input[type='submit'] {
-        margin: 12px 0;
     }
 
     @include tablet {

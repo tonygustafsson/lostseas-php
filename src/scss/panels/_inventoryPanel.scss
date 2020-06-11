@@ -7,7 +7,6 @@
     height: auto;
     text-align: center;
     box-sizing: border-box;
-    overflow-y: auto;
 
     &__close-btn {
         display: none;
@@ -29,11 +28,11 @@
     }
 
     .inventory_user {
-        padding: 0 0.5em 2.5em 0.5em;
+        padding: 0 0.5em 1.5em 0.5em;
         text-align: left;
 
         a {
-            font-size: 0.8em;
+            font-size: 1rem;
             color: #000;
             text-decoration: none;
         }
@@ -47,23 +46,20 @@
         }
 
         @include mobile {
-            padding-bottom: 3em;
+            padding-bottom: 2.5em;
         }
     }
 
     h3 {
-        padding-bottom: 1em;
-        color: #000;
-        font-size: 1.2em;
-        font-family: $font-bridgnorth;
-        text-align: left;
-        margin: 0.5em 1em 0.75em 0.5em;
+        font-size: 1.3rem;
+        margin: 0 0.75em 0.75em 0.75em;
         letter-spacing: 0.1em;
+        text-align: left;
     }
 
     .inventory_item {
         width: 100%;
-        font-size: 90%;
+        font-size: 0.95rem;
         margin-left: auto;
         margin-right: auto;
         height: 16px;
@@ -137,6 +133,7 @@
         padding: 20px 0;
         z-index: 1000;
         background: #fff;
+        overflow-y: auto;
 
         &__close-btn {
             display: block;
