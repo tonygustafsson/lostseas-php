@@ -22,7 +22,7 @@
         }
 
         &.largepic {
-            padding: 0.5em 2em;
+            padding: 0.5em 1em;
             width: 136px;
             height: auto;
             line-height: 100%;
@@ -30,6 +30,7 @@
             img {
                 width: 128px;
                 height: 128px;
+                filter: sepia(0.5);
             }
         }
 
