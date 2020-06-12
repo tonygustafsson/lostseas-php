@@ -219,6 +219,11 @@ class Godmode extends Main
         $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['player']['user']['id']));
         $this->load->view_ajax('godmode/view_godmode_crew', $this->data);
     }
+
+    public function design()
+    {
+        $this->load->view_ajax('godmode/view_godmode_design', $this->data);
+    }
     
     public function crew_create()
     {

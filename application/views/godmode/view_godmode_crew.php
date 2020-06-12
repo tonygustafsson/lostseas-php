@@ -2,36 +2,43 @@
 	<h3>God mode: Crew</h3>
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Change user parameters"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Change user parameters"
 		href="godmode/user/<?=$this->uri->segment(3)?>">
 		<svg width="32" height="32" alt="User">
 			<use xlink:href="#player"></use>
 		</svg>
 		User
 	</a>
-	<a class="ajaxHTML" title="Change game parameters"
+	<a class="ajaxHTML button big-icon" title="Change game parameters"
 		href="godmode/index/<?=$this->uri->segment(3)?>">
 		<svg width="32" height="32" alt="User">
 			<use xlink:href="#swords"></use>
 		</svg>
 		Game
 	</a>
-	<a class="ajaxHTML" title="Change ship parameters"
+	<a class="ajaxHTML button big-icon" title="Change ship parameters"
 		href="godmode/ship/<?=$this->uri->segment(3)?>">
 		<svg width="32" height="32" alt="Ships">
 			<use xlink:href="#ship"></use>
 		</svg>
 		Ships
 	</a>
-	<a class="ajaxHTML" title="Change crew parameters"
+	<a class="ajaxHTML button big-icon" title="Change crew parameters"
 		href="godmode/crew/<?=$this->uri->segment(3)?>">
 		<svg width="32" height="32" alt="Crew">
 			<use xlink:href="#crew-man"></use>
 		</svg>
 		Crew
 	</a>
-</section>
+	<a class="ajaxHTML button big-icon" title="View design system"
+		href="godmode/design/<?=$this->uri->segment(3)?>">
+		<svg width="32" height="32" alt="Crew">
+			<use xlink:href="#design"></use>
+		</svg>
+		Design
+	</a>
+</div>
 
 <section class="action-buttons">
 	<form method="post" id="godmode_change_user" action="">
