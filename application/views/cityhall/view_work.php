@@ -40,12 +40,14 @@
 </p>
 
 <?php if (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned'): ?>
-<section id="offer" class="action-buttons">
-	<p>You and your crew gets a job offer as <?=$occupation?> for
-		<strong><?=$salary?> dbl</strong>. Take the offer?</p>
+<p>
+	You and your crew gets a job offer as <?=$occupation?> for
+	<strong><?=$salary?> dbl</strong>. Take the offer?
+</p>
 
-	<a class="ajaxJSON nopic positive" href="cityhall/work_accept" title="Get to work!">Yes</a>
-	<a class="ajaxHTML nopic negative" href="cityhall" title="I'm too lazy to work">No</a>
-</section>
+<div class="button-area">
+	<a class="ajaxJSON button big primary" href="cityhall/work_accept" title="Get to work!">Yes</a>
+	<a class="ajaxHTML button big" href="cityhall" title="I'm too lazy to work">No</a>
+</div>
 
 <?php endif;

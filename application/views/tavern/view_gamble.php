@@ -77,6 +77,6 @@
 		<button type="button" class="js-tavern-bet-set" data-value="75">75%</button>
 		<button type="button" class="js-tavern-bet-set" data-value="100">100%</button>
 
-		<button type="submit">Gamble!</button>
+		<button type="submit" class="primary">Gamble</button>
 	</p>
 </form>

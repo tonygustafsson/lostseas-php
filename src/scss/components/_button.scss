@@ -1,22 +1,50 @@
-button {
+button,
+.button {
     background-color: #fff;
     color: #000;
     font-family: $font-montaga;
     font-size: 1.2rem;
     line-height: 0.5;
-    cursor: pointer;
     margin: 0.5em 0;
     padding: 0.75em 1em;
     border: 1px $lightgrey solid;
+    user-select: none;
+    white-space: nowrap;
+    box-shadow: $blacklightglass 0px 1px 3px;
+    cursor: pointer;
 
-    &.small {
-        font-size: 1.2rem;
+    &.primary {
+        background-color: $lightblue;
     }
 
-    &:hover,
+    &.big {
+        font-size: 1.5rem;
+    }
+
+    &:hover {
+        box-shadow: $blacklightglass 0 0 6px 3px;
+        text-decoration: none;
+        color: #000;
+    }
+
     &:focus {
-        background: $lightblue;
         outline: none;
+    }
+
+    &-area {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+
+        & > button,
+        & > .button {
+            margin: 8px;
+
+            @include mobile {
+                width: auto;
+            }
+        }
     }
 
     @include mobile {

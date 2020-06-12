@@ -41,13 +41,15 @@
 	You find <?=$quantity?> cartons of <?=$item?> for <?=$total_cost?> dbl! (<?=$cost?> dbl/pcs) You don't have enough money though.
 </p>
 <?php else: ?>
-<section id="offer" class="action-buttons">
+<div id="offer">
 	<p>
 		You find <?=$quantity?> cartons of <?=$item?> for <?=$total_cost?> dbl! (<?=$cost?> dbl/pcs) Do you wan't to buy?
 	</p>
 
-	<a class="ajaxJSON nopic positive" href="market/goods_post/yes" title="Yes please!">Yes</a>
-	<a class="ajaxJSON nopic negative" href="market/goods_post/no" title="I don't want your junk">No</a>
-</section>
+	<div class="button-area">
+		<a class="ajaxJSON button big primary" href="market/goods_post/yes" title="Yes please!">Yes</a>
+		<a class="ajaxJSON button big" href="market/goods_post/no" title="I don't want your junk">No</a>
+	</div>
+</div>
 <?php endif; ?>
 <?php endif;

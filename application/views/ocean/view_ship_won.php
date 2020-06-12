@@ -50,19 +50,19 @@
 
 <form method="post" class="ajaxJSON" id="won_form"
 	action="<?=base_url('ocean/ship_won_transfer')?>">
-	<section class="action-buttons">
+	<div class="button-area">
 		<?php if ($food > 0 || $water > 0 || $porcelain > 0 || $spices > 0 || $silk > 0 || $medicine > 0 || $tobacco > 0 || $rum > 0 || $new_crew > 0): ?>
-		<a class="ajaxHTML nopic negative"
+		<a class="ajaxHTML button"
 			href="<?=base_url('ocean/ship_won_cancel')?>">No
 			thanks</a>
-		<a class="nopic js-ocean-loot-take-all" href="#">Take All</a>
-		<button type="submit" class="nopic positive">Transfer</button>
+		<a class="button js-ocean-loot-take-all" href="#">Take All</a>
+		<button type="submit" class="button primary">Transfer</button>
 		<?php else: ?>
-		<a class="ajaxHTML nopic positive"
+		<a class="ajaxHTML button"
 			href="<?=base_url('ocean/ship_won_cancel')?>">Sail
 			away</a>
 		<?php endif; ?>
-	</section>
+	</div>
 
 	<?php if (isset($game['error'])): ?>
 	<div class="error">

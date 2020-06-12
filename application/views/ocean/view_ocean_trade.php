@@ -24,15 +24,15 @@
 <p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.
 	Porcelain, silk and spices will be traded away first.</p>
 
-<section class="action-buttons">
-	<a class="nopic js-ocean-trade-take-necessities" href="#">Take necessities</a>
-	<a class="nopic js-ocean-trade-take-all" href="#">Take all</a><br>
-	<a class="ajaxHTML nopic negative"
-		href="<?=base_url('ocean/trade_cancel')?>">No
+<div class="button-area">
+	<a class="button js-ocean-trade-take-necessities" href="#">Take necessities</a>
+	<a class="button js-ocean-trade-take-all" href="#">Take all</a><br>
+	<a class="ajaxHTML button 
+		href=" <?=base_url('ocean/trade_cancel')?>">No
 		thanks</a>
-	<a class="ajaxHTML nopic positive"
+	<a class="ajaxHTML button primary"
 		href="<?=base_url('ocean/trade_transfer')?>">Trade</a>
-</section>
+</div>
 
 <form class="ajaxJSON" method="post" id="trade"
 	action="<?=base_url('ocean/trade_transfer')?>">

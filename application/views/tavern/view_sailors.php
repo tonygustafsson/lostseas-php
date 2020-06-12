@@ -35,10 +35,11 @@
 	<p>You talk to <?=$game['event_sailors']?>
 		sailors. After a while they decides to join your crew. Do you want to take them in?</p>
 
-	<section class="action-buttons">
-		<a href="tavern/sailors_post/yes" class="ajaxJSON nopic positive" title="Take these sailors in!">Yes</a>
-		<a href="tavern/sailors_post/no" class="ajaxJSON nopic negative"
-			title="Tell them to mind their own business">No</a>
-	</section>
+	<div class="button-area">
+		<a href="tavern/sailors_post/yes" class="ajaxJSON button big primary" title="Take these sailors in!">Yes</a>
+		<a href="tavern/sailors_post/no" class="ajaxJSON button big" title="Tell them to mind their own business">No</a>
+	</div>
 </section>
+<?php else: ?>
+<p><em>No one seems to be there right now...</em></p>
 <?php endif;

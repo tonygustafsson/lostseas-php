@@ -182,6 +182,8 @@
 			</tr>
 		</table>
 
+		<button type="submit" class="primary">Transfer</button>
+
 		<p id="shop_overview" class="shop__quick-menu">
 			<a href="#" class="shop-buy-necessities tooltip-bottom-right"
 				data-tooltip="Buy as much food and water you'll need for 5 days at sea">
@@ -202,8 +204,6 @@
 					<use xlink:href="#broom"></use>
 				</svg>
 			</a>
-
-			<input title="Make the deal" type="submit" value="Transfer" style="display: block; margin-top: -35px;">
 		</p>
 	</fieldset>
 </form>

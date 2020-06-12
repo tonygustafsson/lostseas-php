@@ -41,13 +41,15 @@
 	Your crew seems kind of healthy too me... you don't need me!
 </p>
 <?php else: ?>
-<section id="offer" class="action-buttons">
+<div id="offer">
 	<p>
 		I can heal your <?=$injured_crew?> injured crew members. It
 		will cost you <?=$cost?> dbl.
 	</p>
 
-	<a class="ajaxJSON nopic positive" href="market/healer_post/yes" title="Please heal us!">Yes</a>
-	<a class="ajaxJSON nopic negative" href="market/healer_post/no" title="No hokus pokus today please">No</a>
-</section>
+	<div class="button-area">
+		<a class="ajaxJSON button big primary" href="market/healer_post/yes" title="Please heal us!">Yes</a>
+		<a class="ajaxJSON button big" href="market/healer_post/no" title="No hokus pokus today please">No</a>
+	</div>
+</div>
 <?php endif;

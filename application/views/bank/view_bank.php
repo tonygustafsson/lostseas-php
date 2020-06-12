@@ -72,6 +72,6 @@
 
 	<p style="text-align: right;">
 		<button type="button" class="js-bank-account-reset">Reset</button>
-		<button type="submit">Transfer</button>
+		<button class="primary" type="submit">Transfer</button>
 	</p>
 </form>

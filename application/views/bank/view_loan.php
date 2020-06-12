@@ -66,6 +66,6 @@
 
 	<p class="text-right">
 		<button type="button" class="js-bank-loan-reset">Reset</button>
-		<button type="submit">Transfer</button>
+		<button type="submit" class="primary">Transfer</button>
 	</p>
 </form>

@@ -41,14 +41,16 @@
 	You find <?=$slaves?> slaves with a health of <?=$health?>% for <?=$cost?> dbl! You don't have enough money though.
 </p>
 <?php else: ?>
-<section id="offer" class="action-buttons">
+<div id="offer">
 	<p>
 		You find <?=$slaves?> slaves with a health of <?=$health?>% for <?=$cost?> dbl! Do you wan't to buy?
 	</p>
 
-	<a class="ajaxJSON nopic positive" href="market/slaves_post/yes"
-		title="Yes, give me these find looking slaves!">Yes</a>
-	<a class="ajaxJSON nopic negative" href="market/slaves_post/no" title="No thank you">No</a>
-</section>
+	<div class="button-area">
+		<a class="ajaxJSON button big primary" href="market/slaves_post/yes"
+			title="Yes, give me these find looking slaves!">Yes</a>
+		<a class="ajaxJSON button big" href="market/slaves_post/no" title="No thank you">No</a>
+	</div>
+</div>
 <?php endif; ?>
 <?php endif;
