@@ -10,8 +10,8 @@
 </header>
 <?php endif; ?>
 
-<section class="action-buttons">
-	<a class="ajaxHTML"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon"
 		title="Learn more about <?=$player['user']['name']?>"
 		href="inventory/player/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Player">
@@ -19,7 +19,7 @@
 		</svg>
 		Player
 	</a>
-	<a class="ajaxHTML"
+	<a class="ajaxHTML button big-icon"
 		title="See <?=$player['game']['character_name']?>s ships"
 		href="inventory/ships/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Ships">
@@ -27,7 +27,7 @@
 		</svg>
 		Ships
 	</a>
-	<a class="ajaxHTML"
+	<a class="ajaxHTML button big-icon"
 		title="See <?=$player['game']['character_name']?>s crew members"
 		href="inventory/crew/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Crew members">
@@ -36,7 +36,7 @@
 		Crew
 	</a>
 	<?php if ($user['id'] == $player['user']['id'] || $player['user']['show_history'] == 1): ?>
-	<a class="ajaxHTML"
+	<a class="ajaxHTML button big-icon"
 		title="See graphs and data about <?=$player['game']['character_name']?>s history"
 		href="inventory/history/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="History">
@@ -44,7 +44,7 @@
 		</svg>
 		History
 	</a>
-	<a class="ajaxHTML"
+	<a class="ajaxHTML button big-icon"
 		title="Check out <?=$player['game']['character_name']?>s log book"
 		href="inventory/log/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Log book">
@@ -53,7 +53,7 @@
 		Log book
 	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML"
+	<a class="ajaxHTML button big-icon"
 		title="Say something to <?=$player['user']['name']?>"
 		href="inventory/messages/<?=$this->uri->segment(3)?>">
 		<svg width="16" height="16" alt="Messages">
@@ -61,7 +61,7 @@
 		</svg>
 		Messages
 	</a>
-</section>
+</div>
 
 <p>
 	Hold your mouse over the log entries to see the real time the event happend.

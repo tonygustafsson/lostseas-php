@@ -14,8 +14,8 @@
 	<p><?=$game['info']?>
 	</p>
 </div>
-<section class="action-buttons">
-	<a class="ajaxHTML nopic"
+<section class="button-area">
+	<a class="ajaxHTML button big"
 		href="<?=base_url($game['place'])?>">Okay!</a>
 </section>
 <?php endif; ?>

@@ -17,7 +17,8 @@ button,
     box-sizing: border-box;
     cursor: pointer;
 
-    svg {
+    svg,
+    img {
         vertical-align: sub;
         margin-right: 0.25em;
         width: 20px;
@@ -39,6 +40,23 @@ button,
             padding: 0 0.5em;
             width: 32px;
             height: 32px;
+        }
+    }
+
+    &.big-image {
+        line-height: 1;
+
+        img {
+            display: block;
+            margin: 0 auto 0.5em auto;
+            padding: 0 0.5em;
+            width: 128px;
+            height: 128px;
+
+            @include mobile {
+                width: 92px;
+                height: 92px;
+            }
         }
     }
 
@@ -67,6 +85,7 @@ button,
         justify-content: center;
         flex-wrap: wrap;
         width: 100%;
+        margin: 16px 0;
 
         & > button,
         & > .button {

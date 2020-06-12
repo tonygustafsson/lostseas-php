@@ -6,15 +6,15 @@
 		class="area-header__img">
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Buy something to eat or drink" href="tavern">
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Buy something to eat or drink" href="tavern">
 		<svg width="32" height="32" alt="Buy">
 			<use xlink:href="#rum"></use>
 		</svg>
 		Buy
 	</a>
 	<?php if ($game['event_sailors'] != 'banned'): ?>
-	<a id="actions_sailors" class="ajaxHTML" title="Talk to the sailors at the bar"
+	<a id="actions_sailors" class="ajaxHTML button big-icon" title="Talk to the sailors at the bar"
 		href="<?=base_url('tavern/sailors')?>">
 		<svg width="32" height="32" alt="Sailors">
 			<use xlink:href="#pirate"></use>
@@ -22,13 +22,13 @@
 		Sailors
 	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML" title="Gamble for gold!" href="tavern/gamble">
+	<a class="ajaxHTML button big-icon" title="Gamble for gold!" href="tavern/gamble">
 		<svg width="32" height="32" alt="Gamble">
 			<use xlink:href="#dices"></use>
 		</svg>
 		Gamble
 	</a>
-</section>
+</div>
 
 <p>
 	Here you can gamble with dices! There is 1/6 chance that you should win, and the prize depends. If you are lucky you

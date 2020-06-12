@@ -2,43 +2,43 @@
 	<h3>Account Settings</h3>
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Change your account settings, such as name, birthday, presentation"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Change your account settings, such as name, birthday, presentation"
 		href="<?=base_url('account/settings_account')?>">
 		<svg width="32" height="32" class="Account">
 			<use xlink:href="#player"></use>
 		</svg>
 		Account
 	</a>
-	<a class="ajaxHTML" title="Change your email/login adress"
+	<a class="ajaxHTML button big-icon" title="Change your email/login adress"
 		href="<?=base_url('account/settings_email')?>">
 		<svg width="32" height="32" class="Email">
 			<use xlink:href="#message"></use>
 		</svg>
 		Email
 	</a>
-	<a class="ajaxHTML" title="Change your character name, age and such"
+	<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
 		href="<?=base_url('account/settings_character')?>">
 		<svg width="32" height="32" class="Character">
 			<use xlink:href="#crew-man"></use>
 		</svg>
 		Character
 	</a>
-	<a class="ajaxHTML" title="Change your password for login"
+	<a class="ajaxHTML button big-icon" title="Change your password for login"
 		href="<?=base_url('account/settings_password')?>">
 		<svg width="32" height="32" class="Password">
 			<use xlink:href="#key"></use>
 		</svg>
 		Password
 	</a>
-	<a class="ajaxHTML" title="Unregister from this game"
+	<a class="ajaxHTML button big-icon" title="Unregister from this game"
 		href="<?=base_url('account/unregister')?>">
 		<svg width="32" height="32" class="Unregister">
 			<use xlink:href="#trashcan"></use>
 		</svg>
 		Unregister
 	</a>
-</section>
+</div>
 
 <form id="profile_picture_form"
 	action="<?=base_url('account/upload_profile_picture')?>"
@@ -121,7 +121,7 @@
 		<input type="checkbox" id="show_history" name="show_history" <?=($user['show_history'] == 1) ? 'checked' : '' ?>>
 		<label for="show_history">Show my log book and history data</label>
 
-		<br><button type="submit">Save</button>
+		<br><button type="submit" class="primary">Save</button>
 	</fieldset>
 
 </form>

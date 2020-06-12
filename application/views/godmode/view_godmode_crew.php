@@ -40,7 +40,7 @@
 	</a>
 </div>
 
-<section class="action-buttons">
+<div class="text-center">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">
 			<?php foreach ($players as $this_player): ?>
@@ -70,11 +70,11 @@
 			<?php endforeach; ?>
 		</select>
 
-		<a id="godmode_change_user_url" class="ajaxHTML nopic"
+		<a id="godmode_change_user_url" class="ajaxHTML"
 			data-baseurl="<?=base_url('godmode/crew')?>"
 			href="<?=base_url('godmode/crew/' . $user['id'])?>">Change</a>
 	</form>
-</section>
+</div>
 
 <p style="text-align: right;"><a class="ajaxJSON"
 		href="<?=base_url('godmode/crew_create/' . $player['user']['id'])?>"

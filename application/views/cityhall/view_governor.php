@@ -6,8 +6,8 @@
 		class="area-header__img">
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Talk to the governor"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Talk to the governor"
 		href="<?=base_url('cityhall/governor')?>">
 		<svg width="32" height="32" alt="Governor">
 			<use xlink:href="#governor"></use>
@@ -15,7 +15,7 @@
 		Governor
 	</a>
 	<?php if ($this->data['game']['event_work'] != 'banned'): ?>
-	<a class="ajaxHTML" id="actions_work" title="Work to get some money"
+	<a class="ajaxHTML button big-icon" id="actions_work" title="Work to get some money"
 		href="<?=base_url('cityhall/work')?>">
 		<svg width="32" height="32" alt="Work">
 			<use xlink:href="#pickaxe"></use>
@@ -24,7 +24,7 @@
 	</a>
 	<?php endif; ?>
 	<?php if ($game['prisoners'] > 0 && $game['nation'] == $game['nationality']): ?>
-	<a id="action_prisoners" class="ajaxJSON" title="Hand over your prisoner and get a ransom"
+	<a id="action_prisoners" class="ajaxJSON button big-icon" title="Hand over your prisoner and get a ransom"
 		href="<?=base_url('cityhall/prisoners')?>">
 		<svg width="32" height="32" alt="Prisoners">
 			<use xlink:href="#prisoners"></use>
@@ -32,7 +32,7 @@
 		Prisoners
 	</a>
 	<?php endif; ?>
-</section>
+</div>
 
 <?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === true): ?>
 <div id="offer">

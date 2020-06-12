@@ -36,7 +36,7 @@
 
 
 
-                <button type="submit">Play!</button>
+                <button type="submit" class="primary">Play!</button>
             </div>
         </div>
     </fieldset>

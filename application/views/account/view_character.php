@@ -2,43 +2,43 @@
 	<h3>Character Settings</h3>
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Change your account settings, such as name, birthday, presentation"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Change your account settings, such as name, birthday, presentation"
 		href="<?=base_url('account/settings_account')?>">
 		<svg width="32" height="32" class="Account">
 			<use xlink:href="#player"></use>
 		</svg>
 		Account
 	</a>
-	<a class="ajaxHTML" title="Change your email/login adress"
+	<a class="ajaxHTML button big-icon" title="Change your email/login adress"
 		href="<?=base_url('account/settings_email')?>">
 		<svg width="32" height="32" class="Email">
 			<use xlink:href="#message"></use>
 		</svg>
 		Email
 	</a>
-	<a class="ajaxHTML" title="Change your character name, age and such"
+	<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
 		href="<?=base_url('account/settings_character')?>">
 		<svg width="32" height="32" class="Character">
 			<use xlink:href="#crew-man"></use>
 		</svg>
 		Character
 	</a>
-	<a class="ajaxHTML" title="Change your password for login"
+	<a class="ajaxHTML button big-icon" title="Change your password for login"
 		href="<?=base_url('account/settings_password')?>">
 		<svg width="32" height="32" class="Password">
 			<use xlink:href="#key"></use>
 		</svg>
 		Password
 	</a>
-	<a class="ajaxHTML" title="Unregister from this game"
+	<a class="ajaxHTML button big-icon" title="Unregister from this game"
 		href="<?=base_url('account/unregister')?>">
 		<svg width="32" height="32" class="Unregister">
 			<use xlink:href="#trashcan"></use>
 		</svg>
 		Unregister
 	</a>
-</section>
+</div>
 
 <form id="settings" class="ajaxJSON" method="post"
 	action="<?=base_url('account/settings_character_post')?>">
@@ -87,7 +87,7 @@
 
 				<br />
 
-				<button type="submit">Save</button>
+				<button type="submit" class="primary">Save</button>
 			</div>
 		</div>
 	</fieldset>

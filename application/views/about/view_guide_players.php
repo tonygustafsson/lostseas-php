@@ -12,9 +12,9 @@
 	<?php endif; ?>
 </header>
 
-<section class="action-buttons">
+<div class="button-area">
 	<?php if (!$logged_in): ?>
-	<a class="ajaxHTML" title="Presentation about the game"
+	<a class="ajaxHTML button big-icon" title="Presentation about the game"
 		href="<?=base_url('about/presentation')?>">
 		<svg width="32" height="32" class="Start">
 			<use xlink:href="#swords"></use>
@@ -22,81 +22,82 @@
 		Start
 	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML" title="A complete guide for this game"
+	<a class="ajaxHTML button big-icon" title="A complete guide for this game"
 		href="<?=base_url('about/guide_supplies')?>">
 		<svg width="32" height="32" class="Guide">
 			<use xlink:href="#logbook"></use>
 		</svg>
 		Guide
 	</a>
-	<a class="ajaxHTML" title="What's new in here?"
+	<a class="ajaxHTML button big-icon" title="What's new in here?"
 		href="<?=base_url('about/news')?>">
 		<svg width="32" height="32" class="News">
 			<use xlink:href="#magazine"></use>
 		</svg>
 		News
 	</a>
-</section>
+</div>
+
 <div class="divider"></div>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="About food, water, and other stuff"
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="About food, water, and other stuff"
 		href="<?=base_url('about/guide_supplies')?>">
 		<svg width="32" height="32" alt="Food">
 			<use xlink:href="#barrels"></use>
 		</svg>
 		Supplies
 	</a>
-	<a class="ajaxHTML" title="About ships and gun power"
+	<a class="ajaxHTML button big-icon" title="About ships and gun power"
 		href="<?=base_url('about/guide_ships')?>">
 		<svg width="32" height="32" alt="Ships">
 			<use xlink:href="#ship"></use>
 		</svg>
 		Ships
 	</a>
-	<a class="ajaxHTML" title="About crew and how to please them"
+	<a class="ajaxHTML button big-icon" title="About crew and how to please them"
 		href="<?=base_url('about/guide_crew')?>">
 		<svg width="32" height="32" alt="Crew">
 			<use xlink:href="#crew-man"></use>
 		</svg>
 		Crew
 	</a>
-	<a class="ajaxHTML" title="About titles, levels and ranks"
+	<a class="ajaxHTML button big-icon" title="About titles, levels and ranks"
 		href="<?=base_url('about/guide_titles')?>">
 		<svg width="32" height="32" alt="Titles">
 			<use xlink:href="#governor"></use>
 		</svg>
 		Titles
 	</a>
-	<a class="ajaxHTML" title="About money and banking"
+	<a class="ajaxHTML button big-icon" title="About money and banking"
 		href="<?=base_url('about/guide_economy')?>">
 		<svg width="32" height="32" alt="Economy">
 			<use xlink:href="#doubloons"></use>
 		</svg>
 		Economy
 	</a>
-	<a class="ajaxHTML" title="About travling and sea battles"
+	<a class="ajaxHTML button big-icon" title="About travling and sea battles"
 		href="<?=base_url('about/guide_traveling')?>">
 		<svg width="32" height="32" alt="Traveling">
 			<use xlink:href="#compass"></use>
 		</svg>
 		Traveling
 	</a>
-	<a class="ajaxHTML" title="About other players and how to interact with them"
+	<a class="ajaxHTML button big-icon" title="About other players and how to interact with them"
 		href="<?=base_url('about/guide_players')?>">
 		<svg width="32" height="32" alt="Players">
 			<use xlink:href="#player"></use>
 		</svg>
 		Players
 	</a>
-	<a class="ajaxHTML" title="About settings and anonymity"
+	<a class="ajaxHTML button big-icon" title="About settings and anonymity"
 		href="<?=base_url('about/guide_settings')?>">
 		<svg width="32" height="32" alt="Settings">
 			<use xlink:href="#cogs"></use>
 		</svg>
 		Settings
 	</a>
-</section>
+</div>
 
 <div class="divider"></div>
 

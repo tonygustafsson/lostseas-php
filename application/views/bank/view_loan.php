@@ -1,25 +1,25 @@
 <header class="area-header"
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2 title="bank_account"><?=$game['town_human'] . ' ' . $game['place']?>
+	<h2 class="area-header__heading" title="bank_account"><?=$game['town_human'] . ' ' . $game['place']?>
 	</h2>
 	<img src="<?=base_url('assets/images/places/bank_' . $game['nation'] . '.jpg')?>"
 		class="area-header__img" alt="The bank">
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Transfer money to and from your bank account" href="bank">
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Transfer money to and from your bank account" href="bank">
 		<svg width="32" height="32" alt="Savings">
 			<use xlink:href="#savings"></use>
 		</svg>
 		Account
 	</a>
-	<a class="ajaxHTML" title="Take or pay back a loan" href="bank/loan">
+	<a class="ajaxHTML button big-icon" title="Take or pay back a loan" href="bank/loan">
 		<svg width="32" height="32" alt="Loan">
 			<use xlink:href="#loan"></use>
 		</svg>
 		Loans
 	</a>
-</section>
+</div>
 
 <p>
 	You can loan up to 10 000 dbl here, with intrest of 15 percent. Which means that you can owe 11 500 to the bank at

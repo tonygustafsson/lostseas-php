@@ -6,26 +6,26 @@
 		class="area-header__img">
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Buy ships and equipments" href="shipyard">
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Buy ships and equipments" href="shipyard">
 		<svg width="32" height="32" alt="Buy">
 			<use xlink:href="#ship"></use>
 		</svg>
 		Buy
 	</a>
-	<a class="ajaxHTML" title="Sell ships and equipments" href="shipyard/sell">
+	<a class="ajaxHTML button big-icon" title="Sell ships and equipments" href="shipyard/sell">
 		<svg width="32" height="32" alt="Buy">
 			<use xlink:href="#ship"></use>
 		</svg>
 		Sell
 	</a>
-	<a class="ajaxHTML" title="Repair damaged ships" href="shipyard/repair">
+	<a class="ajaxHTML button big-icon" title="Repair damaged ships" href="shipyard/repair">
 		<svg width="32" height="32" alt="Buy">
 			<use xlink:href="#wrench"></use>
 		</svg>
 		Repair
 	</a>
-</section>
+</div>
 
 <p><?=$game['greeting']?>
 </p>
@@ -124,8 +124,8 @@
 
 <p>Buy ships by clicking the images, see their specifications below...</p>
 
-<section class="action-buttons">
-	<a class="ajaxJSON largepic"
+<div class="button-area">
+	<a class="ajaxJSON button big-image"
 		href="<?=base_url('shipyard/buy_ship/brig')?>"
 		rel="Do you really want to buy this brig?">
 		<img src="<?=base_url('assets/images/ships/brig.jpg')?>"
@@ -133,7 +133,7 @@
 		<?=$prices['brig']['buy']?>
 		dbl
 	</a>
-	<a class="ajaxJSON largepic"
+	<a class="ajaxJSON button big-image"
 		href="<?=base_url('shipyard/buy_ship/merchantman')?>"
 		rel="Do you really want to buy this merchantman?">
 		<img src="<?=base_url('assets/images/ships/merchantman.jpg')?>"
@@ -141,7 +141,7 @@
 		<?=$prices['merchantman']['buy']?>
 		dbl
 	</a>
-	<a class="ajaxJSON largepic"
+	<a class="ajaxJSON button big-image"
 		href="<?=base_url('shipyard/buy_ship/galleon')?>"
 		rel="Do you really want to buy this galleon?">
 		<img src="<?=base_url('assets/images/ships/galleon.jpg')?>"
@@ -149,7 +149,7 @@
 		<?=$prices['galleon']['buy']?>
 		dbl
 	</a>
-	<a class="ajaxJSON largepic"
+	<a class="ajaxJSON button big-image"
 		href="<?=base_url('shipyard/buy_ship/frigate')?>"
 		rel="Do you really want to buy this frigate?">
 		<img src="<?=base_url('assets/images/ships/frigate.jpg')?>"
@@ -157,7 +157,7 @@
 		<?=$prices['frigate']['buy']?>
 		dbl
 	</a>
-</section>
+</div>
 
 <table>
 	<tr>

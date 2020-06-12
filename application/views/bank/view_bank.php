@@ -6,20 +6,20 @@
 		class="area-header__img" alt="The bank">
 </header>
 
-<section class="action-buttons">
-	<a class="ajaxHTML" title="Transfer money to and from your bank account" href="bank">
+<div class="button-area">
+	<a class="ajaxHTML button big-icon" title="Transfer money to and from your bank account" href="bank">
 		<svg width="32" height="32" alt="Savings">
 			<use xlink:href="#savings"></use>
 		</svg>
 		Account
 	</a>
-	<a class="ajaxHTML" title="Take or pay back a loan" href="bank/loan">
+	<a class="ajaxHTML button big-icon" title="Take or pay back a loan" href="bank/loan">
 		<svg width="32" height="32" alt="Loan">
 			<use xlink:href="#loan"></use>
 		</svg>
 		Loans
 	</a>
-</section>
+</div>
 
 <p>
 	<?=$game['greeting']?>

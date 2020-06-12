@@ -40,7 +40,7 @@
 	</a>
 </div>
 
-<section class="action-buttons">
+<div class="text-center">
 	<form method="post" id="godmode_change_user" action="">
 		<select name="godmode_change_user">
 			<?php foreach ($players as $this_player): ?>
@@ -52,13 +52,16 @@
 			<?php else: ?>
 			<option
 				value="<?=$this_player['id']?>">
-				TempUser (<?=$this_player['id']?>)</option>
+				TempUser (<?=$this_player['id']?>)
+			</option>
 			<?php endif; ?>
 			<?php else: ?>
 			<?php if ($player['user']['id'] === $this_player['id']): ?>
 			<option
 				value="<?=$this_player['id']?>"
-				selected><?=$this_player['name']?> (<?=$this_player['id']?>)</option>
+				selected><?=$this_player['name']?>
+				(<?=$this_player['id']?>)
+			</option>
 			<?php else: ?>
 			<option
 				value="<?=$this_player['id']?>">
@@ -70,11 +73,11 @@
 			<?php endforeach; ?>
 		</select>
 
-		<a id="godmode_change_user_url" class="ajaxHTML nopic"
-			data-baseurl="<?=base_url('godmode/user')?>"
-			href="<?=base_url('godmode/user/' . $user['id'])?>">Change</a>
+		<a id="godmode_change_user_url" class="ajaxHTML"
+			data-baseurl="<?=base_url('godmode/index')?>"
+			href="<?=base_url('godmode/index/' . $user['id'])?>">Change</a>
 	</form>
-</section>
+</div>
 
 <form method="post" class="ajaxJSON"
 	action="<?=base_url('godmode/user_update')?>">

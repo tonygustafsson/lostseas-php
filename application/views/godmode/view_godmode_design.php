@@ -66,6 +66,12 @@
     Big icon
 </button>
 
+<button class="big-image">
+    <img
+        src="<?=base_url('assets/images/tavern/tavern_dinner.jpg')?>" />
+    Image
+</button>
+
 <h3>Button area</h3>
 
 <div class="button-area">

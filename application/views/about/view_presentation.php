@@ -7,9 +7,9 @@
 	<?php include(__DIR__ . '/../partials/register_form.php'); ?>
 </header>
 
-<section class="action-buttons">
+<div class="button-area">
 	<?php if (!$logged_in): ?>
-	<a class="ajaxHTML" title="Presentation about the game"
+	<a class="ajaxHTML button big-icon" title="Presentation about the game"
 		href="<?=base_url('about/presentation')?>">
 		<svg width="32" height="32" class="Start">
 			<use xlink:href="#swords"></use>
@@ -17,21 +17,21 @@
 		Start
 	</a>
 	<?php endif; ?>
-	<a class="ajaxHTML" title="A complete guide for this game"
+	<a class="ajaxHTML button big-icon" title="A complete guide for this game"
 		href="<?=base_url('about/guide_supplies')?>">
 		<svg width="32" height="32" class="Guide">
 			<use xlink:href="#logbook"></use>
 		</svg>
 		Guide
 	</a>
-	<a class="ajaxHTML" title="What's new in here?"
+	<a class="ajaxHTML button big-icon" title="What's new in here?"
 		href="<?=base_url('about/news')?>">
 		<svg width="32" height="32" class="News">
 			<use xlink:href="#magazine"></use>
 		</svg>
 		News
 	</a>
-</section>
+</div>
 
 <h3>Presentation</h3>
 
