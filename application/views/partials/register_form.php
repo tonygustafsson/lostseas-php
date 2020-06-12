@@ -36,7 +36,7 @@
 
 
 
-                <input type="submit" value="Play!" />
+                <button type="submit">Play!</button>
             </div>
         </div>
     </fieldset>

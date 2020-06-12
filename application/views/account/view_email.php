@@ -56,7 +56,7 @@
 		<input type="email" name="new_email" id="new_email"
 			value="<?=$user['email']?>" />
 
-		<input type="submit" value="Save">
+		<button type="submit">Save</button>
 	</fieldset>
 
 </form>

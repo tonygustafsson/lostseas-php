@@ -67,7 +67,8 @@
 	Hold your mouse over the log entries to see the real time the event happend.
 </p>
 
-<p class="center pagination"><?=$pages?>
+<p class="text-center pagination">
+	<?=$pages?>
 </p>
 
 <div class="divider"></div>
@@ -101,7 +102,8 @@
 <p>No log entries yet...</p>
 <?php endif; ?>
 
-<p class="center pagination"><?=$pages?>
+<p class="text-center pagination">
+	<?=$pages?>
 </p>
 
 <div class="divider"></div>

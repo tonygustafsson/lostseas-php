@@ -45,7 +45,7 @@
 </p>
 <?php endif; ?>
 
-<p class="center">
+<p class="text-center">
 	<img src="<?=base_url('assets/images/spanish_main.jpg')?>"
 		usemap="#image_map" width="500" height="256" alt="The spanish main">
 </p>

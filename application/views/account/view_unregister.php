@@ -54,7 +54,7 @@
 		<label for="password">Password</label>
 		<input type="password" name="password" id="password" />
 
-		<input type="submit" value="Unregister">
+		<button type="submit">Unregister</button>
 	</fieldset>
 
 </form>

@@ -87,7 +87,7 @@
 
 				<br />
 
-				<input type="submit" value="Save" />
+				<button type="submit">Save</button>
 			</div>
 		</div>
 	</fieldset>

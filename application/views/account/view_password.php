@@ -55,7 +55,7 @@
 		<label for="repeated_new_password">Repeat new password</label>
 		<input type="password" name="repeated_new_password" id="repeated_new_password" />
 
-		<br><input type="submit" value="Save">
+		<br><button type="submit">Save</button>
 	</fieldset>
 
 </form>

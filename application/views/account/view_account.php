@@ -55,7 +55,7 @@
 
 		<input type="file" id="profile_picture_select" name="profile_picture_select[]" />
 
-		<input type="submit" value="Upload">
+		<button type="submit">Upload</button>
 	</fieldset>
 </form>
 
@@ -121,7 +121,7 @@
 		<input type="checkbox" id="show_history" name="show_history" <?=($user['show_history'] == 1) ? 'checked' : '' ?>>
 		<label for="show_history">Show my log book and history data</label>
 
-		<br><input type="submit" value="Save">
+		<br><button type="submit">Save</button>
 	</fieldset>
 
 </form>

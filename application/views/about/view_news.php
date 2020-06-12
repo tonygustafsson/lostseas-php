@@ -54,13 +54,14 @@
 			<label for="news_entry">The news</label>
 			<textarea name="news_entry" id="news_form_entry"></textarea>
 
-			<input type="submit" value="Post">
+			<button type="submit">Post</button>
 		</fieldset>
 	</form>
 </section>
 <?php endif; ?>
 
-<p class="center pagination"><?=$pages?>
+<p class="text-center pagination">
+	<?=$pages?>
 </p>
 
 <section id="news_entries">
@@ -103,7 +104,8 @@
 	<?php endif; ?>
 </section>
 
-<p class="center"><?=$pages?>
+<p class="text-center">
+	<?=$pages?>
 </p>
 
 <div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"

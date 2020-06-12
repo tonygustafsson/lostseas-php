@@ -60,7 +60,7 @@
 		<label for="presentation">Presentation</label>
 		<textarea name="presentation"></textarea>
 
-		<br><input type="submit" value="Register">
+		<br><button type="submit">Register</button>
 	</fieldset>
 
 </form>

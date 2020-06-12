@@ -37,7 +37,7 @@
                 </a>
             </p>
 
-            <input class="small" type="submit" value="Log in" style="margin-top: 1em;" />
+            <button type="submit" class="w-100">Login</button>
         </fieldset>
     </form>
 

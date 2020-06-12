@@ -64,8 +64,8 @@
 		</div>
 	</fieldset>
 
-	<p class="right">
+	<p class="text-right">
 		<button type="button" class="js-bank-loan-reset">Reset</button>
-		<input type="submit" value="Transfer">
+		<button type="submit">Transfer</button>
 	</p>
 </form>

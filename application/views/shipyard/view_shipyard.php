@@ -116,7 +116,7 @@
 
 	<p style="text-align: right;">
 		<button type="button" class="js-shipyard-reset">Reset</button>
-		<input type="submit" value="Transfer">
+		<button type="submit">Transfer</button>
 	</p>
 </form>
 

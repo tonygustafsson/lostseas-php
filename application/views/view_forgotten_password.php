@@ -44,7 +44,8 @@
 		<input id="name" type="text" name="name">
 		<input id="email" type="email" name="email">
 
-		<br><input type="submit" value="Reset password">
+		<br />
+		<button type="submit">Reset password</button>
 	</fieldset>
 </form>
 

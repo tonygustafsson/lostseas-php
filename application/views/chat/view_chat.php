@@ -9,7 +9,7 @@
 		<form id="chat_form" method="post"
 			action="<?=base_url('chat/post_chat')?>">
 			<input type="text" id="entry" name="entry" autocomplete="off">
-			<input class="small" type="submit" value="Speak">
+			<button type="submit">Speak</button>
 		</form>
 	</section>
 </div>

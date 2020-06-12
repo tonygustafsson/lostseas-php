@@ -69,12 +69,13 @@
 	<fieldset>
 		<legend>New message</legend>
 		<textarea id="input_message" name="message"></textarea>
-		<input type="submit" value="Send">
+		<button type="submit">Send</button>
 	</fieldset>
 </form>
 <?php endif; ?>
 
-<p class="center"><?=$pages?>
+<p class="text-center">
+	<?=$pages?>
 </p>
 
 <section id="messages_area">

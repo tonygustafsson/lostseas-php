@@ -188,8 +188,8 @@
 		</tr>
 	</table>
 
-	<p style="text-align: right">
-		<input type="submit" value="Save">
+	<p class="text-right">
+		<button type="submit">Save</button>
 	</p>
 
 </form>

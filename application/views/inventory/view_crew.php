@@ -151,7 +151,7 @@
 			<?php endforeach; ?>
 		</select>
 
-		<input type="submit" value="Do it">
+		<button type="submit">Do it</button>
 	</p>
 	<?php endif; ?>
 
