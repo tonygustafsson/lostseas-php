@@ -55,7 +55,7 @@ const areaClick = () => {
     townInfo.remove();
 };
 
-window.addEventListener('ocean-battle-transfer-done', () => {
+const createAreaTriggers = () => {
     const areas = Array.from(document.querySelectorAll('area'));
 
     areas.forEach((area) => {
@@ -64,15 +64,8 @@ window.addEventListener('ocean-battle-transfer-done', () => {
         area.addEventListener('mouseout', areaMouseOut);
         area.addEventListener('click', areaClick);
     });
-});
+};
 
-window.addEventListener('ocean', () => {
-    const areas = Array.from(document.querySelectorAll('area'));
-
-    areas.forEach((area) => {
-        area.addEventListener('mousemove', areaMouseMove);
-        area.addEventListener('mouseover', areaMouseOver);
-        area.addEventListener('mouseout', areaMouseOut);
-        area.addEventListener('click', areaClick);
-    });
-});
+window.addEventListener('ocean-battle-transfer-done', createAreaTriggers);
+window.addEventListener('ocean', createAreaTriggers);
+window.addEventListener('ocean-ignore', createAreaTriggers);
