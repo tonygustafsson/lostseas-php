@@ -10,10 +10,6 @@
 		class="area-header__img">
 </header>
 
-<p>
-	<?=$game['greeting']?>
-</p>
-
 <div class="button-area">
 	<a class="ajaxHTML button big-icon" title="Buy something to eat or drink" href="tavern">
 		<svg width="32" height="32" alt="Buy">
@@ -36,6 +32,10 @@
 		Gamble
 	</a>
 </div>
+
+<p>
+	<?=$game['greeting']?>
+</p>
 
 <p>
 	These items are bought for you and <em>all</em> your crew members. Therefore, the price will depend on
