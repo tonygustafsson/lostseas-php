@@ -30,7 +30,7 @@ class Ocean extends Main
                 $data['error'] = 'You do not have enough water to keep on traveling. Please go to the closest harbor and stock up some water.';
             } else {
                 //Everything is OK for traveling to the ocean!
-                if (rand(1, 2) == 1 && empty($this->data['game']['event_ship']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
+                if (empty($this->data['game']['event_ship']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
                     //Meet a ship!
                     $ship_meeting = $this->gamelib->ship_spec($this->data['game']['manned_cannons'], $this->data['game']['nation']);
                     $ship_meeting['prisoners'] = ($ship_meeting['nation'] == $this->data['game']['enemy'] || $ship_meeting['nation'] == 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
@@ -657,85 +657,85 @@ class Ocean extends Main
 
     public function trade_transfer()
     {
-        if (! empty($this->data['game']['event_ocean_trade'])) {
-            $items = array('food' => 16, 'water' => 12);
-            $trade_worth = $this->data['game']['event_ocean_trade'];
-            $total_cost = 0;
-            $total_load = $this->data['game']['load_current'];
-            $msg_get_list = array();
-            $msg_away_list = array();
+        if (empty($this->data['game']['event_ocean_trade'])) {
+            redirect(base_url($this->data['game']['place']));
+        }
 
-            foreach ($items as $item => $cost) {
-                $new_quantity = $this->input->post($item . '_new_quantity');
-                $current_quantity = $this->data['game'][$item];
+        $items = array('food' => 16, 'water' => 12);
+        $trade_worth = $this->data['game']['event_ocean_trade'];
+        $total_cost = 0;
+        $total_load = $this->data['game']['load_current'];
+        $msg_get_list = array();
+        $msg_away_list = array();
 
-                if ($new_quantity > $current_quantity) {
-                    $total_cost += floor($new_quantity - $current_quantity) * $cost;
-                    $updates[$item]['value'] = $new_quantity;
-                    $msg_get_list[] = floor($new_quantity - $current_quantity) . ' cartons of ' . $item;
-                    $total_load += $new_quantity - $current_quantity;
-                }
+        foreach ($items as $item => $cost) {
+            $new_quantity = $_POST[$item . '_new_quantity'];
+            $current_quantity = $this->data['game'][$item];
+
+            if ($new_quantity > $current_quantity) {
+                $total_cost += floor($new_quantity - $current_quantity) * $cost;
+                $updates[$item]['value'] = $new_quantity;
+                $msg_get_list[] = floor($new_quantity - $current_quantity) . ' cartons of ' . $item;
+                $total_load += $new_quantity - $current_quantity;
             }
+        }
 
-            if (($trade_worth - floor($total_cost)) < 0) {
-                $data['error'] = 'You don\'t have that much barter goods to trade with!';
-                echo json_encode($data);
-            } elseif (($this->data['game']['load_max'] - $total_load) < 0) {
-                $data['error'] = 'Your ships cannot load that much!';
-                echo json_encode($data);
-            } else {
-                $this->data['game']['load_current'] = $total_load;
-                $this->data['game']['event_ocean_trade'] = $updates['event_ocean_trade'] = '';
-                $this->data['game']['event_ship'] = $updates['event_ship'] = '';
+        if (($trade_worth - floor($total_cost)) < 0) {
+            $data['error'] = 'You don\'t have that much barter goods to trade with!';
+            echo json_encode($data);
+        } elseif (($this->data['game']['load_max'] - $total_load) < 0) {
+            $data['error'] = 'Your ships cannot load that much!';
+            echo json_encode($data);
+        } else {
+            $this->data['game']['load_current'] = $total_load;
+            $this->data['game']['event_ocean_trade'] = $updates['event_ocean_trade'] = '';
+            $this->data['game']['event_ship'] = $updates['event_ship'] = '';
 
-                $barter_goods = array('porcelain' => 35, 'spices' => 20, 'silk' => 45, 'medicine' => 40, 'tobacco' => 75, 'rum' => 150);
+            $barter_goods = array('porcelain' => 35, 'spices' => 20, 'silk' => 45, 'medicine' => 40, 'tobacco' => 75, 'rum' => 150);
             
-                foreach ($barter_goods as $item => $cost) {
-                    if ($total_cost > 0) {
-                        $item_trade_away = ($this->data['game'][$item] * $cost < $total_cost) ? $this->data['game'][$item] : ceil($total_cost / $cost);
+            foreach ($barter_goods as $item => $cost) {
+                if ($total_cost > 0) {
+                    $item_trade_away = ($this->data['game'][$item] * $cost < $total_cost) ? $this->data['game'][$item] : ceil($total_cost / $cost);
 
-                        if ($item_trade_away > 0) {
-                            $this->data['game'][$item] -= $item_trade_away;
-                            $updates[$item] = $this->data['game'][$item];
-                            $msg_away_list[] = $item_trade_away . ' cartons of ' . $item;
-                            $total_cost -= $item_trade_away * $cost;
-                        }
+                    if ($item_trade_away > 0) {
+                        $this->data['game'][$item] -= $item_trade_away;
+                        $updates[$item] = $this->data['game'][$item];
+                        $msg_away_list[] = $item_trade_away . ' cartons of ' . $item;
+                        $total_cost -= $item_trade_away * $cost;
+                    }
                         
-                        if ($this->data['user']['sound_effects_play'] == 1) {
-                            $data['playSound'] = 'coins';
-                        }
+                    if ($this->data['user']['sound_effects_play'] == 1) {
+                        $data['playSound'] = 'coins';
                     }
                 }
-
-                if (count($msg_away_list) > 0 && count($msg_get_list) > 0) {
-                    $msg_away = $this->gamelib->readable_list($msg_away_list);
-                    $msg_get = $this->gamelib->readable_list($msg_get_list);
-                    $data['success'] = 'You traded away ' . $msg_away . ' for ' . $msg_get . '.';
-                    
-                    $log_input['entry'] = 'traded away ' . $msg_away . ' for ' . $msg_get . ' with an allied ship.';
-                    $this->Log->create($log_input);
-                } else {
-                    $data['info'] = 'You decided not to trade anything.';
-                }
-
-                $result = $this->Game->update($updates);
-                $data['changeElements'] = $result['changeElements'];
-                
-                $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
-                $data['changeElements']['nav_harbor']['visibility'] = ($this->data['game']['place'] == 'harbor') ? 'block' : 'none';
-                $data['changeElements']['nav_dock']['visibility'] = 'none';
-                $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
-                $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
-                $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
-                
-                $view = ($this->data['game']['place'] == 'ocean') ? 'ocean/view_ocean' : 'harbor/view_harbor';
-                $data['loadView'] = $this->load->view($view, $this->data, true);
-                $data['pushState'] = base_url($this->data['game']['place']);
-
-                echo json_encode($data);
             }
-        } else {
-            redirect(base_url($this->data['game']['place']));
+
+            if (count($msg_away_list) > 0 && count($msg_get_list) > 0) {
+                $msg_away = $this->gamelib->readable_list($msg_away_list);
+                $msg_get = $this->gamelib->readable_list($msg_get_list);
+                $data['success'] = 'You traded away ' . $msg_away . ' for ' . $msg_get . '.';
+                    
+                $log_input['entry'] = 'traded away ' . $msg_away . ' for ' . $msg_get . ' with an allied ship.';
+                $this->Log->create($log_input);
+            } else {
+                $data['info'] = 'You decided not to trade anything.';
+            }
+
+            $result = $this->Game->update($updates);
+            $data['changeElements'] = $result['changeElements'];
+                
+            $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
+            $data['changeElements']['nav_harbor']['visibility'] = ($this->data['game']['place'] == 'harbor') ? 'block' : 'none';
+            $data['changeElements']['nav_dock']['visibility'] = 'none';
+            $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
+            $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
+            $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
+                
+            $view = ($this->data['game']['place'] == 'ocean') ? 'ocean/view_ocean' : 'harbor/view_harbor';
+            $data['loadView'] = $this->load->view($view, $this->data, true);
+            $data['pushState'] = base_url($this->data['game']['place']);
+
+            echo json_encode($data);
         }
     }
 
