@@ -60,10 +60,13 @@ button,
         }
     }
 
-    &[disabled] {
+    &[disabled],
+    &.disabled {
         cursor: default;
         background-color: $lightestgrey;
         box-shadow: none;
+        pointer-events: none;
+        user-select: none;
 
         &:hover {
             box-shadow: none;

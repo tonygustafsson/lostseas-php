@@ -92,6 +92,10 @@ const manipulateDom = (data) => {
                     case 'remove':
                         element.remove();
                         break;
+                    case 'disable':
+                        element.disabled = true;
+                        element.classList.add('disabled');
+                        break;
                     case 'title':
                         element.title = value;
                         break;
