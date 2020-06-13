@@ -43,7 +43,7 @@
                 <?php if (isset($user)): ?>
                 <a class="top-nav-panel__item" title="Continue playing"
                         href="<?=base_url()?>">
-                        <svg width="32" height="32" class="Game">
+                        <svg width="32" height="32" alt="Game">
                                 <use xlink:href="#swords"></use>
                         </svg>
                         Game
@@ -62,7 +62,7 @@
                 <?php if ($user['verified'] == 1): ?>
                 <a class="top-nav-panel__item ajaxHTML" title="Other players"
                         href="<?=base_url('inventory/players')?>">
-                        <svg width="32" height="32" class="Players">
+                        <svg width="32" height="32" alt="Players">
                                 <use xlink:href="#player"></use>
                         </svg>
                         Players
@@ -70,7 +70,7 @@
 
                 <a class="top-nav-panel__item ajaxHTML" title="Chat"
                         href="<?=base_url('chat')?>">
-                        <svg width="32" height="32" class="Chat">
+                        <svg width="32" height="32" alt="Chat">
                                 <use xlink:href="#parrot"></use>
                         </svg>
                         Chat
@@ -80,7 +80,7 @@
                 <a class="top-nav-panel__item top-nav-panel__item--disabled"
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('inventory/players')?>">
-                        <svg width="32" height="32" class="Players">
+                        <svg width="32" height="32" alt="Players">
                                 <use xlink:href="#crew-man"></use>
                         </svg>
                         Players
@@ -89,7 +89,7 @@
                 <a class="top-nav-panel__item top-nav-panel__item--disabled"
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('chat')?>">
-                        <svg width="32" height="32" class="Chat">
+                        <svg width="32" height="32" alt="Chat">
                                 <use xlink:href="#parrot"></use>
                         </svg>
                         Chat
@@ -98,7 +98,7 @@
                 <?php endif; ?>
                 <a class="top-nav-panel__item ajaxHTML" title="What's new in here?"
                         href="<?=base_url('about')?>">
-                        <svg width="32" height="32" class="About">
+                        <svg width="32" height="32" alt="About">
                                 <use xlink:href="#globe"></use>
                         </svg>
                         About
@@ -107,7 +107,7 @@
                 <?php if ($user['verified'] == 1): ?>
                 <a class="top-nav-panel__item ajaxHTML" title="Change your settings"
                         href="<?=base_url('account/settings_account')?>">
-                        <svg width="32" height="32" class="Settings">
+                        <svg width="32" height="32" alt="Settings">
                                 <use xlink:href="#cogs"></use>
                         </svg>
                         Settings
@@ -117,7 +117,7 @@
                 <a class="top-nav-panel__item top-nav-panel__item--disabled"
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('account/settings_account')?>">
-                        <svg width="32" height="32" class="Settings">
+                        <svg width="32" height="32" alt="Settings">
                                 <use xlink:href="#cogs"></use>
                         </svg>
                         Settings
@@ -126,18 +126,31 @@
                 <?php endif; ?>
                 <a class="top-nav-panel__item" title="Log out from this game"
                         href="<?=base_url('account/logout')?>">
-                        <svg width="32" height="32" class="Quit">
+                        <svg width="32" height="32" alt="Quit">
                                 <use xlink:href="#door"></use>
                         </svg>
                         Quit
                 </a>
 
                 <a href="#" id="music_control" title="Control music and sound effects" id="music_control"
-                        class="top-nav-panel__item top-nav-panel__item--music-control"
+                        class="top-nav-panel__item top-nav-panel__item--icon-only"
                         data-autoplay="<?=($user['music_play'] == 1) ? 'yes' : 'no';?>"
                         data-musicvolume="<?=$user['music_volume']?>">
-                        <svg width="24" height="24" class="Sound controls">
+                        <svg width="24" height="24" alt="Sound controls">
                                 <use xlink:href="#sound"></use>
+                        </svg>
+                </a>
+
+                <a href="#" title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only">
+                        <svg width="24" height="24" alt="Facebook">
+                                <use xlink:href="#facebook"></use>
+                        </svg>
+                </a>
+
+                <a href="#" title="Talk to each other at our Slack Chat"
+                        class="top-nav-panel__item top-nav-panel__item--icon-only">
+                        <svg width="24" height="24" alt="Slack">
+                                <use xlink:href="#slack"></use>
                         </svg>
                 </a>
                 <?php else: ?>

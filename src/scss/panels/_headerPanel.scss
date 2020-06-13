@@ -94,7 +94,14 @@ header {
             }
         }
 
-        &--music-control {
+        &--icon-only {
+            align-self: flex-end;
+
+            &:first {
+                background: red;
+                margin-left: auto;
+            }
+
             svg {
                 margin: 0;
             }
