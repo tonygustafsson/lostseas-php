@@ -60,13 +60,12 @@ const onSliderChange = (inputId, sliderValue) => {
 
 const createSlider = (sliderId, inputId, start, minimum, maximum) => {
     const sliderEl = document.getElementById(sliderId);
-    const input = document.getElementById(inputId);
 
     if (!sliderEl) {
         return;
     }
 
-    const slider = noUiSlider
+    noUiSlider
         .create(sliderEl, {
             start: start,
             connect: 'lower',
@@ -96,7 +95,6 @@ const createSliders = () => {
             continue;
         }
 
-        let productMaxEl = document.getElementById(product + '_max');
         let amount = parseInt(productQuantityEl.value, 10);
         let productPriceEl = document.getElementById(product + '_price');
         let productPrice = parseInt(productPriceEl.value, 10);
@@ -197,10 +195,14 @@ const takeAll = (e) => {
 
 window.addEventListener('ocean-trade', (e) => {
     const takeNecessitiesTrigger = document.querySelector('.js-ocean-trade-take-necessities');
-    takeNecessitiesTrigger.addEventListener('click', takeNecessities);
+    if (takeNecessitiesTrigger) {
+        takeNecessitiesTrigger.addEventListener('click', takeNecessities);
+    }
 
     const takeAllTrigger = document.querySelector('.js-ocean-trade-take-all');
-    takeAllTrigger.addEventListener('click', takeAll);
+    if (takeAllTrigger) {
+        takeAllTrigger.addEventListener('click', takeAll);
+    }
 
     createSliders();
 });

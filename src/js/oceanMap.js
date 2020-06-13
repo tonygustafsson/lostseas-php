@@ -67,5 +67,7 @@ const createAreaTriggers = () => {
 };
 
 window.addEventListener('ocean-battle-transfer-done', createAreaTriggers);
-window.addEventListener('ocean', createAreaTriggers);
 window.addEventListener('ocean-ignore', createAreaTriggers);
+window.addEventListener('ocean-flee', createAreaTriggers);
+window.addEventListener('ocean-trade', createAreaTriggers);
+window.addEventListener('ocean', createAreaTriggers);

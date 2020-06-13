@@ -27,9 +27,10 @@
 <div class="button-area">
 	<a class="button js-ocean-trade-take-necessities" href="#">Take necessities</a>
 	<a class="button js-ocean-trade-take-all" href="#">Take all</a><br>
-	<a class="ajaxHTML button 
-		href=" <?=base_url('ocean/trade_cancel')?>">No
-		thanks</a>
+	<a class="ajaxHTML button"
+		href="<?=base_url('ocean/trade_cancel')?>">
+		No thanks
+	</a>
 	<a class="ajaxHTML button primary"
 		href="<?=base_url('ocean/trade_transfer')?>">Trade</a>
 </div>
