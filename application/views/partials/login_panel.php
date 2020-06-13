@@ -41,9 +41,18 @@
         </fieldset>
     </form>
 
-    <a href="https://www.facebook.com/lostseas" class="action-panel__facebook-logo" title="Visit us on Facebook">
-        <svg width="32" height="32" alt="Facebook">
-            <use xlink:href="#facebook"></use>
-        </svg>
-    </a>
+    <div class="action-panel__logos">
+        <a target="_blank" href="https://www.facebook.com/lostseas" title="Visit us on Facebook">
+            <svg width="32" height="32" alt="Facebook">
+                <use xlink:href="#facebook"></use>
+            </svg>
+        </a>
+
+        <a target="_blank" href="https://join.slack.com/t/lostseas/shared_invite/zt-f38krf6a-lGs1cFO9nKO~NJsJadA3VA"
+            title="Talk to each other and the creator on Slack Chat">
+            <svg width="32" height="32" alt="Slack">
+                <use xlink:href="#slack"></use>
+            </svg>
+        </a>
+    </div>
 </aside>

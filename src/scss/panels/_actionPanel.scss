@@ -81,10 +81,11 @@
         }
     }
 
-    &__facebook-logo {
-        svg {
-            display: block;
-            margin: 0 auto;
+    &__logos {
+        text-align: center;
+
+        a {
+            margin: 0.5rem;
         }
     }
 
