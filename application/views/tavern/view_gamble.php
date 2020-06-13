@@ -1,3 +1,7 @@
+<?php
+    $sailors_disabled = $game['event_sailors'] === 'banned' ? 'disabled' : '';
+?>
+
 <header class="area-header"
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
 	<h2 class="area-header__heading"><?=$game['town_human'] . ' ' . $game['place']?>
@@ -13,15 +17,14 @@
 		</svg>
 		Buy
 	</a>
-	<?php if ($game['event_sailors'] != 'banned'): ?>
-	<a id="actions_sailors" class="ajaxHTML button big-icon" title="Talk to the sailors at the bar"
+	<a id="actions_sailors" <?=$sailors_disabled?> class="ajaxHTML
+		button big-icon" title="Talk to the sailors at the bar"
 		href="<?=base_url('tavern/sailors')?>">
 		<svg width="32" height="32" alt="Sailors">
 			<use xlink:href="#pirate"></use>
 		</svg>
 		Sailors
 	</a>
-	<?php endif; ?>
 	<a class="ajaxHTML button big-icon" title="Gamble for gold!" href="tavern/gamble">
 		<svg width="32" height="32" alt="Gamble">
 			<use xlink:href="#dices"></use>

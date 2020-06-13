@@ -125,7 +125,7 @@ class Tavern extends Main
             $action = rand(1, 100);
 
             if ($action <= 50) {
-                //The sailors will ask to join your crew
+                // The sailors will ask to join your crew
                 $this->data['game']['event_sailors'] = $sailors;
                 
                 $updates['user_id'] = $this->data['user']['id'];
@@ -134,7 +134,7 @@ class Tavern extends Main
                 
                 $this->load->view_ajax('tavern/view_sailors', $this->data);
             } elseif ($action > 50 && $action <= 85) {
-                //The sailors will fight you and you will win
+                // The sailors will fight you and you will win
                 $loot = $sailors * rand(10, 100);
                 $updates['user_id'] = $this->data['user']['id'];
                 $updates['doubloons']['add'] = true;
@@ -144,8 +144,10 @@ class Tavern extends Main
                 if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'sword_fight';
                 }
+
                 $data['success'] = 'You fight with some sailors and take ' . $loot . ' dbl!';
-                $data['changeElements']['actions_sailors']['remove'] = true;
+                $this->data['msg'] = 'You fight with some sailors and take ' . $loot . ' dbl!';
+                $data['changeElements']['actions_sailors']['disable'] = true;
                 $data['pushState'] = base_url('tavern');
                 
                 $result = $this->Game->update($updates);
@@ -153,6 +155,8 @@ class Tavern extends Main
                 if ($result['doubloons']['success']) {
                     $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
                 }
+
+                $this->data['json'] = json_encode($data);
                         
                 $log_input['entry'] = 'fought with some sailors and took ' . $loot . ' dbl.';
                 $this->Log->create($log_input);
@@ -169,24 +173,28 @@ class Tavern extends Main
                 
                 if ($crew_result['success']) {
                     $data['error'] = 'You fight with some sailors and you lose! Your crews health is decreased by ' . $health_loss . '%!';
+                    $this->data['msg'] = 'You fight with some sailors and you lose! Your crews health is decreased by ' . $health_loss . '%!';
                     $log_input['entry'] = 'fought with some sailors and lost. The crews health is decreased by ' . $health_loss . '%.';
 
                     if ($crew_result['death_count'] > 0) {
                         $data['error'] .= ' Unfortunately ' . $crew_result['death_count'] . ' of your crew members died because of injuries.';
+                        $this->data['msg'] .= ' Unfortunately ' . $crew_result['death_count'] . ' of your crew members died because of injuries.';
                         $log_input['entry'] .= $crew_result['death_count'] . ' of the crew members died because of injuries.';
                     }
                     
                     if ($this->data['user']['sound_effects_play'] == 1) {
                         $data['playSound'] = 'sword_fight';
                     }
-                    $data['changeElements']['actions_sailors']['remove'] = true;
+                    $data['changeElements']['actions_sailors']['disable'] = true;
                     
                     $this->data['game']['crew_health_lowest'] = $crew_result['min_health'];
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
 
                     $data['pushState'] = base_url('tavern');
-                    
+
+                    $this->data['json'] = json_encode($data);
+
                     $game_updates['event_sailors'] = 'banned';
                     $game_result = $this->Game->update($game_updates);
                                 
@@ -215,9 +223,10 @@ class Tavern extends Main
 
                 if ($crew_output['created_crew_count'] == $sailors) {
                     $data['success'] = 'You took ' . $sailors . ' sailors in as your crew members.';
+                    $this->data['msg'] = 'You took ' . $sailors . ' sailors in as your crew members.';
 
                     $data['changeElements']['offer']['remove'] = true;
-                    $data['changeElements']['actions_sailors']['remove'] = true;
+                    $data['changeElements']['actions_sailors']['disable'] = true;
                     $data['pushState'] = base_url('tavern');
                     
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
@@ -232,6 +241,7 @@ class Tavern extends Main
                 }
             } else {
                 $data['info'] = 'You had a nice conversation with the lads, but eventually told them off.';
+                $this->data['msg'] = 'You had a nice conversation with the lads, but eventually told them off.';
                 
                 $data['changeElements']['offer']['remove'] = true;
                 $data['changeElements']['actions_sailors']['remove'] = true;
