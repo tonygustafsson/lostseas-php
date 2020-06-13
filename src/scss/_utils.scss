@@ -31,3 +31,15 @@
 .flex-align-center {
     align-items: center;
 }
+
+.container {
+    padding: #{$spacing * 2} #{$spacing * 4};
+
+    & + & {
+        padding-top: 0;
+    }
+
+    @include mobile {
+        padding: #{$spacing * 2} $spacing;
+    }
+}
