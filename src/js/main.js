@@ -8,7 +8,6 @@ import './avatar';
 import './account';
 import './bankAccount';
 import './bankLoan';
-import './chat';
 import './inventory';
 import './history';
 import './initPageLoad';

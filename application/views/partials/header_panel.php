@@ -68,14 +68,6 @@
                         Players
                 </a>
 
-                <a class="top-nav-panel__item ajaxHTML" title="Chat"
-                        href="<?=base_url('chat')?>">
-                        <svg width="32" height="32" alt="Chat">
-                                <use xlink:href="#parrot"></use>
-                        </svg>
-                        Chat
-                </a>
-
                 <?php else: ?>
                 <a class="top-nav-panel__item top-nav-panel__item--disabled"
                         title="This option will be enabled when you are registered!"
@@ -84,15 +76,6 @@
                                 <use xlink:href="#crew-man"></use>
                         </svg>
                         Players
-                </a>
-
-                <a class="top-nav-panel__item top-nav-panel__item--disabled"
-                        title="This option will be enabled when you are registered!"
-                        href="<?=base_url('chat')?>">
-                        <svg width="32" height="32" alt="Chat">
-                                <use xlink:href="#parrot"></use>
-                        </svg>
-                        Chat
                 </a>
 
                 <?php endif; ?>

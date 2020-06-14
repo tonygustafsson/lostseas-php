@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -71,41 +71,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 $active_group = 'default';
-$query_builder = TRUE;
+$query_builder = true;
 
 $environment = 'dev'; // dev, test or prod
 
 switch ($environment) {
-	case 'prod':
-		$db['default']['hostname'] = "lostseas-177202.mysql.binero.se";
-		$db['default']['database'] = "177202-lostseas";
-		$db['default']['username'] = "177202_qn90643";
-		$db['default']['password'] = "0HoyPirateDataBase!";
-		break;
-	case 'test':
-		$db['default']['hostname'] = "lostseas-test-177202.mysql.binero.se";
-		$db['default']['database'] = "177202-lostseas-test";
-		$db['default']['username'] = "177202_fv25729";
-		$db['default']['password'] = "0HoyPirateDataBase!";
-		break;
-	default:
-		$db['default']['hostname'] = "db";
-		$db['default']['database'] = "lostseas";
-		$db['default']['username'] = "lostseas";
-		$db['default']['password'] = "lostseas";
+    case 'prod':
+        $db['default']['hostname'] = "lostseas-177202.mysql.binero.se";
+        $db['default']['database'] = "177202-lostseas";
+        $db['default']['username'] = "177202_qn90643";
+        $db['default']['password'] = "0HoyPirateDataBase!";
+        break;
+    case 'test':
+        $db['default']['hostname'] = "lostseas-test-177202.mysql.binero.se";
+        $db['default']['database'] = "177202-lostseas-test";
+        $db['default']['username'] = "177202_fv25729";
+        $db['default']['password'] = "0HoyPirateDataBase!";
+        break;
+    default:
+        $db['default']['hostname'] = "db";
+        $db['default']['database'] = "lostseas";
+        $db['default']['username'] = "lostseas";
+        $db['default']['password'] = "lostseas";
 }
 
 $db['default']['dbdriver'] = "mysqli";
 $db['default']['dbprefix'] = "";
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
+$db['default']['pconnect'] = true;
+$db['default']['db_debug'] = true;
+$db['default']['cache_on'] = false;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
 $db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+$db['default']['autoinit'] = true;
+$db['default']['stricton'] = false;
 
 // My own database variables
 $db['default']['user_table'] 		= "ls_user";
@@ -113,7 +113,6 @@ $db['default']['game_table'] 		= "ls_game";
 $db['default']['ship_table']		= "ls_ship";
 $db['default']['crew_table'] 		= "ls_crew";
 $db['default']['messages_table'] 	= "ls_messages";
-$db['default']['chat_table'] 		= "ls_chat";
 $db['default']['log_table'] 		= "ls_log";
 $db['default']['news_table']		= "ls_news";
 $db['default']['history_table'] 	= "ls_history";
