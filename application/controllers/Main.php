@@ -119,7 +119,7 @@ class Main extends CI_Controller
                 //Try to get user data based on the email (normal login)
                 $user_data = $this->User->get('email', $email);
                 
-                if ($user_data['password'] !== $password) {
+                if ($user_data && $user_data['password'] !== $password) {
                     //User exists but the password didn't match
                     return false;
                 }
