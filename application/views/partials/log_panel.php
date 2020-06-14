@@ -1,7 +1,7 @@
 <aside id="log_panel" class="log-panel">
     <h3>What's going on?</h3>
 
-    <?php if (isset($log_entries)): ?>
+    <?php if (isset($log_entries) && count($log_entries) > 0): ?>
     <?php unset($log_entries['num_rows']); ?>
 
     <?php foreach ($log_entries as $entry): ?>
@@ -17,5 +17,7 @@
         <?=$entry['entry']?>
     </div>
     <?php endforeach; ?>
+    <?php else: ?>
+    <p><em>Nothing yet...</em></p>
     <?php endif; ?>
 </aside>
