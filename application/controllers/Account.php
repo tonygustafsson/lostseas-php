@@ -25,13 +25,6 @@ class Account extends Main
         //Manually updates the last activity to be able to track online users
         $game_sql = "UPDATE " . $this->db->game_table . " SET last_activity = now() WHERE user_id = '" . $this->data['user']['id'] . "'";
         $this->db->query($game_sql);
-        
-        $user_sql = "SELECT new_messages FROM " . $this->db->user_table . " WHERE id = '" . $this->data['user']['id'] . "'";
-        $messages = $this->db->query($user_sql);
-        $messages = $messages->row_array();
-        $data['changeElements']['inventory_new_messages']['text'] = $messages['new_messages'];
-        
-        echo json_encode($data);
     }
     
     public function register_temp()

@@ -134,7 +134,7 @@
 
 	<h3>Unregister</h3>
 
-	<p>Yes, yes, you can unregister. And no, nothing will be saved (chat entries will not be erased),
+	<p>Yes, yes, you can unregister. And no, nothing will be saved,
 		and you will not be contacted again. Promise!</p>
 
 	<div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"

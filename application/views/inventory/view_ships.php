@@ -49,14 +49,6 @@
 			Log book
 		</a>
 		<?php endif; ?>
-		<a class="ajaxHTML button big-icon"
-			title="Say something to <?=$player['user']['name']?>"
-			href="inventory/messages/<?=$this->uri->segment(3)?>">
-			<svg width="16" height="16" alt="Messages">
-				<use xlink:href="#message"></use>
-			</svg>
-			Messages
-		</a>
 	</div>
 
 	<h4>Ships</h4>

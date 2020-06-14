@@ -20,8 +20,7 @@ const manipulateDom = (data) => {
         'inventory_tobacco',
         'inventory_rum',
         'inventory_bank_account',
-        'inventory_bank_loan',
-        'inventory_new_messages'
+        'inventory_bank_loan'
     ];
 
     if (data.changeElements) {

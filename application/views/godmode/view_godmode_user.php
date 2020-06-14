@@ -179,12 +179,6 @@
 						value="<?=$player['user']['show_history']?>">
 				</td>
 			</tr>
-			<tr>
-				<td>notify_new_messages</td>
-				<td><input type="number" id="notify_new_messages" name="notify_new_messages"
-						value="<?=$player['user']['notify_new_messages']?>">
-				</td>
-			</tr>
 		</table>
 
 		<h3>Presentation</h3>

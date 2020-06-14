@@ -105,9 +105,6 @@
 			<textarea name="presentation"
 				id="presentation"><?=$user['presentation']?></textarea>
 
-			<input type="checkbox" id="notify_new_messages" name="notify_new_messages" <?=($user['notify_new_messages'] == 1) ? 'checked' : '' ?>>
-			<label for="notify_new_messages">Email me messages from other players</label><br />
-
 			<input type="checkbox" id="show_email" name="show_email" <?=($user['show_email'] == 1) ? 'checked' : '' ?>>
 			<label for="show_email">Show my email address</label><br />
 

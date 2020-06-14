@@ -87,7 +87,6 @@ class User extends CI_Model
         $this->db->delete($this->db->ship_table, $erase_user_id);
         $this->db->delete($this->db->log_table, $erase_user_id);
         $this->db->delete($this->db->history_table, $erase_user_id);
-        $this->db->delete($this->db->messages_table, $erase_user_id);
         
         if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_id . '.jpg')) {
             unlink(APPPATH . '../assets/images/profile_pictures/' . $user_id . '.jpg');

@@ -14,8 +14,6 @@ const updateLastActivity = () => {
     axios({
         method: 'post',
         url: url
-    }).then((result) => {
-        manipulateDom(result.data.manipulateDom);
     });
 
     updateInterval = setTimeout(updateLastActivity, updateActivityEveryMs);

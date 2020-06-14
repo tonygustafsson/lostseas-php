@@ -79,18 +79,6 @@
         </a>
     </div>
 
-    <div class="inventory_item"
-        style="display: <?=($user['new_messages'] > 0) ? 'block' : 'none'?>">
-        <a class="ajaxHTML" title="You have new messages!"
-            href="inventory/messages/<?=$user['id']?>">
-            <svg alt="Message" width="24" height="24">
-                <use xlink:href="#message"></use>
-            </svg>
-            <span id="inventory_new_messages"><?=$user['new_messages']?></span>
-            <?=($user['new_messages'] > 1) ? 'messages' : 'message'; ?>
-        </a>
-    </div>
-
     <!-- Section: Game status -->
 
     <div class="inventory_item">

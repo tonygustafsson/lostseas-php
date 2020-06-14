@@ -112,7 +112,6 @@ $db['default']['user_table'] 		= "ls_user";
 $db['default']['game_table'] 		= "ls_game";
 $db['default']['ship_table']		= "ls_ship";
 $db['default']['crew_table'] 		= "ls_crew";
-$db['default']['messages_table'] 	= "ls_messages";
 $db['default']['log_table'] 		= "ls_log";
 $db['default']['news_table']		= "ls_news";
 $db['default']['history_table'] 	= "ls_history";

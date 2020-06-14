@@ -49,14 +49,6 @@
 			Log book
 		</a>
 		<?php endif; ?>
-		<a class="ajaxHTML button big-icon"
-			title="Say something to <?=$player['user']['name']?>"
-			href="inventory/messages/<?=$this->uri->segment(3)?>">
-			<svg width="16" height="16" alt="Messages">
-				<use xlink:href="#message"></use>
-			</svg>
-			Messages
-		</a>
 	</div>
 
 	<h4>Player: <?=$player['user']['name']?>
@@ -69,7 +61,7 @@
 				alt="<?=$player['user']['name']?>">
 		</div>
 
-		<div>
+		<div class="w-100">
 			<table class="table-fixed">
 
 				<?php if ($player['user']['email'] != "" && $player['user']['show_email'] == 1): ?>
@@ -140,7 +132,7 @@
 				alt="<?=$player['game']['character_name']?>">
 		</div>
 
-		<div>
+		<div class="w-100">
 			<table class="table-fixed" id="inventory" style="padding-bottom: 2em;">
 
 				<tr>

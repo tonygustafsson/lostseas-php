@@ -81,7 +81,7 @@
 			<a class="ajaxHTML" title="Enter God Mode!"
 				href="<?=base_url('godmode/index/' . $user['id'])?>">
 				<svg width="32" height="32" class="God mode">
-					<use xlink:href="#parrot-front"></use>
+					<use xlink:href="#parrot"></use>
 				</svg>
 			</a>
 		</section>

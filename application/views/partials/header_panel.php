@@ -125,14 +125,16 @@
                         <span>Sound</span>
                 </a>
 
-                <a href="#" title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only">
+                <a title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only"
+                        target="_blank" href="https://www.facebook.com/lostseas">
                         <svg width="24" height="24" alt="Facebook">
                                 <use xlink:href="#facebook"></use>
                         </svg>
                         <span>Facebook</span>
                 </a>
 
-                <a href="#" title="Talk to each other at our Slack Chat"
+                <a title="Talk to each other at our Slack Chat" target="_blank"
+                        href="https://join.slack.com/t/lostseas/shared_invite/zt-f38krf6a-lGs1cFO9nKO~NJsJadA3VA"
                         class="top-nav-panel__item top-nav-panel__item--icon-only">
                         <svg width="24" height="24" alt="Slack">
                                 <use xlink:href="#slack"></use>
