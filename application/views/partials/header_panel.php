@@ -133,18 +133,20 @@
                 </a>
 
                 <a href="#" id="music_control" title="Control music and sound effects" id="music_control"
-                        class="top-nav-panel__item top-nav-panel__item--icon-only"
+                        class="top-nav-panel__item top-nav-panel__item--icon-only ml-auto"
                         data-autoplay="<?=($user['music_play'] == 1) ? 'yes' : 'no';?>"
                         data-musicvolume="<?=$user['music_volume']?>">
                         <svg width="24" height="24" alt="Sound controls">
                                 <use xlink:href="#sound"></use>
                         </svg>
+                        <span>Sound</span>
                 </a>
 
                 <a href="#" title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only">
                         <svg width="24" height="24" alt="Facebook">
                                 <use xlink:href="#facebook"></use>
                         </svg>
+                        <span>Facebook</span>
                 </a>
 
                 <a href="#" title="Talk to each other at our Slack Chat"
@@ -152,6 +154,7 @@
                         <svg width="24" height="24" alt="Slack">
                                 <use xlink:href="#slack"></use>
                         </svg>
+                        <span>Slack</span>
                 </a>
                 <?php else: ?>
                 <p style="padding-left: 2em;"><em>A pirate influenced web game.</em></p>

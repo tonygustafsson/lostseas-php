@@ -79,6 +79,10 @@ header {
             margin-right: 8px;
         }
 
+        span {
+            display: none;
+        }
+
         &:hover {
             background-color: $lightblue;
             color: #000;
@@ -95,21 +99,25 @@ header {
         }
 
         &--icon-only {
-            align-self: flex-end;
-
-            &:first {
-                background: red;
-                margin-left: auto;
-            }
+            background-color: transparent;
+            border-left: 1px solid $lightgrey;
 
             svg {
                 margin: 0;
             }
 
             @include mobile {
-                background: white;
+                background: #fff;
                 width: 100%;
                 padding-bottom: 15px;
+
+                svg {
+                    margin-right: 16px;
+                }
+
+                span {
+                    display: inline-block;
+                }
             }
         }
 
