@@ -117,6 +117,8 @@
 			</tr>
 		</table>
 
+		<hr />
+
 		<h3>Settings</h3>
 
 		<table class="godmode">
@@ -180,6 +182,8 @@
 				</td>
 			</tr>
 		</table>
+
+		<hr />
 
 		<h3>Presentation</h3>
 

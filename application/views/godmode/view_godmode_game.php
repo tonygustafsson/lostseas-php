@@ -153,6 +153,8 @@
 			</tr>
 		</table>
 
+		<hr />
+
 		<h3>Possessions</h3>
 
 		<table class="godmode">
@@ -247,6 +249,8 @@
 			</tr>
 		</table>
 
+		<hr />
+
 		<h3>Victories</h3>
 
 		<table class="godmode">
@@ -286,6 +290,8 @@
 				</td>
 			</tr>
 		</table>
+
+		<hr />
 
 		<h3>Events</h3>
 
