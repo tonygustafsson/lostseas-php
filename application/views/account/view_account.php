@@ -58,6 +58,8 @@
 		</fieldset>
 	</form>
 
+	<hr />
+
 	<form id="settings" class="ajaxJSON" method="post"
 		action="<?=base_url('account/settings_account_post')?>">
 

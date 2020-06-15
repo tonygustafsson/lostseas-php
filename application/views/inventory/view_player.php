@@ -186,6 +186,8 @@
 	</p>
 	<?php endif; ?>
 
+	<hr />
+
 	<h4 id="capital">Capital</h4>
 
 	<p>You can transfer doubloons at the bank.</p>
@@ -226,6 +228,8 @@
 		</tr>
 
 	</table>
+
+	<hr />
 
 	<h4 id="stock">Stock</h4>
 
@@ -322,6 +326,8 @@
 		</tr>
 
 	</table>
+
+	<hr />
 
 	<h4>Victories</h4>
 

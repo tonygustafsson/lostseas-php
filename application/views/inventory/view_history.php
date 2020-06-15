@@ -51,8 +51,6 @@
 		<?php endif; ?>
 	</div>
 
-	<hr />
-
 	<h4>History</h4>
 
 	<p>You can change the history by using the form below.</p>
@@ -120,6 +118,8 @@
 		data-chart-data="<?=$chart_data?>"></div>
 
 	<?php if ($history !== false): ?>
+	<hr />
+
 	<table style="padding-bottom: 2em;">
 		<?php foreach ($history as $row): ?>
 		<tr>
