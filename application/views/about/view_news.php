@@ -9,7 +9,7 @@
 </header>
 <?php else: ?>
 <div class="container">
-	<h3>News</h3>
+	<h2>News</h2>
 </div>
 <?php endif; ?>
 
