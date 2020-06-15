@@ -108,7 +108,7 @@
 	<p>You don't own any ships...</p>
 	<?php endif; ?>
 
-	<div class="divider"></div>
+	<hr />
 
 	<h4>Fixings</h4>
 

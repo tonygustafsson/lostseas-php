@@ -53,7 +53,11 @@ img {
     max-width: 100%;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     .container &:first-of-type {
         margin-top: 0;
     }
@@ -68,7 +72,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 0.25rem;
 }
 
@@ -110,4 +114,13 @@ a {
     &.disabled {
         pointer-events: none;
     }
+}
+
+hr {
+    height: 30px;
+    margin: 3em auto;
+    background: url('../../assets/images/design/divider.svg');
+    background-size: contain;
+    background-position: 50% 0;
+    border: none;
 }

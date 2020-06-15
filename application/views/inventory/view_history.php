@@ -51,7 +51,7 @@
 		<?php endif; ?>
 	</div>
 
-	<div class="divider"></div>
+	<hr />
 
 	<h4>History</h4>
 

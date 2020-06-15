@@ -59,7 +59,7 @@
 		<?=$pages?>
 	</p>
 
-	<div class="divider"></div>
+	<hr />
 
 	<?php if ($player['log']): ?>
 	<?php $current_week = $player['log'][0]['week']; ?>
@@ -94,5 +94,5 @@
 		<?=$pages?>
 	</p>
 
-	<div class="divider"></div>
+	<hr />
 </div>

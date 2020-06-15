@@ -120,7 +120,7 @@
 	</p>
 	<?php endif; ?>
 
-	<div class="divider"></div>
+	<hr />
 
 	<h4 id="character">Character: <?=$player['game']['character_name']?>
 	</h4>

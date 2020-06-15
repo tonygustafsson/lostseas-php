@@ -62,7 +62,7 @@
 		<?php endforeach; ?>
 	</table>
 
-	<div class="divider"></div>
+	<hr />
 
 	<?php if ($user['admin'] == 1): ?>
 	<h3>Temporary players</h3>
