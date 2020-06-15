@@ -40,7 +40,7 @@
 		</a>
 	</div>
 
-	<div class="divider"></div>
+	<hr />
 
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon" title="About food, water, and other stuff"
@@ -101,7 +101,7 @@
 		</a>
 	</div>
 
-	<div class="divider"></div>
+	<hr />
 
 	<h3>The need for ships</h3>
 

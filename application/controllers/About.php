@@ -7,8 +7,18 @@ class About extends Main
     public function index()
     {
         $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-
-        $this->guide_supplies();
+        $this->data['character'] = $this->gamelib->generate_character();
+        
+        $this->data['meta_description'] = "What is needed in the game, like food and water. Also about the trading goods.";
+        $this->data['meta_keywords'] = "lost seas, trading goods, supplies, food, water, tobacco, rum, medicine, spices, porcelain";
+        
+        if ($this->data['logged_in'] === false) {
+            $log_input['entries'] = 8;
+            $log_input['get_num_rows'] = false;
+            $this->data['log_entries'] = $this->Log->get($log_input);
+        }
+        
+        $this->load->view_ajax('about/view_guide', $this->data);
     }
 
     public function presentation()
@@ -158,142 +168,6 @@ class About extends Main
             
             echo json_encode($data);
         }
-    }
-    
-    public function guide_supplies()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "What is needed in the game, like food and water. Also about the trading goods.";
-        $this->data['meta_keywords'] = "lost seas, trading goods, supplies, food, water, tobacco, rum, medicine, spices, porcelain";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_supplies', $this->data);
-    }
-
-    public function guide_ships()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "About the different kind of ships in the game, and about the usage of cannons and rafts.";
-        $this->data['meta_keywords'] = "lost seas, ships, brigs, galleons, frigates, merchantmans, cannons, rafts";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_ships', $this->data);
-    }
-
-    public function guide_crew()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "About your crew members. How to get them, how to please them.";
-        $this->data['meta_keywords'] = "lost seas, crew members, crew, staff";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_crew', $this->data);
-    }
-
-    public function guide_titles()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "It's all about titles in Lost Seas! How to become different titles, and their rewards.";
-        $this->data['meta_keywords'] = "lost seas, titles, levels, rewards, nations";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_titles', $this->data);
-    }
-
-    public function guide_economy()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "How to get more money in this game, and about saving your doubloons.";
-        $this->data['meta_keywords'] = "lost seas, money, doubloons, bank, cash, loans";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_economy', $this->data);
-    }
-
-    public function guide_traveling()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "About traveling in this piratey game. From town to town in different ships, fighting enemies.";
-        $this->data['meta_keywords'] = "lost seas, travel, sea, ocean, attack, flee, fight, ships";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_traveling', $this->data);
-    }
-
-    public function guide_players()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "How to interact with other players, and follow their progress.";
-        $this->data['meta_keywords'] = "lost seas, players, interact, chatting, messaging";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_players', $this->data);
-    }
-
-    public function guide_settings()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "How to change your settings in this game, like password or email address.";
-        $this->data['meta_keywords'] = "lost seas, settings, email address, unsubscribe, password";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_guide_settings', $this->data);
     }
 
     public function copyright()

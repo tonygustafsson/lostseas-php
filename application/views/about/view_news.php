@@ -25,7 +25,7 @@
 		</a>
 		<?php endif; ?>
 		<a class="ajaxHTML button big-icon" title="A complete guide for this game"
-			href="<?=base_url('about/guide_supplies')?>">
+			href="<?=base_url('about')?>">
 			<svg width="32" height="32" class="Guide">
 				<use xlink:href="#logbook"></use>
 			</svg>
