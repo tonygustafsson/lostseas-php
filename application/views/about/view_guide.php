@@ -59,7 +59,8 @@
 		</li>
 		<li>
 			<a
-				href="<?=base_url('about')?>#titles">Titles</a>
+				href="<?=base_url('about')?>#social-status">Social
+				status</a>
 		</li>
 		<li>
 			<a
@@ -73,10 +74,6 @@
 			<a
 				href="<?=base_url('about')?>#players">Players</a>
 		</li>
-		<li>
-			<a
-				href="<?=base_url('about')?>#settings">Settings</a>
-		</li>
 	</ul>
 
 	<hr />
@@ -84,8 +81,8 @@
 	<h3 id="supplies">Supplies</h3>
 
 	<h4>Buying and selling</h4>
-	<img src="<?=base_url()?>assets/images/design/about_shop.jpg"
-		alt="Shop" align="right" style="margin: 20px 20px 10px 10px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?=base_url('assets/images/guide/guide-shop-cashier.png')?>"
+		alt="Shop cashier" class="border img-right">
 
 	<p>At the shop you can buy and sell everything your crew needs to be strong and healthy. For the most part you just
 		want
@@ -115,11 +112,10 @@
 		crew these products by clicking in the inventory, choose which users to please, and choose which product to use,
 		and
 		click "Do it!".
-
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/design/about_rum.jpg"
-			alt="Rum" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
 	</p>
+
+	<img src="<?=base_url('assets/images/guide/guide-shop.png')?>"
+		alt="The shop" class="img-center border">
 
 	<h4>Medicine</h4>
 
@@ -143,11 +139,6 @@
 
 	<h3 id="ships">Ships</h3>
 
-	<h4>The need for ships</h4>
-
-	<img src="<?=base_url()?>assets/images/design/about_shipyard.jpg"
-		alt="Shipyard" align="right" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
-
 	<p>If you lose in battle, and only have one ship you would have to swim to land with nothing at all (if you don't
 		have
 		any rafts).
@@ -170,7 +161,7 @@
 
 	<h4>Different ship types</h4>
 
-	<table style="padding-bottom: 20px;">
+	<table>
 		<tr>
 			<th>Type</th>
 			<th>Min crew</th>
@@ -245,6 +236,9 @@
 		medicine after battles,
 		or visit the towns healer when you are in land again.</p>
 
+	<img src="<?=base_url('assets/images/guide/guide-crew.png')?>"
+		alt="The crew" class="img-center border">
+
 	<h4>Getting more crew members</h4>
 
 	<p>When you win battles at sea some of their crew will offer to join you. You can then choose how many of them you
@@ -263,14 +257,9 @@
 		name and description. You can also see for how long they have been with you, how much money they have gained of
 		being your crew.</p>
 
-	<p style="text-align: center;">
-		<img src="<?=base_url('assets/images/design/about_crew.jpg')?>"
-			alt="Crew" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
-	</p>
-
 	<hr />
 
-	<h3 id="titles">Titles</h3>
+	<h3 id="social-status">Social status</h3>
 
 	<h4>Nations</h4>
 	<p>This game takes place at the Spanish Main, in the Caribbean Sea at the 1600th. There are four nations, battling
@@ -279,8 +268,8 @@
 		English, French, Spanish and Dutch.</p>
 
 	<h4>Levels</h4>
-	<img src="<?=base_url()?>assets/images/design/about_governor.jpg"
-		alt="Governor" align="right" style="margin: 20px 20px 10px 10px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?=base_url('assets/images/guide/guide-social-status.png')?>"
+		alt="Governor" class="border img-right">
 
 	<p>The level system in this game is pretty simple. You belong to a nation, and for every ship you win over from that
 		nations enemy will raise your
@@ -301,7 +290,7 @@
 		reach the highest title.</p>
 
 	<h4>The different titles</h4>
-	<table style="padding: 1em;">
+	<table>
 		<tr>
 			<th>Level</th>
 			<th>Title</th>
@@ -404,7 +393,7 @@
 
 	<h3 id="economy">Economy</h3>
 
-	<h4>Getting money</h4>
+	<h4>Getting some doubloons</h4>
 
 	<p>The currency in this game is doubloons (dbl), for which you can buy and sell almost anything. You will mostly get
 		money from looting ships at sea, but you
@@ -412,8 +401,8 @@
 
 	<h4>Saving money</h4>
 
-	<img src="<?=base_url('assets/images/design/about_bank.jpg')?>"
-		alt="Bank" style="margin-right: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
+	<img src="<?=base_url('assets/images/guide/guide-bank.png')?>"
+		alt="The bank" class="img-center border">
 
 	<p>There is a banking system in this game. When you lose a battle at sea, you will lose all your doubloons, no
 		matter
@@ -444,22 +433,48 @@
 
 	<h4>Towns and nations</h4>
 
-	<p>
-		The english towns are: Charles Towne, Barbados, Port Royale and Belize.<br>
-		The french towns are: Tortuga, Leogane, Martinique and Biloxi.<br>
-		The spanish towns are: Panama, Havana, Villa Hermosa and San Juan.<br>
-		The dutch towns are: Bonaire, Curacao, St. Martin and St. Eustatius.
-	</p>
+	<p>All existing towns actually existed in the 1600th. The towns nationality varied from year to year though.</p>
 
-	<p>All these towns actually existed in the 1600th. The towns nationality varied from year to year though.</p>
+	<h5>English towns</h5>
 
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/spanish_main.jpg"
-			alt="Spanish main" style="margin: 20px 10px 10px 20px; border: 3px solid rgb(163, 162, 126);">
-	</p>
+	<ul>
+		<li>Charles Towne</li>
+		<li>Barbados</li>
+		<li>Port Royale</li>
+		<li>Belize</li>
+	</ul>
 
-	<p>You can visit which of these you want, no matter which nationality you belongs to. This can change in the
-		future...
+	<h5>French towns</h5>
+
+	<ul>
+		<li>Tortuga</li>
+		<li>Leogane</li>
+		<li>Martinique</li>
+		<li>Biloxi</li>
+	</ul>
+
+	<h5>Spanish towns</h5>
+
+	<ul>
+		<li>Panama</li>
+		<li>Havana</li>
+		<li>Villa Hermosa</li>
+		<li>San Juan</li>
+	</ul>
+
+	<h5>Dutch towns</h5>
+
+	<ul>
+		<li>Bonaire</li>
+		<li>Curacao</li>
+		<li>St. Martin</li>
+		<li>St. Eustatius</li>
+	</ul>
+
+	<img src="<?=base_url('assets/images/spanish_main.jpg')?>"
+		alt="Spanish main" class="border img-center">
+
+	<p>You can visit which of these you want, no matter which nationality you belongs to.
 	</p>
 
 	<h4>Time</h4>
@@ -481,10 +496,8 @@
 		a higher level,
 		travel to your enemies coasts.</p>
 
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/design/about_attack.jpg"
-			alt="Attack" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
-	</p>
+	<img src="<?=base_url('assets/images/guide/guide-ship-meeting.png')?>"
+		alt="Ship meeting" class="border img-center">
 
 	<p>I would suggest that you don't attack ships that have more cannons than you have. The is a random factor here, so
 		you
@@ -497,10 +510,8 @@
 		won or lost during
 		the battle. And if you win, you will be able to chose how much you want to loot from the other ship.</p>
 
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/design/about_won.jpg"
-			alt="Won" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
-	</p>
+	<img src="<?=base_url('assets/images/guide/guide-ship-won.png')?>"
+		alt="Ship win" class="w-50 border img-center">
 
 	<h4>Trading at sea</h4>
 
@@ -522,47 +533,10 @@
 		about others are pretty much
 		the same as you can see about yourself in your inventory.</p>
 
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/design/about_players.jpg"
-			alt="Players" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
-	</p>
-
+	<img src="<?=base_url('assets/images/guide/guide-players.png')?>"
+		alt="Players" class="border img-center">
 
 	<hr />
-
-	<h3 id="settings">Settings</h3>
-
-	<p>You can change your name, gender, birthday and presentation as you wish by clicking Settings at the top menu.</p>
-
-	<p>You can also chose what other players will be able to see about you.</p>
-
-	<h4>Changing your password</h4>
-
-	<p>You can change your password with Settings > Password, and it will change directly. If you forgot your password
-		though,
-		you can reset it by trying to login, click "Forgot my password". You can there type in your email address you
-		registered with, and
-		you will receive an email with a reset verification. Click it and choose your new password.</p>
-
-	<p style="text-align: center;">
-		<img src="<?=base_url()?>assets/images/design/about_password.jpg"
-			alt="Password" style="margin-top: 10px; margin-bottom: 10px; border: 3px solid rgb(163, 162, 126);">
-	</p>
-
-	<p>Your password will <strong>always</strong> be encrypted, and no one (including admins) can see your password.</p>
-
-	<h4>Changing your email address</h4>
-
-	<p>It's possible to change your login / email address too. Click Settings > Email, and type in your new email
-		address.
-		You will receive a
-		verification link to your new email address, and if you click it, the address will change. You will then have to
-		relogin with your new user ID.</p>
-
-	<h4>Unregister</h4>
-
-	<p>Yes, yes, you can unregister. And no, nothing will be saved,
-		and you will not be contacted again. Promise!</p>
 
 	<div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
 		data-url="<?=base_url('account/avatar_selector/')?>/<?=$character['character_gender_long']?>">
