@@ -14,7 +14,7 @@
             <?php if ($this->session->userdata('email') || $this->session->userdata('password')): ?>
             <?php $this->session->unset_userdata('email') ?>
             <?php $this->session->unset_userdata('password') ?>
-            <p style="margin: 0.2em 1em; background: #d96868; padding: 0.3em;">Your login was denied...</p>
+            <div class="error">Your login was denied...</div>
             <?php endif; ?>
 
             <?php if (isset($user['success'])): ?>
