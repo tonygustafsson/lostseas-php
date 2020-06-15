@@ -2,7 +2,7 @@
 	title="<?=$game['town_human'] . ' ' . $game['place']?>">
 	<h2 class="area-header__heading"><?=$game['town_human'] . ' ' . $game['place']?>
 	</h2>
-	<img src="<?=base_url('assets/images/places/cityhall_' . $game['nation'] . '.jpg')?>"
+	<img src="<?=base_url('assets/images/places/cityhall_' . $game['nation'] . '.png')?>"
 		class="area-header__img">
 </header>
 
