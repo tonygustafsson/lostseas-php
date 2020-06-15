@@ -105,15 +105,7 @@
                         </svg>
                         Settings
                 </a>
-
                 <?php endif; ?>
-                <a class="top-nav-panel__item" title="Log out from this game"
-                        href="<?=base_url('account/logout')?>">
-                        <svg width="32" height="32" alt="Quit">
-                                <use xlink:href="#door"></use>
-                        </svg>
-                        Quit
-                </a>
 
                 <a href="#" id="music_control" title="Control music and sound effects" id="music_control"
                         class="top-nav-panel__item top-nav-panel__item--icon-only ml-auto"
@@ -141,6 +133,25 @@
                         </svg>
                         <span>Slack</span>
                 </a>
+
+                <?php if (isset($user['admin']) && $user['admin'] == 1): ?>
+                <a title="Enter God Mode!"
+                        href="<?=base_url('godmode/index/' . $user['id'])?>"
+                        class="ajaxHTML top-nav-panel__item top-nav-panel__item--icon-only">
+                        <svg width="24" height="24" alt="Parrot">
+                                <use xlink:href="#godmode"></use>
+                        </svg>
+                        <span>God Mode</span>
+                </a>
+
+                <a class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
+                        href="<?=base_url('account/logout')?>">
+                        <svg width="24" height="24" alt="Log out">
+                                <use xlink:href="#logout"></use>
+                        </svg>
+                        <span>Log out</span>
+                </a>
+                <?php endif; ?>
                 <?php else: ?>
                 <p style="padding-left: 2em;"><em>A pirate influenced web game.</em></p>
                 <?php endif; ?>
