@@ -143,6 +143,7 @@
                         </svg>
                         <span>God Mode</span>
                 </a>
+                <?php endif; ?>
 
                 <a class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
                         href="<?=base_url('account/logout')?>">
@@ -151,7 +152,7 @@
                         </svg>
                         <span>Log out</span>
                 </a>
-                <?php endif; ?>
+
                 <?php else: ?>
                 <p style="padding-left: 2em;"><em>A pirate influenced web game.</em></p>
                 <?php endif; ?>
