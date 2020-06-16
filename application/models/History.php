@@ -5,13 +5,41 @@ class History extends CI_Model
     public function get($input)
     {
         $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->data['user']['id'];
-        $input['weeks'] = (isset($input['weeks'])) ? $input['weeks'] : 20;
+        $input['weeks'] = (isset($input['weeks'])) ? $input['weeks'] : 50;
     
         $sql = "SELECT * FROM " . $this->db->history_table . " WHERE user_id = '" . $input['user_id'] . "' ORDER BY created DESC LIMIT " . $input['weeks'];
         $history_data = $this->db->query($sql);
         $history_data = ($history_data->num_rows() > 0) ? array_reverse($history_data->result_array()) : false;
         
         return $history_data;
+    }
+
+    public function get_chart_data($history_data)
+    {
+        $chart_data = array();
+        $chart_labels = array();
+                
+        if ($history_data) {
+            foreach ($history_data as $index => $history) {
+                if ($index % 4) {
+                    // Take every fourth row
+                    continue;
+                }
+
+                $chart_data['labels'][] = 'W' . $history['week'];
+
+                $chart_data['doubloons'][] = $history['doubloons'];
+                $chart_data['ships'][] = $history['ships'];
+                $chart_data['crew_members'][] = $history['crew_members'];
+                $chart_data['crew_health'][] = $history['crew_health'];
+                $chart_data['crew_mood'][] = $history['crew_mood'];
+                $chart_data['stock_value'][] = $history['stock_value'];
+                $chart_data['victories'][] = $history['victories'];
+                $chart_data['level'][] = $history['level'];
+            }
+        }
+    
+        return $chart_data;
     }
 
     public function create($input = false)

@@ -51,11 +51,6 @@
 		<?php endif; ?>
 	</div>
 
-	<h4>History</h4>
-
-	<p>You can change the history by using the form below.</p>
-
-	<?php if (isset($history)): ?>
 	<div class="text-center">
 		<form method="post" class="ajaxJSON"
 			action="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
@@ -65,45 +60,12 @@
 			Weeks:
 			<select name="weeks" id="history_weeks">
 				<?php foreach ($history_weeks as $week): ?>
-				<?php if ($this->uri->segment(5) != ""): ?>
-				<?php if ($week == $this->uri->segment(5)): ?>
+				<?php if (($this->uri->segment(4) != "" && $week == $this->uri->segment(4)) || $this->uri->segment(4) == "" && $week == 50): ?>
 				<option value="<?=$week?>" selected><?=$week?>
 				</option>
 				<?php else: ?>
 				<option value="<?=$week?>"><?=$week?>
 				</option>
-				<?php endif; ?>
-				<?php else: ?>
-				<?php if ($week == 20): ?>
-				<option value="<?=$week?>" selected><?=$week?>
-				</option>
-				<?php else: ?>
-				<option value="<?=$week?>"><?=$week?>
-				</option>
-				<?php endif; ?>
-				<?php endif; ?>
-				<?php endforeach; ?>
-			</select>
-
-			Data:
-			<select name="data" id="history_data">
-				<?php foreach ($history_data as $key => $val): ?>
-				<?php if ($this->uri->segment(4) != ""): ?>
-				<?php if ($key == $this->uri->segment(4)): ?>
-				<option value="<?=$key?>" selected><?=$val?>
-				</option>
-				<?php else: ?>
-				<option value="<?=$key?>"><?=$val?>
-				</option>
-				<?php endif; ?>
-				<?php else: ?>
-				<?php if ($key == 'doubloons'): ?>
-				<option value="<?=$key?>" selected><?=$val?>
-				</option>
-				<?php else: ?>
-				<option value="<?=$key?>"><?=$val?>
-				</option>
-				<?php endif; ?>
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
@@ -113,28 +75,110 @@
 		</form>
 	</div>
 
-	<div class="js-chartist-history" width="750" height="400"
-		data-chart-labels="<?=$chart_labels?>"
-		data-chart-data="<?=$chart_data?>"></div>
+	<div class="inventory-charts">
+		<div class="inventory-charts__item">
+			<h4>Victories</h4>
 
-	<?php if ($history !== false): ?>
-	<hr />
+			<?php if ($chart_data['victories']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['victories']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
 
-	<table style="padding-bottom: 2em;">
-		<?php foreach ($history as $row): ?>
-		<tr>
-			<td style="width: 25%">Week <?=$row['week']?>
-			</td>
-			<td><?=$row[$data_type]?> <?=$data_type_suffix[$data_type]?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-	</table>
-	<?php else: ?>
-	<p><em>No data available...</em></p>
-	<?php endif; ?>
+		<div class="inventory-charts__item">
+			<h4>Level</h4>
 
-	<?php else: ?>
-	<p><em>No data available...</em></p>
-	<?php endif; ?>
+			<?php if ($chart_data['level']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['level']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Stock value</h4>
+
+			<?php if ($chart_data['stock_value']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['stock_value']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Ships</h4>
+
+			<?php if ($chart_data['ships']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['ships']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Doubloons</h4>
+
+			<?php if ($chart_data['doubloons']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['doubloons']?>">
+			</div>
+
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Crew members</h4>
+
+			<?php if ($chart_data['crew_members']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['crew_members']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Crew health</h4>
+
+			<?php if ($chart_data['crew_health']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['crew_health']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+
+		<div class="inventory-charts__item">
+			<h4>Crew mood</h4>
+
+			<?php if ($chart_data['crew_mood']): ?>
+			<div class="js-chartist-history" width="750" height="400"
+				data-chart-labels="<?=$chart_data['labels']?>"
+				data-chart-data="<?=$chart_data['crew_mood']?>">
+			</div>
+			<?php else: ?>
+			<p><em>No data available...</em></p>
+			<?php endif; ?>
+		</div>
+	</div>
 </div>

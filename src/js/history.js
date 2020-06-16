@@ -1,18 +1,16 @@
 import { Line as ChartistLine } from 'chartist';
 
-const initGraph = () => {
-    const chartHistoryEl = document.querySelector('.js-chartist-history');
-
+const initGraph = (chartHistoryEl) => {
     if (!chartHistoryEl || !chartHistoryEl.dataset.chartData || !chartHistoryEl.dataset.chartLabels) {
         return;
     }
 
     let chartData = chartHistoryEl.dataset.chartData;
-    chartData = chartData.split(',');
+    chartData = JSON.parse(chartData);
     chartData = chartData.map((x) => parseInt(x, 10));
 
     let chartLabels = chartHistoryEl.dataset.chartLabels;
-    chartLabels = chartLabels.split(',');
+    chartLabels = JSON.parse(chartLabels);
 
     const data = {
         labels: chartLabels,
@@ -20,16 +18,8 @@ const initGraph = () => {
     };
 
     const options = {
-        axisX: {
-            labelOffset: {
-                x: -15
-            }
-        },
         axisY: {
-            onlyInteger: true,
-            labelOffset: {
-                y: 6
-            }
+            onlyInteger: true
         },
         showArea: true,
         fullWidth: true,
@@ -40,19 +30,7 @@ const initGraph = () => {
         }
     };
 
-    const responsiveOptions = [
-        [
-            'screen and (min-width: 800px)',
-            {
-                chartPadding: {
-                    right: 120,
-                    left: 120
-                }
-            }
-        ]
-    ];
-
-    new ChartistLine(chartHistoryEl, data, options, responsiveOptions);
+    new ChartistLine(chartHistoryEl, data, options);
 };
 
 const graphSettingsLinkClick = (e) => {
@@ -61,8 +39,7 @@ const graphSettingsLinkClick = (e) => {
     const link = e.target;
     const baseUrl = document.getElementById('base_url').value;
     const weeksSettingsEl = document.getElementById('history_weeks');
-    const dataTypeEl = document.getElementById('history_data');
-    const url = `${baseUrl}/${dataTypeEl.value}/${weeksSettingsEl.value}`;
+    const url = `${baseUrl}/${weeksSettingsEl.value}`;
 
     link.href = url;
     link.click();
@@ -74,7 +51,15 @@ const initGraphSettingsChange = () => {
     link.addEventListener('click', graphSettingsLinkClick);
 };
 
+const initGraphs = () => {
+    const chartHistoryEls = Array.from(document.querySelectorAll('.js-chartist-history'));
+
+    chartHistoryEls.forEach((el) => {
+        initGraph(el);
+    });
+};
+
 window.addEventListener('inventory-history', () => {
-    initGraph();
+    initGraphs();
     initGraphSettingsChange();
 });

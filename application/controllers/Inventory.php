@@ -48,46 +48,27 @@ class Inventory extends Main
 
     public function history()
     {
-        if ($this->data['user']['id'] == $this->data['player']['user']['id'] || $this->data['player']['user']['show_history'] == 1) {
-            $this->load->model('history');
+        $this->load->model('history');
 
-            $this->data['history_weeks'] = array(5, 10, 20, 40, 60, 80, 100);
-            $this->data['history_data'] = array('doubloons' => 'Doubloons', 'ships' => 'Ships', 'crew_members' => 'Crew members', 'crew_mood' => 'Crew mood', 'crew_health' => 'Crew health', 'cannons' => 'Cannons', 'stock_value' => 'Stock value', 'level' => 'Level', 'victories' => 'Victories');
-
-            $this->data['data_type_suffix'] = array('doubloons' => 'dbl', 'ships' => 'ships', 'crew_members' => 'crew members', 'crew_mood' => 'mood / 40', 'crew_health' => '% health', 'cannons' => 'cannons', 'stock_value' => 'dbl', 'level' => '', 'victories' => 'victories');
-            $this->data['data_type'] = 'doubloons';
-            $this->data['data_title'] = 'Doubloons';
-            
-            if ($this->uri->segment(4) != "" && $this->uri->segment(5) != "") {
-                $history_input['weeks'] = (is_numeric($this->uri->segment(5)) && $this->uri->segment(5) <= 100 && $this->uri->segment(5) > 0) ? $this->uri->segment(5) : 20;
-                $this->data['data_type'] = (array_key_exists($this->uri->segment(4), $this->data['history_data'])) ? $this->uri->segment(4) : 'doubloons';
-                $this->data['data_title'] = (array_key_exists($this->uri->segment(4), $this->data['history_data'])) ? $this->data['history_data'][$this->uri->segment(4)] : 'Doubloons';
-            }
-            
-            $history_input['user_id'] = $this->data['player']['user']['id'];
-            $history_data = $this->history->get($history_input);
-            $this->data['history'] = $history_data;
-            $chart_data = array();
-            $chart_labels = array();
-            
-            if ($history_data) {
-                foreach ($history_data as $index => $history) {
-                    if ($index % 4) {
-                        continue;
-                    }
-
-                    $chart_data[] = $history[$this->data['data_type']];
-                    $chart_labels[] = 'W' . $history['week'];
-                }
-            }
-
-            $chart_data = join(",", $chart_data);
-            $chart_labels = join(",", $chart_labels);
+        $this->data['history_weeks'] = array(10, 25, 50, 100, 500);
                     
-            $this->data['chart_data'] = $chart_data;
-            $this->data['chart_labels'] = $chart_labels;
-        }
-    
+        $history_input['user_id'] = $this->data['player']['user']['id'];
+        $history_input['weeks'] = $this->uri->segment(4) != "" ? $this->uri->segment(4) : 50;
+
+        $history_data = $this->history->get($history_input);
+        $chart_data = $this->history->get_chart_data($history_data, 'doubloons');
+
+        $this->data['chart_data']['labels'] = htmlspecialchars(json_encode($chart_data['labels']));
+
+        $this->data['chart_data']['victories'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['victories'])) : false;
+        $this->data['chart_data']['level'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['level'])) : false;
+        $this->data['chart_data']['stock_value'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['stock_value'])) : false;
+        $this->data['chart_data']['ships'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['ships'])) : false;
+        $this->data['chart_data']['doubloons'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['doubloons'])) : false;
+        $this->data['chart_data']['crew_members'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_members'])) : false;
+        $this->data['chart_data']['crew_mood'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_mood'])) : false;
+        $this->data['chart_data']['crew_health'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_health'])) : false;
+
         $this->load->view_ajax('inventory/view_history', $this->data);
     }
 
