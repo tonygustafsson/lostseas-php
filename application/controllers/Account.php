@@ -235,7 +235,6 @@ class Account extends Main
                 $user_input['birthday'] = $this->input->post('year') . '-' . $this->input->post('month') . '-' . $this->input->post('day') . ' 12:00:00';
                 $user_input['presentation'] = $this->input->post('presentation');
                 $user_input['notify_new_messages'] = ($this->input->post('notify_new_messages') == 'on') ? 1 : 0;
-                $user_input['show_email'] = ($this->input->post('show_email') == 'on') ? 1 : 0;
                 $user_input['show_gender'] = ($this->input->post('show_gender') == 'on') ? 1 : 0;
                 $user_input['show_age'] = ($this->input->post('show_age') == 'on') ? 1 : 0;
                 

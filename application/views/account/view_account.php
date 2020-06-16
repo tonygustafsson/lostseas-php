@@ -107,9 +107,6 @@
 			<textarea name="presentation"
 				id="presentation"><?=$user['presentation']?></textarea>
 
-			<input type="checkbox" id="show_email" name="show_email" <?=($user['show_email'] == 1) ? 'checked' : '' ?>>
-			<label for="show_email">Show my email address</label><br />
-
 			<input type="checkbox" id="show_gender" name="show_gender" <?=($user['show_gender'] == 1) ? 'checked' : '' ?>>
 			<label for="show_gender">Show my gender</label><br />
 

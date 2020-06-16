@@ -61,12 +61,12 @@
 
 		<div class="w-100">
 			<table class="table-fixed">
-
-				<?php if ($player['user']['email'] != "" && $player['user']['show_email'] == 1): ?>
+				<?php if ($player['user']['email'] != "" && $player['user']['id'] == $user['id']): ?>
 				<tr>
 					<td>Email</td>
 					<td><a
 							href="mailto:<?=$player['user']['email']?>"><?=$player['user']['email']?></a>
+						(only shown for you)
 					</td>
 				</tr>
 				<?php endif; ?>
