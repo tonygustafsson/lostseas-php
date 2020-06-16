@@ -81,6 +81,11 @@
 			<input type="radio" name="gender" value="F" id="female" checked /> <label for="female">Female</label>
 			<?php endif; ?>
 
+			<br />
+
+			<input type="checkbox" id="show_gender" name="show_gender" <?=($user['show_gender'] == 1) ? 'checked' : '' ?>>
+			<label for="show_gender">Show my gender</label><br />
+
 			<label for="day, month, year">Birthday</label>
 			<select name="day">
 				<?php for ($x = 1; $x <= 31; $x++): ?>
@@ -103,15 +108,14 @@
 				<?php endfor; ?>
 			</select>
 
-			<label for="presentation">Presentation</label>
-			<textarea name="presentation"
-				id="presentation"><?=$user['presentation']?></textarea>
-
-			<input type="checkbox" id="show_gender" name="show_gender" <?=($user['show_gender'] == 1) ? 'checked' : '' ?>>
-			<label for="show_gender">Show my gender</label><br />
+			<br />
 
 			<input type="checkbox" id="show_age" name="show_age" <?=($user['show_age'] == 1) ? 'checked' : '' ?>>
 			<label for="show_age">Show my age</label><br />
+
+			<label for="presentation">Presentation</label>
+			<textarea name="presentation"
+				id="presentation"><?=$user['presentation']?></textarea>
 
 			<br />
 			<button type="submit" class="primary">Save</button>
