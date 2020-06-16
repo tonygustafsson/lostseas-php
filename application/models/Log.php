@@ -6,16 +6,11 @@ class Log extends CI_Model
     {
         $input['first_entry'] = (isset($input['first_entry'])) ? $input['first_entry'] : 0;
         $input['entries'] = (isset($input['entries'])) ? $input['entries']	: 20;
-        $input['privacy_ignored'] = (isset($input['privacy_ignored'])) ? $input['privacy_ignored'] : false;
 
         if (isset($input['user_id'])) {
             $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
         }
-        
-        if ($input['privacy_ignored'] === false) {
-            $this->db->where('show_history', 1);
-        }
-        
+               
         //Query for getting logs
         $this->db->select($this->db->log_table . '.id, ' . $this->db->game_table . '.character_name, ' . $this->db->game_table . '.character_avatar, ' . $this->db->game_table . '.character_gender, ' . $this->db->log_table . '.user_id, time, ' . $this->db->log_table . '.week, entry');
         $this->db->join($this->db->user_table, 'ls_user.id = ls_log.user_id');
@@ -30,10 +25,6 @@ class Log extends CI_Model
             //Query for num rows, count_all_result did not work with join?
             if (isset($input['user_id'])) {
                 $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
-            }
-            
-            if ($input['privacy_ignored'] === false) {
-                $this->db->where('show_history', 1);
             }
 
             $this->db->select($this->db->log_table . '.id');

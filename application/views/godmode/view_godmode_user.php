@@ -175,12 +175,6 @@
 						value="<?=$player['user']['show_email']?>">
 				</td>
 			</tr>
-			<tr>
-				<td>show_history</td>
-				<td><input type="number" id="show_history" name="show_history"
-						value="<?=$player['user']['show_history']?>">
-				</td>
-			</tr>
 		</table>
 
 		<hr />

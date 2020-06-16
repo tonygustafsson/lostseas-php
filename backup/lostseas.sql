@@ -225,7 +225,6 @@ CREATE TABLE `ls_user` (
   `show_gender` tinyint(1) NOT NULL DEFAULT '1',
   `show_age` tinyint(1) NOT NULL DEFAULT '1',
   `show_email` tinyint(1) NOT NULL DEFAULT '1',
-  `show_history` tinyint(1) NOT NULL DEFAULT '1',
   `notify_new_messages` tinyint(1) NOT NULL DEFAULT '1',
   `new_messages` tinyint NOT NULL DEFAULT '0',
   `password_pin` varchar(32) DEFAULT NULL,

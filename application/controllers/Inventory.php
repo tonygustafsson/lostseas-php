@@ -277,7 +277,6 @@ class Inventory extends Main
         $log_input['user_id'] = $this->data['player']['user']['id'];
         $log_input['first_entry'] = $get_entry_first;
         $log_input['entries'] = $get_entry_last;
-        $log_input['privacy_ignored'] = ($this->data['player']['user']['id'] === $this->data['user']['id']) ? true : false;
         $this->data['player']['log'] = $this->Log->get($log_input);
         
         //Set up pagination

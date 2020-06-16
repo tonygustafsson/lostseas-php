@@ -238,7 +238,6 @@ class Account extends Main
                 $user_input['show_email'] = ($this->input->post('show_email') == 'on') ? 1 : 0;
                 $user_input['show_gender'] = ($this->input->post('show_gender') == 'on') ? 1 : 0;
                 $user_input['show_age'] = ($this->input->post('show_age') == 'on') ? 1 : 0;
-                $user_input['show_history'] = ($this->input->post('show_history') == 'on') ? 1 : 0;
                 
                 $data['success'] = 'Successfully updated your settings.';
                 

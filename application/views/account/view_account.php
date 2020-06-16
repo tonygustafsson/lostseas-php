@@ -116,10 +116,8 @@
 			<input type="checkbox" id="show_age" name="show_age" <?=($user['show_age'] == 1) ? 'checked' : '' ?>>
 			<label for="show_age">Show my age</label><br />
 
-			<input type="checkbox" id="show_history" name="show_history" <?=($user['show_history'] == 1) ? 'checked' : '' ?>>
-			<label for="show_history">Show my log book and history data</label>
-
-			<br><button type="submit" class="primary">Save</button>
+			<br />
+			<button type="submit" class="primary">Save</button>
 		</fieldset>
 
 	</form>

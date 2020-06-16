@@ -31,7 +31,6 @@
 			</svg>
 			Crew
 		</a>
-		<?php if ($user['id'] == $player['user']['id'] || $player['user']['show_history'] == 1): ?>
 		<a class="ajaxHTML button big-icon"
 			title="See graphs and data about <?=$player['game']['character_name']?>s history"
 			href="inventory/history/<?=$this->uri->segment(3)?>">
@@ -48,7 +47,6 @@
 			</svg>
 			Log book
 		</a>
-		<?php endif; ?>
 	</div>
 
 	<h4>Ships</h4>
