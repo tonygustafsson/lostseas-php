@@ -47,33 +47,33 @@
 	<div class="button-area">
 		<a class="ajaxJSON button big-image" title="Buy dinners for you and your crew members"
 			href="<?=base_url('tavern/buy_post/dinners')?>">
-			<img src="<?=base_url('assets/images/tavern/tavern_dinner.jpg')?>"
+			<img src="<?=base_url('assets/images/tavern/tavern-dinner.png')?>"
 				title="Increases your crew members health by +25 and their mood by +3">
-			Dinners<br><?=floor($prices['tavern_dinners']['buy'] * ($game['crew_members'] + 1))?>
+			Dinner<br /><?=floor($prices['tavern_dinners']['buy'] * ($game['crew_members'] + 1))?>
 			dbl
 		</a>
 
-		<a class="ajaxJSON button big-image" title="Buy wenches for you and your crew members"
-			href="<?=base_url('tavern/buy_post/wenches')?>">
-			<img src="<?=base_url('assets/images/tavern/tavern_wench.jpg')?>"
+		<a class="ajaxJSON button big-image" title="Buy tobacco for you and your crew members"
+			href="<?=base_url('tavern/buy_post/tobacco')?>">
+			<img src="<?=base_url('assets/images/tavern/tavern-tobacco.png')?>"
 				title="Increases your crew members health by +10 and their mood by +5.">
-			Wenches<br><?=floor($prices['tavern_wenches']['buy'] * ($game['crew_members'] + 1))?>
+			Tobacco<br /><?=floor($prices['tavern_tobacco']['buy'] * ($game['crew_members'] + 1))?>
 			dbl
 		</a>
 
 		<a class="ajaxJSON button big-image" title="Buy wine for you and your crew members"
 			href="<?=base_url('tavern/buy_post/wine')?>">
-			<img src="<?=base_url('assets/images/tavern/tavern_wine.jpg')?>"
+			<img src="<?=base_url('assets/images/tavern/tavern-wine.png')?>"
 				title="Increases your crew members mood by +7.">
-			Wine<br><?=floor($prices['tavern_wine']['buy'] * ($game['crew_members'] + 1))?>
+			Wine<br /><?=floor($prices['tavern_wine']['buy'] * ($game['crew_members'] + 1))?>
 			dbl
 		</a>
 
 		<a class="ajaxJSON button big-image" title="Buy rum for you and your crew members"
 			href="<?=base_url('tavern/buy_post/rum')?>">
-			<img src="<?=base_url('assets/images/tavern/tavern_rum.jpg')?>"
+			<img src="<?=base_url('assets/images/tavern/tavern-rum.png')?>"
 				title="Increases your crew members mood by +10.">
-			Rum<br><?=floor($prices['tavern_rum']['buy'] * ($game['crew_members'] + 1))?>
+			Rum<br /><?=floor($prices['tavern_rum']['buy'] * ($game['crew_members'] + 1))?>
 			dbl
 		</a>
 	</div>

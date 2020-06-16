@@ -36,7 +36,7 @@ class Tavern extends Main
 
     public function buy_post()
     {
-        $products = array('dinners', 'wenches', 'wine', 'rum');
+        $products = array('dinners', 'tobacco', 'wine', 'rum');
         $product = $this->uri->segment(3);
         
         if (in_array($product, $products)) {
@@ -50,7 +50,7 @@ class Tavern extends Main
                     $health_increase = 25;
                     $mood_increase = 3;
                     break;
-                case 'wenches':
+                case 'tobacco':
                     $health_increase = 10;
                     $mood_increase = 5;
                     break;

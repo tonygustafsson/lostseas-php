@@ -67,7 +67,7 @@
 
     <button class="big-image">
         <img
-            src="<?=base_url('assets/images/tavern/tavern_dinner.jpg')?>" />
+            src="<?=base_url('assets/images/tavern/tavern-dinner.png')?>" />
         Image
     </button>
 
