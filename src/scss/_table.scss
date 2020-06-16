@@ -50,3 +50,18 @@ table {
 fieldset table td:first-child {
     width: 35% !important;
 }
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    td {
+        white-space: nowrap;
+    }
+
+    img {
+        max-width: none;
+    }
+}
