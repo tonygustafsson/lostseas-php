@@ -169,23 +169,6 @@ class About extends Main
             echo json_encode($data);
         }
     }
-
-    public function copyright()
-    {
-        $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
-        $this->data['character'] = $this->gamelib->generate_character();
-        
-        $this->data['meta_description'] = "About the copyright of this game.";
-        $this->data['meta_keywords'] = "lost seas, copyright, owner, creator";
-        
-        if ($this->data['logged_in'] === false) {
-            $log_input['entries'] = 8;
-            $log_input['get_num_rows'] = false;
-            $this->data['log_entries'] = $this->Log->get($log_input);
-        }
-        
-        $this->load->view_ajax('about/view_copyright', $this->data);
-    }
 }
 
 /*  End of about.php */

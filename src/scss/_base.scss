@@ -1,10 +1,11 @@
 body {
     background-color: $lightblue;
-    background-image: url('../../assets/images/design/back_ship.png'), url('../../assets/images/design/back_sky.jpg');
-    background-position: 90% 100%, top left;
-    background-repeat: repeat-x, repeat-x;
+    background-image: url('../../assets/images/design/background-ship.svg'),
+        url('../../assets/images/design/back_sky.jpg');
+    background-position: bottom left, top left;
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
     background-attachment: fixed, fixed;
-    background-size: 100% 35%, 100% 60%;
     font-size: $font-size-default;
     font-family: $font-montaga;
     color: #000;
@@ -37,13 +38,8 @@ body {
     }
 
     @include mobile {
-        background-image: url('../../assets/images/design/back_ship.png'),
+        background-image: url('../../assets/images/design/background-ship.svg'),
             url('../../assets/images/design/back_sky_small.jpg');
-        background-position: 90% 100%, top left;
-        background-repeat: repeat-x, no-repeat;
-        background-attachment: fixed, fixed;
-        background-size: 100% 15%, 100% 50%;
-
         font-size: $font-size-default-mobile;
     }
 }

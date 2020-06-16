@@ -10,12 +10,6 @@
             }
         ?>
 
-		<footer>
-			<p><a href="about/copyright" class="ajaxHTML"><?=$this->config->item('site_name')?>
-					&copy;<?=date("Y")?></a>
-			</p>
-		</footer>
-
 		<?php
             if (isset($user)) {
                 include('partials/sound_controls_dialog.php');

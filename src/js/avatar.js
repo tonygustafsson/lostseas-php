@@ -63,14 +63,6 @@ const initAvatarDialog = () => {
 
 window.addEventListener('about-presentation', initAvatarDialog);
 window.addEventListener('about-news', initAvatarDialog);
-window.addEventListener('about-guide_supplies', initAvatarDialog);
-window.addEventListener('about-guide_ships', initAvatarDialog);
-window.addEventListener('about-guide_crew', initAvatarDialog);
-window.addEventListener('about-guide_titles', initAvatarDialog);
-window.addEventListener('about-guide_economy', initAvatarDialog);
-window.addEventListener('about-guide_traveling', initAvatarDialog);
-window.addEventListener('about-guide_players', initAvatarDialog);
-window.addEventListener('about-guide_settings', initAvatarDialog);
+window.addEventListener('about-guide', initAvatarDialog);
 window.addEventListener('account-password_forgotten', initAvatarDialog);
-window.addEventListener('about-copyright', initAvatarDialog);
 window.addEventListener('account-settings_character', initAvatarDialog);
