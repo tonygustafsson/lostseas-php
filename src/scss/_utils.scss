@@ -87,32 +87,66 @@
     margin: 0 auto;
 }
 
-@for $i from 1 through 6 {
+// Margins
+
+@for $i from 0 through 6 {
     .mr-#{$i} {
         margin-right: $spacing * $i;
     }
 }
 
-@for $i from 1 through 6 {
+@for $i from 0 through 6 {
     .ml-#{$i} {
         margin-left: $spacing * $i;
     }
 }
 
-@for $i from 1 through 6 {
+@for $i from 0 through 6 {
     .mt-#{$i} {
         margin-top: $spacing * $i;
     }
 }
 
-@for $i from 1 through 6 {
+@for $i from 0 through 6 {
     .mb-#{$i} {
         margin-bottom: $spacing * $i;
     }
 }
 
-@for $i from 1 through 6 {
+@for $i from 0 through 6 {
     .m-#{$i} {
         margin: $spacing * $i;
+    }
+}
+
+// Paddings
+
+@for $i from 0 through 6 {
+    .pr-#{$i} {
+        padding-right: $spacing * $i;
+    }
+}
+
+@for $i from 0 through 6 {
+    .pl-#{$i} {
+        padding-left: $spacing * $i;
+    }
+}
+
+@for $i from 0 through 6 {
+    .pt-#{$i} {
+        padding-top: $spacing * $i;
+    }
+}
+
+@for $i from 0 through 6 {
+    .pb-#{$i} {
+        padding-bottom: $spacing * $i;
+    }
+}
+
+@for $i from 0 through 6 {
+    .p-#{$i} {
+        padding: $spacing * $i;
     }
 }
