@@ -65,7 +65,7 @@
 
     <div class="inventory_user">
         <a class="ajaxHTML"
-            href="inventory/player/<?=$user['id']?>#character">
+            href="inventory/player/<?=$user['id']?>">
             <div style="height: 100%; width: 40px">
                 <img id="inventory_character_avatar"
                     src="<?=$game['character_avatar_thumb_path']?>"
