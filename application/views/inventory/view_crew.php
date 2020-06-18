@@ -62,72 +62,74 @@
 	<form id="crew_form" class="ajaxJSON" method="post"
 		action="<?=base_url('inventory/crew_post/' . $user['id'])?>">
 
-		<table style="padding-bottom: 30px;">
-			<tr>
-				<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-				<th class="text-center"><input class="js-inventory-check-all" data-select="crew" type="checkbox"
-						name="check_all" /></th>
-				<?php endif; ?>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/name_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Name</a>
-				</th>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/nationality_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Nationality</a>
-				</th>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/created_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Created</a>
-				</th>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/doubloons_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Doubloons</a>
-				</th>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/mood_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Mood</a>
-				</th>
-				<th><a class="ajaxHTML"
-						href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/health_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Health</a>
-				</th>
-			</tr>
+		<div class="table-responsive">
+			<table>
+				<tr>
+					<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
+					<th class="text-center"><input class="js-inventory-check-all" data-select="crew" type="checkbox"
+							name="check_all" /></th>
+					<?php endif; ?>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/name_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Name</a>
+					</th>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/nationality_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Nationality</a>
+					</th>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/created_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Created</a>
+					</th>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/doubloons_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Doubloons</a>
+					</th>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/mood_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Mood</a>
+					</th>
+					<th><a class="ajaxHTML"
+							href="<?=base_url('inventory/crew/' . $player['user']['id']) . '/health_' . ((isset($direction) && $direction == 'asc') ? 'desc' : 'asc')?>">Health</a>
+					</th>
+				</tr>
 
-			<?php foreach ($player['crew'] as $man): ?>
-			<?php $man['gender'] = ($man['gender'] == 'M') ? 'man' : 'woman'?>
-			<tr id="crew_<?=$man['id']?>">
-				<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-				<td class="text-center"><input type="checkbox"
-						id="crew-checkbox-<?=$man['id']?>"
-						name="crew[]"
-						value="<?=$man['id']?>">
-				</td>
-				<?php endif; ?>
-				<td>
-					<span class="tooltip-multiline tooltip-bottom-left"
-						data-tooltip="<?=$man['description']?>">
-						<svg width="24" height="24" class="Game">
-							<use
-								xlink:href="#crew-<?=$man['gender']?>">
-							</use>
-						</svg>
-						<?=$man['name']?>
-					</span>
-				</td>
-				<td><?=ucfirst($man['nationality'])?>
-				</td>
-				<td>Week <?=$man['created']?>
-				</td>
-				<td><span
-						id="crew_doubloons_<?=$man['id']?>"><?=$man['doubloons']?></span>
-					dbl
-				</td>
-				<td><span
-						id="crew_friendly_mood_<?=$man['id']?>"><?=ucfirst($man['friendly_mood'])?></span>
-					(<span
-						id="crew_mood_<?=$man['id']?>"><?=$man['mood']?></span>)</td>
-				<td><span
-						id="crew_health_<?=$man['id']?>"><?=$man['health']?></span> %
-				</td>
-			</tr>
-			<?php endforeach; ?>
-
-		</table>
+				<?php foreach ($player['crew'] as $man): ?>
+				<?php $man['gender'] = ($man['gender'] == 'M') ? 'man' : 'woman'?>
+				<tr id="crew_<?=$man['id']?>">
+					<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
+					<td class="text-center"><input type="checkbox"
+							id="crew-checkbox-<?=$man['id']?>"
+							name="crew[]"
+							value="<?=$man['id']?>">
+					</td>
+					<?php endif; ?>
+					<td>
+						<span class="tooltip-multiline tooltip-bottom-left"
+							data-tooltip="<?=$man['description']?>">
+							<svg width="24" height="24" class="Game">
+								<use
+									xlink:href="#crew-<?=$man['gender']?>">
+								</use>
+							</svg>
+							<?=$man['name']?>
+						</span>
+					</td>
+					<td><?=ucfirst($man['nationality'])?>
+					</td>
+					<td>Week <?=$man['created']?>
+					</td>
+					<td><span
+							id="crew_doubloons_<?=$man['id']?>"><?=$man['doubloons']?></span>
+						dbl
+					</td>
+					<td><span
+							id="crew_friendly_mood_<?=$man['id']?>"><?=ucfirst($man['friendly_mood'])?></span>
+						(<span
+							id="crew_mood_<?=$man['id']?>"><?=$man['mood']?></span>)
+					</td>
+					<td><span
+							id="crew_health_<?=$man['id']?>"><?=$man['health']?></span> %
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
 
 		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 		<div class="flex flex-align-right">
