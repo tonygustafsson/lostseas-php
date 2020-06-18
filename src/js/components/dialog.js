@@ -55,4 +55,15 @@ const dialog = (options) => {
     });
 };
 
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        // Close all dialogs if ESC is pressed.
+        const dialogEls = Array.from(document.querySelectorAll('.dialog.show'));
+
+        dialogEls.forEach((dialog) => {
+            closeDialog(e, dialog);
+        });
+    }
+});
+
 export default dialog;
