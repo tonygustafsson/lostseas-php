@@ -1,10 +1,6 @@
-<header class="area-header" class="area-header" title="The Ocean">
-	<h2 class="area-header__heading">Caribbean Sea</h2>
-	<img src="<?=base_url('assets/images/places/ocean_' . rand(1, 7) . '.png')?>"
-		class="area-header__img">
-</header>
-
 <div class="container">
+	<h2>Caribbean Sea</h2>
+
 	<?php if (isset($game['won'])): ?>
 	<p><?=$game['won']?>
 	</p>
@@ -42,63 +38,10 @@
 	<?php endif; ?>
 
 	<?php if (! isset($game['good']) && ! isset($game['bad'])): ?>
-	<p><?=$game['greeting']?>
+	<p>
+		<?=$game['greeting']?>
 	</p>
 	<?php endif; ?>
 
-	<p class="text-center">
-		<img src="<?=base_url('assets/images/spanish_main.jpg')?>"
-			usemap="#image_map" width="500" height="256" alt="The spanish main">
-	</p>
-
-	<map id="image_map" class="ocean-map" name="image_map">
-		<area class="ajaxHTML" shape="rect" coords="198,4,215,21"
-			href="<?=base_url('harbor/charles_towne')?>"
-			alt="Charles Towne" rel="england">
-		<area class="ajaxHTML" shape="rect" coords="96,31,113,48"
-			href="<?=base_url('harbor/biloxi')?>"
-			alt="Biloxi" rel="france">
-		<area class="ajaxHTML" shape="rect" coords="167,91,184,108"
-			href="<?=base_url('harbor/havana')?>"
-			alt="Havana" rel="spain">
-		<area class="ajaxHTML" shape="rect" coords="59,131,76,148"
-			href="<?=base_url('harbor/villa_hermosa')?>"
-			alt="Villa Hermosa" rel="spain">
-		<area class="ajaxHTML" shape="rect" coords="100,134,117,151"
-			href="<?=base_url('harbor/belize')?>"
-			alt="Belize" rel="england">
-		<area class="ajaxHTML" shape="rect" coords="222,132,239,149"
-			href="<?=base_url('harbor/port_royale')?>"
-			alt="Port Royale" rel="england">
-		<area class="ajaxHTML" shape="rect" coords="278,118,295,135"
-			href="<?=base_url('harbor/tortuga')?>"
-			alt="Tortuga" rel="france">
-		<area class="ajaxHTML" shape="rect" coords="258,129,275,146"
-			href="<?=base_url('harbor/leogane')?>"
-			alt="Leogane" rel="france">
-		<area class="ajaxHTML" shape="rect" coords="336,130,353,147"
-			href="<?=base_url('harbor/san_juan')?>"
-			alt="San Juan" rel="spain">
-		<area class="ajaxHTML" shape="rect" coords="382,136,399,153"
-			href="<?=base_url('harbor/st._martin')?>"
-			alt="St. Martin" rel="holland">
-		<area class="ajaxHTML" shape="rect" coords="384,156,401,173"
-			href="<?=base_url('harbor/st._eustatius')?>"
-			alt="St. Eustatius" rel="holland">
-		<area class="ajaxHTML" shape="rect" coords="388,170,405,187"
-			href="<?=base_url('harbor/martinique')?>"
-			alt="Martinique" rel="france">
-		<area class="ajaxHTML" shape="rect" coords="402,180,419,197"
-			href="<?=base_url('harbor/barbados')?>"
-			alt="Barbados" rel="england">
-		<area class="ajaxHTML" shape="rect" coords="188,222,205,239"
-			href="<?=base_url('harbor/panama')?>"
-			alt="Panama" rel="spain">
-		<area class="ajaxHTML" shape="rect" coords="295,182,312,199"
-			href="<?=base_url('harbor/curacao')?>"
-			alt="Curacao" rel="holland">
-		<area class="ajaxHTML" shape="rect" coords="314,185,331,202"
-			href="<?=base_url('harbor/bonaire')?>"
-			alt="Bonaire" rel="holland">
-	</map>
+	<?php include(__DIR__. '/ocean_map.php'); ?>
 </div>

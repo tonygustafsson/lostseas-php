@@ -2,8 +2,8 @@ const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
 
 const createTownInfo = (element) => {
-    const lang = element.rel;
-    const areaText = element.alt;
+    const lang = element.attributes.rel.value;
+    const townText = element.attributes.alt.value;
 
     const townInfo = document.createElement('div');
     townInfo.id = 'town_info';
@@ -17,7 +17,7 @@ const createTownInfo = (element) => {
     flag.appendChild(flagUse);
 
     const info = document.createElement('span');
-    info.innerText = areaText;
+    info.innerText = townText;
 
     townInfo.appendChild(flag);
     townInfo.appendChild(info);
@@ -25,7 +25,7 @@ const createTownInfo = (element) => {
     return townInfo;
 };
 
-const areaMouseOver = (e) => {
+const linkMouseOver = (e) => {
     const element = e.target;
     const body = document.getElementById('body');
     const townInfo = createTownInfo(element);
@@ -33,14 +33,20 @@ const areaMouseOver = (e) => {
     body.appendChild(townInfo);
 };
 
-const areaMouseOut = () => {
+const linkMouseOut = () => {
     const townInfo = document.getElementById('town_info');
 
-    townInfo.remove();
+    if (townInfo) {
+        townInfo.remove();
+    }
 };
 
-const areaMouseMove = (e) => {
+const linkMouseMove = (e) => {
     const townInfo = document.getElementById('town_info');
+
+    if (!townInfo) {
+        return;
+    }
 
     const x = e.pageX + 10 + 'px';
     const y = e.pageY + 10 + 'px';
@@ -49,25 +55,26 @@ const areaMouseMove = (e) => {
     townInfo.style.left = x;
 };
 
-const areaClick = () => {
+const linkClick = () => {
     const townInfo = document.getElementById('town_info');
 
     townInfo.remove();
 };
 
-const createAreaTriggers = () => {
-    const areas = Array.from(document.querySelectorAll('area'));
+const createLinkTriggers = () => {
+    const targets = Array.from(document.querySelectorAll('.js-town'));
 
-    areas.forEach((area) => {
-        area.addEventListener('mousemove', areaMouseMove);
-        area.addEventListener('mouseover', areaMouseOver);
-        area.addEventListener('mouseout', areaMouseOut);
-        area.addEventListener('click', areaClick);
+    targets.forEach((target) => {
+        target.addEventListener('mousemove', linkMouseMove);
+        target.addEventListener('mouseover', linkMouseOver);
+        target.addEventListener('touchstart', linkMouseOver);
+        target.addEventListener('mouseout', linkMouseOut);
+        target.addEventListener('click', linkClick);
     });
 };
 
-window.addEventListener('ocean-battle-transfer-done', createAreaTriggers);
-window.addEventListener('ocean-ignore', createAreaTriggers);
-window.addEventListener('ocean-flee', createAreaTriggers);
-window.addEventListener('ocean-trade', createAreaTriggers);
-window.addEventListener('ocean', createAreaTriggers);
+window.addEventListener('ocean-battle-transfer-done', createLinkTriggers);
+window.addEventListener('ocean-ignore', createLinkTriggers);
+window.addEventListener('ocean-flee', createLinkTriggers);
+window.addEventListener('ocean-trade', createLinkTriggers);
+window.addEventListener('ocean', createLinkTriggers);

@@ -151,12 +151,17 @@ const ajaxHtmlRequest = (e) => {
     e.preventDefault();
 
     let element = e.target;
+    const elementType = element.tagName.toLowerCase();
 
-    if (element.tagName !== 'A' && element.tagName !== 'AREA') {
+    if (elementType !== 'a') {
         element = element.closest('a');
     }
 
-    const url = element.href;
+    let url = element.href;
+
+    if (url.baseVal) {
+        url = element.href.baseVal;
+    }
 
     fetchHtmlAndUpdateDom(url, true);
 };
