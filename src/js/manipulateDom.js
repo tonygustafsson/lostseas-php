@@ -118,6 +118,12 @@ const manipulateDom = (data) => {
         var sound = new Audio();
         var soundPath = appdir + 'assets/sounds/' + data.playSound;
 
+        // Get volume
+        const musicControlEl = document.getElementById('music_control');
+        const volume = musicControlEl.dataset.musicvolume / 100;
+
+        sound.volume = volume;
+
         if (sound.canPlayType('audio/ogg')) {
             sound.src = soundPath + '.ogg';
             sound.type = 'audio/ogg';
