@@ -92,25 +92,25 @@
 			</tr>
 
 			<tr>
-				<td>name</td>
+				<td>Name</td>
 				<td><input type="text" id="name" name="name"
 						value="<?=$player['user']['name']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>gender</td>
+				<td>Gender</td>
 				<td><input type="text" id="gender" name="gender"
 						value="<?=$player['user']['gender']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>birthday</td>
+				<td>Birthday</td>
 				<td><input type="text" id="birthday" name="birthday"
 						value="<?=$player['user']['birthday']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>email</td>
+				<td>Email</td>
 				<td><input type="text" id="email" name="email"
 						value="<?=$player['user']['email']?>">
 				</td>
@@ -134,37 +134,37 @@
 				</td>
 			</tr>
 			<tr>
-				<td>admin</td>
+				<td>Admin</td>
 				<td><input type="number" id="admin" name="admin"
 						value="<?=$player['user']['admin']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>music_play</td>
+				<td>Music play</td>
 				<td><input type="number" id="music_play" name="music_play"
 						value="<?=$player['user']['music_play']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>music_volume</td>
+				<td>Music volume</td>
 				<td><input type="number" id="music_volume" name="music_volume"
 						value="<?=$player['user']['music_volume']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>sound_effects_play</td>
+				<td>Sound effects</td>
 				<td><input type="number" id="sound_effects_play" name="sound_effects_play"
 						value="<?=$player['user']['sound_effects_play']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>show_gender</td>
+				<td>Show gender</td>
 				<td><input type="number" id="show_gender" name="show_gender"
 						value="<?=$player['user']['show_gender']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>show_age</td>
+				<td>Show age</td>
 				<td><input type="number" id="show_age" name="show_age"
 						value="<?=$player['user']['show_age']?>">
 				</td>

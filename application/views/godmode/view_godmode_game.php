@@ -92,61 +92,61 @@
 			</tr>
 
 			<tr>
-				<td>character_name</td>
+				<td>Name</td>
 				<td><input type="text" id="character_name" name="character_name"
 						value="<?=$player['game']['character_name']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>character_gender</td>
+				<td>Gender</td>
 				<td><input type="text" id="character_gender" name="character_gender"
 						value="<?=$player['game']['character_gender']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>character_avatar</td>
+				<td>Avatar</td>
 				<td><input type="text" id="character_avatar" name="character_avatar"
 						value="<?=$player['game']['character_gender_long']?>###<?=$player['game']['character_avatar']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>character_age</td>
+				<td>Age</td>
 				<td><input type="text" id="character_age" name="character_age"
 						value="<?=$player['game']['character_age']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>character_description</td>
+				<td>Description</td>
 				<td><input type="text" id="character_description" name="character_description"
 						value="<?=$player['game']['character_description']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>nationality</td>
+				<td>Nationality</td>
 				<td><input type="text" id="nationality" name="nationality"
 						value="<?=$player['game']['nationality']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>town</td>
+				<td>Town</td>
 				<td><input type="text" id="town" name="town"
 						value="<?=$player['game']['town']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>place</td>
+				<td>Place</td>
 				<td><input type="text" id="place" name="place"
 						value="<?=$player['game']['place']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>week</td>
+				<td>Week</td>
 				<td><input type="number" id="week" name="week"
 						value="<?=$player['game']['week']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>title</td>
+				<td>Title</td>
 				<td><input type="text" id="title" name="title"
 						value="<?=$player['game']['title']?>">
 				</td>
@@ -164,85 +164,85 @@
 			</tr>
 
 			<tr>
-				<td>doubloons</td>
+				<td>Doubloons</td>
 				<td><input type="number" id="doubloons" name="doubloons"
 						value="<?=$player['game']['doubloons']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>bank_account</td>
+				<td>Bank account</td>
 				<td><input type="number" id="bank_account" name="bank_account"
 						value="<?=$player['game']['bank_account']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>bank_loan</td>
+				<td>Bank loan</td>
 				<td><input type="number" id="bank_loan" name="bank_loan"
 						value="<?=$player['game']['bank_loan']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>cannons</td>
+				<td>Cannons</td>
 				<td><input type="number" id="cannons" name="cannons"
 						value="<?=$player['game']['cannons']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>prisoners</td>
+				<td>Prisoners</td>
 				<td><input type="number" id="prisoners" name="prisoners"
 						value="<?=$player['game']['prisoners']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>food</td>
+				<td>Food</td>
 				<td><input type="number" id="food" name="food"
 						value="<?=$player['game']['food']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>water</td>
+				<td>Water</td>
 				<td><input type="number" id="water" name="water"
 						value="<?=$player['game']['water']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>porcelain</td>
+				<td>Porcelain</td>
 				<td><input type="number" id="porcelain" name="porcelain"
 						value="<?=$player['game']['porcelain']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>spices</td>
+				<td>Spices</td>
 				<td><input type="number" id="spices" name="spices"
 						value="<?=$player['game']['spices']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>silk</td>
+				<td>Silk</td>
 				<td><input type="number" id="silk" name="silk"
 						value="<?=$player['game']['silk']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>tobacco</td>
+				<td>Tobacco</td>
 				<td><input type="number" id="tobacco" name="tobacco"
 						value="<?=$player['game']['tobacco']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>rum</td>
+				<td>Rum</td>
 				<td><input type="number" id="rum" name="rum"
 						value="<?=$player['game']['rum']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>medicine</td>
+				<td>Medicine</td>
 				<td><input type="number" id="medicine" name="medicine"
 						value="<?=$player['game']['medicine']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>rafts</td>
+				<td>Rafts</td>
 				<td><input type="number" id="rafts" name="rafts"
 						value="<?=$player['game']['rafts']?>">
 				</td>
@@ -260,31 +260,31 @@
 			</tr>
 
 			<tr>
-				<td>victories_england</td>
+				<td>England</td>
 				<td><input type="number" id="victories_england" name="victories_england"
 						value="<?=$player['game']['victories_england']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>victories_france</td>
+				<td>France</td>
 				<td><input type="number" id="victories_france" name="victories_france"
 						value="<?=$player['game']['victories_france']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>victories_spain</td>
+				<td>Spain</td>
 				<td><input type="number" id="victories_spain" name="victories_spain"
 						value="<?=$player['game']['victories_spain']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>victories_holland</td>
+				<td>Holland</td>
 				<td><input type="number" id="victories_holland" name="victories_holland"
 						value="<?=$player['game']['victories_holland']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>victories_pirates</td>
+				<td>Pirates</td>
 				<td><input type="number" id="victories_pirates" name="victories_pirates"
 						value="<?=$player['game']['victories_pirates']?>">
 				</td>
@@ -302,43 +302,43 @@
 			</tr>
 
 			<tr>
-				<td>event_market_goods</td>
+				<td>Market goods</td>
 				<td><input type="text" id="event_market_goods" name="event_market_goods"
 						value="<?=$player['game']['event_market_goods']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_market_slaves</td>
+				<td>Market slaves</td>
 				<td><input type="text" id="event_market_slaves" name="event_market_slaves"
 						value="<?=$player['game']['event_market_slaves']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_sailors</td>
+				<td>Tavern sailors</td>
 				<td><input type="text" id="event_sailors" name="event_sailors"
 						value="<?=$player['game']['event_sailors']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_work</td>
+				<td>Work</td>
 				<td><input type="text" id="event_work" name="event_work"
 						value="<?=$player['game']['event_work']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_ship</td>
+				<td>Ship</td>
 				<td><input type="text" id="event_ship" name="event_ship"
 						value="<?=$player['game']['event_ship']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_ship_won</td>
+				<td>Ship won</td>
 				<td><input type="text" id="event_ship_won" name="event_ship_won"
 						value="<?=$player['game']['event_ship_won']?>">
 				</td>
 			</tr>
 			<tr>
-				<td>event_ocean_trade</td>
+				<td>Ship trade</td>
 				<td><input type="text" id="event_ocean_trade" name="event_ocean_trade"
 						value="<?=$player['game']['event_ocean_trade']?>">
 				</td>
