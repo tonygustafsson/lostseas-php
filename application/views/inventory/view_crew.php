@@ -130,7 +130,9 @@
 		</table>
 
 		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-		<p style="text-align: right;">
+		<div class="flex flex-align-right">
+			<button type="submit" class="mr-1">Do it</button>
+
 			<select name="action[]">
 				<?php foreach ($actions as $current_action => $description): ?>
 				<?php if ((isset($player['game'][$current_action]) && $player['game'][$current_action] > 0) || $current_action == 'discard'): ?>
@@ -139,10 +141,8 @@
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
-
-			<button type="submit">Do it</button>
-		</p>
-		<?php endif; ?>
+			</p>
+			<?php endif; ?>
 
 	</form>
 

@@ -26,6 +26,10 @@
 		href="<?=base_url('assets/images/favicon.svg')?>">
 	<link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
 
+	<title>
+		<?=$page_title?>
+	</title>
+
 	<?php if (strpos(base_url(), 'test') === false): ?>
 	<script>
 		(function(i, s, o, g, r, a, m) {
@@ -44,9 +48,6 @@
 		ga('send', 'pageview');
 	</script>
 	<?php endif; ?>
-
-	<title><?=$page_title?>
-	</title>
 </head>
 
 <body id="body">

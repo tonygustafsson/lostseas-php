@@ -42,6 +42,10 @@
     align-items: center;
 }
 
+.flex-align-right {
+    justify-content: flex-end;
+}
+
 .container {
     padding: #{$spacing * 2} #{$spacing * 4};
 
@@ -81,4 +85,34 @@
 .img-center {
     display: block;
     margin: 0 auto;
+}
+
+@for $i from 1 through 6 {
+    .mr-#{$i} {
+        margin-right: $spacing * $i;
+    }
+}
+
+@for $i from 1 through 6 {
+    .ml-#{$i} {
+        margin-left: $spacing * $i;
+    }
+}
+
+@for $i from 1 through 6 {
+    .mt-#{$i} {
+        margin-top: $spacing * $i;
+    }
+}
+
+@for $i from 1 through 6 {
+    .mb-#{$i} {
+        margin-bottom: $spacing * $i;
+    }
+}
+
+@for $i from 1 through 6 {
+    .m-#{$i} {
+        margin: $spacing * $i;
+    }
 }
