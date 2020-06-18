@@ -39,7 +39,23 @@ const changeSong = (e) => {
 
     gameMusic.volume = musicVolume / 100;
     gameMusic.load();
-    gameMusic.addEventListener('canplay', gameMusic.play(), false);
+    gameMusic.addEventListener('canplay', () => {
+        const playPromise = gameMusic.play();
+
+        playPromise.catch(() => {
+            console.error('Could not play music, will start on DOM interaction');
+
+            const body = document.getElementById('body');
+
+            body.addEventListener(
+                'click',
+                () => {
+                    gameMusic.play();
+                },
+                { once: true }
+            );
+        });
+    });
 };
 
 const musicToggle = (e) => {
@@ -161,6 +177,7 @@ window.addEventListener('load', () => {
     const musicControlEl = document.getElementById('music_control');
 
     if (musicControlEl.dataset.autoplay && musicControlEl.dataset.autoplay === 'yes') {
+        // Start game music on page load, if autoplay is set
         changeSong();
     }
 
