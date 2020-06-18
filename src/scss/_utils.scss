@@ -87,6 +87,22 @@
     margin: 0 auto;
 }
 
+.mobile-only {
+    display: none;
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.desktop-only {
+    display: block;
+
+    @include mobile {
+        display: none;
+    }
+}
+
 // Margins
 
 @for $i from 0 through 6 {
