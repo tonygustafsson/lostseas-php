@@ -9,7 +9,8 @@
     "scripts": {
         "start": "concurrently 'webpack' 'docker-compose up'",
         "compile": "webpack",
-        "createIcons": "node createIcons.js",
+        "icons": "node createIcons.js",
+        "sync": "browser-sync start --proxy http://localhost:8080",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
