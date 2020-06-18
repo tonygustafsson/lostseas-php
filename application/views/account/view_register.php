@@ -35,14 +35,14 @@
 			<input type="radio" name="gender" value="F" id="female" /> <label for="female">Female</label>
 
 			<label for="day, month, year">Birthday</label>
-			<select name="day">
+			<select name="day" class="mr-1">
 				<?php for ($x = 1; $x <= 31; $x++): ?>
 				<option value="<?=$x?>"><?=$x?>
 				</option>
 				<?php endfor; ?>
 			</select>
 
-			<select name="month">
+			<select name="month" class="mr-1">
 				<?php foreach ($months as $number => $month): ?>
 				<option value="<?=$number?>"><?=$month?>
 				</option>

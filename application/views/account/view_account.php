@@ -87,14 +87,14 @@
 			<label for="show_gender">Show my gender</label><br />
 
 			<label for="day, month, year">Birthday</label>
-			<select name="day">
+			<select name="day" class="mr-1">
 				<?php for ($x = 1; $x <= 31; $x++): ?>
 				<option value="<?=$x?>" <?=(date("j", strtotime($user['birthday'])) == $x) ? 'selected' : '' ?>><?=$x?>
 				</option>
 				<?php endfor; ?>
 			</select>
 
-			<select name="month">
+			<select name="month" class="mr-1">
 				<?php foreach ($months as $number => $month): ?>
 				<option value="<?=$number?>" <?=(date("n", strtotime($user['birthday'])) == $number) ? 'selected' : '' ?>><?=$month?>
 				</option>
