@@ -1,6 +1,6 @@
 <header class="area-header" class="area-header" title="Logged out">
 	<h2 class="area-header__heading">You be logged out, Matey!</h2>
-	<img src="<?=base_url('assets/images/404.png')?>"
+	<img src="<?=base_url('assets/images/places/logged-out.png')?>"
 		class="area-header__img">
 </header>
 
