@@ -46,9 +46,11 @@ class MY_Loader extends CI_Loader
 
         if ($place && $sub_place) {
             return ucwords($sub_place) . ' - ' . ucwords($place) . ' - ' . $CI->config->item('site_name');
+        } elseif ($place) {
+            return ucwords($place) . ' - ' . $CI->config->item('site_name');
+        } else {
+            return $CI->config->item('site_name');
         }
-
-        return ucwords($place) . ' - ' . $CI->config->item('site_name');
     }
 }
 
