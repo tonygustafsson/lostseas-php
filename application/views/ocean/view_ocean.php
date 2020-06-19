@@ -54,49 +54,49 @@
 	<p>
 		<strong>English:</strong>
 		<a href="<?=base_url('harbor/charles_towne')?>"
-			class="ajaxHTML">Charles Towne</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="charles-towne">Charles Towne</a>,
 		<a href="<?=base_url('harbor/barbados')?>"
-			class="ajaxHTML">Barbados</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="barbados">Barbados</a>,
 		<a href="<?=base_url('harbor/port_royale')?>"
-			class="ajaxHTML">Port Royale</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="port-royale">Port Royale</a>,
 		<a href="<?=base_url('harbor/belize')?>"
-			class="ajaxHTML">Belize</a>
+			class="ajaxHTML js-town-focus" data-focus-town="belize">Belize</a>
 
 		<br />
 
 		<strong>French:</strong>
 		<a href="<?=base_url('harbor/tortuga')?>"
-			class="ajaxHTML">Tortuga</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="tortuga">Tortuga</a>,
 		<a href="<?=base_url('harbor/leogane')?>"
-			class="ajaxHTML">Leogane</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="leogane">Leogane</a>,
 		<a href="<?=base_url('harbor/martinique')?>"
-			class="ajaxHTML">Martinique</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="martinique">Martinique</a>,
 		<a href="<?=base_url('harbor/biloxi')?>"
-			class="ajaxHTML">Biloxi</a>
+			class="ajaxHTML js-town-focus" data-focus-town="biloxi">Biloxi</a>
 
 		<br />
 
 		<strong>Spanish:</strong>
 		<a href="<?=base_url('harbor/panama')?>"
-			class="ajaxHTML">Panama</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="panama">Panama</a>,
 		<a href="<?=base_url('harbor/havana')?>"
-			class="ajaxHTML">Havana</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="havana">Havana</a>,
 		<a href="<?=base_url('harbor/villa_hermosa')?>"
-			class="ajaxHTML">Villa Hermosa</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="villa-hermosa">Villa Hermosa</a>,
 		<a href="<?=base_url('harbor/san_juan')?>"
-			class="ajaxHTML">San Juan</a>
+			class="ajaxHTML js-town-focus" data-focus-town="san-juan">San Juan</a>
 
 		<br />
 
 		<strong>Dutch:</strong>
 		<a href="<?=base_url('harbor/bonaire')?>"
-			class="ajaxHTML">Bonaire</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="bonaire">Bonaire</a>,
 		<a href="<?=base_url('harbor/curacao')?>"
-			class="ajaxHTML">Curacao</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="curacao">Curacao</a>,
 		<a href="<?=base_url('harbor/st_martin')?>"
-			class="ajaxHTML">St. Martin</a>,
+			class="ajaxHTML js-town-focus" data-focus-town="st-martin">St. Martin</a>,
 		<a href="<?=base_url('harbor/st_eustatius')?>"
-			class="ajaxHTML">St. Eustatius</a>
+			class="ajaxHTML js-town-focus" data-focus-town="st-eustatius">St. Eustatius</a>
 	</p>
 
 	<?php include(__DIR__. '/ocean_map.php'); ?>

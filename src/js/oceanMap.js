@@ -61,9 +61,7 @@ const linkClick = () => {
     townInfo.remove();
 };
 
-const townLinkMouseOver = (e) => {
-    const image = e.target;
-
+const townImageZoomIn = (image) => {
     const width = image.width.baseVal.value;
     const height = image.height.baseVal.value;
     const x = image.x.baseVal.value;
@@ -73,11 +71,9 @@ const townLinkMouseOver = (e) => {
     image.style.height = height * 1.2;
     image.style.x = x - (width * 0.1);
     image.style.y = y - (height * 0.1);
-}
+};
 
-const townLinkMouseOut = (e) => {
-    const image = e.target;
-
+const townImageZoomOut = (image) => {
     const width = image.width.baseVal.value;
     const height = image.height.baseVal.value;
     const x = image.x.baseVal.value;
@@ -87,6 +83,30 @@ const townLinkMouseOut = (e) => {
     image.style.height = height;
     image.style.x = x;
     image.style.y = y
+};
+
+const townLinkMouseOver = (e) => {
+    const image = e.target;
+    townImageZoomIn(image);
+}
+
+const townLinkMouseOut = (e) => {
+    const image = e.target;
+    townImageZoomOut(image);
+}
+
+const townLinkFocusIn = (e) => {
+    const link = e.target;
+    const town = link.dataset.focusTown;
+    const correspondingImage = document.getElementById(town);            
+    townImageZoomIn(correspondingImage);
+}
+
+const townLinkFocusOut = (e) => {
+    const link = e.target;
+    const town = link.dataset.focusTown;
+    const correspondingImage = document.getElementById(town);
+    townImageZoomOut(correspondingImage);
 }
 
 const createLinkTriggers = () => {
@@ -107,6 +127,12 @@ const createLinkTriggers = () => {
         town.addEventListener('mouseout', townLinkMouseOut)
     })
 
+    const townLinksFocusesEls = Array.from(document.querySelectorAll('.js-town-focus'));
+
+    townLinksFocusesEls.forEach(link => {
+        link.addEventListener('mouseover', townLinkFocusIn);
+        link.addEventListener('mouseout', townLinkFocusOut);
+    })
 };
 
 window.addEventListener('ocean-battle-transfer-done', createLinkTriggers);
