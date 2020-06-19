@@ -61,6 +61,34 @@ const linkClick = () => {
     townInfo.remove();
 };
 
+const townLinkMouseOver = (e) => {
+    const image = e.target;
+
+    const width = image.width.baseVal.value;
+    const height = image.height.baseVal.value;
+    const x = image.x.baseVal.value;
+    const y = image.y.baseVal.value;
+    
+    image.style.width = width * 1.2;
+    image.style.height = height * 1.2;
+    image.style.x = x - (width * 0.1);
+    image.style.y = y - (height * 0.1);
+}
+
+const townLinkMouseOut = (e) => {
+    const image = e.target;
+
+    const width = image.width.baseVal.value;
+    const height = image.height.baseVal.value;
+    const x = image.x.baseVal.value;
+    const y = image.y.baseVal.value;
+    
+    image.style.width = width;
+    image.style.height = height;
+    image.style.x = x;
+    image.style.y = y
+}
+
 const createLinkTriggers = () => {
     const targets = Array.from(document.querySelectorAll('.js-town'));
 
@@ -71,6 +99,14 @@ const createLinkTriggers = () => {
         target.addEventListener('mouseout', linkMouseOut);
         target.addEventListener('click', linkClick);
     });
+
+    const townLinks = Array.from(document.querySelectorAll('.ocean-map__town-link'));
+
+    townLinks.forEach(town => {
+        town.addEventListener('mouseover', townLinkMouseOver)
+        town.addEventListener('mouseout', townLinkMouseOut)
+    })
+
 };
 
 window.addEventListener('ocean-battle-transfer-done', createLinkTriggers);
