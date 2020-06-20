@@ -2,6 +2,12 @@
     &__logotype {
         width: 400px;
         max-width: 95%;
+        vertical-align: bottom;
+        max-height: 140px;
+
+        @include mobile {
+            margin-left: -40px;
+        }
     }
 
     &__link:hover {
@@ -10,10 +16,6 @@
 
     &__main-heading {
         margin: 0;
-
-        img {
-            vertical-align: bottom;
-        }
 
        span {
            display: inline-block;

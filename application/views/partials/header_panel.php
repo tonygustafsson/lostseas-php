@@ -3,8 +3,7 @@
                 <h1 class="header-panel__main-heading">
                         <a title="Go back to start page" class="header-panel__link"
                                 href="<?=base_url()?>">
-                                <img class="header-panel__logotype" alt="Logotype"
-                                        src="<?=base_url('assets/images/logo-main.svg')?>">
+                                <?php include('assets/images/logo-main.svg'); ?>
                                 <span><?=$this->config->item('site_name')?></span>
                         </a>
                 </h1>
