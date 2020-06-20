@@ -1,7 +1,12 @@
 <div class="header-panel">
-        <header class="area-header">
-                <h1><a title="Go back to start page"
-                                href="<?=base_url()?>"><?=$this->config->item('site_name')?></a>
+        <header>
+                <h1 class="header-panel__main-heading">
+                        <a title="Go back to start page" class="header-panel__link"
+                                href="<?=base_url()?>">
+                                <img class="header-panel__logotype" alt="Logotype"
+                                        src="<?=base_url('assets/images/logo-main.svg')?>">
+                                <span><?=$this->config->item('site_name')?></span>
+                        </a>
                 </h1>
         </header>
 

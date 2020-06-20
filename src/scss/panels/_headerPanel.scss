@@ -1,24 +1,24 @@
-header {
-    h1 {
-        margin-left: 1em;
-        text-shadow: 2px 2px 2px #000;
+.header-panel {
+    &__logotype {
+        width: 400px;
+        max-width: 95%;
+    }
 
-        a {
-            color: $yellow;
-            text-decoration: none;
-            letter-spacing: 0.1em;
+    &__link:hover {
+        text-decoration: none;;
+    }
 
-            &:hover,
-            &:focus {
-                color: $yellow;
-                text-decoration: none;
-            }
+    &__main-heading {
+        margin: 0;
+
+        img {
+            vertical-align: bottom;
         }
 
-        @include mobile {
-            margin-bottom: 0;
-            margin-left: 0.5em;
-        }
+       span {
+           display: inline-block;
+           text-indent: -999em;
+       }
     }
 
     @include mobile {
@@ -28,6 +28,7 @@ header {
 
 .nav-top-mobile-panel {
     display: flex;
+    background-color: $whiteglass;
 
     &--item {
         display: none;
