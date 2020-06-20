@@ -22,6 +22,9 @@
 
 	<base href="<?=base_url()?>">
 
+	<link rel="manifest"
+		href="<?=base_url('manifest.json')?>">
+
 	<link rel="icon" type="image/svg+xml"
 		href="<?=base_url('assets/images/favicon.svg')?>">
 	<link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
