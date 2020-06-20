@@ -381,7 +381,7 @@ class Account extends Main
     public function avatar_selector()
     {
         $this->data['gender'] = $this->uri->segment(3);
-        $avatars = glob(APPPATH . "../assets/images/avatars/" . $this->data['gender'] . "/avatar_*.jpg");
+        $avatars = glob(APPPATH . "../assets/images/avatars/" . $this->data['gender'] . "/avatar_*.png");
         $this->data['number_of_avatars'] = count($avatars);
 
         $this->load->view_ajax('account/view_avatars', $this->data);

@@ -16,7 +16,7 @@ const selectAvatar = (e) => {
     const imageBasePath = item.dataset.imagebasepath;
     const selectedAvatar = item.dataset.character;
 
-    const imagePath = imageBasePath + 'avatar_' + selectedAvatar + '.jpg';
+    const imagePath = imageBasePath + 'avatar_' + selectedAvatar + '.png';
 
     currentAvatarImgEl.src = imagePath;
     characterAvatarEl.value = gender + '###' + selectedAvatar;

@@ -43,7 +43,7 @@
 				</td>
 				<td width="40"><img width="40" height="40"
 						alt="Avatar of <?=$this_player['character_name']?>"
-						src="<?=base_url('assets/images/avatars/' . (($this_player['character_gender'] == 'M') ? 'male_thumb' : 'female_thumb') . '/avatar_' . $this_player['character_avatar'] . '.jpg')?>">
+						src="<?=base_url('assets/images/avatars/' . (($this_player['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $this_player['character_avatar'] . '.png')?>">
 				</td>
 				<td>
 					<?=$this_player['character_name']?>

@@ -7,7 +7,7 @@
     <?php foreach ($log_entries as $entry): ?>
     <div class="log-panel__item">
         <img class="log-panel__item__img"
-            src="<?=base_url('assets/images/avatars/' . (($entry['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $entry['character_avatar'] . '.jpg')?>"
+            src="<?=base_url('assets/images/avatars/' . (($entry['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $entry['character_avatar'] . '.png')?>"
             alt="Avatar of <?=$entry['character_name']?>"
             width="40" height="40">
 

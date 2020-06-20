@@ -414,11 +414,11 @@ class GAMELIB
         $data['character_gender'] = (rand(1, 2) == 1) ? 'M' : 'F';
         $data['character_gender_long'] = ($data['character_gender'] == 'M') ? 'male' : 'female';
         
-        $avatar_path = APPPATH . '../assets/images/avatars/' . $data['character_gender_long'] . '/avatar_*.jpg';
+        $avatar_path = APPPATH . '../assets/images/avatars/' . $data['character_gender_long'] . '/avatar_*.png';
         $avatars = glob($avatar_path);
         $random_avatar = rand(1, count($avatars));
         $data['character_avatar'] = $data['character_gender_long'] . '###' . $random_avatar;
-        $data['character_avatar_path'] = base_url('assets/images/avatars/' . $data['character_gender_long'] . '/avatar_' . $random_avatar . '.jpg');
+        $data['character_avatar_path'] = base_url('assets/images/avatars/' . $data['character_gender_long'] . '/avatar_' . $random_avatar . '.png');
         
         return $data;
     }

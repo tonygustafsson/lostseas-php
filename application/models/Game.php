@@ -69,7 +69,7 @@ class Game extends CI_Model
                 
                 $output[$item]['success'] = $value;
                 
-                $image_path = APPPATH . '../assets/images/avatars/' . $gender . '_thumb/avatar_' . $avatar . '.jpg';
+                $image_path = APPPATH . '../assets/images/avatars/' . $gender . '/avatar_' . $avatar . '.png';
                 $output['changeElements']['inventory_' . $item]['src'] = $image_path;
             }
             

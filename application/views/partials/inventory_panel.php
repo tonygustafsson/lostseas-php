@@ -68,7 +68,7 @@
             href="inventory/player/<?=$user['id']?>">
             <div style="height: 100%; width: 40px">
                 <img id="inventory_character_avatar"
-                    src="<?=$game['character_avatar_thumb_path']?>"
+                    src="<?=$game['character_avatar_path']?>"
                     alt="Character avatar" width="120" height="120">
             </div>
             <div style="width: 100%;">

@@ -152,8 +152,7 @@ class Main extends CI_Controller
         $crew_data = ($game_data) ? $this->Crew->get_brief($user_data['id']) : array();
         
         //Add some extra game variables, calculated of the other tables
-        $game_data['character_avatar_path'] = 'assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.jpg';
-        $game_data['character_avatar_thumb_path'] = 'assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '_thumb/avatar_' . $game_data['character_avatar'] . '.jpg';
+        $game_data['character_avatar_path'] = 'assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.png';
         $game_data['character_gender_long'] = ($game_data['character_gender'] == 'M') ? 'male' : 'female';
         
         $town_info = $this->config->item('towns');
