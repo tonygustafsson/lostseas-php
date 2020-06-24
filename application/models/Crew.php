@@ -149,18 +149,18 @@ class Crew extends CI_Model
         $crew_died = array();
         
         if (isset($updates['player'])) {
-            //Get another players info
+            // Get another players info
             $all_crew = $updates['player']['crew'];
             $user_id = $updates['player']['user']['id'];
             unset($updates['player']);
         } else {
-            //Get your own info
-            $all_crew = $this->data['crew'];
+            // Get your own info
+            $all_crew = $this->get(array('user_id' => $this->data['user']['id']));
             $user_id = $this->data['user']['id'];
         }
     
         if (isset($updates['all'])) {
-            //If you want to set this value for all crews
+            // If you want to set this value for all crews
             foreach ($all_crew as $this_crew) {
                 foreach ($updates['all'] as $key => $val) {
                     $updates[$this_crew['id']][$key] = $updates['all'][$key];

@@ -46,7 +46,7 @@
 		<input type="hidden" name="current_money" id="current_money"
 			value="<?=$game['doubloons']?>">
 		<input type="hidden" name="last_bet" id="last_bet"
-			value="<?=$game['next_bet']?>">
+			value="<?=$viewdata['next_bet']?>">
 
 		<fieldset>
 			<legend>
@@ -62,16 +62,16 @@
 				<table>
 					<tr>
 						<td>Bet</td>
-						<td><span id="bet_presenter"><?=$game['next_bet']?></span>
+						<td><span id="bet_presenter"><?=$viewdata['next_bet']?></span>
 							dbl</td>
 					</tr>
 					<tr>
 						<td>Doubloons left if you lose</td>
-						<td><span class="money_left"><?=$game['doubloons'] - $game['next_bet']?></span>
+						<td><span class="money_left"><?=$game['doubloons'] - $viewdata['next_bet']?></span>
 							dbl</td>
 					</tr>
 					<input type="hidden" id="bet" name="bet"
-						value="<?=$game['next_bet']?>">
+						value="<?=$viewdata['next_bet']?>">
 				</table>
 			</div>
 		</fieldset>

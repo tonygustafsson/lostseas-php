@@ -125,7 +125,7 @@ const fetchHtmlAndUpdateDom = (url, updateLocation) => {
             triggerEventFromUrl();
         })
         .catch((err) => {
-            if (err.response.status === 404) {
+            if (err.response && err.response.status === 404) {
                 snackbar({ text: `Page not found: ${err.toString()}`, level: 'error' });
             } else {
                 snackbar({ text: `Could not revieve HTML: ${err.toString()}`, level: 'error' });

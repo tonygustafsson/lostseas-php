@@ -41,9 +41,10 @@
 			sailors. After a while they decides to join your crew. Do you want to take them in?</p>
 
 		<div class="button-area">
-			<a href="tavern/sailors_post/yes" class="ajaxJSON button big primary" title="Take these sailors in!">Yes</a>
-			<a href="tavern/sailors_post/no" class="ajaxJSON button big"
-				title="Tell them to mind their own business">No</a>
+			<a href="<?=base_url('tavern/sailors_join_accept')?>"
+				class="ajaxJSON button big primary" title="Take these sailors in!">Yes</a>
+			<a href="<?=base_url('tavern/sailors_join_decline')?>"
+				class="ajaxJSON button big" title="Tell them to mind their own business">No</a>
 		</div>
 	</section>
 	<?php endif; ?>

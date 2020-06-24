@@ -21,6 +21,10 @@ class Shop extends Main
 
     public function transfer_post()
     {
+        if ($this->data['game']['place'] !== 'shop') {
+            return;
+        }
+
         $output = array();
         
         $this->load->library('Shoplib');
