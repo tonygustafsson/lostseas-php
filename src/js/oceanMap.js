@@ -138,6 +138,7 @@ const createLinkTriggers = () => {
 };
 
 window.addEventListener('ocean-battle-transfer-done', createLinkTriggers);
+window.addEventListener('ocean-ship_won_cancel', createLinkTriggers);
 window.addEventListener('ocean-ignore', createLinkTriggers);
 window.addEventListener('ocean-flee', createLinkTriggers);
 window.addEventListener('ocean-trade', createLinkTriggers);
