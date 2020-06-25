@@ -4,29 +4,24 @@ include('Main.php');
 
 class Cityhall extends Main
 {
-    public function __construct()
+    public function index()
     {
-        parent::__construct();
-
         $this_place = 'cityhall';
         
         if ($this->data['game']['place'] != $this_place) {
             $updates['place'] = $this_place;
-            $result = $this->Game->update($updates);
-            
-            if (! isset($result['error'])) {
-                $this->data['game']['place'] = $this_place;
-            }
+            $this->Game->update($updates);
         }
-    }
 
-    public function index()
-    {
         $this->load->view_ajax('cityhall/view_cityhall', $this->data);
     }
 
     public function governor()
     {
+        if ($this->data['game']['place'] !== 'cityhall') {
+            return;
+        }
+
         $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
         $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
 
@@ -95,6 +90,10 @@ class Cityhall extends Main
 
     public function citizenship_accept()
     {
+        if ($this->data['game']['place'] !== 'cityhall') {
+            return;
+        }
+
         $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
         $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
         $title_input['level'] = $enemy_victories - $town_victories;
@@ -124,6 +123,10 @@ class Cityhall extends Main
 
     public function work()
     {
+        if ($this->data['game']['place'] !== 'cityhall') {
+            return;
+        }
+
         if ($this->data['game']['event_work'] != 'banned') {
             list($occupation, $salary) = (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') ? explode('###', $this->data['game']['event_work']) : array(null, null);
 
@@ -159,6 +162,10 @@ class Cityhall extends Main
 
     public function work_accept()
     {
+        if ($this->data['game']['place'] !== 'cityhall') {
+            return;
+        }
+
         if (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') {
             list($occupation, $salary) = explode('###', $this->data['game']['event_work']);
             
@@ -201,6 +208,10 @@ class Cityhall extends Main
 
     public function prisoners()
     {
+        if ($this->data['game']['place'] !== 'cityhall') {
+            return;
+        }
+
         if ($this->data['game']['prisoners'] > 0 && $this->data['game']['nation'] == $this->data['game']['nationality']) {
             $reward = floor(rand(300, 1000) * $this->data['game']['prisoners']);
             
@@ -222,6 +233,3 @@ class Cityhall extends Main
         }
     }
 }
-
-/*  End of cityhall.php */
-/* Location: ./application/controllers/cityhall.php */
