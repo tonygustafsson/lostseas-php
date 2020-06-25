@@ -23,7 +23,7 @@
 			value="<?=$game['needed_water'] * 5?>">
 
 		<div class="slider-container">
-			<?php foreach ($viewdata['items'] as $item): ?>
+			<?php foreach ($viewdata['items'] as $index => $item): ?>
 			<input type="hidden"
 				id="<?=$item['id']?>_buy"
 				value="<?=$item['price_buy']?>" />
@@ -43,7 +43,7 @@
 				<div id="<?=$item['id']?>-slider"
 					class="slider slider-vertical"></div>
 
-				<div class="tooltip-multiline tooltip-bottom-left"
+				<div class="tooltip-multiline <?=$index % 4 === 0 ? 'tooltip-bottom-left' : 'tooltip-bottom-right'?>"
 					data-tooltip="<?=$item['description']?> Buy: <?=$item['price_buy']?> dbl, Sell: <?=$item['price_sell']?> dbl.">
 					<svg width="32" height="32"
 						alt="<?=$item['name']?>">
