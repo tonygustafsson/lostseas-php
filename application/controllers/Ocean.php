@@ -730,7 +730,8 @@ class Ocean extends Main
             $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
             $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
             $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
-                
+            $data['event'] = 'ocean-trade-done';
+
             $view = ($this->data['game']['place'] == 'ocean') ? 'ocean/view_ocean' : 'harbor/view_harbor';
             $data['loadView'] = $this->load->view($view, $this->data, true);
             $data['pushState'] = base_url($this->data['game']['place']);

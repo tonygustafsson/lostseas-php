@@ -66,11 +66,11 @@ const townImageZoomIn = (image) => {
     const height = image.height.baseVal.value;
     const x = image.x.baseVal.value;
     const y = image.y.baseVal.value;
-    
+
     image.style.width = width * 1.2;
     image.style.height = height * 1.2;
-    image.style.x = x - (width * 0.1);
-    image.style.y = y - (height * 0.1);
+    image.style.x = x - width * 0.1;
+    image.style.y = y - height * 0.1;
 };
 
 const townImageZoomOut = (image) => {
@@ -78,39 +78,41 @@ const townImageZoomOut = (image) => {
     const height = image.height.baseVal.value;
     const x = image.x.baseVal.value;
     const y = image.y.baseVal.value;
-    
+
     image.style.width = width;
     image.style.height = height;
     image.style.x = x;
-    image.style.y = y
+    image.style.y = y;
 };
 
 const townLinkMouseOver = (e) => {
     const image = e.target;
     townImageZoomIn(image);
-}
+};
 
 const townLinkMouseOut = (e) => {
     const image = e.target;
     townImageZoomOut(image);
-}
+};
 
 const townLinkFocusIn = (e) => {
     const link = e.target;
     const town = link.dataset.focusTown;
-    const correspondingImage = document.getElementById(town);            
+    const correspondingImage = document.getElementById(town);
     townImageZoomIn(correspondingImage);
-}
+};
 
 const townLinkFocusOut = (e) => {
     const link = e.target;
     const town = link.dataset.focusTown;
     const correspondingImage = document.getElementById(town);
     townImageZoomOut(correspondingImage);
-}
+};
 
 const createLinkTriggers = () => {
     const targets = Array.from(document.querySelectorAll('.js-town'));
+
+    console.log('triggers', targets);
 
     targets.forEach((target) => {
         target.addEventListener('mousemove', linkMouseMove);
@@ -122,21 +124,22 @@ const createLinkTriggers = () => {
 
     const townLinks = Array.from(document.querySelectorAll('.ocean-map__town-link'));
 
-    townLinks.forEach(town => {
-        town.addEventListener('mouseover', townLinkMouseOver)
-        town.addEventListener('mouseout', townLinkMouseOut)
-    })
+    townLinks.forEach((town) => {
+        town.addEventListener('mouseover', townLinkMouseOver);
+        town.addEventListener('mouseout', townLinkMouseOut);
+    });
 
     const townLinksFocusesEls = Array.from(document.querySelectorAll('.js-town-focus'));
 
-    townLinksFocusesEls.forEach(link => {
+    townLinksFocusesEls.forEach((link) => {
         link.addEventListener('mouseover', townLinkFocusIn);
         link.addEventListener('mouseout', townLinkFocusOut);
-    })
+    });
 };
 
 window.addEventListener('ocean-battle-transfer-done', createLinkTriggers);
 window.addEventListener('ocean-ignore', createLinkTriggers);
 window.addEventListener('ocean-flee', createLinkTriggers);
 window.addEventListener('ocean-trade', createLinkTriggers);
+window.addEventListener('ocean-trade-done', createLinkTriggers);
 window.addEventListener('ocean', createLinkTriggers);
