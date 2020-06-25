@@ -1,19 +1,19 @@
-$itemWidthDesktop: 500px;
-$itemWidthMobile: 300px;
+$itemWidthDesktop: 80%;
+$itemWidthMobile: 100%;
 
 .snackbar {
-    &-item {
+    &__item {
         position: fixed;
-        right: 0;
-        top: 10px;
+        left: 10%;
+        bottom: 0;
         width: $itemWidthDesktop;
         background-color: #fff;
-        border-left: 6px $yellow solid;
+        border-left: 12px $yellow solid;
         padding: 1em;
+        padding-right: 2.5em;
         box-sizing: border-box;
-        transform: translateX($itemWidthDesktop);
-        transition: transform 500ms;
         z-index: 1010;
+        box-shadow: 0px 0px 10px 0px #000;
 
         &--success {
             border-color: $green;
@@ -23,17 +23,20 @@ $itemWidthMobile: 300px;
             border-color: $darkred;
         }
 
-        &--active {
-            transform: translateX(0);
+        &__close-btn {
+            position: absolute;
+            right: 1rem;
+            top: calc(50% - 1rem);
+            font-size: 2rem;
+            line-height: 0.8;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
         }
 
         @media screen and (max-width: 600px) {
             width: $itemWidthMobile;
-            transform: translateX($itemWidthMobile);
-
-            &--active {
-                transform: translateX(0);
-            }
+            left: 0;
         }
     }
 }
