@@ -3,24 +3,29 @@ import manipulateDom from './manipulateDom';
 
 const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
-const updateActivityEveryMs = 60000;
+const updateEveryMs = 60000;
 
 let updateInterval;
 
-const updateLastActivity = () => {
+const ping = () => {
     const loggOutBtnEl = document.getElementById('nav_logout');
-    const url = appdir + 'account/update_activity';
+    const url = appdir + 'ping';
 
     axios({
         method: 'post',
+        responseType: 'json',
         url: url
+    }).then((result) => {
+        const weather = result.data.weather;
+        const weatherEvent = new CustomEvent('weather', { detail: { weather: weather } });
+        window.dispatchEvent(weatherEvent);
     });
 
-    updateInterval = setTimeout(updateLastActivity, updateActivityEveryMs);
+    updateInterval = setTimeout(ping, updateEveryMs);
 };
 
 const startChecks = (e) => {
-    updateInterval = setTimeout(updateLastActivity, updateActivityEveryMs);
+    updateInterval = setTimeout(ping, updateEveryMs);
 };
 
 const stopChecks = (e) => {

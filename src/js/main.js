@@ -1,6 +1,6 @@
 import './manipulateDom';
 import './ajaxRequest';
-import './lastActivity';
+import './ping';
 import './mobileMenu';
 import './godmode';
 import './sound';
@@ -17,3 +17,4 @@ import './oceanTrade';
 import './shipyard';
 import './shop';
 import './tavern';
+import './weather';

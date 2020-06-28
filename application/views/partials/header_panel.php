@@ -1,8 +1,9 @@
 <div class="header-panel">
         <header>
                 <h1 class="header-panel__main-heading">
-                        <a title="Go back to start page" class="header-panel__link"
-                                href="<?=base_url()?>">
+                        <a title="Go back to start page" class="js-logo-link header-panel__link"
+                                href="<?=base_url()?>"
+                                data-weather="<?=isset($game['weather']) ? $game['weather'] : 'sunset'?>">
                                 <?php include('assets/images/logo-main.svg'); ?>
                                 <span><?=$this->config->item('site_name')?></span>
                         </a>
@@ -149,7 +150,7 @@
                 </a>
                 <?php endif; ?>
 
-                <a class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
+                <a id="nav_logout" class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
                         href="<?=base_url('account/logout')?>">
                         <svg width="24" height="24" alt="Log out">
                                 <use xlink:href="#logout"></use>

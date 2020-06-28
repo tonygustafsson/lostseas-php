@@ -181,6 +181,8 @@ class Main extends CI_Controller
         $game_data['max_cannons'] = 0;
         $game_data['ship_health_lowest'] = 100;
 
+        $game_data['weather'] = $this->gamelib->get_weather();
+
         $ship_specs = $this->config->item('ship_types');
 
         foreach ($ship_data as $ship) {

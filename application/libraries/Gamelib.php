@@ -249,6 +249,38 @@ class GAMELIB
         
         return $data['changeElements'];
     }
+
+    public function get_weather()
+    {
+        $hour = date('H');
+
+        switch ($hour) {
+            case "06": return "sunset";
+            case "07": return "sunset";
+            case "08": return "sunny";
+            case "09": return "cloudy";
+            case "10": return "rainy";
+            case "11": return "cloudy";
+            case "12": return "sunny";
+            case "13": return "cloudy";
+            case "14": return "sunny";
+            case "15": return "sunny";
+            case "16": return "cloudy";
+            case "17": return "sunny";
+            case "18": return "rainy";
+            case "19": return "sunny";
+            case "20": return "sunset";
+            case "21": return "sunset";
+            case "22": return "sunset";
+            case "23": return "night";
+            case "00": return "night";
+            case "01": return "night";
+            case "02": return "night";
+            case "03": return "night";
+            case "04": return "night";
+            case "05": return "night";
+        }
+    }
     
     public function random_greeting($place, $name, $gender, $age)
     {
