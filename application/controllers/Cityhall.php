@@ -11,6 +11,10 @@ class Cityhall extends Main
         if ($this->data['game']['place'] != $this_place) {
             $updates['place'] = $this_place;
             $this->Game->update($updates);
+
+            if (!isset($result['error'])) {
+                $this->data['game']['place'] = $this_place;
+            }
         }
 
         $this->load->view_ajax('cityhall/view_cityhall', $this->data);

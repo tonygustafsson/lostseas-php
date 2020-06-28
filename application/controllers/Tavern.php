@@ -11,6 +11,10 @@ class Tavern extends Main
         if ($this->data['game']['place'] !== $this_place) {
             $updates['place'] = $this_place;
             $result = $this->Game->update($updates);
+
+            if (!isset($result['error'])) {
+                $this->data['game']['place'] = $this_place;
+            }
         }
 
         $this->load->library('Tavernlib');
