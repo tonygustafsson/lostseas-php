@@ -69,12 +69,12 @@ const ajaxJsonRequest = (e) => {
                 window.dispatchEvent(new Event(response.data.event));
             }
 
-            //Google analytics, virtual pageview
-            const gaURL = document.createElement('a');
-            gaURL.href = url;
+            if (typeof window.gtag == typeof Function) {
+                // Google analytics, virtual pageview
+                var gaURL = document.createElement('a');
+                gaURL.href = url;
 
-            if (typeof ga == typeof Function) {
-                ga('send', 'pageview', gaURL.pathname);
+                window.gtag('event', gaURL.pathname, { event_category: 'Ajax' });
             }
         })
         .catch((err) => {
@@ -108,12 +108,12 @@ const fetchHtmlAndUpdateDom = (url, updateLocation) => {
                 document.title = title;
             }
 
-            //Google analytics, virtual pageview
-            var gaURL = document.createElement('a');
-            gaURL.href = url;
+            if (typeof window.gtag == typeof Function) {
+                // Google analytics, virtual pageview
+                var gaURL = document.createElement('a');
+                gaURL.href = url;
 
-            if (typeof ga == typeof Function) {
-                ga('send', 'pageview', { page: gaURL.pathname, title: title });
+                window.gtag('config', window.googleAnalyticsId, { page_title: title, page_path: gaURL.pathname });
             }
 
             if (updateLocation) {

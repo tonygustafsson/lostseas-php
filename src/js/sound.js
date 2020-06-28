@@ -31,10 +31,6 @@ const changeSong = (e) => {
         gameMusic.type = 'audio/mp4';
     }
 
-    if (typeof ga == typeof Function) {
-        ga('send', 'event', 'MusicSong', gameMusic.src);
-    }
-
     const musicVolume = musicControlEl.dataset.musicvolume;
 
     gameMusic.volume = musicVolume / 100;
@@ -73,14 +69,14 @@ const musicToggle = (e) => {
                 if (gameMusic.src === '') {
                     changeSong();
 
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'Music', 'TurnOn');
+                    if (typeof window.gtag == typeof Function) {
+                        window.gtag('event', 'Music', { event_category: 'TurnOn' });
                     }
                 } else {
                     gameMusic.play();
 
-                    if (typeof ga == typeof Function) {
-                        ga('send', 'event', 'Music', 'Play');
+                    if (typeof window.gtag == typeof Function) {
+                        window.gtag('event', 'Music', { event_category: 'Play' });
                     }
                 }
 
@@ -98,8 +94,8 @@ const musicToggle = (e) => {
             url: `${appdir}/account/music/0`
         })
             .then((result) => {
-                if (typeof ga == typeof Function) {
-                    ga('send', 'event', 'Music', 'Pause');
+                if (typeof window.gtag == typeof Function) {
+                    window.gtag('event', 'Music', { event_category: 'Pause' });
                 }
 
                 musicPlayIcon.style.display = 'inline-block';
@@ -122,8 +118,8 @@ const onSliderChange = (value) => {
         .then((result) => {
             gameMusic.volume = volume / 100;
 
-            if (typeof ga == typeof Function) {
-                ga('send', 'event', 'MusicVolume', volume);
+            if (typeof window.gtag == typeof Function) {
+                window.gtag('event', 'Music', { event_category: 'MusicVolume', event_label: volume });
             }
 
             musicControlEl.dataset.musicvolume = volume;
@@ -144,10 +140,8 @@ const changeSoundEffects = (e) => {
         url: `${appdir}account/sound_effects/${value}`
     })
         .then((result) => {
-            var googleValue = value === 1 ? 'TurnOn' : 'TurnOff';
-
-            if (typeof ga == typeof Function) {
-                ga('send', 'event', 'SoundFX', googleValue);
+            if (typeof window.gtag == typeof Function) {
+                window.gtag('event', 'SoundFX', { event_category: value === 1 ? 'TurnOn' : 'TurnOff' });
             }
         })
         .catch((err) => {
