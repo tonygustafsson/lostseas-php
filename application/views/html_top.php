@@ -22,6 +22,15 @@
 	</script>
 	<?php endif; ?>
 
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register(
+					'<?=base_url('assets/js/serviceWorker.js')?>'
+				);
+		};
+	</script>
+
 	<meta charset="utf-8">
 	<meta name="author" content="Tony Gustafsson">
 
@@ -43,7 +52,7 @@
 	<base href="<?=base_url()?>">
 
 	<link rel="manifest"
-		href="<?=base_url('manifest.json')?>">
+		href="<?=base_url('site.webmanifest')?>">
 
 	<link rel="icon" type="image/svg+xml"
 		href="<?=base_url('assets/images/favicon.svg')?>">
