@@ -86,10 +86,10 @@
                 <?php endif; ?>
                 <a class="top-nav-panel__item ajaxHTML" title="What's new in here?"
                         href="<?=base_url('about')?>">
-                        <svg width="32" height="32" alt="About">
+                        <svg width="32" height="32" alt="Guide">
                                 <use xlink:href="#logbook"></use>
                         </svg>
-                        About
+                        Guide
                 </a>
 
                 <?php if ($user['verified'] == 1): ?>

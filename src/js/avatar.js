@@ -62,7 +62,6 @@ const initAvatarDialog = () => {
 };
 
 window.addEventListener('about-presentation', initAvatarDialog);
-window.addEventListener('about-news', initAvatarDialog);
 window.addEventListener('about-guide', initAvatarDialog);
 window.addEventListener('account-password_forgotten', initAvatarDialog);
 window.addEventListener('account-settings_character', initAvatarDialog);

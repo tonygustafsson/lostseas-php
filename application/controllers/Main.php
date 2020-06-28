@@ -67,7 +67,7 @@ class Main extends CI_Controller
         $segment2 = (! empty($segment2)) ? $segment2 : 'ROOT';
 
         $public_pages = array(
-            'about' => array('ROOT', 'presentation', 'news', 'guide', '404'),
+            'about' => array('ROOT', 'presentation', 'guide', '404'),
             'account' => array('ROOT', 'login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_send_reset_link', 'generate_character', 'avatar_selector', 'erase_temp_users', 'logged_out')
         );
 

@@ -25,13 +25,6 @@
 			</svg>
 			Guide
 		</a>
-		<a class="ajaxHTML button big-icon" title="What's new in here?"
-			href="<?=base_url('about/news')?>">
-			<svg width="32" height="32" class="News">
-				<use xlink:href="#magazine"></use>
-			</svg>
-			News
-		</a>
 	</div>
 
 	<h3>Presentation</h3>

@@ -23,7 +23,7 @@
 			</svg>
 			Start
 		</a>
-		<?php endif; ?>
+
 		<a class="ajaxHTML button big-icon" title="A complete guide for this game"
 			href="<?=base_url('about')?>">
 			<svg width="32" height="32" class="Guide">
@@ -31,16 +31,8 @@
 			</svg>
 			Guide
 		</a>
-		<a class="ajaxHTML button big-icon" title="What's new in here?"
-			href="<?=base_url('about/news')?>">
-			<svg width="32" height="32" class="News">
-				<use xlink:href="#magazine"></use>
-			</svg>
-			News
-		</a>
+		<?php endif; ?>
 	</div>
-
-	<hr />
 
 	<h3>Table of contents</h3>
 
