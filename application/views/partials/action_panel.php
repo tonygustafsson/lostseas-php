@@ -88,7 +88,7 @@
 			<svg alt="Explore" width="28" height="28">
 				<use xlink:href="#compass"></use>
 			</svg>
-			Explore
+			Set sail
 		</a>
 
 		<a class="action-panel__item ajaxHTML" title="Land at this town"
