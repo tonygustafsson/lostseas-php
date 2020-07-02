@@ -66,6 +66,7 @@ class Ocean extends Main
                     $updates['event_market_goods'] = '';
                     $updates['event_market_slaves'] = '';
                     $updates['event_sailors'] = '';
+                    $updates['event_tavern_blackjack'] = '';
 
                     $log_input['entry'] = 'leaves the port of ' . ucwords($this->data['game']['town']) . ' to explore the caribbean sea.';
                     $this->Log->create($log_input);

@@ -33,6 +33,12 @@
 			</svg>
 			Gamble
 		</a>
+		<a class="ajaxHTML button big-icon" title="Play black jack" href="tavern/blackjack">
+			<svg width="32" height="32" alt="Black Jack">
+				<use xlink:href="#cards"></use>
+			</svg>
+			Black Jack
+		</a>
 	</div>
 
 	<p>

@@ -39,7 +39,7 @@ class Game extends CI_Model
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners',
                               'victories_england', 'victories_france', 'victories_spain', 'victories_holland', 'victories_pirates',
                               'event_market_goods', 'event_market_slaves', 'event_sailors', 'event_work', 'event_ship',
-                              'event_ship_won', 'event_ocean_trade');
+                              'event_ship_won', 'event_ocean_trade', 'event_tavern_blackjack');
             
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
                                      'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners', 'character_name');

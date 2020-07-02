@@ -442,6 +442,7 @@ class Account extends Main
                     $updates['event_ship'] = '';
                     $updates['event_ship_won'] = '';
                     $updates['event_ocean_trade'] = '';
+                    $updates['event_tavern_blackjack'] = '';
 
                     $ship_input['user_id'] = $this->data['user']['id'];
                     $ship_input['delete_all'] = true;

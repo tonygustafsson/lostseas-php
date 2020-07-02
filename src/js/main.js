@@ -17,4 +17,5 @@ import './oceanTrade';
 import './shipyard';
 import './shop';
 import './tavern';
+import './tavernBlackJack';
 import './weather';

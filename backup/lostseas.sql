@@ -83,6 +83,7 @@ CREATE TABLE `ls_game` (
   `event_market_goods` varchar(128) DEFAULT NULL,
   `event_market_slaves` varchar(128) DEFAULT NULL,
   `event_sailors` varchar(128) DEFAULT NULL,
+  `event_tavern_blackjack` text DEFAULT NULL,
   `event_work` varchar(128) DEFAULT NULL,
   `event_ship` varchar(128) DEFAULT NULL,
   `event_ship_won` varchar(256) DEFAULT NULL,

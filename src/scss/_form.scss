@@ -4,6 +4,7 @@ fieldset {
     margin: 10px 0 40px 0;
     border: 1px $lightgrey solid;
     box-sizing: border-box;
+    background-color: $whiteglass;
 
     @include mobile {
         width: 98%;

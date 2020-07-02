@@ -320,6 +320,13 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Tavern black jack</td>
+				<td>
+					<textarea id="event_tavern_blackjack"
+						name="event_tavern_blackjack"><?=$player['game']['event_tavern_blackjack']?></textarea>
+				</td>
+			</tr>
+			<tr>
 				<td>Work</td>
 				<td><input type="text" id="event_work" name="event_work"
 						value="<?=$player['game']['event_work']?>">

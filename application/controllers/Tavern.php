@@ -360,4 +360,229 @@ class Tavern extends Main
         
         echo json_encode($data);
     }
+
+    public function blackjack()
+    {
+        if ($this->data['game']['place'] !== 'tavern') {
+            return;
+        }
+
+        $this->load->library('Blackjacklib');
+
+        if (!empty($this->data['game']['event_tavern_blackjack'])) {
+            $event = json_decode($this->data['game']['event_tavern_blackjack'], true);
+            $this->data['viewdata']['total_value'] = $this->blackjacklib->get_card_total_value($event['cards']);
+
+            for ($i = 0; $i < count($event['cards']); $i++) {
+                $this->data['viewdata']['cards'][] = $this->blackjacklib->get_card($event['cards'][$i]);
+            }
+        } else {
+            $this->data['viewdata']['cards'] = array();
+        }
+
+        $this->data['viewdata']['next_bet'] = floor($this->data['game']['doubloons'] * 0.1);
+
+        $this->load->view_ajax('tavern/view_blackjack', $this->data);
+    }
+
+    public function blackjack_play()
+    {
+        if ($this->data['game']['place'] !== 'tavern') {
+            return;
+        }
+
+        if (!empty($this->data['game']['event_tavern_blackjack'])) {
+            // Prevent playing again before finishing a game
+            return;
+        }
+
+        $bet = $this->input->post('bet');
+
+        if ($bet > $this->data['game']['doubloons']) {
+            $data['error'] = 'You don\'t have enough money!';
+            echo json_encode($data);
+            return;
+        }
+        
+        if ($bet <= 0) {
+            $data['error'] = 'You cannot bet less than 1 dbl!';
+            echo json_encode($data);
+            return;
+        }
+        
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'coins';
+        }
+
+        $this->load->library('Blackjacklib');
+            
+        $new_money = floor($this->data['game']['doubloons'] - $bet);
+        $bet_percentage = ($new_money > 0) ? $bet / $this->data['game']['doubloons'] : 0;
+        $next_bet = floor($new_money * $bet_percentage);
+
+        $first_card = $this->blackjacklib->create_card();
+        $data['cards'] = array($this->blackjacklib->get_card($first_card));
+
+        $event = array('bet' => $bet, 'cards' => array($first_card));
+        $updates['event_tavern_blackjack']['value'] = json_encode($event);
+        $updates['doubloons']['value'] = $new_money;
+        $result = $this->Game->update($updates);
+    
+        if (isset($result['doubloons']['success'])) {
+            $data['changeElements'] = $result['changeElements'];
+        }
+            
+        for ($i = 0; $i < count($event['cards']); $i++) {
+            $this->data['viewdata']['cards'][] = $this->blackjacklib->get_card($event['cards'][$i]);
+        }
+
+        $this->data['viewdata']['total_value'] = $this->blackjacklib->get_card_total_value(array($first_card));
+        $this->data['viewdata']['event'] = $event;
+        $this->data['game']['event_tavern_blackjack'] = json_encode($event);
+    
+        $data['event'] = 'updated-dom';
+        $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
+      
+        echo json_encode($data);
+    }
+
+    public function blackjack_draw()
+    {
+        if ($this->data['game']['place'] !== 'tavern') {
+            return;
+        }
+
+        if (empty($this->data['game']['event_tavern_blackjack']) || $this->data['game']['event_tavern_blackjack'] === 'banned') {
+            // Prevent drawing new card if it hasn't started playing
+            return;
+        }
+
+        $this->load->library('Blackjacklib');
+
+        $event = json_decode($this->data['game']['event_tavern_blackjack'], true);
+
+        $new_card = $this->blackjacklib->create_card();
+        $event['cards'][] = $new_card;
+
+        $updates['event_tavern_blackjack']['value'] = json_encode($event);
+        $this->Game->update($updates);
+
+        for ($i = 0; $i < count($event['cards']); $i++) {
+            $this->data['viewdata']['cards'][] = $this->blackjacklib->get_card($event['cards'][$i]);
+        }
+
+        $total_value = $this->blackjacklib->get_card_total_value($event['cards']);
+        $this->data['viewdata']['total_value'] = $total_value;
+
+        if ($this->blackjacklib->is_bust($total_value)) {
+            $updates['event_tavern_blackjack']['value'] = '';
+            $this->data['game']['event_tavern_blackjack'] = '';
+
+            $dealer_max = random_int(17, 18);
+            $dealer_value = 0;
+            $dealer_cards = array();
+    
+            while ($dealer_value < $dealer_max && $dealer_value <= $total_value) {
+                // Draw cards until dealer is satisfied
+                $dealer_card = $this->blackjacklib->create_card();
+                $dealer_cards[] = $dealer_card;
+                $dealer_value = $this->blackjacklib->get_card_total_value($dealer_cards);
+                $this->data['viewdata']['dealer_cards'][] = $this->blackjacklib->get_card($dealer_card);
+            }
+
+            $this->data['viewdata']['total_dealer_value'] = $dealer_value;
+
+            if ($this->data['user']['sound_effects_play'] == 1) {
+                $data['playSound'] = 'argh';
+            }
+
+            $this->Game->update($updates);
+
+            $this->data['viewdata']['busted'] = true;
+            $data['info'] = 'You busted and lost your money to the bank.';
+        } else {
+            $this->data['game']['event_tavern_blackjack'] = json_encode($event);
+        }
+    
+        $data['event'] = 'updated-dom';
+        $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
+      
+        echo json_encode($data);
+    }
+
+    public function blackjack_stand()
+    {
+        if ($this->data['game']['place'] !== 'tavern') {
+            return;
+        }
+
+        if (empty($this->data['game']['event_tavern_blackjack']) || $this->data['game']['event_tavern_blackjack'] === 'banned') {
+            // Prevent stand if it hasn't started playing
+            return;
+        }
+
+        $this->load->library('Blackjacklib');
+
+        $event = json_decode($this->data['game']['event_tavern_blackjack'], true);
+
+        for ($i = 0; $i < count($event['cards']); $i++) {
+            $this->data['viewdata']['cards'][] = $this->blackjacklib->get_card($event['cards'][$i]);
+        }
+
+        $total_value = $this->blackjacklib->get_card_total_value($event['cards']);
+        $dealer_max = random_int(17, 18);
+        $dealer_value = 0;
+        $dealer_cards = array();
+
+        while ($dealer_value < $dealer_max && $dealer_value <= $total_value) {
+            // Draw cards until dealer is satisfied
+            $dealer_card = $this->blackjacklib->create_card();
+            $dealer_cards[] = $dealer_card;
+            $dealer_value = $this->blackjacklib->get_card_total_value($dealer_cards);
+            $this->data['viewdata']['dealer_cards'][] = $this->blackjacklib->get_card($dealer_card);
+        }
+
+        $this->data['viewdata']['total_dealer_value'] = $dealer_value;
+        $this->data['viewdata']['total_value'] = $total_value;
+
+        if ($dealer_value <= 21 && $dealer_value >= $total_value) {
+            // Player looses
+            $this->data['viewdata']['dealer_won'] = true;
+            $data['info'] = 'You lost to the dealer and lost your money.';
+
+            if ($this->data['user']['sound_effects_play'] == 1) {
+                $data['playSound'] = 'argh';
+            }
+        } else {
+            // Dealer looses
+            list($blackjack, $winning_sum) = $this->blackjacklib->get_winning_sum($event['bet'], $event['cards']);
+            $updates['doubloons'] = $this->data['game']['doubloons'] + $winning_sum;
+
+            $this->data['viewdata']['player_won'] = true;
+
+            if ($blackjack) {
+                $data['success'] = 'BLACK JACK! You won ' . $winning_sum . ' doubloons!';
+            } else {
+                $data['success'] = 'You won ' . $winning_sum . ' doubloons!';
+            }
+
+            if ($this->data['user']['sound_effects_play'] == 1) {
+                $data['playSound'] = 'cheering';
+            }
+        }
+
+        $this->data['game']['event_tavern_blackjack'] = '';
+
+        $updates['event_tavern_blackjack']['value'] = '';
+        $result = $this->Game->update($updates);
+
+        if (isset($result['doubloons']['success'])) {
+            $data['changeElements'] = $result['changeElements'];
+        }
+
+        $data['event'] = 'updated-dom';
+        $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
+      
+        echo json_encode($data);
+    }
 }

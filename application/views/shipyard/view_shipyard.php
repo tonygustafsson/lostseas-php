@@ -45,7 +45,7 @@
 			value="<?=$price['sell']?>">
 		<?php endforeach; ?>
 
-		<fieldset style="margin-bottom: 0;">
+		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Cannons">
 					<use xlink:href="#cannon"></use>
@@ -80,7 +80,7 @@
 				value="<?=$game['cannons']?>">
 		</fieldset>
 
-		<fieldset style="margin-bottom: 0;">
+		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Buy">
 					<use xlink:href="#raft"></use>
