@@ -141,11 +141,7 @@ class Main extends CI_Controller
         if (! $user_data) {
             return false;
         }
-        
-        $user_data['profile_picture'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '.jpg')) ? 'assets/images/profile_pictures/' . $user_data['id'] . '.jpg' : 'assets/images/profile_pictures/nopic.jpg';
-        $user_data['profile_picture_thumbnail'] = (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg')) ? 'assets/images/profile_pictures/' . $user_data['id'] . '_thumb.jpg' : 'assets/images/profile_pictures/nopic_thumb.jpg';
-        $user_data['gender_long'] = ($user_data['gender'] == 'M') ? 'male' : 'female';
-    
+            
         //The user seems to exist, get more info from this user
         $game_data = $this->Game->get('user_id', $user_data['id']);
         $ship_data = ($game_data) ? $this->Ship->get($user_data['id']) : array();

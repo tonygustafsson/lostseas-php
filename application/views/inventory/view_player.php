@@ -55,7 +55,7 @@
 	<div class="flex" style="margin: 1em 2em;">
 		<div style="padding-top: 1em;">
 			<img style="border: 1px black solid;"
-				src="<?=$player['user']['profile_picture']?>"
+				src="<?=$viewdata['profile_picture']?>"
 				alt="<?=$player['user']['name']?>">
 		</div>
 
@@ -74,7 +74,7 @@
 				<?php if ($player['user']['gender'] != "" && $player['user']['show_gender'] == 1): ?>
 				<tr>
 					<td>Gender</td>
-					<td><?=ucfirst($player['user']['gender_long'])?>
+					<td><?=$viewdata['gender']?>
 					</td>
 				</tr>
 				<?php endif; ?>
