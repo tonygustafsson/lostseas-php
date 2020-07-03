@@ -1,7 +1,18 @@
+<script>
+        window.musicFiles = [];
+        <?php foreach (glob(APPPATH . '../assets/music/*.m4a') as $file): ?>
+        window.musicFiles.push('<?=basename($file)?>');
+        <?php endforeach; ?>
+</script>
+
 <div id="sound_controls" class="dialog" tabindex="-1" role="dialog">
         <h3 class="dialog-title">Sound control</h3>
 
-        <h4>Track</h4>
+        <h4>Music</h4>
+
+        <p class="text-capitalize" id="js-music-control-track-name"></p>
+
+        <div id="track_position_slider" class="slider mb-2"></div>
 
         <?php
                 $pause_music_display_style = $user['music_play'] == 1 ? 'inline-block' : 'none';

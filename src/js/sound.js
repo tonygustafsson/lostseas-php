@@ -7,12 +7,72 @@ const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
 const gameMusic = new Audio();
 
+const getRandomSong = () => {
+    const songs = window.musicFiles;
+    const randomSong = songs[Math.floor(Math.random() * songs.length)];
+
+    return `${appdir}assets/music/${randomSong}`;
+};
+
+const getSongNameFromUrl = (url) => {
+    const regex = new RegExp(/^.*\/(.*)\..*$/);
+    const groups = url.match(regex);
+
+    if (groups.length < 2) {
+        return url;
+    }
+
+    return groups[1].replace(/-/g, ' ');
+};
+
+const gameMusicPlay = () => {
+    const playPromise = gameMusic.play();
+
+    const currentSong = getSongNameFromUrl(gameMusic.src);
+    const trackNameEl = document.getElementById('js-music-control-track-name');
+
+    console.log(`Playing song ${currentSong}`);
+    trackNameEl.innerText = currentSong;
+
+    playPromise.catch(() => {
+        console.error('Could not play music, will start on DOM interaction');
+
+        const body = document.getElementById('body');
+
+        body.addEventListener(
+            'click',
+            () => {
+                gameMusic.play();
+            },
+            { once: true }
+        );
+    });
+};
+
+const gameMusicTimeUpdate = (e) => {
+    const audioSecondsLength = gameMusic.duration;
+    const percentageDone = Math.floor((gameMusic.currentTime / audioSecondsLength) * 100);
+
+    const sliderEl = document.getElementById('track_position_slider');
+    sliderEl.noUiSlider.set(percentageDone);
+};
+
+const gameMusicEnded = () => {
+    const sliderEl = document.getElementById('track_position_slider');
+
+    if (sliderEl && sliderEl.noUiSlider) {
+        sliderEl.noUiSlider.reset();
+    }
+
+    changeSong();
+};
+
 const changeSong = (e) => {
     if (e) {
         e.preventDefault();
     }
 
-    const newSong = appdir + 'assets/music/song' + Math.floor(1 + Math.random() * 38);
+    const newSong = getRandomSong();
     const musicControlEl = document.getElementById('music_control');
 
     const musicPlayIcon = document.getElementById('music_link_play');
@@ -21,37 +81,17 @@ const changeSong = (e) => {
     musicPlayIcon.style.display = 'none';
     musicPauseIcon.style.display = 'inline-block';
 
-    if (gameMusic.canPlayType('audio/ogg')) {
-        //Play OGG files
-        gameMusic.src = newSong + '.ogg';
-        gameMusic.type = 'audio/ogg';
-    } else if (gameMusic.canPlayType('audio/mp4')) {
-        //MP4 if Safari or Internet Explorer
-        gameMusic.src = newSong + '.mp4';
-        gameMusic.type = 'audio/mp4';
+    if (gameMusic.canPlayType('audio/aac') || gameMusic.canPlayType('audio/x-m4a')) {
+        const musicVolume = musicControlEl.dataset.musicvolume;
+
+        gameMusic.src = newSong;
+        gameMusic.type = 'audio/aac';
+        gameMusic.volume = musicVolume / 100;
+
+        gameMusic.load();
+    } else {
+        snackbar({ text: 'Audio type not supported.', level: 'error' });
     }
-
-    const musicVolume = musicControlEl.dataset.musicvolume;
-
-    gameMusic.volume = musicVolume / 100;
-    gameMusic.load();
-    gameMusic.addEventListener('canplay', () => {
-        const playPromise = gameMusic.play();
-
-        playPromise.catch(() => {
-            console.error('Could not play music, will start on DOM interaction');
-
-            const body = document.getElementById('body');
-
-            body.addEventListener(
-                'click',
-                () => {
-                    gameMusic.play();
-                },
-                { once: true }
-            );
-        });
-    });
 };
 
 const musicToggle = (e) => {
@@ -107,7 +147,59 @@ const musicToggle = (e) => {
     }
 };
 
-const onSliderChange = (value) => {
+gameMusic.addEventListener('canplay', gameMusicPlay);
+gameMusic.addEventListener('timeupdate', gameMusicTimeUpdate);
+gameMusic.addEventListener('ended', gameMusicEnded, false);
+
+const changeSoundEffects = (e) => {
+    const checkbox = e.target;
+    const value = checkbox.value;
+
+    axios({
+        method: 'post',
+        url: `${appdir}account/sound_effects/${value}`
+    })
+        .then((result) => {
+            if (typeof window.gtag == typeof Function) {
+                window.gtag('event', 'SoundFX', { event_category: value === 1 ? 'TurnOn' : 'TurnOff' });
+            }
+        })
+        .catch((err) => {
+            snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+        });
+};
+
+const trackPositionSliderChange = (e) => {
+    const seekPercentage = e[0] / 100;
+    const audioSecondsLength = gameMusic.duration;
+    const positionSeconds = audioSecondsLength * seekPercentage;
+
+    gameMusic.currentTime = positionSeconds;
+};
+
+const createTrackPositionSlider = () => {
+    const sliderEl = document.getElementById('track_position_slider');
+
+    if (!sliderEl) {
+        return;
+    }
+
+    const trackPositionSlider = noUiSlider.create(sliderEl, {
+        start: 0,
+        connect: 'lower',
+        direction: 'ltr',
+        step: 1,
+        orientation: 'horizontal',
+        range: {
+            min: 0,
+            max: 100
+        }
+    });
+
+    trackPositionSlider.on('change', trackPositionSliderChange);
+};
+
+const volumeSliderChange = (value) => {
     const volume = value;
     const musicControlEl = document.getElementById('music_control');
 
@@ -129,23 +221,29 @@ const onSliderChange = (value) => {
         });
 };
 
-gameMusic.addEventListener('ended', changeSong, false);
+const createVolumeSlider = () => {
+    const sliderEl = document.getElementById('music_volume_slider');
+    const musicControlEl = document.getElementById('music_control');
+    const musicVolue = musicControlEl.dataset.musicvolume;
 
-const changeSoundEffects = (e) => {
-    const checkbox = e.target;
-    const value = checkbox.value;
+    if (!sliderEl) {
+        return;
+    }
 
-    axios({
-        method: 'post',
-        url: `${appdir}account/sound_effects/${value}`
-    })
-        .then((result) => {
-            if (typeof window.gtag == typeof Function) {
-                window.gtag('event', 'SoundFX', { event_category: value === 1 ? 'TurnOn' : 'TurnOff' });
+    const volumeSlider = noUiSlider
+        .create(sliderEl, {
+            start: musicVolue,
+            connect: 'lower',
+            direction: 'ltr',
+            step: 1,
+            orientation: 'horizontal',
+            range: {
+                min: 0,
+                max: 100
             }
         })
-        .catch((err) => {
-            snackbar({ text: 'Could not save sound effects settings', level: 'error' });
+        .on('set', (value) => {
+            volumeSliderChange(parseInt(value, 10));
         });
 };
 
@@ -165,7 +263,17 @@ window.addEventListener('load', () => {
     // Enable music next
     const musicNextBtn = document.querySelector('.js-music-next');
 
-    musicNextBtn.addEventListener('click', changeSong);
+    musicNextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const sliderEl = document.getElementById('track_position_slider');
+
+        if (sliderEl && sliderEl.noUiSlider) {
+            sliderEl.noUiSlider.reset();
+        }
+
+        changeSong();
+    });
 
     // Auto play music if turned on
     const musicControlEl = document.getElementById('music_control');
@@ -188,26 +296,6 @@ window.addEventListener('load', () => {
         dialogTriggerElementId: 'music_control'
     });
 
-    const sliderEl = document.getElementById('music_volume_slider');
-    const musicVolue = musicControlEl.dataset.musicvolume;
-
-    if (!sliderEl) {
-        return;
-    }
-
-    const slider = noUiSlider
-        .create(sliderEl, {
-            start: musicVolue,
-            connect: 'lower',
-            direction: 'ltr',
-            step: 1,
-            orientation: 'horizontal',
-            range: {
-                min: 0,
-                max: 100
-            }
-        })
-        .on('set', (value) => {
-            onSliderChange(parseInt(value, 10));
-        });
+    createTrackPositionSlider();
+    createVolumeSlider();
 });
