@@ -10,7 +10,7 @@
 
         <h4>Music</h4>
 
-        <p class="text-capitalize" id="js-music-control-track-name"></p>
+        <p class="text-capitalize" id="js-music-control-track-name">Paused</p>
 
         <div id="track_position_slider" class="slider mb-2"></div>
 

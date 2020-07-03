@@ -7,6 +7,9 @@ const base = document.getElementsByTagName('base')[0];
 const appdir = base.href;
 const gameMusic = new Audio();
 
+const trackSliderEl = document.getElementById('track_position_slider');
+const trackNameEl = document.getElementById('js-music-control-track-name');
+
 const getRandomSong = () => {
     const songs = window.musicFiles;
     const randomSong = songs[Math.floor(Math.random() * songs.length)];
@@ -29,7 +32,6 @@ const gameMusicPlay = () => {
     const playPromise = gameMusic.play();
 
     const currentSong = getSongNameFromUrl(gameMusic.src);
-    const trackNameEl = document.getElementById('js-music-control-track-name');
 
     console.log(`Playing song ${currentSong}`);
     trackNameEl.innerText = currentSong;
@@ -53,16 +55,11 @@ const gameMusicTimeUpdate = (e) => {
     const audioSecondsLength = gameMusic.duration;
     const percentageDone = Math.floor((gameMusic.currentTime / audioSecondsLength) * 100);
 
-    const sliderEl = document.getElementById('track_position_slider');
-    sliderEl.noUiSlider.set(percentageDone);
+    trackSliderEl.noUiSlider.set(percentageDone);
 };
 
 const gameMusicEnded = () => {
-    const sliderEl = document.getElementById('track_position_slider');
-
-    if (sliderEl && sliderEl.noUiSlider) {
-        sliderEl.noUiSlider.reset();
-    }
+    trackSliderEl.noUiSlider.reset();
 
     changeSong();
 };
@@ -115,6 +112,8 @@ const musicToggle = (e) => {
                 } else {
                     gameMusic.play();
 
+                    trackNameEl.innerText = getSongNameFromUrl(gameMusic.src);
+
                     if (typeof window.gtag == typeof Function) {
                         window.gtag('event', 'Music', { event_category: 'Play' });
                     }
@@ -123,8 +122,7 @@ const musicToggle = (e) => {
                 musicPlayIcon.style.display = 'none';
                 musicPauseIcon.style.display = 'inline-block';
 
-                const sliderEl = document.getElementById('track_position_slider');
-                sliderEl.removeAttribute('disabled');
+                trackSliderEl.removeAttribute('disabled');
             })
             .catch((err) => {
                 snackbar({ text: 'Could not save sound effects settings', level: 'error' });
@@ -132,8 +130,8 @@ const musicToggle = (e) => {
     } else {
         gameMusic.pause();
 
-        const sliderEl = document.getElementById('track_position_slider');
-        sliderEl.setAttribute('disabled', true);
+        trackNameEl.innerText = 'Paused';
+        trackSliderEl.setAttribute('disabled', true);
 
         axios({
             method: 'post',
@@ -184,13 +182,11 @@ const trackPositionSliderChange = (e) => {
 };
 
 const createTrackPositionSlider = () => {
-    const sliderEl = document.getElementById('track_position_slider');
-
-    if (!sliderEl) {
+    if (!trackSliderEl) {
         return;
     }
 
-    const trackPositionSlider = noUiSlider.create(sliderEl, {
+    const trackPositionSlider = noUiSlider.create(trackSliderEl, {
         start: 0,
         connect: 'lower',
         direction: 'ltr',
@@ -203,6 +199,10 @@ const createTrackPositionSlider = () => {
     });
 
     trackPositionSlider.on('change', trackPositionSliderChange);
+
+    if (!gameMusic.src) {
+        trackSliderEl.setAttribute('disabled', true);
+    }
 };
 
 const volumeSliderChange = (value) => {
@@ -272,11 +272,7 @@ window.addEventListener('load', () => {
     musicNextBtn.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const sliderEl = document.getElementById('track_position_slider');
-
-        if (sliderEl && sliderEl.noUiSlider) {
-            sliderEl.noUiSlider.reset();
-        }
+        trackSliderEl.noUiSlider.reset();
 
         changeSong();
     });
