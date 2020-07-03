@@ -105,7 +105,7 @@ const musicToggle = (e) => {
             method: 'post',
             url: `${appdir}/account/music/1`
         })
-            .then((result) => {
+            .then(() => {
                 if (gameMusic.src === '') {
                     changeSong();
 
@@ -122,6 +122,9 @@ const musicToggle = (e) => {
 
                 musicPlayIcon.style.display = 'none';
                 musicPauseIcon.style.display = 'inline-block';
+
+                const sliderEl = document.getElementById('track_position_slider');
+                sliderEl.removeAttribute('disabled');
             })
             .catch((err) => {
                 snackbar({ text: 'Could not save sound effects settings', level: 'error' });
@@ -129,11 +132,14 @@ const musicToggle = (e) => {
     } else {
         gameMusic.pause();
 
+        const sliderEl = document.getElementById('track_position_slider');
+        sliderEl.setAttribute('disabled', true);
+
         axios({
             method: 'post',
             url: `${appdir}/account/music/0`
         })
-            .then((result) => {
+            .then(() => {
                 if (typeof window.gtag == typeof Function) {
                     window.gtag('event', 'Music', { event_category: 'Pause' });
                 }
