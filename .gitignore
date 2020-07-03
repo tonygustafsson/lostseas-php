@@ -33,4 +33,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /docker/php-fpm/logs
 /docker/php-fpm/sessions
 node_modules
-assets/js/**/*
+assets/js/main.js
+assets/js/styles.js
+assets/js/**/*.jpg
+assets/js/**/*.svg
