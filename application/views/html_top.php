@@ -82,16 +82,10 @@
 	</noscript>
 
 	<div class="grid-container">
-		<?php if (strpos(base_url(), 'test') !== false): ?>
-		<section style="position: absolute; top: 10px; left: 10px;">
-			<p style="color: red; background: #fff">T E S T</p>
-		</section>
-		<?php endif; ?>
-
 		<?php if ($this->input->is_ajax_request() === false && isset($user['admin']) && $user['admin'] == 1): ?>
-		<section class="init-page-load">
-			<p>Initial page load</p>
-		</section>
+		<script>
+			window.isAdmin = true;
+		</script>
 		<?php endif; ?>
 
 		<?php

@@ -1,13 +1,7 @@
-window.addEventListener('load', () => {
-    const initPageLoadEl = document.querySelector('.init-page-load');
+import snackbar from './components/snackbar';
 
-    if (!initPageLoadEl) {
-        return;
-    }
-
-    initPageLoadEl.classList.add('init-page-load--active');
-
-    setTimeout(() => {
-        initPageLoadEl.classList.remove('init-page-load--active');
-    }, 2000);
-});
+if (window.isAdmin) {
+    window.addEventListener('load', () => {
+        snackbar({ text: 'Initial page load.', level: 'info' })
+    });
+}
