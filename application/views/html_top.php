@@ -51,17 +51,20 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-
 	<link rel="manifest"
 		href="<?=base_url('site.webmanifest')?>">
 
 	<link rel="icon" type="image/svg+xml"
 		href="<?=base_url('assets/images/favicon.svg')?>">
-	<link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montaga" rel="stylesheet">
 
 	<title>
 		<?=$page_title?>
 	</title>
+
+	<script>
+		<?php require(__DIR__ . '/../../assets/js/styles.js'); ?>
+	</script>
 </head>
 
 <body id="body">
