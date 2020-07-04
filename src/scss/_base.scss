@@ -1,3 +1,12 @@
+@keyframes darkShine {
+    from {
+        box-shadow: 0 0 20px $blackglass;
+    }
+    to {
+        box-shadow: 0 0 5px $blackglass;
+    }
+}
+
 body {
     background-color: $lightblue;
     background-image: url('/assets/images/design/background-ship.svg'),
@@ -14,9 +23,18 @@ body {
     padding: 0;
 
     &.loading {
-        * {
+        pointer-events: none;
+
+        &:before {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: $whitelightglass;
             cursor: wait !important;
-            opacity: 0.8;
+            z-index: 100;
+            content: '';
         }
 
         &:after {
@@ -32,7 +50,8 @@ body {
             background-color: #fff;
             color: #000;
             border: 2px #000 solid;
-            box-shadow: 0 0 20px $blackglass;
+            animation: darkShine 0.75s both ease-out alternate infinite;
+            z-index: 101;
             content: 'Loading...';
         }
     }
