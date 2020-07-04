@@ -38,8 +38,10 @@
 	<?php if (isset($game['event_change_citizenship']) && $game['event_change_citizenship'] === true): ?>
 	<div id="offer">
 		<div class="button-area">
-			<a href="cityhall/citizenship_accept" class="ajaxJSON button big primary" title="Become a citizen!">Yes</a>
-			<a href="cityhall" class="button big" title="Turn the governor down">No</a>
+			<a href="<?=base_url('cityhall/citizenship_accept')?>"
+				class="ajaxJSON button big primary" title="Become a citizen!">Yes</a>
+			<a href="<?=base_url('cityhall')?>"
+				class="button big" title="Turn the governor down">No</a>
 		</div>
 	</div>
 	<?php endif;?>

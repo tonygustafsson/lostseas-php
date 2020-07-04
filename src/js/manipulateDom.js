@@ -1,8 +1,5 @@
 import snackbar from './components/snackbar';
 
-const base = document.getElementsByTagName('base')[0];
-const appdir = base.href;
-
 const manipulateDom = (data) => {
     if (!data) {
         return;
@@ -116,7 +113,7 @@ const manipulateDom = (data) => {
 
     if (data.playSound) {
         var sound = new Audio();
-        var soundPath = appdir + 'assets/sounds/' + data.playSound;
+        var soundPath = window.appPath + 'assets/sounds/' + data.playSound;
 
         // Get volume
         const musicControlEl = document.getElementById('music_control');

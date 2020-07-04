@@ -12,7 +12,8 @@
 
 <div class="container">
 	<div class="button-area">
-		<a class="ajaxHTML button big-icon" title="Buy something to eat or drink" href="tavern">
+		<a class="ajaxHTML button big-icon" title="Buy something to eat or drink"
+			href="<?=base_url('tavern')?>">
 			<svg width="32" height="32" alt="Buy">
 				<use xlink:href="#rum"></use>
 			</svg>
@@ -27,13 +28,15 @@
 			</svg>
 			Sailors
 		</a>
-		<a class="ajaxHTML button big-icon" title="Gamble for gold!" href="tavern/gamble">
+		<a class="ajaxHTML button big-icon" title="Gamble for gold!"
+			href="<?=base_url('tavern/gamble')?>">
 			<svg width="32" height="32" alt="Gamble">
 				<use xlink:href="#dices"></use>
 			</svg>
 			Gamble
 		</a>
-		<a class="ajaxHTML button big-icon" title="Play black jack" href="tavern/blackjack">
+		<a class="ajaxHTML button big-icon" title="Play black jack"
+			href="<?=base_url('tavern/blackjack')?>">
 			<svg width="32" height="32" alt="Black Jack">
 				<use xlink:href="#cards"></use>
 			</svg>

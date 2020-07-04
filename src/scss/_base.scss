@@ -1,7 +1,7 @@
 body {
     background-color: $lightblue;
-    background-image: url('../../assets/images/design/background-ship.svg'),
-        url('../../assets/images/design/back_sky.jpg');
+    background-image: url('/assets/images/design/background-ship.svg'),
+        url('/assets/images/design/back_sky.jpg');
     background-position: bottom left, top left;
     background-repeat: no-repeat, no-repeat;
     background-size: contain, contain;
@@ -38,8 +38,8 @@ body {
     }
 
     @include mobile {
-        background-image: url('../../assets/images/design/background-ship.svg'),
-            url('../../assets/images/design/back_sky_small.jpg');
+        background-image: url('/assets/images/design/background-ship.svg'),
+            url('/assets/images/design/back_sky_small.jpg');
         font-size: $font-size-default-mobile;
     }
 }
@@ -120,7 +120,7 @@ a {
 hr {
     height: 30px;
     margin: 3em auto;
-    background: url('../../assets/images/design/divider.svg');
+    background: url('/assets/images/design/divider.svg');
     background-size: contain;
     background-position: 50% 0;
     border: none;

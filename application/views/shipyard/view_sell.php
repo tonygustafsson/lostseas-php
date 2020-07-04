@@ -8,19 +8,22 @@
 
 <div class="container">
 	<div class="button-area">
-		<a class="ajaxHTML button big-icon" title="Buy ships and equipments" href="shipyard">
+		<a class="ajaxHTML button big-icon" title="Buy ships and equipments"
+			href="<?=base_url('shipyard')?>">
 			<svg width="32" height="32" alt="Buy">
 				<use xlink:href="#ship"></use>
 			</svg>
 			Buy
 		</a>
-		<a class="ajaxHTML button big-icon" title="Sell ships and equipments" href="shipyard/sell">
+		<a class="ajaxHTML button big-icon" title="Sell ships and equipments"
+			href="<?=base_url('shipyard/sell')?>">
 			<svg width="32" height="32" alt="Buy">
 				<use xlink:href="#ship"></use>
 			</svg>
 			Sell
 		</a>
-		<a class="ajaxHTML button big-icon" title="Repair damaged ships" href="shipyard/repair">
+		<a class="ajaxHTML button big-icon" title="Repair damaged ships"
+			href="<?=base_url('shipyard/repair')?>">
 			<svg width="32" height="32" alt="Buy">
 				<use xlink:href="#wrench"></use>
 			</svg>

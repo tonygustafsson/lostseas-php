@@ -47,8 +47,12 @@
 	</p>
 
 	<div class="button-area">
-		<a class="ajaxJSON button big primary" href="cityhall/work_accept" title="Get to work!">Yes</a>
-		<a class="ajaxHTML button big" href="cityhall" title="I'm too lazy to work">No</a>
+		<a class="ajaxJSON button big primary"
+			href="<?=base_url('cityhall/work_accept')?>"
+			title="Get to work!">Yes</a>
+		<a class="ajaxHTML button big"
+			href="<?=base_url('cityhall')?>"
+			title="I'm too lazy to work">No</a>
 	</div>
 
 	<?php endif; ?>

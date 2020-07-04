@@ -211,6 +211,10 @@ class Account extends Main
             $months[] = 'Nov';
             $months[] = 'Dec';
             $this->data['months'] = $months;
+
+            $this->data['viewdata']['profile_picture'] = file_exists(APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg')
+                ? base_url('assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg')
+                : base_url('assets/images/profile_pictures/nopic.jpg');
                         
             $this->load->view_ajax('account/view_account', $this->data);
         }

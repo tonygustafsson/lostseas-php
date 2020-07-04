@@ -43,7 +43,9 @@ class Inventory extends Main
         $this->data['player']['game']['character_description'] = nl2br($this->data['player']['game']['character_description']);
         $this->data['player']['game']['character_real_age'] = $this->data['player']['game']['character_age'] + floor($this->data['player']['game']['week'] / 52);
         
-        $this->data['viewdata']['profile_picture'] = file_exists(APPPATH . '../assets/images/profile_pictures/' . $this->data['player']['user']['id'] . '.jpg') ? 'assets/images/profile_pictures/' . $this->data['player']['user']['id'] . '.jpg' : 'assets/images/profile_pictures/nopic.jpg';
+        $this->data['viewdata']['profile_picture'] = file_exists(APPPATH . '../assets/images/profile_pictures/' . $this->data['player']['user']['id'] . '.jpg')
+            ? base_url('assets/images/profile_pictures/' . $this->data['player']['user']['id'] . '.jpg')
+            : base_url('assets/images/profile_pictures/nopic.jpg');
         $this->data['viewdata']['gender'] = $this->data['player']['user']['gender'] == 'M' ? 'Male' : 'Female';
 
         $this->load->view_ajax('inventory/view_player', $this->data);

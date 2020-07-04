@@ -29,6 +29,8 @@
 					'<?=base_url('assets/js/serviceWorker.js')?>'
 				);
 		};
+
+		window.appPath = '<?=base_url()?>';
 	</script>
 
 	<meta charset="utf-8">
@@ -49,7 +51,6 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<base href="<?=base_url()?>">
 
 	<link rel="manifest"
 		href="<?=base_url('site.webmanifest')?>">

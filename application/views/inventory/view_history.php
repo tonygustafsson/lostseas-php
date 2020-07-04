@@ -9,7 +9,7 @@
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon"
 			title="Learn more about <?=$player['user']['name']?>"
-			href="inventory/player/<?=$this->uri->segment(3)?>">
+			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
 				<use xlink:href="#player"></use>
 			</svg>
@@ -17,7 +17,7 @@
 		</a>
 		<a class="ajaxHTML button big-icon"
 			title="See <?=$player['game']['character_name']?>s ships"
-			href="inventory/ships/<?=$this->uri->segment(3)?>">
+			href="<?=base_url('inventory/ships/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Ships">
 				<use xlink:href="#ship"></use>
 			</svg>
@@ -25,7 +25,7 @@
 		</a>
 		<a class="ajaxHTML button big-icon"
 			title="See <?=$player['game']['character_name']?>s crew members"
-			href="inventory/crew/<?=$this->uri->segment(3)?>">
+			href="<?=base_url('inventory/crew/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Crew members">
 				<use xlink:href="#crew-man"></use>
 			</svg>
@@ -33,7 +33,7 @@
 		</a>
 		<a class="ajaxHTML button big-icon"
 			title="See graphs and data about <?=$player['game']['character_name']?>s history"
-			href="inventory/history/<?=$this->uri->segment(3)?>">
+			href="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="History">
 				<use xlink:href="#clock"></use>
 			</svg>
@@ -41,7 +41,7 @@
 		</a>
 		<a class="ajaxHTML button big-icon"
 			title="Check out <?=$player['game']['character_name']?>s log book"
-			href="inventory/log/<?=$this->uri->segment(3)?>">
+			href="<?=base_url('inventory/log/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Log book">
 				<use xlink:href="#logbook"></use>
 			</svg>

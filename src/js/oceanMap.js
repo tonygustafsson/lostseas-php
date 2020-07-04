@@ -1,6 +1,3 @@
-const base = document.getElementsByTagName('base')[0];
-const appdir = base.href;
-
 const createTownInfo = (element) => {
     const lang = element.attributes.rel.value;
     const townText = element.attributes.alt.value;

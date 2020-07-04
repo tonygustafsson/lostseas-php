@@ -1,15 +1,12 @@
 import axios from 'axios';
-import manipulateDom from './manipulateDom';
 
-const base = document.getElementsByTagName('base')[0];
-const appdir = base.href;
 const updateEveryMs = 60000;
 
 let updateInterval;
 
 const ping = () => {
     const loggOutBtnEl = document.getElementById('nav_logout');
-    const url = appdir + 'ping';
+    const url = window.appPath + 'ping';
 
     axios({
         method: 'post',

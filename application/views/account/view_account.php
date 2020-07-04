@@ -46,10 +46,8 @@
 			<legend>Profile picture</legend>
 
 			<div>
-				<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $user['id'] . '.jpg')): ?>
 				<img
-					src="<?='assets/images/profile_pictures/' . $user['id'] . '.jpg'?>">
-				<?php endif; ?>
+					src="<?=$viewdata['profile_picture']?>">
 			</div>
 
 			<input type="file" id="profile_picture_select" name="profile_picture_select[]" />

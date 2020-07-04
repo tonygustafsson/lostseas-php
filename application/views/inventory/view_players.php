@@ -20,11 +20,11 @@
 				<td width="40">
 					<?php if (file_exists(APPPATH . '../assets/images/profile_pictures/' . $this_player['id'] . '_thumb.jpg')): ?>
 					<img width="40" height="40"
-						src="<?='assets/images/profile_pictures/' . $this_player['id'] . '_thumb.jpg'?>"
+						src="<?=base_url('assets/images/profile_pictures/' . $this_player['id'] . '_thumb.jpg')?>"
 						alt="<?=$this_player['name']?>">
 					<?php else: ?>
 					<img width="40" height="40"
-						src="<?='assets/images/profile_pictures/nopic_thumb.jpg'?>"
+						src="<?=base_url('assets/images/profile_pictures/nopic_thumb.jpg')?>"
 						alt="<?=$this_player['name']?>">
 					<?php endif; ?>
 				</td>
@@ -39,7 +39,7 @@
 					</a>
 
 					<a class="ajaxHTML"
-						href="inventory/player/<?=$this_player['id']?>"><?=$this_player['name']?></a>
+						href="<?=base_url('inventory/player/' . $this_player['id'])?>"><?=$this_player['name']?></a>
 				</td>
 				<td width="40"><img width="40" height="40"
 						alt="Avatar of <?=$this_player['character_name']?>"

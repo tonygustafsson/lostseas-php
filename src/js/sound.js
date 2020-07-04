@@ -3,8 +3,6 @@ import axios from 'axios';
 import dialog from './components/dialog.js';
 import snackbar from './components/snackbar';
 
-const base = document.getElementsByTagName('base')[0];
-const appdir = base.href;
 const gameMusic = new Audio();
 
 const trackSliderEl = document.getElementById('track_position_slider');
@@ -14,7 +12,7 @@ const getRandomSong = () => {
     const songs = window.musicFiles;
     const randomSong = songs[Math.floor(Math.random() * songs.length)];
 
-    return `${appdir}assets/music/${randomSong}`;
+    return `${window.appPath}assets/music/${randomSong}`;
 };
 
 const getSongNameFromUrl = (url) => {
@@ -100,7 +98,7 @@ const musicToggle = (e) => {
     if (gameMusic.paused || gameMusic.src === '') {
         axios({
             method: 'post',
-            url: `${appdir}/account/music/1`
+            url: `${window.appPath}/account/music/1`
         })
             .then(() => {
                 if (gameMusic.src === '') {
@@ -135,7 +133,7 @@ const musicToggle = (e) => {
 
         axios({
             method: 'post',
-            url: `${appdir}/account/music/0`
+            url: `${window.appPath}/account/music/0`
         })
             .then(() => {
                 if (typeof window.gtag == typeof Function) {
@@ -161,7 +159,7 @@ const changeSoundEffects = (e) => {
 
     axios({
         method: 'post',
-        url: `${appdir}account/sound_effects/${value}`
+        url: `${window.appPath}account/sound_effects/${value}`
     })
         .then((result) => {
             if (typeof window.gtag == typeof Function) {
@@ -211,7 +209,7 @@ const volumeSliderChange = (value) => {
 
     axios({
         method: 'post',
-        url: `${appdir}account/music_volume/${volume}`
+        url: `${window.appPath}account/music_volume/${volume}`
     })
         .then((result) => {
             gameMusic.volume = volume / 100;
