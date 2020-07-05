@@ -38,7 +38,7 @@ class Game extends CI_Model
                               'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners',
                               'victories_england', 'victories_france', 'victories_spain', 'victories_holland', 'victories_pirates',
-                              'event_market_slaves', 'event_sailors', 'event_work', 'event_ship',
+                              'event_sailors', 'event_work', 'event_ship',
                               'event_ship_won', 'event_ocean_trade');
             
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
@@ -58,7 +58,8 @@ class Game extends CI_Model
                 }
             }
 
-            if (isset($updates['event']) && count($updates['event']) > 0) {
+            if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {
+                // Handle events saved as array
                 $events = array();
 
                 foreach ($updates['event'] as $event => $value) {
@@ -67,6 +68,11 @@ class Game extends CI_Model
 
                 $events = array_merge($this->data['game']['event'], $events);
                 $sql_updates['event'] = json_encode($events);
+            }
+
+            if (isset($updates['event']) && !is_array($updates['event'])) {
+                // Handle events saved as json
+                $sql_updates['event'] = $updates['event'];
             }
             
             if (isset($updates['character_avatar'])) {
