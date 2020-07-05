@@ -17,7 +17,7 @@
 			Goods
 		</a>
 		<?php endif; ?>
-		<?php if ($game['event_market_slaves'] != 'banned'): ?>
+		<?php if (!isset($game['event']['market_slaves']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Look for slaves" id="action_slaves"
 			href="<?=base_url('market/slaves')?>">
 			<svg width="32" height="32" alt="Slaves">

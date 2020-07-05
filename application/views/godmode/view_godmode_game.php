@@ -300,13 +300,6 @@
 				<th>Setting</th>
 				<th>Value</th>
 			</tr>
-
-			<tr>
-				<td>Market slaves</td>
-				<td><input type="text" id="event_market_slaves" name="event_market_slaves"
-						value="<?=$player['game']['event_market_slaves']?>">
-				</td>
-			</tr>
 			<tr>
 				<td>Tavern sailors</td>
 				<td><input type="text" id="event_sailors" name="event_sailors"

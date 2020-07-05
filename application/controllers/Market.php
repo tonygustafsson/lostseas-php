@@ -104,71 +104,80 @@ class Market extends Main
 
     public function slaves()
     {
-        if ($this->data['game']['event_market_slaves'] != 'banned') {
-            list($slaves, $health, $cost) = (! empty($this->data['game']['event_market_slaves'])) ? explode('###', $this->data['game']['event_market_slaves']) : array(null, null, null);
+        $event = isset($this->data['game']['event']['market_slaves']) ? $this->data['game']['event']['market_slaves'] : null;
 
-            if ($slaves === null || $health === null || $cost === null) {
-                $slaves = ($this->data['game']['crew_members'] < 10) ? rand(1, 3) : rand(1, 12);
-                $health = rand(20, 100);
-                $cost = round($slaves * rand(200, 1200));
-
-                $this->data['game']['event_market_slaves'] = $updates['event_market_slaves'] = $slaves . '###' . $health . '###' . $cost;
-
-                $result = $this->Game->update($updates);
-            }
-
-            $this->load->view_ajax('market/view_slaves', $this->data);
+        if (isset($event['banned']) && $event['banned']) {
+            return;
         }
+
+        if (!isset($event['slaves']) || !isset($event['health']) || !isset($event['cost'])) {
+            $slaves = ($this->data['game']['crew_members'] < 10) ? rand(1, 3) : rand(1, 12);
+            $health = rand(20, 100);
+            $cost = round($slaves * rand(200, 1200));
+
+            $event = array('slaves' => $slaves, 'health' => $health, 'cost' => $cost);
+
+            $this->data['game']['event']['market_slaves'] = $event;
+            $updates['event']['market_slaves'] = $event;
+
+            $result = $this->Game->update($updates);
+        }
+
+        $this->load->view_ajax('market/view_slaves', $this->data);
     }
 
     public function slaves_post()
     {
-        if (! empty($this->data['game']['event_market_slaves']) && $this->data['game']['event_market_slaves'] != 'banned') {
-            $answer = $this->uri->segment(3);
-            $data['changeElements'] = array();
+        $event = isset($this->data['game']['event']['market_slaves']) ? $this->data['game']['event']['market_slaves'] : null;
+
+        if (isset($event['banned']) && $event['banned']) {
+            return;
+        }
+
+        $answer = $this->uri->segment(3);
+        $data['changeElements'] = array();
         
-            if ($answer == 'yes') {
-                list($slaves, $health, $cost) = explode('###', $this->data['game']['event_market_slaves']);
-
-                if ($cost <= $this->data['game']['doubloons']) {
-                    $crew_input['user_id'] = $this->data['user']['id'];
-                    $crew_input['number_of_men'] = $slaves;
-                    $crew_input['week'] = $this->data['game']['week'];
-                    $crew_input['nationality'] = $this->data['game']['nation'];
-                    $crew_input['health'] = $health;
-                    $crew_result = $this->Crew->create($crew_input);
-                    
-                    if ($crew_result['created_crew_count'] == $slaves) {
-                        $data['success'] = 'You bought ' . $slaves . ' slaves, that is now your crew members, for ' . $cost . ' dbl at the market!';
-
-                        $data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
-
-                        $updates['event_market_slaves'] = 'banned';
-                        $updates['doubloons']['sub'] = true;
-                        $updates['doubloons']['value'] = $cost;
-                        $game_result = $this->Game->update($updates);
-                        $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
-                        
-                        if ($this->data['user']['sound_effects_play'] == 1) {
-                            $data['playSound'] = 'coins';
-                        }
-                        
-                        $log_input['entry'] = 'bought ' . $slaves . ' slaves, that is now part of the crew members, for ' . $cost . ' dbl at the market.';
-                        $this->Log->create($log_input);
-                    } else {
-                        $data['error'] = 'Something went wrong when creating new crew members!';
-                    }
-                }
-            } else {
-                $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
+        if ($answer === 'yes') {
+            if ($event['cost'] > $this->data['game']['doubloons']) {
+                $data['error'] = 'Something went wrong when creating new crew members!';
+                echo json_encode($data);
+                return;
             }
 
-            $data['changeElements']['offer']['remove'] = true;
-            $data['changeElements']['action_slaves']['remove'] = true;
-            $data['pushState'] = base_url('market');
-            
-            echo json_encode($data);
+            $crew_input['user_id'] = $this->data['user']['id'];
+            $crew_input['number_of_men'] = $event['slaves'];
+            $crew_input['week'] = $this->data['game']['week'];
+            $crew_input['nationality'] = $this->data['game']['nation'];
+            $crew_input['health'] = $event['health'];
+            $crew_result = $this->Crew->create($crew_input);
+                    
+            if ($crew_result['created_crew_count'] == $event['slaves']) {
+                $data['success'] = 'You bought ' . $event['slaves'] . ' slaves, that is now your crew members, for ' . $event['cost'] . ' dbl at the market!';
+
+                $data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
+
+                $updates['event']['market_slaves']['banned'] = true;
+                $updates['doubloons']['sub'] = true;
+                $updates['doubloons']['value'] = $event['cost'];
+                $game_result = $this->Game->update($updates);
+                $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
+                $data['changeElements']['action_slaves']['remove'] = true;
+
+                if ($this->data['user']['sound_effects_play'] == 1) {
+                    $data['playSound'] = 'coins';
+                }
+                        
+                $log_input['entry'] = 'bought ' . $event['slaves'] . ' slaves, that is now part of the crew members, for ' . $event['cost'] . ' dbl at the market.';
+                $this->Log->create($log_input);
+            }
+        } else {
+            $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
         }
+
+        $data['changeElements']['offer']['remove'] = true;
+        $data['pushState'] = base_url('market');
+            
+        echo json_encode($data);
     }
     
     public function healer()

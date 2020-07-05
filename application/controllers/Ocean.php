@@ -63,10 +63,10 @@ class Ocean extends Main
                 if ($this->data['game']['place'] != $this->this_place) {
                     //If you are comming from the harbor
                     $updates['event_work'] = '';
-                    $updates['event_market_slaves'] = '';
                     $updates['event_sailors'] = '';
                     $updates['event']['blackjack'] = null;
                     $updates['event']['market_goods'] = null;
+                    $updates['event']['market_slaves'] = null;
 
                     $log_input['entry'] = 'leaves the port of ' . ucwords($this->data['game']['town']) . ' to explore the caribbean sea.';
                     $this->Log->create($log_input);

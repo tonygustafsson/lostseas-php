@@ -439,7 +439,6 @@ class Account extends Main
                     $updates['victories_spain'] = 0;
                     $updates['victories_holland'] = 0;
                     $updates['victories_pirates'] = 0;
-                    $updates['event_market_slaves'] = '';
                     $updates['event_sailors'] = '';
                     $updates['event_work'] = '';
                     $updates['event_ship'] = '';
@@ -447,6 +446,7 @@ class Account extends Main
                     $updates['event_ocean_trade'] = '';
                     $updates['event']['blackjack'] = null;
                     $updates['event']['market_goods'] = null;
+                    $updates['event']['market_slaves'] = null;
 
                     $ship_input['user_id'] = $this->data['user']['id'];
                     $ship_input['delete_all'] = true;
