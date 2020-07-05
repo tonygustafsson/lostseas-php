@@ -12,7 +12,7 @@
 
 <div class="container">
 	<div class="button-area">
-		<?php if ($game['event_market_goods'] != 'banned'): ?>
+		<?php if (!isset($game['event']['market_goods']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Browse goods" id="action_goods"
 			href="<?=base_url('market/goods')?>">
 			<svg width="32" height="32" alt="Goods">

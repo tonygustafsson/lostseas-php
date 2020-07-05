@@ -84,15 +84,7 @@ class Main extends CI_Controller
     
     public function event_method($game)
     {
-        if (! empty($game['event_market_goods']) && $game['event_market_goods'] != 'banned' && $game['place'] == 'market') {
-            return 'market';
-        } elseif (! empty($game['event_market_slaves']) && $game['event_market_slaves'] != 'banned' && $game['place'] == 'market') {
-            return 'market';
-        } elseif (! empty($game['event_sailors']) && $game['event_market_slaves'] != 'banned' && $game['place'] == 'tavern') {
-            return 'tavern';
-        } elseif (! empty($game['event_work']) && $game['event_work'] != 'banned' && $game['place'] == 'cityhall') {
-            return 'cityhall';
-        } elseif (! empty($game['event_ship']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
+        if (! empty($game['event_ship']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
             return 'ocean/ship_meeting';
         } elseif (! empty($game['event_ocean_trade']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
             return 'ocean/trade';
@@ -147,6 +139,13 @@ class Main extends CI_Controller
         $ship_data = ($game_data) ? $this->Ship->get($user_data['id']) : array();
         $crew_data = ($game_data) ? $this->Crew->get_brief($user_data['id']) : array();
         
+        // Make events an array from JSON
+        if (isset($game_data['event']) && !empty($game_data['event'])) {
+            $game_data['event'] = json_decode($game_data['event'], true);
+        } else {
+            $game_data['event'] = array();
+        }
+
         //Add some extra game variables, calculated of the other tables
         $game_data['character_avatar_path'] = base_url('assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.png');
         $game_data['character_gender_long'] = ($game_data['character_gender'] == 'M') ? 'male' : 'female';

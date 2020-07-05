@@ -27,11 +27,14 @@ class Market extends Main
 
     public function goods()
     {
-        if ($this->data['game']['event_market_goods'] != 'banned') {
-            list($item, $quantity, $cost, $total_cost) = (! empty($this->data['game']['event_market_goods'])) ? explode('###', $this->data['game']['event_market_goods']) : array(null, null, null, null);
+        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
 
-            if ($item === null || $quantity === null || $cost === null || $total_cost === null) {
-                $items = array(
+        if (isset($event['banned']) && $event['banned']) {
+            return;
+        }
+
+        if (!isset($event['item']) || !isset($event['quantity']) || !isset($event['cost']) || !isset($event['cost'])) {
+            $items = array(
                     'food' => 16,
                     'water' => 12,
                     'porcelain' => 35,
@@ -41,58 +44,62 @@ class Market extends Main
                     'rum' => 150
                 );
 
-                $item = array_rand($items);
-                $cost = floor($items[$item] * (rand(50, 100) / 100));
-                $quantity = rand(1, 50);
-                $total_cost = $quantity * $cost;
+            $item = array_rand($items);
+            $item_cost = floor($items[$item] * (rand(50, 100) / 100));
+            $quantity = rand(1, 50);
+            $cost = $quantity * $item_cost;
 
-                $this->data['game']['event_market_goods'] = $updates['event_market_goods'] = $item . '###' . $quantity . '###' . $cost . '###' . $total_cost;
+            $event = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost, 'item_cost' => $item_cost);
 
-                $this->Game->update($updates);
-            }
+            $this->data['game']['event']['market_goods'] = $event;
+            $updates['event']['market_goods'] = $event;
 
-            $this->load->view_ajax('market/view_goods', $this->data);
+            $this->Game->update($updates);
         }
+
+        $this->load->view_ajax('market/view_goods', $this->data);
     }
 
     public function goods_post()
     {
-        if (! empty($this->data['game']['event_market_goods']) && $this->data['game']['event_market_goods'] != 'banned') {
-            $data['changeElements'] = array();
-            $answer = $this->uri->segment(3);
-        
-            if ($answer == 'yes') {
-                list($item, $quantity, $cost, $total_cost) = explode('###', $this->data['game']['event_market_goods']);
+        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
 
-                if ($cost <= $this->data['game']['doubloons']) {
-                    $data['success'] = 'You bought ' . $quantity . ' cartons of ' . $item . ' for ' . $total_cost . ' dbl at the market!';
-
-                    $updates['event_market_goods'] = 'banned';
-                    $updates['doubloons']['sub'] = true;
-                    $updates['doubloons']['value'] = $total_cost;
-                    $updates[$item]['add'] = true;
-                    $updates[$item]['value'] = $quantity;
-                    $result = $this->Game->update($updates);
-                    
-                    $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
-                    
-                    if ($this->data['user']['sound_effects_play'] == 1) {
-                        $data['playSound'] = 'coins';
-                    }
-                    
-                    $log_input['entry'] = 'bought ' . $quantity . ' cartons of ' . $item . ' for ' . $total_cost . ' dbl at the market.';
-                    $this->Log->create($log_input);
-                }
-            } else {
-                $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
-            }
-
-            $data['changeElements']['offer']['remove'] = true;
-            $data['changeElements']['action_goods']['remove'] = true;
-            $data['pushState'] = base_url('market');
-            
-            echo json_encode($data);
+        if (isset($event['market_goods']['banned']) && $event['market_goods']['banned']) {
+            return;
         }
+
+        $data['changeElements'] = array();
+        $answer = $this->uri->segment(3);
+        
+        if ($answer === 'yes') {
+            if ($event['cost'] <= $this->data['game']['doubloons']) {
+                $data['success'] = 'You bought ' . $event['quantity'] . ' cartons of ' . $event['item'] . ' for ' . $event['cost'] . ' dbl at the market!';
+
+                $updates['event']['market_goods']['banned'] = true;
+                $updates['doubloons']['sub'] = true;
+                $updates['doubloons']['value'] = $event['cost'];
+                $updates[$event['item']]['add'] = true;
+                $updates[$event['item']]['value'] = $event['quantity'];
+                $result = $this->Game->update($updates);
+                    
+                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
+                $data['changeElements']['action_goods']['remove'] = true;
+
+                if ($this->data['user']['sound_effects_play'] == 1) {
+                    $data['playSound'] = 'coins';
+                }
+                    
+                $log_input['entry'] = 'bought ' . $event['quantity'] . ' cartons of ' . $event['item'] . ' for ' . $event['cost'] . ' dbl at the market.';
+                $this->Log->create($log_input);
+            }
+        } else {
+            $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
+        }
+
+        $data['changeElements']['offer']['remove'] = true;
+        $data['pushState'] = base_url('market');
+            
+        echo json_encode($data);
     }
 
     public function slaves()
@@ -240,6 +247,3 @@ class Market extends Main
         echo json_encode($data);
     }
 }
-
-/*  End of market.php */
-/* Location: ./application/controllers/market.php */

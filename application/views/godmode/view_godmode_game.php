@@ -302,12 +302,6 @@
 			</tr>
 
 			<tr>
-				<td>Market goods</td>
-				<td><input type="text" id="event_market_goods" name="event_market_goods"
-						value="<?=$player['game']['event_market_goods']?>">
-				</td>
-			</tr>
-			<tr>
 				<td>Market slaves</td>
 				<td><input type="text" id="event_market_slaves" name="event_market_slaves"
 						value="<?=$player['game']['event_market_slaves']?>">
@@ -320,10 +314,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Tavern black jack</td>
+				<td>Event</td>
 				<td>
-					<textarea id="event_tavern_blackjack"
-						name="event_tavern_blackjack"><?=$player['game']['event_tavern_blackjack']?></textarea>
+					<textarea id="event"
+						name="event"><?=json_encode($player['game']['event'])?></textarea>
 				</td>
 			</tr>
 			<tr>

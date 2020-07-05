@@ -12,13 +12,13 @@ class Game extends CI_Model
         $this->db->where($index, $value);
         $game_data = $this->db->get($this->db->game_table);
         $game_data = ($game_data->num_rows() > 0) ? $game_data->row_array() : false;
-        
+
         return $game_data;
     }
 
     public function create($input)
     {
-        //Register game data on registration
+        // Register game data on registration
         $this->db->insert($this->db->game_table, $input);
         
         $output['success'] = true;
@@ -38,8 +38,8 @@ class Game extends CI_Model
                               'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners',
                               'victories_england', 'victories_france', 'victories_spain', 'victories_holland', 'victories_pirates',
-                              'event_market_goods', 'event_market_slaves', 'event_sailors', 'event_work', 'event_ship',
-                              'event_ship_won', 'event_ocean_trade', 'event_tavern_blackjack');
+                              'event_market_slaves', 'event_sailors', 'event_work', 'event_ship',
+                              'event_ship_won', 'event_ocean_trade');
             
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
                                      'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners', 'character_name');
@@ -56,6 +56,17 @@ class Game extends CI_Model
                         $output['changeElements']['inventory_' . $item]['text'] = $value;
                     }
                 }
+            }
+
+            if (isset($updates['event']) && count($updates['event']) > 0) {
+                $events = array();
+
+                foreach ($updates['event'] as $event => $value) {
+                    $events[$event] = $value;
+                }
+
+                $events = array_merge($this->data['game']['event'], $events);
+                $sql_updates['event'] = json_encode($events);
             }
             
             if (isset($updates['character_avatar'])) {
