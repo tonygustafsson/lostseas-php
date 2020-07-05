@@ -63,7 +63,7 @@ class Ocean extends Main
                 if ($this->data['game']['place'] != $this->this_place) {
                     //If you are comming from the harbor
                     $updates['event_work'] = '';
-                    $updates['event_sailors'] = '';
+                    $updates['event']['tavern_sailors'] = null;
                     $updates['event']['blackjack'] = null;
                     $updates['event']['market_goods'] = null;
                     $updates['event']['market_slaves'] = null;

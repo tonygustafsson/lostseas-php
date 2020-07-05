@@ -94,14 +94,16 @@ class Tavern extends Main
             return;
         }
 
-        if ($this->data['game']['event_sailors'] === 'banned') {
-            redirect($this->data['game']['place']);
+        $event = isset($this->data['game']['event']['tavern_sailors']) ? $this->data['game']['event']['tavern_sailors'] : null;
+
+        if (isset($event['banned']) && $event['banned']) {
+            return;
         }
         
-        if (is_numeric($this->data['game']['event_sailors'])) {
+        if (isset($event['joiners'])) {
             // Action already set previously
             $action = 'SAILORS_ACTION_JOIN';
-            $sailors = $this->data['game']['event_sailors'];
+            $sailors = $event['joiners'];
         } else {
             // Generate new action
             $this->load->library('Tavernlib');
@@ -125,12 +127,14 @@ class Tavern extends Main
 
     private function sailors_join($sailors)
     {
-        if (!isset($this->data['game']['event_sailors']) || empty($this->data['game']['event_sailors'])) {
+        $event = isset($this->data['game']['event']['tavern_sailors']) ? $this->data['game']['event']['tavern_sailors'] : null;
+
+        if (!isset($event['joiners'])) {
             // Set event parameters if they are not already set
-            $this->data['game']['event_sailors'] = $sailors;
+            $this->data['game']['event']['tavern_sailors']['joiners'] = $sailors;
             
             $updates['user_id'] = $this->data['user']['id'];
-            $updates['event_sailors'] = $sailors;
+            $updates['event']['tavern_sailors']['joiners'] = $sailors;
             $result = $this->Game->update($updates);
         }
 
@@ -149,7 +153,7 @@ class Tavern extends Main
         $db_updates['user_id'] = $this->data['user']['id'];
         $db_updates['doubloons']['add'] = true;
         $db_updates['doubloons']['value'] = $loot;
-        $db_updates['event_sailors'] = 'banned';
+        $db_updates['event']['tavern_sailors']['banned'] = true;
 
         if ($this->data['user']['sound_effects_play'] == 1) {
             $data['playSound'] = 'sword_fight';
@@ -205,7 +209,7 @@ class Tavern extends Main
     
         $this->data['json'] = json_encode($data);
     
-        $db_updates['event_sailors'] = 'banned';
+        $db_updates['event']['tavern_sailors']['banned'] = true;
         $this->Game->update($db_updates);
                                     
         $this->Log->create($log_input);
@@ -219,11 +223,13 @@ class Tavern extends Main
             return;
         }
 
-        if (empty($this->data['game']['event_sailors']) || $this->data['game']['event_sailors'] === 'banned') {
+        $event = isset($this->data['game']['event']['tavern_sailors']) ? $this->data['game']['event']['tavern_sailors'] : null;
+
+        if (isset($event['banned']) && $event['banned']) {
             return;
         }
 
-        $sailors = $this->data['game']['event_sailors'];
+        $sailors = $event['joiners'];
 
         // Create new crew members
         $crew_db_create['user_id'] = $this->data['user']['id'];
@@ -248,7 +254,7 @@ class Tavern extends Main
         $this->Log->create($log_input);
             
         $db_updates['user_id'] = $this->data['user']['id'];
-        $db_updates['event_sailors'] = 'banned';
+        $db_updates['event']['tavern_sailors']['banned'] = true;
         $this->Game->update($db_updates);
             
         echo json_encode($data);
@@ -260,11 +266,13 @@ class Tavern extends Main
             return;
         }
 
-        if (empty($this->data['game']['event_sailors']) || $this->data['game']['event_sailors'] === 'banned') {
+        $event = isset($this->data['game']['event']['tavern_sailors']) ? $this->data['game']['event']['tavern_sailors'] : null;
+
+        if (isset($event['banned']) && $event['banned']) {
             return;
         }
 
-        $sailors = $this->data['game']['event_sailors'];
+        $sailors = $event['joiners'];
 
         $data['info'] = 'You had a nice conversation with the lads, but eventually told them off.';
         $this->data['msg'] = 'You had a nice conversation with the lads, but eventually told them off.';
@@ -273,10 +281,11 @@ class Tavern extends Main
         $data['changeElements']['actions_sailors']['disable'] = true;
         $data['pushState'] = base_url('tavern');
             
-        $this->data['game']['event_sailors'] = 'banned';
+        $this->data['game']['event']['tavern_sailors']['banned'] = true;
 
         $db_updates['user_id'] = $this->data['user']['id'];
-        $db_updates['event_sailors'] = 'banned';
+        $db_updates['event']['tavern_sailors']['banned'] = true;
+
         $this->Game->update($db_updates);
             
         echo json_encode($data);

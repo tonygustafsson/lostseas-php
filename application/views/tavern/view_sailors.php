@@ -1,5 +1,5 @@
 <?php
-    $sailors_disabled = $game['event_sailors'] === 'banned' ? 'disabled' : '';
+    $sailors_disabled = isset($game['event']['tavern_sailors']['banned']) && $game['event']['tavern_sailors']['banned'] ? 'disabled' : '';
 ?>
 
 <header class="area-header"
@@ -44,9 +44,9 @@
 		</a>
 	</div>
 
-	<?php if (! empty($game['event_sailors']) && is_numeric($game['event_sailors'])): ?>
+	<?php if (isset($game['event']['tavern_sailors']['joiners'])): ?>
 	<section id="offer">
-		<p>You talk to <?=$game['event_sailors']?>
+		<p>You talk to <?=$game['event']['tavern_sailors']['joiners']?>
 			sailors. After a while they decides to join your crew. Do you want to take them in?</p>
 
 		<div class="button-area">

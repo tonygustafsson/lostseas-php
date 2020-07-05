@@ -301,12 +301,6 @@
 				<th>Value</th>
 			</tr>
 			<tr>
-				<td>Tavern sailors</td>
-				<td><input type="text" id="event_sailors" name="event_sailors"
-						value="<?=$player['game']['event_sailors']?>">
-				</td>
-			</tr>
-			<tr>
 				<td>Event</td>
 				<td>
 					<textarea id="event"
