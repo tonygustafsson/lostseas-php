@@ -56,6 +56,37 @@ class Godmode extends Main
         
         echo json_encode($data);
     }
+
+    public function reset_event()
+    {
+        $item = $this->uri->segment(3);
+        $user_id = $this->uri->segment(4);
+
+        $this->data['player'] = ($user_id !== $this->data['user']['id']) ? $this->get_user_data($user_id) : $this->data;
+
+        if (!$this->data['player']) {
+            return;
+        }
+
+        $valid_items = array('tavern_blackjack', 'tavern_sailors', 'market_goods', 'market_slaves', 'cityhall_work');
+
+        if (in_array($item, $valid_items)) {
+            $this->data['player']['game']['event'][$item] = null;
+            $db_updates['event'][$item] = null;
+            $data['success'] = 'Resetted Black jack event.';
+        }
+
+        if (isset($db_updates)) {
+            $this->Game->update($db_updates);
+        } else {
+            $data['info'] = 'No changes made.';
+        }
+
+        $data['event'] = 'updated-dom';
+        $data['loadView'] = $this->load->view('godmode/view_godmode_game', $this->data, true);
+
+        echo json_encode($data);
+    }
     
     public function user()
     {
@@ -330,6 +361,3 @@ class Godmode extends Main
         echo json_encode($data);
     }
 }
-
-/*  End of godmode.php */
-/* Location: ./application/controllers/godmode.php */

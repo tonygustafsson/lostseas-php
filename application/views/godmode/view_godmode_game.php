@@ -308,6 +308,31 @@
 				</td>
 			</tr>
 			<tr>
+				<td>Reset events</td>
+				<td>
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/tavern_blackjack/' . $player['user']['id'])?>">Tavern
+						Black
+						Jack</a>
+
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/tavern_sailors/' . $player['user']['id'])?>">Tavern
+						Sailors</a>
+
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/market_goods/' . $player['user']['id'])?>">Market
+						Goods</a>
+
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/market_slaves/' . $player['user']['id'])?>">Market
+						Slaves</a>
+
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/cityhall_work/' . $player['user']['id'])?>">Cityhall
+						Work</a>
+				</td>
+			</tr>
+			<tr>
 				<td>Ship</td>
 				<td><input type="text" id="event_ship" name="event_ship"
 						value="<?=$player['game']['event_ship']?>">
