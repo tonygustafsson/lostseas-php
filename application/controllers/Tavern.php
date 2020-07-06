@@ -377,7 +377,7 @@ class Tavern extends Main
         }
 
         $this->load->library('Blackjacklib');
-        $event = isset($this->data['game']['event']['blackjack']) ? $this->data['game']['event']['blackjack'] : null;
+        $event = isset($this->data['game']['event']['tavern_blackjack']) ? $this->data['game']['event']['tavern_blackjack'] : null;
 
         if (isset($event)) {
             $this->data['viewdata']['total_value'] = $this->blackjacklib->get_card_total_value($event['cards']);
@@ -400,7 +400,7 @@ class Tavern extends Main
             return;
         }
 
-        $event = isset($this->data['game']['event']['blackjack']) ? $this->data['game']['event']['blackjack'] : null;
+        $event = isset($this->data['game']['event']['tavern_blackjack']) ? $this->data['game']['event']['tavern_blackjack'] : null;
 
         if (isset($event)) {
             // Prevent playing again before finishing a game
@@ -435,7 +435,7 @@ class Tavern extends Main
         $data['cards'] = array($this->blackjacklib->get_card($first_card));
 
         $event = array('bet' => $bet, 'cards' => array($first_card));
-        $updates['event']['blackjack'] = $event;
+        $updates['event']['tavern_blackjack'] = $event;
         $updates['doubloons']['value'] = $new_money;
         $result = $this->Game->update($updates);
     
@@ -449,7 +449,7 @@ class Tavern extends Main
 
         $this->data['viewdata']['total_value'] = $this->blackjacklib->get_card_total_value(array($first_card));
         $this->data['viewdata']['event'] = $event;
-        $this->data['game']['event']['blackjack'] = json_encode($event);
+        $this->data['game']['event']['tavern_blackjack'] = json_encode($event);
     
         $data['event'] = 'updated-dom';
         $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
@@ -463,7 +463,7 @@ class Tavern extends Main
             return;
         }
 
-        $event = isset($this->data['game']['event']['blackjack']) ? $this->data['game']['event']['blackjack'] : null;
+        $event = isset($this->data['game']['event']['tavern_blackjack']) ? $this->data['game']['event']['tavern_blackjack'] : null;
 
         if (!isset($event)) {
             // Prevent drawing new card if it hasn't started playing
@@ -475,7 +475,7 @@ class Tavern extends Main
         $new_card = $this->blackjacklib->create_card();
         $event['cards'][] = $new_card;
 
-        $updates['event']['blackjack'] = $event;
+        $updates['event']['tavern_blackjack'] = $event;
         $this->Game->update($updates);
 
         for ($i = 0; $i < count($event['cards']); $i++) {
@@ -486,8 +486,8 @@ class Tavern extends Main
         $this->data['viewdata']['total_value'] = $total_value;
 
         if ($this->blackjacklib->is_bust($total_value)) {
-            $updates['event']['blackjack'] = null;
-            $this->data['game']['event']['blackjack'] = null;
+            $updates['event']['tavern_blackjack'] = null;
+            $this->data['game']['event']['tavern_blackjack'] = null;
 
             $dealer_max = random_int(17, 18);
             $dealer_value = 0;
@@ -512,7 +512,7 @@ class Tavern extends Main
             $this->data['viewdata']['busted'] = true;
             $data['info'] = 'You busted and lost your money to the bank.';
         } else {
-            $this->data['game']['event']['blackjack'] = $event;
+            $this->data['game']['event']['tavern_blackjack'] = $event;
         }
     
         $data['event'] = 'updated-dom';
@@ -527,7 +527,7 @@ class Tavern extends Main
             return;
         }
 
-        $event = isset($this->data['game']['event']['blackjack']) ? $this->data['game']['event']['blackjack'] : null;
+        $event = isset($this->data['game']['event']['tavern_blackjack']) ? $this->data['game']['event']['tavern_blackjack'] : null;
 
         if (!$event) {
             // Prevent stand if it hasn't started playing
@@ -582,9 +582,9 @@ class Tavern extends Main
             }
         }
 
-        $this->data['game']['event']['blackjack'] = null;
+        $this->data['game']['event']['tavern_blackjack'] = null;
 
-        $updates['event']['blackjack'] = null;
+        $updates['event']['tavern_blackjack'] = null;
         $result = $this->Game->update($updates);
 
         if (isset($result['doubloons']['success'])) {

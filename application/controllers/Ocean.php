@@ -64,7 +64,7 @@ class Ocean extends Main
                     //If you are comming from the harbor
                     $updates['event_work'] = '';
                     $updates['event']['tavern_sailors'] = null;
-                    $updates['event']['blackjack'] = null;
+                    $updates['event']['tavern_blackjack'] = null;
                     $updates['event']['market_goods'] = null;
                     $updates['event']['market_slaves'] = null;
 

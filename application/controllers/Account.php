@@ -444,7 +444,7 @@ class Account extends Main
                     $updates['event_ship_won'] = '';
                     $updates['event_ocean_trade'] = '';
                     $updates['event']['tavern_sailors'] = null;
-                    $updates['event']['blackjack'] = null;
+                    $updates['event']['tavern_blackjack'] = null;
                     $updates['event']['market_goods'] = null;
                     $updates['event']['market_slaves'] = null;
 

@@ -70,7 +70,7 @@
     </div>
     <?php endif; ?>
 
-    <?php if (isset($viewdata['cards'])): ?>
+    <?php if (isset($viewdata['cards']) && count($viewdata['cards']) > 0): ?>
     <div class="blackjack__player-cards">
         <h4>
             Your cards
