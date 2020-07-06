@@ -308,12 +308,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Work</td>
-				<td><input type="text" id="event_work" name="event_work"
-						value="<?=$player['game']['event_work']?>">
-				</td>
-			</tr>
-			<tr>
 				<td>Ship</td>
 				<td><input type="text" id="event_ship" name="event_ship"
 						value="<?=$player['game']['event_ship']?>">

@@ -439,10 +439,10 @@ class Account extends Main
                     $updates['victories_spain'] = 0;
                     $updates['victories_holland'] = 0;
                     $updates['victories_pirates'] = 0;
-                    $updates['event_work'] = '';
                     $updates['event_ship'] = '';
                     $updates['event_ship_won'] = '';
                     $updates['event_ocean_trade'] = '';
+                    $updates['event']['cityhall_work'] = null;
                     $updates['event']['tavern_sailors'] = null;
                     $updates['event']['tavern_blackjack'] = null;
                     $updates['event']['market_goods'] = null;

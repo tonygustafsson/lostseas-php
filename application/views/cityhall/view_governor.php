@@ -15,7 +15,7 @@
 			</svg>
 			Governor
 		</a>
-		<?php if ($this->data['game']['event_work'] != 'banned'): ?>
+		<?php if (!isset($game['event']['cityhall_work']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" id="actions_work" title="Work to get some money"
 			href="<?=base_url('cityhall/work')?>">
 			<svg width="32" height="32" alt="Work">

@@ -81,7 +81,6 @@ CREATE TABLE `ls_game` (
   `victories_holland` int NOT NULL DEFAULT '0',
   `victories_pirates` int NOT NULL DEFAULT '0',
   `event` text DEFAULT NULL,
-  `event_work` varchar(128) DEFAULT NULL,
   `event_ship` varchar(128) DEFAULT NULL,
   `event_ship_won` varchar(256) DEFAULT NULL,
   `event_ocean_trade` varchar(128) DEFAULT NULL,

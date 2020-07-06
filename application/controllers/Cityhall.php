@@ -131,37 +131,43 @@ class Cityhall extends Main
             return;
         }
 
-        if ($this->data['game']['event_work'] != 'banned') {
-            list($occupation, $salary) = (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') ? explode('###', $this->data['game']['event_work']) : array(null, null);
+        $event = isset($this->data['game']['event']['cityhall_work']) ? $this->data['game']['event']['cityhall_work'] : null;
 
-            if ($occupation === null || $salary === null) {
-                $occupations = array(
-                    array('occupation' => 'cleaners', 'salary' => rand(10, 18)),
-                    array('occupation' => 'paramedics', 'salary' => rand(10, 18)),
-                    array('occupation' => 'miners', 'salary' => rand(15, 25)),
-                    array('occupation' => 'postmen', 'salary' => rand(15, 25)),
-                    array('occupation' => 'carpenters', 'salary' => rand(20, 35)),
-                    array('occupation' => 'salesmen', 'salary' => rand(20, 35)),
-                    array('occupation' => 'secretaries', 'salary' => rand(18, 45)),
-                    array('occupation' => 'waiters', 'salary' => rand(18, 45)),
-                    array('occupation' => 'guardians', 'salary' => rand(40, 50)),
-                    array('occupation' => 'bankers', 'salary' => rand(40, 50))
+        if (isset($event['banned']) && $event['banned']) {
+            return;
+        }
+
+        if (!isset($event['occupation']) ||!isset($event['salary'])) {
+            $occupations = array(
+                    array('occupation' => 'cleaners', 'salary' => random_int(10, 18)),
+                    array('occupation' => 'paramedics', 'salary' => random_int(10, 18)),
+                    array('occupation' => 'miners', 'salary' => random_int(15, 25)),
+                    array('occupation' => 'postmen', 'salary' => random_int(15, 25)),
+                    array('occupation' => 'carpenters', 'salary' => random_int(20, 35)),
+                    array('occupation' => 'salesmen', 'salary' => random_int(20, 35)),
+                    array('occupation' => 'secretaries', 'salary' => random_int(18, 45)),
+                    array('occupation' => 'waiters', 'salary' => random_int(18, 45)),
+                    array('occupation' => 'guardians', 'salary' => random_int(40, 50)),
+                    array('occupation' => 'bankers', 'salary' => random_int(40, 50))
                 );
 
-                $rand_occupation = rand(0, count($occupations) - 1);
-                $salary = $occupations[$rand_occupation]['salary'];
-                $occupation = $occupations[$rand_occupation]['occupation'];
-                $salary = floor(($salary * $this->data['game']['crew_members']) * ($this->data['game']['crew_health_lowest'] / 100));
+            $rand_occupation = rand(0, count($occupations) - 1);
+            $salary = $occupations[$rand_occupation]['salary'];
+            $occupation = $occupations[$rand_occupation]['occupation'];
+            $salary = floor(($salary * $this->data['game']['crew_members']) * ($this->data['game']['crew_health_lowest'] / 100));
 
-                $this->data['game']['event_work'] = $updates['event_work'] = $occupation . '###' . $salary;
-                $result = $this->Game->update($updates);
-            }
+            $event = array('occupation' => $occupation, 'salary' => $salary);
 
-            $this->data['salary'] = $salary;
-            $this->data['occupation'] = $occupation;
-            
-            $this->load->view_ajax('cityhall/view_work', $this->data);
+            $this->data['game']['event']['cityhall_work'] = $event;
+            $updates['event']['cityhall_work'] = $event;
+
+            $this->Game->update($updates);
         }
+
+        $this->data['viewdata']['salary'] = $event['salary'];
+        $this->data['viewdata']['occupation'] = $event['occupation'];
+            
+        $this->load->view_ajax('cityhall/view_work', $this->data);
     }
 
     public function work_accept()
@@ -170,43 +176,45 @@ class Cityhall extends Main
             return;
         }
 
-        if (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned') {
-            list($occupation, $salary) = explode('###', $this->data['game']['event_work']);
+        $event = isset($this->data['game']['event']['cityhall_work']) ? $this->data['game']['event']['cityhall_work'] : null;
+
+        if (isset($event['banned']) && $event['banned']) {
+            return;
+        }
+          
+        $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
+
+        $updates['event']['cityhall_work']['banned'] = true;
+        $this->data['game']['event']['cityhall_work']['banned'] = true;
+        $updates['doubloons']['add'] = true;
+        $updates['doubloons']['value'] = $event['salary'];
+        $updates['week']['add'] = true;
+        $updates['week']['value'] = 1;
+        $result = $this->Game->update($updates);
             
-            $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['user']['id']));
-
-            $updates['event_work'] = 'banned';
-            $updates['doubloons']['add'] = true;
-            $updates['doubloons']['value'] = $salary;
-            $updates['week']['add'] = true;
-            $updates['week']['value'] = 1;
-            $result = $this->Game->update($updates);
+        $data['changeElements'] = $result['changeElements'];
             
-            $data['changeElements'] = $result['changeElements'];
-            
-            $data['changeElements']['offer']['remove'] = true;
-            $data['changeElements']['actions_work']['remove'] = true;
-            $data['pushState'] = base_url('cityhall');
+        $data['loadView'] = $this->load->view('cityhall/view_cityhall', $this->data, true);
+        $data['pushState'] = base_url('cityhall');
 
-            $updates['all']['mood'] = -1;
-            $crew_output = $this->Crew->update($updates);
-            if ($crew_output['success'] === true) {
-                $data['success'] = 'You and your crew worked for a week as ' . $occupation . ' and made ' . $salary . ' dbl!';
+        $updates['all']['mood'] = -1;
+        $crew_output = $this->Crew->update($updates);
+        if ($crew_output['success'] === true) {
+            $data['success'] = 'You and your crew worked for a week as ' . $event['occupation'] . ' and made ' . $event['salary'] . ' dbl!';
 
-                //We have to check the new lowest mood
-                $this->data['game']['crew_mood_lowest'] = $crew_output['min_mood'];
+            //We have to check the new lowest mood
+            $this->data['game']['crew_mood_lowest'] = $crew_output['min_mood'];
                 
-                $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
+            $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                 
-                if ($this->data['user']['sound_effects_play'] == 1) {
-                    $data['playSound'] = 'tired';
-                }
-                
-                $log_input['entry'] = 'and the crew worked for a week as ' . $occupation . ' and made ' . $salary . ' dbl.';
-                $this->Log->create($log_input);
-
-                echo json_encode($data);
+            if ($this->data['user']['sound_effects_play'] == 1) {
+                $data['playSound'] = 'tired';
             }
+                
+            $log_input['entry'] = 'and the crew worked for a week as ' . $event['occupation'] . ' and made ' . $event['salary'] . ' dbl.';
+            $this->Log->create($log_input);
+
+            echo json_encode($data);
         }
     }
 

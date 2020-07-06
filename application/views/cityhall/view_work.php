@@ -15,7 +15,7 @@
 			</svg>
 			Governor
 		</a>
-		<?php if ($this->data['game']['event_work'] != 'banned'): ?>
+		<?php if (!isset($game['event']['cityhall_work']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" id="actions_work" title="Work to get some money"
 			href="<?=base_url('cityhall/work')?>">
 			<svg width="32" height="32" alt="Work">
@@ -40,10 +40,11 @@
 		occupation (chance), the number of crew members and their health.
 	</p>
 
-	<?php if (! empty($this->data['game']['event_work']) && $this->data['game']['event_work'] != 'banned'): ?>
+	<?php if (!isset($game['event']['cityhall_work']['banned'])): ?>
 	<p>
-		You and your crew gets a job offer as <?=$occupation?> for
-		<strong><?=$salary?> dbl</strong>. Take the offer?
+		You and your crew gets a job offer as <?=$viewdata['occupation']?> for
+		<strong><?=$viewdata['salary']?>
+			dbl</strong>. Take the offer?
 	</p>
 
 	<div class="button-area">
