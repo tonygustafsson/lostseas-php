@@ -338,7 +338,7 @@
 				</svg>
 				England
 			</td>
-			<td><?=$player['game']['victories_england']?>
+			<td><?=$player['game']['victories']['england']?>
 				victories</td>
 		</tr>
 
@@ -349,7 +349,7 @@
 				</svg>
 				France
 			</td>
-			<td><?=$player['game']['victories_france']?>
+			<td><?=$player['game']['victories']['france']?>
 				victories</td>
 		</tr>
 
@@ -360,7 +360,7 @@
 				</svg>
 				Holland
 			</td>
-			<td><?=$player['game']['victories_holland']?>
+			<td><?=$player['game']['victories']['holland']?>
 				victories</td>
 		</tr>
 
@@ -371,7 +371,7 @@
 				</svg>
 				Spain
 			</td>
-			<td><?=$player['game']['victories_spain']?>
+			<td><?=$player['game']['victories']['spain']?>
 				victories</td>
 		</tr>
 
@@ -382,14 +382,14 @@
 				</svg>
 				Pirates
 			</td>
-			<td><?=$player['game']['victories_pirates']?>
+			<td><?=$player['game']['victories']['pirates']?>
 				victories</td>
 		</tr>
 
 		<tr>
 			<td></td>
-			<td><?=$player['game']['total_victories']?>
-				victories total</td>
+			<td><?=$player['game']['victories_total']?>
+				total</td>
 		</tr>
 	</table>
 </div>

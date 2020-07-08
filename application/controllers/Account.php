@@ -434,11 +434,7 @@ class Account extends Main
                     $updates['rum'] = 0;
                     $updates['medicine'] = 0;
                     $updates['rafts'] = 1;
-                    $updates['victories_england'] = 0;
-                    $updates['victories_france'] = 0;
-                    $updates['victories_spain'] = 0;
-                    $updates['victories_holland'] = 0;
-                    $updates['victories_pirates'] = 0;
+                    $updates['victories'] = null;
                     $updates['event']['ship_meeting'] = null;
                     $updates['event']['ship_won_results'] = null;
                     $updates['event']['ship_trade'] = null;

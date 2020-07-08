@@ -75,11 +75,7 @@ CREATE TABLE `ls_game` (
   `rum` int NOT NULL DEFAULT '0',
   `medicine` int NOT NULL DEFAULT '0',
   `rafts` int NOT NULL DEFAULT '1',
-  `victories_england` int NOT NULL DEFAULT '0',
-  `victories_france` int NOT NULL DEFAULT '0',
-  `victories_spain` int NOT NULL DEFAULT '0',
-  `victories_holland` int NOT NULL DEFAULT '0',
-  `victories_pirates` int NOT NULL DEFAULT '0',
+  `victories` text DEFAULT NULL,
   `event` text DEFAULT NULL,
   `last_activity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

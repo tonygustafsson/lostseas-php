@@ -146,6 +146,31 @@ class Main extends CI_Controller
             $game_data['event'] = array();
         }
 
+        // Make victories an array from JSON
+        if (isset($game_data['victories']) && !empty($game_data['victories'])) {
+            $game_data['victories'] = json_decode($game_data['victories'], true);
+        } else {
+            $game_data['victories'] = array();
+        }
+
+        if (!isset($game_data['victories']['england'])) {
+            $game_data['victories']['england'] = 0;
+        }
+        if (!isset($game_data['victories']['france'])) {
+            $game_data['victories']['france'] = 0;
+        }
+        if (!isset($game_data['victories']['holland'])) {
+            $game_data['victories']['holland'] = 0;
+        }
+        if (!isset($game_data['victories']['spain'])) {
+            $game_data['victories']['spain'] = 0;
+        }
+        if (!isset($game_data['victories']['pirates'])) {
+            $game_data['victories']['pirates'] = 0;
+        }
+        
+        $game_data['victories_total'] = array_sum($game_data['victories']);
+
         //Add some extra game variables, calculated of the other tables
         $game_data['character_avatar_path'] = base_url('assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.png');
         $game_data['character_gender_long'] = ($game_data['character_gender'] == 'M') ? 'male' : 'female';
@@ -157,6 +182,7 @@ class Main extends CI_Controller
         $home_nation_info = $this->gamelib->get_nations($game_data['nationality']);
         $game_data['enemy'] = $home_nation_info['enemy'];
         $game_data['towns_enemy'] = $town_info[$game_data['town']]['enemy'];
+        $game_data['level'] = $game_data['victories'][$game_data['enemy']] - $game_data['victories'][$game_data['nationality']];
 
         $game_data['ships'] = count($ship_data);
         $game_data['crew_members'] = $crew_data['num_crew'];
@@ -165,9 +191,6 @@ class Main extends CI_Controller
         $game_data['crew_lowest_friendly_mood'] = $this->gamelib->get_crew_friendly_mood($game_data['crew_lowest_mood']);
         $game_data['needed_food'] = floor(0.5 * $game_data['crew_members']);
         $game_data['needed_water'] = $game_data['crew_members'];
-
-        $game_data['total_victories'] = $game_data['victories_england'] + $game_data['victories_france'] + $game_data['victories_spain'] + $game_data['victories_holland'] + $game_data['victories_pirates'];
-        $game_data['level'] = $game_data['victories_' . $game_data['enemy']] - $game_data['victories_' . $game_data['nationality']];
 
         $game_data['manned_cannons'] = (($game_data['crew_members'] / 2) > $game_data['cannons']) ? $game_data['cannons'] : floor($game_data['crew_members'] / 2);
         $game_data['load_max'] = 0;

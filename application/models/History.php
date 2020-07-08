@@ -57,7 +57,7 @@ class History extends CI_Model
         $input['cannons'] = (isset($input['cannons'])) ? $input['cannons'] : $this->data['game']['cannons'];
         $input['stock_value'] = (isset($input['stock_value'])) ? $input['stock_value'] : ($this->data['game']['food'] * $prices['food']['sell']) + ($this->data['game']['water'] * $prices['water']['sell']) + ($this->data['game']['porcelain'] * $prices['porcelain']['sell']) + ($this->data['game']['spices'] * $prices['spices']['sell']) + ($this->data['game']['silk'] * $prices['silk']['sell']) + ($this->data['game']['tobacco'] * $prices['tobacco']['sell']) + ($this->data['game']['rum'] * $prices['rum']['sell']) + ($this->data['game']['medicine'] * $prices['medicine']['sell']);
         $input['level'] = (isset($input['level'])) ? $input['level'] : $this->data['game']['level'];
-        $input['victories'] = (isset($input['victories'])) ? $input['victories'] : $this->data['game']['total_victories'];
+        $input['victories'] = (isset($input['victories'])) ? $input['victories'] : $this->data['game']['victories_total'];
         
         $this->db->insert($this->db->history_table, $input);
     }

@@ -26,8 +26,8 @@ class Cityhall extends Main
             return;
         }
 
-        $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
-        $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
+        $town_victories = $this->data['game']['victories'][$this->data['game']['nation']];
+        $enemy_victories = $this->data['game']['victories'][$this->data['game']['towns_enemy']];
 
         if ($this->data['game']['nationality'] == $this->data['game']['nation']) {
             //The users home nation
@@ -98,8 +98,8 @@ class Cityhall extends Main
             return;
         }
 
-        $town_victories = $this->data['game']['victories_' . $this->data['game']['nation']];
-        $enemy_victories = $this->data['game']['victories_' . $this->data['game']['towns_enemy']];
+        $town_victories = $this->data['game']['victories'][$this->data['game']['nation']];
+        $enemy_victories = $this->data['game']['victories'][$this->data['game']['towns_enemy']];
         $title_input['level'] = $enemy_victories - $town_victories;
         $title_info = $this->gamelib->get_title($title_input);
         $new_title = $title_info['title'];

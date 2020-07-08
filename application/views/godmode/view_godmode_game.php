@@ -260,33 +260,10 @@
 			</tr>
 
 			<tr>
-				<td>England</td>
-				<td><input type="number" id="victories_england" name="victories_england"
-						value="<?=$player['game']['victories_england']?>">
-				</td>
-			</tr>
-			<tr>
-				<td>France</td>
-				<td><input type="number" id="victories_france" name="victories_france"
-						value="<?=$player['game']['victories_france']?>">
-				</td>
-			</tr>
-			<tr>
-				<td>Spain</td>
-				<td><input type="number" id="victories_spain" name="victories_spain"
-						value="<?=$player['game']['victories_spain']?>">
-				</td>
-			</tr>
-			<tr>
-				<td>Holland</td>
-				<td><input type="number" id="victories_holland" name="victories_holland"
-						value="<?=$player['game']['victories_holland']?>">
-				</td>
-			</tr>
-			<tr>
-				<td>Pirates</td>
-				<td><input type="number" id="victories_pirates" name="victories_pirates"
-						value="<?=$player['game']['victories_pirates']?>">
+				<td>Victories</td>
+				<td>
+					<textarea id="victories"
+						name="victories"><?=json_encode($player['game']['victories'])?></textarea>
 				</td>
 			</tr>
 		</table>

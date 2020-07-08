@@ -37,8 +37,7 @@ class Game extends CI_Model
             $standard = array(
                               'character_name', 'character_gender', 'character_age', 'character_description',
                               'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
-                              'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners',
-                              'victories_england', 'victories_france', 'victories_spain', 'victories_holland', 'victories_pirates',
+                              'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners'
                             );
             
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
@@ -58,8 +57,25 @@ class Game extends CI_Model
                 }
             }
 
+            if (isset($updates['victories']) && is_array($updates['victories']) && count($updates['victories']) > 0) {
+                // Handle victories saved as array
+                $victories = array();
+
+                foreach ($updates['victories'] as $nationality => $value) {
+                    $victories[$nationality] = $value;
+                }
+
+                $victories = array_merge($this->data['game']['victories'], $victories);
+                $sql_updates['victories'] = json_encode($victories);
+            }
+
+            if (isset($updates['victories']) && !is_array($updates['victories'])) {
+                // Handle victories saved as json
+                $sql_updates['victories'] = $updates['victories'];
+            }
+
             if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {
-                // Handle events saved as array
+                // Handle victories saved as array
                 $events = array();
 
                 foreach ($updates['event'] as $event => $value) {

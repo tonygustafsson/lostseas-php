@@ -66,13 +66,13 @@ class Inventory extends Main
         $this->data['chart_data']['labels'] = htmlspecialchars(json_encode($chart_data['labels']));
 
         $this->data['chart_data']['victories'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['victories'])) : false;
-        $this->data['chart_data']['level'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['level'])) : false;
-        $this->data['chart_data']['stock_value'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['stock_value'])) : false;
-        $this->data['chart_data']['ships'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['ships'])) : false;
-        $this->data['chart_data']['doubloons'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['doubloons'])) : false;
-        $this->data['chart_data']['crew_members'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_members'])) : false;
-        $this->data['chart_data']['crew_mood'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_mood'])) : false;
-        $this->data['chart_data']['crew_health'] = count($chart_data['victories']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_health'])) : false;
+        $this->data['chart_data']['level'] = count($chart_data['level']) > 1 ? htmlspecialchars(json_encode($chart_data['level'])) : false;
+        $this->data['chart_data']['stock_value'] = count($chart_data['stock_value']) > 1 ? htmlspecialchars(json_encode($chart_data['stock_value'])) : false;
+        $this->data['chart_data']['ships'] = count($chart_data['ships']) > 1 ? htmlspecialchars(json_encode($chart_data['ships'])) : false;
+        $this->data['chart_data']['doubloons'] = count($chart_data['doubloons']) > 1 ? htmlspecialchars(json_encode($chart_data['doubloons'])) : false;
+        $this->data['chart_data']['crew_members'] = count($chart_data['crew_members']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_members'])) : false;
+        $this->data['chart_data']['crew_mood'] = count($chart_data['crew_mood']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_mood'])) : false;
+        $this->data['chart_data']['crew_health'] = count($chart_data['crew_health']) > 1 ? htmlspecialchars(json_encode($chart_data['crew_health'])) : false;
 
         $this->load->view_ajax('inventory/view_history', $this->data);
     }
