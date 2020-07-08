@@ -88,7 +88,7 @@ class Main extends CI_Controller
             return 'ocean/ship_meeting';
         } elseif (! empty($game['event_ocean_trade']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
             return 'ocean/trade';
-        } elseif (! empty($game['event_ship_won']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
+        } elseif (isset($game['event']['ship_won_results']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
             return 'ocean/ship_won';
         } else {
             return false;

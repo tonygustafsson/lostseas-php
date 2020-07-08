@@ -5,7 +5,7 @@
     
     $nation = isset($this->data['game']['event']['ship_meeting']['nation']) ? $this->data['game']['event']['ship_meeting']['nation'] : null;
 
-    $nav_ocean_display = $game['place'] == 'ocean' && (!isset($game['event']['ship_meeting']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade'])) ? 'flex' : 'none';
+    $nav_ocean_display = $game['place'] == 'ocean' && (!isset($game['event']['ship_meeting']) && !isset($game['event']['ship_won_results']) && empty($game['event_ocean_trade'])) ? 'flex' : 'none';
     $nav_unfriendly_ship_display = isset($game['event']['ship_meeting']) && ($nation == 'pirate' || $nation == $game['enemy']) ? 'flex' : 'none';
     $nav_friendly_ship_display = isset($game['event']['ship_meeting']) && $nation == $game['nationality'] ? 'flex' : 'none';
     $nav_neutral_ship_display = isset($game['event']['ship_meeting']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['enemy'] && $nation !== null ? 'flex' : 'none';

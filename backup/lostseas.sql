@@ -81,7 +81,6 @@ CREATE TABLE `ls_game` (
   `victories_holland` int NOT NULL DEFAULT '0',
   `victories_pirates` int NOT NULL DEFAULT '0',
   `event` text DEFAULT NULL,
-  `event_ship_won` varchar(256) DEFAULT NULL,
   `event_ocean_trade` varchar(128) DEFAULT NULL,
   `last_activity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
