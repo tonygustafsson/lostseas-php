@@ -1,6 +1,5 @@
 <?php
     $prices = array('food' => 16, 'water' => 12);
-    list($trade_worth) = (! empty($game['event_ocean_trade'])) ? explode('###', $game['event_ocean_trade']) : array(null);
 ?>
 
 <header class="area-header" class="area-header" title="Ocean Trade">
@@ -21,7 +20,6 @@
 	</section>
 	<?php endif; ?>
 
-	<?php if ($trade_worth !== null): ?>
 	<p>You will only trade away as much barter goods as needed to give you the desired amount of food and water.
 		Porcelain, silk and spices will be traded away first.</p>
 
@@ -38,7 +36,7 @@
 		</div>
 
 		<input type="hidden" name="trade_worth" id="trade_worth"
-			value="<?=$trade_worth?>">
+			value="<?=$game['event']['ship_trade']['worth']?>">
 		<input type="hidden" name="load_max" id="load_max"
 			value="<?=$game['load_max']?>">
 		<input type="hidden" name="load_current" id="load_current"
@@ -84,7 +82,8 @@
 					<tr>
 						<td>Trade worth</td>
 						<td><span class="trade_worth_left"
-								style="color: <?=($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?=$trade_worth?></span> dbl</td>
+								style="color: <?=($game['event']['ship_trade']['worth'] < 0) ? '#d52525' : '#000'; ?>;"><?=$game['event']['ship_trade']['worth']?></span>
+							dbl</td>
 					</tr>
 					<tr>
 						<td>Ship load</td>
@@ -129,7 +128,8 @@
 					<tr>
 						<td>Trade worth</td>
 						<td><span class="trade_worth_left"
-								style="color: <?=($trade_worth < 0) ? '#d52525' : '#000'; ?>;"><?=$trade_worth?></span> dbl</td>
+								style="color: <?=($game['event']['ship_trade']['worth'] < 0) ? '#d52525' : '#000'; ?>;"><?=$game['event']['ship_trade']['worth']?></span>
+							dbl</td>
 					</tr>
 					<tr>
 						<td>Ship load</td>
@@ -147,5 +147,4 @@
 		</fieldset>
 
 	</form>
-	<?php endif; ?>
 </div>

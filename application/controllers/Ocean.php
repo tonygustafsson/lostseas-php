@@ -16,7 +16,7 @@ class Ocean extends Main
 
         if ($this->input->is_ajax_request()) {
             // Ajax request, make stuff happen
-            if (! in_array($this->data['game']['place'], $accepted_places) || isset($this->data['game']['event']['ship_meeting']) || ! empty($this->data['game']['event_ocean_trade'])) {
+            if (!in_array($this->data['game']['place'], $accepted_places) || isset($this->data['game']['event']['ship_meeting']) || isset($this->data['game']['event']['ship_trade'])) {
                 // Do nothing...
             } elseif ($this->data['game']['ships'] < 1) {
                 $data['error'] = 'You do not own a ship. This is no time for exploring the ocean. Please paddle to a close town!';
@@ -30,7 +30,7 @@ class Ocean extends Main
                 $data['error'] = 'You do not have enough water to keep on traveling. Please go to the closest harbor and stock up some water.';
             } else {
                 // Everything is OK for traveling to the ocean!
-                if (random_int(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
+                if (random_int(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && !isset($this->data['game']['event']['ship_trade']) && $this->data['game']['ships'] > 0) {
                     // Meet a ship!
                     $ship_meeting = $this->gamelib->ship_spec($this->data['game']['manned_cannons'], $this->data['game']['nation']);
                     $ship_meeting['prisoners'] = ($ship_meeting['nation'] == $this->data['game']['enemy'] || $ship_meeting['nation'] == 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
@@ -102,7 +102,7 @@ class Ocean extends Main
             $view = 'ocean/view_ship_meeting';
         } elseif (isset($this->data['game']['event']['ship_won_results'])) {
             $view = 'ocean/view_ship_won';
-        } elseif (!empty($this->data['game']['event_ocean_trade'])) {
+        } elseif (isset($this->data['game']['event']['ship_trade'])) {
             $view = 'ocean/view_ship_meeting';
         } else {
             $view = $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
@@ -410,7 +410,7 @@ class Ocean extends Main
           
         if (isset($this->data['game']['event']['ship_meeting'])) {
             $view = 'ocean/view_ship_meeting';
-        } elseif (! empty($this->data['game']['event_ocean_trade'])) {
+        } elseif (isset($this->data['game']['event']['ship_trade'])) {
             $view = 'ocean/view_ocean_trade';
         } elseif (isset($this->data['game']['event']['ship_won_results'])) {
             $view = 'ocean/view_ship_won';
@@ -638,7 +638,7 @@ class Ocean extends Main
 
         $this->data['json'] = json_encode($data);
                 
-        $view = (!empty($this->data['game']['event_ocean_trade'])) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
+        $view = (isset($this->data['game']['event']['ship_trade'])) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
         $this->load->view_ajax($view, $this->data);
     }
 
@@ -665,8 +665,9 @@ class Ocean extends Main
         }
 
         if ($trade_worth > 0) {
-            $this->data['game']['event_ocean_trade'] = $trade_worth;
-            $updates['event_ocean_trade'] = $trade_worth;
+            $event = array('worth' => $trade_worth);
+            $this->data['game']['event']['ship_trade'] = $event;
+            $updates['event']['ship_trade'] = $event;
                     
             $data['changeElements']['nav_ocean']['visibility'] = 'none';
             $data['changeElements']['nav_harbor']['visibility'] = 'none';
@@ -701,12 +702,14 @@ class Ocean extends Main
 
     public function trade_transfer()
     {
-        if (empty($this->data['game']['event_ocean_trade'])) {
+        $event = isset($this->data['game']['event']['ship_trade']) ? $this->data['game']['event']['ship_trade'] : null;
+
+        if (!$event) {
             redirect(base_url($this->data['game']['place']));
         }
 
         $items = array('food' => 16, 'water' => 12);
-        $trade_worth = $this->data['game']['event_ocean_trade'];
+        $trade_worth = $event['worth'];
         $total_cost = 0;
         $total_load = $this->data['game']['load_current'];
         $msg_get_list = array();
@@ -732,7 +735,8 @@ class Ocean extends Main
             echo json_encode($data);
         } else {
             $this->data['game']['load_current'] = $total_load;
-            $this->data['game']['event_ocean_trade'] = $updates['event_ocean_trade'] = '';
+            $this->data['game']['event']['ship_trade'] = null;
+            $updates['event']['ship_trade'] = null;
 
             $this->data['game']['event']['ship_meeting'] = null;
             $updates['event']['ship_meeting'] = null;
@@ -788,29 +792,32 @@ class Ocean extends Main
 
     public function trade_cancel()
     {
-        if (! empty($this->data['game']['event_ocean_trade'])) {
-            $this->data['game']['event_ocean_trade'] = $updates['event_ocean_trade'] = '';
+        $event = isset($this->data['game']['event']['ship_trade']) ? $this->data['game']['event']['ship_trade'] : null;
 
-            $this->data['game']['event']['ship_meeting'] = null;
-            $updates['event']['ship_meeting'] = null;
-
-            $result = $this->Game->update($updates);
-            
-            $data['info'] = 'You canceled the trading, said good buy to your allies.';
-            
-            $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
-            $data['changeElements']['nav_harbor']['visibility'] = ($this->data['game']['place'] == 'harbor') ? 'block' : 'none';
-            $data['changeElements']['nav_dock']['visibility'] = 'none';
-            $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
-            $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
-            $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
-            
-            $this->data['json'] = json_encode($data);
-
-            $view = $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
-            $this->load->view_ajax($view, $this->data);
-        } else {
+        if (!$event) {
             redirect(base_url($this->data['game']['place']));
         }
+
+        $this->data['game']['event']['ship_trade'] = null;
+        $updates['event']['ship_trade'] = null;
+
+        $this->data['game']['event']['ship_meeting'] = null;
+        $updates['event']['ship_meeting'] = null;
+
+        $result = $this->Game->update($updates);
+            
+        $data['info'] = 'You canceled the trading, said good buy to your allies.';
+            
+        $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
+        $data['changeElements']['nav_harbor']['visibility'] = ($this->data['game']['place'] == 'harbor') ? 'block' : 'none';
+        $data['changeElements']['nav_dock']['visibility'] = 'none';
+        $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
+        $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
+        $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
+            
+        $this->data['json'] = json_encode($data);
+
+        $view = $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
+        $this->load->view_ajax($view, $this->data);
     }
 }

@@ -35,7 +35,7 @@ class Harbor extends Main
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                 }
 
-                if (rand(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
+                if (rand(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && !isset($this->data['game']['event']['ship_trade']) && $this->data['game']['ships'] > 0) {
                     //Meet a ship!
                     $ship_meeting = $this->gamelib->ship_spec($this->data['game']['manned_cannons'], $this->data['game']['nation']);
                     $ship_meeting['prisoners'] = ($ship_meeting['nation'] === $this->data['game']['enemy'] || $ship_meeting['nation'] === 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
@@ -77,7 +77,7 @@ class Harbor extends Main
                 
                 $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
 
-                $view = isset($this->data['game']['event']['ship_meeting']) || !empty($this->data['game']['event_ocean_trade']) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
+                $view = isset($this->data['game']['event']['ship_meeting']) || isset($this->data['game']['event']['ship_trade']) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
                 $this->load->view_ajax($view, $this->data);
             }
         } else {

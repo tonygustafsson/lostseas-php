@@ -34,11 +34,12 @@ class Game extends CI_Model
         $updates['user_id'] = (isset($updates['user_id'])) ? $updates['user_id'] : $this->data['user']['id'];
         
         if (isset($updates['user_id'])) {
-            $standard = array('character_name', 'character_gender', 'character_age', 'character_description',
+            $standard = array(
+                              'character_name', 'character_gender', 'character_age', 'character_description',
                               'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners',
                               'victories_england', 'victories_france', 'victories_spain', 'victories_holland', 'victories_pirates',
-                              'event_ocean_trade');
+                            );
             
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
                                      'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners', 'character_name');

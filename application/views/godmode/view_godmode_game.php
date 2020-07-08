@@ -338,12 +338,10 @@
 					<a class="ajaxJSON button small"
 						href="<?=base_url('godmode/reset_event/ship_won_results/' . $player['user']['id'])?>">Ship
 						won results</a>
-				</td>
-			</tr>
-			<tr>
-				<td>Ship trade</td>
-				<td><input type="text" id="event_ocean_trade" name="event_ocean_trade"
-						value="<?=$player['game']['event_ocean_trade']?>">
+
+					<a class="ajaxJSON button small"
+						href="<?=base_url('godmode/reset_event/ship_trade/' . $player['user']['id'])?>">Ship
+						trade</a>
 				</td>
 			</tr>
 		</table>
