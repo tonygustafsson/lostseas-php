@@ -1,18 +1,14 @@
 <?php
     $in_town = array('dock', 'shop', 'tavern', 'shipyard', 'cityhall', 'market', 'bank');
     $nav_dock_display = in_array($game['place'], $in_town) ? 'flex' : 'none';
-    $nav_harbor_display = $game['place'] == 'harbor' && empty($game['event_ship']) ? 'flex' : 'none';
+    $nav_harbor_display = $game['place'] == 'harbor' && !isset($game['event']['ship_meeting']) ? 'flex' : 'none';
     
-    if (!empty($this->data['game']['event_ship'])) {
-        list($nation, $type, $crew, $cannons) = explode('###', $this->data['game']['event_ship']);
-    } else {
-        $nation = null;
-    }
+    $nation = isset($this->data['game']['event']['ship_meeting']['nation']) ? $this->data['game']['event']['ship_meeting']['nation'] : null;
 
-    $nav_ocean_display = $game['place'] == 'ocean' && (empty($game['event_ship']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade'])) ? 'flex' : 'none';
-    $nav_unfriendly_ship_display = !empty($game['event_ship']) && ($nation == 'pirate' || $nation == $game['enemy']) ? 'flex' : 'none';
-    $nav_friendly_ship_display = !empty($game['event_ship']) && $nation == $game['nationality'] ? 'flex' : 'none';
-    $nav_neutral_ship_display = !empty($game['event_ship']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['enemy'] && $nation !== null ? 'flex' : 'none';
+    $nav_ocean_display = $game['place'] == 'ocean' && (!isset($game['event']['ship_meeting']) && empty($game['event_ship_won']) && empty($game['event_ocean_trade'])) ? 'flex' : 'none';
+    $nav_unfriendly_ship_display = isset($game['event']['ship_meeting']) && ($nation == 'pirate' || $nation == $game['enemy']) ? 'flex' : 'none';
+    $nav_friendly_ship_display = isset($game['event']['ship_meeting']) && $nation == $game['nationality'] ? 'flex' : 'none';
+    $nav_neutral_ship_display = isset($game['event']['ship_meeting']) && $nation != $game['nationality'] && $nation != 'pirate' && $nation != $game['enemy'] && $nation !== null ? 'flex' : 'none';
 ?>
 
 <aside id="action_panel" class="action-panel">

@@ -84,7 +84,7 @@ class Main extends CI_Controller
     
     public function event_method($game)
     {
-        if (! empty($game['event_ship']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
+        if (isset($game['event']['ship_meeting']) && ($game['place'] === 'ocean' || $game['place'] === 'harbor')) {
             return 'ocean/ship_meeting';
         } elseif (! empty($game['event_ocean_trade']) && ($game['place'] == 'ocean' || $game['place'] == 'harbor')) {
             return 'ocean/trade';

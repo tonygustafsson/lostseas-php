@@ -35,11 +35,13 @@ class Harbor extends Main
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                 }
 
-                if (rand(1, 2) == 1 && empty($this->data['game']['event_ship']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
+                if (rand(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && empty($this->data['game']['event_ocean_trade']) && $this->data['game']['ships'] > 0) {
                     //Meet a ship!
                     $ship_meeting = $this->gamelib->ship_spec($this->data['game']['manned_cannons'], $this->data['game']['nation']);
-                    $ship_meeting['prisoners'] = ($ship_meeting['nation'] == $this->data['game']['enemy'] || $ship_meeting['nation'] == 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
-                    $this->data['game']['event_ship'] = $updates['event_ship'] = $ship_meeting['nation'] . '###' . $ship_meeting['type'] . '###' . $ship_meeting['crew'] . '###' . $ship_meeting['cannons'] . '###' . $ship_meeting['prisoners'];
+                    $ship_meeting['prisoners'] = ($ship_meeting['nation'] === $this->data['game']['enemy'] || $ship_meeting['nation'] === 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
+                    
+                    $this->data['game']['event']['ship_meeting'] = $ship_meeting;
+                    $updates['event']['ship_meeting'] = $ship_meeting;
 
                     $data['changeElements']['nav_ocean']['visibility'] = 'none';
                     $data['changeElements']['nav_harbor']['visibility'] = 'none';
@@ -75,11 +77,11 @@ class Harbor extends Main
                 
                 $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
 
-                $view = (! empty($this->data['game']['event_ship']) || ! empty($this->data['game']['event_ocean_trade'])) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
+                $view = isset($this->data['game']['event']['ship_meeting']) || !empty($this->data['game']['event_ocean_trade']) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
                 $this->load->view_ajax($view, $this->data);
             }
         } else {
-            //Going to the harbor from the town or page reload
+            // Going to the harbor from the town or page reload
             $town_to_harbor_access = true;
             $data['changeElements'] = array();
             
@@ -108,8 +110,15 @@ class Harbor extends Main
                 
                 $this->data['json'] = json_encode($data);
             }
+
+            if (isset($this->data['game']['event']['ship_meeting'])) {
+                $view = 'ocean/view_ship_meeting';
+            } elseif ($town_to_harbor_access) {
+                $view = $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
+            } else {
+                $view = 'dock/view_dock';
+            }
             
-            $view = ($town_to_harbor_access === true) ? $this->data['game']['place'] . '/view_' . $this->data['game']['place'] : 'dock/view_dock';
             $this->load->view_ajax($view, $this->data);
         }
     }
@@ -157,6 +166,3 @@ class Harbor extends Main
         }
     }
 }
-
-/*  End of harbor.php */
-/* Location: ./application/controllers/harbor.php */
