@@ -49,6 +49,7 @@
 		</a>
 	</div>
 
+	<?php if (isset($chart_data)): ?>
 	<div class="text-center">
 		<form method="post" class="ajaxJSON"
 			action="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
@@ -179,4 +180,7 @@
 			<?php endif; ?>
 		</div>
 	</div>
+	<?php else: ?>
+	<p><em>No data to show yet.</em></p>
+	<?php endif; ?>
 </div>
