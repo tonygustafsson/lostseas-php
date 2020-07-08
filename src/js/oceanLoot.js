@@ -133,16 +133,13 @@ const lootTakeAll = (e) => {
     }
 };
 
-window.addEventListener('ocean-ship_won', (e) => {
+const createEventListeners = (e) => {
     const lootTakeAllTrigger = document.querySelector('.js-ocean-loot-take-all');
     lootTakeAllTrigger.addEventListener('click', lootTakeAll);
 
     createSliders();
-});
+};
 
-window.addEventListener('ocean-attack', (e) => {
-    const lootTakeAllTrigger = document.querySelector('.js-ocean-loot-take-all');
-    lootTakeAllTrigger.addEventListener('click', lootTakeAll);
-
-    createSliders();
-});
+window.addEventListener('ocean-ship_won', createEventListeners);
+window.addEventListener('ocean-attack', createEventListeners);
+window.addEventListener('ocean-flee', createEventListeners);

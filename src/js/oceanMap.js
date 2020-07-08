@@ -109,8 +109,6 @@ const townLinkFocusOut = (e) => {
 const createLinkTriggers = () => {
     const targets = Array.from(document.querySelectorAll('.js-town'));
 
-    console.log('triggers', targets);
-
     targets.forEach((target) => {
         target.addEventListener('mousemove', linkMouseMove);
         target.addEventListener('mouseover', linkMouseOver);
