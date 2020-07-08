@@ -12,7 +12,7 @@
 		data-character="<?=$x?>"
 		data-imagebasepath="<?=base_url('/assets/images/avatars/' . $gender . '/')?>">
 		<img loading="lazy"
-			src="<?='assets/images/avatars/' . $gender . '/avatar_' . $x . '.png'?>"
+			src="<?=base_url('assets/images/avatars/' . $gender . '/avatar_' . $x . '.png')?>"
 			alt="Avatar <?=$x?>" width="100" height="100">
 	</a>
 	<?php endfor; ?>

@@ -95,6 +95,9 @@ const manipulateDom = (data) => {
                     case 'title':
                         element.title = value;
                         break;
+                    case 'src':
+                        element.src = value;
+                        break;
                     case 'default':
                         snackbar({ text: `Attribute ${attribute} is not possible to change.`, level: 'error' });
                 }
