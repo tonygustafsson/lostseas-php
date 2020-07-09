@@ -109,7 +109,8 @@ table {
     }
 }
 
-form#register input#character_description {
+#register #character_description,
+#forgotten_password_form #name {
     /* Honeypot attempt to block some bots */
     display: none;
 }

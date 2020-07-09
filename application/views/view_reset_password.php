@@ -4,7 +4,7 @@
 	</p>
 
 	<form method="post" class="ajaxJSON"
-		action="<?=base_url('account/password_change')?>">
+		action="<?=base_url('settings/password_change')?>">
 		<fieldset>
 			<legend>Reset password</legend>
 

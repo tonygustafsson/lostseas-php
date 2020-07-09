@@ -68,7 +68,8 @@ class Main extends CI_Controller
 
         $public_pages = array(
             'about' => array('ROOT', 'presentation', 'guide', '404'),
-            'account' => array('ROOT', 'login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_send_reset_link', 'generate_character', 'avatar_selector', 'erase_temp_users', 'logged_out')
+            'account' => array('login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_forgotten_post', 'erase_temp_users', 'logged_out'),
+            'settings' => array('generate_character', 'avatar_selector')
         );
 
         if (array_key_exists($segment1, $public_pages)) {

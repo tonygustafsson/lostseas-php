@@ -3,35 +3,35 @@
 
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon" title="Change your account settings, such as name, birthday, presentation"
-			href="<?=base_url('account/settings_account')?>">
+			href="<?=base_url('settings/account')?>">
 			<svg width="32" height="32" class="Account">
 				<use xlink:href="#player"></use>
 			</svg>
 			Account
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change your email/login adress"
-			href="<?=base_url('account/settings_email')?>">
+			href="<?=base_url('settings/email')?>">
 			<svg width="32" height="32" class="Email">
 				<use xlink:href="#message"></use>
 			</svg>
 			Email
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
-			href="<?=base_url('account/settings_character')?>">
+			href="<?=base_url('settings/character')?>">
 			<svg width="32" height="32" class="Character">
 				<use xlink:href="#crew-man"></use>
 			</svg>
 			Character
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change your password for login"
-			href="<?=base_url('account/settings_password')?>">
+			href="<?=base_url('settings/password')?>">
 			<svg width="32" height="32" class="Password">
 				<use xlink:href="#key"></use>
 			</svg>
 			Password
 		</a>
 		<a class="ajaxHTML button big-icon" title="Unregister from this game"
-			href="<?=base_url('account/unregister')?>">
+			href="<?=base_url('settings/unregister')?>">
 			<svg width="32" height="32" class="Unregister">
 				<use xlink:href="#trashcan"></use>
 			</svg>
@@ -40,7 +40,7 @@
 	</div>
 
 	<form id="profile_picture_form"
-		action="<?=base_url('account/upload_profile_picture')?>"
+		action="<?=base_url('settings/upload_profile_picture')?>"
 		method="POST" enctype="multipart/form-data">
 		<fieldset>
 			<legend>Profile picture</legend>
@@ -59,7 +59,7 @@
 	<hr />
 
 	<form id="settings" class="ajaxJSON" method="post"
-		action="<?=base_url('account/settings_account_post')?>">
+		action="<?=base_url('settings/account_post')?>">
 
 		<fieldset>
 			<legend>Account settings</legend>

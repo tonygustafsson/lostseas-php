@@ -98,7 +98,7 @@ const musicToggle = (e) => {
     if (gameMusic.paused || gameMusic.src === '') {
         axios({
             method: 'post',
-            url: `${window.appPath}/account/music/1`
+            url: `${window.appPath}/settings/music/on`
         })
             .then(() => {
                 if (gameMusic.src === '') {
@@ -133,7 +133,7 @@ const musicToggle = (e) => {
 
         axios({
             method: 'post',
-            url: `${window.appPath}/account/music/0`
+            url: `${window.appPath}/settings/music/off`
         })
             .then(() => {
                 if (typeof window.gtag == typeof Function) {
@@ -159,11 +159,11 @@ const changeSoundEffects = (e) => {
 
     axios({
         method: 'post',
-        url: `${window.appPath}account/sound_effects/${value}`
+        url: `${window.appPath}settings/sound_effects/${value}`
     })
         .then((result) => {
             if (typeof window.gtag == typeof Function) {
-                window.gtag('event', 'SoundFX', { event_category: value === 1 ? 'TurnOn' : 'TurnOff' });
+                window.gtag('event', 'SoundFX', { event_category: value === 'on' ? 'TurnOn' : 'TurnOff' });
             }
         })
         .catch((err) => {
@@ -209,7 +209,7 @@ const volumeSliderChange = (value) => {
 
     axios({
         method: 'post',
-        url: `${window.appPath}account/music_volume/${volume}`
+        url: `${window.appPath}settings/music_volume/${volume}`
     })
         .then((result) => {
             gameMusic.volume = volume / 100;

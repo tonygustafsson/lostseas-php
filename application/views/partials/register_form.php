@@ -15,7 +15,7 @@
                 <button type="button" id="js-start-avatar-selector-trigger">Change</button><br />
 
                 <a class="ajaxJSON"
-                    href="<?=base_url('account/generate_character')?>"
+                    href="<?=base_url('settings/generate_character')?>"
                     title="Generate random character">
                     <svg width="32" height="32" class="Randomize">
                         <use xlink:href="#dices"></use>

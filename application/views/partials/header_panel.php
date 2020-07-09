@@ -94,7 +94,7 @@
 
                 <?php if ($user['verified'] == 1): ?>
                 <a class="top-nav-panel__item ajaxHTML" title="Change your settings"
-                        href="<?=base_url('account/settings_account')?>">
+                        href="<?=base_url('settings/account')?>">
                         <svg width="32" height="32" alt="Settings">
                                 <use xlink:href="#cogs"></use>
                         </svg>
@@ -104,7 +104,7 @@
                 <?php else: ?>
                 <a class="top-nav-panel__item top-nav-panel__item--disabled"
                         title="This option will be enabled when you are registered!"
-                        href="<?=base_url('account/settings_account')?>">
+                        href="<?=base_url('settings/account')?>">
                         <svg width="32" height="32" alt="Settings">
                                 <use xlink:href="#cogs"></use>
                         </svg>

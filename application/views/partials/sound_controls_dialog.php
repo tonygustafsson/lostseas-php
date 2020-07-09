@@ -15,8 +15,8 @@
         <div id="track_position_slider" class="slider mb-2"></div>
 
         <?php
-                $pause_music_display_style = $user['music_play'] == 1 ? 'inline-block' : 'none';
-                $play_music_display_style = $user['music_play'] == 1 ? 'none' : 'inline-block';
+                $pause_music_display_style = $user['music_play'] === 1 ? 'inline-block' : 'none';
+                $play_music_display_style = $user['music_play'] === 1 ? 'none' : 'inline-block';
         ?>
 
         <a id="music_link_play" title="Play game music" class="js-music-toggle-state sound-control-button mr-1" href="#"
@@ -48,12 +48,12 @@
 
         <span id="sound_effects">
                 <label class="pb-0">
-                        <input type="radio" name="sound_effects" value="1" <?=($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
+                        <input type="radio" name="sound_effects" value="on" <?=($user['sound_effects_play'] == 1) ? ' checked' : ''?>>
                         On
                 </label>
 
                 <label class="pt-0">
-                        <input type="radio" name="sound_effects" value="0" <?=($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
+                        <input type="radio" name="sound_effects" value="off" <?=($user['sound_effects_play'] == 0) ? ' checked' : ''?>>
                         Off
                 </label>
         </span>
