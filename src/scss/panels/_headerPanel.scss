@@ -11,16 +11,16 @@
     }
 
     &__link:hover {
-        text-decoration: none;;
+        text-decoration: none;
     }
 
     &__main-heading {
         margin: 0;
 
-       span {
-           display: inline-block;
-           text-indent: -999em;
-       }
+        span {
+            display: inline-block;
+            text-indent: -999em;
+        }
     }
 
     @include mobile {
@@ -94,6 +94,7 @@
 
         &--disabled {
             opacity: 0.6;
+            pointer-events: none;
 
             &:hover {
                 background-color: transparent !important;
