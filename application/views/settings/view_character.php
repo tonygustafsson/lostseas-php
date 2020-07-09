@@ -9,26 +9,12 @@
 			</svg>
 			Account
 		</a>
-		<a class="ajaxHTML button big-icon" title="Change your email/login adress"
-			href="<?=base_url('settings/email')?>">
-			<svg width="32" height="32" class="Email">
-				<use xlink:href="#message"></use>
-			</svg>
-			Email
-		</a>
 		<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
 			href="<?=base_url('settings/character')?>">
 			<svg width="32" height="32" class="Character">
 				<use xlink:href="#crew-man"></use>
 			</svg>
 			Character
-		</a>
-		<a class="ajaxHTML button big-icon" title="Change your password for login"
-			href="<?=base_url('settings/password')?>">
-			<svg width="32" height="32" class="Password">
-				<use xlink:href="#key"></use>
-			</svg>
-			Password
 		</a>
 	</div>
 

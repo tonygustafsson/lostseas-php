@@ -9,13 +9,6 @@
 			</svg>
 			Account
 		</a>
-		<a class="ajaxHTML button big-icon" title="Change your email/login adress"
-			href="<?=base_url('settings/email')?>">
-			<svg width="32" height="32" class="Email">
-				<use xlink:href="#message"></use>
-			</svg>
-			Email
-		</a>
 		<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
 			href="<?=base_url('settings/character')?>">
 			<svg width="32" height="32" class="Character">
@@ -23,33 +16,7 @@
 			</svg>
 			Character
 		</a>
-		<a class="ajaxHTML button big-icon" title="Change your password for login"
-			href="<?=base_url('settings/password')?>">
-			<svg width="32" height="32" class="Password">
-				<use xlink:href="#key"></use>
-			</svg>
-			Password
-		</a>
 	</div>
-
-	<form id="profile_picture_form"
-		action="<?=base_url('settings/upload_profile_picture')?>"
-		method="POST" enctype="multipart/form-data">
-		<fieldset>
-			<legend>Profile picture</legend>
-
-			<div>
-				<img
-					src="<?=$viewdata['profile_picture']?>">
-			</div>
-
-			<input type="file" id="profile_picture_select" name="profile_picture_select[]" />
-
-			<button type="submit">Upload</button>
-		</fieldset>
-	</form>
-
-	<hr />
 
 	<form id="settings" class="ajaxJSON" method="post"
 		action="<?=base_url('settings/account_post')?>">
@@ -115,6 +82,71 @@
 
 	<hr />
 
+	<form id="profile_picture_form"
+		action="<?=base_url('settings/upload_profile_picture')?>"
+		method="POST" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Profile picture</legend>
+
+			<div>
+				<img
+					src="<?=$viewdata['profile_picture']?>">
+			</div>
+
+			<input type="file" id="profile_picture_select" name="profile_picture_select[]" />
+
+			<button type="submit">Upload</button>
+		</fieldset>
+	</form>
+
+	<hr />
+
+	<form id="settings" class="ajaxJSON" method="post"
+		action="<?=base_url('settings/password_post')?>">
+
+		<fieldset>
+			<legend>Change password</legend>
+
+			<p>You might be logged out if you change the password. Just login again with the new password.</p>
+
+			<label for="old_password">Current password</label>
+			<input type="password" name="old_password" id="old_password" />
+
+			<label for="new_password">New password</label>
+			<input type="password" name="new_password" id="new_password" />
+
+			<label for="repeated_new_password">Repeat new password</label>
+			<input type="password" name="repeated_new_password" id="repeated_new_password" />
+
+			<br><button type="submit" class="primary">Save</button>
+		</fieldset>
+	</form>
+
+	<hr />
+
+	<form id="settings" class="ajaxJSON" method="post"
+		action="<?=base_url('settings/send_email_verification')?>">
+
+		<fieldset>
+			<legend>Change email</legend>
+
+			<p>
+				If you changes your email adress, your new mail box will recieve a verification link.
+				If you click that link, your email will be changed. You have to login with your new
+				adress to continue playing <?=$this->config->item('site_name')?>!
+			</p>
+
+			<label for="new_email">New email address</label>
+			<input type="email" name="new_email" id="new_email"
+				value="<?=$user['email']?>"
+				required />
+
+			<button type="submit" class="primary">Save</button>
+		</fieldset>
+	</form>
+
+	<hr />
+
 	<form id="settings" class="ajaxJSON" method="post"
 		action="<?=base_url('settings/unregister_post')?>">
 
@@ -127,7 +159,7 @@
 			</p>
 
 			<label for="password">Password</label>
-			<input type="password" name="password" id="password" />
+			<input type="password" name="password" id="password" required />
 
 			<button type="submit" class="primary">Unregister</button>
 		</fieldset>
