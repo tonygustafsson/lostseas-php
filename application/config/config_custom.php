@@ -4,7 +4,7 @@
 
 $config['site_name']				=	'Lost Seas';
 $config['timezone']					=	'Europe/Stockholm';
-$config['email']					=	'info@lostseas.com';
+$config['email']					=	'outgoing@lostseas.com';
 
 $config['google_analytics_id']		=	'UA-40457155-1';
 

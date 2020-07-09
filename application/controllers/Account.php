@@ -271,13 +271,17 @@ class Account extends Main
         $this->email->to($this->input->post('email'));
         $this->email->subject('Reset your password');
         $this->email->message($message);
-        $this->email->send();
+        
+        if (!$this->email->send()) {
+            $data['error'] = 'Something went wrong when trying to send the email.';
+            $data['mail_debug'] = $this->email->print_debugger();
+        } else {
+            $data['success'] = 'A verification link has been sent to ' . $this->input->post('email') . '.';
+        }
 
         //Write in database the PIN to match the user
         $user_updates['password_pin'] = $password_pin;
         $this->User->update('email', $this->input->post('login_email'), $user_updates);
-
-        $data['success'] = 'A verification link has been sent to ' . $this->input->post('email') . '.';
 
         echo json_encode($data);
     }
