@@ -335,15 +335,7 @@ class Settings extends Main
             echo json_encode($data);
         }
     }
-    
-    public function unregister()
-    {
-        if ($this->data['user']['verified'] == 1) {
-            //Unregister user
-            $this->load->view_ajax('settings/view_unregister', $this->data);
-        }
-    }
-    
+       
     public function unregister_post()
     {
         //Really unregister...

@@ -30,13 +30,6 @@
 			</svg>
 			Password
 		</a>
-		<a class="ajaxHTML button big-icon" title="Unregister from this game"
-			href="<?=base_url('settings/unregister')?>">
-			<svg width="32" height="32" class="Unregister">
-				<use xlink:href="#trashcan"></use>
-			</svg>
-			Unregister
-		</a>
 	</div>
 
 	<form id="profile_picture_form"
@@ -117,6 +110,26 @@
 
 			<br />
 			<button type="submit" class="primary">Save</button>
+		</fieldset>
+	</form>
+
+	<hr />
+
+	<form id="settings" class="ajaxJSON" method="post"
+		action="<?=base_url('settings/unregister_post')?>">
+
+		<fieldset>
+			<legend>Unregister</legend>
+
+			<p>
+				Please write your password and click the Unregister button to delete your account and everything that is
+				associated with it.
+			</p>
+
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" />
+
+			<button type="submit" class="primary">Unregister</button>
 		</fieldset>
 
 	</form>

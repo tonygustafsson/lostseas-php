@@ -30,13 +30,6 @@
 			</svg>
 			Password
 		</a>
-		<a class="ajaxHTML button big-icon" title="Unregister from this game"
-			href="<?=base_url('settings/unregister')?>">
-			<svg width="32" height="32" class="Unregister">
-				<use xlink:href="#trashcan"></use>
-			</svg>
-			Unregister
-		</a>
 	</div>
 
 	<p>

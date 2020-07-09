@@ -94,7 +94,7 @@
 						</svg>
 					</a>
 					<a class="ajaxHTML"
-						href="inventory/player/<?=$this_player['id']?>"><?=$this_player['character_name']?></a>
+						href="<?=base_url('inventory/player/' . $this_player['id'])?>"><?=$this_player['character_name']?></a>
 				</td>
 				<td><?=$this_player['week']?>
 				</td>
