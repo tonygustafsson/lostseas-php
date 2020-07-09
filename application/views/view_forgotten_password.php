@@ -45,7 +45,8 @@
 </div>
 
 <div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
-	data-url="<?=base_url('account/avatar_selector/')?>/<?=$character['character_gender_long']?>">
+	data-base-url="<?=base_url('account/avatar_selector/')?>"
+	data-img-base-url="<?=base_url('assets/images/avatars')?>">
 	<h3 class="dialog-title">Choose an avatar</h3>
 	<div class="avatar-selector-wrapper"></div>
 </div>

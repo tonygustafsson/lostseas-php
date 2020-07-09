@@ -47,9 +47,7 @@
 			<div class="flex">
 				<div class="text-center">
 					<input type="hidden" id="character_avatar" name="character_avatar"
-						value="<?=$game['character_gender_long'] . '###' . $game['character_avatar']?>">
-					<input type="hidden" id="character_gender" name="character_gender"
-						value="<?=$game['character_gender']?>">
+						value="<?=$game['character_avatar']?>">
 
 					<img id="current_avatar_img" style="border: 1px black solid;"
 						src="<?=$game['character_avatar_path']?>"
@@ -70,6 +68,15 @@
 					<label for="character_name">Name</label>
 					<input id="character_name" type="text" name="character_name"
 						value="<?=$game['character_name']?>" />
+
+					<div>
+						<input class="js-gender-selector" id="male" type="radio" name="character_gender" value="M"
+							<?=$game['character_gender'] === 'M' ? 'checked' : ''?>
+						/><label for="male">Male</label>
+						<input class="js-gender-selector" id="female" type="radio" name="character_gender" value="F"
+							<?=$game['character_gender'] === 'F' ? 'checked' : ''?>
+						/><label for="female">Female</label>
+					</div>
 
 					<label for="character_age">Age</label>
 					<input id="character_age" type="number" name="character_age" placeholder="Character age"
@@ -94,7 +101,8 @@
 </div>
 
 <div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
-	data-url="<?=base_url('account/avatar_selector/' . $game['character_gender_long'])?>">
+	data-base-url="<?=base_url('account/avatar_selector/')?>"
+	data-img-base-url="<?=base_url('assets/images/avatars')?>">
 	<h3 class="dialog-title">Choose an avatar</h3>
 	<div class="avatar-selector-wrapper"></div>
 </div>

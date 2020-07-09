@@ -106,7 +106,7 @@
 			<tr>
 				<td>Avatar</td>
 				<td><input type="text" id="character_avatar" name="character_avatar"
-						value="<?=$player['game']['character_gender_long']?>###<?=$player['game']['character_avatar']?>">
+						value="<?=$player['game']['character_avatar']?>">
 				</td>
 			</tr>
 			<tr>

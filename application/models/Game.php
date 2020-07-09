@@ -35,7 +35,7 @@ class Game extends CI_Model
         
         if (isset($updates['user_id'])) {
             $standard = array(
-                              'character_name', 'character_gender', 'character_age', 'character_description',
+                              'character_name', 'character_gender', 'character_avatar', 'character_age', 'character_description',
                               'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners'
                             );
@@ -89,21 +89,6 @@ class Game extends CI_Model
             if (isset($updates['event']) && !is_array($updates['event'])) {
                 // Handle events saved as json
                 $sql_updates['event'] = $updates['event'];
-            }
-            
-            if (isset($updates['character_avatar'])) {
-                $item = 'character_avatar';
-            
-                $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
-            
-                list($gender, $avatar) = explode("###", $value);
-            
-                $sql_updates[$item] = $avatar;
-                
-                $output[$item]['success'] = $value;
-                
-                $image_path = APPPATH . '../assets/images/avatars/' . $gender . '/avatar_' . $avatar . '.png';
-                $output['changeElements']['inventory_' . $item]['src'] = $image_path;
             }
             
             if (isset($updates['week'])) {

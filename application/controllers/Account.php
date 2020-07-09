@@ -43,7 +43,7 @@ class Account extends Main
         
         $form_rules['character_name'] 			= array('name' => 'Character name', 'min_length' => 3);
         $form_rules['character_age'] 			= array('name' => 'Character age', 'in_range' => array_fill(15, 80, true));
-        $form_rules['character_avatar'] 		= array('name' => 'Character avatar', 'min_length' => 3);
+        $form_rules['character_avatar'] 		= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
         $form_rules['character_gender']			= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
         
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
@@ -65,9 +65,7 @@ class Account extends Main
             $game_input['character_name'] = $this->input->post('character_name');
             $game_input['character_age'] = $this->input->post('character_age');
             $game_input['character_gender'] = $this->input->post('character_gender');
-            
-            list($gender, $avatar) = explode("###", $this->input->post('character_avatar'));
-            $game_input['character_avatar'] = $avatar;
+            $game_input['character_avatar'] = $this->input->post('character_avatar');
 
             $this->Game->create($game_input);
 
@@ -373,9 +371,11 @@ class Account extends Main
     {
         $character = $this->gamelib->generate_character();
 
+        $short_gender = $character['character_gender'] === 'M' ? 'male' : 'female';
+
         $data['changeElements']['character_name']['val'] = $character['character_name'];
         $data['changeElements']['character_age']['val'] = $character['character_age'];
-        $data['changeElements']['character_gender']['val'] = $character['character_gender'];
+        $data['changeElements'][$short_gender]['checked'] = true;
         $data['changeElements']['character_avatar']['val'] = $character['character_avatar'];
         $data['changeElements']['current_avatar_img']['src'] = $character['character_avatar_path'];
         
@@ -396,7 +396,7 @@ class Account extends Main
         if ($this->data['user']['verified'] == 1) {
             //Change character settings
             $form_rules['character_name'] 		= array('name' => 'Character name', 'min_length' => 3);
-            $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'min_length' => 3);
+            $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
             $form_rules['character_gender']		= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
             $form_rules['character_age']		= array('name' => 'Character age', 'in_range' => array_fill(1, 99, true));
             
@@ -676,6 +676,3 @@ class Account extends Main
         $this->load->view_ajax('view_logged_out', $this->data);
     }
 }
-
-/* End of file account.php */
-/* Location: ./application/controllers/account.php */

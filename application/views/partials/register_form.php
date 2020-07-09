@@ -7,8 +7,6 @@
             <div class="text-center">
                 <input type="hidden" id="character_avatar" name="character_avatar"
                     value="<?=$character['character_avatar']?>">
-                <input type="hidden" id="character_gender" name="character_gender"
-                    value="<?=$character['character_gender']?>">
 
                 <img id="current_avatar_img" style="border: 1px black solid;"
                     src="<?=$character['character_avatar_path']?>"
@@ -29,6 +27,13 @@
                 <label for="character_name" style="margin-top: -16px">Character name</label>
                 <input id="character_name" type="text" name="character_name"
                     value="<?=$character['character_name']?>" />
+
+                <div>
+                    <input class="js-gender-selector" id="male" type="radio" name="character_gender" value="M" <?=$character['character_gender'] === 'M' ? 'checked' : ''?>
+                    /><label for="male">Male</label>
+                    <input class="js-gender-selector" id="female" type="radio" name="character_gender" value="F" <?=$character['character_gender'] === 'F' ? 'checked' : ''?>
+                    /><label for="female">Female</label>
+                </div>
 
                 <label for="character_age">Character age</label>
                 <input id="character_age" type="number" min="15" max="80" style="width: 50px;" name="character_age"

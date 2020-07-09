@@ -449,7 +449,7 @@ class GAMELIB
         $avatar_path = APPPATH . '../assets/images/avatars/' . $data['character_gender_long'] . '/avatar_*.png';
         $avatars = glob($avatar_path);
         $random_avatar = rand(1, count($avatars));
-        $data['character_avatar'] = $data['character_gender_long'] . '###' . $random_avatar;
+        $data['character_avatar'] = $random_avatar;
         $data['character_avatar_path'] = base_url('assets/images/avatars/' . $data['character_gender_long'] . '/avatar_' . $random_avatar . '.png');
         
         return $data;

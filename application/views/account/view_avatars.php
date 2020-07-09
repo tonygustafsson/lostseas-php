@@ -1,9 +1,6 @@
 <div class="avatar-selector">
-	<div style="width: 100%; padding-bottom: 1em;">
-		<button type="button" class="avatar-selector-change-gender" data-gender="M"
-			data-url="<?=base_url('account/avatar_selector/male')?>">Male</button>
-		<button type="button" class="avatar-selector-change-gender" data-gender="F"
-			data-url="<?=base_url('account/avatar_selector/female')?>">Female</button>
+	<div style="width: 100%; padding: 1em 0;">
+		The avatars available depends on the gender of your character.
 	</div>
 
 	<?php for ($x = 1; $x <= $number_of_avatars; $x++): ?>
