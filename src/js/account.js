@@ -11,15 +11,14 @@ const changeProfilePic = (e) => {
         return;
     }
 
-    const image = document.createElement('img');
+    const newImg = document.createElement('img');
     const thumbnail = document.getElementById('image_preview');
 
-    image.file = imageToUpload;
-    image.width = 120;
-    image.height = 120;
+    newImg.file = imageToUpload;
+    newImg.width = 120;
+    newImg.height = 120;
     thumbnail.innerHTML = '';
-    thumbnail.appendChild(image);
-    thumbnail.style.display = 'block';
+    thumbnail.appendChild(newImg);
 
     var reader = new FileReader();
 
@@ -27,14 +26,14 @@ const changeProfilePic = (e) => {
         return function (e) {
             aImg.src = e.target.result;
         };
-    })(image);
+    })(newImg);
 
     var ret = reader.readAsDataURL(imageToUpload);
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
-    image.onload = function () {
-        ctx.drawImage(image, 120, 120);
+    newImg.onload = function () {
+        ctx.drawImage(newImg, 120, 120);
     };
 };
 
@@ -54,16 +53,13 @@ const uploadProfilePic = (e) => {
         return;
     }
 
-    const formData = new FormData();
-    formData.append('profile_picture_select', imageToUpload);
-
     axios({
-        method: 'post',
+        method: 'PUT',
         responseType: 'json',
-        data: formData,
+        data: imageToUpload,
         url: form.action,
         headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': imageToUpload.type
         }
     })
         .then((response) => {
@@ -84,6 +80,6 @@ const initProfilePictureSelector = () => {
     profilePicFormEl.addEventListener('submit', uploadProfilePic);
 };
 
-window.addEventListener('account-settings_account', () => {
+window.addEventListener('settings-account', () => {
     initProfilePictureSelector();
 });

@@ -64,44 +64,46 @@ class Settings extends Main
     public function upload_profile_picture()
     {
         //Get the image through AJAX
-        $contents = file_get_contents('php://input');
-        
-        if ($contents) {
-            //Save temporary uploaded file to right place
-            $filename = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg';
-            $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
-            file_put_contents($filename, $contents);
-            
-            //Resize the image
-            $config['image_library'] = 'gd2';
-            $config['source_image']	= $filename;
-            $config['create_thumb'] = false;
-            $config['maintain_ratio'] = false;
-            $config['width'] = 120;
-            $config['height'] = 120;
-            $config['quality'] = 75;
+        $contents = file_get_contents("php://input");
 
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
-            $this->image_lib->clear();
-            
-            //Make thumbnail
-            $config['image_library'] = 'gd2';
-            $config['source_image']	= $filename;
-            $config['new_image'] = $thumbname;
-            $config['create_thumb'] = false;
-            $config['maintain_ratio'] = false;
-            $config['width'] = 40;
-            $config['height'] = 40;
-            $config['quality'] = 75;
-            
-            $this->image_lib->initialize($config);
-            $this->image_lib->resize();
-            
-            $data['manipulateDom']['success'] = 'Successfully uploaded profile picture.';
-        } else {
+        if (!$contents) {
             $data['manipulateDom']['error'] = 'Could not upload profile picture';
+            echo json_encode($data);
+            return;
         }
+
+        //Save temporary uploaded file to right place
+        $filename = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg';
+        $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
+        file_put_contents($filename, $contents);
+            
+        //Resize the image
+        $config['image_library'] = 'gd2';
+        $config['source_image']	= $filename;
+        $config['create_thumb'] = false;
+        $config['maintain_ratio'] = false;
+        $config['width'] = 120;
+        $config['height'] = 120;
+        $config['quality'] = 75;
+
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+        $this->image_lib->clear();
+
+        //Make thumbnail
+        $config['image_library'] = 'gd2';
+        $config['source_image']	= $filename;
+        $config['new_image'] = $thumbname;
+        $config['create_thumb'] = false;
+        $config['maintain_ratio'] = false;
+        $config['width'] = 40;
+        $config['height'] = 40;
+        $config['quality'] = 75;
+
+        $this->image_lib->initialize($config);
+        $this->image_lib->resize();
+            
+        $data['manipulateDom']['success'] = 'Successfully uploaded profile picture.';
         
         echo json_encode($data);
     }
@@ -114,7 +116,7 @@ class Settings extends Main
         }
     }
     
-    public function send_email_verification()
+    public function email_post()
     {
         //Change a users email/login
         $form_rules['new_email']		= array('name' => 'New email', 'email' => true);

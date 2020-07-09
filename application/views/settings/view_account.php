@@ -18,7 +18,7 @@
 		</a>
 	</div>
 
-	<form id="settings" class="ajaxJSON" method="post"
+	<form id="settings_account" class="ajaxJSON" method="post"
 		action="<?=base_url('settings/account_post')?>">
 
 		<fieldset>
@@ -88,7 +88,7 @@
 		<fieldset>
 			<legend>Profile picture</legend>
 
-			<div>
+			<div id="image_preview">
 				<img
 					src="<?=$viewdata['profile_picture']?>">
 			</div>
@@ -101,7 +101,7 @@
 
 	<hr />
 
-	<form id="settings" class="ajaxJSON" method="post"
+	<form id="settings_password" class="ajaxJSON" method="post"
 		action="<?=base_url('settings/password_post')?>">
 
 		<fieldset>
@@ -124,8 +124,8 @@
 
 	<hr />
 
-	<form id="settings" class="ajaxJSON" method="post"
-		action="<?=base_url('settings/send_email_verification')?>">
+	<form id="settings_email" class="ajaxJSON" method="post"
+		action="<?=base_url('settings/email_post')?>">
 
 		<fieldset>
 			<legend>Change email</legend>
@@ -147,7 +147,7 @@
 
 	<hr />
 
-	<form id="settings" class="ajaxJSON" method="post"
+	<form id="settings_unregister" class="ajaxJSON" method="post"
 		action="<?=base_url('settings/unregister_post')?>">
 
 		<fieldset>
