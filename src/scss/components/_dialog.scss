@@ -46,6 +46,13 @@
         z-index: 90;
     }
 
+    &-actions {
+        button,
+        .button {
+            margin-right: $spacing;
+        }
+    }
+
     &-close-btn {
         width: 24px;
         height: 24px;

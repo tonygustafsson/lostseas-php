@@ -32,7 +32,8 @@
 				<td>
 					<a class="ajaxJSON"
 						href="<?=base_url('inventory/user_remove/' . $user['id'] . '/' . $this_player['id'])?>"
-						title="Erase this user" rel="Are you sure?">
+						title="Erase this user" data-prompt-heading="Delete this user?"
+						data-prompt-text="This change will be permanent.">
 						<svg width="16" height="16" alt="Remove">
 							<use xlink:href="#trashcan"></use>
 						</svg>
@@ -71,7 +72,8 @@
 	<h3>Temporary players</h3>
 
 	<p class="text-right"><a class="ajaxJSON"
-			href="<?=base_url('godmode/erase_temp_users')?>">Delete
+			href="<?=base_url('godmode/erase_temp_users')?>"
+			data-prompt-heading="Delete temporary users?" data-prompt-text="This change will be permanent.">Delete
 			tempusers older than 24 hours</a></p>
 
 	<div class="table-responsive">
@@ -88,7 +90,8 @@
 				id="player-<?=$this_player['id']?>">
 				<td><a class="ajaxJSON"
 						href="<?=base_url('inventory/user_remove/' . $user['id'] . '/' . $this_player['id'])?>"
-						title="Erase this user" rel="Are you sure?">
+						title="Erase this user" data-prompt-heading="Delete this user?"
+						data-prompt-text="This change will be permanent.">
 						<svg width="16" height="16" alt="Remove">
 							<use xlink:href="#trashcan"></use>
 						</svg>

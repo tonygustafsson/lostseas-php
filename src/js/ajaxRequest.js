@@ -1,6 +1,7 @@
 import axios from 'axios';
 import snackbar from './components/snackbar';
 import manipulateDom from './manipulateDom';
+import dialog from './components/dialog.js';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -43,10 +44,19 @@ const ajaxJsonRequest = (e) => {
         myData = new FormData(element);
     } else if (elementType === 'a') {
         url = element.href;
-        var question = element.rel;
 
-        if (question && !window.confirm(question)) {
-            //I put confirm questions in a rel="", if it exists and is not verified - do nothing
+        const promptHeading = element.dataset.promptHeading;
+        const promptText = element.dataset.promptText;
+
+        if (promptHeading) {
+            dialog({
+                dialogHeading: promptHeading,
+                dialogContent: promptText ? `<p>${promptText}</p>` : '',
+                dialogActions: [{ title: 'Yes', url: url, primary: true }, { title: 'No' }]
+            });
+
+            window.dispatchEvent(new Event('updated-dom'));
+
             return false;
         }
     }

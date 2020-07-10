@@ -39,7 +39,9 @@
 		<?php foreach ($ship as $this_ship): ?>
 		<?php if ($this_ship['health'] < 100): ?>
 		<a id="ship_<?=$this_ship['id']?>"
-			class="ajaxJSON button big-image" rel="Do you really want to repair this ship?"
+			class="ajaxJSON button big-image"
+			data-prompt-heading="Repair this <?=$this_ship['type']?>?"
+			data-prompt-text="The ship health will be restored to 100%. It will cost you <?php echo(100 - $this_ship['health']) * $prices['ship_repair']['buy']?> dbl."
 			title="Repair this <?=$this_ship['type']?>. Damaged by <?php echo(100 - $this_ship['health'])?> %"
 			href="<?=base_url('shipyard/repair_ship/' . $this_ship['id'])?>">
 			<img

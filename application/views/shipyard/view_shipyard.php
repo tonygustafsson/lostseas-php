@@ -132,15 +132,18 @@
 	<div class="button-area">
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('shipyard/buy_ship/brig')?>"
-			rel="Do you really want to buy this brig?">
+			data-prompt-heading="Buy this brig?"
+			data-prompt-text="This is a standard ship. Affordable and quite basic. It will cost you <?=$prices['brig']['buy']?> dbl.">
 			<img src="<?=base_url('assets/images/ships/brig.jpg')?>"
 				title="A standard ship, affordable.">Brig<br>
 			<?=$prices['brig']['buy']?>
 			dbl
 		</a>
+
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('shipyard/buy_ship/merchantman')?>"
-			rel="Do you really want to buy this merchantman?">
+			data-prompt-heading="Buy this merchantman?"
+			data-prompt-text="This ship is great for loading a lot of barter goods but is weak in battle. It will cost you <?=$prices['merchantman']['buy']?> dbl.">
 			<img src="<?=base_url('assets/images/ships/merchantman.jpg')?>"
 				title="A ship that is great for loading a lot of cartons.">Merchantman<br>
 			<?=$prices['merchantman']['buy']?>
@@ -148,7 +151,8 @@
 		</a>
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('shipyard/buy_ship/galleon')?>"
-			rel="Do you really want to buy this galleon?">
+			data-prompt-heading="Buy this galleon?"
+			data-prompt-text="This is a war ship, great in battle. It will cost you <?=$prices['galleon']['buy']?> dbl.">
 			<img src="<?=base_url('assets/images/ships/galleon.jpg')?>"
 				title="A war ship.">Galleon<br>
 			<?=$prices['galleon']['buy']?>
@@ -156,7 +160,8 @@
 		</a>
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('shipyard/buy_ship/frigate')?>"
-			rel="Do you really want to buy this frigate?">
+			data-prompt-heading="Buy this brig?"
+			data-prompt-text="This is the top of the line battle ship. Quite costly but can handle a huge crew and a lot of cannons. It will cost you <?=$prices['frigate']['buy']?> dbl.">
 			<img src="<?=base_url('assets/images/ships/frigate.jpg')?>"
 				title="The biggest and strongest war ship.">Frigate<br>
 			<?=$prices['frigate']['buy']?>

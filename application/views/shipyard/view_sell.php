@@ -39,7 +39,8 @@
 		<?php foreach ($ship as $this_ship): ?>
 		<a id="ship_<?=$this_ship['id']?>"
 			class="ajaxJSON button big-image" style=""
-			rel="Do you really want to sell this <?=$this_ship['type']?>?"
+			data-prompt-heading="Sell this <?=$this_ship['type']?>?"
+			data-prompt-text="You will get <?=$prices[$this_ship['type']]['sell']?> dbl."
 			title="Sell this <?=$this_ship['type']?>"
 			href="<?=base_url('shipyard/sell_ship/' . $this_ship['id'])?>">
 			<img
