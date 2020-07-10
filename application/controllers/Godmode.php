@@ -360,4 +360,12 @@ class Godmode extends Main
         
         echo json_encode($data);
     }
+
+    public function erase_temp_users()
+    {
+        $erased_users = $this->User->erase_temp_users();
+        
+        $data['success'] = 'Deleted ' . $erased_users . ' users.';
+        echo json_encode($data);
+    }
 }

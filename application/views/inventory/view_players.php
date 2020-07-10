@@ -71,7 +71,7 @@
 	<h3>Temporary players</h3>
 
 	<p class="text-right"><a class="ajaxJSON"
-			href="<?=base_url('account/erase_temp_users')?>">Delete
+			href="<?=base_url('godmode/erase_temp_users')?>">Delete
 			tempusers older than 24 hours</a></p>
 
 	<div class="table-responsive">

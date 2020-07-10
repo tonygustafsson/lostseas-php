@@ -360,25 +360,6 @@ class Settings extends Main
             echo json_encode($data);
         }
     }
-    
-    public function password_change()
-    {
-        //Actual password change
-        $form_rules['new_password']			= array('name' => 'New password', 'min_length' => 6);
-        $form_rules['repeated_new_password']= array('name' => 'Repeated new password', 'exact_match' => array($this->input->post('new_password')));
-        
-        $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
-        
-        if (! $data['error']) {
-            $user_data['password'] = md5($this->input->post('new_password'));
-            $user_data['password_pin'] = '';
-            $this->User->update('password_pin', $this->input->post('verification'), $user_data);
-            
-            $data['success'] = 'Your password has been changed!';
-        }
-        
-        echo json_encode($data);
-    }
 
     public function music()
     {

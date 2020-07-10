@@ -247,7 +247,7 @@ class Account extends Main
         }
     
         //Load form helper and library, set form validation delimiters
-        $form_rules['email']		= array('name' => 'Email address', 'email' => true);
+        $form_rules['email'] = array('name' => 'Email address', 'email' => true);
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
         
         if (! $this->User->user_exists($this->input->post('email'))) {
@@ -263,7 +263,7 @@ class Account extends Main
         }
 
         $password_pin = uniqid();
-        $verification = base_url('settings/password_reset/' . $password_pin);
+        $verification = base_url('account/password_reset/' . $password_pin);
         $message = "You have choosen to reset your password in " . $this->config->item('site_name') . ". Click the link below to verify this.\n\n{$verification}";
 
         $this->load->library('email');
@@ -281,7 +281,7 @@ class Account extends Main
 
         //Write in database the PIN to match the user
         $user_updates['password_pin'] = $password_pin;
-        $this->User->update('email', $this->input->post('login_email'), $user_updates);
+        $this->User->update('email', $this->input->post('email'), $user_updates);
 
         echo json_encode($data);
     }
@@ -300,15 +300,26 @@ class Account extends Main
             $this->load->view('view_info', $data);
         }
     }
-        
-    public function erase_temp_users()
+
+    public function password_reset_post()
     {
-        $erased_users = $this->User->erase_temp_users();
+        // Actual password reset
+        $form_rules['new_password']			= array('name' => 'New password', 'min_length' => 6);
+        $form_rules['repeated_new_password']= array('name' => 'Repeated new password', 'exact_match' => array($this->input->post('new_password')));
         
-        $data['success'] = 'Deleted ' . $erased_users . ' users.';
+        $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
+        
+        if (! $data['error']) {
+            $user_data['password'] = md5($this->input->post('new_password'));
+            $user_data['password_pin'] = '';
+            $this->User->update('password_pin', $this->input->post('verification'), $user_data);
+            
+            $data['success'] = 'Your password has been changed!';
+        }
+        
         echo json_encode($data);
     }
-    
+
     public function logged_out()
     {
         $log_input['entries'] = 8;

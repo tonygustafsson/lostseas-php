@@ -68,7 +68,7 @@ class Main extends CI_Controller
 
         $public_pages = array(
             'about' => array('ROOT', 'presentation', 'guide', '404'),
-            'account' => array('login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_forgotten_post', 'erase_temp_users', 'logged_out'),
+            'account' => array('login', 'logout', 'register_temp', 'activate', 'password_forgotten', 'password_forgotten_post', 'password_reset', 'password_reset_post', 'logged_out'),
             'settings' => array('generate_character', 'avatar_selector')
         );
 
