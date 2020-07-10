@@ -463,7 +463,8 @@
 		<li>St. Eustatius</li>
 	</ul>
 
-	<img src="<?=base_url('assets/images/spanish_main.jpg')?>"
+	<img class="mt-2"
+		src="<?=base_url('assets/images/guide/guide-spanish-main.jpg')?>"
 		alt="Spanish main" class="border img-center">
 
 	<p>You can visit which of these you want, no matter which nationality you belongs to.
@@ -530,10 +531,12 @@
 
 	<hr />
 
+	<?php if (!$user): ?>
 	<div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
 		data-base-url="<?=base_url('settings/avatar_selector/')?>"
 		data-img-base-url="<?=base_url('assets/images/avatars')?>">
 		<h3 class="dialog-title">Choose an avatar</h3>
 		<div class="avatar-selector-wrapper"></div>
 	</div>
+	<?php endif; ?>
 </div>
