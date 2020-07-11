@@ -22,19 +22,14 @@ class Market extends Main
 
     public function index()
     {
-        $this->load->view_ajax('market/view_market', $this->data);
-    }
-
-    public function goods()
-    {
         $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
 
         if (isset($event['banned']) && $event['banned']) {
             return;
         }
 
-        if (!isset($event['item']) || !isset($event['quantity']) || !isset($event['cost']) || !isset($event['cost'])) {
-            $items = array(
+        if (!isset($event['items'])) {
+            $possible_items = array(
                     'food' => 16,
                     'water' => 12,
                     'porcelain' => 35,
@@ -43,13 +38,20 @@ class Market extends Main
                     'tobacco' => 75,
                     'rum' => 150
                 );
+            
+            $available_items = array();
+            $available_items_number = random_int(1, 4);
 
-            $item = array_rand($items);
-            $item_cost = floor($items[$item] * (rand(50, 100) / 100));
-            $quantity = rand(1, 50);
-            $cost = $quantity * $item_cost;
+            for ($i = 0; $i < $available_items_number; $i++) {
+                $item = array_rand($possible_items);
+                $item_cost = floor($possible_items[$item] * (rand(50, 100) / 100));
+                $quantity = rand(1, 50);
+                $cost = $quantity * $item_cost;
 
-            $event = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost, 'item_cost' => $item_cost);
+                $available_items[] = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost, 'item_cost' => $item_cost);
+            }
+
+            $event = array('items' => $available_items);
 
             $this->data['game']['event']['market_goods'] = $event;
             $updates['event']['market_goods'] = $event;
@@ -57,7 +59,33 @@ class Market extends Main
             $this->Game->update($updates);
         }
 
-        $this->load->view_ajax('market/view_goods', $this->data);
+        $this->load->view_ajax('market/view_market', $this->data);
+    }
+
+    public function buy()
+    {
+        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
+
+        if (!$event) {
+            return;
+        }
+
+        $item = $this->uri->segment(3);
+        $item_index = array_search($item, array_column($event['items'], 'item'));
+
+        if (!$item_index) {
+            $data['error'] = 'This option is not available.';
+            echo json_encode($data);
+            return;
+        }
+
+        $matching_item = $event['items'][$item_index];
+
+        $data['success'] = 'You bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl.';
+        $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
+        $data['event'] = 'updated-dom';
+
+        echo json_encode($data);
     }
 
     public function goods_post()

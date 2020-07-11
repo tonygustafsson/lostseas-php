@@ -50,6 +50,7 @@ button,
     &.big-image {
         line-height: 1;
 
+        svg,
         img {
             display: block;
             margin: 0 auto 0.5em auto;
@@ -61,6 +62,13 @@ button,
                 width: 92px;
                 height: 92px;
             }
+        }
+
+        svg {
+            background-color: $lightestgrey;
+            width: 96px;
+            height: 96px;
+            padding: 16px;
         }
     }
 

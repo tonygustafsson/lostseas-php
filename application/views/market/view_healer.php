@@ -8,15 +8,13 @@
 
 <div class="container">
 	<div class="button-area">
-		<?php if (!isset($game['event']['market_goods']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Browse goods" id="action_goods"
-			href="<?=base_url('market/goods')?>">
+			href="<?=base_url('market')?>">
 			<svg width="32" height="32" alt="Goods">
 				<use xlink:href="#barrels"></use>
 			</svg>
 			Goods
 		</a>
-		<?php endif; ?>
 		<?php if (!isset($game['event']['market_slaves']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Look for slaves" id="action_slaves"
 			href="<?=base_url('market/slaves')?>">

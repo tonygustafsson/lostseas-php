@@ -8,15 +8,13 @@
 
 <div class="container">
 	<div class="button-area">
-		<?php if (!isset($game['event']['market_goods']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Browse goods" id="action_goods"
-			href="<?=base_url('market/goods')?>">
+			href="<?=base_url('market')?>">
 			<svg width="32" height="32" alt="Goods">
 				<use xlink:href="#barrels"></use>
 			</svg>
 			Goods
 		</a>
-		<?php endif; ?>
 		<?php if (!isset($game['event']['market_slaves']['banned'])): ?>
 		<a class="ajaxHTML button big-icon" title="Look for slaves" id="action_slaves"
 			href="<?=base_url('market/slaves')?>">
@@ -35,7 +33,21 @@
 		</a>
 	</div>
 
-	<p>
-		<?=$game['greeting']?>
-	</p>
+	<div class="button-area">
+		<?php foreach ($game['event']['market_goods']['items'] as $item): ?>
+		<a class="ajaxJSON button big-image"
+			href="<?=base_url('market/buy/' .$item['item'])?>">
+			<svg width="128" height="128"
+				alt="<?=$item['item']?>">
+				<use
+					xlink:href="#<?=$item['item']?>">
+				</use>
+			</svg>
+			<?=$item['quantity']?> <?=$item['item']?><br />
+			<span class="text-small">
+				<?=$item['cost']?> dbl (<?=$item['item_cost']?> dbl/pc)
+			</span>
+		</a>
+		<?php endforeach; ?>
+	</div>
 </div>
