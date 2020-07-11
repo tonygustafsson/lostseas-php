@@ -46,7 +46,7 @@ class Market extends Main
                 $quantity = rand(1, 50);
                 $cost = $quantity * $item_cost;
 
-                $available_items[] = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost, 'item_cost' => $item_cost);
+                $available_items[] = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost);
             }
 
             $event = array('items' => $available_items);

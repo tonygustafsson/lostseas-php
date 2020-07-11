@@ -46,7 +46,8 @@
 			</svg>
 			<?=$item['quantity']?> <?=$item['item']?><br />
 			<span class="text-small">
-				<?=$item['cost']?> dbl (<?=$item['item_cost']?> dbl/pc)
+				<?=$item['cost']?> dbl (<?=$item['cost'] / $item['quantity']?>
+				dbl/pc)
 			</span>
 		</a>
 		<?php endforeach; ?>
