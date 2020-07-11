@@ -251,11 +251,12 @@ class Market extends Main
                 }
             }
         } else {
-            $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
+            $data['info'] = 'You had a nice conversation with the healer, but eventually walked away.';
         }
 
-        $data['changeElements']['offer']['remove'] = true;
-        
+        $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
+        $data['event'] = 'updated-dom';
+
         echo json_encode($data);
     }
 }

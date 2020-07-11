@@ -13,7 +13,7 @@
 			<svg width="32" height="32" alt="Goods">
 				<use xlink:href="#barrels"></use>
 			</svg>
-			Goods
+			Browse
 		</a>
 		<a class="ajaxHTML button big-icon" title="Heal your crew"
 			href="<?=base_url('market/healer')?>">
@@ -43,8 +43,8 @@
 		</p>
 
 		<div class="button-area">
-			<a class="ajaxJSON button big primary" href="market/healer_post/yes" title="Please heal us!">Yes</a>
-			<a class="ajaxJSON button big" href="market/healer_post/no" title="No hokus pokus today please">No</a>
+			<a class="ajaxJSON button big primary" href="<?=base_url('market/healer_post/yes')?>" title="Please heal us!">Yes</a>
+			<a class="ajaxJSON button big" href="<?=base_url('market/healer_post/no')?>" title="No hokus pokus today please">No</a>
 		</div>
 	</div>
 	<?php endif; ?>

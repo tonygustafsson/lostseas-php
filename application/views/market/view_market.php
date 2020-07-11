@@ -13,7 +13,7 @@
 			<svg width="32" height="32" alt="Goods">
 				<use xlink:href="#barrels"></use>
 			</svg>
-			Goods
+			Browse
 		</a>
 		<a class="ajaxHTML button big-icon" title="Heal your crew"
 			href="<?=base_url('market/healer')?>">
