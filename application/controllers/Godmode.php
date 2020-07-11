@@ -144,18 +144,12 @@ class Godmode extends Main
                 $data['changeElements'] = $ship_output['changeElements'];
             }
         
-            $table_row = '	<tr id="' . $ship_output['created_ship']['id'] . '_row">
-								<td>
-									<a class="ajaxJSON" href="' . base_url('godmode/ship_delete/' . $ship_output['created_ship']['id']) . '" title="Delete ship"><svg width="16" height="16" alt="Change all"><use xlink:href="#broom"></use></svg></a>
-									<input type="text" id="' . $ship_output['created_ship']['id'] . '_name" name="' . $ship_output['created_ship']['id'] . '_name" value="' . $ship_output['created_ship']['name'] . '">
-								</td>
-								<td><input type="text" id="' . $ship_output['created_ship']['id'] . '_type" name="' . $ship_output['created_ship']['id'] . '_type" value="' . $ship_output['created_ship']['type'] . '"></td>
-								<td><input type="number" id="' . $ship_output['created_ship']['id'] . '_age" name="' . $ship_output['created_ship']['id'] . '_age" value="' . $ship_output['created_ship']['age'] . '"></td>
-								<td><input type="number" id="' . $ship_output['created_ship']['id'] . '_health" name="' . $ship_output['created_ship']['id'] . '_health" value="' . $ship_output['created_ship']['health'] . '"></td>
-							</tr>
-						';
-                        
-            $data['changeElements']['ship_table']['append'] = $table_row;
+            $this->data['players'] = $this->User->get_players();
+            $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
+            $this->data['player_ships'] = $this->Ship->get($this->data['player']['user']['id']);
+
+            $data['loadView'] = $this->load->view('godmode/view_godmode_ship', $this->data, true);
+            $data['event'] = 'updated-dom';
         } else {
             $data['error'] = 'Something went wrong. No ship created...';
         }
@@ -264,21 +258,12 @@ class Godmode extends Main
         if ($crew_output['created_crew_count'] > 0) {
             $data['success'] = 'Created ' . $crew_output['created_crew_count'] . ' new crew member!';
             
-            foreach ($crew_output['created_crew'] as $crew_member) {
-                $table_row = '	<tr id="' . $crew_member['id'] . '_row">
-									<td>
-										<a class="ajaxJSON" href="' . base_url('godmode/crew_delete/' . $crew_member['id']) . '" title="Delete crew member"><svg width="16" height="16" alt="Change all"><use xlink:href="#broom"></use></svg></a>
-										<input type="text" id="' . $crew_member['id'] . '_name" name="' . $crew_member['id'] . '_name" value="' . $crew_member['name'] . '">
-									</td>
-									<td><input type="number" id="' . $crew_member['id'] . '_mood" name="' . $crew_member['id'] . '_mood" value="' . $crew_member['mood'] . '"></td>
-									<td><input type="number" id="' . $crew_member['id'] . '_health" name="' . $crew_member['id'] . '_health" value="' . $crew_member['health'] . '"></td>
-									<td><input type="number" id="' . $crew_member['id'] . '_doubloons" name="' . $crew_member['id'] . '_doubloons" value="' . $crew_member['doubloons'] . '"></td>
-								</tr>
-							';
-                            
-                $data['changeElements'] = $crew_output['changeElements'];
-                $data['changeElements']['crew_table']['append'] = $table_row;
-            }
+            $this->data['players'] = $this->User->get_players();
+            $this->data['player'] = ($this->uri->segment(3) != $this->data['user']['id']) ? $this->get_user_data($this->uri->segment(3)) : $this->data;
+            $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['player']['user']['id']));
+
+            $data['loadView'] = $this->load->view('godmode/view_godmode_crew', $this->data, true);
+            $data['event'] = 'updated-dom';
         } else {
             $data['error'] = 'Something went wrong. No crew members created...';
         }
