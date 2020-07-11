@@ -68,12 +68,12 @@ class Godmode extends Main
             return;
         }
 
-        $valid_items = array('tavern_blackjack', 'tavern_sailors', 'market_goods', 'market_slaves', 'cityhall_work');
+        $valid_items = array('tavern_blackjack', 'tavern_sailors', 'market', 'cityhall_work');
 
         if (in_array($item, $valid_items)) {
             $this->data['player']['game']['event'][$item] = null;
             $db_updates['event'][$item] = null;
-            $data['success'] = 'Resetted Black jack event.';
+            $data['success'] = 'Resetted ' . $item . ' event.';
         }
 
         if (isset($db_updates)) {

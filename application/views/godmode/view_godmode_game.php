@@ -297,12 +297,7 @@
 						Sailors</a>
 
 					<a class="ajaxJSON button small"
-						href="<?=base_url('godmode/reset_event/market_goods/' . $player['user']['id'])?>">Market
-						Goods</a>
-
-					<a class="ajaxJSON button small"
-						href="<?=base_url('godmode/reset_event/market_slaves/' . $player['user']['id'])?>">Market
-						Slaves</a>
+						href="<?=base_url('godmode/reset_event/market/' . $player['user']['id'])?>">Market</a>
 
 					<a class="ajaxJSON button small"
 						href="<?=base_url('godmode/reset_event/cityhall_work/' . $player['user']['id'])?>">Cityhall

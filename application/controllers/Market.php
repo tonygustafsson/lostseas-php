@@ -22,9 +22,12 @@ class Market extends Main
 
     public function index()
     {
-        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
+        $event = isset($this->data['game']['event']['market']) ? $this->data['game']['event']['market'] : null;
+        $new_event = array();
 
-        if (!isset($event['items'])) {
+        if (!isset($event['items']) && !isset($event['slaves'])) {
+            // Goods
+
             $possible_items = array(
                     'food' => 16,
                     'water' => 12,
@@ -49,10 +52,21 @@ class Market extends Main
                 $available_items[] = array('item' => $item, 'quantity' => $quantity, 'cost' => $cost);
             }
 
-            $event = array('items' => $available_items);
+            $new_event['items'] = $available_items;
 
-            $this->data['game']['event']['market_goods'] = $event;
-            $updates['event']['market_goods'] = $event;
+            // Slaves
+            $slaves_for_sale = random_int(0, 1);
+
+            if ($slaves_for_sale) {
+                $slaves_quantity = $this->data['game']['crew_members'] < 10 ? random_int(1, 3) : random_int(1, 12);
+                $slaves_health = random_int(20, 100);
+                $slaves_cost = round($slaves_quantity * random_int(200, 1200));
+
+                $new_event['slaves'] = array('quantity' => $slaves_quantity, 'cost' => $slaves_cost, 'health' => $slaves_health);
+            }
+
+            $this->data['game']['event']['market'] = $new_event;
+            $updates['event']['market'] = $new_event;
 
             $this->Game->update($updates);
         }
@@ -62,7 +76,7 @@ class Market extends Main
 
     public function buy()
     {
-        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
+        $event = isset($this->data['game']['event']['market']) ? $this->data['game']['event']['market'] : null;
 
         if (!$event) {
             return;
@@ -87,8 +101,8 @@ class Market extends Main
 
         unset($event['items'][$item_index]);
         $event['items'] = array_values($event['items']);
-        $updates['event']['market_goods'] = $event;
-        $this->data['game']['event']['market_goods'] = $event;
+        $updates['event']['market'] = $event;
+        $this->data['game']['event']['market'] = $event;
 
         $updates['doubloons']['sub'] = true;
         $updates['doubloons']['value'] = $matching_item['cost'];
@@ -113,84 +127,62 @@ class Market extends Main
         echo json_encode($data);
     }
 
-    public function slaves()
+    public function buy_slaves()
     {
-        $event = isset($this->data['game']['event']['market_slaves']) ? $this->data['game']['event']['market_slaves'] : null;
+        $event = isset($this->data['game']['event']['market']) ? $this->data['game']['event']['market'] : null;
 
-        if (isset($event['banned']) && $event['banned']) {
+        if (!$event || !isset($event['slaves'])) {
+            $data['error'] = 'This option is not available.';
+            echo json_encode($data);
             return;
         }
 
-        if (!isset($event['slaves']) || !isset($event['health']) || !isset($event['cost'])) {
-            $slaves = ($this->data['game']['crew_members'] < 10) ? rand(1, 3) : rand(1, 12);
-            $health = rand(20, 100);
-            $cost = round($slaves * rand(200, 1200));
-
-            $event = array('slaves' => $slaves, 'health' => $health, 'cost' => $cost);
-
-            $this->data['game']['event']['market_slaves'] = $event;
-            $updates['event']['market_slaves'] = $event;
-
-            $result = $this->Game->update($updates);
-        }
-
-        $this->load->view_ajax('market/view_slaves', $this->data);
-    }
-
-    public function slaves_post()
-    {
-        $event = isset($this->data['game']['event']['market_slaves']) ? $this->data['game']['event']['market_slaves'] : null;
-
-        if (isset($event['banned']) && $event['banned']) {
+        if ($event['slaves']['cost'] > $this->data['game']['doubloons']) {
+            $data['error'] = 'You don\'t have enough money to buy these slaves.';
+            echo json_encode($data);
             return;
         }
 
-        $answer = $this->uri->segment(3);
-        $data['changeElements'] = array();
+        $crew_input['user_id'] = $this->data['user']['id'];
+        $crew_input['number_of_men'] = $event['slaves']['quantity'];
+        $crew_input['week'] = $this->data['game']['week'];
+        $crew_input['nationality'] = $this->data['game']['nation'];
+        $crew_input['health'] = $event['slaves']['health'];
+        $crew_result = $this->Crew->create($crew_input);
+
+        if ($crew_result['created_crew_count'] !== $event['slaves']['quantity']) {
+            $data['error'] = 'Something wen\'t wrong while taking the slaves captive.';
+            echo json_encode($data);
+            return;
+        }
+
+        $log_input['entry'] = 'bought ' . $event['slaves']['quantity'] . ' slaves, that is now part of the crew members, for ' . $event['slaves']['cost'] . ' dbl at the market.';
+        $this->Log->create($log_input);
+
+        $data['success'] = 'You bought ' . $event['slaves']['quantity'] . ' slaves, that is now your crew members, for ' . $event['slaves']['cost'] . ' dbl at the market!';
+
+        $updates['doubloons']['sub'] = true;
+        $updates['doubloons']['value'] = $event['slaves']['cost'];
+
+        unset($event['slaves']);
+        $updates['event']['market'] = $event;
+        $this->data['game']['event']['market'] = $event;
+
+        $result = $this->Game->update($updates);
+
+        $data['changeElements'] = array_merge($result['changeElements'], $crew_result['changeElements']);
+
         
-        if ($answer === 'yes') {
-            if ($event['cost'] > $this->data['game']['doubloons']) {
-                $data['error'] = 'Something went wrong when creating new crew members!';
-                echo json_encode($data);
-                return;
-            }
-
-            $crew_input['user_id'] = $this->data['user']['id'];
-            $crew_input['number_of_men'] = $event['slaves'];
-            $crew_input['week'] = $this->data['game']['week'];
-            $crew_input['nationality'] = $this->data['game']['nation'];
-            $crew_input['health'] = $event['health'];
-            $crew_result = $this->Crew->create($crew_input);
-                    
-            if ($crew_result['created_crew_count'] == $event['slaves']) {
-                $data['success'] = 'You bought ' . $event['slaves'] . ' slaves, that is now your crew members, for ' . $event['cost'] . ' dbl at the market!';
-
-                $data['changeElements'] = array_merge($data['changeElements'], $crew_result['changeElements']);
-
-                $updates['event']['market_slaves']['banned'] = true;
-                $updates['doubloons']['sub'] = true;
-                $updates['doubloons']['value'] = $event['cost'];
-                $game_result = $this->Game->update($updates);
-                $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
-                $data['changeElements']['action_slaves']['remove'] = true;
-
-                if ($this->data['user']['sound_effects_play'] == 1) {
-                    $data['playSound'] = 'coins';
-                }
-                        
-                $log_input['entry'] = 'bought ' . $event['slaves'] . ' slaves, that is now part of the crew members, for ' . $event['cost'] . ' dbl at the market.';
-                $this->Log->create($log_input);
-            }
-        } else {
-            $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'coins';
         }
 
-        $data['changeElements']['offer']['remove'] = true;
-        $data['pushState'] = base_url('market');
-            
+        $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
+        $data['event'] = 'updated-dom';
+
         echo json_encode($data);
     }
-    
+
     public function healer()
     {
         $injured_crew = 0;

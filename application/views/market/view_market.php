@@ -15,15 +15,6 @@
 			</svg>
 			Goods
 		</a>
-		<?php if (!isset($game['event']['market_slaves']['banned'])): ?>
-		<a class="ajaxHTML button big-icon" title="Look for slaves" id="action_slaves"
-			href="<?=base_url('market/slaves')?>">
-			<svg width="32" height="32" alt="Slaves">
-				<use xlink:href="#prisoners"></use>
-			</svg>
-			Slaves
-		</a>
-		<?php endif; ?>
 		<a class="ajaxHTML button big-icon" title="Heal your crew"
 			href="<?=base_url('market/healer')?>">
 			<svg width="32" height="32" alt="Healer">
@@ -33,9 +24,11 @@
 		</a>
 	</div>
 
-	<?php if (count($game['event']['market_goods']['items']) > 0): ?>
+	<?php if (count($game['event']['market']['items']) > 0 || isset($game['event']['market']['slaves'])): ?>
+	<p>You browse the market for a while and find a couple of items of interest.</p>
+
 	<div class="button-area">
-		<?php foreach ($game['event']['market_goods']['items'] as $item): ?>
+		<?php foreach ($game['event']['market']['items'] as $item): ?>
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('market/buy/' .$item['item'])?>">
 			<svg width="128" height="128"
@@ -51,6 +44,23 @@
 			</span>
 		</a>
 		<?php endforeach; ?>
+
+		<?php if (isset($game['event']['market']['slaves'])): ?>
+		<a class="ajaxJSON button big-image"
+			href="<?=base_url('market/buy_slaves')?>">
+			<svg width="128" height="128" alt="Slaves">
+				<use xlink:href="#prisoners">
+				</use>
+			</svg>
+			<?=$game['event']['market']['slaves']['quantity']?>
+			slaves<br />
+			<span class="text-small">
+				<?=$game['event']['market']['slaves']['cost']?>
+				dbl (<?=$game['event']['market']['slaves']['cost'] / $game['event']['market']['slaves']['quantity']?>
+				dbl/pc)
+			</span>
+		</a>
+		<?php endif; ?>
 	</div>
 	<?php else: ?>
 	<p><em>You browse the market and talk to some citizens, but you don't find anything of value.</em></p>

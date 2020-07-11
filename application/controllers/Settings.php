@@ -255,8 +255,7 @@ class Settings extends Main
                     $updates['event']['cityhall_work'] = null;
                     $updates['event']['tavern_sailors'] = null;
                     $updates['event']['tavern_blackjack'] = null;
-                    $updates['event']['market_goods'] = null;
-                    $updates['event']['market_slaves'] = null;
+                    $updates['event']['market'] = null;
 
                     $ship_input['user_id'] = $this->data['user']['id'];
                     $ship_input['delete_all'] = true;

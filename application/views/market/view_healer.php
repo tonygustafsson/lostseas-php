@@ -15,15 +15,6 @@
 			</svg>
 			Goods
 		</a>
-		<?php if (!isset($game['event']['market_slaves']['banned'])): ?>
-		<a class="ajaxHTML button big-icon" title="Look for slaves" id="action_slaves"
-			href="<?=base_url('market/slaves')?>">
-			<svg width="32" height="32" alt="Slaves">
-				<use xlink:href="#prisoners"></use>
-			</svg>
-			Slaves
-		</a>
-		<?php endif; ?>
 		<a class="ajaxHTML button big-icon" title="Heal your crew"
 			href="<?=base_url('market/healer')?>">
 			<svg width="32" height="32" alt="Healer">
