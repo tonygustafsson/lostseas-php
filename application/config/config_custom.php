@@ -13,25 +13,29 @@ $config['ship_types'] 				= array(
                                             'load_capacity' => 500,
                                             'min_crew' => 2,
                                             'max_crew' => 20,
-                                            'max_cannons' => 10
+                                            'max_cannons' => 10,
+                                            'description' => 'This is a standard ship. Affordable and quite basic.'
                                         ),
                                         'merchantman' => array(
                                             'load_capacity' => 1000,
                                             'min_crew' => 1,
                                             'max_crew' => 10,
-                                            'max_cannons' => 0
+                                            'max_cannons' => 0,
+                                            'description' => 'This ship is great for loading a lot of barter goods but is weak in battle.'
                                         ),
                                         'galleon' => array(
                                             'load_capacity' => 300,
                                             'min_crew' => 4,
                                             'max_crew' => 50,
-                                            'max_cannons' => 25
+                                            'max_cannons' => 25,
+                                            'description' => 'This is a war ship, great in battle.'
                                         ),
                                         'frigate' => array(
                                             'load_capacity' => 600,
                                             'min_crew' => 8,
                                             'max_crew' => 100,
-                                            'max_cannons' => 50
+                                            'max_cannons' => 50,
+                                            'description' => 'This is the top of the line battle ship. Quite costly but can handle a huge crew and a lot of cannons.'
                                         )
                                     );
                                     

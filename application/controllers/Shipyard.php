@@ -23,7 +23,8 @@ class Shipyard extends Main
     public function index()
     {
         $this->data['prices'] = $this->config->item('prices');
-            
+        $this->data['ship_specs'] = $this->config->item('ship_types');
+
         $this->load->view_ajax('shipyard/view_shipyard', $this->data);
     }
 

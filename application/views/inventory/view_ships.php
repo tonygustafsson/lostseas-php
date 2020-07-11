@@ -62,14 +62,19 @@
 			<th>Type</th>
 			<th>Health</th>
 			<th>Max load</th>
-			<th>Min crew</th>
-			<th>Max crew</th>
+			<th>Crew</th>
 			<th>Max cannons</th>
 		</tr>
 
 		<?php foreach ($player['ship'] as $current_ship): ?>
 		<tr>
-			<td><?=$current_ship['name']?>
+			<td>
+				<a href="#"
+					id="js-ship-info-trigger-<?=$current_ship['id']?>"
+					class="js-trigger-ship-info"
+					data-ship-id="<?=$current_ship['id']?>">
+					<?=$current_ship['name']?>
+				</a>
 			</td>
 			<td><?=ucfirst($current_ship['type'])?>
 			</td>
@@ -78,8 +83,7 @@
 			<td><?=$ship_specs[$current_ship['type']]['load_capacity']?>
 			</td>
 			<td><?=$ship_specs[$current_ship['type']]['min_crew']?>
-			</td>
-			<td><?=$ship_specs[$current_ship['type']]['max_crew']?>
+				- <?=$ship_specs[$current_ship['type']]['max_crew']?>
 			</td>
 			<td><?=$ship_specs[$current_ship['type']]['max_cannons']?>
 			</td>
@@ -92,15 +96,58 @@
 			<td><?=$player['game']['load_max']?>
 			</td>
 			<td><?=$player['game']['min_crew']?>
-			</td>
-			<td><?=$player['game']['max_crew']?>
+				- <?=$player['game']['max_crew']?>
 			</td>
 			<td><?=$player['game']['max_cannons']?>
 			</td>
 		</tr>
 		<?php endif; ?>
-
 	</table>
+
+	<?php foreach ($player['ship'] as $current_ship): ?>
+	<div id="js-ship-info-<?=$current_ship['id']?>"
+		class="dialog" tabindex="-1" role="dialog">
+		<h3 class="dialog-title"><?=$current_ship['name']?>
+		</h3>
+
+		<p><?=$ship_specs[$current_ship['type']]['description']?>
+		</p>
+
+		<table>
+			<tr>
+				<td>Type</td>
+				<td><?=ucfirst($current_ship['type'])?>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Health</td>
+				<td><?=$current_ship['health']?>%
+				</td>
+			</tr>
+
+			<tr>
+				<td>Load capacity</td>
+				<td><?=$ship_specs[$current_ship['type']]['load_capacity']?>
+					cartons
+				</td>
+			</tr>
+
+			<tr>
+				<td>Crew</td>
+				<td><?=$ship_specs[$current_ship['type']]['min_crew']?>
+					- <?=$ship_specs[$current_ship['type']]['max_crew']?>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Max cannons</td>
+				<td><?=$player['game']['max_cannons']?>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<?php endforeach; ?>
 
 	<?php else: ?>
 	<p>You don't own any ships...</p>
