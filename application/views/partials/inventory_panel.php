@@ -223,7 +223,7 @@
             title="You own <?=$game['cannons']?> cannons, <?=$game['manned_cannons']?> are manned"
             href="<?=base_url('inventory/ships/' . $user['id'])?>">
             <svg alt="Cannon" width="24" height="24">
-                <use xlink:href="#cannon"></use>
+                <use xlink:href="#cannons"></use>
             </svg>
             <span id="inventory_manned_cannons"><?=$game['manned_cannons']?></span>/<span
                 id="inventory_cannons"><?=$game['cannons']?></span>

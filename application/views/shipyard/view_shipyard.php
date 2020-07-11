@@ -51,7 +51,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Cannons">
-					<use xlink:href="#cannon"></use>
+					<use xlink:href="#cannons"></use>
 				</svg>
 				Cannons (<?=$prices['cannons']['buy']?>/<?=floor($prices['cannons']['sell'] * 0.7)?>
 				dbl)

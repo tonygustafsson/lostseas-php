@@ -111,7 +111,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannon"></use>
+				<use xlink:href="#cannons"></use>
 			</svg>
 			Attack
 		</a>
@@ -130,7 +130,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannon"></use>
+				<use xlink:href="#cannons"></use>
 			</svg>
 			Attack
 		</a>
@@ -157,7 +157,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannon"></use>
+				<use xlink:href="#cannons"></use>
 			</svg>
 			Attack
 		</a>

@@ -115,7 +115,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Cannons">
-					<use xlink:href="#cannon"></use>
+					<use xlink:href="#cannons"></use>
 				</svg>
 				Total cannons
 			</td>
@@ -126,7 +126,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Cannons">
-					<use xlink:href="#cannon"></use>
+					<use xlink:href="#cannons"></use>
 				</svg>
 				Manned cannons
 			</td>
