@@ -33,6 +33,7 @@
 		</a>
 	</div>
 
+	<?php if (count($game['event']['market_goods']['items']) > 0): ?>
 	<div class="button-area">
 		<?php foreach ($game['event']['market_goods']['items'] as $item): ?>
 		<a class="ajaxJSON button big-image"
@@ -50,4 +51,7 @@
 		</a>
 		<?php endforeach; ?>
 	</div>
+	<?php else: ?>
+	<p><em>You browse the market and talk to some citizens, but you don't find anything of value.</em></p>
+	<?php endif; ?>
 </div>

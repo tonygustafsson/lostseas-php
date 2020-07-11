@@ -24,10 +24,6 @@ class Market extends Main
     {
         $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
 
-        if (isset($event['banned']) && $event['banned']) {
-            return;
-        }
-
         if (!isset($event['items'])) {
             $possible_items = array(
                     'food' => 16,
@@ -35,8 +31,10 @@ class Market extends Main
                     'porcelain' => 35,
                     'spices' => 20,
                     'silk' => 45,
+                    'medicine' => 40,
                     'tobacco' => 75,
-                    'rum' => 150
+                    'rum' => 150,
+                    'cannons' => 300
                 );
             
             $available_items = array();
@@ -73,7 +71,7 @@ class Market extends Main
         $item = $this->uri->segment(3);
         $item_index = array_search($item, array_column($event['items'], 'item'));
 
-        if (!$item_index) {
+        if ($item_index === false) {
             $data['error'] = 'This option is not available.';
             echo json_encode($data);
             return;
@@ -81,52 +79,37 @@ class Market extends Main
 
         $matching_item = $event['items'][$item_index];
 
+        if ($matching_item['cost'] > $this->data['game']['doubloons']) {
+            $data['error'] = 'You don\'t have enough money to buy this item.';
+            echo json_encode($data);
+            return;
+        }
+
+        unset($event['items'][$item_index]);
+        $event['items'] = array_values($event['items']);
+        $updates['event']['market_goods'] = $event;
+        $this->data['game']['event']['market_goods'] = $event;
+
+        $updates['doubloons']['sub'] = true;
+        $updates['doubloons']['value'] = $matching_item['cost'];
+        $updates[$matching_item['item']]['add'] = true;
+        $updates[$matching_item['item']]['value'] = $matching_item['quantity'];
+
+        $result = $this->Game->update($updates);
+
+        $data['changeElements'] = $result['changeElements'];
+
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'coins';
+        }
+            
+        $log_input['entry'] = 'bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl at the market.';
+        $this->Log->create($log_input);
+
         $data['success'] = 'You bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl.';
         $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
         $data['event'] = 'updated-dom';
 
-        echo json_encode($data);
-    }
-
-    public function goods_post()
-    {
-        $event = isset($this->data['game']['event']['market_goods']) ? $this->data['game']['event']['market_goods'] : null;
-
-        if (isset($event['market_goods']['banned']) && $event['market_goods']['banned']) {
-            return;
-        }
-
-        $data['changeElements'] = array();
-        $answer = $this->uri->segment(3);
-        
-        if ($answer === 'yes') {
-            if ($event['cost'] <= $this->data['game']['doubloons']) {
-                $data['success'] = 'You bought ' . $event['quantity'] . ' cartons of ' . $event['item'] . ' for ' . $event['cost'] . ' dbl at the market!';
-
-                $updates['event']['market_goods']['banned'] = true;
-                $updates['doubloons']['sub'] = true;
-                $updates['doubloons']['value'] = $event['cost'];
-                $updates[$event['item']]['add'] = true;
-                $updates[$event['item']]['value'] = $event['quantity'];
-                $result = $this->Game->update($updates);
-                    
-                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
-                $data['changeElements']['action_goods']['remove'] = true;
-
-                if ($this->data['user']['sound_effects_play'] == 1) {
-                    $data['playSound'] = 'coins';
-                }
-                    
-                $log_input['entry'] = 'bought ' . $event['quantity'] . ' cartons of ' . $event['item'] . ' for ' . $event['cost'] . ' dbl at the market.';
-                $this->Log->create($log_input);
-            }
-        } else {
-            $data['info'] = 'You had a nice conversation with the lady, but eventually told her off.';
-        }
-
-        $data['changeElements']['offer']['remove'] = true;
-        $data['pushState'] = base_url('market');
-            
         echo json_encode($data);
     }
 
