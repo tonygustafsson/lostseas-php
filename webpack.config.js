@@ -9,6 +9,10 @@ module.exports = [
         entry: './src/js/main.js',
         mode: mode,
         watch: watch,
+        watchOptions: {
+            ignored: /node_modules/,
+            poll: 500
+        },
         output: {
             filename: 'main.js',
             path: path.resolve(__dirname, 'assets', 'js')
