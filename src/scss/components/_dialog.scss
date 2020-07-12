@@ -5,6 +5,7 @@
     top: 10%;
     left: 0;
     right: 0;
+    
     margin-left: auto;
     margin-right: auto;
     width: 400px;
@@ -72,7 +73,7 @@
         }
     }
 
-    @media screen and (max-height: 400px) {
+    @include mobile {
         top: 5%;
     }
 }
