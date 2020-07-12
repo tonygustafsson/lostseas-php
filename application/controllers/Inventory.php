@@ -276,6 +276,47 @@ class Inventory extends Main
         $this->load->view_ajax('inventory/view_ships', $this->data);
     }
 
+    public function change_ship_name()
+    {
+        $ships = $this->Ship->get($this->data['player']['user']['id']);
+        $ship_id = $this->input->post('ship_id');
+
+        if (!isset($ships[$ship_id])) {
+            $data['error'] = 'Something wen\'t wrong when changing the ship name.';
+            echo json_encode($data);
+            return;
+        }
+
+        $ship = $ships[$ship_id];
+        $new_ship_name = $this->input->post('ship_name');
+
+        if (strlen($new_ship_name) < 3 || strlen($new_ship_name) > 50) {
+            $data['error'] = 'The name must be between 3-50 characters.';
+            echo json_encode($data);
+            return;
+        }
+
+        if ($ship['name'] === $new_ship_name) {
+            $data['info'] = 'No changes made.';
+            echo json_encode($data);
+            return;
+        }
+
+        $updates[$ship_id]['name'] = $new_ship_name;
+        $result = $this->Ship->update($updates);
+            
+        if (!$result['success']) {
+            $data['error'] = 'Something wen\'t wrong when changing the ship name.';
+            echo json_encode($data);
+            return;
+        }
+
+        $data['changeElements']['js-ship-name-' . $ship_id]['text'] = $new_ship_name;
+        $data['success'] = 'You changed the name of the ship to ' . $new_ship_name . '.';
+
+        echo json_encode($data);
+    }
+
     public function log()
     {
         $get_entry_first = ($this->url_page != "") ? $this->url_page : 0;

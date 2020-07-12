@@ -55,54 +55,59 @@
 
 	<?php if (count($player['ship']) > 0): ?>
 
-	<table>
+	<div class="table-responsive">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Health</th>
+				<th>Max load</th>
+				<th>Crew</th>
+				<th>Max cannons</th>
+			</tr>
 
-		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Health</th>
-			<th>Max load</th>
-			<th>Crew</th>
-			<th>Max cannons</th>
-		</tr>
+			<?php foreach ($player['ship'] as $current_ship): ?>
+			<tr>
+				<td>
+					<a href="#"
+						id="js-ship-info-trigger-<?=$current_ship['id']?>"
+						class="js-trigger-ship-info"
+						data-ship-id="<?=$current_ship['id']?>">
+						<span
+							id="js-ship-name-<?=$current_ship['id']?>">
+							<?=$current_ship['name']?>
+						</span>
+					</a>
+				</td>
+				<td><?=ucfirst($current_ship['type'])?>
+				</td>
+				<td><?=$current_ship['health']?>
+					%
+				</td>
+				<td><?=$ship_specs[$current_ship['type']]['load_capacity']?>
+				</td>
+				<td><?=$ship_specs[$current_ship['type']]['min_crew']?>
+					- <?=$ship_specs[$current_ship['type']]['max_crew']?>
+				</td>
+				<td><?=$ship_specs[$current_ship['type']]['max_cannons']?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
 
-		<?php foreach ($player['ship'] as $current_ship): ?>
-		<tr>
-			<td>
-				<a href="#"
-					id="js-ship-info-trigger-<?=$current_ship['id']?>"
-					class="js-trigger-ship-info"
-					data-ship-id="<?=$current_ship['id']?>">
-					<?=$current_ship['name']?>
-				</a>
-			</td>
-			<td><?=ucfirst($current_ship['type'])?>
-			</td>
-			<td><?=$current_ship['health']?> %
-			</td>
-			<td><?=$ship_specs[$current_ship['type']]['load_capacity']?>
-			</td>
-			<td><?=$ship_specs[$current_ship['type']]['min_crew']?>
-				- <?=$ship_specs[$current_ship['type']]['max_crew']?>
-			</td>
-			<td><?=$ship_specs[$current_ship['type']]['max_cannons']?>
-			</td>
-		</tr>
-		<?php endforeach; ?>
-
-		<?php if ($player['game']['ships'] > 1): ?>
-		<tr>
-			<td colspan="3">Total</td>
-			<td><?=$player['game']['load_max']?>
-			</td>
-			<td><?=$player['game']['min_crew']?>
-				- <?=$player['game']['max_crew']?>
-			</td>
-			<td><?=$player['game']['max_cannons']?>
-			</td>
-		</tr>
-		<?php endif; ?>
-	</table>
+			<?php if ($player['game']['ships'] > 1): ?>
+			<tr>
+				<td colspan=" 3">Total</td>
+				<td><?=$player['game']['load_max']?>
+				</td>
+				<td><?=$player['game']['min_crew']?>
+					- <?=$player['game']['max_crew']?>
+				</td>
+				<td><?=$player['game']['max_cannons']?>
+				</td>
+			</tr>
+			<?php endif; ?>
+		</table>
+	</div>
 
 	<?php foreach ($player['ship'] as $current_ship): ?>
 	<div id="js-ship-info-<?=$current_ship['id']?>"
@@ -110,8 +115,30 @@
 		<h3 class="dialog-title"><?=$current_ship['name']?>
 		</h3>
 
-		<p><?=$ship_specs[$current_ship['type']]['description']?>
-		</p>
+		<div class="flex pt-1">
+			<div style="flex: 1 0 25%">
+				<img width="100" class="w-100"
+					src="<?=base_url('assets/images/ships/' . $current_ship['type'] .'.jpg')?>" />
+			</div>
+			<div>
+				<p class="mt-0"><?=$ship_specs[$current_ship['type']]['description']?>
+			</div>
+			</p>
+		</div>
+
+		<label for="ship_name" class="mb-0">Name</label>
+
+		<form method="post" class="ajaxJSON"
+			action="<?=base_url('inventory/change_ship_name/' . $player['user']['id'])?>">
+			<div class="flex">
+				<input type="hidden" name="ship_id" id="ship_id"
+					value="<?=$current_ship['id']?>" />
+				<input type="text"
+					value="<?=$current_ship['name']?>"
+					name="ship_name" id="ship_name" required maxlength="50" minlength="3" />
+				<button type="submit" class="ml-1 ml-mobile-0">Change</button>
+			</div>
+		</form>
 
 		<table>
 			<tr>
