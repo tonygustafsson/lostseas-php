@@ -32,10 +32,24 @@
 	</div>
 
 	<p>
-		<?=$game['greeting']?>
+		Stocks will go up or down in value each week. There is a 2/3 chance that it will go up.
+		Different stocks have different volatility and cost.
+		You will get your money back when you sell your stocks. You can own a maximum of 10 stocks.
 	</p>
 
-	<p>
-		Buy stocks.
-	</p>
+	<div class="button-area">
+		<?php foreach ($viewdata['items'] as $item): ?>
+		<a class="ajaxJSON button big-image tooltip-bottom-center"
+			data-tooltip="<?=$item['description']?>"
+			href="<?=$item['link']?>">
+			<svg width="32" height="32">
+				<use xlink:href="#stocks"></use>
+			</svg>
+			<?=$item['name']?>
+			<br />
+			<?=$item['cost']?>
+			dbl (+-<?=$item['volatility']?>%)
+		</a>
+		<?php endforeach; ?>
+	</div>
 </div>

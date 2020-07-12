@@ -157,6 +157,12 @@ class Bank extends Main
 
     public function stocks()
     {
+        $this->data['viewdata']['items'] = array(
+            'atlantic_endeavours' => array('name' => 'Atlantic Endeavours', 'link' => base_url('bank/buy_stock/atlantic'), 'description' => 'A safe investments. Focuses on trading silk and sugar. Volatility: +-2%', 'cost' => 1000, 'volatility' => 2),
+            'hispaniola_trading' => array('name' => 'Hispaniola Trading', 'link' => base_url('bank/buy_stock/hispaniola_trading'), 'description' => 'Medium risk stock that focuses on trading tobacco and rum. Volatility: +-4%', 'cost' => 5000, 'volatility' => 4),
+            'ships_and_sails_federation' => array('name' => 'Ships and Sails Federation', 'link' => base_url('bank/buy_stock/ships_and_sails_federation'), 'description' => 'High risk investments. Focuses on new ship building techniques. Volatility: +-6%', 'cost' => 10000, 'volatility' => 6)
+        );
+
         $this->load->view_ajax('bank/view_stocks', $this->data);
     }
 }
