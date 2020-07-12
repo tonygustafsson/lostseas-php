@@ -37,6 +37,42 @@
 		You will get your money back when you sell your stocks. You can own a maximum of 10 stocks.
 	</p>
 
+	<?php if (count($game['stocks']) > 0): ?>
+	<h3>Your stocks</h3>
+
+	<div class="table-responsive">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Value</th>
+				<th>Earnings</th>
+			</tr>
+			<?php foreach ($game['stocks'] as $stock): ?>
+			<tr>
+				<td><?=$stock['name']?>
+				</td>
+				<td><?=$stock['cost']?>
+				</td>
+				<td><?=$stock['value']?>
+				</td>
+				<td>
+					<?php if ($stock['value'] >= $stock['cost']): ?>
+					+<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php else: ?>
+					-<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php endif; ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+	<?php else: ?>
+	<p><em>You do not currently own any stocks.</em></p>
+	<?php endif; ?>
+
+	<h3>Buy stocks</h3>
+
 	<div class="button-area">
 		<?php foreach ($viewdata['items'] as $item): ?>
 		<a class="ajaxJSON button big-image tooltip-bottom-center"

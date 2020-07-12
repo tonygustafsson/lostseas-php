@@ -251,6 +251,25 @@
 
 		<hr />
 
+		<h3>Stocks</h3>
+
+		<table class="godmode">
+			<tr>
+				<th>Setting</th>
+				<th>Value</th>
+			</tr>
+
+			<tr>
+				<td>Stocks</td>
+				<td>
+					<textarea id="stocks"
+						name="stocks"><?=json_encode($player['game']['stocks'])?></textarea>
+				</td>
+			</tr>
+		</table>
+
+		<hr />
+
 		<h3>Victories</h3>
 
 		<table class="godmode">

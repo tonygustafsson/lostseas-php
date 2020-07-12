@@ -155,14 +155,72 @@ class Bank extends Main
         echo json_encode($data);
     }
 
-    public function stocks()
+    private function get_stocks()
     {
-        $this->data['viewdata']['items'] = array(
-            'atlantic_endeavours' => array('name' => 'Atlantic Endeavours', 'link' => base_url('bank/buy_stock/atlantic'), 'description' => 'A safe investments. Focuses on trading silk and sugar. Volatility: +-2%', 'cost' => 1000, 'volatility' => 2),
+        return array(
+            'atlantic_endeavours' => array('name' => 'Atlantic Endeavours', 'link' => base_url('bank/buy_stock/atlantic_endeavours'), 'description' => 'A safe investments. Focuses on trading silk and sugar. Volatility: +-2%', 'cost' => 1000, 'volatility' => 2),
             'hispaniola_trading' => array('name' => 'Hispaniola Trading', 'link' => base_url('bank/buy_stock/hispaniola_trading'), 'description' => 'Medium risk stock that focuses on trading tobacco and rum. Volatility: +-4%', 'cost' => 5000, 'volatility' => 4),
             'ships_and_sails_federation' => array('name' => 'Ships and Sails Federation', 'link' => base_url('bank/buy_stock/ships_and_sails_federation'), 'description' => 'High risk investments. Focuses on new ship building techniques. Volatility: +-6%', 'cost' => 10000, 'volatility' => 6)
         );
+    }
+
+    public function stocks()
+    {
+        $this->data['viewdata']['items'] = $this->get_stocks();
 
         $this->load->view_ajax('bank/view_stocks', $this->data);
+    }
+
+    public function buy_stock()
+    {
+        $wanted_stock_name = $this->uri->segment(3);
+        $stocks =  $this->get_stocks();
+
+        if (!isset($stocks[$wanted_stock_name])) {
+            $data['error'] = 'This stock is not available.';
+            echo json_encode($data);
+            return;
+        }
+
+        $stock = $stocks[$wanted_stock_name];
+
+        if ($stock['cost'] > $this->data['game']['doubloons']) {
+            $data['error'] = 'You cannot afford this stock.';
+            echo json_encode($data);
+            return;
+        }
+
+        if (count($this->data['game']['stocks']) >= 10) {
+            $data['error'] = 'You cannot own more than a total of 10 stocks.';
+            echo json_encode($data);
+            return;
+        }
+
+        $new_stock = array(
+            'name' => $stock['name'],
+            'cost' => $stock['cost'],
+            'value' => $stock['cost'],
+            'volatility' => $stock['volatility'],
+            'week' => $this->data['game']['week']
+        );
+
+        $this->data['game']['stocks'][] = $new_stock;
+        $changes['stocks'] = $this->data['game']['stocks'];
+        $changes['doubloons'] = $this->data['game']['doubloons'] - $stock['cost'];
+        $result = $this->Game->update($changes);
+
+        if (isset($result['error'])) {
+            $data['error'] = 'You could not buy this stock. ' . $result['error'] . '.';
+            echo json_encode($data);
+            return;
+        }
+
+        $this->data['viewdata']['items'] = $stocks;
+
+        $data['changeElements'] = $result['changeElements'];
+        $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
+        $data['success'] = 'You bought a stock in ' . $stock['name'] . '.';
+        $data['event'] = 'updated-dom';
+        echo json_encode($data);
     }
 }
