@@ -35,6 +35,10 @@
 
     & > div:first-child {
         margin-right: 8px;
+
+        @include mobile {
+            margin-right: 0;
+        }
     }
 
     @include mobile {
@@ -111,66 +115,37 @@
     }
 }
 
-// Margins
+// Margins and paddings
 
-@for $i from 0 through 6 {
-    .mr-#{$i} {
-        margin-right: $spacing * $i;
-    }
-}
+$directions: (
+    "r": "right",
+    "l": "left",
+    "t": "top",
+    "b": "bottom"
+);
 
-@for $i from 0 through 6 {
-    .ml-#{$i} {
-        margin-left: $spacing * $i;
-    }
-}
+$levels: 6;
 
-@for $i from 0 through 6 {
-    .mt-#{$i} {
-        margin-top: $spacing * $i;
-    }
-}
+@for $i from 0 through $levels {
+    @each $direction, $directionLong in $directions {
+        .m#{$direction}-#{$i} {
+            margin-#{$directionLong}: $spacing * $i;
+        }
+        
+        .m#{$direction}-mobile-#{$i} {
+            @include mobile {
+                margin-#{$directionLong}: $spacing * $i !important;
+            }
+        }
 
-@for $i from 0 through 6 {
-    .mb-#{$i} {
-        margin-bottom: $spacing * $i;
-    }
-}
-
-@for $i from 0 through 6 {
-    .m-#{$i} {
-        margin: $spacing * $i;
-    }
-}
-
-// Paddings
-
-@for $i from 0 through 6 {
-    .pr-#{$i} {
-        padding-right: $spacing * $i;
-    }
-}
-
-@for $i from 0 through 6 {
-    .pl-#{$i} {
-        padding-left: $spacing * $i;
-    }
-}
-
-@for $i from 0 through 6 {
-    .pt-#{$i} {
-        padding-top: $spacing * $i;
-    }
-}
-
-@for $i from 0 through 6 {
-    .pb-#{$i} {
-        padding-bottom: $spacing * $i;
-    }
-}
-
-@for $i from 0 through 6 {
-    .p-#{$i} {
-        padding: $spacing * $i;
+        .p#{$direction}-#{$i} {
+            padding-#{$directionLong}: $spacing * $i;
+        }
+        
+        .p#{$direction}-mobile-#{$i} {
+            @include mobile {
+                padding-#{$directionLong}: $spacing * $i !important;
+            }
+        }
     }
 }
