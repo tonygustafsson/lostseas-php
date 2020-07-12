@@ -154,7 +154,9 @@ class Bank extends Main
         
         echo json_encode($data);
     }
-}
 
-/*  End of bank.php */
-/* Location: ./application/controllers/bank.php */
+    public function stocks()
+    {
+        $this->load->view_ajax('bank/view_stocks', $this->data);
+    }
+}

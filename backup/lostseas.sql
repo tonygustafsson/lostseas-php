@@ -64,6 +64,7 @@ CREATE TABLE `ls_game` (
   `doubloons` int NOT NULL DEFAULT '300',
   `bank_account` int NOT NULL DEFAULT '0',
   `bank_loan` int NOT NULL DEFAULT '0',
+  `stocks` text DEFAULT NULL,
   `cannons` int NOT NULL DEFAULT '2',
   `prisoners` int NOT NULL DEFAULT '0',
   `food` int NOT NULL DEFAULT '20',

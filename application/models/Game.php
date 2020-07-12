@@ -75,7 +75,7 @@ class Game extends CI_Model
             }
 
             if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {
-                // Handle victories saved as array
+                // Handle events saved as array
                 $events = array();
 
                 foreach ($updates['event'] as $event => $value) {
@@ -84,6 +84,23 @@ class Game extends CI_Model
 
                 $events = array_merge($this->data['game']['event'], $events);
                 $sql_updates['event'] = json_encode($events);
+            }
+
+            if (isset($updates['stocks']) && !is_array($updates['stocks'])) {
+                // Handle stocks saved as json
+                $sql_updates['stocks'] = $updates['stocks'];
+            }
+
+            if (isset($updates['stocks']) && is_array($updates['stocks']) && count($updates['stocks']) > 0) {
+                // Handle stocks saved as array
+                $stocks = array();
+
+                foreach ($updates['stocks'] as $stock => $value) {
+                    $stocks[$stock] = $value;
+                }
+
+                $stocks = array_merge($this->data['game']['stocks'], $stocks);
+                $sql_updates['stocks'] = json_encode($stocks);
             }
 
             if (isset($updates['event']) && !is_array($updates['event'])) {

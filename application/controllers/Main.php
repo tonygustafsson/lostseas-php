@@ -147,6 +147,13 @@ class Main extends CI_Controller
             $game_data['event'] = array();
         }
 
+        // Make stocks an array from JSON
+        if (isset($game_data['stocks']) && !empty($game_data['stocks'])) {
+            $game_data['stocks'] = json_decode($game_data['stocks'], true);
+        } else {
+            $game_data['stocks'] = array();
+        }
+
         // Make victories an array from JSON
         if (isset($game_data['victories']) && !empty($game_data['victories'])) {
             $game_data['victories'] = json_decode($game_data['victories'], true);
