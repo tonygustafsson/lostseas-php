@@ -48,11 +48,12 @@
 				<th>Value</th>
 				<th>Earnings</th>
 			</tr>
-			<?php foreach ($game['stocks'] as $stock): ?>
+			<?php foreach ($game['stocks'] as $stock_id => $stock): ?>
 			<tr>
 				<td>
-					<a href="#"
-						data-stock-id="<?=$stock['id']?>">
+					<a href="#" class="js-trigger-stock-info"
+						id="js-stock-info-trigger-<?=$stock_id?>"
+						data-stock-id="<?=$stock_id?>">
 						<?=$stock['name']?>
 					</a>
 				</td>
@@ -71,6 +72,65 @@
 			<?php endforeach; ?>
 		</table>
 	</div>
+
+	<?php foreach ($game['stocks'] as $stock_id => $stock): ?>
+	<div id="js-stock-info-<?=$stock_id?>" class="dialog"
+		tabindex="-1" role="dialog">
+		<h3 class="dialog-title"><?=$stock['name']?>
+		</h3>
+
+		<div class="flex pt-1">
+			<div style="flex: 1 0 25%">
+				<svg width="100" height="100" class="w-100">
+					<use xlink:href="#stocks"></use>
+				</svg>
+			</div>
+			<div>
+				<p class="mt-0"><?=$viewdata['items'][$stock['name_id']]['description']?>
+				</p>
+			</div>
+		</div>
+
+		<table>
+			<tr>
+				<td>Current value</td>
+				<td><?=$stock['value']?>
+				</td>
+			</tr>
+			<tr>
+				<td>Original cost</td>
+				<td><?=$stock['cost']?>
+				</td>
+			</tr>
+			<tr>
+				<td>Earnings</td>
+				<td>
+					<?php if ($stock['value'] >= $stock['cost']): ?>
+					+<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php else: ?>
+					-<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<td>Bought</td>
+				<td>
+					<?php if ($stock['week'] < $game['week']): ?>
+					<?=$game['week'] - $stock['week']?>
+					weeks ago (week <?=$stock['week']?>)
+					<?php else: ?>
+					This week (week <?=$stock['week']?>)
+					<?php endif; ?>
+				</td>
+			</tr>
+			<tr>
+				<td>Volatility</td>
+				<td><?=$stock['volatility']?>%
+				</td>
+			</tr>
+		</table>
+	</div>
+	<?php endforeach; ?>
 	<?php else: ?>
 	<p><em>You do not currently own any stocks.</em></p>
 	<?php endif; ?>

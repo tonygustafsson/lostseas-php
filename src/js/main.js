@@ -8,6 +8,7 @@ import './avatar';
 import './account';
 import './bankAccount';
 import './bankLoan';
+import './bankStocks';
 import './inventoryCrew';
 import './inventoryShip';
 import './history';
