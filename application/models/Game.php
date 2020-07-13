@@ -96,10 +96,21 @@ class Game extends CI_Model
                 $stocks = array();
 
                 foreach ($updates['stocks'] as $stock => $value) {
-                    $stocks[$stock] = $value;
+                    if (!isset($value['remove'])) {
+                        // Update this stock
+                        $stocks[$stock] = $value;
+                    }
                 }
 
                 $stocks = array_merge($this->data['game']['stocks'], $stocks);
+
+                foreach ($updates['stocks'] as $stock => $value) {
+                    if (isset($value['remove'])) {
+                        // Remove this stock
+                        unset($stocks[$stock]);
+                    }
+                }
+
                 $sql_updates['stocks'] = json_encode($stocks);
             }
 

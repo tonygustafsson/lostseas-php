@@ -7,10 +7,12 @@ const createTriggers = () => {
 
     stockInfoTriggerEls.forEach((trigger) => {
         const stockId = trigger.dataset.stockId;
+        const url = `${window.appPath}bank/sell_stock/${stockId}`;
 
         dialog({
             dialogElementId: `js-stock-info-${stockId}`,
-            dialogTriggerElementId: trigger.id
+            dialogTriggerElementId: trigger.id,
+            dialogActions: [{ title: 'Sell', url: url, primary: true }, { title: 'Cancel' }]
         });
     });
 };
