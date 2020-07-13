@@ -197,6 +197,7 @@ class Bank extends Main
         }
 
         $new_stock = array(
+            'id' => uniqid(),
             'name' => $stock['name'],
             'cost' => $stock['cost'],
             'value' => $stock['cost'],
@@ -204,8 +205,8 @@ class Bank extends Main
             'week' => $this->data['game']['week']
         );
 
-        $this->data['game']['stocks'][] = $new_stock;
-        $changes['stocks'] = $this->data['game']['stocks'];
+        $this->data['game']['stocks'][$new_stock['id']] = $new_stock;
+        $changes['stocks'][$new_stock['id']] = $new_stock;
         $changes['doubloons'] = $this->data['game']['doubloons'] - $stock['cost'];
         $result = $this->Game->update($changes);
 

@@ -50,7 +50,11 @@
 			</tr>
 			<?php foreach ($game['stocks'] as $stock): ?>
 			<tr>
-				<td><?=$stock['name']?>
+				<td>
+					<a href="#"
+						data-stock-id="<?=$stock['id']?>">
+						<?=$stock['name']?>
+					</a>
 				</td>
 				<td><?=$stock['cost']?>
 				</td>
