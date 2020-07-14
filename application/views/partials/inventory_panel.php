@@ -177,6 +177,18 @@
         </a>
     </div>
 
+    <div class="inventory_item"
+        style="display: <?=($game['stock_total_worth'] > 0) ? 'block' : 'none'?>">
+        <a class="ajaxHTML" title="Doubloons invested in stocks"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
+            <svg alt="Stocks" width="24" height="24">
+                <use xlink:href="#stocks"></use>
+            </svg>
+            <span id="inventory_bank_stocks"><?=$game['stock_total_worth']?></span>
+            dbl
+        </a>
+    </div>
+
     <div class="inventory_item">
         <a class="ajaxHTML" title="Amount of weeks that has passed, see log book"
             href="<?=base_url('inventory/log/' . $user['id'])?>">

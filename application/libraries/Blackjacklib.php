@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+
 class Blackjacklib
 {
     public function __construct()

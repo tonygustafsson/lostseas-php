@@ -155,26 +155,21 @@ class Bank extends Main
         echo json_encode($data);
     }
 
-    private function get_available_stocks()
-    {
-        return array(
-            'atlantic_endeavours' => array('name' => 'Atlantic Endeavours', 'link' => base_url('bank/buy_stock/atlantic_endeavours'), 'description' => 'A safe and sound investment. Focuses on trading silk and sugar.', 'cost' => 1000, 'volatility' => 2),
-            'hispaniola_trading' => array('name' => 'Hispaniola Trading', 'link' => base_url('bank/buy_stock/hispaniola_trading'), 'description' => 'Medium risk stock that focuses on trading tobacco and rum.', 'cost' => 5000, 'volatility' => 4),
-            'ships_and_sails_federation' => array('name' => 'Ships and Sails Federation', 'link' => base_url('bank/buy_stock/ships_and_sails_federation'), 'description' => 'High risk investment. Focuses on new ship building techniques.', 'cost' => 10000, 'volatility' => 6)
-        );
-    }
-
     public function stocks()
     {
-        $this->data['viewdata']['items'] = $this->get_available_stocks();
+        $this->load->library('Stockslib');
+
+        $this->data['viewdata']['items'] = $this->stockslib->get_available_stocks();
 
         $this->load->view_ajax('bank/view_stocks', $this->data);
     }
 
     public function buy_stock()
     {
+        $this->load->library('Stockslib');
+
         $wanted_stock_name_id = $this->uri->segment(3);
-        $stocks = $this->get_available_stocks();
+        $stocks = $this->stockslib->get_available_stocks();
 
         if (!isset($stocks[$wanted_stock_name_id])) {
             $data['error'] = 'This stock is not available.';
@@ -202,7 +197,7 @@ class Bank extends Main
             'name_id' => $wanted_stock_name_id,
             'name' => $stock['name'],
             'cost' => $stock['cost'],
-            'value' => $stock['cost'],
+            'worth' => floor($stock['cost'] * 0.98),
             'volatility' => $stock['volatility'],
             'week' => $this->data['game']['week']
         );
@@ -230,6 +225,8 @@ class Bank extends Main
 
     public function sell_stock()
     {
+        $this->load->library('Stockslib');
+
         $stock_id = $this->uri->segment(3);
 
         if (!isset($this->data['game']['stocks'][$stock_id])) {
@@ -241,7 +238,7 @@ class Bank extends Main
         $stock = $this->data['game']['stocks'][$stock_id];
 
         $changes['stocks'][$stock_id]['remove'] = true;
-        $changes['doubloons'] = $this->data['game']['doubloons'] + $stock['value'];
+        $changes['doubloons'] = $this->data['game']['doubloons'] + $stock['worth'];
         $result = $this->Game->update($changes);
 
         unset($this->data['game']['stocks'][$stock_id]);
@@ -252,12 +249,28 @@ class Bank extends Main
             return;
         }
 
-        $stocks = $this->get_available_stocks();
+        $stocks = $this->stockslib->get_available_stocks();
         $this->data['viewdata']['items'] = $stocks;
 
         $data['changeElements'] = $result['changeElements'];
         $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
         $data['success'] = 'You sold your stock ' . $stock['name'] . '.';
+        $data['event'] = 'bank-stocks';
+
+        echo json_encode($data);
+    }
+
+    public function update_stocks_worth()
+    {
+        $this->load->library('Stockslib');
+        $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
+        
+        $stocks = $this->stockslib->get_available_stocks();
+        $this->data['viewdata']['items'] = $stocks;
+
+        $data['changeElements'] = $result['changeElements'];
+        $data['success'] = 'Updated stock worth.';
+        $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
         $data['event'] = 'bank-stocks';
 
         echo json_encode($data);

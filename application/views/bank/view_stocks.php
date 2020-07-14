@@ -32,8 +32,8 @@
 	</div>
 
 	<p>
-		Stocks will go up or down in value each week. There is a 2/3 chance that it will go up.
-		Different stocks have different volatility and cost.
+		Stocks will go up or down in value each week. There is a bigger chance that it will go up than down.
+		Different stocks have different volatility and cost. There will be a buying fee of 2%.
 		You will get your money back when you sell your stocks. You can own a maximum of 10 stocks.
 	</p>
 
@@ -45,7 +45,7 @@
 			<tr>
 				<th>Name</th>
 				<th>Cost</th>
-				<th>Value</th>
+				<th>Worth</th>
 				<th>Earnings</th>
 			</tr>
 			<?php foreach ($game['stocks'] as $stock_id => $stock): ?>
@@ -59,13 +59,13 @@
 				</td>
 				<td><?=$stock['cost']?>
 				</td>
-				<td><?=$stock['value']?>
+				<td><?=$stock['worth']?>
 				</td>
 				<td>
-					<?php if ($stock['value'] >= $stock['cost']): ?>
-					+<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php if ($stock['worth'] >= $stock['cost']): ?>
+					<?=round((($stock['worth'] - $stock['cost']) / $stock['cost']) * 100)?>%
 					<?php else: ?>
-					-<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?=0 - round((($stock['cost'] - $stock['worth']) / $stock['cost']) * 100)?>%
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -93,8 +93,8 @@
 
 		<table>
 			<tr>
-				<td>Current value</td>
-				<td><?=$stock['value']?>
+				<td>Current worth</td>
+				<td><?=$stock['worth']?>
 				</td>
 			</tr>
 			<tr>
@@ -105,10 +105,10 @@
 			<tr>
 				<td>Earnings</td>
 				<td>
-					<?php if ($stock['value'] >= $stock['cost']): ?>
-					+<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?php if ($stock['worth'] >= $stock['cost']): ?>
+					<?=round((($stock['worth'] - $stock['cost']) / $stock['cost']) * 100)?>%
 					<?php else: ?>
-					-<?=($stock['cost'] / $stock['value']) * 100 - 100?>%
+					<?=0 - round((($stock['cost'] - $stock['worth']) / $stock['cost']) * 100)?>%
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -131,6 +131,9 @@
 		</table>
 	</div>
 	<?php endforeach; ?>
+
+	<a href="<?=base_url('bank/update_stocks_worth')?>"
+		class="ajaxJSON">Update stock worth</a>
 	<?php else: ?>
 	<p><em>You do not currently own any stocks.</em></p>
 	<?php endif; ?>

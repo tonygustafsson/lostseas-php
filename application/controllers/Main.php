@@ -154,6 +154,8 @@ class Main extends CI_Controller
             $game_data['stocks'] = array();
         }
 
+        $game_data['stock_total_worth'] = array_sum(array_column($game_data['stocks'], 'worth'));
+
         // Make victories an array from JSON
         if (isset($game_data['victories']) && !empty($game_data['victories'])) {
             $game_data['victories'] = json_decode($game_data['victories'], true);

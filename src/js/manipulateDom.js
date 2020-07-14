@@ -17,6 +17,7 @@ const manipulateDom = (data) => {
         'inventory_tobacco',
         'inventory_rum',
         'inventory_bank_account',
+        'inventory_bank_stocks',
         'inventory_bank_loan'
     ];
 

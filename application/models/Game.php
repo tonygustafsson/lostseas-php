@@ -88,6 +88,10 @@ class Game extends CI_Model
 
             if (isset($updates['stocks']) && !is_array($updates['stocks'])) {
                 // Handle stocks saved as json
+                $stocks = json_decode($updates['stocks'], true);
+                $new_stock_total_worth = array_sum(array_column($stocks, 'worth'));
+                $output['changeElements']['inventory_bank_stocks']['text'] = $new_stock_total_worth;
+
                 $sql_updates['stocks'] = $updates['stocks'];
             }
 
@@ -110,6 +114,9 @@ class Game extends CI_Model
                         unset($stocks[$stock]);
                     }
                 }
+
+                $new_stock_total_worth = array_sum(array_column($stocks, 'worth'));
+                $output['changeElements']['inventory_bank_stocks']['text'] = $new_stock_total_worth;
 
                 $sql_updates['stocks'] = json_encode($stocks);
             }
