@@ -1,8 +1,6 @@
 import dialog from './components/dialog.js';
 
 const createTriggers = () => {
-    window.dispatchEvent(new Event('updated-dom'));
-
     const stockInfoTriggerEls = Array.from(document.querySelectorAll('.js-trigger-stock-info'));
 
     stockInfoTriggerEls.forEach((trigger) => {
@@ -15,6 +13,8 @@ const createTriggers = () => {
             dialogActions: [{ title: 'Sell', url: url, primary: true }, { title: 'Cancel' }]
         });
     });
+
+    window.dispatchEvent(new Event('updated-dom'));
 };
 
 window.addEventListener('bank-stocks', createTriggers);
