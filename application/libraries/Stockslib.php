@@ -14,23 +14,20 @@ class Stockslib
     public function get_available_stocks()
     {
         $stocks = array(
-            'atlantic_endeavours' => array(
+            'atlantic-endeavours' => array(
                 'name' => 'Atlantic Endeavours',
-                'link' => base_url('bank/buy_stock/atlantic_endeavours'),
                 'description' => 'A safe and sound investment. Focuses on trading silk and sugar.',
                 'cost' => 1000,
                 'volatility' => 2
             ),
-            'hispaniola_trading' => array(
+            'hispaniola-trading' => array(
                 'name' => 'Hispaniola Trading',
-                'link' => base_url('bank/buy_stock/hispaniola_trading'),
                 'description' => 'Medium risk stock that focuses on trading tobacco and rum.',
                 'cost' => 5000,
                 'volatility' => 4
             ),
-            'ships_and_sails_federation' => array(
+            'ships-and-sails-federation' => array(
                 'name' => 'Ships and Sails Federation',
-                'link' => base_url('bank/buy_stock/ships_and_sails_federation'),
                 'description' => 'High risk investment. Focuses on new ship building techniques.',
                 'cost' => 10000,
                 'volatility' => 6

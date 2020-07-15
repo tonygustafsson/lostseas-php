@@ -14,6 +14,19 @@ const createTriggers = () => {
         });
     });
 
+    const stockInfoBuyTriggerEls = Array.from(document.querySelectorAll('.js-trigger-stock-buy-info'));
+
+    stockInfoBuyTriggerEls.forEach((trigger) => {
+        const stockId = trigger.dataset.stockId;
+        const url = `${window.appPath}bank/buy_stock/${stockId}`;
+
+        dialog({
+            dialogElementId: `js-stock-buy-info-${stockId}`,
+            dialogTriggerElementId: trigger.id,
+            dialogActions: [{ title: 'Buy', url: url, primary: true }, { title: 'Cancel' }]
+        });
+    });
+
     window.dispatchEvent(new Event('updated-dom'));
 };
 

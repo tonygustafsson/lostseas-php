@@ -266,20 +266,4 @@ class Bank extends Main
 
         echo json_encode($data);
     }
-
-    public function update_stocks_worth()
-    {
-        $this->load->library('Stockslib');
-        $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
-        
-        $stocks = $this->stockslib->get_available_stocks();
-        $this->data['viewdata']['items'] = $stocks;
-
-        $data['changeElements'] = $result['changeElements'];
-        $data['success'] = 'Updated stock worth.';
-        $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
-        $data['event'] = 'bank-stocks';
-
-        echo json_encode($data);
-    }
 }

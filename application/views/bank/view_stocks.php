@@ -131,28 +131,60 @@
 		</table>
 	</div>
 	<?php endforeach; ?>
-
-	<a href="<?=base_url('bank/update_stocks_worth')?>"
-		class="ajaxJSON">Update stock worth</a>
 	<?php else: ?>
 	<p><em>You do not currently own any stocks.</em></p>
 	<?php endif; ?>
 
 	<h3>Buy stocks</h3>
 
+	<p>Click on the items below to read more about them.</p>
+
 	<div class="button-area">
-		<?php foreach ($viewdata['items'] as $item): ?>
-		<a class="ajaxJSON button big-image tooltip-bottom-center"
-			data-tooltip="<?=$item['description']?>"
-			href="<?=$item['link']?>">
+		<?php foreach ($viewdata['items'] as $stock_id => $stock): ?>
+		<a id="js-stock-buy-info-trigger-<?=$stock_id?>"
+			class="js-trigger-stock-buy-info button big-image" href="#"
+			data-stock-id="<?=$stock_id?>">
 			<svg width="32" height="32">
 				<use xlink:href="#stocks"></use>
 			</svg>
-			<?=$item['name']?>
+			<?=$stock['name']?>
 			<br />
-			<?=$item['cost']?>
-			dbl (+-<?=$item['volatility']?>%)
+			<?=$stock['cost']?>
+			dbl
 		</a>
 		<?php endforeach; ?>
 	</div>
+
+	<?php foreach ($viewdata['items'] as $stock_id => $stock): ?>
+	<div id="js-stock-buy-info-<?=$stock_id?>" class="dialog"
+		tabindex="-1" role="dialog">
+		<h3 class="dialog-title"><?=$stock['name']?>
+		</h3>
+
+		<div class="flex pt-1">
+			<div style="flex: 1 0 25%">
+				<svg width="100" height="100" class="w-100">
+					<use xlink:href="#stocks"></use>
+				</svg>
+			</div>
+			<div>
+				<p class="mt-0"><?=$stock['description']?>
+				</p>
+			</div>
+		</div>
+
+		<table>
+			<tr>
+				<td>Cost</td>
+				<td><?=$stock['cost']?> dbl
+				</td>
+			</tr>
+			<tr>
+				<td>Volatility</td>
+				<td><?=$stock['volatility']?>%
+				</td>
+			</tr>
+		</table>
+	</div>
+	<?php endforeach; ?>
 </div>
