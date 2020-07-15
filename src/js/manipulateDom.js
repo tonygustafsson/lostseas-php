@@ -117,23 +117,23 @@ const manipulateDom = (data) => {
 
     if (data.playSound) {
         var sound = new Audio();
-        var soundPath = window.appPath + 'assets/sounds/' + data.playSound;
 
-        // Get volume
-        const musicControlEl = document.getElementById('music_control');
-        const volume = musicControlEl.dataset.musicvolume / 100;
+        if (sound.canPlayType('audio/aac') || sound.canPlayType('audio/x-m4a')) {
+            // Get volume
+            const musicControlEl = document.getElementById('music_control');
+            const volume = musicControlEl.dataset.musicvolume / 100;
 
-        sound.volume = volume;
+            sound.volume = volume;
+            sound.src = `${window.appPath}assets/sounds/${data.playSound}.m4a`;
+            sound.type = 'audio/aac';
 
-        if (sound.canPlayType('audio/ogg')) {
-            sound.src = soundPath + '.ogg';
-            sound.type = 'audio/ogg';
-        } else if (sound.canPlayType('audio/mp4')) {
-            sound.src = soundPath + '.mp4';
-            sound.type = 'audio/mp4';
+            sound.load();
+
+            sound.addEventListener('canplay', () => {
+                sound.play();
+                sound.remove();
+            });
         }
-
-        sound.play();
     }
 
     if (data.reloadPage) {
