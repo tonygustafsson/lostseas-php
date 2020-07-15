@@ -291,7 +291,7 @@ class Tavern extends Main
         echo json_encode($data);
     }
 
-    public function gamble()
+    public function dice()
     {
         if ($this->data['game']['place'] !== 'tavern') {
             return;
@@ -299,10 +299,10 @@ class Tavern extends Main
 
         $this->data['viewdata']['next_bet'] = floor($this->data['game']['doubloons'] * 0.1);
 
-        $this->load->view_ajax('tavern/view_gamble', $this->data);
+        $this->load->view_ajax('tavern/view_dice', $this->data);
     }
 
-    public function gamble_post()
+    public function dice_post()
     {
         if ($this->data['game']['place'] !== 'tavern') {
             return;
@@ -363,7 +363,7 @@ class Tavern extends Main
             
         $data['changeElements']['current_money']['val'] = $new_money;
         $data['changeElements']['last_bet']['val'] = $next_bet;
-        $data['event'] = 'tavern-gamble-post';
+        $data['event'] = 'tavern-dice-post';
         
         $this->Log->create($log_input);
         

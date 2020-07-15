@@ -65,7 +65,7 @@ const gambleBetSet = (e) => {
     gambleSlider.set(bet);
 };
 
-window.addEventListener('tavern-gamble', (e) => {
+window.addEventListener('tavern-dice', (e) => {
     const gambleBetSetTriggers = document.querySelectorAll('.js-tavern-bet-set');
 
     Array.from(gambleBetSetTriggers).forEach((setter) => {
@@ -75,7 +75,7 @@ window.addEventListener('tavern-gamble', (e) => {
     createSliders();
 });
 
-window.addEventListener('tavern-gamble-post', (e) => {
+window.addEventListener('tavern-dice-post', (e) => {
     // Destroy old slider
     const gambleSliderEl = document.getElementById('gamble-slider');
     const gambleSlider = gambleSliderEl.noUiSlider;

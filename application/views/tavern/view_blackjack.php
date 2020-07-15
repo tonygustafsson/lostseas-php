@@ -29,11 +29,11 @@
             Sailors
         </a>
         <a class="ajaxHTML button big-icon" title="Gamble for gold!"
-            href="<?=base_url('tavern/gamble')?>">
-            <svg width="32" height="32" alt="Gamble">
+            href="<?=base_url('tavern/dice')?>">
+            <svg width="32" height="32" alt="Dice">
                 <use xlink:href="#icon-dices"></use>
             </svg>
-            Gamble
+            Dice
         </a>
         <a class="ajaxHTML button big-icon" title="Play black jack"
             href="<?=base_url('tavern/blackjack')?>">

@@ -18,6 +18,6 @@ import './oceanLoot';
 import './oceanTrade';
 import './shipyard';
 import './shop';
-import './tavern';
+import './tavernDice';
 import './tavernBlackJack';
 import './weather';

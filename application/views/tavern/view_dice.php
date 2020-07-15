@@ -29,11 +29,11 @@
 			Sailors
 		</a>
 		<a class="ajaxHTML button big-icon" title="Gamble for gold!"
-			href="<?=base_url('tavern/gamble')?>">
-			<svg width="32" height="32" alt="Gamble">
+			href="<?=base_url('tavern/dice')?>">
+			<svg width="32" height="32" alt="Dice">
 				<use xlink:href="#icon-dices"></use>
 			</svg>
-			Gamble
+			Dice
 		</a>
 		<a class="ajaxHTML button big-icon" title="Play black jack"
 			href="<?=base_url('tavern/blackjack')?>">
@@ -51,7 +51,7 @@
 	</p>
 
 	<form class="ajaxJSON" method="post"
-		action="<?=base_url()?>tavern/gamble_post">
+		action="<?=base_url()?>tavern/dice_post">
 		<input type="hidden" name="current_money" id="current_money"
 			value="<?=$game['doubloons']?>">
 		<input type="hidden" name="last_bet" id="last_bet"
