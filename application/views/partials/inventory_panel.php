@@ -272,7 +272,7 @@
 
     <div class="inventory_item">
         <a class="ajaxHTML" title="Your food, used by crew members for sea traveling"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Food" width="24" height="24">
                 <use xlink:href="#food"></use>
             </svg>
@@ -282,7 +282,7 @@
 
     <div class="inventory_item">
         <a class="ajaxHTML" title="Your water, used by crew members for sea traveling"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Water" width="24" height="24">
                 <use xlink:href="#water"></use>
             </svg>
@@ -294,7 +294,7 @@
     <div class="inventory_item"
         style="display: <?=($game['porcelain'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your porcelain, used as barter goods"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Porcelain" width="24" height="24">
                 <use xlink:href="#porcelain"></use>
             </svg>
@@ -306,7 +306,7 @@
     <div class="inventory_item"
         style="display: <?=($game['spices'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your spices, used as barter goods"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Spices" width="24" height="24">
                 <use xlink:href="#spices"></use>
             </svg>
@@ -318,7 +318,7 @@
     <div class="inventory_item"
         style="display: <?=($game['silk'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your silk, used as barter goods"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Silk" width="24" height="24">
                 <use xlink:href="#silk"></use>
             </svg>
@@ -329,7 +329,7 @@
     <div class="inventory_item"
         style="display: <?=($game['medicine'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your medicine, can heal crew members"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Medicine" width="24" height="24">
                 <use xlink:href="#medicine"></use>
             </svg>
@@ -341,7 +341,7 @@
     <div class="inventory_item"
         style="display: <?=($game['tobacco'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your tobacco, used as barter goods and can raise crew members mood"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Tobacco" width="24" height="24">
                 <use xlink:href="#tobacco"></use>
             </svg>
@@ -353,7 +353,7 @@
     <div class="inventory_item"
         style="display: <?=($game['rum'] > 0) ? 'block' : 'none'?>">
         <a class="ajaxHTML" title="Your rum, used as barter goods and can raise crew members mood"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#stock">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Rum" width="24" height="24">
                 <use xlink:href="#rum"></use>
             </svg>

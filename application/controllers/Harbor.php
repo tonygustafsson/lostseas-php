@@ -22,6 +22,11 @@ class Harbor extends Main
                 $updates['week']['value'] = 1;
                 $this->data['game']['town_human'] = ucwords($wanted_town . ((substr($wanted_town, -1) != 's') ? 's' : ''));
 
+                // Update stock worth (week passed)
+                $this->load->library('Stockslib');
+                $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
+                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
+
                 $new_town = $this->config->item('towns');
                 $this->data['game']['nation'] = $new_town[$wanted_town]['nation'];
                 $this->data['game']['place'] = $updates['place'] = $this->this_place;
@@ -68,14 +73,13 @@ class Harbor extends Main
                     }
                 }
                 
+                $result = $this->Game->update($updates);
+                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
+
                 $this->data['json'] = json_encode($data);
 
-                $result = $this->Game->update($updates);
-                
                 $log_input['entry'] = 'traveled to ' . ucwords($wanted_town) . '.';
                 $this->Log->create($log_input);
-                
-                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
 
                 $view = isset($this->data['game']['event']['ship_meeting']) || isset($this->data['game']['event']['ship_trade']) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
                 $this->load->view_ajax($view, $this->data);

@@ -214,6 +214,11 @@ class Cityhall extends Main
             $log_input['entry'] = 'and the crew worked for a week as ' . $event['occupation'] . ' and made ' . $event['salary'] . ' dbl.';
             $this->Log->create($log_input);
 
+            // Update stock worth (week passed)
+            $this->load->library('Stockslib');
+            $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
+            $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
+
             echo json_encode($data);
         }
     }

@@ -57,9 +57,9 @@
 						<?=$stock['name']?>
 					</a>
 				</td>
-				<td><?=$stock['cost']?>
+				<td><?=$stock['cost']?> dbl
 				</td>
-				<td><?=$stock['worth']?>
+				<td><?=$stock['worth']?> dbl
 				</td>
 				<td>
 					<?php if ($stock['worth'] >= $stock['cost']): ?>
@@ -94,12 +94,12 @@
 		<table>
 			<tr>
 				<td>Current worth</td>
-				<td><?=$stock['worth']?>
+				<td><?=$stock['worth']?> dbl
 				</td>
 			</tr>
 			<tr>
 				<td>Original cost</td>
-				<td><?=$stock['cost']?>
+				<td><?=$stock['cost']?> dbl
 				</td>
 			</tr>
 			<tr>

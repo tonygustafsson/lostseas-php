@@ -213,6 +213,9 @@ class Bank extends Main
             return;
         }
 
+        $log_input['entry'] = 'bought a stock in ' . $stock['name'] . '.';
+        $this->Log->create($log_input);
+
         $this->data['viewdata']['items'] = $stocks;
 
         $data['changeElements'] = $result['changeElements'];
@@ -248,6 +251,10 @@ class Bank extends Main
             echo json_encode($data);
             return;
         }
+
+
+        $log_input['entry'] = 'sold a stock ' . $stock['name'] . '.';
+        $this->Log->create($log_input);
 
         $stocks = $this->stockslib->get_available_stocks();
         $this->data['viewdata']['items'] = $stocks;
