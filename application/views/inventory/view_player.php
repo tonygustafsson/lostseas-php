@@ -141,6 +141,12 @@
 				</tr>
 
 				<tr>
+					<td>Level</td>
+					<td><?=$player['game']['level']?>
+					</td>
+				</tr>
+
+				<tr>
 					<td>Enemy</td>
 					<td><?=ucfirst($player['game']['enemy'])?>
 					</td>

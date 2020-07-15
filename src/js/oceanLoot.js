@@ -135,6 +135,11 @@ const lootTakeAll = (e) => {
 
 const createEventListeners = (e) => {
     const lootTakeAllTrigger = document.querySelector('.js-ocean-loot-take-all');
+
+    if (!lootTakeAllTrigger) {
+        return;
+    }
+
     lootTakeAllTrigger.addEventListener('click', lootTakeAll);
 
     createSliders();

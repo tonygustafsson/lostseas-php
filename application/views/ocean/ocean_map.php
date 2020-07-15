@@ -42,7 +42,7 @@
                 id="tortuga" />
         </a>
 
-        <a href="<?=base_url('harbor/legogane')?>"
+        <a href="<?=base_url('harbor/leogane')?>"
             class="js-town ocean-map__town-link ajaxHTML">
             <image width="20" height="20" x="537" y="300" alt="Leogane" rel="france"
                 xlink:href="<?=base_url('assets/images/map/town.svg')?>"

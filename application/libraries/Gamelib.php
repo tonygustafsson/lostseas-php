@@ -156,19 +156,19 @@ class Gamelib
     {
         switch ($crew_mood) {
             case ($crew_mood <= -10):
-                return "aggressive";
+                return "Aggressive";
             case ($crew_mood > -10 && $crew_mood <= 0):
-                return "grumpy";
+                return "Grumpy";
             case ($crew_mood > 0 && $crew_mood <= 5):
-                return "calm";
+                return "Calm";
             case ($crew_mood > 5 && $crew_mood <= 10):
-                return "cheerful";
+                return "Cheerful";
             case ($crew_mood > 10 && $crew_mood <= 18):
-                return "happy";
+                return "Happy";
             case ($crew_mood > 18):
-                return "euphoric";
+                return "Euphoric";
             default:
-                return "unknown"; //Should never happen...
+                return "Unknown"; // Should never happen...
         }
     }
     

@@ -66,12 +66,18 @@ class Game extends CI_Model
                 }
 
                 $victories = array_merge($this->data['game']['victories'], $victories);
+
+                $output['changeElements']['inventory_level']['text'] = $victories[$this->data['game']['enemy']] - $victories[$this->data['game']['nationality']];
+
                 $sql_updates['victories'] = json_encode($victories);
             }
 
             if (isset($updates['victories']) && !is_array($updates['victories'])) {
                 // Handle victories saved as json
                 $sql_updates['victories'] = $updates['victories'];
+
+                $victories = json_decode($updates['victories'], true);
+                $output['changeElements']['inventory_level']['text'] = $victories[$this->data['game']['enemy']] - $victories[$this->data['game']['nationality']];
             }
 
             if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {

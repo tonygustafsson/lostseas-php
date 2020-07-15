@@ -65,21 +65,92 @@
 
     <div class="inventory_user">
         <a class="ajaxHTML"
-            href="<?=base_url('inventory/player/' . $user['id'])?>">
+            href="<?=base_url('inventory/player/' . $user['id'])?>#character">
             <div style="height: 100%; width: 40px">
                 <img id="inventory_character_avatar"
                     src="<?=$game['character_avatar_path']?>"
                     alt="Character avatar" width="120" height="120">
             </div>
             <div style="width: 100%;">
-                <span id="inventory_character_name"><?=$game['character_name']?></span>,
-                <span id="inventory_title"><?=$game['title']?></span>
+                <span id="inventory_character_name"><?=$game['character_name']?></span>
                 from <span id="inventory_nationality"><?=ucwords($game['nationality'])?></span>
             </div>
         </a>
     </div>
 
     <!-- Section: Game status -->
+
+    <div class="inventory_item">
+        <a class="ajaxHTML" title="Your social status and level"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#character">
+            <svg alt="Hat" width="24" height="24">
+                <use xlink:href="#icon-hat"></use>
+            </svg>
+            <span id="inventory_title"><?=ucfirst($game['title'])?></span>,
+            level <span id="inventory_level"><?=ucfirst($game['level'])?></span>
+        </a>
+    </div>
+
+    <div class="inventory_item">
+        <a class="ajaxHTML" title="Amount of weeks that has passed, see log book"
+            href="<?=base_url('inventory/log/' . $user['id'])?>">
+            <svg alt="Log book" width="24" height="24">
+                <use xlink:href="#icon-logbook"></use>
+            </svg>
+            Week <span id="inventory_week"><?=$game['week']?></span>
+        </a>
+    </div>
+
+    <div style="padding-top: 0.5em; width: 100%;"></div>
+
+    <div class="inventory_item">
+        <a class="ajaxHTML" title="Doubloons that you can use immediately"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
+            <svg alt="Doubloons" width="24" height="24">
+                <use xlink:href="#icon-doubloons"></use>
+            </svg>
+            <span id="inventory_doubloons"><?=$game['doubloons']?></span>
+            dbl
+        </a>
+    </div>
+
+    <div class="inventory_item"
+        style="display: <?=($game['bank_account'] > 0) ? 'block' : 'none'?>">
+        <a class="ajaxHTML" title="Doubloons in your bank account"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
+            <svg alt="Savings" width="24" height="24">
+                <use xlink:href="#icon-savings"></use>
+            </svg>
+            <span id="inventory_bank_account"><?=$game['bank_account']?></span>
+            dbl
+        </a>
+    </div>
+
+    <div class="inventory_item"
+        style="display: <?=($game['bank_loan'] > 0) ? 'block' : 'none'?>">
+        <a class="ajaxHTML" title="Your bank loan amount"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
+            <svg alt="Loan" width="24" height="24">
+                <use xlink:href="#icon-loan"></use>
+            </svg>
+            <span id="inventory_bank_loan"><?=$game['bank_loan']?></span>
+            dbl
+        </a>
+    </div>
+
+    <div class="inventory_item"
+        style="display: <?=($game['stock_total_worth'] > 0) ? 'block' : 'none'?>">
+        <a class="ajaxHTML" title="Doubloons invested in stocks"
+            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
+            <svg alt="Stocks" width="24" height="24">
+                <use xlink:href="#icon-stocks"></use>
+            </svg>
+            <span id="inventory_bank_stocks"><?=$game['stock_total_worth']?></span>
+            dbl
+        </a>
+    </div>
+
+    <div style="padding-top: 1em; width: 100%;"></div>
 
     <div class="inventory_item">
         <a class="ajaxHTML" id="inventory_crew_health_link"
@@ -138,64 +209,7 @@
                 style="display: <?=$crew_mood_euphoric_display?>">
                 <use xlink:href="#icon-mood-euphoric"></use>
             </svg>
-            <span id="inventory_crew_mood"><?=$game['crew_lowest_friendly_mood']?></span>
-        </a>
-    </div>
-
-    <div class="inventory_item">
-        <a class="ajaxHTML" title="Doubloons that you can use immediately"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
-            <svg alt="Doubloons" width="24" height="24">
-                <use xlink:href="#icon-doubloons"></use>
-            </svg>
-            <span id="inventory_doubloons"><?=$game['doubloons']?></span>
-            dbl
-        </a>
-    </div>
-
-    <div class="inventory_item"
-        style="display: <?=($game['bank_account'] > 0) ? 'block' : 'none'?>">
-        <a class="ajaxHTML" title="Doubloons in your bank account"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
-            <svg alt="Savings" width="24" height="24">
-                <use xlink:href="#icon-savings"></use>
-            </svg>
-            <span id="inventory_bank_account"><?=$game['bank_account']?></span>
-            dbl
-        </a>
-    </div>
-
-    <div class="inventory_item"
-        style="display: <?=($game['bank_loan'] > 0) ? 'block' : 'none'?>">
-        <a class="ajaxHTML" title="Your bank loan amount"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
-            <svg alt="Loan" width="24" height="24">
-                <use xlink:href="#icon-loan"></use>
-            </svg>
-            <span id="inventory_bank_loan"><?=$game['bank_loan']?></span>
-            dbl
-        </a>
-    </div>
-
-    <div class="inventory_item"
-        style="display: <?=($game['stock_total_worth'] > 0) ? 'block' : 'none'?>">
-        <a class="ajaxHTML" title="Doubloons invested in stocks"
-            href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
-            <svg alt="Stocks" width="24" height="24">
-                <use xlink:href="#icon-stocks"></use>
-            </svg>
-            <span id="inventory_bank_stocks"><?=$game['stock_total_worth']?></span>
-            dbl
-        </a>
-    </div>
-
-    <div class="inventory_item">
-        <a class="ajaxHTML" title="Amount of weeks that has passed, see log book"
-            href="<?=base_url('inventory/log/' . $user['id'])?>">
-            <svg alt="Log book" width="24" height="24">
-                <use xlink:href="#icon-logbook"></use>
-            </svg>
-            week <span id="inventory_week"><?=$game['week']?></span>
+            <span id="inventory_crew_mood"><?=ucfirst($game['crew_lowest_friendly_mood'])?></span>
         </a>
     </div>
 
