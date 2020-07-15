@@ -33,6 +33,37 @@ class Inventory extends Main
         }
     }
 
+    private function get_total_net_worth($game, $ships)
+    {
+        require(__DIR__ . "/../constants/shop.php");
+
+        // Old way of getting prices
+        $prices = $this->config->item('prices');
+
+        $worth = $game['doubloons'];
+        $worth += $game['stock_total_worth'];
+        $worth += $game['bank_account'];
+        $worth -= $game['bank_loan'];
+
+        $worth += $game['food'] * constant('FOOD_SELL_PRICE');
+        $worth += $game['water'] * constant('WATER_SELL_PRICE');
+        $worth += $game['porcelain'] * constant('PORCELAIN_SELL_PRICE');
+        $worth += $game['spices'] * constant('SPICES_SELL_PRICE');
+        $worth += $game['silk'] * constant('SILK_SELL_PRICE');
+        $worth += $game['medicine'] * constant('MEDICINE_SELL_PRICE');
+        $worth += $game['tobacco'] * constant('TOBACCO_SELL_PRICE');
+        $worth += $game['rum'] * constant('RUM_SELL_PRICE');
+
+        $worth += $game['cannons'] * $prices['cannons']['sell'];
+        $worth += $game['rafts'] * $prices['rafts']['sell'];
+
+        foreach ($ships as $ship) {
+            $worth += $prices[$ship['type']]['sell'];
+        }
+
+        return $worth;
+    }
+
     public function player()
     {
         //User info about a player
@@ -47,6 +78,8 @@ class Inventory extends Main
             ? base_url('assets/images/profile_pictures/' . $this->data['player']['user']['id'] . '.jpg')
             : base_url('assets/images/profile_pictures/nopic.jpg');
         $this->data['viewdata']['gender'] = $this->data['player']['user']['gender'] == 'M' ? 'Male' : 'Female';
+
+        $this->data['viewdata']['total_net_worth'] = $this->get_total_net_worth($this->data['player']['game'], $this->data['player']['ship']);
 
         $this->load->view_ajax('inventory/view_player', $this->data);
     }

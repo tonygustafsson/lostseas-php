@@ -270,6 +270,12 @@
 	<p><em>You do not currently own any stocks.</em></p>
 	<?php endif; ?>
 
+	<h4>Total net worth: <?=$viewdata['total_net_worth']?> dbl</h4>
+
+	<p><em class="small">This is calculated by adding all your funds including stocks, subtracting loans and adding the
+			worth of your
+			goods and ships.</em></p>
+
 	<hr />
 
 	<h4 id="goods">Goods</h4>
