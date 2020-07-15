@@ -104,7 +104,7 @@
 							data-tooltip="<?=$man['description']?>">
 							<svg width="24" height="24" class="Game">
 								<use
-									xlink:href="#crew-<?=$man['gender']?>">
+									xlink:href="#icon-crew-<?=$man['gender']?>">
 								</use>
 							</svg>
 							<?=$man['name']?>

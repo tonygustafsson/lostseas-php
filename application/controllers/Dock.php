@@ -40,7 +40,7 @@ class Dock extends Main
             $better_than = $title_info['better_than'];
 
             if ($new_title != $this->data['game']['title'] && in_array($this->data['game']['title'], $better_than)) {
-                $this->data['game']['todo'][]['cityhall_governor'] = 'I\'m sure the towns governor would like to have a word with you!';
+                $this->data['game']['todo'][]['governor'] = 'I\'m sure the towns governor would like to have a word with you!';
             }
         }
 
@@ -65,7 +65,7 @@ class Dock extends Main
         }
 
         if (floor($this->data['game']['crew_members'] / 2) > $this->data['game']['cannons']) {
-            $this->data['game']['todo'][]['cannon'] = 'You have more crew members than usable cannons, if possible, you should buy ' . (floor($this->data['game']['crew_members'] / 2) - $this->data['game']['cannons']) . ' more cannons.';
+            $this->data['game']['todo'][]['cannons'] = 'You have more crew members than usable cannons, if possible, you should buy ' . (floor($this->data['game']['crew_members'] / 2) - $this->data['game']['cannons']) . ' more cannons.';
         }
 
         if ($this->data['game']['crew_members'] < 1) {
