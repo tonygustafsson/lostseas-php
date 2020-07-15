@@ -43,6 +43,8 @@ class Game extends CI_Model
             $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
                                      'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners', 'character_name');
             
+            $uppercase_inventory_items = array('title');
+
             foreach ($standard as $item) {
                 if (isset($updates[$item])) {
                     $value = (isset($updates[$item]['value'])) ? $this->_calc_value($updates[$item], $this->data['game'][$item], 0) : $updates[$item];
@@ -52,7 +54,8 @@ class Game extends CI_Model
                     $output[$item]['success'] = $value;
                     
                     if (in_array($item, $inventory_items)) {
-                        $output['changeElements']['inventory_' . $item]['text'] = $value;
+                        $change_element_value = in_array($item, $uppercase_inventory_items) ? ucfirst($value) : $value;
+                        $output['changeElements']['inventory_' . $item]['text'] = $change_element_value;
                     }
                 }
             }
