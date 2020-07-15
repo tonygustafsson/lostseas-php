@@ -66,9 +66,9 @@
 		</table>
 	</div>
 
+	<?php if ($user['admin'] == 1 && count($temp_players) > 0): ?>
 	<hr />
 
-	<?php if ($user['admin'] == 1): ?>
 	<h3>Temporary players</h3>
 
 	<p class="text-right"><a class="ajaxJSON"
