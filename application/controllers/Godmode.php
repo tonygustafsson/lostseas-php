@@ -26,10 +26,19 @@ class Godmode extends Main
     {
         $change_msg = '';
         $this->data['player'] = ($this->input->post('user_id') !== $this->data['user']['id']) ? $this->get_user_data($this->input->post('user_id')) : $this->data;
-    
+        $json_keys = array('stocks', 'event', 'victories');
+
         if ($this->input->post()) {
             foreach ($this->input->post() as $key => $val) {
-                if ($this->data['player']['game'][$key] !== $val) {
+                if (in_array($key, $json_keys)) {
+                    // JSON type, compare array to json string
+                    $json_value = json_decode($val, true);
+
+                    if (serialize($this->data['player']['game'][$key]) !== serialize($json_value)) {
+                        $change_msg .= 'You have changed ' . $key . '. (JSON)';
+                        $updates[$key] = $val;
+                    }
+                } elseif ($this->data['player']['game'][$key] !== $val) {
                     $change_msg .= 'You have changed ' . $key . ' to \'' . $val . '\'. ';
                     $updates[$key] = $val;
                 }
