@@ -201,6 +201,7 @@ const addEventListeners = () => {
 };
 
 window.addEventListener('updated-dom', () => {
+    console.log('Updated DOM.');
     addEventListeners();
 });
 

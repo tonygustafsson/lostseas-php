@@ -75,7 +75,7 @@ class Game extends CI_Model
             }
 
             if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {
-                // Handle victories saved as array
+                // Handle events saved as array
                 $events = array();
 
                 foreach ($updates['event'] as $event => $value) {
@@ -84,6 +84,41 @@ class Game extends CI_Model
 
                 $events = array_merge($this->data['game']['event'], $events);
                 $sql_updates['event'] = json_encode($events);
+            }
+
+            if (isset($updates['stocks']) && !is_array($updates['stocks'])) {
+                // Handle stocks saved as json
+                $stocks = json_decode($updates['stocks'], true);
+                $new_stock_total_worth = array_sum(array_column($stocks, 'worth'));
+                $output['changeElements']['inventory_bank_stocks']['text'] = $new_stock_total_worth;
+
+                $sql_updates['stocks'] = $updates['stocks'];
+            }
+
+            if (isset($updates['stocks']) && is_array($updates['stocks']) && count($updates['stocks']) > 0) {
+                // Handle stocks saved as array
+                $stocks = array();
+
+                foreach ($updates['stocks'] as $stock => $value) {
+                    if (!isset($value['remove'])) {
+                        // Update this stock
+                        $stocks[$stock] = $value;
+                    }
+                }
+
+                $stocks = array_merge($this->data['game']['stocks'], $stocks);
+
+                foreach ($updates['stocks'] as $stock => $value) {
+                    if (isset($value['remove'])) {
+                        // Remove this stock
+                        unset($stocks[$stock]);
+                    }
+                }
+
+                $new_stock_total_worth = array_sum(array_column($stocks, 'worth'));
+                $output['changeElements']['inventory_bank_stocks']['text'] = $new_stock_total_worth;
+
+                $sql_updates['stocks'] = json_encode($stocks);
             }
 
             if (isset($updates['event']) && !is_array($updates['event'])) {

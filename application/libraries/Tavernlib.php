@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+
 class Tavernlib
 {
     public function get_items($game)

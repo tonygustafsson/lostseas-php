@@ -1,32 +1,10 @@
-<?php  if (! defined('BASEPATH')) {
+<?php
+
+if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
-/**
- * Dark Seas Common Functions
- *
- * An open source application development framework for PHP 4.3.2 or newer
- *
- * @package		Dark Seas Game Library
- * @author		Tony Gustafsson
- * @copyright	Copyright (c) 2010, Tony Gustafsson
- * @license		http://www.tonyg.se/
- * @link		http://www.tonyg.se/
- * @since		Version 1.0
- * @filesource
- */
 
-// ------------------------------------------------------------------------
-
-/**
- * Dark Seas Common Functions Class
- *
- * @package		CodeIgniter
- * @subpackage	Application/Libraries
- * @category	Libraries
- * @author		Tony Gustafsson
- * @link		http://www.tonyg.se/
- */
-class GAMELIB
+class Gamelib
 {
     public function __construct()
     {
@@ -514,7 +492,3 @@ class GAMELIB
         }
     }
 }
-// END Dark Seas Common class
-
-/* End of file gamelib.php */
-/* Location: ./application/libraries/gamelib.php */

@@ -224,12 +224,55 @@
 			<td><?=$player['game']['bank_loan']?>
 				dbl</td>
 		</tr>
-
 	</table>
+
+	<h4 id="stocks">Stocks</h4>
+
+	<p>You can buy and sell stocks at the bank.</p>
+
+	<?php if (count($game['stocks']) > 0): ?>
+	<div class="table-responsive">
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Cost</th>
+				<th>Worth</th>
+				<th>Earnings</th>
+			</tr>
+			<?php foreach ($game['stocks'] as $stock_id => $stock): ?>
+			<tr>
+				<td>
+					<?=$stock['name']?>
+				</td>
+				<td><?=$stock['cost']?> dbl
+				</td>
+				<td><?=$stock['worth']?> dbl
+				</td>
+				<td>
+					<?php if ($stock['worth'] >= $stock['cost']): ?>
+					<?=round((($stock['worth'] - $stock['cost']) / $stock['cost']) * 100)?>%
+					<?php else: ?>
+					<?=0 - round((($stock['cost'] - $stock['worth']) / $stock['cost']) * 100)?>%
+					<?php endif; ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+			<tr>
+				<td><strong>Total worth</strong></td>
+				<td></td>
+				<td colspan="2"><strong><?=$game['stock_total_worth']?>
+						dbl</strong>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<?php else: ?>
+	<p><em>You do not currently own any stocks.</em></p>
+	<?php endif; ?>
 
 	<hr />
 
-	<h4 id="stock">Stock</h4>
+	<h4 id="goods">Goods</h4>
 
 	<p>You can buy and sell groceries at the shop.</p>
 

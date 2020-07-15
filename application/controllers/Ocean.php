@@ -89,6 +89,11 @@ class Ocean extends Main
                 if ($crew_output['success']) {
                     $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);
                 }
+
+                // Update stock worth (week passed)
+                $this->load->library('Stockslib');
+                $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
+                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
                 
                 $result = $this->Game->update($updates);
                 $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);

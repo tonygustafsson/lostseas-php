@@ -154,7 +154,116 @@ class Bank extends Main
         
         echo json_encode($data);
     }
-}
 
-/*  End of bank.php */
-/* Location: ./application/controllers/bank.php */
+    public function stocks()
+    {
+        $this->load->library('Stockslib');
+
+        $this->data['viewdata']['items'] = $this->stockslib->get_available_stocks();
+
+        $this->load->view_ajax('bank/view_stocks', $this->data);
+    }
+
+    public function buy_stock()
+    {
+        $this->load->library('Stockslib');
+
+        $wanted_stock_name_id = $this->uri->segment(3);
+        $stocks = $this->stockslib->get_available_stocks();
+
+        if (!isset($stocks[$wanted_stock_name_id])) {
+            $data['error'] = 'This stock is not available.';
+            echo json_encode($data);
+            return;
+        }
+
+        $stock = $stocks[$wanted_stock_name_id];
+
+        if ($stock['cost'] > $this->data['game']['doubloons']) {
+            $data['error'] = 'You cannot afford this stock.';
+            echo json_encode($data);
+            return;
+        }
+
+        if (count($this->data['game']['stocks']) >= 10) {
+            $data['error'] = 'You cannot own more than a total of 10 stocks.';
+            echo json_encode($data);
+            return;
+        }
+
+        $new_stock_id = uniqid();
+
+        $new_stock = array(
+            'name_id' => $wanted_stock_name_id,
+            'name' => $stock['name'],
+            'cost' => $stock['cost'],
+            'worth' => floor($stock['cost'] * 0.98),
+            'volatility' => $stock['volatility'],
+            'week' => $this->data['game']['week']
+        );
+
+        $this->data['game']['stocks'][$new_stock_id] = $new_stock;
+        $changes['stocks'][$new_stock_id] = $new_stock;
+        $changes['doubloons'] = $this->data['game']['doubloons'] - $stock['cost'];
+        $result = $this->Game->update($changes);
+
+        if (isset($result['error'])) {
+            $data['error'] = 'You could not buy this stock. ' . $result['error'] . '.';
+            echo json_encode($data);
+            return;
+        }
+
+        $log_input['entry'] = 'bought a stock in ' . $stock['name'] . '.';
+        $this->Log->create($log_input);
+
+        $this->data['viewdata']['items'] = $stocks;
+
+        $data['changeElements'] = $result['changeElements'];
+        $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
+        $data['success'] = 'You bought a stock in ' . $stock['name'] . '.';
+        $data['event'] = 'bank-stocks';
+
+        echo json_encode($data);
+    }
+
+    public function sell_stock()
+    {
+        $this->load->library('Stockslib');
+
+        $stock_id = $this->uri->segment(3);
+
+        if (!isset($this->data['game']['stocks'][$stock_id])) {
+            $data['error'] = 'This stock is not available.';
+            echo json_encode($data);
+            return;
+        }
+
+        $stock = $this->data['game']['stocks'][$stock_id];
+
+        $changes['stocks'][$stock_id]['remove'] = true;
+        $changes['doubloons'] = $this->data['game']['doubloons'] + $stock['worth'];
+        $result = $this->Game->update($changes);
+
+        unset($this->data['game']['stocks'][$stock_id]);
+
+        if (isset($result['error'])) {
+            $data['error'] = 'You could not sell this stock. ' . $result['error'] . '.';
+            echo json_encode($data);
+            return;
+        }
+
+
+        $log_input['entry'] = 'sold a stock ' . $stock['name'] . '.';
+        $this->Log->create($log_input);
+
+        $stocks = $this->stockslib->get_available_stocks();
+        $this->data['viewdata']['items'] = $stocks;
+
+        $data['changeElements'] = $result['changeElements'];
+        $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
+        $data['success'] = 'You sold your stock ' . $stock['name'] . '.';
+        $data['event'] = 'bank-stocks';
+
+        echo json_encode($data);
+    }
+}

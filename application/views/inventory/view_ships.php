@@ -122,8 +122,8 @@
 			</div>
 			<div>
 				<p class="mt-0"><?=$ship_specs[$current_ship['type']]['description']?>
+				</p>
 			</div>
-			</p>
 		</div>
 
 		<label for="ship_name" class="mb-0">Name</label>

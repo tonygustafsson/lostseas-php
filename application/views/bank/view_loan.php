@@ -22,6 +22,13 @@
 			</svg>
 			Loans
 		</a>
+		<a class="ajaxHTML button big-icon" title="Take or pay back a loan"
+			href="<?=base_url('bank/stocks')?>">
+			<svg width="32" height="32" alt="Stocks">
+				<use xlink:href="#stocks"></use>
+			</svg>
+			Stocks
+		</a>
 	</div>
 
 	<p>
