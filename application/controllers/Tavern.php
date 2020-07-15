@@ -447,6 +447,10 @@ class Tavern extends Main
             $this->data['viewdata']['cards'][] = $this->blackjacklib->get_card($event['cards'][$i]);
         }
 
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'card';
+        }
+
         $this->data['viewdata']['total_value'] = $this->blackjacklib->get_card_total_value(array($first_card));
         $this->data['viewdata']['event'] = $event;
         $this->data['game']['event']['tavern_blackjack'] = json_encode($event);
@@ -512,6 +516,10 @@ class Tavern extends Main
             $this->data['viewdata']['busted'] = true;
             $data['info'] = 'You busted and lost your money to the bank.';
         } else {
+            if ($this->data['user']['sound_effects_play'] == 1) {
+                $data['playSound'] = 'card';
+            }
+
             $this->data['game']['event']['tavern_blackjack'] = $event;
         }
     
