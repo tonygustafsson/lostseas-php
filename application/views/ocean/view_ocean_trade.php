@@ -56,7 +56,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Food">
-					<use xlink:href="#food"></use>
+					<use xlink:href="#icon-food"></use>
 				</svg>
 				Food
 			</legend>
@@ -103,7 +103,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Water">
-					<use xlink:href="#water"></use>
+					<use xlink:href="#icon-water"></use>
 				</svg>
 				Water
 			</legend>

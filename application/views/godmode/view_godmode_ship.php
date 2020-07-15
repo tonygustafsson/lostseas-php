@@ -5,35 +5,35 @@
 		<a class="ajaxHTML button big-icon" title="Change user parameters"
 			href="<?=base_url('godmode/user/' . $this->uri->segment(3))?>">
 			<svg width="32" height="32" alt="User">
-				<use xlink:href="#player"></use>
+				<use xlink:href="#icon-player"></use>
 			</svg>
 			User
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change game parameters"
 			href="<?=base_url('godmode/index/' . $this->uri->segment(3))?>">
 			<svg width="32" height="32" alt="User">
-				<use xlink:href="#swords"></use>
+				<use xlink:href="#icon-swords"></use>
 			</svg>
 			Game
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change ship parameters"
 			href="<?=base_url('godmode/ship/' . $this->uri->segment(3))?>">
 			<svg width="32" height="32" alt="Ships">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			Ships
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change crew parameters"
 			href="<?=base_url('godmode/crew/' . $this->uri->segment(3))?>">
 			<svg width="32" height="32" alt="Crew">
-				<use xlink:href="#crew-man"></use>
+				<use xlink:href="#icon-crew-man"></use>
 			</svg>
 			Crew
 		</a>
 		<a class="ajaxHTML button big-icon" title="View design system"
 			href="<?=base_url('godmode/design/' . $this->uri->segment(3))?>">
 			<svg width="32" height="32" alt="Crew">
-				<use xlink:href="#design"></use>
+				<use xlink:href="#icon-design"></use>
 			</svg>
 			Design
 		</a>
@@ -82,7 +82,7 @@
 			href="<?=base_url('godmode/ship_create/' . $player['user']['id'])?>"
 			title="Create new ship">
 			<svg width="32" height="32" alt="Add new">
-				<use xlink:href="#add"></use>
+				<use xlink:href="#icon-add"></use>
 			</svg>
 		</a>
 	</p>
@@ -98,21 +98,21 @@
 				<th>Type <a class="js-godmode-change-all-in-column" data-change-for="type" href="#"
 						title="Change type for all ships">
 						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#pencil"></use>
+							<use xlink:href="#icon-pencil"></use>
 						</svg>
 					</a>
 				</th>
 				<th>Age <a class="js-godmode-change-all-in-column" data-change-for="age" href="#"
 						title="Change age for all ships">
 						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#pencil"></use>
+							<use xlink:href="#icon-pencil"></use>
 						</svg>
 					</a>
 				</th>
 				<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#"
 						title="Change health for all ships">
 						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#pencil"></use>
+							<use xlink:href="#icon-pencil"></use>
 						</svg>
 					</a>
 				</th>
@@ -127,7 +127,7 @@
 							href="<?=base_url('godmode/ship_delete')?>/<?=$current_ship['id']?>"
 							title="Delete ship">
 							<svg width="16" height="16" alt="Delete">
-								<use xlink:href="#broom"></use>
+								<use xlink:href="#icon-broom"></use>
 							</svg>
 						</a>
 						<input type="text"

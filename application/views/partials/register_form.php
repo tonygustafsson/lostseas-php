@@ -18,7 +18,7 @@
                     href="<?=base_url('settings/generate_character')?>"
                     title="Generate random character">
                     <svg width="32" height="32" class="Randomize">
-                        <use xlink:href="#dices"></use>
+                        <use xlink:href="#icon-dices"></use>
                     </svg>
                 </a>
             </div>

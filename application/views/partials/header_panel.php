@@ -14,25 +14,25 @@
                 <?php if (isset($user)): ?>
                 <a id="nav_top_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Game menu">
-                                <use xlink:href="#swords"></use>
+                                <use xlink:href="#icon-swords"></use>
                         </svg>
                 </a>
 
                 <a id="action_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Actions menu">
-                                <use xlink:href="#compass"></use>
+                                <use xlink:href="#icon-compass"></use>
                         </svg>
                 </a>
 
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Inventory menu">
-                                <use xlink:href="#barrels"></use>
+                                <use xlink:href="#icon-barrels"></use>
                         </svg>
                 </a>
                 <?php else: ?>
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Login">
-                                <use xlink:href="#key"></use>
+                                <use xlink:href="#icon-key"></use>
                         </svg>
                 </a>
                 <?php endif; ?>
@@ -41,7 +41,7 @@
         <nav id="nav_top_panel" class="top-nav-panel">
                 <a class="js-panel-close top-nav-panel__close-btn">
                         <svg width="20" height="20" alt="Close">
-                                <use xlink:href="#close"></use>
+                                <use xlink:href="#icon-close"></use>
                         </svg>
                 </a>
 
@@ -49,7 +49,7 @@
                 <a class="top-nav-panel__item" title="Continue playing"
                         href="<?=base_url()?>">
                         <svg width="32" height="32" alt="Game">
-                                <use xlink:href="#swords"></use>
+                                <use xlink:href="#icon-swords"></use>
                         </svg>
                         Game
                 </a>
@@ -58,7 +58,7 @@
                 <a class="top-nav-panel__item ajaxHTML" title="Please register to save this game!"
                         href="<?=base_url('account/register')?>">
                         <svg width="32" height="32" class="Game">
-                                <use xlink:href="#logbook"></use>
+                                <use xlink:href="#icon-logbook"></use>
                         </svg>
                         Register
                 </a>
@@ -68,7 +68,7 @@
                 <a class="top-nav-panel__item ajaxHTML" title="Other players"
                         href="<?=base_url('inventory/players')?>">
                         <svg width="32" height="32" alt="Players">
-                                <use xlink:href="#player"></use>
+                                <use xlink:href="#icon-player"></use>
                         </svg>
                         Players
                 </a>
@@ -78,7 +78,7 @@
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('inventory/players')?>">
                         <svg width="32" height="32" alt="Players">
-                                <use xlink:href="#crew-man"></use>
+                                <use xlink:href="#icon-crew-man"></use>
                         </svg>
                         Players
                 </a>
@@ -87,7 +87,7 @@
                 <a class="top-nav-panel__item ajaxHTML" title="What's new in here?"
                         href="<?=base_url('about')?>">
                         <svg width="32" height="32" alt="Guide">
-                                <use xlink:href="#logbook"></use>
+                                <use xlink:href="#icon-logbook"></use>
                         </svg>
                         Guide
                 </a>
@@ -96,7 +96,7 @@
                 <a class="top-nav-panel__item ajaxHTML" title="Change your settings"
                         href="<?=base_url('settings/account')?>">
                         <svg width="32" height="32" alt="Settings">
-                                <use xlink:href="#cogs"></use>
+                                <use xlink:href="#icon-cogs"></use>
                         </svg>
                         Settings
                 </a>
@@ -106,7 +106,7 @@
                         title="This option will be enabled when you are registered!"
                         href="<?=base_url('settings/account')?>">
                         <svg width="32" height="32" alt="Settings">
-                                <use xlink:href="#cogs"></use>
+                                <use xlink:href="#icon-cogs"></use>
                         </svg>
                         Settings
                 </a>
@@ -117,7 +117,7 @@
                         data-autoplay="<?=($user['music_play'] == 1) ? 'yes' : 'no';?>"
                         data-musicvolume="<?=$user['music_volume']?>">
                         <svg width="24" height="24" alt="Sound controls">
-                                <use xlink:href="#sound"></use>
+                                <use xlink:href="#icon-sound"></use>
                         </svg>
                         <span>Sound</span>
                 </a>
@@ -125,7 +125,7 @@
                 <a title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only"
                         target="_blank" href="https://www.facebook.com/lostseas">
                         <svg width="24" height="24" alt="Facebook">
-                                <use xlink:href="#facebook"></use>
+                                <use xlink:href="#icon-facebook"></use>
                         </svg>
                         <span>Facebook</span>
                 </a>
@@ -134,7 +134,7 @@
                         href="https://join.slack.com/t/lostseas/shared_invite/zt-f38krf6a-lGs1cFO9nKO~NJsJadA3VA"
                         class="top-nav-panel__item top-nav-panel__item--icon-only">
                         <svg width="24" height="24" alt="Slack">
-                                <use xlink:href="#slack"></use>
+                                <use xlink:href="#icon-slack"></use>
                         </svg>
                         <span>Slack</span>
                 </a>
@@ -144,7 +144,7 @@
                         href="<?=base_url('godmode/index/' . $user['id'])?>"
                         class="ajaxHTML top-nav-panel__item top-nav-panel__item--icon-only">
                         <svg width="24" height="24" alt="Parrot">
-                                <use xlink:href="#godmode"></use>
+                                <use xlink:href="#icon-godmode"></use>
                         </svg>
                         <span>God Mode</span>
                 </a>
@@ -153,7 +153,7 @@
                 <a id="nav_logout" class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
                         href="<?=base_url('account/logout')?>">
                         <svg width="24" height="24" alt="Log out">
-                                <use xlink:href="#logout"></use>
+                                <use xlink:href="#icon-logout"></use>
                         </svg>
                         <span>Log out</span>
                 </a>

@@ -22,7 +22,7 @@
         <a id="music_link_play" title="Play game music" class="js-music-toggle-state sound-control-button mr-1" href="#"
                 style="display: <?=$play_music_display_style?>">
                 <svg width="32" height="32" class="Play music">
-                        <use xlink:href="#sound-play"></use>
+                        <use xlink:href="#icon-sound-play"></use>
                 </svg>
         </a>
 
@@ -30,13 +30,13 @@
                 href="#"
                 style="display: <?=$pause_music_display_style?>">
                 <svg width="32" height="32" class="Pause music">
-                        <use xlink:href="#sound-pause"></use>
+                        <use xlink:href="#icon-sound-pause"></use>
                 </svg>
         </a>
 
         <a title="Next song, please" style="padding-left: 0.5em;" class="js-music-next" href="#">
                 <svg width="32" height="32" class="Next song">
-                        <use xlink:href="#sound-next"></use>
+                        <use xlink:href="#icon-sound-next"></use>
                 </svg>
         </a>
 

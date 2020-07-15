@@ -11,21 +11,21 @@
 		<a class="ajaxHTML button big-icon" title="Transfer money to and from your bank account"
 			href="<?=base_url('bank')?>">
 			<svg width="32" height="32" alt="Savings">
-				<use xlink:href="#savings"></use>
+				<use xlink:href="#icon-savings"></use>
 			</svg>
 			Account
 		</a>
 		<a class="ajaxHTML button big-icon" title="Take or pay back a loan"
 			href="<?=base_url('bank/loan')?>">
 			<svg width="32" height="32" alt="Loan">
-				<use xlink:href="#loan"></use>
+				<use xlink:href="#icon-loan"></use>
 			</svg>
 			Loans
 		</a>
 		<a class="ajaxHTML button big-icon" title="Take or pay back a loan"
 			href="<?=base_url('bank/stocks')?>">
 			<svg width="32" height="32" alt="Stocks">
-				<use xlink:href="#stocks"></use>
+				<use xlink:href="#icon-stocks"></use>
 			</svg>
 			Stocks
 		</a>
@@ -82,7 +82,7 @@
 		<div class="flex pt-1">
 			<div style="flex: 1 0 25%">
 				<svg width="100" height="100" class="w-100">
-					<use xlink:href="#stocks"></use>
+					<use xlink:href="#icon-stocks"></use>
 				</svg>
 			</div>
 			<div>
@@ -145,7 +145,7 @@
 			class="js-trigger-stock-buy-info button big-image" href="#"
 			data-stock-id="<?=$stock_id?>">
 			<svg width="32" height="32">
-				<use xlink:href="#stocks"></use>
+				<use xlink:href="#icon-stocks"></use>
 			</svg>
 			<?=$stock['name']?>
 			<br />
@@ -164,7 +164,7 @@
 		<div class="flex pt-1">
 			<div style="flex: 1 0 25%">
 				<svg width="100" height="100" class="w-100">
-					<use xlink:href="#stocks"></use>
+					<use xlink:href="#icon-stocks"></use>
 				</svg>
 			</div>
 			<div>

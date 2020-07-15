@@ -12,7 +12,7 @@
 		<?php foreach ($game['good'] as $svg_id => $msg): ?>
 		<li class="positive">
 			<svg width="32" height="32" alt="<?=$svg_id?>">
-				<use xlink:href="#<?=$svg_id?>"></use>
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
 			</svg>
 			<?=$msg?>
 		</li>
@@ -25,7 +25,7 @@
 		<?php foreach ($game['bad'] as $svg_id => $msg): ?>
 		<li class="negative">
 			<svg width="32" height="32" alt="<?=$svg_id?>">
-				<use xlink:href="#<?=$svg_id?>"></use>
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
 			</svg>
 			<?=$msg?>
 		</li>

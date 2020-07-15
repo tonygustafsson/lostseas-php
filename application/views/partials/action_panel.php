@@ -14,7 +14,7 @@
 <aside id="action_panel" class="action-panel">
 	<a class="js-panel-close action-panel__close-btn">
 		<svg width="20" height="20" alt="Close">
-			<use xlink:href="#close"></use>
+			<use xlink:href="#icon-close"></use>
 		</svg>
 	</a>
 
@@ -24,7 +24,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the shop"
 			href="<?=base_url('shop')?>">
 			<svg alt="Shop" width="28" height="28">
-				<use xlink:href="#shop"></use>
+				<use xlink:href="#icon-shop"></use>
 			</svg>
 			Shop
 		</a>
@@ -32,7 +32,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the tavern"
 			href="<?=base_url('tavern')?>">
 			<svg alt="Tavern" width="28" height="28">
-				<use xlink:href="#tavern"></use>
+				<use xlink:href="#icon-tavern"></use>
 			</svg>
 			Tavern
 		</a>
@@ -40,7 +40,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the city hall"
 			href="<?=base_url('cityhall')?>">
 			<svg alt="CityHall" width="28" height="28">
-				<use xlink:href="#cityhall"></use>
+				<use xlink:href="#icon-cityhall"></use>
 			</svg>
 			City Hall
 		</a>
@@ -48,7 +48,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the bank"
 			href="<?=base_url('bank')?>">
 			<svg alt="Tavern" width="28" height="28">
-				<use xlink:href="#bank"></use>
+				<use xlink:href="#icon-bank"></use>
 			</svg>
 			Bank
 		</a>
@@ -56,7 +56,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the shipyard"
 			href="<?=base_url('shipyard')?>">
 			<svg alt="Shipyard" width="28" height="28">
-				<use xlink:href="#shipyard"></use>
+				<use xlink:href="#icon-shipyard"></use>
 			</svg>
 			Shipyard
 		</a>
@@ -64,7 +64,7 @@
 		<a class="action-panel__item ajaxHTML" title="Visit the market"
 			href="<?=base_url('market')?>">
 			<svg alt="Market" width="28" height="28">
-				<use xlink:href="#market"></use>
+				<use xlink:href="#icon-market"></use>
 			</svg>
 			Market
 		</a>
@@ -72,7 +72,7 @@
 		<a class="action-panel__item ajaxHTML" title="Go out to sea!"
 			href="<?=base_url('harbor')?>">
 			<svg alt="Harbor" width="28" height="28">
-				<use xlink:href="#harbor"></use>
+				<use xlink:href="#icon-harbor"></use>
 			</svg>
 			Harbor
 		</a>
@@ -82,7 +82,7 @@
 		<a class="action-panel__item ajaxHTML" title="Explore the ocean"
 			href="<?=base_url('ocean')?>">
 			<svg alt="Explore" width="28" height="28">
-				<use xlink:href="#compass"></use>
+				<use xlink:href="#icon-compass"></use>
 			</svg>
 			Set sail
 		</a>
@@ -90,7 +90,7 @@
 		<a class="action-panel__item ajaxHTML" title="Land at this town"
 			href="<?=base_url('dock')?>">
 			<svg alt="Harbor" width="28" height="28">
-				<use xlink:href="#harbor"></use>
+				<use xlink:href="#icon-harbor"></use>
 			</svg>
 			Land
 		</a>
@@ -100,7 +100,7 @@
 		<a class="action-panel__item ajaxHTML" title="Explore the ocean"
 			href="<?=base_url('ocean')?>">
 			<svg alt="Explore" width="28" height="28">
-				<use xlink:href="#compass"></use>
+				<use xlink:href="#icon-compass"></use>
 			</svg>
 			Explore
 		</a>
@@ -111,7 +111,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannons"></use>
+				<use xlink:href="#icon-cannons"></use>
 			</svg>
 			Attack
 		</a>
@@ -119,7 +119,7 @@
 		<a class="action-panel__item ajaxHTML" title="Try to flee!"
 			href="<?=base_url('ocean/flee')?>">
 			<svg alt="Flee" width="28" height="28">
-				<use xlink:href="#steer"></use>
+				<use xlink:href="#icon-steer"></use>
 			</svg>
 			Flee
 		</a>
@@ -130,7 +130,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannons"></use>
+				<use xlink:href="#icon-cannons"></use>
 			</svg>
 			Attack
 		</a>
@@ -138,7 +138,7 @@
 		<a class="action-panel__item ajaxHTML" title="Trade with these sea men"
 			href="<?=base_url('ocean/trade')?>">
 			<svg alt="Flee" width="28" height="28">
-				<use xlink:href="#barrels"></use>
+				<use xlink:href="#icon-barrels"></use>
 			</svg>
 			Trade
 		</a>
@@ -146,7 +146,7 @@
 		<a class="action-panel__item ajaxHTML" title="Ignore this ship"
 			href="<?=base_url('ocean/ignore')?>">
 			<svg alt="Flee" width="28" height="28">
-				<use xlink:href="#steer"></use>
+				<use xlink:href="#icon-steer"></use>
 			</svg>
 			Ignore
 		</a>
@@ -157,7 +157,7 @@
 		<a class="action-panel__item ajaxHTML" title="Attack this ship!"
 			href="<?=base_url('ocean/attack')?>">
 			<svg alt="Attack" width="28" height="28">
-				<use xlink:href="#cannons"></use>
+				<use xlink:href="#icon-cannons"></use>
 			</svg>
 			Attack
 		</a>
@@ -165,7 +165,7 @@
 		<a class="action-panel__item ajaxHTML" title="Ignore this ship"
 			href="<?=base_url('ocean/ignore')?>">
 			<svg alt="Flee" width="28" height="28">
-				<use xlink:href="#steer"></use>
+				<use xlink:href="#icon-steer"></use>
 			</svg>
 			Ignore
 		</a>

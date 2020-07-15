@@ -11,21 +11,21 @@
 		<a class="ajaxHTML button big-icon" title="Buy ships and equipments"
 			href="<?=base_url('shipyard')?>">
 			<svg width="32" height="32" alt="Buy">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			Buy
 		</a>
 		<a class="ajaxHTML button big-icon" title="Sell ships and equipments"
 			href="<?=base_url('shipyard/sell')?>">
 			<svg width="32" height="32" alt="Buy">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			Sell
 		</a>
 		<a class="ajaxHTML button big-icon" title="Repair damaged ships"
 			href="<?=base_url('shipyard/repair')?>">
 			<svg width="32" height="32" alt="Buy">
-				<use xlink:href="#wrench"></use>
+				<use xlink:href="#icon-wrench"></use>
 			</svg>
 			Repair
 		</a>
@@ -51,7 +51,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Cannons">
-					<use xlink:href="#cannons"></use>
+					<use xlink:href="#icon-cannons"></use>
 				</svg>
 				Cannons (<?=$prices['cannons']['buy']?>/<?=floor($prices['cannons']['sell'] * 0.7)?>
 				dbl)
@@ -86,7 +86,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Buy">
-					<use xlink:href="#raft"></use>
+					<use xlink:href="#icon-raft"></use>
 				</svg>
 				Rafts (<?=$prices['rafts']['buy']?>/<?=floor($prices['rafts']['sell'] * 0.7)?>
 				dbl)

@@ -19,7 +19,7 @@ const svgToObj = (dir, destination) => {
 
         let $symbol = $('<symbol></symbol>');
         $symbol.attr('viewBox', svgNode.attr('viewBox'));
-        $symbol.attr('id', fileName);
+        $symbol.attr('id', 'icon-' + fileName);
         $symbol.append(svgNode.contents());
 
         $('svg').append($symbol);

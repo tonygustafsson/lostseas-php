@@ -5,14 +5,14 @@
 		<a class="ajaxHTML button big-icon" title="Change your account settings, such as name, birthday, presentation"
 			href="<?=base_url('settings/account')?>">
 			<svg width="32" height="32" class="Account">
-				<use xlink:href="#player"></use>
+				<use xlink:href="#icon-player"></use>
 			</svg>
 			Account
 		</a>
 		<a class="ajaxHTML button big-icon" title="Change your character name, age and such"
 			href="<?=base_url('settings/character')?>">
 			<svg width="32" height="32" class="Character">
-				<use xlink:href="#crew-man"></use>
+				<use xlink:href="#icon-crew-man"></use>
 			</svg>
 			Character
 		</a>
@@ -38,7 +38,7 @@
 						href="<?=base_url('settings/generate_character')?>"
 						title="Generate random character">
 						<svg width="32" height="32" alt="Randomize">
-							<use xlink:href="#dices"></use>
+							<use xlink:href="#icon-dices"></use>
 						</svg>
 					</a>
 				</div>

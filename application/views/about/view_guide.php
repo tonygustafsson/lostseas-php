@@ -19,7 +19,7 @@
 		<a class="ajaxHTML button big-icon" title="Presentation about the game"
 			href="<?=base_url('about/presentation')?>">
 			<svg width="32" height="32" class="Start">
-				<use xlink:href="#swords"></use>
+				<use xlink:href="#icon-swords"></use>
 			</svg>
 			Start
 		</a>
@@ -27,7 +27,7 @@
 		<a class="ajaxHTML button big-icon" title="A complete guide for this game"
 			href="<?=base_url('about')?>">
 			<svg width="32" height="32" class="Guide">
-				<use xlink:href="#logbook"></use>
+				<use xlink:href="#icon-logbook"></use>
 			</svg>
 			Guide
 		</a>

@@ -14,7 +14,7 @@ class Shoplib
             array(
                 'id' => 'food',
                 'name' => 'Food',
-                'icon' => '#food',
+                'icon' => '#icon-food',
                 'description' => 'Needed for traveling at sea.',
                 'price_buy' => constant('FOOD_BUY_PRICE'),
                 'price_sell' => constant('FOOD_SELL_PRICE'),
@@ -24,7 +24,7 @@ class Shoplib
             array(
                 'id' => 'water',
                 'name' => 'Water',
-                'icon' => '#water',
+                'icon' => '#icon-water',
                 'description' => 'Needed for traveling at sea.',
                 'price_buy' => constant('WATER_BUY_PRICE'),
                 'price_sell' => constant('WATER_SELL_PRICE'),
@@ -34,7 +34,7 @@ class Shoplib
             array(
                 'id' => 'porcelain',
                 'name' => 'Porcelain',
-                'icon' => '#porcelain',
+                'icon' => '#icon-porcelain',
                 'description' => 'For trading.',
                 'price_buy' => constant('PORCELAIN_BUY_PRICE'),
                 'price_sell' => constant('PORCELAIN_SELL_PRICE'),
@@ -44,7 +44,7 @@ class Shoplib
             array(
                 'id' => 'spices',
                 'name' => 'Spices',
-                'icon' => '#spices',
+                'icon' => '#icon-spices',
                 'description' => 'For trading.',
                 'price_buy' => constant('SPICES_BUY_PRICE'),
                 'price_sell' => constant('SPICES_SELL_PRICE'),
@@ -54,7 +54,7 @@ class Shoplib
             array(
                 'id' => 'silk',
                 'name' => 'Silk',
-                'icon' => '#silk',
+                'icon' => '#icon-silk',
                 'description' => 'For trading.',
                 'price_buy' => constant('SILK_BUY_PRICE'),
                 'price_sell' => constant('SILK_SELL_PRICE'),
@@ -64,7 +64,7 @@ class Shoplib
             array(
                 'id' => 'medicine',
                 'name' => 'Medicine',
-                'icon' => '#medicine',
+                'icon' => '#icon-medicine',
                 'description' => 'Can heal individual crew members.',
                 'price_buy' => constant('MEDICINE_BUY_PRICE'),
                 'price_sell' => constant('MEDICINE_SELL_PRICE'),
@@ -74,7 +74,7 @@ class Shoplib
             array(
                 'id' => 'tobacco',
                 'name' => 'Tobacco',
-                'icon' => '#tobacco',
+                'icon' => '#icon-tobacco',
                 'description' => 'Can increase your crew members mood.',
                 'price_buy' => constant('TOBACCO_BUY_PRICE'),
                 'price_sell' => constant('TOBACCO_SELL_PRICE'),
@@ -84,7 +84,7 @@ class Shoplib
             array(
                 'id' => 'rum',
                 'name' => 'Rum',
-                'icon' => '#rum',
+                'icon' => '#icon-rum',
                 'description' => 'Can increase your crew members mood.',
                 'price_buy' => constant('RUM_BUY_PRICE'),
                 'price_sell' => constant('RUM_SELL_PRICE'),

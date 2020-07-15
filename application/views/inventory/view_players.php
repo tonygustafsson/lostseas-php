@@ -35,7 +35,7 @@
 						title="Erase this user" data-prompt-heading="Delete this user?"
 						data-prompt-text="This change will be permanent.">
 						<svg width="16" height="16" alt="Remove">
-							<use xlink:href="#trashcan"></use>
+							<use xlink:href="#icon-trashcan"></use>
 						</svg>
 					</a>
 
@@ -93,7 +93,7 @@
 						title="Erase this user" data-prompt-heading="Delete this user?"
 						data-prompt-text="This change will be permanent.">
 						<svg width="16" height="16" alt="Remove">
-							<use xlink:href="#trashcan"></use>
+							<use xlink:href="#icon-trashcan"></use>
 						</svg>
 					</a>
 					<a class="ajaxHTML"

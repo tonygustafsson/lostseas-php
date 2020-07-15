@@ -10,7 +10,7 @@ const createTownInfo = (element) => {
     flag.style.width = '24px';
     flag.style.height = '12px';
     const flagUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-    flagUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#flag-${lang}`);
+    flagUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#icon-flag-${lang}`);
     flag.appendChild(flagUse);
 
     const info = document.createElement('span');

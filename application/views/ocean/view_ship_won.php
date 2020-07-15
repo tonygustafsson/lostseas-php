@@ -13,7 +13,7 @@
 		<?php if ($game['event']['ship_won_results']['doubloons'] > 0): ?>
 		<li class="positive">
 			<svg width="32" height="32" alt="Doubloons">
-				<use xlink:href="#doubloons"></use>
+				<use xlink:href="#icon-doubloons"></use>
 			</svg>
 			You looted <?=$game['event']['ship_won_results']['doubloons']?>
 			doubloons.</li>
@@ -22,7 +22,7 @@
 		<?php if ($game['event']['ship_won_results']['prisoners'] > 0): ?>
 		<li class="positive">
 			<svg width="32" height="32" alt="Prisoners">
-				<use xlink:href="#prisoners"></use>
+				<use xlink:href="#icon-prisoners"></use>
 			</svg>
 			<?=$game['event']['ship_won_results']['prisoners']?>
 			of the crew were known troublemakers, you
@@ -32,7 +32,7 @@
 		<?php if ($game['event']['ship_won_results']['sunken_ships'] > 0): ?>
 		<li class="negative">
 			<svg width="32" height="32" alt="Ship">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			<?=$game['event']['ship_won_results']['sunken_ships']?>
 			of your ships sunk because of ship
@@ -42,7 +42,7 @@
 		<?php if ($game['event']['ship_won_results']['crew_deaths'] > 0): ?>
 		<li class="negative">
 			<svg width="32" height="32" alt="Crew">
-				<use xlink:href="#crew-man"></use>
+				<use xlink:href="#icon-crew-man"></use>
 			</svg>
 			<?=$game['event']['ship_won_results']['crew_deaths']?>
 			of your crew members died in battle.
@@ -80,7 +80,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Crew members">
-					<use xlink:href="#crew-man"></use>
+					<use xlink:href="#icon-crew-man"></use>
 				</svg>
 				Crew recruits
 			</legend>
@@ -123,7 +123,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Food">
-					<use xlink:href="#food"></use>
+					<use xlink:href="#icon-food"></use>
 				</svg>
 				Food
 			</legend>
@@ -168,7 +168,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Water">
-					<use xlink:href="#water"></use>
+					<use xlink:href="#icon-water"></use>
 				</svg>
 				Water
 			</legend>
@@ -212,7 +212,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Porcelain">
-					<use xlink:href="#porcelain"></use>
+					<use xlink:href="#icon-porcelain"></use>
 				</svg>
 				Porcelain
 			</legend>
@@ -248,7 +248,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Spices">
-					<use xlink:href="#spices"></use>
+					<use xlink:href="#icon-spices"></use>
 				</svg>
 				Spices
 			</legend>
@@ -284,7 +284,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Silk">
-					<use xlink:href="#silk"></use>
+					<use xlink:href="#icon-silk"></use>
 				</svg>
 				Silk
 			</legend>
@@ -320,7 +320,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Medicine">
-					<use xlink:href="#medicine"></use>
+					<use xlink:href="#icon-medicine"></use>
 				</svg>
 				Medicine
 			</legend>
@@ -356,7 +356,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Tobacco">
-					<use xlink:href="#tobacco"></use>
+					<use xlink:href="#icon-tobacco"></use>
 				</svg>
 				Tobacco
 			</legend>
@@ -392,7 +392,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Rum">
-					<use xlink:href="#rum"></use>
+					<use xlink:href="#icon-rum"></use>
 				</svg>
 				Rum
 			</legend>

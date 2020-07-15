@@ -11,7 +11,7 @@
 		<a class="ajaxHTML button big-icon" title="Talk to the governor"
 			href="<?=base_url('cityhall/governor')?>">
 			<svg width="32" height="32" alt="Governor">
-				<use xlink:href="#governor"></use>
+				<use xlink:href="#icon-governor"></use>
 			</svg>
 			Governor
 		</a>
@@ -19,7 +19,7 @@
 		<a class="ajaxHTML button big-icon" id="actions_work" title="Work to get some money"
 			href="<?=base_url('cityhall/work')?>">
 			<svg width="32" height="32" alt="Work">
-				<use xlink:href="#pickaxe"></use>
+				<use xlink:href="#icon-pickaxe"></use>
 			</svg>
 			Work
 		</a>
@@ -28,7 +28,7 @@
 		<a id="action_prisoners" class="ajaxJSON button big-icon" title="Hand over your prisoner and get a ransom"
 			href="<?=base_url('cityhall/prisoners')?>">
 			<svg width="32" height="32" alt="Prisoners">
-				<use xlink:href="#prisoners"></use>
+				<use xlink:href="#icon-prisoners"></use>
 			</svg>
 			Prisoners
 		</a>

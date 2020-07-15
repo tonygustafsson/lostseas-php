@@ -11,14 +11,14 @@
 		<a class="ajaxHTML button big-icon" title="Browse goods" id="action_goods"
 			href="<?=base_url('market')?>">
 			<svg width="32" height="32" alt="Goods">
-				<use xlink:href="#barrels"></use>
+				<use xlink:href="#icon-barrels"></use>
 			</svg>
 			Browse
 		</a>
 		<a class="ajaxHTML button big-icon" title="Heal your crew"
 			href="<?=base_url('market/healer')?>">
 			<svg width="32" height="32" alt="Healer">
-				<use xlink:href="#healer"></use>
+				<use xlink:href="#icon-healer"></use>
 			</svg>
 			Healer
 		</a>

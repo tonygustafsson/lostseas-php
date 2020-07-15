@@ -29,7 +29,7 @@
 		<?php foreach ($warnings as $svg_id => $warning): ?>
 		<li>
 			<svg width="32" height="32" alt="<?=$svg_id?>">
-				<use xlink:href="#<?=$svg_id?>"></use>
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
 			</svg>
 			<?=$warning?>
 		</li>
@@ -45,7 +45,7 @@
 		<?php foreach ($todo as $svg_id => $msg): ?>
 		<li>
 			<svg width="32" height="32" alt="<?=$svg_id?>">
-				<use xlink:href="#<?=$svg_id?>"></use>
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
 			</svg>
 			<?=$msg?>
 		</li>

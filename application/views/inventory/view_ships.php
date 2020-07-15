@@ -11,7 +11,7 @@
 			title="Learn more about <?=$player['user']['name']?>"
 			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
-				<use xlink:href="#player"></use>
+				<use xlink:href="#icon-player"></use>
 			</svg>
 			Player
 		</a>
@@ -19,7 +19,7 @@
 			title="See <?=$player['game']['character_name']?>s ships"
 			href="<?=base_url('inventory/ships/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Ships">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			Ships
 		</a>
@@ -27,7 +27,7 @@
 			title="See <?=$player['game']['character_name']?>s crew members"
 			href="<?=base_url('inventory/crew/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Crew members">
-				<use xlink:href="#crew-man"></use>
+				<use xlink:href="#icon-crew-man"></use>
 			</svg>
 			Crew
 		</a>
@@ -35,7 +35,7 @@
 			title="See graphs and data about <?=$player['game']['character_name']?>s history"
 			href="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="History">
-				<use xlink:href="#clock"></use>
+				<use xlink:href="#icon-clock"></use>
 			</svg>
 			History
 		</a>
@@ -43,7 +43,7 @@
 			title="Check out <?=$player['game']['character_name']?>s log book"
 			href="<?=base_url('inventory/log/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Log book">
-				<use xlink:href="#logbook"></use>
+				<use xlink:href="#icon-logbook"></use>
 			</svg>
 			Log book
 		</a>
@@ -189,7 +189,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Cannons">
-					<use xlink:href="#cannons"></use>
+					<use xlink:href="#icon-cannons"></use>
 				</svg>
 				Total cannons
 			</td>
@@ -200,7 +200,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Cannons">
-					<use xlink:href="#cannons"></use>
+					<use xlink:href="#icon-cannons"></use>
 				</svg>
 				Manned cannons
 			</td>
@@ -211,7 +211,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Raft">
-					<use xlink:href="#raft"></use>
+					<use xlink:href="#icon-raft"></use>
 				</svg>
 				Rafts
 			</td>
@@ -222,7 +222,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Prisoners">
-					<use xlink:href="#prisoners"></use>
+					<use xlink:href="#icon-prisoners"></use>
 				</svg>
 				Prisoners
 			</td>

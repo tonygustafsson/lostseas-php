@@ -15,7 +15,7 @@
 		<a class="ajaxHTML button big-icon" title="Buy something to eat or drink"
 			href="<?=base_url('tavern')?>">
 			<svg width="32" height="32" alt="Buy">
-				<use xlink:href="#rum"></use>
+				<use xlink:href="#icon-rum"></use>
 			</svg>
 			Buy
 		</a>
@@ -24,21 +24,21 @@
 			button big-icon" title="Talk to the sailors at the bar"
 			href="<?=base_url('tavern/sailors')?>">
 			<svg width="32" height="32" alt="Sailors">
-				<use xlink:href="#pirate"></use>
+				<use xlink:href="#icon-pirate"></use>
 			</svg>
 			Sailors
 		</a>
 		<a class="ajaxHTML button big-icon" title="Gamble for gold!"
 			href="<?=base_url('tavern/gamble')?>">
 			<svg width="32" height="32" alt="Gamble">
-				<use xlink:href="#dices"></use>
+				<use xlink:href="#icon-dices"></use>
 			</svg>
 			Gamble
 		</a>
 		<a class="ajaxHTML button big-icon" title="Play black jack"
 			href="<?=base_url('tavern/blackjack')?>">
 			<svg width="32" height="32" alt="Black Jack">
-				<use xlink:href="#cards"></use>
+				<use xlink:href="#icon-cards"></use>
 			</svg>
 			Black Jack
 		</a>
@@ -60,7 +60,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Gamble">
-					<use xlink:href="#dices"></use>
+					<use xlink:href="#icon-dices"></use>
 				</svg>
 				Gamble with dices
 			</legend>

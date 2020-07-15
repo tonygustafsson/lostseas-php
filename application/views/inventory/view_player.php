@@ -11,7 +11,7 @@
 			title="Learn more about <?=$player['user']['name']?>"
 			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
-				<use xlink:href="#player"></use>
+				<use xlink:href="#icon-player"></use>
 			</svg>
 			Player
 		</a>
@@ -19,7 +19,7 @@
 			title="See <?=$player['game']['character_name']?>s ships"
 			href="<?=base_url('inventory/ships/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Ships">
-				<use xlink:href="#ship"></use>
+				<use xlink:href="#icon-ship"></use>
 			</svg>
 			Ships
 		</a>
@@ -27,7 +27,7 @@
 			title="See <?=$player['game']['character_name']?>s crew members"
 			href="<?=base_url('inventory/crew/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Crew members">
-				<use xlink:href="#crew-man"></use>
+				<use xlink:href="#icon-crew-man"></use>
 			</svg>
 			Crew
 		</a>
@@ -35,7 +35,7 @@
 			title="See graphs and data about <?=$player['game']['character_name']?>s history"
 			href="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="History">
-				<use xlink:href="#clock"></use>
+				<use xlink:href="#icon-clock"></use>
 			</svg>
 			History
 		</a>
@@ -43,7 +43,7 @@
 			title="Check out <?=$player['game']['character_name']?>s log book"
 			href="<?=base_url('inventory/log/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Log book">
-				<use xlink:href="#logbook"></use>
+				<use xlink:href="#icon-logbook"></use>
 			</svg>
 			Log book
 		</a>
@@ -195,7 +195,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Doubloons">
-					<use xlink:href="#doubloons"></use>
+					<use xlink:href="#icon-doubloons"></use>
 				</svg>
 				Doubloons (Cash)
 			</td>
@@ -206,7 +206,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Savings">
-					<use xlink:href="#savings"></use>
+					<use xlink:href="#icon-savings"></use>
 				</svg>
 				Bank account
 			</td>
@@ -217,7 +217,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Loan">
-					<use xlink:href="#loan"></use>
+					<use xlink:href="#icon-loan"></use>
 				</svg>
 				Bank loan
 			</td>
@@ -281,7 +281,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Food">
-					<use xlink:href="#food"></use>
+					<use xlink:href="#icon-food"></use>
 				</svg>
 				Food
 			</td>
@@ -292,7 +292,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Water">
-					<use xlink:href="#water"></use>
+					<use xlink:href="#icon-water"></use>
 				</svg>
 				Water
 			</td>
@@ -303,7 +303,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Porcelain">
-					<use xlink:href="#porcelain"></use>
+					<use xlink:href="#icon-porcelain"></use>
 				</svg>
 				Porcelain
 			</td>
@@ -314,7 +314,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Spices">
-					<use xlink:href="#spices"></use>
+					<use xlink:href="#icon-spices"></use>
 				</svg>
 				Spices
 			</td>
@@ -325,7 +325,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Silk">
-					<use xlink:href="#silk"></use>
+					<use xlink:href="#icon-silk"></use>
 				</svg>
 				Silk
 			</td>
@@ -336,7 +336,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Tobacco">
-					<use xlink:href="#tobacco"></use>
+					<use xlink:href="#icon-tobacco"></use>
 				</svg>
 				Tobacco
 			</td>
@@ -347,7 +347,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Rum">
-					<use xlink:href="#rum"></use>
+					<use xlink:href="#icon-rum"></use>
 				</svg>
 				Rum
 			</td>
@@ -358,7 +358,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Medicine">
-					<use xlink:href="#medicine"></use>
+					<use xlink:href="#icon-medicine"></use>
 				</svg>
 				Medicine
 			</td>
@@ -377,7 +377,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="England">
-					<use xlink:href="#flag-england"></use>
+					<use xlink:href="#icon-flag-england"></use>
 				</svg>
 				England
 			</td>
@@ -388,7 +388,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="France">
-					<use xlink:href="#flag-france"></use>
+					<use xlink:href="#icon-flag-france"></use>
 				</svg>
 				France
 			</td>
@@ -399,7 +399,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Holland">
-					<use xlink:href="#flag-holland"></use>
+					<use xlink:href="#icon-flag-holland"></use>
 				</svg>
 				Holland
 			</td>
@@ -410,7 +410,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Spain">
-					<use xlink:href="#flag-spain"></use>
+					<use xlink:href="#icon-flag-spain"></use>
 				</svg>
 				Spain
 			</td>
@@ -421,7 +421,7 @@
 		<tr>
 			<td>
 				<svg width="24" height="24" alt="Pirates">
-					<use xlink:href="#flag-pirates"></use>
+					<use xlink:href="#icon-flag-pirates"></use>
 				</svg>
 				Pirates
 			</td>

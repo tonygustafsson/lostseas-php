@@ -11,21 +11,21 @@
 		<a class="ajaxHTML button big-icon" title="Transfer money to and from your bank account"
 			href="<?=base_url('bank')?>">
 			<svg width="32" height="32" alt="Savings">
-				<use xlink:href="#savings"></use>
+				<use xlink:href="#icon-savings"></use>
 			</svg>
 			Account
 		</a>
 		<a class="ajaxHTML button big-icon" title="Take or pay back a loan"
 			href="<?=base_url('bank/loan')?>">
 			<svg width="32" height="32" alt="Loan">
-				<use xlink:href="#loan"></use>
+				<use xlink:href="#icon-loan"></use>
 			</svg>
 			Loans
 		</a>
 		<a class="ajaxHTML button big-icon" title="Take or pay back a loan"
 			href="<?=base_url('bank/stocks')?>">
 			<svg width="32" height="32" alt="Stocks">
-				<use xlink:href="#stocks"></use>
+				<use xlink:href="#icon-stocks"></use>
 			</svg>
 			Stocks
 		</a>
@@ -53,7 +53,7 @@
 		<fieldset>
 			<legend>
 				<svg width="32" height="32" alt="Savings">
-					<use xlink:href="#savings"></use>
+					<use xlink:href="#icon-savings"></use>
 				</svg>
 				Bank account
 			</legend>

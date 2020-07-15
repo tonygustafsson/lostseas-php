@@ -57,7 +57,7 @@
 <aside id="inventory_panel" class="inventory-panel">
     <a class="js-panel-close top-nav-panel__close-btn">
         <svg width="20" height="20" alt="Close">
-            <use xlink:href="#close"></use>
+            <use xlink:href="#icon-close"></use>
         </svg>
     </a>
 
@@ -86,23 +86,23 @@
             title="You have <?=$game['crew_members']?> crew members with the health <?=$game['crew_health_lowest']?>%"
             href="<?=base_url('inventory/crew/' . $user['id'])?>">
             <svg alt="Ships" width="24" height="24">
-                <use xlink:href="#crew-man"></use>
+                <use xlink:href="#icon-crew-man"></use>
             </svg>
             <svg id="inventory_crew_health_25" alt="Crew Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$crew_health_img_25_display?>">
-                <use xlink:href="#heart-25"></use>
+                <use xlink:href="#icon-heart-25"></use>
             </svg>
             <svg id="inventory_crew_health_50" alt="Crew Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$crew_health_img_50_display?>">
-                <use xlink:href="#heart-50"></use>
+                <use xlink:href="#icon-heart-50"></use>
             </svg>
             <svg id="inventory_crew_health_75" alt="Crew Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$crew_health_img_75_display?>">
-                <use xlink:href="#heart-75"></use>
+                <use xlink:href="#icon-heart-75"></use>
             </svg>
             <svg id="inventory_crew_health_100" alt="Crew Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$crew_health_img_100_display?>">
-                <use xlink:href="#heart-100"></use>
+                <use xlink:href="#icon-heart-100"></use>
             </svg>
             <span id="inventory_crew"><?=$game['crew_members']?></span>
             men
@@ -116,27 +116,27 @@
             href="<?=base_url('inventory/crew/' . $user['id'])?>">
             <svg id="inventory_crew_mood_aggressive" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_aggressive_display?>">
-                <use xlink:href="#mood-aggressive"></use>
+                <use xlink:href="#icon-mood-aggressive"></use>
             </svg>
             <svg id="inventory_crew_mood_grumpy" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_grumpy_display?>">
-                <use xlink:href="#mood-grumpy"></use>
+                <use xlink:href="#icon-mood-grumpy"></use>
             </svg>
             <svg id="inventory_crew_mood_calm" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_calm_display?>">
-                <use xlink:href="#mood-calm"></use>
+                <use xlink:href="#icon-mood-calm"></use>
             </svg>
             <svg id="inventory_crew_mood_cheerful" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_cheerful_display?>">
-                <use xlink:href="#mood-cheerful"></use>
+                <use xlink:href="#icon-mood-cheerful"></use>
             </svg>
             <svg id="inventory_crew_mood_happy" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_happy_display?>">
-                <use xlink:href="#mood-happy"></use>
+                <use xlink:href="#icon-mood-happy"></use>
             </svg>
             <svg id="inventory_crew_mood_euphoric" alt="Mood" width="24" height="24"
                 style="display: <?=$crew_mood_euphoric_display?>">
-                <use xlink:href="#mood-euphoric"></use>
+                <use xlink:href="#icon-mood-euphoric"></use>
             </svg>
             <span id="inventory_crew_mood"><?=$game['crew_lowest_friendly_mood']?></span>
         </a>
@@ -146,7 +146,7 @@
         <a class="ajaxHTML" title="Doubloons that you can use immediately"
             href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
             <svg alt="Doubloons" width="24" height="24">
-                <use xlink:href="#doubloons"></use>
+                <use xlink:href="#icon-doubloons"></use>
             </svg>
             <span id="inventory_doubloons"><?=$game['doubloons']?></span>
             dbl
@@ -158,7 +158,7 @@
         <a class="ajaxHTML" title="Doubloons in your bank account"
             href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
             <svg alt="Savings" width="24" height="24">
-                <use xlink:href="#savings"></use>
+                <use xlink:href="#icon-savings"></use>
             </svg>
             <span id="inventory_bank_account"><?=$game['bank_account']?></span>
             dbl
@@ -170,7 +170,7 @@
         <a class="ajaxHTML" title="Your bank loan amount"
             href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
             <svg alt="Loan" width="24" height="24">
-                <use xlink:href="#loan"></use>
+                <use xlink:href="#icon-loan"></use>
             </svg>
             <span id="inventory_bank_loan"><?=$game['bank_loan']?></span>
             dbl
@@ -182,7 +182,7 @@
         <a class="ajaxHTML" title="Doubloons invested in stocks"
             href="<?=base_url('inventory/player/' . $user['id'])?>#capital">
             <svg alt="Stocks" width="24" height="24">
-                <use xlink:href="#stocks"></use>
+                <use xlink:href="#icon-stocks"></use>
             </svg>
             <span id="inventory_bank_stocks"><?=$game['stock_total_worth']?></span>
             dbl
@@ -193,7 +193,7 @@
         <a class="ajaxHTML" title="Amount of weeks that has passed, see log book"
             href="<?=base_url('inventory/log/' . $user['id'])?>">
             <svg alt="Log book" width="24" height="24">
-                <use xlink:href="#logbook"></use>
+                <use xlink:href="#icon-logbook"></use>
             </svg>
             week <span id="inventory_week"><?=$game['week']?></span>
         </a>
@@ -207,23 +207,23 @@
             title="You own <?=$game['ships']?> ships with the health <?=$game['ship_health_lowest']?>%"
             href="<?=base_url('inventory/ships/' . $user['id'])?>">
             <svg alt="Ships" width="24" height="24">
-                <use xlink:href="#ship"></use>
+                <use xlink:href="#icon-ship"></use>
             </svg>
             <svg id="inventory_ships_health_25" alt="Ship Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$ship_health_img_25_display?>">
-                <use xlink:href="#heart-25"></use>
+                <use xlink:href="#icon-heart-25"></use>
             </svg>
             <svg id="inventory_ships_health_50" alt="Ship Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$ship_health_img_50_display?>">
-                <use xlink:href="#heart-50"></use>
+                <use xlink:href="#icon-heart-50"></use>
             </svg>
             <svg id="inventory_ships_health_75" alt="Ship Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$ship_health_img_75_display?>">
-                <use xlink:href="#heart-75"></use>
+                <use xlink:href="#icon-heart-75"></use>
             </svg>
             <svg id="inventory_ships_health_100" alt="Ship Health" width="24" height="24" class="addon-icon"
                 style="display: <?=$ship_health_img_100_display?>">
-                <use xlink:href="#heart-100"></use>
+                <use xlink:href="#icon-heart-100"></use>
             </svg>
             <span id="inventory_ships"><?=$game['ships']?></span>
             <?=($game['ships'] > 1) ? 'ships' : 'ship'; ?>
@@ -235,7 +235,7 @@
             title="You own <?=$game['cannons']?> cannons, <?=$game['manned_cannons']?> are manned"
             href="<?=base_url('inventory/ships/' . $user['id'])?>">
             <svg alt="Cannon" width="24" height="24">
-                <use xlink:href="#cannons"></use>
+                <use xlink:href="#icon-cannons"></use>
             </svg>
             <span id="inventory_manned_cannons"><?=$game['manned_cannons']?></span>/<span
                 id="inventory_cannons"><?=$game['cannons']?></span>
@@ -248,7 +248,7 @@
         <a class="ajaxHTML" title="Your life boats, used in shipwreck"
             href="<?=base_url('inventory/ships/' . $user['id'])?>">
             <svg alt="Raft" width="24" height="24">
-                <use xlink:href="#raft"></use>
+                <use xlink:href="#icon-raft"></use>
             </svg>
             <span id="inventory_rafts"><?=$game['rafts']?></span>
             <?=($game['rafts'] > 1) ? 'rafts' : 'raft'; ?>
@@ -263,7 +263,7 @@
         <a class="ajaxHTML" title="Your prisoners, can be left in City Hall for a ransom"
             href="<?=base_url('inventory/ships/' . $user['id'])?>">
             <svg alt="Raft" width="24" height="24">
-                <use xlink:href="#prisoners"></use>
+                <use xlink:href="#icon-prisoners"></use>
             </svg>
             <span id="inventory_prisoners"><?=$game['prisoners']?></span>
             prisoners
@@ -274,7 +274,7 @@
         <a class="ajaxHTML" title="Your food, used by crew members for sea traveling"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Food" width="24" height="24">
-                <use xlink:href="#food"></use>
+                <use xlink:href="#icon-food"></use>
             </svg>
             <span id="inventory_food"><?=$game['food']?></span> food
         </a>
@@ -284,7 +284,7 @@
         <a class="ajaxHTML" title="Your water, used by crew members for sea traveling"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Water" width="24" height="24">
-                <use xlink:href="#water"></use>
+                <use xlink:href="#icon-water"></use>
             </svg>
             <span id="inventory_water"><?=$game['water']?></span>
             water
@@ -296,7 +296,7 @@
         <a class="ajaxHTML" title="Your porcelain, used as barter goods"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Porcelain" width="24" height="24">
-                <use xlink:href="#porcelain"></use>
+                <use xlink:href="#icon-porcelain"></use>
             </svg>
             <span id="inventory_porcelain"><?=$game['porcelain']?></span>
             porcelain
@@ -308,7 +308,7 @@
         <a class="ajaxHTML" title="Your spices, used as barter goods"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Spices" width="24" height="24">
-                <use xlink:href="#spices"></use>
+                <use xlink:href="#icon-spices"></use>
             </svg>
             <span id="inventory_spices"><?=$game['spices']?></span>
             spices
@@ -320,7 +320,7 @@
         <a class="ajaxHTML" title="Your silk, used as barter goods"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Silk" width="24" height="24">
-                <use xlink:href="#silk"></use>
+                <use xlink:href="#icon-silk"></use>
             </svg>
             <span id="inventory_silk"><?=$game['silk']?></span> silk
         </a>
@@ -331,7 +331,7 @@
         <a class="ajaxHTML" title="Your medicine, can heal crew members"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Medicine" width="24" height="24">
-                <use xlink:href="#medicine"></use>
+                <use xlink:href="#icon-medicine"></use>
             </svg>
             <span id="inventory_medicine"><?=$game['medicine']?></span>
             medicine
@@ -343,7 +343,7 @@
         <a class="ajaxHTML" title="Your tobacco, used as barter goods and can raise crew members mood"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Tobacco" width="24" height="24">
-                <use xlink:href="#tobacco"></use>
+                <use xlink:href="#icon-tobacco"></use>
             </svg>
             <span id="inventory_tobacco"><?=$game['tobacco']?></span>
             tobacco
@@ -355,7 +355,7 @@
         <a class="ajaxHTML" title="Your rum, used as barter goods and can raise crew members mood"
             href="<?=base_url('inventory/player/' . $user['id'])?>#goods">
             <svg alt="Rum" width="24" height="24">
-                <use xlink:href="#rum"></use>
+                <use xlink:href="#icon-rum"></use>
             </svg>
             <span id="inventory_rum"><?=$game['rum']?></span> rum
         </a>

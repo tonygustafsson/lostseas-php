@@ -82,7 +82,7 @@
 
 			<button type="submit" class="primary">
 				<svg width="32" height="32" alt="Doubloons">
-					<use xlink:href="#doubloons"></use>
+					<use xlink:href="#icon-doubloons"></use>
 				</svg>
 				Transfer
 			</button>
@@ -91,7 +91,7 @@
 				<a href="#" class="button shop-buy-necessities tooltip-bottom-right"
 					data-tooltip="Buy as much food and water you'll need for 5 days at sea">
 					<svg width="32" height="32" alt="Buy necessities">
-						<use xlink:href="#food"></use>
+						<use xlink:href="#icon-food"></use>
 					</svg>
 					Buy necessities
 				</a>
@@ -99,14 +99,14 @@
 				<a href="#" class="button shop-sell-barter-goods tooltip-bottom-right"
 					data-tooltip="Sell all items you won't need at sea">
 					<svg width="32" height="32" alt="Sell barter goods">
-						<use xlink:href="#barrels"></use>
+						<use xlink:href="#icon-barrels"></use>
 					</svg>
 					Sell barter goods
 				</a>
 
 				<a href="#" class="button shop-reset tooltip-bottom-right" data-tooltip="Start over, reset this form">
 					<svg width="32" height="32" alt="Reset">
-						<use xlink:href="#broom"></use>
+						<use xlink:href="#icon-broom"></use>
 					</svg>
 					Reset
 				</a>
