@@ -127,7 +127,7 @@
 							href="<?=base_url('godmode/ship_delete')?>/<?=$current_ship['id']?>"
 							title="Delete ship">
 							<svg width="16" height="16" alt="Delete">
-								<use xlink:href="#icon-broom"></use>
+								<use xlink:href="#icon-trashcan"></use>
 							</svg>
 						</a>
 						<input type="text"

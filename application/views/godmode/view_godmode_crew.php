@@ -124,7 +124,7 @@
 							href="<?=base_url('godmode/crew_delete')?>/<?=$current_crew['id']?>"
 							title="Delete crew member">
 							<svg width="16" height="16" alt="Delete">
-								<use xlink:href="#icon-broom"></use>
+								<use xlink:href="#icon-trashcan"></use>
 							</svg>
 						</a>
 						<input type="text"

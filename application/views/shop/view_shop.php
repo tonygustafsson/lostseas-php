@@ -106,7 +106,7 @@
 
 				<a href="#" class="button shop-reset tooltip-bottom-right" data-tooltip="Start over, reset this form">
 					<svg width="32" height="32" alt="Reset">
-						<use xlink:href="#icon-broom"></use>
+						<use xlink:href="#icon-trashcan"></use>
 					</svg>
 					Reset
 				</a>
