@@ -329,17 +329,17 @@ class Tavern extends Main
         switch ($gamble_result) {
             case 'GAMBLE_WIN_JACKPOT':
                 $data['success'] = 'JACKPOT!! You made a bet for ' . $bet . ' doubloons and won ' . $gamble_profit . ' doubloons!';
-                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and won ' . $gamble_profit . ' dbl.';
+                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl when playing dice and won ' . $gamble_profit . ' dbl.';
                 $sound = 'cheering';
                 break;
             case 'GAMBLE_WIN':
                 $data['success'] = 'You made a bet for ' . $bet . ' doubloons and won ' . $gamble_profit . ' doubloons!';
-                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and won ' . $gamble_profit . ' dbl.';
+                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl when playing dice and won ' . $gamble_profit . ' dbl.';
                 $sound = 'cheering';
                 break;
             case 'GAMBLE_LOOSE':
                 $data['info'] = 'You made a bet for ' . $bet . ' doubloons and lost.';
-                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl at the tavern and lost.';
+                $log_input['entry'] = 'made a bet for ' . $bet . ' dbl when playing dice and lost.';
                 $sound = 'dices';
                 break;
         }
@@ -364,7 +364,7 @@ class Tavern extends Main
         $data['changeElements']['current_money']['val'] = $new_money;
         $data['changeElements']['last_bet']['val'] = $next_bet;
         $data['event'] = 'tavern-gamble-post';
-
+        
         $this->Log->create($log_input);
         
         echo json_encode($data);
@@ -515,6 +515,9 @@ class Tavern extends Main
 
             $this->data['viewdata']['busted'] = true;
             $data['info'] = 'You busted and lost your money to the bank.';
+
+            $log_input['entry'] = 'played Black Jack and busted. Lost ' . $event['bet'] . ' dbl.';
+            $this->Log->create($log_input);
         } else {
             if ($this->data['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'card';
@@ -569,6 +572,9 @@ class Tavern extends Main
             $this->data['viewdata']['dealer_won'] = true;
             $data['info'] = 'You lost to the dealer and lost your money.';
 
+            $log_input['entry'] = 'played Black Jack and lost ' . $event['bet'] . ' dbl to the dealer.';
+            $this->Log->create($log_input);
+
             if ($this->data['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'argh';
             }
@@ -581,9 +587,13 @@ class Tavern extends Main
 
             if ($blackjack) {
                 $data['success'] = 'BLACK JACK! You won ' . $winning_sum . ' doubloons!';
+                $log_input['entry'] = 'got BLACK JACK at the tavern and won ' . $winning_sum . ' dbl.';
             } else {
                 $data['success'] = 'You won ' . $winning_sum . ' doubloons!';
+                $log_input['entry'] = 'played Black Jack and won ' . $winning_sum . ' dbl.';
             }
+
+            $this->Log->create($log_input);
 
             if ($this->data['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'cheering';
