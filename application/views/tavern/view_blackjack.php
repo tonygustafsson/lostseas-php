@@ -59,10 +59,10 @@
             (<?=$viewdata['total_dealer_value']?>/21)
             <?php endif; ?>
         </h4>
-        <div class="blackjack__table">
+        <div class="blackjack__table mt-4">
             <?php foreach ($viewdata['dealer_cards'] as $card): ?>
             <div
-                class="blackjack__card blackjack__card--<?=$card['suite_name']?>">
+                class="mr-2 mb-2 blackjack__card blackjack__card--<?=$card['suite_name']?>">
                 <span class="blackjack__card__symbol"><?=$card['suite_symbol']?></span><?=$card['value']?>
             </div>
             <?php endforeach; ?>
@@ -79,10 +79,10 @@
             <?php endif; ?>
         </h4>
 
-        <div class="blackjack__table">
+        <div class="blackjack__table mt-4">
             <?php foreach ($viewdata['cards'] as $card): ?>
             <div
-                class="blackjack__card blackjack__card--<?=$card['suite_name']?>">
+                class="mr-2 mb-2 blackjack__card blackjack__card--<?=$card['suite_name']?>">
                 <span class="blackjack__card__symbol"><?=$card['suite_symbol']?></span><?=$card['value']?>
             </div>
             <?php endforeach; ?>
@@ -121,13 +121,13 @@
 
             <p
                 class="text-right blackjack__bet-buttons <?=count($viewdata['cards']) <= 0 ? 'blackjack__bet-buttons--active' : ''?>">
-                <button type="button" class="js-tavern-bet-set" data-value="10">10%</button>
-                <button type="button" class="js-tavern-bet-set" data-value="25">25%</button>
-                <button type="button" class="js-tavern-bet-set" data-value="50">50%</button>
-                <button type="button" class="js-tavern-bet-set" data-value="75">75%</button>
-                <button type="button" class="js-tavern-bet-set" data-value="100">100%</button>
+                <button type="button" class="js-tavern-bet-set mt-1" data-value="10">10%</button>
+                <button type="button" class="js-tavern-bet-set mt-1" data-value="25">25%</button>
+                <button type="button" class="js-tavern-bet-set mt-1" data-value="50">50%</button>
+                <button type="button" class="js-tavern-bet-set mt-1" data-value="75">75%</button>
+                <button type="button" class="js-tavern-bet-set mt-1" data-value="100">100%</button>
 
-                <button type="submit" class="primary">Play</button>
+                <button type="submit" class="primary mt-1">Play</button>
             </p>
         </form>
     </fieldset>
@@ -137,10 +137,10 @@
     <form class="ajaxJSON" method="post"
         action="<?=base_url('tavern/blackjack_draw')?>">
         <p class="text-center">
-            <a class="ajaxJSON button big"
+            <a class="ajaxJSON button big mt-1"
                 href="<?=base_url('tavern/blackjack_stand')?>"
                 type="button">Stand</a>
-            <button type="submit" class="primary big">Draw</button>
+            <button type="submit" class="primary big mt-1">Draw</button>
         </p>
     </form>
     <?php endif; ?>

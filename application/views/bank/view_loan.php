@@ -76,8 +76,8 @@
 		</fieldset>
 
 		<p class="text-right">
-			<button type="button" class="js-bank-loan-reset">Reset</button>
-			<button type="submit" class="primary">Transfer</button>
+			<button type="button" class="js-bank-loan-reset mt-1">Reset</button>
+			<button type="submit" class="primary mt-1">Transfer</button>
 		</p>
 	</form>
 </div>

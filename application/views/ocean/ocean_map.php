@@ -1,6 +1,6 @@
 <div class="ocean-map">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 850 540" preserveAspectRatio="xMinYMin meet">
+        viewBox="0 0 850 540" preserveAspectRatio="xMinYMin meet" class="mt-1">
         <image width="850" height="540"
             xlink:href="<?=base_url('assets/images/map/spanish-main.jpg')?>" />
 

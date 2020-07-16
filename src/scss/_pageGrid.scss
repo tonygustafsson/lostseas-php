@@ -1,0 +1,43 @@
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'header header header header header header header header header header header header' 'actions actions content content content content content content content content inventory inventory';
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    column-gap: 10px;
+    width: 95%;
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+
+    @include mobile {
+        grid-template-areas: 'header header header header header header header header header header header header' 'content content content content content content content content content content content content';
+        grid-template-rows: 1fr;
+        grid-gap: 0;
+        width: 100%;
+    }
+}
+
+.header-panel {
+    grid-area: header;
+}
+
+.action-panel {
+    grid-area: actions;
+}
+
+.login-panel {
+    grid-area: actions;
+}
+
+.inventory-panel {
+    grid-area: inventory;
+}
+
+.log-panel {
+    grid-area: inventory;
+}
+
+.content-panel {
+    grid-area: content;
+}

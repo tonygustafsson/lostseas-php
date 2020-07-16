@@ -3,8 +3,8 @@
     <fieldset>
         <legend>Start playing without signing up...</legend>
 
-        <div class="flex">
-            <div class="text-center">
+        <div class="row">
+            <div class="col-2 text-center">
                 <input type="hidden" id="character_avatar" name="character_avatar"
                     value="<?=$character['character_avatar']?>">
 
@@ -12,7 +12,7 @@
                     src="<?=$character['character_avatar_path']?>"
                     alt="Avatar"><br />
 
-                <button type="button" id="js-start-avatar-selector-trigger">Change</button><br />
+                <button class="mt-2 mb-2" type="button" id="js-start-avatar-selector-trigger">Change</button><br />
 
                 <a class="ajaxJSON"
                     href="<?=base_url('settings/generate_character')?>"
@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-            <div class="flex-full">
+            <div class="col-10">
                 <label for="character_name" style="margin-top: -16px">Character name</label>
                 <input id="character_name" type="text" name="character_name"
                     value="<?=$character['character_name']?>" />

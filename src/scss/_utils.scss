@@ -29,51 +29,6 @@
     }
 }
 
-.flex {
-    display: flex;
-    flex-direction: row;
-
-    & > div:first-child {
-        margin-right: 8px;
-
-        @include mobile {
-            margin-right: 0;
-        }
-    }
-
-    @include mobile {
-        flex-direction: column;
-    }
-}
-
-.flex-full {
-    flex: 1 0 0;
-}
-
-.flex-align-center {
-    align-items: center;
-}
-
-.flex-align-right {
-    justify-content: flex-end;
-}
-
-.container {
-    padding: #{$spacing * 2} #{$spacing * 4};
-
-    & + & {
-        padding-top: 0;
-    }
-
-    @include mobile {
-        padding: #{$spacing * 2} $spacing;
-    }
-}
-
-.ml-auto {
-    margin-left: auto;
-}
-
 .error {
     padding: 0.5em 1em;
     background-color: $red;
@@ -112,40 +67,5 @@
 
     @include mobile {
         display: none;
-    }
-}
-
-// Margins and paddings
-
-$directions: (
-    "r": "right",
-    "l": "left",
-    "t": "top",
-    "b": "bottom"
-);
-
-$levels: 6;
-
-@for $i from 0 through $levels {
-    @each $direction, $directionLong in $directions {
-        .m#{$direction}-#{$i} {
-            margin-#{$directionLong}: $spacing * $i;
-        }
-        
-        .m#{$direction}-mobile-#{$i} {
-            @include mobile {
-                margin-#{$directionLong}: $spacing * $i !important;
-            }
-        }
-
-        .p#{$direction}-#{$i} {
-            padding-#{$directionLong}: $spacing * $i;
-        }
-        
-        .p#{$direction}-mobile-#{$i} {
-            @include mobile {
-                padding-#{$directionLong}: $spacing * $i !important;
-            }
-        }
     }
 }

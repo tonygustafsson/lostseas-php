@@ -88,7 +88,7 @@
 		<fieldset>
 			<legend>Profile picture</legend>
 
-			<div id="image_preview">
+			<div class="text-center" id="image_preview">
 				<img
 					src="<?=$viewdata['profile_picture']?>">
 			</div>

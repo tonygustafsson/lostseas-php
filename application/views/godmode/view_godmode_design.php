@@ -39,6 +39,60 @@
         </a>
     </div>
 
+    <style>
+        .example-row>div {
+            border: 2px white solid;
+            text-align: center;
+            background: #afcddf;
+        }
+    </style>
+
+    <h3>Specified grid</h3>
+
+    <div class="row example-row">
+        <div class="col-12">col-12</div>
+        <div class="col-6">col-6</div>
+        <div class="col-6">col-6</div>
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+        <div class="col-2">col-2</div>
+        <div class="col-2">col-2</div>
+        <div class="col-2">col-2</div>
+        <div class="col-1">col-1</div>
+        <div class="col-1">col-1</div>
+        <div class="col-1">col-1</div>
+        <div class="col-1">col-1</div>
+        <div class="col-1">col-1</div>
+        <div class="col-1">col-1</div>
+    </div>
+
+    <h3>Auto grid</h3>
+
+    <div class="row example-row">
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+    </div>
+
+    <h3>Responsive grid</h3>
+
+    <div class="row example-row">
+        <div class="col-12 order-0">col-12</div>
+        <div class="col-3 order-m-2">col-3</div>
+        <div class="col-9 order-m-1">col-9</div>
+        <div class="col-6 col-m-6">col-6 col-m-6</div>
+        <div class="col-6 col-m-6">col-6 col-m-6</div>
+        <div class="col-6 col-m-9">col-6 col-m-9</div>
+        <div class="col-6 col-m-3">col-6 col-m-3</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+    </div>
+
     <h3>Buttons</h3>
 
     <button>Default</button>

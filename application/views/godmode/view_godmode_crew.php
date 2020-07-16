@@ -39,7 +39,7 @@
 		</a>
 	</div>
 
-	<div class="text-center">
+	<div class="text-center mt-4 mb-4">
 		<form method="post" id="godmode_change_user" action="">
 			<select name="godmode_change_user">
 				<?php foreach ($players as $this_player): ?>
@@ -89,37 +89,59 @@
 		<input type="hidden" name="user_id"
 			value="<?=$player['user']['id']?>">
 
-		<table id="crew_table" class="godmode">
-			<tr>
-				<th>Name</th>
-				<th>Mood <a class="js-godmode-change-all-in-column" data-change-for="mood" href="#"
-						title="Change mood for all crew members">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-				<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#"
-						title="Change health for all crew members">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-				<th>Doubloons <a class="js-godmode-change-all-in-column" data-change-for="doubloons" href="#"
-						title="Change doubloons for all crew members">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-			</tr>
+		<div class="table-responsive">
+			<table id="crew_table" class="godmode">
+				<tr>
+					<th>Name</th>
+					<th>Mood <a class="js-godmode-change-all-in-column" data-change-for="mood" href="#"
+							title="Change mood for all crew members">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#"
+							title="Change health for all crew members">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th>Doubloons <a class="js-godmode-change-all-in-column" data-change-for="doubloons" href="#"
+							title="Change doubloons for all crew members">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th></th>
+				</tr>
 
-			<?php foreach ($crew as $current_crew): ?>
-			<tr
-				id="<?=$current_crew['id']?>_row">
-				<td>
-					<div class="flex flex-align-center">
+				<?php foreach ($crew as $current_crew): ?>
+				<tr
+					id="<?=$current_crew['id']?>_row">
+					<td>
+						<input type="text"
+							id="<?=$current_crew['id']?>_name"
+							name="<?=$current_crew['id']?>_name"
+							value="<?=$current_crew['name']?>">
+					</td>
+					<td><input type="number"
+							id="<?=$current_crew['id']?>_mood"
+							name="<?=$current_crew['id']?>_mood"
+							value="<?=$current_crew['mood']?>">
+					</td>
+					<td><input type="number"
+							id="<?=$current_crew['id']?>_health"
+							name="<?=$current_crew['id']?>_health"
+							value="<?=$current_crew['health']?>">
+					</td>
+					<td><input type="number"
+							id="<?=$current_crew['id']?>_doubloons"
+							name="<?=$current_crew['id']?>_doubloons"
+							value="<?=$current_crew['doubloons']?>">
+					</td>
+					<td>
 						<a class="ajaxJSON"
 							href="<?=base_url('godmode/crew_delete')?>/<?=$current_crew['id']?>"
 							title="Delete crew member">
@@ -127,31 +149,11 @@
 								<use xlink:href="#icon-trashcan"></use>
 							</svg>
 						</a>
-						<input type="text"
-							id="<?=$current_crew['id']?>_name"
-							name="<?=$current_crew['id']?>_name"
-							value="<?=$current_crew['name']?>">
-					</div>
-				</td>
-				<td><input type="number"
-						id="<?=$current_crew['id']?>_mood"
-						name="<?=$current_crew['id']?>_mood"
-						value="<?=$current_crew['mood']?>">
-				</td>
-				<td><input type="number"
-						id="<?=$current_crew['id']?>_health"
-						name="<?=$current_crew['id']?>_health"
-						value="<?=$current_crew['health']?>">
-				</td>
-				<td><input type="number"
-						id="<?=$current_crew['id']?>_doubloons"
-						name="<?=$current_crew['id']?>_doubloons"
-						value="<?=$current_crew['doubloons']?>">
-				</td>
-			</tr>
-			<?php endforeach; ?>
-
-		</table>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
 
 		<p class="text-right">
 			<button type="submit">Save</button>

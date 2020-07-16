@@ -88,7 +88,7 @@
 			</button>
 
 			<p id="shop_overview" class="text-right">
-				<a href="#" class="button shop-buy-necessities tooltip-bottom-right"
+				<a href="#" class="button shop-buy-necessities tooltip-bottom-right mt-1"
 					data-tooltip="Buy as much food and water you'll need for 5 days at sea">
 					<svg width="32" height="32" alt="Buy necessities">
 						<use xlink:href="#icon-food"></use>
@@ -96,7 +96,7 @@
 					Buy necessities
 				</a>
 
-				<a href="#" class="button shop-sell-barter-goods tooltip-bottom-right"
+				<a href="#" class="button shop-sell-barter-goods tooltip-bottom-right mt-1"
 					data-tooltip="Sell all items you won't need at sea">
 					<svg width="32" height="32" alt="Sell barter goods">
 						<use xlink:href="#icon-barrels"></use>
@@ -104,7 +104,8 @@
 					Sell barter goods
 				</a>
 
-				<a href="#" class="button shop-reset tooltip-bottom-right" data-tooltip="Start over, reset this form">
+				<a href="#" class="button shop-reset tooltip-bottom-right mt-1"
+					data-tooltip="Start over, reset this form">
 					<svg width="32" height="32" alt="Reset">
 						<use xlink:href="#icon-trashcan"></use>
 					</svg>

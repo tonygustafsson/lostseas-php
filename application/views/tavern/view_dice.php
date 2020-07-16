@@ -86,13 +86,13 @@
 		</fieldset>
 
 		<p style="text-align: right;">
-			<button type="button" class="js-tavern-bet-set" data-value="10">10%</button>
-			<button type="button" class="js-tavern-bet-set" data-value="25">25%</button>
-			<button type="button" class="js-tavern-bet-set" data-value="50">50%</button>
-			<button type="button" class="js-tavern-bet-set" data-value="75">75%</button>
-			<button type="button" class="js-tavern-bet-set" data-value="100">100%</button>
+			<button type="button" class="js-tavern-bet-set mt-1" data-value="10">10%</button>
+			<button type="button" class="js-tavern-bet-set mt-1" data-value="25">25%</button>
+			<button type="button" class="js-tavern-bet-set mt-1" data-value="50">50%</button>
+			<button type="button" class="js-tavern-bet-set mt-1" data-value="75">75%</button>
+			<button type="button" class="js-tavern-bet-set mt-1" data-value="100">100%</button>
 
-			<button type="submit" class="primary">Gamble</button>
+			<button type="submit" class="primary mt-1">Gamble</button>
 		</p>
 	</form>
 </div>

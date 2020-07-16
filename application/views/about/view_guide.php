@@ -14,8 +14,8 @@
 <?php endif; ?>
 
 <div class="container">
+	<?php if (!$logged_in): ?>
 	<div class="button-area">
-		<?php if (!$logged_in): ?>
 		<a class="ajaxHTML button big-icon" title="Presentation about the game"
 			href="<?=base_url('about/presentation')?>">
 			<svg width="32" height="32" class="Start">
@@ -31,8 +31,8 @@
 			</svg>
 			Guide
 		</a>
-		<?php endif; ?>
 	</div>
+	<?php endif; ?>
 
 	<h3>Table of contents</h3>
 

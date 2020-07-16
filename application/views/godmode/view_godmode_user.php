@@ -39,7 +39,7 @@
 		</a>
 	</div>
 
-	<div class="text-center">
+	<div class="text-center mt-4 mb-4">
 		<form method="post" id="godmode_change_user" action="">
 			<select name="godmode_change_user">
 				<?php foreach ($players as $this_player): ?>

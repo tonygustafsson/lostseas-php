@@ -23,8 +23,8 @@
 		<fieldset>
 			<legend>Your character</legend>
 
-			<div class="flex">
-				<div class="text-center">
+			<div class="row">
+				<div class="col-2 text-center">
 					<input type="hidden" id="character_avatar" name="character_avatar"
 						value="<?=$game['character_avatar']?>">
 
@@ -32,7 +32,8 @@
 						src="<?=$game['character_avatar_path']?>"
 						alt="Avatar"><br>
 
-					<button type="button" id="js-start-avatar-selector-trigger">Change</button><br />
+					<button class="small mt-1 mb-1 mt-m-2 mb-m-2" type="button"
+						id="js-start-avatar-selector-trigger">Change</button><br />
 
 					<a class="ajaxJSON"
 						href="<?=base_url('settings/generate_character')?>"
@@ -43,7 +44,7 @@
 					</a>
 				</div>
 
-				<div class="flex-full">
+				<div class="col-10">
 					<label for="character_name">Name</label>
 					<input id="character_name" type="text" name="character_name"
 						value="<?=$game['character_name']?>" />

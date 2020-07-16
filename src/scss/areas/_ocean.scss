@@ -10,7 +10,6 @@
     & > svg {
         width: 100%;
         box-shadow: 0px 0px 20px 3px #0000008a;
-        margin-top: $spacing;
 
         @include mobile {
             height: 620px;

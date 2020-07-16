@@ -52,14 +52,14 @@
 	<h4>Player: <?=$player['user']['name']?>
 	</h4>
 
-	<div class="flex" style="margin: 1em 2em;">
-		<div style="padding-top: 1em;">
-			<img style="border: 1px black solid;"
+	<div class="row">
+		<div class="col-2">
+			<img class="mt-2"
 				src="<?=$viewdata['profile_picture']?>"
 				alt="<?=$player['user']['name']?>">
 		</div>
 
-		<div class="w-100">
+		<div class="col-10">
 			<table class="table-fixed">
 				<?php if ($player['user']['email'] != "" && $player['user']['id'] == $user['id']): ?>
 				<tr>
@@ -123,14 +123,14 @@
 	<h4 id="character">Character: <?=$player['game']['character_name']?>
 	</h4>
 
-	<div class="flex" style="margin: 1em 2em;">
-		<div style="padding-top: 1em;">
-			<img style="border: 1px black solid;"
+	<div class="row">
+		<div class="col-2">
+			<img class="mt-2"
 				src="<?=$player['game']['character_avatar_path']?>"
 				alt="<?=$player['game']['character_name']?>">
 		</div>
 
-		<div class="w-100">
+		<div class="col-10">
 			<table class="table-fixed" id="inventory" style="padding-bottom: 2em;">
 
 				<tr>

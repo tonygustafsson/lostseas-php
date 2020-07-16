@@ -39,7 +39,7 @@
 		</a>
 	</div>
 
-	<div class="text-center">
+	<div class="text-center mt-4 mb-4">
 		<form method="post" id="godmode_change_user" action="">
 			<select name="godmode_change_user">
 				<?php foreach ($players as $this_player): ?>
@@ -92,37 +92,59 @@
 		<input type="hidden" name="user_id"
 			value="<?=$player['user']['id']?>">
 
-		<table class="godmode" id="ship_table">
-			<tr>
-				<th>Name</th>
-				<th>Type <a class="js-godmode-change-all-in-column" data-change-for="type" href="#"
-						title="Change type for all ships">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-				<th>Age <a class="js-godmode-change-all-in-column" data-change-for="age" href="#"
-						title="Change age for all ships">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-				<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#"
-						title="Change health for all ships">
-						<svg width="16" height="16" alt="Change all">
-							<use xlink:href="#icon-pencil"></use>
-						</svg>
-					</a>
-				</th>
-			</tr>
+		<div class="table-responsive">
+			<table class="godmode" id="ship_table">
+				<tr>
+					<th>Name</th>
+					<th>Type <a class="js-godmode-change-all-in-column" data-change-for="type" href="#"
+							title="Change type for all ships">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th>Age <a class="js-godmode-change-all-in-column" data-change-for="age" href="#"
+							title="Change age for all ships">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th>Health <a class="js-godmode-change-all-in-column" data-change-for="health" href="#"
+							title="Change health for all ships">
+							<svg width="16" height="16" alt="Change all">
+								<use xlink:href="#icon-pencil"></use>
+							</svg>
+						</a>
+					</th>
+					<th></th>
+				</tr>
 
-			<?php foreach ($player_ships as $current_ship): ?>
-			<tr
-				id="<?=$current_ship['id']?>_row">
-				<td>
-					<div class="flex flex-align-center">
+				<?php foreach ($player_ships as $current_ship): ?>
+				<tr
+					id="<?=$current_ship['id']?>_row">
+					<td>
+						<input type="text"
+							id="<?=$current_ship['id']?>_name"
+							name="<?=$current_ship['id']?>_name"
+							value="<?=$current_ship['name']?>">
+					</td>
+					<td><input type="text"
+							id="<?=$current_ship['id']?>_type"
+							name="<?=$current_ship['id']?>_type"
+							value="<?=$current_ship['type']?>">
+					</td>
+					<td><input type="number"
+							id="<?=$current_ship['id']?>_age"
+							name="<?=$current_ship['id']?>_age"
+							value="<?=$current_ship['age']?>">
+					</td>
+					<td><input type="number"
+							id="<?=$current_ship['id']?>_health"
+							name="<?=$current_ship['id']?>_health"
+							value="<?=$current_ship['health']?>">
+					</td>
+					<td>
 						<a class="ajaxJSON"
 							href="<?=base_url('godmode/ship_delete')?>/<?=$current_ship['id']?>"
 							title="Delete ship">
@@ -130,31 +152,11 @@
 								<use xlink:href="#icon-trashcan"></use>
 							</svg>
 						</a>
-						<input type="text"
-							id="<?=$current_ship['id']?>_name"
-							name="<?=$current_ship['id']?>_name"
-							value="<?=$current_ship['name']?>">
-					</div>
-				</td>
-				<td><input type="text"
-						id="<?=$current_ship['id']?>_type"
-						name="<?=$current_ship['id']?>_type"
-						value="<?=$current_ship['type']?>">
-				</td>
-				<td><input type="number"
-						id="<?=$current_ship['id']?>_age"
-						name="<?=$current_ship['id']?>_age"
-						value="<?=$current_ship['age']?>">
-				</td>
-				<td><input type="number"
-						id="<?=$current_ship['id']?>_health"
-						name="<?=$current_ship['id']?>_health"
-						value="<?=$current_ship['health']?>">
-				</td>
-			</tr>
-			<?php endforeach; ?>
-
-		</table>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
 
 		<p class="text-right">
 			<button type="submit">Save</button>

@@ -132,7 +132,7 @@
 		</div>
 
 		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
-		<div class="flex flex-align-right">
+		<div class="row row-justify-right">
 			<button type="submit" class="mr-1">Do it</button>
 
 			<select name="action[]">
@@ -143,11 +143,9 @@
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
-			</p>
 			<?php endif; ?>
-
+		</div>
 	</form>
-
 	<?php else: ?>
 	<p><em>You are not companied any crew members...</em></p>
 	<?php endif; ?>

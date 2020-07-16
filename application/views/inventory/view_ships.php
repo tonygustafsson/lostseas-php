@@ -115,12 +115,12 @@
 		<h3 class="dialog-title"><?=$current_ship['name']?>
 		</h3>
 
-		<div class="flex pt-1">
-			<div style="flex: 1 0 25%">
+		<div class="row pt-2">
+			<div class="col-3">
 				<img width="100" class="w-100"
 					src="<?=base_url('assets/images/ships/' . $current_ship['type'] .'.jpg')?>" />
 			</div>
-			<div>
+			<div class="col-9">
 				<p class="mt-0"><?=$ship_specs[$current_ship['type']]['description']?>
 				</p>
 			</div>
@@ -130,13 +130,17 @@
 
 		<form method="post" class="ajaxJSON"
 			action="<?=base_url('inventory/change_ship_name/' . $player['user']['id'])?>">
-			<div class="flex">
-				<input type="hidden" name="ship_id" id="ship_id"
-					value="<?=$current_ship['id']?>" />
-				<input type="text"
-					value="<?=$current_ship['name']?>"
-					name="ship_name" id="ship_name" required maxlength="50" minlength="3" />
-				<button type="submit" class="ml-1 ml-mobile-0">Change</button>
+			<div class="row">
+				<div class="col-8">
+					<input type="hidden" name="ship_id" id="ship_id"
+						value="<?=$current_ship['id']?>" />
+					<input type="text"
+						value="<?=$current_ship['name']?>"
+						name="ship_name" id="ship_name" required maxlength="50" minlength="3" />
+				</div>
+				<div class="col-4">
+					<button type="submit" class="ml-1 ml-m-0">Change</button>
+				</div>
 			</div>
 		</form>
 

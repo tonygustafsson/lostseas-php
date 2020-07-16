@@ -120,8 +120,8 @@
 		</fieldset>
 
 		<p style="text-align: right;">
-			<button type="button" class="js-shipyard-reset">Reset</button>
-			<button type="submit" class="primary">Transfer</button>
+			<button type="button" class="js-shipyard-reset mt-1">Reset</button>
+			<button type="submit" class="primary mt-1">Transfer</button>
 		</p>
 	</form>
 

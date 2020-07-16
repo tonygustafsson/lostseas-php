@@ -57,6 +57,8 @@ const createDialogActionArea = (dialogEl, dialogActions) => {
         const linkEl = document.createElement('a');
         linkEl.classList.add('dialog-button');
         linkEl.classList.add('button');
+        linkEl.classList.add('mr-1');
+        linkEl.classList.add('mt-m-1');
 
         if (action.title) {
             linkEl.innerText = action.title;

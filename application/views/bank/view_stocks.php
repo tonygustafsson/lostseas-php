@@ -79,13 +79,13 @@
 		<h3 class="dialog-title"><?=$stock['name']?>
 		</h3>
 
-		<div class="flex pt-1">
-			<div style="flex: 1 0 25%">
+		<div class="row pt-1">
+			<div class="col-3">
 				<svg width="100" height="100" class="w-100">
 					<use xlink:href="#icon-stocks"></use>
 				</svg>
 			</div>
-			<div>
+			<div class="col-9">
 				<p class="mt-0"><?=$viewdata['items'][$stock['name_id']]['description']?>
 				</p>
 			</div>
@@ -161,13 +161,13 @@
 		<h3 class="dialog-title"><?=$stock['name']?>
 		</h3>
 
-		<div class="flex pt-1">
-			<div style="flex: 1 0 25%">
+		<div class="row pt-1">
+			<div class="col-3">
 				<svg width="100" height="100" class="w-100">
 					<use xlink:href="#icon-stocks"></use>
 				</svg>
 			</div>
-			<div>
+			<div class="col-9">
 				<p class="mt-0"><?=$stock['description']?>
 				</p>
 			</div>

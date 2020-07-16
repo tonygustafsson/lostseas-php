@@ -1,12 +1,12 @@
 button,
 .button {
     display: inline-block;
+    max-width: 100%;
     background-color: #fff;
     color: #000;
     font-family: $font-montaga;
     font-size: 1.2rem;
     line-height: 0.5;
-    margin: 8px 0;
     padding: 0.75em 1em;
     border: 1px $lightgrey solid;
     user-select: none;
