@@ -30,7 +30,7 @@
             <label for="login_password">Password</label>
             <input type="password" value="Tony19831528" id="login_password" name="login_password" />
 
-            <p style="font-size: 12px; margin: 0 1em;">
+            <p style="font-size: 12px; margin: 0 0 1em 0;">
                 <a style="color: #000" class="ajaxHTML"
                     href="<?=base_url('account/password_forgotten')?>">Have
                     you forgotten your password?

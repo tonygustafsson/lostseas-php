@@ -159,7 +159,8 @@
                 </a>
 
                 <?php else: ?>
-                <p style="padding-left: 2em;"><em>A pirate influenced web game.</em></p>
+                <p style="padding-left: 1em;">A pirate influenced web game. Play for free now, without signup or
+                        ads.</p>
                 <?php endif; ?>
         </nav>
 </div>

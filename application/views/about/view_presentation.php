@@ -27,7 +27,7 @@
 		</a>
 	</div>
 
-	<h3>Presentation</h3>
+	<h3>About Lost Seas</h3>
 
 	<p>
 		This is a pirate-influenced, web based game in beta stage. No registration is neccessary - just press Play!
@@ -46,8 +46,8 @@
 	</p>
 
 	<p>
-		Please read the <a
-			href="<?=base_url('about/guide_supplies')?>">guide</a>
+		Please read the <a class="ajaxHTML"
+			href="<?=base_url('about')?>">guide</a>
 		if you want to know more before you start playing!
 	</p>
 
