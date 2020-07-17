@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const updateEveryMs = 60000;
 
-let updateInterval;
-
 const ping = () => {
     const loggOutBtnEl = document.getElementById('nav_logout');
     const url = window.appPath + 'ping';
@@ -18,25 +16,14 @@ const ping = () => {
         window.dispatchEvent(weatherEvent);
     });
 
-    updateInterval = setTimeout(ping, updateEveryMs);
+    setTimeout(ping, updateEveryMs);
 };
-
-const startChecks = (e) => {
-    updateInterval = setTimeout(ping, updateEveryMs);
-};
-
-const stopChecks = (e) => {
-    clearInterval(updateInterval);
-};
-
-window.addEventListener('focus', startChecks);
-window.addEventListener('blur', stopChecks);
 
 window.addEventListener('load', () => {
     const logOutBtnEl = document.getElementById('nav_logout');
 
     if (logOutBtnEl) {
         // Only run if logged in
-        startChecks();
+        setTimeout(ping, updateEveryMs);
     }
 });
