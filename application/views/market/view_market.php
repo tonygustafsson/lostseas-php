@@ -49,7 +49,7 @@
 		<a class="ajaxJSON button big-image"
 			href="<?=base_url('market/buy_slaves')?>">
 			<svg width="128" height="128" alt="Slaves">
-				<use xlink:href="#prisoners">
+				<use xlink:href="#icon-prisoners">
 				</use>
 			</svg>
 			<?=$game['event']['market']['slaves']['quantity']?>
