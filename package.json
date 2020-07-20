@@ -11,7 +11,7 @@
         "compile": "webpack",
         "icons": "node createIcons.js",
         "sync": "browser-sync start --proxy http://localhost:8080",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "./node_modules/.bin/cypress open"
     },
     "repository": {
         "type": "git",
@@ -29,6 +29,7 @@
         "cheerio": "^1.0.0-rc.3",
         "concurrently": "^5.2.0",
         "css-loader": "^3.5.3",
+        "cypress": "^4.10.0",
         "file-loader": "^6.0.0",
         "fs": "0.0.1-security",
         "nouislider": "^14.5.0",
