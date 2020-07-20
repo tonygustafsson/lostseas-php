@@ -91,7 +91,6 @@ class Godmode extends Main
             $data['info'] = 'No changes made.';
         }
 
-        $data['event'] = 'updated-dom';
         $data['loadView'] = $this->load->view('godmode/view_godmode_game', $this->data, true);
 
         echo json_encode($data);
@@ -158,7 +157,6 @@ class Godmode extends Main
             $this->data['player_ships'] = $this->Ship->get($this->data['player']['user']['id']);
 
             $data['loadView'] = $this->load->view('godmode/view_godmode_ship', $this->data, true);
-            $data['event'] = 'updated-dom';
         } else {
             $data['error'] = 'Something went wrong. No ship created...';
         }
@@ -272,7 +270,6 @@ class Godmode extends Main
             $this->data['crew'] = $this->Crew->get(array('user_id' => $this->data['player']['user']['id']));
 
             $data['loadView'] = $this->load->view('godmode/view_godmode_crew', $this->data, true);
-            $data['event'] = 'updated-dom';
         } else {
             $data['error'] = 'Something went wrong. No crew members created...';
         }

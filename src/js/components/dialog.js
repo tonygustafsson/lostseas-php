@@ -11,6 +11,9 @@ const showDialog = (dialogEl) => {
     body.style.overflowY = 'hidden';
 
     dialogEl.classList.add('show');
+
+    // We need to trigger ajax triggers in case of action buttons
+    window.dispatchEvent(new Event('trigger-ajax-request-listeners'));
 };
 
 const closeDialog = (dialogEl) => {

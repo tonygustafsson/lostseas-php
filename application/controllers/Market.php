@@ -122,7 +122,6 @@ class Market extends Main
 
         $data['success'] = 'You bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl.';
         $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
-        $data['event'] = 'updated-dom';
 
         echo json_encode($data);
     }
@@ -178,7 +177,6 @@ class Market extends Main
         }
 
         $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
-        $data['event'] = 'updated-dom';
 
         echo json_encode($data);
     }
@@ -255,7 +253,6 @@ class Market extends Main
         }
 
         $data['loadView'] = $this->load->view('market/view_market', $this->data, true);
-        $data['event'] = 'updated-dom';
 
         echo json_encode($data);
     }

@@ -22,7 +22,7 @@ const triggerEventFromUrl = () => {
     console.log('Event: ' + eventName);
 
     window.dispatchEvent(new Event(eventName));
-    window.dispatchEvent(new Event('updated-dom'));
+    window.dispatchEvent(new Event('trigger-ajax-request-listeners'));
 };
 
 const ajaxJsonRequest = (e) => {
@@ -54,8 +54,6 @@ const ajaxJsonRequest = (e) => {
                 dialogContent: promptText ? `<p>${promptText}</p>` : '',
                 dialogActions: [{ title: 'Yes', url: url, primary: true }, { title: 'No' }]
             });
-
-            window.dispatchEvent(new Event('updated-dom'));
 
             return false;
         }
@@ -200,14 +198,15 @@ const addEventListeners = () => {
     });
 };
 
-window.addEventListener('updated-dom', () => {
-    console.log('Updated DOM.');
+window.addEventListener('trigger-ajax-request-listeners', () => {
+    console.log('Updated DOM. Create event listneres for AJAX.');
     addEventListeners();
 });
 
 window.addEventListener('popstate', onPopState);
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content loaded. Create event listeners for AJAX.');
     triggerEventFromUrl();
-    addEventListeners();
+    //addEventListeners();
 });

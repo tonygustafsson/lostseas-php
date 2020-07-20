@@ -455,7 +455,6 @@ class Tavern extends Main
         $this->data['viewdata']['event'] = $event;
         $this->data['game']['event']['tavern_blackjack'] = json_encode($event);
     
-        $data['event'] = 'updated-dom';
         $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
       
         echo json_encode($data);
@@ -526,7 +525,6 @@ class Tavern extends Main
             $this->data['game']['event']['tavern_blackjack'] = $event;
         }
     
-        $data['event'] = 'updated-dom';
         $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
       
         echo json_encode($data);
@@ -609,7 +607,6 @@ class Tavern extends Main
             $data['changeElements'] = $result['changeElements'];
         }
 
-        $data['event'] = 'updated-dom';
         $data['loadView'] = $this->load->view('tavern/view_blackjack', $this->data, true);
       
         echo json_encode($data);

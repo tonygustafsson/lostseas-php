@@ -26,8 +26,6 @@ const createTriggers = () => {
             dialogActions: [{ title: 'Buy', url: url, primary: true }, { title: 'Cancel' }]
         });
     });
-
-    window.dispatchEvent(new Event('updated-dom'));
 };
 
 window.addEventListener('bank-stocks', createTriggers);

@@ -157,6 +157,11 @@ const manipulateDom = (data) => {
     if (data.error) {
         snackbar({ text: data.error, level: 'error' });
     }
+
+    if (data.changeElements || data.loadView) {
+        // View has changed, need to rerun the ajax event listneners
+        window.dispatchEvent(new Event('trigger-ajax-request-listeners'));
+    }
 };
 
 export default manipulateDom;
