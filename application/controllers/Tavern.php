@@ -363,7 +363,7 @@ class Tavern extends Main
             
         $data['changeElements']['current_money']['val'] = $new_money;
         $data['changeElements']['last_bet']['val'] = $next_bet;
-        $data['event'] = 'tavern-dice-post';
+        $data['triggerJsEvents'][] = 'tavern-dice-post';
         
         $this->Log->create($log_input);
         
