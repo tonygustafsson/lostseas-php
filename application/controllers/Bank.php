@@ -73,7 +73,7 @@ class Bank extends Main
             $data['changeElements']['current_money']['value'] = $new_money;
             $data['changeElements']['current_money_bank']['value'] = $new_bank_money;
 
-            $data['event'] = 'bank-account-post';
+            $data['triggerJsEvents'][] = 'bank-account-post';
 
             if ($this->data['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'coins';
@@ -143,7 +143,7 @@ class Bank extends Main
             $data['changeElements']['current_money']['value'] = $new_money;
             $data['changeElements']['current_money_bank_loan']['value'] = $new_bank_loan;
 
-            $data['event'] = 'bank-loan-post';
+            $data['triggerJsEvents'][] = 'bank-loan-post';
 
             if ($this->data['user']['sound_effects_play'] == 1) {
                 $data['playSound'] = 'coins';
@@ -221,7 +221,7 @@ class Bank extends Main
         $data['changeElements'] = $result['changeElements'];
         $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
         $data['success'] = 'You bought a stock in ' . $stock['name'] . '.';
-        $data['event'] = 'bank-stocks';
+        $data['triggerJsEvents'][] = 'bank-stocks';
 
         echo json_encode($data);
     }
@@ -262,7 +262,7 @@ class Bank extends Main
         $data['changeElements'] = $result['changeElements'];
         $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
         $data['success'] = 'You sold your stock ' . $stock['name'] . '.';
-        $data['event'] = 'bank-stocks';
+        $data['triggerJsEvents'][] = 'bank-stocks';
 
         echo json_encode($data);
     }

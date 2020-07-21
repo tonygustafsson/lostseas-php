@@ -353,7 +353,7 @@ class Ocean extends Main
         }
             
         // Below is happening either you win or lose
-        $data['event'] = 'ocean-battle-over';
+        $data['triggerJsEvents'][] = 'ocean-battle-over';
             
         // Ship health decrease
         $ship_output = $this->Ship->update($ship_updates);
@@ -528,7 +528,7 @@ class Ocean extends Main
             
         $data['loadView'] = $this->load->view($view, $this->data, true);
         $data['pushState'] = base_url($this->data['game']['place']);
-        $data['event'] = 'ocean-battle-transfer-done';
+        $data['triggerJsEvents'][] = 'ocean-battle-transfer-done';
 
         echo json_encode($data);
     }
@@ -783,7 +783,7 @@ class Ocean extends Main
             $data['changeElements']['nav_ship_meeting_unfriendly']['visibility'] = 'none';
             $data['changeElements']['nav_ship_meeting_friendly']['visibility'] = 'none';
             $data['changeElements']['nav_ship_meeting_neutral']['visibility'] = 'none';
-            $data['event'] = 'ocean-trade-done';
+            $data['triggerJsEvents'][] = 'ocean-trade-done';
 
             $view = ($this->data['game']['place'] == 'ocean') ? 'ocean/view_ocean' : 'harbor/view_harbor';
             $data['loadView'] = $this->load->view($view, $this->data, true);

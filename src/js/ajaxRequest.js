@@ -71,10 +71,12 @@ const ajaxJsonRequest = (e) => {
         .then((response) => {
             manipulateDom(response.data);
 
-            // Send JS event
-            if (response.data.event) {
-                console.log('Event: ' + response.data.event);
-                window.dispatchEvent(new Event(response.data.event));
+            // Send JS events
+            if (response.data.triggerJsEvents && response.data.triggerJsEvents.length > 0) {
+                response.data.triggerJsEvents.forEach(event => {
+                    console.log('Event: ' + event);
+                    window.dispatchEvent(new Event(event));
+                })
             }
 
             if (typeof window.gtag == typeof Function) {
