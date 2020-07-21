@@ -25,10 +25,10 @@
             <?php endif; ?>
 
             <label for="login_email">Email</label>
-            <input type="text" value="mail@tonyg.se" id="login_email" name="login_email" autofocus />
+            <input type="text" id="login_email" name="login_email" autofocus />
 
             <label for="login_password">Password</label>
-            <input type="password" value="Tony19831528" id="login_password" name="login_password" />
+            <input type="password" id="login_password" name="login_password" />
 
             <p style="font-size: 12px; margin: 0 0 1em 0;">
                 <a style="color: #000" class="ajaxHTML"
