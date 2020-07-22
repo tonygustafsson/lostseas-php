@@ -9,8 +9,7 @@
 
 body {
     background-color: $lightblue;
-    background-image: url('/assets/images/design/background-ship.svg'),
-        url('/assets/images/design/back_sky.jpg');
+    background-image: url('/assets/images/design/background-ship.svg'), url('/assets/images/design/back_sky.jpg');
     background-position: bottom left, top left;
     background-repeat: no-repeat, no-repeat;
     background-size: contain, contain;
@@ -41,8 +40,7 @@ body {
             position: fixed;
             top: 50%;
             left: 50%;
-            margin-left: -80px;
-            margin-top: -30px;
+            transform: translate(-50%, -50%);
             height: 60px;
             width: 160px;
             font-size: 2.5rem;
