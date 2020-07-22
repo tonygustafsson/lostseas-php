@@ -63,15 +63,15 @@
 
     <h3>Inventory</h3>
 
-    <div class="inventory_user">
+    <div class="inventory-user">
         <a class="ajaxHTML"
             href="<?=base_url('inventory/player/' . $user['id'])?>#character">
-            <div style="height: 100%; width: 40px">
+            <div class="inventory-user__img">
                 <img id="inventory_character_avatar"
                     src="<?=$game['character_avatar_path']?>"
                     alt="Character avatar" width="120" height="120">
             </div>
-            <div style="width: 100%;">
+            <div class="inventory-user__text">
                 <span id="inventory_character_name"><?=$game['character_name']?></span>
                 from <span id="inventory_nationality"><?=ucwords($game['nationality'])?></span>
             </div>
