@@ -49,11 +49,14 @@
 	<meta name="keywords" content="<?=$meta_keywords?>">
 	<?php endif; ?>
 
+	<meta name="theme-color" content="#e5f0f6" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<link rel="manifest"
 		href="<?=base_url('site.webmanifest')?>">
 
+	<link rel="apple-touch-icon"
+		href="<?=base_url('assets/images/logo.png')?>">
 	<link rel="icon" type="image/svg+xml"
 		href="<?=base_url('assets/images/favicon.svg')?>">
 	<link href="https://fonts.googleapis.com/css2?family=Montaga" rel="stylesheet">
