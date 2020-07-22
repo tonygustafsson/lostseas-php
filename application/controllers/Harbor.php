@@ -25,7 +25,7 @@ class Harbor extends Main
                 // Update stock worth (week passed)
                 $this->load->library('Stockslib');
                 $result = $this->stockslib->update_stocks_worth($this->data['game']['stocks']);
-                $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);
+                $data['changeElements'] = $result['changeElements'] ? array_merge($data['changeElements'], $result['changeElements']) : $data['changeElements'];
 
                 $new_town = $this->config->item('towns');
                 $this->data['game']['nation'] = $new_town[$wanted_town]['nation'];
