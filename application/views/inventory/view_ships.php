@@ -126,6 +126,7 @@
 			</div>
 		</div>
 
+		<?php if ($user['id'] == $player['user']['id']): ?>
 		<label for="ship_name" class="mb-0">Name</label>
 
 		<form method="post" class="ajaxJSON"
@@ -143,6 +144,7 @@
 				</div>
 			</div>
 		</form>
+		<?php endif; ?>
 
 		<table>
 			<tr>
