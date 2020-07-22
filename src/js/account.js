@@ -48,8 +48,8 @@ const uploadProfilePic = (e) => {
         return;
     }
 
-    if (imageToUpload.size > 1000000) {
-        snackbar({ text: 'The image cannot be larger than 1 MB.', level: 'error' });
+    if (imageToUpload.size > 5000000) {
+        snackbar({ text: 'The image cannot be larger than 5 MB.', level: 'error' });
         return;
     }
 
