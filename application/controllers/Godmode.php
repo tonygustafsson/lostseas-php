@@ -356,6 +356,13 @@ class Godmode extends Main
     {
         $erased_users = $this->User->erase_temp_users();
         
+        $this->data['players'] = $this->User->get_players(array('verified_only' => true));
+            
+        if ($this->data['user']['admin'] == 1) {
+            $this->data['temp_players'] = $this->User->get_players(array('temp_only' => true));
+        }
+
+        $data['loadView'] = $this->load->view('inventory/view_players', $this->data, true);
         $data['success'] = 'Deleted ' . $erased_users . ' users.';
         echo json_encode($data);
     }
