@@ -1,7 +1,7 @@
 const path = require('path');
 
-const mode = 'development';
-const watch = true;
+const mode = 'production';
+const watch = false;
 
 module.exports = [
     {
@@ -16,6 +16,34 @@ module.exports = [
         output: {
             filename: 'main.js',
             path: path.resolve(__dirname, 'assets', 'js')
+        },
+        module: {
+            rules: [
+                {
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        targets: {
+                                            chrome: '80',
+                                            edge: '80',
+                                            firefox: '75',
+                                            safari: '13'
+                                        }
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        stats: {
+            entrypoints: false,
+            modules: false
         },
         plugins: []
     },
