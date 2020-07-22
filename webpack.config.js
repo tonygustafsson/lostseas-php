@@ -1,7 +1,7 @@
 const path = require('path');
 
 const mode = 'production';
-const watch = false;
+const watch = true;
 
 module.exports = [
     {

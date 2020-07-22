@@ -218,6 +218,10 @@ class Bank extends Main
 
         $this->data['viewdata']['items'] = $stocks;
 
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'coins';
+        }
+
         $data['changeElements'] = $result['changeElements'];
         $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
         $data['success'] = 'You bought a stock in ' . $stock['name'] . '.';
@@ -258,6 +262,10 @@ class Bank extends Main
 
         $stocks = $this->stockslib->get_available_stocks();
         $this->data['viewdata']['items'] = $stocks;
+
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'coins';
+        }
 
         $data['changeElements'] = $result['changeElements'];
         $data['loadView'] = $this->load->view('bank/view_stocks', $this->data, true);
