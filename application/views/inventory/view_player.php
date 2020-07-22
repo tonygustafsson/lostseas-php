@@ -54,7 +54,7 @@
 
 	<div class="row">
 		<div class="col-2">
-			<img class="mt-2"
+			<img class="mt-2 inventory__player-image"
 				src="<?=$viewdata['profile_picture']?>"
 				alt="<?=$player['user']['name']?>">
 		</div>

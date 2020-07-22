@@ -74,8 +74,8 @@
 		</form>
 	</div>
 
-	<div class="inventory-charts">
-		<div class="inventory-charts__item">
+	<div class="inventory__charts">
+		<div class="inventory__charts__item">
 			<h4>Victories</h4>
 
 			<?php if ($chart_data['victories']): ?>
@@ -88,7 +88,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Level</h4>
 
 			<?php if ($chart_data['level']): ?>
@@ -101,7 +101,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Stock value</h4>
 
 			<?php if ($chart_data['stock_value']): ?>
@@ -114,7 +114,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Ships</h4>
 
 			<?php if ($chart_data['ships']): ?>
@@ -127,7 +127,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Doubloons</h4>
 
 			<?php if ($chart_data['doubloons']): ?>
@@ -141,7 +141,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Crew members</h4>
 
 			<?php if ($chart_data['crew_members']): ?>
@@ -154,7 +154,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Crew health</h4>
 
 			<?php if ($chart_data['crew_health']): ?>
@@ -167,7 +167,7 @@
 			<?php endif; ?>
 		</div>
 
-		<div class="inventory-charts__item">
+		<div class="inventory__charts__item">
 			<h4>Crew mood</h4>
 
 			<?php if ($chart_data['crew_mood']): ?>

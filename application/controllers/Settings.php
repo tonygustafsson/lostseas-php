@@ -74,23 +74,47 @@ class Settings extends Main
 
         //Save temporary uploaded file to right place
         $filename = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg';
-        $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
+
         file_put_contents($filename, $contents);
+
+        $exif_data = exif_read_data($filename);
+
+        if (isset($exif_data['Orientation'])) {
+            // Try to auto rotate image
+            switch ($exif_data['Orientation']) {
+                case 3:
+                    $config['rotation_angle'] = 180;
+                    break;
+                case 6:
+                    $config['rotation_angle'] = 270;
+                    break;
+                case 8:
+                    $config['rotation_angle'] = 90;
+                    break;
+            }
+        }
             
         //Resize the image
         $config['image_library'] = 'gd2';
         $config['source_image']	= $filename;
         $config['create_thumb'] = false;
-        $config['maintain_ratio'] = false;
+        $config['maintain_ratio'] = true;
         $config['width'] = 120;
         $config['height'] = 120;
-        $config['quality'] = 75;
+        $config['quality'] = 70;
 
-        $this->load->library('image_lib', $config);
-        $this->image_lib->resize();
-        $this->image_lib->clear();
+        $this->load->library('image_lib');
+
+        $this->image_lib->initialize($config);
+
+        if (!$this->image_lib->resize()) {
+            echo $this->image_lib->display_errors();
+        }
 
         //Make thumbnail
+        $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
+        $this->image_lib->clear();
+
         $config['image_library'] = 'gd2';
         $config['source_image']	= $filename;
         $config['new_image'] = $thumbname;
@@ -102,7 +126,7 @@ class Settings extends Main
 
         $this->image_lib->initialize($config);
         $this->image_lib->resize();
-            
+
         $data['manipulateDom']['success'] = 'Successfully uploaded profile picture.';
         
         echo json_encode($data);
