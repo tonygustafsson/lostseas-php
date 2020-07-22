@@ -1,4 +1,4 @@
-self.addEventListener('zinstall', function (event) {
+self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open('sw-cache').then(function (cache) {
             return cache.addAll([
@@ -12,7 +12,7 @@ self.addEventListener('zinstall', function (event) {
     );
 });
 
-self.addEventListener('zfetch', function (event) {
+self.addEventListener('fetch', function (event) {
     event.respondWith(
         caches.match(event.request).then(function (response) {
             return response || fetch(event.request);

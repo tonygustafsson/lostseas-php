@@ -26,7 +26,7 @@
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker
 				.register(
-					'<?=base_url('assets/js/serviceWorker.js')?>'
+					'<?=base_url('/serviceWorker.js')?>',
 				);
 		};
 
