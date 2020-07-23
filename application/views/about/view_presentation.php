@@ -51,6 +51,14 @@
 		if you want to know more before you start playing!
 	</p>
 
+	<h4>Browser support</h4>
+
+	<p>
+		To play this game you'll need a modern browser. Meaning an updated version of Chrome, Firefox, Safari or Edge.
+		It works on mobile phones using Safari or Chrome. If you are using Internet Explorer or Edge before version 80
+		you are out of luck. Feel free to try though.
+	</p>
+
 	<div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
 		data-base-url="<?=base_url('settings/avatar_selector/')?>"
 		data-img-base-url="<?=base_url('assets/images/avatars')?>">
