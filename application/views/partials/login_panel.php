@@ -25,7 +25,7 @@
             <?php endif; ?>
 
             <label for="login_email">Email</label>
-            <input type="text" id="login_email" name="login_email" autofocus />
+            <input type="text" id="login_email" name="login_email" />
 
             <label for="login_password">Password</label>
             <input type="password" id="login_password" name="login_password" />

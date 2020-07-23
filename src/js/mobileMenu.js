@@ -1,5 +1,7 @@
 const deviceMobileMax = 960;
 
+let isMobile = window.innerWidth <= deviceMobileMax;
+
 const show = (elementId, displayType) => {
     const element = document.getElementById(elementId);
     displayType = displayType ? displayType : 'block';
@@ -83,13 +85,24 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('resize', (e) => {
-    if (window.innerWidth >= deviceMobileMax) {
-        show('inventory_panel');
-        show('action_panel');
-        show('nav_top_panel', 'flex');
-    } else {
+    const newIsMobile = window.innerWidth <= deviceMobileMax;
+
+    if (isMobile === newIsMobile) {
+        // Avoid hiding/showing on every update
+        return;
+    }
+
+    if (newIsMobile) {
         hide('inventory_panel');
         hide('action_panel');
         hide('nav_top_panel');
+    } else {
+        show('inventory_panel');
+        show('action_panel');
+        show('nav_top_panel', 'flex');
     }
+
+    console.log('Updated');
+
+    isMobile = newIsMobile;
 });
