@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = true;
 
-$db['default']['hostname'] = "db";
-$db['default']['database'] = "lostseas";
-$db['default']['username'] = "lostseas";
-$db['default']['password'] = "lostseas";
+$db['default']['hostname'] = "lostseas-177202.mysql.binero.se";
+$db['default']['database'] = "177202-lostseas";
+$db['default']['username'] = "177202_qn90643";
+$db['default']['password'] = "0HoyPirateDataBase!";
 
 $db['default']['dbdriver'] = "mysqli";
 $db['default']['dbprefix'] = "";

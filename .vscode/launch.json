@@ -7,6 +7,13 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Launch build",
+            "program": "${workspaceFolder}/build/build.js",
+            "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch createIcons",
             "program": "${workspaceFolder}/createIcons.js",
             "skipFiles": ["<node_internals>/**"]
@@ -18,7 +25,7 @@
             "port": 9000,
             "pathMappings": {
                 "/var/www": "${workspaceRoot}"
-              }
+            }
         }
     ]
 }

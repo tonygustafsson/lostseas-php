@@ -30,6 +30,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/tests/
 /tests/results/
 
+/dist
 /docker/php-fpm/logs
 /docker/php-fpm/sessions
 node_modules

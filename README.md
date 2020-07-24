@@ -31,13 +31,29 @@ sudo chmod +777 ./docker/php-fpm/sessions/
 docker-compose up
 ```
 
-Then visit http://localhost:8000/ and restore the database backup in ./backup
+Then visit http://localhost:8000/ and restore the database backup from ./backup
 
 ## Start develop environment
 
 ```
 npm start
 ```
+
+## Requirements for production setup
+
+-   Web server
+-   PHP 7+
+-   MySQL / MariaDB
+
+## Build for production
+
+```
+npm install -g webpack webpack-cli
+npm install
+npm run build
+```
+
+Copy the ./dist folder to web server / FTP.
 
 ## Demo
 

@@ -1,7 +1,6 @@
 const path = require('path');
 
-const mode = 'development';
-const watch = true;
+const mode = 'production';
 
 console.log(`Building JS in ${mode} mode.`);
 
@@ -10,14 +9,10 @@ module.exports = [
         name: 'scripts',
         entry: './src/js/main.js',
         mode: mode,
-        watch: watch,
-        watchOptions: {
-            ignored: /node_modules/,
-            poll: 500
-        },
+        watch: false,
         output: {
             filename: 'main.js',
-            path: path.resolve(__dirname, 'assets', 'js')
+            path: path.resolve(__dirname, 'dist', 'assets', 'js')
         },
         module: {
             rules: [
@@ -53,10 +48,10 @@ module.exports = [
         name: 'styles',
         entry: './src/scss/main.scss',
         mode: mode,
-        watch: watch,
+        watch: false,
         output: {
             filename: 'styles.js',
-            path: path.resolve(__dirname, 'assets', 'js')
+            path: path.resolve(__dirname, 'dist', 'assets', 'js')
         },
         module: {
             rules: [

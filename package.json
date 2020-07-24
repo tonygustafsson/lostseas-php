@@ -9,6 +9,7 @@
     "scripts": {
         "start": "concurrently 'webpack' 'docker-compose up'",
         "compile": "webpack",
+        "build": "node ./build/build.js",
         "icons": "node createIcons.js",
         "sync": "browser-sync start --proxy http://localhost:8080",
         "test": "./node_modules/.bin/cypress open"
@@ -32,6 +33,7 @@
         "cypress": "^4.10.0",
         "file-loader": "^6.0.0",
         "fs": "0.0.1-security",
+        "fs-extra": "^9.0.1",
         "nouislider": "^14.5.0",
         "path": "^0.12.7",
         "sass": "^1.26.5",
