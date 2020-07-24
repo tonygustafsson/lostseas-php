@@ -7,7 +7,7 @@
     "background_color": "#e5f0f6",
     "theme_color": "#e5f0f6",
     "dir": "ltr",
-    "display": "standalone",
+    "display": "fullscreen",
     "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
