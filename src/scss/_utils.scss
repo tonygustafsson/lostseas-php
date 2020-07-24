@@ -1,0 +1,71 @@
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-small {
+    font-size: 0.9rem;
+}
+
+.w-100 {
+    width: 100%;
+    max-width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+    max-width: 50%;
+
+    @include mobile {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.error {
+    padding: 0.5em 1em;
+    background-color: $red;
+    color: #fff;
+}
+
+.border {
+    border: 2px $grey solid;
+}
+
+.img-right {
+    float: right;
+
+    @include mobile {
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.img-center {
+    display: block;
+    margin: 0 auto;
+}
+
+.mobile-only {
+    display: none;
+
+    @include mobile {
+        display: block;
+    }
+}
+
+.desktop-only {
+    display: block;
+
+    @include mobile {
+        display: none;
+    }
+}

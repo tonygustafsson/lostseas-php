@@ -1,0 +1,106 @@
+$background-color: #fff;
+$foreground-color: #000;
+$arrow-size: 8px;
+$vertical-shift: 12px;
+$multiline-width: 240px;
+$tooltip-padding: 8px 12px;
+$roundness: 3px;
+$shadow: 0 5px 15px -5px $blackglass;
+$animation-speed: 175ms;
+
+[data-tooltip] {
+    position: relative;
+    display: inline-block;
+    outline: none;
+
+    &:before,
+    &:after {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -$vertical-shift);
+        z-index: 1000;
+        pointer-events: none;
+        user-select: none;
+        opacity: 0;
+        transition: opacity $animation-speed ease $animation-speed;
+    }
+
+    // Tooltip Body
+    &:before {
+        content: attr(data-tooltip);
+        background: $background-color;
+        color: $foreground-color;
+        padding: $tooltip-padding;
+        white-space: nowrap;
+        bottom: 100%;
+        font-size: 1rem;
+
+        @if ($roundness != 0) {
+            border-radius: $roundness;
+        }
+        @if ($shadow != 0) {
+            box-shadow: $shadow;
+        }
+    }
+
+    // Tooltip Arrow
+    &:after {
+        content: '';
+        background: transparent;
+        border: $arrow-size solid transparent;
+        border-top-color: $background-color;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        &:before,
+        &:after {
+            opacity: 1;
+        }
+    }
+
+    &.tooltip-multiline {
+        &:before {
+            width: 100vw;
+            max-width: $multiline-width;
+            white-space: normal;
+        }
+    }
+
+    &[class*='tooltip-bottom'] {
+        &:before,
+        &:after {
+            transform: translate(-50%, $vertical-shift);
+        }
+        &:before {
+            bottom: auto;
+            top: 100%;
+        }
+        &:after {
+            bottom: 0;
+            border: $arrow-size solid transparent;
+            border-bottom-color: $background-color;
+        }
+    }
+
+    &.tooltip-bottom-left:before {
+        transform: translate(-($arrow-size * 3), $vertical-shift);
+    }
+
+    &.tooltip-bottom-right:before {
+        left: auto;
+        right: 50%;
+        transform: translate($arrow-size * 3, $vertical-shift);
+    }
+
+    &.tooltip-top-left:before {
+        transform: translate(-($arrow-size * 3), -$vertical-shift);
+    }
+
+    &.tooltip-top-right:before {
+        left: auto;
+        right: 50%;
+        transform: translate($arrow-size * 3, -$vertical-shift);
+    }
+}

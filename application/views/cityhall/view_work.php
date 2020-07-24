@@ -1,31 +1,60 @@
-<header title="<?=$game['town_human'] . ' ' . $game['place']?>">
-	<h2><?=$game['town_human'] . ' ' . $game['place']?></h2>
-	<img src="<?=base_url('assets/images/places/work_' . $game['nation'] . '.jpg')?>" class="header">
+<header class="area-header"
+	title="<?=$game['town_human'] . ' ' . $game['place']?>">
+	<h2 class="area-header__heading"><?=$game['town_human'] . ' ' . $game['place']?>
+	</h2>
+	<img src="<?=base_url('assets/images/places/work_' . $game['nation'] . '.png')?>"
+		class="area-header__img">
 </header>
 
-<section class="actions">
-	<a class="ajaxHTML" title="Talk to the governor" href="<?=base_url('cityhall/governor')?>"><img src="<?=base_url('assets/images/icons/cityhall_governor.png')?>" alt="Governor" width="32" height="32">Governor</a>
-	<? if ($this->user['game']['event_work'] != 'banned'): ?>
-		<a class="ajaxHTML" id="actions_work" title="Work to get some money" href="<?=base_url('cityhall/work')?>"><img src="<?=base_url('assets/images/icons/cityhall_work.png')?>" alt="Work" width="32" height="32">Work</a>
-	<? endif; ?>
-	<? if ($game['prisoners'] > 0 && $game['nation'] == $game['nationality']): ?>
-		<a id="action_prisoners" class="ajaxJSON" title="Hand over your prisoner and get a ransom" href="<?=base_url('cityhall/prisoners')?>"><img src="<?=base_url('assets/images/icons/cityhall_prisoners.png')?>" alt="Prisoners" width="32" height="32">Prisoners</a>
-	<? endif; ?>
-</section>
+<div class="container">
+	<div class="button-area">
+		<a class="ajaxHTML button big-icon" title="Talk to the governor"
+			href="<?=base_url('cityhall/governor')?>">
+			<svg width="32" height="32" alt="Governor">
+				<use xlink:href="#icon-governor"></use>
+			</svg>
+			Governor
+		</a>
+		<?php if (!isset($game['event']['cityhall_work']['banned'])): ?>
+		<a class="ajaxHTML button big-icon" id="actions_work" title="Work to get some money"
+			href="<?=base_url('cityhall/work')?>">
+			<svg width="32" height="32" alt="Work">
+				<use xlink:href="#icon-pickaxe"></use>
+			</svg>
+			Work
+		</a>
+		<?php endif; ?>
+		<?php if ($game['prisoners'] > 0 && $game['nation'] == $game['nationality']): ?>
+		<a id="action_prisoners" class="ajaxJSON button big-icon" title="Hand over your prisoner and get a ransom"
+			href="<?=base_url('cityhall/prisoners')?>">
+			<svg width="32" height="32" alt="Prisoners">
+				<use xlink:href="#icon-prisoners"></use>
+			</svg>
+			Prisoners
+		</a>
+		<?php endif; ?>
+	</div>
 
-<p>
-	You can only work once per town visit. The crew mood will be lowered by 1! The salary depends on the
-	occupation (chance), the number of crew members and their health.
-</p>
+	<p>
+		You can only work once per town visit. The crew mood will be lowered by 1! The salary depends on the
+		occupation (chance), the number of crew members and their health.
+	</p>
 
-<div id="msg"></div>
+	<?php if (!isset($game['event']['cityhall_work']['banned'])): ?>
+	<p>
+		You and your crew gets a job offer as <?=$viewdata['occupation']?> for
+		<strong><?=$viewdata['salary']?>
+			dbl</strong>. Take the offer?
+	</p>
 
-<? if (! empty($this->user['game']['event_work']) && $this->user['game']['event_work'] != 'banned'): ?>
-	<section id="offer" class="actions">
-		<p>You and your crew gets a job offer as <?=$occupation?> for <strong><?=$salary?> dbl</strong>. Take the offer?</p>
-	
-		<a class="ajaxJSON nopic positive" href="cityhall/work_accept" title="Get to work!">Yes</a>
-		<a class="ajaxHTML nopic negative" href="cityhall" title="I'm too lazy to work">No</a>
-	</section>
+	<div class="button-area">
+		<a class="ajaxJSON button big primary"
+			href="<?=base_url('cityhall/work_accept')?>"
+			title="Get to work!">Yes</a>
+		<a class="ajaxHTML button big"
+			href="<?=base_url('cityhall')?>"
+			title="I'm too lazy to work">No</a>
+	</div>
 
-<? endif; ?>
+	<?php endif; ?>
+</div>

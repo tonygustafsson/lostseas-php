@@ -1,0 +1,18 @@
+.init-page-load {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    p {
+        color: $red;
+        background: $whiteglass;
+        padding: 0.5em 1em;
+        z-index: 1000;
+        position: relative;
+    }
+
+    &--active {
+        display: block;
+    }
+}

@@ -1,0 +1,163 @@
+.inventory-panel {
+    border: 1px $lightgrey solid;
+    background-color: $whiteglass;
+    margin-bottom: 1em;
+    padding: 1em 0;
+    min-height: 360px;
+    height: auto;
+    text-align: center;
+    box-sizing: border-box;
+
+    &__close-btn {
+        display: none;
+    }
+
+    &-button {
+        display: none;
+        padding: 1em;
+
+        @include mobile {
+            display: block !important;
+            float: left;
+
+            img {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .inventory-user {
+        padding: 0 0.5em 1.5em 0.5em;
+        text-align: left;
+
+        a {
+            font-size: 1rem;
+            color: #000;
+            text-decoration: none;
+        }
+
+        &__img {
+            height: 100%;
+            width: 40px;
+
+            img {
+                border: none;
+                float: left;
+                margin-right: 5px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        &__text {
+            width: 100%;
+            height: 2.5em;
+
+            @include mobile {
+                height: auto;
+            }
+        }
+
+        @include mobile {
+            padding-bottom: 2.5em;
+        }
+    }
+
+    h3 {
+        font-size: 1.3rem;
+        margin: 0 0.75em 0.75em 0.75em;
+        letter-spacing: 0.1em;
+        text-align: left;
+    }
+
+    .inventory_item {
+        width: 100%;
+        font-size: 0.95rem;
+        margin-left: auto;
+        margin-right: auto;
+        height: 16px;
+        background-color: #fff;
+        margin-bottom: 12px;
+        text-align: left;
+        border-top: 1px $lightgrey solid;
+        border-bottom: 1px $lightgrey solid;
+        box-sizing: border-box;
+        transition: transform 1000ms;
+
+        a {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding-left: 0.3em;
+            position: relative;
+            top: -12px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        img,
+        svg {
+            position: relative;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            margin-right: 4px;
+        }
+
+        .addon-icon {
+            position: absolute;
+            left: 1px;
+            top: 2px;
+            width: 15px;
+            height: 15px;
+        }
+
+        &:hover {
+            background-color: $lightblue;
+        }
+
+        &--updated {
+            animation: shake 500ms both;
+        }
+
+        @include mobile {
+            border-top: none;
+            padding-bottom: 22px;
+            border-color: $lightestgrey;
+            margin: 14px 4px;
+        }
+    }
+
+    form {
+        text-align: left;
+    }
+
+    @include mobile {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90vw;
+        max-width: 450px;
+        height: 100vh;
+        transform: translateX(-100vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
+        z-index: 1000;
+        background: #fff;
+        overflow-y: auto;
+
+        &__close-btn {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        &.show {
+            transform: translateX(0);
+        }
+    }
+}

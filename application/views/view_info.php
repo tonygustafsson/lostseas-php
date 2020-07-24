@@ -1,10 +1,19 @@
-<? if (isset($header)): ?>
-	<h2><?=$header?></h2>
-<? endif; ?>
+<?php if (isset($header)): ?>
+<h2 class="area-header__heading"><?=$header?>
+</h2>
+<?php endif; ?>
 
-<p><?=$message?></p>
+<div class="container">
+	<p><?=$message?>
+	</p>
 
-<? if (isset($reload)): ?>
-	<p>You will be automatically redirected within <?=$reload?> seconds...</p>
-	<script>setTimeout("window.location = '<?echo base_url()?>'",<?echo floor($reload * 1000)?>);</script>
-<? endif; ?>
+	<?php if (isset($reload)): ?>
+	<p>You will be automatically redirected within <?=$reload?>
+		seconds...</p>
+	<script>
+		setTimeout(
+			"window.location = '<?=base_url()?>'", <?=floor($reload * 1000)?>
+			);
+	</script>
+	<?php endif; ?>
+</div>

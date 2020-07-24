@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Offline - Lost Seas</title>
+
+        <style>
+            @keyframes waves {
+                from {
+                    transform: rotate(-0.5deg) translateY(3px) translateX(2px);
+                }
+                to {
+                    transform: rotate(0.5deg) translateY(-3px) translateX(5px);
+                }
+            }
+
+            body {
+                background-color: #68caff;
+                text-align: center;
+                width: 80%;
+                margin: 50px 10%;
+                font-family: 'Trebuchet MS', 'Tahoma', Arial, Helvetica, serif;
+            }
+            img {
+                width: 350px;
+                max-width: 100%;
+                padding: 20px;
+                box-sizing: border-box;
+                animation: waves 0.5s infinite ease-in-out;
+                transform-origin: bottom center;
+                animation-direction: alternate;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Offline</h1>
+        <img src="/assets/images/logo.svg" />
+        <p>You do not currently have a network connection. Please await a connection and reload the page.</p>
+    </body>
+</html>

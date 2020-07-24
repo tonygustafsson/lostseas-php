@@ -1,0 +1,33 @@
+.blackjack {
+    &__table {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 150px;
+        background-color: #fff;
+        color: #000;
+        font-size: 2rem;
+        border: 1px #000 solid;
+        border-radius: 6px;
+
+        &__symbol {
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        &--hearts,
+        &--diamonds {
+            color: $red;
+        }
+    }
+}

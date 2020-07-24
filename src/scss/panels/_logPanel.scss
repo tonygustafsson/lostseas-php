@@ -1,0 +1,39 @@
+.log-panel {
+    border: 1px $lightgrey solid;
+    background: $whiteglass;
+    padding: 0.5em;
+    min-height: 300px;
+    height: auto;
+    box-sizing: border-box;
+
+    h3 {
+        color: #000;
+        font-size: 1.25rem;
+        text-align: left;
+        letter-spacing: 0.1em;
+    }
+
+    &__item {
+        margin: 1em 0;
+        text-align: left;
+        font-size: 1rem;
+
+        &__img {
+            float: left;
+            margin: 0.3em 0.5em 0.5em 0;
+        }
+    }
+
+    @include mobile {
+        float: left;
+        clear: both;
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 0.5em 0;
+        display: none;
+        position: absolute;
+        top: 9em;
+        z-index: 1000;
+        background: #fff;
+    }
+}

@@ -1,0 +1,118 @@
+button,
+.button {
+    display: inline-block;
+    max-width: 100%;
+    background-color: #fff;
+    color: #000;
+    font-family: $font-montaga;
+    font-size: 1.2rem;
+    line-height: 0.5;
+    padding: 0.75em 1em;
+    border: 1px $lightgrey solid;
+    user-select: none;
+    white-space: nowrap;
+    vertical-align: text-bottom;
+    box-shadow: $blacklightglass 0px 1px 3px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    svg,
+    img {
+        vertical-align: sub;
+        margin-right: 0.25em;
+        width: 20px;
+        height: 20px;
+    }
+
+    &.primary {
+        background-color: $lightblue;
+    }
+
+    &.big {
+        font-size: 1.5rem;
+    }
+
+    &.small {
+        font-size: 0.9rem;
+    }
+
+    &.big-icon {
+        svg {
+            display: block;
+            margin: 0 auto 0.5em auto;
+            padding: 0 0.5em;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &.big-image {
+        line-height: 1;
+
+        svg,
+        img {
+            display: block;
+            margin: 0 auto 0.5em auto;
+            padding: 0 0.5em;
+            width: 128px;
+            height: 128px;
+
+            @include mobile {
+                width: 92px;
+                height: 92px;
+            }
+        }
+
+        svg {
+            background-color: $lightestgrey;
+            width: 96px;
+            height: 96px;
+            padding: 16px;
+        }
+    }
+
+    &[disabled],
+    &.disabled {
+        cursor: default;
+        background-color: $lightestgrey;
+        box-shadow: none;
+        pointer-events: none;
+        user-select: none;
+
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    &:hover {
+        box-shadow: $blacklightglass 0 0 6px 3px;
+        text-decoration: none;
+        color: #000;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &-area {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 16px 0;
+
+        & > button,
+        & > .button {
+            margin: 8px;
+
+            @include mobile {
+                width: auto;
+            }
+        }
+    }
+
+    @include mobile {
+        width: 100%;
+    }
+}

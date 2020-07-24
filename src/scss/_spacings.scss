@@ -1,0 +1,39 @@
+$directions: (
+    'r': 'right',
+    'l': 'left',
+    't': 'top',
+    'b': 'bottom'
+);
+
+$levels: 6;
+$spacing: 8px;
+
+@for $i from 0 through $levels {
+    @each $direction, $directionLong in $directions {
+        .m#{$direction}-#{$i} {
+            margin-#{$directionLong}: $spacing * $i;
+        }
+
+        .m#{$direction}-m-#{$i} {
+            @include mobile {
+                margin-#{$directionLong}: $spacing * $i !important;
+            }
+        }
+
+        .p#{$direction}-#{$i} {
+            padding-#{$directionLong}: $spacing * $i;
+        }
+
+        .p#{$direction}-m-#{$i} {
+            @include mobile {
+                padding-#{$directionLong}: $spacing * $i !important;
+            }
+        }
+    }
+}
+
+@each $direction, $directionLong in $directions {
+    .m#{$direction}-auto {
+        margin-#{$directionLong}: auto;
+    }
+}

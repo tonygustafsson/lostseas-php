@@ -1,0 +1,73 @@
+$columns: 12;
+$gutter: 8;
+$orders: 12;
+
+.container {
+    width: 92.5%;
+    max-width: 92.5%;
+    margin: 0 auto;
+    padding: #{$gutter * 4}px 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: -#{$gutter}px;
+    margin-right: -#{$gutter}px;
+
+    &-justify-right {
+        justify-content: flex-end;
+    }
+}
+
+.col {
+    flex: 1 0 0;
+    width: 100%;
+    max-width: 100%;
+    padding: #{$gutter}px;
+    box-sizing: border-box;
+    order: $orders;
+
+    @include mobile {
+        flex-basis: 100%;
+    }
+}
+
+@for $column from 1 through $columns {
+    .col-#{$column} {
+        @extend .col;
+
+        width: #{($column / $columns) * 100%};
+        max-width: #{($column / $columns) * 100%};
+        flex-basis: #{($column / $columns) * 100%};
+
+        @include mobile {
+            width: 100%;
+            max-width: 100%;
+            flex-basis: 100%;
+        }
+    }
+
+    .col-m-#{$column} {
+        @extend .col;
+
+        @include mobile {
+            width: #{($column / $columns) * 100%} !important;
+            max-width: #{($column / $columns) * 100%} !important;
+            flex-basis: #{($column / $columns) * 100%} !important;
+        }
+    }
+}
+
+@for $order from 0 through ($orders - 1) {
+    .order-#{$order} {
+        order: #{$order};
+    }
+
+    .order-m-#{$order} {
+        @include mobile {
+            order: #{$order};
+        }
+    }
+}

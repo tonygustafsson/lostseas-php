@@ -1,0 +1,42 @@
+$itemWidthDesktop: 80%;
+$itemWidthMobile: 100%;
+
+.snackbar {
+    &__item {
+        position: fixed;
+        left: 10%;
+        bottom: 0;
+        width: $itemWidthDesktop;
+        background-color: #fff;
+        border-left: 12px $yellow solid;
+        padding: 1em;
+        padding-right: 2.5em;
+        box-sizing: border-box;
+        z-index: 1010;
+        box-shadow: 0px 0px 10px 0px #000;
+
+        &--success {
+            border-color: $green;
+        }
+
+        &--error {
+            border-color: $darkred;
+        }
+
+        &__close-btn {
+            position: absolute;
+            right: 1rem;
+            top: calc(50% - 1rem);
+            font-size: 2rem;
+            line-height: 0.8;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            width: $itemWidthMobile;
+            left: 0;
+        }
+    }
+}

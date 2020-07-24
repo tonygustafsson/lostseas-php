@@ -1,0 +1,13 @@
+.content-panel {
+    display: block;
+    border: 1px $lightgrey solid;
+    background: $whiteglass;
+    margin-bottom: 1em;
+    min-height: 100vh;
+    height: auto;
+    box-sizing: border-box;
+
+    .pagination a {
+        margin: 0 0.25em;
+    }
+}

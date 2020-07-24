@@ -1,0 +1,164 @@
+.header-panel {
+    &__logotype {
+        width: 400px;
+        max-width: 95%;
+        vertical-align: bottom;
+        max-height: 140px;
+
+        @include mobile {
+            margin-left: -40px;
+        }
+    }
+
+    &__link:hover {
+        text-decoration: none;
+    }
+
+    &__main-heading {
+        margin: 0;
+
+        span {
+            display: inline-block;
+            text-indent: -999em;
+        }
+    }
+
+    @include mobile {
+        padding-top: 0;
+    }
+}
+
+.nav-top-mobile-panel {
+    display: flex;
+    background-color: $whiteglass;
+
+    &--item {
+        display: none;
+        padding: 1em;
+
+        @include mobile {
+            display: block !important;
+
+            img {
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}
+
+.top-nav-panel {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    background-color: $whiteglass;
+    border: 1px $lightgrey solid;
+    height: 50px;
+
+    p {
+        margin: 1em;
+    }
+
+    &__close-btn {
+        display: none;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        height: 100%;
+
+        color: #000;
+        background-color: #fff;
+        text-decoration: none;
+        border-right: 1px solid $lightgrey;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: 1rem;
+
+        svg {
+            margin-right: 8px;
+        }
+
+        span {
+            display: none;
+        }
+
+        &:hover {
+            background-color: $lightblue;
+            color: #000;
+            text-decoration: none;
+        }
+
+        &--disabled {
+            opacity: 0.6;
+            pointer-events: none;
+
+            &:hover {
+                background-color: transparent !important;
+                cursor: default;
+            }
+        }
+
+        &--icon-only {
+            background-color: transparent;
+            border-left: 1px solid $lightgrey;
+
+            svg {
+                margin: 0;
+            }
+
+            @include mobile {
+                background: #fff;
+                width: 100%;
+                padding-bottom: 15px;
+
+                svg {
+                    margin-right: 16px;
+                }
+
+                span {
+                    display: inline-block;
+                }
+            }
+        }
+
+        @include mobile {
+            border: 0 !important;
+            height: auto;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    @include mobile {
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 90vw;
+        max-width: 450px;
+        height: 100vh;
+        transform: translateX(-100vw);
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
+        z-index: 1000;
+        background: #fff;
+        overflow-y: auto;
+
+        &__close-btn {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        &.show {
+            transform: translateX(0);
+        }
+    }
+}

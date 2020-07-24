@@ -1,63 +1,103 @@
-<? if (isset($json)): ?>
-	<script type="text/javascript">
-		gameManipulateDOM(<?=$json?>);
-	</script>
-<? endif; ?>
-
-<header title="The Ocean">
+<div class="container">
 	<h2>Caribbean Sea</h2>
-	<img src="<?=base_url('assets/images/places/ocean_' . rand(1,7) . '.jpg')?>" class="header">
-</header>
 
-<div id="msg"></div>
+	<?php if (isset($game['won'])): ?>
+	<p><?=$game['won']?>
+	</p>
+	<?php endif; ?>
 
-<? if (isset($game['won'])): ?>
-	<p><?=$game['won']?></p>
-<? endif; ?>
+	<?php if (isset($game['lost'])): ?>
+	<p><?=$game['lost']?>
+	</p>
+	<?php endif; ?>
 
-<? if (isset($game['lost'])): ?>
-	<p><?=$game['lost']?></p>
-<? endif; ?>
-
-<? if (isset($game['good'])): ?>
-	<ul>
-	<? foreach ($game['good'] as $image => $msg): ?>
-		<li class="attack_good" style="list-style-image: url('<?echo base_url('assets/images/icons/' . $image . '.png')?>');"><?=$msg?></li>
-	<? endforeach; ?>
+	<?php if (isset($game['good'])): ?>
+	<ul class="ocean-event-results">
+		<?php foreach ($game['good'] as $image => $msg): ?>
+		<li class="positive">
+			<svg width="32" height="32" alt="<?=$svg_id?>">
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
+			</svg>
+			<?=$msg?>
+		</li>
+		<?php endforeach; ?>
 	</ul>
-<? endif; ?>
+	<?php endif; ?>
 
-<? if (isset($game['bad'])): ?>
+	<?php if (isset($game['bad'])): ?>
 	<ul>
-	<? foreach ($game['bad'] as $image => $msg): ?>
-		<li class="attack_bad" style="list-style-image: url('<?echo base_url('assets/images/icons/' . $image . '.png')?>');"><?=$msg?></li>
-	<? endforeach; ?>
+		<?php foreach ($game['bad'] as $image => $msg): ?>
+		<li class="negative">
+			<svg width="32" height="32" alt="<?=$svg_id?>">
+				<use xlink:href="#icon-<?=$svg_id?>"></use>
+			</svg>
+			<?=$msg?>
+		</li>
+		<?php endforeach; ?>
 	</ul>
-<? endif; ?>
+	<?php endif; ?>
 
-<? if (! isset($game['good']) && ! isset($game['bad'])): ?>
-	<p><?=$game['greeting']?></p>
-<? endif; ?>
+	<?php if (! isset($game['good']) && ! isset($game['bad'])): ?>
+	<p>
+		<?=$game['greeting']?>
+	</p>
+	<?php endif; ?>
 
-<p class="center">
-	<img src="<?echo base_url('assets/images/spanish_main.jpg')?>" usemap="#image_map" width="500" height="256" alt="The spanish main">
-</p>
+	<p>
+		Click on the town on the map to visit it. Hover over the town to get the name and country.
+	</p>
 
-<map id="image_map" name="image_map">
-	<area class="ajaxHTML" shape="rect" coords="198,4,215,21" href="<?=base_url('harbor/charles_towne')?>" alt="Charles Towne" rel="england">
-	<area class="ajaxHTML" shape="rect" coords="96,31,113,48" href="<?=base_url('harbor/biloxi')?>" alt="Biloxi" rel="france">
-	<area class="ajaxHTML" shape="rect" coords="167,91,184,108" href="<?=base_url('harbor/havana')?>" alt="Havana" rel="spain">
-	<area class="ajaxHTML" shape="rect" coords="59,131,76,148" href="<?=base_url('harbor/villa_hermosa')?>" alt="Villa Hermosa" rel="spain">
-	<area class="ajaxHTML" shape="rect" coords="100,134,117,151" href="<?=base_url('harbor/belize')?>" alt="Belize" rel="england">
-	<area class="ajaxHTML" shape="rect" coords="222,132,239,149" href="<?=base_url('harbor/port_royale')?>" alt="Port Royale" rel="england">
-	<area class="ajaxHTML" shape="rect" coords="278,118,295,135" href="<?=base_url('harbor/tortuga')?>" alt="Tortuga" rel="france">
-	<area class="ajaxHTML" shape="rect" coords="258,129,275,146" href="<?=base_url('harbor/leogane')?>" alt="Leogane" rel="france">
-	<area class="ajaxHTML" shape="rect" coords="336,130,353,147" href="<?=base_url('harbor/san_juan')?>" alt="San Juan" rel="spain">
-	<area class="ajaxHTML" shape="rect" coords="382,136,399,153" href="<?=base_url('harbor/st._martin')?>" alt="St. Martin" rel="holland">
-	<area class="ajaxHTML" shape="rect" coords="384,156,401,173" href="<?=base_url('harbor/st._eustatius')?>" alt="St. Eustatius" rel="holland">
-	<area class="ajaxHTML" shape="rect" coords="388,170,405,187" href="<?=base_url('harbor/martinique')?>" alt="Martinique" rel="france">
-	<area class="ajaxHTML" shape="rect" coords="402,180,419,197" href="<?=base_url('harbor/barbados')?>" alt="Barbados" rel="england">
-	<area class="ajaxHTML" shape="rect" coords="188,222,205,239" href="<?=base_url('harbor/panama')?>" alt="Panama" rel="spain">
-	<area class="ajaxHTML" shape="rect" coords="295,182,312,199" href="<?=base_url('harbor/curacao')?>" alt="Curacao" rel="holland">
-	<area class="ajaxHTML" shape="rect" coords="314,185,331,202" href="<?=base_url('harbor/bonaire')?>" alt="Bonaire" rel="holland">
-</map>
+	<p class="mobile-only">
+		On mobile devices you swipe the map back and forth to be able to see the whole of the map.
+	</p>
+
+	<p>
+		<strong>English:</strong>
+		<a href="<?=base_url('harbor/charles_towne')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="charles-towne">Charles Towne</a>,
+		<a href="<?=base_url('harbor/barbados')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="barbados">Barbados</a>,
+		<a href="<?=base_url('harbor/port_royale')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="port-royale">Port Royale</a>,
+		<a href="<?=base_url('harbor/belize')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="belize">Belize</a>
+
+		<br />
+
+		<strong>French:</strong>
+		<a href="<?=base_url('harbor/tortuga')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="tortuga">Tortuga</a>,
+		<a href="<?=base_url('harbor/leogane')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="leogane">Leogane</a>,
+		<a href="<?=base_url('harbor/martinique')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="martinique">Martinique</a>,
+		<a href="<?=base_url('harbor/biloxi')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="biloxi">Biloxi</a>
+
+		<br />
+
+		<strong>Spanish:</strong>
+		<a href="<?=base_url('harbor/panama')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="panama">Panama</a>,
+		<a href="<?=base_url('harbor/havana')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="havana">Havana</a>,
+		<a href="<?=base_url('harbor/villa_hermosa')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="villa-hermosa">Villa Hermosa</a>,
+		<a href="<?=base_url('harbor/san_juan')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="san-juan">San Juan</a>
+
+		<br />
+
+		<strong>Dutch:</strong>
+		<a href="<?=base_url('harbor/bonaire')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="bonaire">Bonaire</a>,
+		<a href="<?=base_url('harbor/curacao')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="curacao">Curacao</a>,
+		<a href="<?=base_url('harbor/st_martin')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="st-martin">St. Martin</a>,
+		<a href="<?=base_url('harbor/st_eustatius')?>"
+			class="ajaxHTML js-town-focus" data-focus-town="st-eustatius">St. Eustatius</a>
+	</p>
+
+	<?php include(__DIR__. '/ocean_map.php'); ?>
+</div>

@@ -1,0 +1,26 @@
+.avatar-selector {
+    display: flex;
+    flex-wrap: wrap;
+
+    &-item {
+        flex: 1 0 calc(33% - 10px);
+        width: calc(33% - 10px);
+        max-width: calc(33% - 10px);
+        margin: 5px;
+
+        &:focus {
+            box-shadow: 0 0 6px 2px $blackglass;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &-change-gender {
+        margin: 12px 0;
+        margin-right: 12px;
+    }
+}
