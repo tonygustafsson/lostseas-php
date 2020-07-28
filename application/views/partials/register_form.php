@@ -4,44 +4,88 @@
         <legend>Start playing without signing up...</legend>
 
         <div class="row">
-            <div class="col-2 text-center">
+            <div class="col-2">
                 <input type="hidden" id="character_avatar" name="character_avatar"
                     value="<?=$character['character_avatar']?>">
 
-                <img id="current_avatar_img" style="border: 1px black solid;"
+                <label>Avatar</label>
+
+                <img id="current_avatar_img" class="avatar-img pt-2"
                     src="<?=$character['character_avatar_path']?>"
-                    alt="Avatar"><br />
+                    alt="Avatar">
 
-                <button class="mt-2 mb-2" type="button" id="js-start-avatar-selector-trigger">Change</button><br />
-
-                <a class="ajaxJSON"
-                    href="<?=base_url('settings/generate_character')?>"
-                    title="Generate random character">
-                    <svg width="32" height="32" class="Randomize">
-                        <use xlink:href="#icon-dices"></use>
-                    </svg>
-                </a>
+                <button class="mt-2 mb-2 small" type="button" id="js-start-avatar-selector-trigger">
+                    Change avatar
+                </button>
             </div>
 
-            <div class="col-10">
-                <label for="character_name" style="margin-top: -16px">Character name</label>
+            <div class="col-5">
+                <label for="character_name">Name</label>
                 <input id="character_name" type="text" name="character_name"
                     value="<?=$character['character_name']?>" />
 
-                <div>
+                <label for="character_nation">Nation</label>
+
+                <select name="character_nation" id="character_nation">
+                    <option value="england" <?=$character['character_nation'] === 'england' ? 'selected' : ''?>>England
+                    </option>
+                    <option value="france" <?=$character['character_nation'] === 'france' ? 'selected' : ''?>>France
+                    </option>
+                    <option value="spain" <?=$character['character_nation'] === 'spain' ? 'selected' : ''?>>Spain
+                    </option>
+                    <option value="holland" <?=$character['character_nation'] === 'holland' ? 'selected' : ''?>>Holland
+                    </option>
+                </select>
+
+                <div class="desktop-only">
+                    <button type="submit" class="primary mt-3">
+                        <svg width="32" height="32" class="Randomize">
+                            <use xlink:href="#icon-swords"></use>
+                        </svg>
+                        Play
+                    </button>
+
+                    <a class="ajaxJSON button mt-3 ml-md-1"
+                        href="<?=base_url('settings/generate_character')?>"
+                        title="Generate random character">
+                        <svg width="32" height="32" class="Randomize">
+                            <use xlink:href="#icon-dices"></use>
+                        </svg>
+                        Random
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-5">
+                <label for="character_age">Age</label>
+                <input id="character_age" type="number" min="15" max="80" name="character_age"
+                    value="<?=$character['character_age']?>" /><br />
+
+                <div class="mt-4">
                     <input class="js-gender-selector" id="male" type="radio" name="character_gender" value="M" <?=$character['character_gender'] === 'M' ? 'checked' : ''?>
-                    /><label for="male">Male</label>
+                    /><label for="male">Male</label><br />
                     <input class="js-gender-selector" id="female" type="radio" name="character_gender" value="F" <?=$character['character_gender'] === 'F' ? 'checked' : ''?>
                     /><label for="female">Female</label>
                 </div>
 
-                <label for="character_age">Character age</label>
-                <input id="character_age" type="number" min="15" max="80" style="width: 50px;" name="character_age"
-                    value="<?=$character['character_age']?>" /><br />
 
+                <div class="mobile-only">
+                    <button type="submit" class="primary mt-3">
+                        <svg width="32" height="32" class="Randomize">
+                            <use xlink:href="#icon-swords"></use>
+                        </svg>
+                        Play
+                    </button>
 
-
-                <button type="submit" class="primary">Play!</button>
+                    <a class="ajaxJSON button mt-3 ml-md-1"
+                        href="<?=base_url('settings/generate_character')?>"
+                        title="Generate random character">
+                        <svg width="32" height="32" class="Randomize">
+                            <use xlink:href="#icon-dices"></use>
+                        </svg>
+                        Random
+                    </a>
+                </div>
             </div>
         </div>
     </fieldset>

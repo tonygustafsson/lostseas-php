@@ -213,6 +213,7 @@ class Settings extends Main
 
         $data['changeElements']['character_name']['val'] = $character['character_name'];
         $data['changeElements']['character_age']['val'] = $character['character_age'];
+        $data['changeElements']['character_nation']['val'] = $character['character_nation'];
         $data['changeElements'][$short_gender]['checked'] = true;
         $data['changeElements']['character_avatar']['val'] = $character['character_avatar'];
         $data['changeElements']['current_avatar_img']['src'] = $character['character_avatar_path'];
