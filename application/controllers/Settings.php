@@ -232,96 +232,115 @@ class Settings extends Main
     
     public function character_post()
     {
-        if ($this->data['user']['verified'] == 1) {
-            //Change character settings
-            $form_rules['character_name'] 		= array('name' => 'Character name', 'min_length' => 3);
-            $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
-            $form_rules['character_gender']		= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
-            $form_rules['character_age']		= array('name' => 'Character age', 'in_range' => array_fill(1, 99, true));
-            
-            $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
-
-            //Check if the inputs are OK
-            if (! $data['error']) {
-                //Set game info for the game database
-                $data['success'] = 'Successfully saved changes.';
-                
-                $updates['character_name'] = $this->input->post('character_name');
-                $updates['character_avatar'] = $this->input->post('character_avatar');
-                $updates['character_gender'] = $this->input->post('character_gender');
-                $updates['character_age'] = $this->input->post('character_age');
-                $updates['character_description'] = strip_tags($this->input->post('character_description'));
-
-                if ($this->input->post('reset_game') == 'on') {
-                    $home_nation_info = $this->gamelib->get_nations('random');
-                    $updates['nationality'] = $home_nation_info['nation'];
-                    $updates['town'] = $home_nation_info['towns'][array_rand($home_nation_info['towns'])];
-                    $updates['place'] = 'dock';
-                    $updates['title'] = 'pirate';
-                    $updates['week'] = 1;
-                    $updates['doubloons'] = 300;
-                    $updates['bank_account'] = 0;
-                    $updates['bank_loan'] = 0;
-                    $updates['cannons'] = 2;
-                    $updates['prisoners'] = 0;
-                    $updates['food'] = 20;
-                    $updates['water'] = 40;
-                    $updates['porcelain'] = 0;
-                    $updates['spices'] = 0;
-                    $updates['silk'] = 0;
-                    $updates['tobacco'] = 0;
-                    $updates['rum'] = 0;
-                    $updates['medicine'] = 0;
-                    $updates['rafts'] = 1;
-                    $updates['victories'] = null;
-                    $updates['event']['ship_meeting'] = null;
-                    $updates['event']['ship_won_results'] = null;
-                    $updates['event']['ship_trade'] = null;
-                    $updates['event']['cityhall_work'] = null;
-                    $updates['event']['tavern_sailors'] = null;
-                    $updates['event']['tavern_blackjack'] = null;
-                    $updates['event']['market'] = null;
-
-                    $ship_input['user_id'] = $this->data['user']['id'];
-                    $ship_input['delete_all'] = true;
-                    $this->Ship->erase($ship_input);
-
-                    $crew_input['user_id'] = $this->data['user']['id'];
-                    $crew_input['delete_all'] = true;
-                    $this->Crew->erase($crew_input);
-                    
-                    //Create a brig ship
-                    $ship_data['user_id'] = $this->data['user']['id'];
-                    $ship_data['type'] = 'brig';
-                    $this->Ship->create($ship_data);
-                    
-                    //Create four crew members
-                    $crew_data['user_id'] = $this->data['user']['id'];
-                    $crew_data['nationality'] = $updates['nationality'];
-                    $crew_data['number_of_men'] = 4;
-                    $this->Crew->create($crew_data);
-
-                    $data['success'] .= ' Your character was resetted. Good luck with your new one! You got a brig, four crew members and 300 dbl.';
-
-                    $this->Log->erase($this->data['user']['id']);
-                    
-                    $this->load->model('History');
-                    $this->History->erase($this->data['user']['id']);
-                    
-                    $log_input['entry'] = 'resetted the account. A new brig is crafted, four crew members joins and brings 300 dbl.';
-                    $log_input['week'] = 1;
-                    $this->Log->create($log_input);
-                    
-                    $data['reloadPage'] = true;
-                }
-
-                //Update the game database
-                $result = $this->Game->update($updates);
-                $data['changeElements'] = $result['changeElements'];
-            }
-            
-            echo json_encode($data);
+        if ($this->data['user']['verified'] != 1) {
+            return;
         }
+
+        //Change character settings
+        $form_rules['character_name'] 		= array('name' => 'Character name', 'min_length' => 3);
+        $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
+        $form_rules['character_gender']		= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
+        $form_rules['character_age']		= array('name' => 'Character age', 'in_range' => array_fill(1, 99, true));
+            
+        $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
+
+        //Check if the inputs are OK
+        if (! $data['error']) {
+            //Set game info for the game database
+            $data['success'] = 'Successfully saved changes.';
+                
+            $updates['character_name'] = $this->input->post('character_name');
+            $updates['character_avatar'] = $this->input->post('character_avatar');
+            $updates['character_gender'] = $this->input->post('character_gender');
+            $updates['character_age'] = $this->input->post('character_age');
+            $updates['character_description'] = strip_tags($this->input->post('character_description'));
+
+            // Update the game database
+            $result = $this->Game->update($updates);
+            $data['changeElements'] = $result['changeElements'];
+        }
+            
+        echo json_encode($data);
+    }
+
+    public function reset()
+    {
+        if ($this->data['user']['verified'] != 1) {
+            return;
+        }
+
+        if (md5($this->input->post('password')) !== $this->data['user']['password']) {
+            $data['error'] = 'This is not the correct password';
+            echo json_encode($data);
+            return;
+        }
+
+        $home_nation_info = $this->gamelib->get_nations('random');
+        $updates['nationality'] = $home_nation_info['nation'];
+        $updates['town'] = $home_nation_info['towns'][array_rand($home_nation_info['towns'])];
+        $updates['place'] = 'dock';
+        $updates['title'] = 'pirate';
+        $updates['week'] = 1;
+        $updates['doubloons'] = 300;
+        $updates['bank_account'] = 0;
+        $updates['bank_loan'] = 0;
+        $updates['cannons'] = 2;
+        $updates['prisoners'] = 0;
+        $updates['food'] = 20;
+        $updates['water'] = 40;
+        $updates['porcelain'] = 0;
+        $updates['spices'] = 0;
+        $updates['silk'] = 0;
+        $updates['tobacco'] = 0;
+        $updates['rum'] = 0;
+        $updates['medicine'] = 0;
+        $updates['rafts'] = 1;
+        $updates['victories'] = '';
+        $updates['event']['ship_meeting'] = null;
+        $updates['event']['ship_won_results'] = null;
+        $updates['event']['ship_trade'] = null;
+        $updates['event']['cityhall_work'] = null;
+        $updates['event']['tavern_sailors'] = null;
+        $updates['event']['tavern_blackjack'] = null;
+        $updates['event']['market'] = null;
+
+        // Update the game database
+        $result = $this->Game->update($updates);
+        $data['changeElements'] = $result['changeElements'];
+
+        $ship_input['user_id'] = $this->data['user']['id'];
+        $ship_input['delete_all'] = true;
+        $this->Ship->erase($ship_input);
+
+        $crew_input['user_id'] = $this->data['user']['id'];
+        $crew_input['delete_all'] = true;
+        $this->Crew->erase($crew_input);
+            
+        // Create a brig ship
+        $ship_data['user_id'] = $this->data['user']['id'];
+        $ship_data['type'] = 'brig';
+        $this->Ship->create($ship_data);
+            
+        // Create four crew members
+        $crew_data['user_id'] = $this->data['user']['id'];
+        $crew_data['nationality'] = $updates['nationality'];
+        $crew_data['number_of_men'] = 4;
+        $this->Crew->create($crew_data);
+
+        $data['success'] = ' Your character was resetted. Good luck with your new one! You got a brig, four crew members and 300 dbl.';
+
+        $this->Log->erase($this->data['user']['id']);
+            
+        $this->load->model('History');
+        $this->History->erase($this->data['user']['id']);
+            
+        $log_input['entry'] = 'resetted the account. A new brig is crafted, four crew members joins and brings 300 dbl.';
+        $log_input['week'] = 1;
+        $this->Log->create($log_input);
+            
+        $data['reloadPage'] = true;
+
+        echo json_encode($data);
     }
     
     public function password()
