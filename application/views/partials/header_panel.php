@@ -16,18 +16,21 @@
                         <svg width="32" height="32" alt="Game menu">
                                 <use xlink:href="#icon-swords"></use>
                         </svg>
+                        <span>Menu</span>
                 </a>
 
                 <a id="action_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Actions menu">
                                 <use xlink:href="#icon-compass"></use>
                         </svg>
+                        <span>Actions</span>
                 </a>
 
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Inventory menu">
                                 <use xlink:href="#icon-barrels"></use>
                         </svg>
+                        <span>Inventory</span>
                 </a>
                 <?php else: ?>
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
@@ -44,6 +47,8 @@
                                 <use xlink:href="#icon-close"></use>
                         </svg>
                 </a>
+
+                <h3>Menu</h3>
 
                 <?php if (isset($user)): ?>
                 <a class="top-nav-panel__item" title="Continue playing"
