@@ -71,9 +71,6 @@ http://www.lostseas.com/
 -   See the map and your position even in a town.
 -   A helpful guide, maybe a parrot, that informs you what you should do next.
 -   Better, more intelligent greeting phrases.
--   Ability to repair all ships at once.
--   Clearer info when finding a enemy or ally ship.
--   Clearer actions, specially on the seas on mobile. Hidden in a menu.
 -   Get the app to Google Play Store.
 -   Separate the frontend from the backend completely. Svelte or React for the frontend.
 -   Watch CodeIgniters future, maybe time to change PHP framework?
