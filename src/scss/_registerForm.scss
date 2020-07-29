@@ -9,10 +9,6 @@
     background-color: $blackglass;
     box-sizing: border-box;
 
-    .flex > div:first-child {
-        min-width: 15%;
-    }
-
     fieldset {
         margin: 0;
         width: 100%;
@@ -24,12 +20,21 @@
         color: $yellow;
         font-size: 1.4rem;
         margin: 0;
-        margin-bottom: 0.5em;
     }
 
     label {
         color: #fff;
         margin-bottom: 0;
+        margin-top: 0;
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
     }
 
     p {
@@ -39,10 +44,6 @@
 
     img {
         margin: -0.4em 0em;
-    }
-
-    #js-start-avatar-selector-trigger {
-        margin-left: 0;
     }
 
     @include tablet {
@@ -57,6 +58,11 @@
         legend,
         p {
             color: #000;
+        }
+
+        .avatar-img {
+            display: block;
+            margin: 0 auto;
         }
     }
 }

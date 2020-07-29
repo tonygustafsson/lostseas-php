@@ -53,6 +53,10 @@ fs.copyFileSync(databasePhpFileSrc, databasePhpFileDest);
 
 console.log('Built application to ./dist');
 
+// Delete log files from ./dist
+fs.emptyDirSync(`${distFolder}/application/logs`);
+console.log('Removed Log files from ./dist/application/logs');
+
 // Build JS and SCSS to dist
 exec(`webpack --config ${webpackConfFile}`);
 

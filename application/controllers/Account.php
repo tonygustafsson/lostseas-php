@@ -45,6 +45,7 @@ class Account extends Main
         $form_rules['character_age'] 			= array('name' => 'Character age', 'in_range' => array_fill(15, 80, true));
         $form_rules['character_avatar'] 		= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
         $form_rules['character_gender']			= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
+        $form_rules['character_nation']			= array('name' => 'Character nation', 'exact_match' => array('england', 'france', 'spain', 'holland'));
         
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
         
@@ -54,9 +55,10 @@ class Account extends Main
             
             $this->User->create($user_input);
             
-            //Prepare info that's going into the game database
-            $home_nation_info = $this->gamelib->get_nations('random');
-            $game_input['nationality'] = $home_nation_info['nation'];
+            // Prepare info that's going into the game database
+            $nationality = $this->input->post('character_nation');
+            $home_nation_info = $this->gamelib->get_nations($nationality);
+            $game_input['nationality'] = $nationality;
             $game_input['town'] = $home_nation_info['towns'][array_rand($home_nation_info['towns'])];
             $game_input['place'] = 'dock';
             $game_input['title'] = 'pirate';

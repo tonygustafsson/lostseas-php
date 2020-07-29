@@ -1,5 +1,5 @@
 <header class="area-header" class="area-header" title="Ship victory">
-	<h2 class="area-header__heading">Caribbean Sea</h2>
+	<h2 class="area-header__heading">Victory!</h2>
 	<img src="<?=base_url('assets/images/places/ocean_trade.png')?>"
 		class="area-header__img">
 </header>

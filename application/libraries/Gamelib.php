@@ -415,13 +415,26 @@ class Gamelib
     {
         $this->CI->load->helper('file');
 
-        $names_character = read_file('assets/lists/names_characters.txt');
-        $names_character = explode("\n", $names_character);
-        $character_name = $names_character[rand(0, count($names_character) - 1)];
-        
-        $data['character_name'] = (rand(0, 2) > 0 && strlen($character_name) < 10) ? $character_name . ' ' . $names_character[rand(0, count($names_character))] : $character_name;
+        $nation_info = $this->get_nations('random');
+        $nation = $nation_info['nation'];
+
+        $gender = random_int(1, 2) === 1 ? 'M' : 'F';
+        $gender_list_suffix = $gender === 'M' ? 'men' : 'women';
+
+        $first_name_list = 'assets/lists/names_' . $nation . '_' . $gender_list_suffix . '.txt';
+        $first_names_content = read_file($first_name_list);
+        $first_names = explode("\n", $first_names_content);
+        $first_name = $first_names[random_int(0, count($first_names) - 1)];
+
+        $surname_list = 'assets/lists/names_' . $nation . '_surnames.txt';
+        $surnames_content = read_file($surname_list);
+        $surnames = explode("\n", $surnames_content);
+        $surname = $surnames[random_int(0, count($surnames) - 1)];
+
+        $data['character_name'] = $first_name . ' ' . $surname;
         $data['character_age'] = rand(15, 50);
-        $data['character_gender'] = (rand(1, 2) == 1) ? 'M' : 'F';
+        $data['character_nation'] = $nation;
+        $data['character_gender'] = $gender;
         $data['character_gender_long'] = ($data['character_gender'] == 'M') ? 'male' : 'female';
         
         $avatar_path = APPPATH . '../assets/images/avatars/' . $data['character_gender_long'] . '/avatar_*.png';

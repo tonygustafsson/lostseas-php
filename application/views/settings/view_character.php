@@ -66,16 +66,32 @@
 					<textarea name="character_description"
 						id="character_description"><?=$game['character_description']?></textarea>
 
-					<input type="checkbox" name="reset_game" id="reset_game"
-						onchange="alert('Warning! Your character will be replaced by a new one. You will lose all your possessions and start of again with 1 ship, 4 crew members. 2 cannons and 300 dbl.');" />
-					<label for="reset_game" title="You will get 4 crew members, 1 ship and 300 dbl">Reset the
-						game</label>
-
-					<br />
-
-					<button type="submit" class="primary">Save</button>
+					<button type="submit" class="primary mt-2">Save</button>
 				</div>
 			</div>
+		</fieldset>
+	</form>
+
+	<hr />
+
+	<form class="ajaxJSON"
+		action="<?=base_url('settings/reset')?>"
+		method="POST">
+		<fieldset>
+			<legend>Reset game</legend>
+
+			<p>If you reset the game all your progress will be lost. You will keep all your user settings and login,
+				but everything will be as if you just registered. That means 1 ship, four new crew members and 300 dbl.
+			</p>
+
+			<p>
+				Please write your password and click the Reset button to let us know you mean business.
+			</p>
+
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" required />
+
+			<button type="submit" class="primary mt-2">Reset</button>
 		</fieldset>
 	</form>
 </div>

@@ -16,24 +16,44 @@
                         <svg width="32" height="32" alt="Game menu">
                                 <use xlink:href="#icon-swords"></use>
                         </svg>
+                        <span>Menu</span>
                 </a>
 
                 <a id="action_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Actions menu">
                                 <use xlink:href="#icon-compass"></use>
                         </svg>
+                        <span>Actions</span>
                 </a>
 
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Inventory menu">
                                 <use xlink:href="#icon-barrels"></use>
                         </svg>
+                        <span>Inventory</span>
                 </a>
                 <?php else: ?>
+                <a class="ajaxHTML nav-top-mobile-panel--item"
+                        href="<?=base_url()?>">
+                        <svg width="32" height="32" alt="Game menu">
+                                <use xlink:href="#icon-swords"></use>
+                        </svg>
+                        <span>Start</span>
+                </a>
+
                 <a id="inventory_panel_button" class="nav-top-mobile-panel--item" href="#">
                         <svg width="32" height="32" alt="Login">
                                 <use xlink:href="#icon-key"></use>
                         </svg>
+                        <span>Log in</span>
+                </a>
+
+                <a class="ajaxHTML nav-top-mobile-panel--item"
+                        href="<?=base_url('about')?>">
+                        <svg width="32" height="32" alt="Guide">
+                                <use xlink:href="#icon-logbook"></use>
+                        </svg>
+                        <span>Guide</span>
                 </a>
                 <?php endif; ?>
         </nav>
@@ -44,6 +64,8 @@
                                 <use xlink:href="#icon-close"></use>
                         </svg>
                 </a>
+
+                <h3>Menu</h3>
 
                 <?php if (isset($user)): ?>
                 <a class="top-nav-panel__item" title="Continue playing"

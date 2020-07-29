@@ -127,11 +127,74 @@ class Shipyard extends Main
         echo json_encode($data);
     }
 
+    private function get_repair_all_cost($repair_cost)
+    {
+        $cost = 0;
+
+        foreach ($this->data['ship'] as $ship) {
+            $cost += (100 - $ship['health']) * $repair_cost;
+        }
+
+        return $cost;
+    }
+
     public function repair()
     {
-        $this->data['prices'] = $this->config->item('prices');
+        $this->data['viewdata']['prices'] = $this->config->item('prices');
+        $this->data['viewdata']['repair_all_cost'] = $this->get_repair_all_cost($this->data['viewdata']['prices']['ship_repair']['buy']);
     
         $this->load->view_ajax('shipyard/view_repair', $this->data);
+    }
+
+    public function repair_all()
+    {
+        $prices = $this->config->item('prices');
+        $cost = $this->get_repair_all_cost($prices['ship_repair']['buy']);
+
+        if ($cost > $this->data['game']['doubloons']) {
+            $data['error'] = 'You cannot afford to repair all ships.';
+            echo json_encode($data);
+            return;
+        }
+
+        foreach ($this->data['ship'] as $ship) {
+            $ship_updates[$ship['id']]['health'] = 100;
+            $this->data['ship'][$ship['id']]['health'] = 100;
+        }
+
+        $ship_output = $this->Ship->update($ship_updates);
+        
+        if (!isset($ship_output['success'])) {
+            $data['error'] = 'Something went wrong when trying to repair your ships.';
+            echo json_encode($data);
+            return;
+        }
+        
+        $data['changeElements'] = $ship_output['changeElements'];
+
+        $game_updates['user_id'] = $this->data['user']['id'];
+        $game_updates['doubloons']['sub'] = true;
+        $game_updates['doubloons']['value'] = floor($cost);
+        $game_result = $this->Game->update($game_updates);
+
+        if (isset($game_result['doubloons']['success'])) {
+            $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
+        }
+
+        $this->data['game']['ship_health_lowest'] = $ship_output['new_lowest_health'];
+
+        $this->data['viewdata']['prices'] = $this->config->item('prices');
+        $this->data['viewdata']['repair_all_cost'] = $this->get_repair_all_cost($this->data['viewdata']['prices']['ship_repair']['buy']);
+        $data['loadView'] = $this->load->view('shipyard/view_repair', $this->data, true);
+
+        if ($this->data['user']['sound_effects_play'] == 1) {
+            $data['playSound'] = 'hammering';
+        }
+        
+        $log_input['entry'] = 'repaired all ships for ' . $cost . ' dbl.';
+        $this->Log->create($log_input);
+
+        echo json_encode($data);
     }
 
     public function repair_ship()
@@ -159,11 +222,19 @@ class Shipyard extends Main
             }
 
             $updates[$ship_id]['health'] = 100;
+
             $ship_output = $this->Ship->update($updates);
             $data['changeElements'] = array_merge($data['changeElements'], $ship_output['changeElements']);
             
             if ($ship_output['success']) {
                 $data['success'] = 'You repaired ' . $this->data['ship'][$ship_id]['name'] . ' for ' . $cost . ' dbl!';
+
+                $this->data['ship'][$ship_id]['health'] = 100;
+                $this->data['game']['ship_health_lowest'] = $ship_output['new_lowest_health'];
+
+                $this->data['viewdata']['prices'] = $this->config->item('prices');
+                $this->data['viewdata']['repair_all_cost'] = $this->get_repair_all_cost($this->data['viewdata']['prices']['ship_repair']['buy']);
+                $data['loadView'] = $this->load->view('shipyard/view_repair', $this->data, true);
 
                 if ($this->data['user']['sound_effects_play'] == 1) {
                     $data['playSound'] = 'hammering';
