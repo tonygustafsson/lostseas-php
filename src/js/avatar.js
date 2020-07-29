@@ -71,5 +71,4 @@ const initAvatarDialog = () => {
 };
 
 window.addEventListener('about-presentation', initAvatarDialog);
-window.addEventListener('about', initAvatarDialog);
 window.addEventListener('settings-character', initAvatarDialog);

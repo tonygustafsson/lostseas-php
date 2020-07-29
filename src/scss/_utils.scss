@@ -66,6 +66,6 @@
     display: block;
 
     @include mobile {
-        display: none;
+        display: none !important;
     }
 }

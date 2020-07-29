@@ -1,21 +1,10 @@
-<?php if (! $logged_in): ?>
-<header class="area-header" class="area-header" title="Guide: Supplies">
-	<img class="area-header__img"
-		src="<?=base_url('assets/images/design/game_start.jpg')?>"
-		alt="Front image">
-	<h2 class="area-header__heading">Guide: Supplies</h2>
-
-	<?php include(__DIR__ . '/../partials/register_form.php'); ?>
-</header>
-<?php else: ?>
 <div class="container">
 	<h2>Guide</h2>
 </div>
-<?php endif; ?>
 
 <div class="container">
 	<?php if (!$logged_in): ?>
-	<div class="button-area">
+	<div class="button-area desktop-only">
 		<a class="ajaxHTML button big-icon" title="Presentation about the game"
 			href="<?=base_url('about/presentation')?>">
 			<svg width="32" height="32" class="Start">
@@ -530,13 +519,4 @@
 		alt="Players" class="border img-center">
 
 	<hr />
-
-	<?php if (!$user): ?>
-	<div id="js-start-avatar-selector-dialog" class="dialog" tabindex="-1" role="dialog"
-		data-base-url="<?=base_url('settings/avatar_selector/')?>"
-		data-img-base-url="<?=base_url('assets/images/avatars')?>">
-		<h3 class="dialog-title">Choose an avatar</h3>
-		<div class="avatar-selector-wrapper"></div>
-	</div>
-	<?php endif; ?>
 </div>

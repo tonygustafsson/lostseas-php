@@ -8,7 +8,7 @@
 </header>
 
 <div class="container">
-	<div class="button-area">
+	<div class="button-area desktop-only">
 		<?php if (!$logged_in): ?>
 		<a class="ajaxHTML button big-icon" title="Presentation about the game"
 			href="<?=base_url('about/presentation')?>">
