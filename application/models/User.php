@@ -31,7 +31,7 @@ class User extends CI_Model
     
     public function get_players($input = false)
     {
-        $sql = "SELECT id, verified, name, character_avatar, character_gender, email, created, character_name, week, last_activity, UNIX_TIMESTAMP(game.last_activity) AS last_activity_unix FROM " . $this->db->user_table . " AS user
+        $sql = "SELECT id, verified, name, character_avatar, character_gender, email, created, character_name, level, week, last_activity, UNIX_TIMESTAMP(game.last_activity) AS last_activity_unix FROM " . $this->db->user_table . " AS user
 				LEFT JOIN " . $this->db->game_table . " AS game ON user.id = game.user_id
 				";
         

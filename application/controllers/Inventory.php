@@ -22,15 +22,17 @@ class Inventory extends Main
     
     public function players()
     {
-        if ($this->data['user']['verified'] == 1) {
-            $this->data['players'] = $this->User->get_players(array('verified_only' => true));
-            
-            if ($this->data['user']['admin'] == 1) {
-                $this->data['temp_players'] = $this->User->get_players(array('temp_only' => true));
-            }
-
-            $this->load->view_ajax('inventory/view_players', $this->data);
+        if ($this->data['user']['verified'] != 1) {
+            return;
         }
+        
+        $this->data['players'] = $this->User->get_players(array('verified_only' => true));
+
+        if ($this->data['user']['admin'] == 1) {
+            $this->data['temp_players'] = $this->User->get_players(array('temp_only' => true));
+        }
+
+        $this->load->view_ajax('inventory/view_players', $this->data);
     }
 
     private function get_total_net_worth($game, $ships)

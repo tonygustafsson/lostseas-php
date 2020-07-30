@@ -36,11 +36,11 @@ class Game extends CI_Model
         if (isset($updates['user_id'])) {
             $standard = array(
                               'character_name', 'character_gender', 'character_avatar', 'character_age', 'character_description',
-                              'nationality', 'title', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
+                              'nationality', 'title', 'level', 'doubloons', 'food', 'water', 'porcelain', 'spices', 'silk',
                               'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners'
                             );
             
-            $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'nationality',
+            $inventory_items = array('doubloons', 'food', 'water', 'porcelain', 'spices', 'silk', 'title', 'level', 'nationality',
                                      'tobacco', 'rum', 'medicine', 'rafts', 'bank_account', 'bank_loan', 'prisoners', 'character_name');
             
             $uppercase_inventory_items = array('title');
@@ -70,8 +70,6 @@ class Game extends CI_Model
 
                 $victories = array_merge($this->data['game']['victories'], $victories);
 
-                $output['changeElements']['inventory_level']['text'] = $victories[$this->data['game']['enemy']] - $victories[$this->data['game']['nationality']];
-
                 $sql_updates['victories'] = json_encode($victories);
             }
 
@@ -80,7 +78,6 @@ class Game extends CI_Model
                 $sql_updates['victories'] = $updates['victories'];
 
                 $victories = json_decode($updates['victories'], true);
-                $output['changeElements']['inventory_level']['text'] = $victories[$this->data['game']['enemy']] - $victories[$this->data['game']['nationality']];
             }
 
             if (isset($updates['event']) && is_array($updates['event']) && count($updates['event']) > 0) {

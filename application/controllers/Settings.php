@@ -280,6 +280,7 @@ class Settings extends Main
         $updates['town'] = $home_nation_info['towns'][array_rand($home_nation_info['towns'])];
         $updates['place'] = 'dock';
         $updates['title'] = 'pirate';
+        $updates['level'] = 0;
         $updates['week'] = 1;
         $updates['doubloons'] = 300;
         $updates['bank_account'] = 0;

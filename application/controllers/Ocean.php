@@ -188,7 +188,13 @@ class Ocean extends Main
             // Put the number of victories one step up
             $victory_nation = ($ship_meeting_event['nation'] == 'pirate') ? 'pirates' : $ship_meeting_event['nation'];
                 
-            $updates['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation] + 1;
+            $this->data['game']['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation] + 1;
+            $updates['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation];
+
+            if ($victory_nation === $this->data['game']['enemy'] || $victory_nation === $this->data['game']['nationality']) {
+                // Change level
+                $updates['level'] = $this->data['game']['victories'][$this->data['game']['enemy']] - $this->data['game']['victories'][$this->data['game']['nationality']];
+            }
 
             // Go through some items to see what we will be able to loot
             $item_list = array('food' => 'cartons', 'water' => 'barrels', 'porcelain' => 'cartons', 'spices' => 'cartons', 'silk' => 'cartons', 'medicine' => 'boxes', 'tobacco' => 'cartons', 'rum' => 'barrels');

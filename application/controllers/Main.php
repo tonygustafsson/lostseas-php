@@ -192,7 +192,6 @@ class Main extends CI_Controller
         $home_nation_info = $this->gamelib->get_nations($game_data['nationality']);
         $game_data['enemy'] = $home_nation_info['enemy'];
         $game_data['towns_enemy'] = $town_info[$game_data['town']]['enemy'];
-        $game_data['level'] = $game_data['victories'][$game_data['enemy']] - $game_data['victories'][$game_data['nationality']];
 
         $game_data['ships'] = count($ship_data);
         $game_data['crew_members'] = $crew_data['num_crew'];

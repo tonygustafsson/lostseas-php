@@ -151,6 +151,12 @@
 						value="<?=$player['game']['title']?>">
 				</td>
 			</tr>
+			<tr>
+				<td>Level</td>
+				<td><input type="text" id="level" name="level"
+						value="<?=$player['game']['level']?>">
+				</td>
+			</tr>
 		</table>
 
 		<hr />
