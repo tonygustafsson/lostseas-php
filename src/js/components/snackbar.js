@@ -10,21 +10,31 @@ let zIndex = 1000;
 const show = (snack) => {
     const snackHeight = snack.offsetHeight;
 
-    snack.animate([{ transform: `translateY(${snackHeight}px)` }, { transform: 'translateY(0px)' }], {
-        duration: animationSpeed,
-        easing: 'ease-out',
-        fill: 'forwards'
-    });
+    if (snack.animate) {
+        snack.animate([{ transform: `translateY(${snackHeight}px)` }, { transform: 'translateY(0px)' }], {
+            duration: animationSpeed,
+            easing: 'ease-out',
+            fill: 'forwards'
+        });
+    } else {
+        // No native animations supported
+        snack.style.transform = 'translateY(0px)';
+    }
 };
 
 const hide = (snack) => {
     const snackHeight = snack.offsetHeight;
 
-    snack.animate([{ transform: 'translateY(0px)' }, { transform: `translateY(${snackHeight}px)` }], {
-        duration: animationSpeed,
-        easing: 'ease-out',
-        fill: 'forwards'
-    });
+    if (snack.animate) {
+        snack.animate([{ transform: 'translateY(0px)' }, { transform: `translateY(${snackHeight}px)` }], {
+            duration: animationSpeed,
+            easing: 'ease-out',
+            fill: 'forwards'
+        });
+    } else {
+        // No native animations supported
+        snack.style.transform = `translateY(${snackHeight}px)`;
+    }
 
     setTimeout(() => {
         document.body.removeChild(snack);
