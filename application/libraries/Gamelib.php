@@ -36,11 +36,11 @@ class Gamelib
             )
         );
         
-        if (isset($nation)) {
-            return $nations[$nation];
-        } elseif ($nation == 'random') {
+        if (isset($nation) && $nation == 'random') {
             $random_key = array_rand($nations);
             return $nations[$random_key];
+        } elseif (isset($nation)) {
+            return $nations[$nation];
         } else {
             return $nations;
         }
