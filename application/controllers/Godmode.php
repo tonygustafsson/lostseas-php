@@ -9,7 +9,7 @@ class Godmode extends Main
         parent::__construct();
     
         if ($this->data['user']['admin'] < 1) {
-            //Don't let unautherized users access this feature
+            // Don't let unautherized users access this feature
             exit;
         }
     }
@@ -53,7 +53,7 @@ class Godmode extends Main
                 $data['success'] = 'Success. ' . $change_msg;
                 
                 if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
-                    //Only update inventory if it's your own user
+                    // Only update inventory if it's your own user
                     $data['changeElements'] = $game_result['changeElements'];
                 }
             } else {
@@ -148,7 +148,7 @@ class Godmode extends Main
             $data['success'] = 'Created a new ship!';
         
             if ($this->data['user']['id'] === $input['user_id']) {
-                //Update inventory if it's your own user
+                // Update inventory if it's your own user
                 $data['changeElements'] = $ship_output['changeElements'];
             }
         
@@ -177,7 +177,7 @@ class Godmode extends Main
                     $ship_key = $key[1];
                     $key = implode("_", $key);
                     
-                    //Remove convert + and - to right numbers before sending it back to view
+                    // Remove convert + and - to right numbers before sending it back to view
                     if (substr($val, 0, 1) == "+") {
                         $returnVal = $this->data['player']['ship'][$ship_id][$ship_key] + substr($val, 1);
                     } elseif (substr($val, 0, 1) == "-") {
@@ -199,7 +199,7 @@ class Godmode extends Main
             
             if ($update_result['success']) {
                 if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
-                    //Update inventory if it's your own user
+                    // Update inventory if it's your own user
                     $data['changeElements'] = $update_result['changeElements'];
                 }
 
@@ -231,7 +231,7 @@ class Godmode extends Main
             $data['success'] = 'Deleted ship with ID ' . $ship_output['id'] . '!';
             
             if (isset($this->data['ship'][$input['id']])) {
-                //Update inventory if it's your own ship
+                // Update inventory if it's your own ship
                 $data['changeElements'] = $ship_output['changeElements'];
             }
             
@@ -291,7 +291,7 @@ class Godmode extends Main
                     $crew_key = $key[1];
                     $key = implode("_", $key);
                     
-                    //Remove convert + and - to right numbers before sending it back to view
+                    // Remove convert + and - to right numbers before sending it back to view
                     if (substr($val, 0, 1) == "+") {
                         $returnVal = $this->data['player']['crew'][$crew_id][$crew_key] + substr($val, 1);
                     } elseif (substr($val, 0, 1) == "-") {
@@ -313,7 +313,7 @@ class Godmode extends Main
 
             if ($update_result['success']) {
                 if ($this->data['user']['id'] === $this->data['player']['user']['id']) {
-                    //Only update the inventory if it's your own user
+                    // Only update the inventory if it's your own user
                     $data['changeElements'] = $update_result['changeElements'];
                 }
 

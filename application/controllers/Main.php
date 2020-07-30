@@ -1,6 +1,6 @@
 <?php
 
-//The main controller, everything runs through here....
+// The main controller, everything runs through here....
 
 class Main extends CI_Controller
 {
@@ -8,16 +8,16 @@ class Main extends CI_Controller
     {
         parent::__construct();
         
-        //$this->output->enable_profiler(TRUE);
+        // $this->output->enable_profiler(TRUE);
 
         $this->public_page = $this->public_page($this->uri->segment(1), $this->uri->segment(2));
         $this->data = $this->get_user_data();
 
-        //Set HTTP headers
+        // Set HTTP headers
         $this->output->set_header("Content-Type: text/html; charset=utf-8");
         
         if ($this->data || $this->public_page) {
-            //Get greeting
+            // Get greeting
             $place = ($this->uri->segment(1)) ? $this->uri->segment(1) : $this->data['game']['place'];
             if (isset($this->data['game'])) {
                 $this->data['game']['greeting'] = $this->gamelib->random_greeting($place, $this->data['game']['character_name'], $this->data['game']['character_gender'], $this->data['game']['character_age']);
@@ -38,13 +38,13 @@ class Main extends CI_Controller
         }
 
         if ($event_method) {
-            //An action event
+            // An action event
             redirect($event_method);
         } elseif (isset($this->data['game']) && file_exists(APPPATH . 'views/' . $this->data['game']['place'] . '/view_' . $this->data['game']['place'] . '.php')) {
-            //A page view
+            // A page view
             redirect($this->data['game']['place']);
         } elseif (!isset($this->data['user'])) {
-            //Not logged in, accessing start page
+            // Not logged in, accessing start page
             $this->data['logged_in'] = (isset($this->data['user'])) ? true : false;
             $this->data['character'] = $this->gamelib->generate_character();
                     
@@ -54,7 +54,7 @@ class Main extends CI_Controller
             
             $this->load->view_ajax('about/view_presentation', $this->data);
         } else {
-            //This place does not exist...
+            // This place does not exist...
             $data['header'] = 'You are lost!';
             $data['message'] = 'You seem to be at a place that is not supported by the game. Try to reload the page. If it does not work, contact an administrator!';
             $this->load->view_ajax('view_info', $data);
@@ -99,9 +99,9 @@ class Main extends CI_Controller
     public function get_user_data($user_id = false)
     {
         if ($user_id === false) {
-            //Get the current user based on login
+            // Get the current user based on login
             if (! $this->session->userdata('user_session_id')) {
-                //Generate a session ID that sticks with the cookie (session ids changes every 5 mins)
+                // Generate a session ID that sticks with the cookie (session ids changes every 5 mins)
                 $this->session->set_userdata('user_session_id', uniqid());
             }
             
@@ -109,25 +109,21 @@ class Main extends CI_Controller
             $password = ($this->session->userdata('password') !== false) ? $this->session->userdata('password') : false;
             
             if ($email && $password) {
-                //Try to get user data based on the email (normal login)
+                // Try to get user data based on the email (normal login)
                 $user_data = $this->User->get('email', $email);
                 
                 if ($user_data && $user_data['password'] !== $password) {
-                    //User exists but the password didn't match
+                    // User exists but the password didn't match
                     return false;
                 }
-                
-                //Set the user_session_id to the logged in users ID, to avoid being classified as a temp user
-                //Did cause problems with the sessions, not sure if I need this anymore or not
-                //$this->session->set_userdata('user_session_id', $user_data['id']);
             } else {
-                //Try to get temporary users data based on session ID
+                // Try to get temporary users data based on session ID
                 $user_data = $this->User->get('id', $this->session->userdata('user_session_id'));
             }
         } else {
-            //Get specific user based on their user ID
+            // Get specific user based on their user ID
             
-            //Try to get user data based on user ID
+            // Try to get user data based on user ID
             $user_data = $this->User->get('id', $user_id);
         }
         
@@ -135,7 +131,7 @@ class Main extends CI_Controller
             return false;
         }
             
-        //The user seems to exist, get more info from this user
+        // The user seems to exist, get more info from this user
         $game_data = $this->Game->get('user_id', $user_data['id']);
         $ship_data = ($game_data) ? $this->Ship->get($user_data['id']) : array();
         $crew_data = ($game_data) ? $this->Crew->get_brief($user_data['id']) : array();
@@ -181,7 +177,7 @@ class Main extends CI_Controller
         
         $game_data['victories_total'] = array_sum($game_data['victories']);
 
-        //Add some extra game variables, calculated of the other tables
+        // Add some extra game variables, calculated of the other tables
         $game_data['character_avatar_path'] = base_url('assets/images/avatars/' . (($game_data['character_gender'] == 'M') ? 'male' : 'female') . '/avatar_' . $game_data['character_avatar'] . '.png');
         $game_data['character_gender_long'] = ($game_data['character_gender'] == 'M') ? 'male' : 'female';
         
@@ -238,6 +234,3 @@ class Main extends CI_Controller
         $this->load->view('view_404');
     }
 }
-
-/* End of file main.php */
-/* Location: ./application/controllers/main.php */

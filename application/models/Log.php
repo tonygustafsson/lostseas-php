@@ -11,7 +11,7 @@ class Log extends CI_Model
             $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
         }
                
-        //Query for getting logs
+        // Query for getting logs
         $this->db->select($this->db->log_table . '.id, ' . $this->db->game_table . '.character_name, ' . $this->db->game_table . '.character_avatar, ' . $this->db->game_table . '.character_gender, ' . $this->db->log_table . '.user_id, time, ' . $this->db->log_table . '.week, entry');
         $this->db->join($this->db->user_table, 'ls_user.id = ls_log.user_id');
         $this->db->join($this->db->game_table, 'ls_game.user_id = ls_log.user_id');
@@ -22,7 +22,7 @@ class Log extends CI_Model
         $log = $log->result_array();
         
         if (! isset($input['get_num_rows']) || $input['get_num_rows'] === true) {
-            //Query for num rows, count_all_result did not work with join?
+            // Query for num rows, count_all_result did not work with join?
             if (isset($input['user_id'])) {
                 $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
             }
@@ -51,6 +51,3 @@ class Log extends CI_Model
         $this->db->delete($this->db->log_table, array('user_id' => $user_id));
     }
 }
-
-/* End of file log.php */
-/* Location: ./application/models/log.php */

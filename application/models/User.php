@@ -5,7 +5,7 @@ class User extends CI_Model
     public function get($index, $value, $filter = false)
     {
         if ($filter) {
-            //use $filter as 'password' or 'password, username, phone' to get more than one
+            // Use $filter as 'password' or 'password, username, phone' to get more than one
             $this->db->select($filter);
         }
         
@@ -52,7 +52,7 @@ class User extends CI_Model
 
     public function create($user_input)
     {
-        //Register user data and return the user ID for creating the game db later on
+        // Register user data and return the user ID for creating the game db later on
         $this->db->insert($this->db->user_table, $user_input);
     }
     
@@ -97,6 +97,3 @@ class User extends CI_Model
         }
     }
 }
-
-/* End of file user.php */
-/* Location: ./application/models/user.php */

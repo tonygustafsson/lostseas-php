@@ -426,7 +426,7 @@ class Gamelib
     
     public function readable_list($input)
     {
-        //Put in an array and get a human readable list with the right commas, spaces and dots.
+        // Put in an array and get a human readable list with the right commas, spaces and dots.
         $output = '';
         
         for ($x = 0; $x < count($input); $x++) {

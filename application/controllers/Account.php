@@ -6,7 +6,7 @@ class Account extends Main
 {
     public function login()
     {
-        //Login user, set cookie and redirect to start page
+        // Login user, set cookie and redirect to start page
         $userdata['email'] = ($this->input->post('login_email')) ? $this->input->post('login_email') : 'Wrong';
         $userdata['password'] = md5($this->input->post('login_password'));
         $this->session->set_userdata($userdata);
@@ -15,21 +15,21 @@ class Account extends Main
 
     public function logout()
     {
-        //Logout user, destroy cookie and redirect to start page
+        // Logout user, destroy cookie and redirect to start page
         $this->session->sess_destroy();
         redirect('/');
     }
     
     public function update_activity()
     {
-        //Manually updates the last activity to be able to track online users
+        // Manually updates the last activity to be able to track online users
         $game_sql = "UPDATE " . $this->db->game_table . " SET last_activity = now() WHERE user_id = '" . $this->data['user']['id'] . "'";
         $this->db->query($game_sql);
     }
     
     public function register_temp()
     {
-        //Prepare info that's going into the user database
+        // Prepare info that's going into the user database
         $session_id = $this->session->userdata('user_session_id');
         
         if ($this->User->user_exists($session_id)) {
@@ -37,7 +37,7 @@ class Account extends Main
         }
         
         if ($this->input->post('character_description') != "") {
-            //Honeypot for blocking bots
+            // Honeypot for blocking bots
             exit;
         }
         
@@ -71,12 +71,12 @@ class Account extends Main
 
             $this->Game->create($game_input);
 
-            //Create a brig ship
+            // Create a brig ship
             $ship_data['user_id'] = $session_id;
             $ship_data['type'] = 'brig';
             $this->Ship->create($ship_data);
             
-            //Create four crew members
+            // Create four crew members
             $crew_data['user_id'] = $session_id;
             $crew_data['nationality'] = $game_input['nationality'];
             $crew_data['number_of_men'] = 4;
@@ -96,7 +96,7 @@ class Account extends Main
     public function register()
     {
         if ($this->data['user']['verified'] == 0) {
-            //Settings for the user
+            // Settings for the user
             $months[1] = 'Jan';
             $months[] = 'Feb';
             $months[] = 'Mar';
@@ -118,7 +118,7 @@ class Account extends Main
     public function register_post()
     {
         if ($this->data['user']['verified'] == 0) {
-            //Validate form data
+            // Validate form data
             $form_rules['email'] 				= array('name' => 'Email address', 'email' => true);
             $form_rules['password'] 			= array('name' => 'Desired password', 'min_length' => 6);
             $form_rules['repeated_password'] 	= array('name' => 'Repeated password', 'exact_match' => array($this->input->post('password')));
@@ -144,13 +144,13 @@ class Account extends Main
                 $user_input['presentation'] = $this->input->post('presentation');
                 $user_input['created'] = date('Y-m-d H:i:s', time());
                 
-                //Set a PIN to activate the account
+                // Set a PIN to activate the account
                 $password_pin = uniqid();
                 $user_input['password_pin'] = $password_pin;
                 
                 $this->User->update('id', $this->data['user']['id'], $user_input);
                 
-                //Send out an email for activation
+                // Send out an email for activation
                 $verification = base_url('account/activate/' . $password_pin);
                 $message = "You have registered an account at " . $this->config->item('site_name') . "! Click the link below to verify this.\n\n{$verification}";
 
@@ -197,14 +197,14 @@ class Account extends Main
     public function unregister()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Unregister user
+            // Unregister user
             $this->load->view_ajax('account/view_unregister', $this->data);
         }
     }
     
     public function unregister_post()
     {
-        //Really unregister...
+        // Really unregister...
         if ($this->data['user']['verified'] == 1) {
             $data['error'] = false;
         
@@ -227,7 +227,7 @@ class Account extends Main
     
     public function password_forgotten()
     {
-        //View for sending email adress link
+        // View for sending email adress link
         $this->data['character'] = $this->gamelib->generate_character();
         
         $this->data['meta_description'] = "If you have forgotten your password, you can recollect it here.";
@@ -241,14 +241,14 @@ class Account extends Main
 
     public function password_forgotten_post()
     {
-        //Send reset link via email
+        // Send reset link via email
         
         if ($this->input->post('name') != "") {
-            //Honeypot to avoid some bots
+            // Honeypot to avoid some bots
             exit();
         }
     
-        //Load form helper and library, set form validation delimiters
+        // Load form helper and library, set form validation delimiters
         $form_rules['email'] = array('name' => 'Email address', 'email' => true);
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
         
@@ -281,7 +281,7 @@ class Account extends Main
             $data['success'] = 'A verification link has been sent to ' . $this->input->post('email') . '.';
         }
 
-        //Write in database the PIN to match the user
+        // Write in database the PIN to match the user
         $user_updates['password_pin'] = $password_pin;
         $this->User->update('email', $this->input->post('email'), $user_updates);
 
@@ -290,7 +290,7 @@ class Account extends Main
     
     public function password_reset()
     {
-        //View for resetting the password to something that can be rememberd
+        // View for resetting the password to something that can be rememberd
         $user = $this->User->get('password_pin', $this->uri->segment(3), 'id');
 
         if ($user) {

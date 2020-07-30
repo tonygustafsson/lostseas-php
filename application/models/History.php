@@ -66,6 +66,3 @@ class History extends CI_Model
         $this->db->delete($this->db->history_table, array('user_id' => $user_id));
     }
 }
-
-/* End of file history.php */
-/* Location: ./application/models/history.php */

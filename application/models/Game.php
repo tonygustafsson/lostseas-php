@@ -5,7 +5,7 @@ class Game extends CI_Model
     public function get($index, $value, $filter = false)
     {
         if ($filter) {
-            //use $filter as 'password' or 'password, username, phone' to get more than one
+            // use $filter as 'password' or 'password, username, phone' to get more than one
             $this->db->select($filter);
         }
         
@@ -28,7 +28,7 @@ class Game extends CI_Model
     
     public function update($updates)
     {
-        //Updating game database
+        // Updating game database
         $sql_updates = array();
         $output['changeElements'] = array();
         $updates['user_id'] = (isset($updates['user_id'])) ? $updates['user_id'] : $this->data['user']['id'];
@@ -142,7 +142,7 @@ class Game extends CI_Model
                 $output[$item]['success'] = $value;
                 $output['changeElements']['inventory_' . $item]['text'] = $value;
                 
-                //Write to the history database for graphs and such
+                // Write to the history database for graphs and such
                 $this->load->model('history');
                 $this->history->create();
             }
@@ -241,6 +241,3 @@ class Game extends CI_Model
         return $sql;
     }
 }
-
-/* End of file game.php */
-/* Location: ./application/models/game.php */

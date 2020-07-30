@@ -6,8 +6,8 @@ class Inventory extends Main
 {
     public function __construct()
     {
-        //Checks if it's the current users inventory or someones elses.
-        //If it's someone elses we get their data.
+        // Checks if it's the current users inventory or someones elses.
+        // If it's someone elses we get their data.
         parent::__construct();
 
         $this->player_id = $this->uri->segment(3);
@@ -68,7 +68,7 @@ class Inventory extends Main
 
     public function player()
     {
-        //User info about a player
+        // User info about a player
         if ($this->data['player']['user']['verified'] == 1) {
             $this->data['player']['user']['age'] = $this->calc_age($this->data['player']['user']['birthday']);
         }
@@ -135,7 +135,7 @@ class Inventory extends Main
     public function crew_post()
     {
         if ($this->input->post('crew') != "" && $this->input->post('action') != "" && $this->data['user']['id'] === $this->data['player']['user']['id']) {
-            //Edit your crew...
+            // Edit your crew...
             $data['success'] = "";
             $data['changeElements'] = array();
             
@@ -362,7 +362,7 @@ class Inventory extends Main
         $log_input['entries'] = $get_entry_last;
         $this->data['player']['log'] = $this->Log->get($log_input);
         
-        //Set up pagination
+        // Set up pagination
         $this->load->library('pagination');
         $config['uri_segment'] = 4;
         $config['base_url'] = base_url('inventory/log/' . $this->data['player']['user']['id']);
@@ -372,7 +372,7 @@ class Inventory extends Main
         $config['attributes'] = array('class' => 'ajaxHTML');
         $this->pagination->initialize($config);
 
-        //Unset this to now make it show up in the log results
+        // Unset this to now make it show up in the log results
         unset($this->data['player']['log']['num_rows']);
         
         $this->data['pages'] = $this->pagination->create_links();
