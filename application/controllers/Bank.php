@@ -40,7 +40,7 @@ class Bank extends Main
             $new_money = 0;
 
             if ($transfer > 0) {
-                //Transfer into bank account
+                // Transfer into bank account
                 $updates['doubloons']['sub'] = true;
                 $updates['doubloons']['value'] = $transfer;
                 $updates['bank_account']['add'] = true;
@@ -52,7 +52,7 @@ class Bank extends Main
                 $data['success'] = 'You transfered ' . $transfer . ' dbl to your bank account. ' . floor($transfer * 0.05) . ' dbl were taken as tax.';
                 $log_input['entry'] = 'transfered ' . $transfer . ' dbl to the bank account.';
             } else {
-                //Transfer from bank account
+                // Transfer from bank account
                 $transfer = abs($transfer);
                 
                 $updates['doubloons']['add'] = true;
@@ -95,13 +95,13 @@ class Bank extends Main
         $transfer = $this->input->post('transfer');
 
         if ($transfer > 0 && ($this->data['game']['bank_loan'] + $transfer) > 10000) {
-            //If the loan exceeds 10000 dbl
+            // If the loan exceeds 10000 dbl
             $data['error'] = 'Your loan cannot exceed 10000 dbl!';
         } elseif ($transfer < 0 && abs($transfer) > $this->data['game']['bank_loan']) {
-            //If the transfer is larger than the bank loan
+            // If the transfer is larger than the bank loan
             $data['info'] = 'You don\'t have to pay back more than you loaned for!';
         } elseif ($transfer < 0 && abs($transfer) > $this->data['game']['doubloons']) {
-            //If the transfer is larger than the users cash
+            // If the transfer is larger than the users cash
             $data['error'] = 'You cannot pay of more than you have in cash!';
         } elseif ($transfer == 0) {
             $data['info'] = 'You didn\'t transfer any money!';
@@ -110,7 +110,7 @@ class Bank extends Main
             $new_money = 0;
 
             if ($transfer > 0) {
-                //Taking a loan
+                // Taking a loan
                 $updates['doubloons']['add'] = true;
                 $updates['doubloons']['value'] = $transfer;
                 $updates['bank_loan']['add'] = true;
@@ -122,7 +122,7 @@ class Bank extends Main
                 $data['success'] = 'You took a loan of ' . $transfer . ' dbl! ' . floor($transfer * 0.15) . ' dbl were taken as intrest.';
                 $input_log['entry'] = 'took a loan of ' . $transfer . ' dbl from the bank.';
             } else {
-                //Paying off a loan
+                // Paying off a loan
                 $transfer = abs($transfer);
                 
                 $updates['doubloons']['sub'] = true;

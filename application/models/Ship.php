@@ -9,7 +9,7 @@ class Ship extends CI_Model
         $ship_data = $this->db->get($this->db->ship_table);
         $ship_data = $ship_data->result_array();
         
-        //Create a new array where the keys are the ships ID. Easier to manage.
+        // Create a new array where the keys are the ships ID. Easier to manage.
         $ship_array = array();
         foreach ($ship_data as $ship) {
             $ship_array[$ship['id']] = $ship;
@@ -32,7 +32,7 @@ class Ship extends CI_Model
     {
         $this->load->helper('file');
 
-        //Load ship names
+        // Load ship names
         $names_ships = read_file('assets/lists/names_ships.txt');
         $names_ships = explode("\n", $names_ships);
         
@@ -50,14 +50,14 @@ class Ship extends CI_Model
         
         $output['success'] = true;
         
-        //Get the new ship
+        // Get the new ship
         $new_ship = $this->get_latest($input['user_id']);
         $ship_data['id'] = $new_ship['id'];
 
         $output['ships'] = (isset($this->data['game']['ships'])) ? $this->data['game']['ships'] + 1 : 1;
         $output['created_ship'] = $ship_data;
         
-        //Fix for temp users that don't have ship_health_lowest
+        // Fix for temp users that don't have ship_health_lowest
         $ship_health_lowest = (isset($this->data['game']['ship_health_lowest'])) ? $this->data['game']['ship_health_lowest'] : 100;
         $output['new_lowest_health'] = ($ship_data['health'] < $ship_health_lowest) ? $ship_data['health'] : $ship_health_lowest;
         $output['changeElements'] = $this->gamelib->get_inventory_ship($output['ships'], $output['new_lowest_health']);
@@ -72,18 +72,18 @@ class Ship extends CI_Model
         $ship_destroyed = array();
         
         if (isset($updates['player'])) {
-            //Get another players info
+            // Get another players info
             $all_ships = $updates['player']['ship'];
             $user_id = $updates['player']['user']['id'];
             unset($updates['player']);
         } else {
-            //Get your own info
+            // Get your own info
             $all_ships = $this->data['ship'];
             $user_id = $this->data['user']['id'];
         }
         
         if (isset($updates['all'])) {
-            //If you want to set this value for all ships
+            // If you want to set this value for all ships
             foreach ($all_ships as $this_ship) {
                 foreach ($updates['all'] as $key => $val) {
                     $updates[$this_ship['id']][$key] = $updates['all'][$key];
@@ -94,28 +94,31 @@ class Ship extends CI_Model
         }
     
         foreach ($all_ships as $this_ship) {
-            //For ALL ships, already loaded
+            // For ALL ships, already loaded
             if (isset($updates[$this_ship['id']])) {
                 $affected_ships++;
                 $changes = array();
                 
-                //Gives error on foreach if index does not exist
+                // Gives error on foreach if index does not exist
                 foreach ($updates[$this_ship['id']] as $update => $value) {
-                    //For each update for this ship, if none, keep on going
-                    if (substr($value, 0, 1) == "+") { //Add a number, like +20
+                    // For each update for this ship, if none, keep on going
+                    if (substr($value, 0, 1) == "+") {
+                        // Add a number, like +20
                         $changes[$update] = $this_ship[$update] + substr($value, 1); #Remove + at the beginning from $value
                         $changes[$update] = ($update == 'health' && $changes[$update] > 100) ? 100 : $changes[$update];
-                    } elseif (substr($value, 0, 1) == "-") { //Subtract a number, like -20
+                    } elseif (substr($value, 0, 1) == "-") {
+                        // Subtract a number, like -20
                         $changes[$update] = $this_ship[$update] - substr($value, 1); #Remove - at the beginning from $value
                         $changes[$update] = ($update == 'health' && $changes[$update] < 0) ? 0 : $changes[$update];
-                    } else { //The value will be statically set, like 20
+                    } else {
+                        // The value will be statically set, like 20
                         $changes[$update] = $value;
                         $changes[$update] = ($update == 'health' && $changes[$update] > 100) ? 100 : $changes[$update];
                         $changes[$update] = ($update == 'health' && $changes[$update] < 0) ? 0 : $changes[$update];
                     }
                     
                     if ($update == 'health' && $changes[$update] < 1) {
-                        //Destroy ship if health is 0
+                        // Destroy ship if health is 0
                         $ship_destroyed[$this_ship['id']]['id'] = $this_ship['id'];
                         $erase_input['id'] = $this_ship['id'];
                         $this->erase($erase_input);
@@ -128,7 +131,7 @@ class Ship extends CI_Model
                 $this->db->update($this->db->ship_table, $changes);
             } else {
                 if ($this_ship['health'] < $new_lowest_health) {
-                    //We need to count this even we don't change the ship so we get the right value
+                    // We need to count this even we don't change the ship so we get the right value
                     $new_lowest_health = $this_ship['health'];
                 }
             }
@@ -140,7 +143,7 @@ class Ship extends CI_Model
         $output['ship_destroyed'] = $ship_destroyed;
         $output['ship_destroyed_count'] = count($ship_destroyed);
         
-        //Get the new ships
+        // Get the new ships
         $new_ships = $this->get($user_id);
         $output['ships'] = count($new_ships);
 
@@ -152,14 +155,14 @@ class Ship extends CI_Model
     public function erase($input)
     {
         if (isset($input['delete_all']) && isset($input['user_id']) && $input['delete_all'] == true) {
-            //Erase all ships for a certain user
+            // Erase all ships for a certain user
             $this->db->delete($this->db->ship_table, array('user_id' => $input['user_id']));
             
             $output['action'] = 'all';
             $output['user_id'] = $input['user_id'];
             $output['new_lowest_health'] = 0;
         } else {
-            //Erase a single ship
+            // Erase a single ship
             $this->db->delete($this->db->ship_table, array('id' => $input['id']));
             
             $output['success'] = true;
@@ -174,7 +177,7 @@ class Ship extends CI_Model
             }
         }
         
-        //Get the new ships
+        // Get the new ships
         $new_ships = $this->get($this->data['user']['id']);
         $output['ships'] = count($new_ships);
 
@@ -183,6 +186,3 @@ class Ship extends CI_Model
         return $output;
     }
 }
-
-/* End of file ship.php */
-/* Location: ./application/models/ship.php */

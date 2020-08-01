@@ -9,7 +9,7 @@ class MY_Loader extends CI_Loader
 {
     public function view_ajax($view, $vars = array(), $return = false)
     {
-        //Get instance
+        // Get instance
         $CI =& get_instance();
 
         $page_title = $this->url_to_title($vars);
@@ -53,6 +53,3 @@ class MY_Loader extends CI_Loader
         }
     }
 }
-
-/* End of file MY_Loader.php */
-/* Location: ./application/core/MY_Loader.php */

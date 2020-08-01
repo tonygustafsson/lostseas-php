@@ -10,6 +10,7 @@
 				<th>Name</th>
 				<th></th>
 				<th>Character</th>
+				<th>Level</th>
 				<th>Week</th>
 				<th>Active</th>
 			</tr>
@@ -50,6 +51,9 @@
 					<?=$this_player['character_name']?>
 				</td>
 				<td>
+					<?=$this_player['level']?>
+				</td>
+				<td>
 					<?=$this_player['week']?>
 				</td>
 				<td>
@@ -80,6 +84,7 @@
 		<table>
 			<tr>
 				<th>Character</th>
+				<th>Level</th>
 				<th>Week</th>
 				<th>Created</th>
 				<th>Active</th>
@@ -98,6 +103,8 @@
 					</a>
 					<a class="ajaxHTML"
 						href="<?=base_url('inventory/player/' . $this_player['id'])?>"><?=$this_player['character_name']?></a>
+				</td>
+				<td><?=$this_player['level']?>
 				</td>
 				<td><?=$this_player['week']?>
 				</td>

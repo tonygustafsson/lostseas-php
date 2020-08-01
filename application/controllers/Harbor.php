@@ -11,12 +11,12 @@ class Harbor extends Main
         if ($this->data['game']['place'] == 'ocean') {
             $data['changeElements'] = array();
         
-            //From the ocean to a harbor
+            // From the ocean to a harbor
             $allowed_towns = array('charles towne', 'biloxi', 'havana', 'villa hermosa', 'belize', 'port royale', 'tortuga', 'leogane', 'san juan', 'st. martin', 'st. eustatius', 'martinique', 'barbados', 'panama', 'curacao', 'bonaire');
             $wanted_town = ($this->uri->segment(2) != "") ? str_replace("_", " ", $this->uri->segment(2)) : false;
             
             if (isset($wanted_town) && in_array($wanted_town, $allowed_towns)) {
-                //Check if the town is OK to visit...
+                // Check if the town is OK to visit...
                 $updates['town'] = $wanted_town;
                 $updates['week']['add'] = true;
                 $updates['week']['value'] = 1;
@@ -41,7 +41,7 @@ class Harbor extends Main
                 }
 
                 if (rand(1, 2) == 1 && !isset($this->data['game']['event']['ship_meeting']) && !isset($this->data['game']['event']['ship_trade']) && $this->data['game']['ships'] > 0) {
-                    //Meet a ship!
+                    // Meet a ship!
                     $ship_meeting = $this->gamelib->ship_spec($this->data['game']['manned_cannons'], $this->data['game']['nation']);
                     $ship_meeting['prisoners'] = ($ship_meeting['nation'] === $this->data['game']['enemy'] || $ship_meeting['nation'] === 'pirate') ? floor(rand(0, 2) * rand(0, 1)) : 0;
                     

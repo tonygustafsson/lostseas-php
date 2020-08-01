@@ -7,7 +7,7 @@ class Settings extends Main
     public function account()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Settings for the account
+            // Settings for the account
             $months[1] = 'Jan';
             $months[] = 'Feb';
             $months[] = 'Mar';
@@ -33,7 +33,7 @@ class Settings extends Main
     public function account_post()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Validate form data
+            // Validate form data
             $form_rules['name'] 				= array('name' => 'Full name', 'min_length' => 3);
             $form_rules['gender']				= array('name' => 'Gender', 'exact_match' => array('M', 'F'));
             $form_rules['day']					= array('name' => 'Date', 'in_range' => array_fill(1, 31, true));
@@ -43,7 +43,7 @@ class Settings extends Main
             $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
             
             if (! $data['error']) {
-                //Update the user database
+                // Update the user database
                 $user_input['name'] = $this->input->post('name');
                 $user_input['gender'] = $this->input->post('gender');
                 $user_input['birthday'] = $this->input->post('year') . '-' . $this->input->post('month') . '-' . $this->input->post('day') . ' 12:00:00';
@@ -63,7 +63,7 @@ class Settings extends Main
     
     public function upload_profile_picture()
     {
-        //Get the image through AJAX
+        // Get the image through AJAX
         $contents = file_get_contents("php://input");
 
         if (!$contents) {
@@ -72,7 +72,7 @@ class Settings extends Main
             return;
         }
 
-        //Save temporary uploaded file to right place
+        // Save temporary uploaded file to right place
         $filename = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '.jpg';
 
         file_put_contents($filename, $contents);
@@ -94,7 +94,7 @@ class Settings extends Main
             }
         }
             
-        //Resize the image
+        // Resize the image
         $config['image_library'] = 'gd2';
         $config['source_image']	= $filename;
         $config['create_thumb'] = false;
@@ -111,7 +111,7 @@ class Settings extends Main
             echo $this->image_lib->display_errors();
         }
 
-        //Make thumbnail
+        // Make thumbnail
         $thumbname = APPPATH . '../assets/images/profile_pictures/' . $this->data['user']['id'] . '_thumb.jpg';
         $this->image_lib->clear();
 
@@ -135,14 +135,14 @@ class Settings extends Main
     public function email()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Settings for the password
+            // Settings for the password
             $this->load->view_ajax('settings/view_email', $this->data);
         }
     }
     
     public function email_post()
     {
-        //Change a users email/login
+        // Change a users email/login
         $form_rules['new_email']		= array('name' => 'New email', 'email' => true);
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
 
@@ -153,7 +153,7 @@ class Settings extends Main
             }
 
             if (! $data['error']) {
-                //The new email are ok, mail a verification link
+                // The new email are ok, mail a verification link
                 $email_pin = uniqid();
                 $verification = base_url('settings/email_change/' . $email_pin);
                 $message = "You have choosen to change email adress in " . $this->config->item('site_name') . " to {$this->input->post('new_email')}. Click the link below to verify this.\n\n{$verification}";
@@ -165,7 +165,7 @@ class Settings extends Main
                 $this->email->message($message);
                 $this->email->send();
 
-                //Write in database the email the user want's to change too
+                // Write in database the email the user want's to change too
                 $user_updates['new_email'] = $this->input->post('new_email');
                 $user_updates['email_pin'] = $email_pin;
                 $this->User->update('id', $this->data['user']['id'], $user_updates);
@@ -200,7 +200,7 @@ class Settings extends Main
     public function character()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Settings for the character
+            // Settings for the character
             $this->load->view_ajax('settings/view_character', $this->data);
         }
     }
@@ -236,7 +236,7 @@ class Settings extends Main
             return;
         }
 
-        //Change character settings
+        // Change character settings
         $form_rules['character_name'] 		= array('name' => 'Character name', 'min_length' => 3);
         $form_rules['character_avatar'] 	= array('name' => 'Character avatar', 'in_range' => array_fill(1, 40, true));
         $form_rules['character_gender']		= array('name' => 'Character gender', 'exact_match' => array('M', 'F'));
@@ -244,9 +244,9 @@ class Settings extends Main
             
         $data['error'] = $this->gamelib->validate_form($this->input->post(), $form_rules);
 
-        //Check if the inputs are OK
+        // Check if the inputs are OK
         if (! $data['error']) {
-            //Set game info for the game database
+            // Set game info for the game database
             $data['success'] = 'Successfully saved changes.';
                 
             $updates['character_name'] = $this->input->post('character_name');
@@ -280,6 +280,7 @@ class Settings extends Main
         $updates['town'] = $home_nation_info['towns'][array_rand($home_nation_info['towns'])];
         $updates['place'] = 'dock';
         $updates['title'] = 'pirate';
+        $updates['level'] = 0;
         $updates['week'] = 1;
         $updates['doubloons'] = 300;
         $updates['bank_account'] = 0;
@@ -346,16 +347,16 @@ class Settings extends Main
     public function password()
     {
         if ($this->data['user']['verified'] == 1) {
-            //Settings for the password
+            // Settings for the password
             $this->load->view_ajax('settings/view_password', $this->data);
         }
     }
     
     public function password_post()
     {
-        //Change a users password from settings
+        // Change a users password from settings
         if ($this->data['user']['verified'] == 1) {
-            //Change character settings
+            // Change character settings
             $form_rules['new_password']			= array('name' => 'New password', 'min_length' => 6);
             $form_rules['repeated_new_password']= array('name' => 'Repeated new password', 'exact_match' => array($this->input->post('new_password')));
             
@@ -366,10 +367,10 @@ class Settings extends Main
             }
 
             if (! $data['error']) {
-                //Set info for the database
+                // Set info for the database
                 $user_input['password'] = md5($this->input->post('new_password'));
                 
-                //Update users with the new info
+                // Update users with the new info
                 $this->User->update('id', $this->data['user']['id'], $user_input);
                 
                 $this->session->set_userdata('password', $this->input->post('new_password'));
@@ -383,7 +384,7 @@ class Settings extends Main
        
     public function unregister_post()
     {
-        //Really unregister...
+        // Really unregister...
         if ($this->data['user']['verified'] == 1) {
             $data['error'] = false;
         

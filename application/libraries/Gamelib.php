@@ -11,7 +11,7 @@ class Gamelib
         $this->CI =& get_instance();
     }
 
-    public function get_nations($nation)
+    public function get_nations($nation = null)
     {
         $nations = array(
             'england' => array(
@@ -36,11 +36,13 @@ class Gamelib
             )
         );
         
-        if ($nation == 'random') {
+        if (isset($nation) && $nation == 'random') {
             $random_key = array_rand($nations);
             return $nations[$random_key];
-        } else {
+        } elseif (isset($nation)) {
             return $nations[$nation];
+        } else {
+            return $nations;
         }
     }
 
@@ -99,6 +101,31 @@ class Gamelib
         }
         
         return $title_info;
+    }
+
+    public function get_next_promotion($current_level)
+    {
+        if ($current_level <= 9) {
+            return 10;
+        } elseif ($current_level >= 10 && $current_level <= 19) {
+            return 20;
+        } elseif ($current_level >= 20 && $current_level <= 29) {
+            return 30;
+        } elseif ($current_level >= 30 && $current_level <= 39) {
+            return 40;
+        } elseif ($current_level >= 40 && $current_level <= 49) {
+            return 50;
+        } elseif ($current_level >= 50 && $current_level <= 64) {
+            return 65;
+        } elseif ($current_level >= 65 && $current_level <= 79) {
+            return 80;
+        } elseif ($current_level >= 80 && $current_level <= 99) {
+            return 100;
+        } elseif ($current_level >= 100 && $current_level <= 119) {
+            return 120;
+        } else {
+            return false;
+        }
     }
     
     public function ship_spec($manned_cannons, $nation)
@@ -399,7 +426,7 @@ class Gamelib
     
     public function readable_list($input)
     {
-        //Put in an array and get a human readable list with the right commas, spaces and dots.
+        // Put in an array and get a human readable list with the right commas, spaces and dots.
         $output = '';
         
         for ($x = 0; $x < count($input); $x++) {

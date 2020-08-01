@@ -14,7 +14,7 @@ class Crew extends CI_Model
         $crew_data = $this->db->get($this->db->crew_table);
         $crew_data = $crew_data->result_array();
         
-        //Create a new array where the keys are the crew members ID. Easier to manage.
+        // Create a new array where the keys are the crew members ID. Easier to manage.
         $crew_array = array();
         foreach ($crew_data as $man) {
             $crew_array[$man['id']] = $man;
@@ -57,21 +57,21 @@ class Crew extends CI_Model
             $input['nationality'] = $nation_array[rand(0, 3)];
         }
         
-        //Load mens names
+        // Load mens names
         $names_men = read_file('assets/lists/names_' . $input['nationality'] . '_men.txt');
         if (! $names_men) {
             return false;
         }
         $names_men = explode("\n", $names_men);
         
-        //Load womens names
+        // Load womens names
         $names_women = read_file('assets/lists/names_' . $input['nationality'] . '_women.txt');
         if (! $names_women) {
             return false;
         }
         $names_women = explode("\n", $names_women);
         
-        //Load surnames
+        // Load surnames
         $names_surnames = read_file('assets/lists/names_' . $input['nationality'] . '_surnames.txt');
         if (! $names_surnames) {
             return false;
@@ -115,7 +115,7 @@ class Crew extends CI_Model
         $output = array();
         
         if (isset($this->data['user']['id'])) {
-            //Return new crew data for the inventory, if it's not a temp user
+            // Return new crew data for the inventory, if it's not a temp user
             $new_crew = $this->get_brief($this->data['user']['id']);
         
             $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
@@ -130,7 +130,7 @@ class Crew extends CI_Model
             $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
             $output['changeElements']['inventory_crew_mood_link']['title'] = 'Your crew is ' . $new_friendly_mood . ' (Mood ' . $new_crew['min_mood'] . ')';
         
-            //Return some other statistics
+            // Return some other statistics
             $output['success'] = true;
             $output['min_health'] = $new_crew['min_health'];
             $output['min_mood'] = $new_crew['min_mood'];
@@ -171,23 +171,26 @@ class Crew extends CI_Model
         }
     
         foreach ($all_crew as $this_crew) {
-            //For ALL crews, already loaded
+            // For ALL crews, already loaded
             if (isset($updates[$this_crew['id']])) {
                 $affected_crew_members++;
                 $changes = array();
 
-                //Gives error on foreach if index does not exist
+                // Gives error on foreach if index does not exist
                 foreach ($updates[$this_crew['id']] as $update => $value) {
-                    //For each update for this crew, if none, keep on going
-                    if (substr($value, 0, 1) == "+") { //Add a number, like +20
+                    // For each update for this crew, if none, keep on going
+                    if (substr($value, 0, 1) == "+") {
+                        // Add a number, like +20
                         $changes[$update] = $this_crew[$update] + substr($value, 1); #Remove + at the beginning from $value
                         $changes[$update] = ($update == 'health' && $changes[$update] > 100) ? 100 : $changes[$update];
                         $changes[$update] = ($update == 'mood' && $changes[$update] > 40) ? 40 : $changes[$update];
-                    } elseif (substr($value, 0, 1) == "-") { //Subtract a number, like -20
+                    } elseif (substr($value, 0, 1) == "-") {
+                        // Subtract a number, like -20
                         $changes[$update] = $this_crew[$update] - substr($value, 1); #Remove - at the beginning from $value
                         $changes[$update] = ($update == 'health' && $changes[$update] < 0) ? 0 : $changes[$update];
                         $changes[$update] = ($update == 'mood' && $changes[$update] < -10) ? -10 : $changes[$update];
-                    } else { //The value will be statically set, like 20
+                    } else {
+                        // The value will be statically set, like 20
                         $changes[$update] = $value;
                         $changes[$update] = ($update == 'health' && $changes[$update] > 100) ? 100 : $changes[$update];
                         $changes[$update] = ($update == 'health' && $changes[$update] < 0) ? 0 : $changes[$update];
@@ -207,7 +210,7 @@ class Crew extends CI_Model
             }
         }
         
-        //Return new crew data for the inventory
+        // Return new crew data for the inventory
         $new_crew = $this->get_brief($user_id);
         
         $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
@@ -222,7 +225,7 @@ class Crew extends CI_Model
         $output['changeElements']['inventory_crew_mood']['text'] = $new_friendly_mood;
         $output['changeElements']['inventory_crew_mood_link']['title'] = 'Your crew is ' . $new_friendly_mood . ' (Mood ' . $new_crew['min_mood'] . ')';
         
-        //Return some other statistics
+        // Return some other statistics
         $output['success'] = true;
         $output['min_health'] = $new_crew['min_health'];
         $output['min_mood'] = $new_crew['min_mood'];
@@ -238,7 +241,7 @@ class Crew extends CI_Model
     public function erase($input)
     {
         if (isset($input['delete_all']) && isset($input['user_id']) && $input['delete_all'] == true) {
-            //Erase all crew members for a certain user
+            // Erase all crew members for a certain user
             $this->db->delete($this->db->crew_table, array('user_id' => $input['user_id']));
             
             $output['action'] = 'all';
@@ -250,14 +253,14 @@ class Crew extends CI_Model
             $output['action'] = 'random';
             $output['user_id'] = $input['user_id'];
         } else {
-            //Erase a single crew member
+            // Erase a single crew member
             $this->db->delete($this->db->crew_table, array('id' => $input['id']));
             
             $output['action'] = 'single';
             $output['id'] = $input['id'];
         }
         
-        //Return new crew data for the inventory
+        // Return new crew data for the inventory
         $new_crew = $this->get_brief($this->data['user']['id']);
         
         $output['changeElements'] = $this->gamelib->get_crew_health_symbol($new_crew['min_health']);
@@ -275,6 +278,3 @@ class Crew extends CI_Model
         return $output;
     }
 }
-
-/* End of file crew.php */
-/* Location: ./application/models/crew.php */

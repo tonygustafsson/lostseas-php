@@ -30,14 +30,14 @@ class Cityhall extends Main
         $enemy_victories = $this->data['game']['victories'][$this->data['game']['towns_enemy']];
 
         if ($this->data['game']['nationality'] == $this->data['game']['nation']) {
-            //The users home nation
+            // The users home nation
             $title_input['level'] = $this->data['game']['level'];
             $title_info = $this->gamelib->get_title($title_input);
             $new_title = $title_info['title'];
             $better_than = $title_info['better_than'];
 
             if ($new_title != $this->data['game']['title'] && in_array($this->data['game']['title'], $better_than)) {
-                //Promotion!
+                // Promotion!
                 $reward = $title_info['reward'];
                 
                 $data['success'] = 'After faithfully fighting our enemies I here by promote you to ' . $new_title . '! You are getting a reward of ' . $reward . ' doubloons! Keep up the good work!';
@@ -58,11 +58,14 @@ class Cityhall extends Main
                 $log_input['entry'] = 'is promoted to ' . $new_title . '! A reward of ' . $reward . ' doubloons is given.';
                 $this->Log->create($log_input);
             } else {
-                //Say thank you!
+                // Say thank you!
                 if ($enemy_victories > 0) {
-                    $data['info'] = 'Thank you ' . $this->data['game']['title'] . ' ' . ucfirst($this->data['game']['character_name']) . '! We are thankful for your ' . $enemy_victories . ' victories over enemy ships from ' . ucfirst($this->data['game']['enemy']) . '. Keep up the good work and you will be greatly rewarded!';
+                    $next_promotion_info = $this->gamelib->get_next_promotion($this->data['game']['level']);
+                    $next_promotion = $next_promotion_info - $this->data['game']['level'];
+
+                    $data['info'] = 'Thank you ' . $this->data['game']['title'] . ' ' . ucfirst($this->data['game']['character_name']) . '! We are thankful for your ' . $enemy_victories . ' victories over enemy ships from ' . ucfirst($this->data['game']['enemy']) . '. Sink ' . $next_promotion . ' more, and you will be greatly rewarded!';
                 } elseif ($enemy_victories == 0) {
-                    $data['info'] = 'It is good to see you as our citizen, but you have not proved your loyalty yet. Please sink some ships from ' . ucfirst($this->data['game']['enemy']) . ' and come back here!';
+                    $data['info'] = 'It is good to see you as our citizen, but you have not proved your loyalty yet. Please sink some ships from ' . ucfirst($this->data['game']['enemy']) . ' and visit me again.';
                 } else {
                     $data['info'] = 'Well, ' . $this->data['game']['title'] . ' ' . ucfirst($this->data['game']['character_name']) . '... It seems to me that you do not want to fight for your nation. You have sunken ' . $enemy_victories . ' ships from ' . ucfirst($this->data['game']['nationality']) . '. and we do not take lightly on this kind of behavior.';
                 }
@@ -70,19 +73,19 @@ class Cityhall extends Main
                 $this->data['json'] = json_encode($data);
             }
         } else {
-            //Not the users home nation
+            // Not the users home nation
             if ($enemy_victories >= floor($town_victories + 10)) {
-                //Offer citizenship if the player has won 10 more over the towns enemies than over the town
+                // Offer citizenship if the player has won 10 more over the towns enemies than over the town
                 $data['info'] = 'It\'s an honor to meet you good sir! As a thank you for the ' . $enemy_victories . ' enemy ships you sunken, I can offer you a citizenzip. Will you accept?';
                 $this->data['game']['event_change_citizenship'] = true;
             } elseif ($enemy_victories > $town_victories) {
-                //Be nice to the player
+                // Be nice to the player
                 $data['info'] = 'Welcome good sir! We thank you for the ' . $enemy_victories . ' enemy ships you sunken! Please keep up your good work.';
             } elseif ($town_victories == $enemy_victories) {
-                //Neutral to the town
+                // Neutral to the town
                 $data['info'] = 'Welcome sir! Help us fight ' . ucfirst($this->data['game']['towns_enemy']) . ' and you will be rewarded!';
             } else {
-                //Enemy to the town
+                // Enemy to the town
                 $data['info'] = 'I consider you my enemy! You have sunken ' . $town_victories . ' of our ships! Please go now!';
             }
         }
@@ -202,7 +205,7 @@ class Cityhall extends Main
         if ($crew_output['success'] === true) {
             $data['success'] = 'You and your crew worked for a week as ' . $event['occupation'] . ' and made ' . $event['salary'] . ' dbl!';
 
-            //We have to check the new lowest mood
+            // We have to check the new lowest mood
             $this->data['game']['crew_mood_lowest'] = $crew_output['min_mood'];
                 
             $data['changeElements'] = array_merge($data['changeElements'], $crew_output['changeElements']);

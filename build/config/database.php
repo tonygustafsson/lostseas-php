@@ -28,6 +28,3 @@ $db['default']['ship_table']		= "ls_ship";
 $db['default']['crew_table'] 		= "ls_crew";
 $db['default']['log_table'] 		= "ls_log";
 $db['default']['history_table'] 	= "ls_history";
-
-/* End of file database.php */
-/* Location: ./application/config/database.php */

@@ -62,7 +62,7 @@ class Ocean extends Main
                 }
 
                 if ($this->data['game']['place'] != $this->this_place) {
-                    //If you are comming from the harbor
+                    // If you are comming from the harbor
                     $updates['event']['cityhall_work'] = null;
                     $updates['event']['tavern_sailors'] = null;
                     $updates['event']['tavern_blackjack'] = null;
@@ -188,7 +188,13 @@ class Ocean extends Main
             // Put the number of victories one step up
             $victory_nation = ($ship_meeting_event['nation'] == 'pirate') ? 'pirates' : $ship_meeting_event['nation'];
                 
-            $updates['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation] + 1;
+            $this->data['game']['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation] + 1;
+            $updates['victories'][$victory_nation] = $this->data['game']['victories'][$victory_nation];
+
+            if ($victory_nation === $this->data['game']['enemy'] || $victory_nation === $this->data['game']['nationality']) {
+                // Change level
+                $updates['level'] = $this->data['game']['victories'][$this->data['game']['enemy']] - $this->data['game']['victories'][$this->data['game']['nationality']];
+            }
 
             // Go through some items to see what we will be able to loot
             $item_list = array('food' => 'cartons', 'water' => 'barrels', 'porcelain' => 'cartons', 'spices' => 'cartons', 'silk' => 'cartons', 'medicine' => 'boxes', 'tobacco' => 'cartons', 'rum' => 'barrels');
@@ -244,7 +250,7 @@ class Ocean extends Main
             $log_msg = ($ship_meeting_event['nation'] == 'pirate') ? 'meets a pirate ship' : 'meets a ship from ' . $ship_meeting_event['nation'];
             $log_msg .= ' with ' . $ship_meeting_event['crew'] . ' crew members and ' . $ship_meeting_event['cannons'] . ' cannons. Unfortunately the battle is lost!';
 
-            //Go through your inventory and take things
+            // Go through your inventory and take things
             $items = array('food' => 'cartons', 'water' => 'barrels', 'porcelain' => 'cartons', 'spices' => 'cartons', 'silk' => 'cartons', 'medicine' => 'boxes', 'tobacco' => 'cartons', 'rum' => 'barrels');
             
             foreach ($items as $item => $container) {
@@ -255,17 +261,17 @@ class Ocean extends Main
             }
 
             if ($this->data['game']['doubloons'] > 0) {
-                //Take your money if you have any...
+                // Take your money if you have any...
                 $this->data['game']['bad']['bank'] = 'They took ' . $this->data['game']['doubloons'] . ' doubloons from you.';
                 $updates['doubloons']['value'] = 0;
             }
 
             $sink_ship = ($this->data['game']['ships'] > 1) ? rand(1, 3) : rand(1, 4);
             if ($sink_ship == 1) {
-                //Don't sink ship
+                // Don't sink ship
                 $log_msg .= ' The ship is not sunk, but they take all money and loots the goods.';
             } else {
-                //Sink ship
+                // Sink ship
                 $random_key = array_rand($this->data['ship']);
                 $sunken_ship = $this->data['ship'][$random_key];
                     
@@ -277,12 +283,12 @@ class Ocean extends Main
                 $this->data['game']['bad']['coast'] = 'They sink your ' . $sunken_ship['type'] . ' ' . $sunken_ship['name'] . '.';
 
                 if ($this->data['game']['ships'] > 0) {
-                    //You've got more ships so your cool...
+                    // You've got more ships so your cool...
                     $log_msg .= ' They sink the ' . $sunken_ship['type'] . ' ' . $sunken_ship['name'] . ', and they take all money and loots some of the goods.';
                 } else {
-                    //No more ships, shit...
+                    // No more ships, shit...
                     if ($this->data['game']['rafts'] > 0) {
-                        //Phew, you got rafts...
+                        // Phew, you got rafts...
                         $used_rafts = (floor($this->data['game']['crew_members'] / 10) < 1) ? 1 : floor($this->data['game']['crew_members'] / 10);
                         $used_rafts = ($used_rafts > $this->data['game']['rafts']) ? $this->data['game']['rafts'] : $used_rafts;
                         $data['changeElements']['inventory_rafts']['text'] = $this->data['game']['rafts'] - $used_rafts;
@@ -307,9 +313,9 @@ class Ocean extends Main
                         $killed_msg = ($killed_crew > 0) ? $killed_crew . ' crew members.' : 'all crew members.';
                         $log_msg .= ' They sink the ' . $sunken_ship['type'] . ' ' . $sunken_ship['name'] . ', and they take everything. ' .  $used_rafts . ' rafts are used to save yourself and ' . $killed_msg;
                     } else {
-                        //Crap, now you have to swim to land alone
+                        // Crap, now you have to swim to land alone
                             
-                        //Delete all crew members
+                        // Delete all crew members
                         $crew_input['user_id'] = $this->data['user']['id'];
                         $crew_input['delete_all'] = true;
                         $crew_result = $this->Crew->erase($crew_input);
@@ -320,7 +326,7 @@ class Ocean extends Main
                         $data['changeElements']['inventory_prisoners']['text'] = 0;
                         $data['changeElements']['inventory_manned_cannons']['text'] = 0;
 
-                        //Get a new town to be stranded at
+                        // Get a new town to be stranded at
                         $nation_info = $this->gamelib->get_nations('random');
                         $new_town = $nation_info['towns'][array_rand($nation_info['towns'])];
 
@@ -335,11 +341,11 @@ class Ocean extends Main
                 }
             }
                 
-            //Give crew less health and decrease mood
+            // Give crew less health and decrease mood
             $crew_updates['all']['health'] = rand(-20, -1);
             $crew_updates['all']['mood'] = -1;
                 
-            //Ship health decrease
+            // Ship health decrease
             $ship_updates['all']['health'] = rand(-20, -1);
                 
             $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
@@ -369,7 +375,7 @@ class Ocean extends Main
             
         $data['changeElements'] = array_merge($data['changeElements'], $ship_output['changeElements']);
 
-        //Give crew less health and decrease mood
+        // Give crew less health and decrease mood
         $crew_output = $this->Crew->update($crew_updates);
         $this->data['game']['crew_members'] = $crew_output['num_crew'];
             
@@ -455,7 +461,7 @@ class Ocean extends Main
             $current_quantity = $this->data['game'][$item];
 
             if ($new_quantity > $current_quantity && $new_quantity <= $max_quantity) {
-                //The item is not the same as in $game, and prevent cheating
+                // The item is not the same as in $game, and prevent cheating
                 $updates[$item]['value'] = $new_quantity;
                 $data['changeElements']['inventory_' . $item]['text'] = $new_quantity;
                 $item_msg[] = 'looted ' . ($new_quantity - $current_quantity) . ' cartons of ' . $item;
