@@ -60,9 +60,11 @@ module.exports = [
                     use: ['style-loader', 'css-loader', 'sass-loader']
                 },
                 {
-                    test: /\.(png|jpe?g|gif|otf|svg|eot|woff|ttf)$/i,
+                    test: /\.(png|jpe?g|gif|otf|svg|eot|woff|woff2|ttf)$/i,
                     loader: 'file-loader',
                     options: {
+                        emitFile: false,
+                        publicPath: '/',
                         name: '[path][name].[ext]'
                     }
                 }
