@@ -54,5 +54,11 @@
                 <use xlink:href="#icon-slack"></use>
             </svg>
         </a>
+
+        <a title="Check out the code at GitHub" target="_blank" href="https://github.com/tonygustafsson/lostseas">
+            <svg width="32" height="32" alt="GitHub">
+                <use xlink:href="#icon-github"></use>
+            </svg>
+        </a>
     </div>
 </aside>

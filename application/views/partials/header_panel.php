@@ -144,6 +144,8 @@
                         <span>Sound</span>
                 </a>
 
+                <div class="mobile-only top-nav-panel__divider"></div>
+
                 <a title="Visit us at Facebook" class="top-nav-panel__item top-nav-panel__item--icon-only"
                         target="_blank" href="https://www.facebook.com/lostseas">
                         <svg width="24" height="24" alt="Facebook">
@@ -161,6 +163,14 @@
                         <span>Slack</span>
                 </a>
 
+                <a title="Check out the code at GitHub" class="top-nav-panel__item top-nav-panel__item--icon-only"
+                        target="_blank" href="https://github.com/tonygustafsson/lostseas">
+                        <svg width="24" height="24" alt="GitHub">
+                                <use xlink:href="#icon-github"></use>
+                        </svg>
+                        <span>GitHub</span>
+                </a>
+
                 <?php if (isset($user['admin']) && $user['admin'] == 1): ?>
                 <a title="Enter God Mode!"
                         href="<?=base_url('godmode/index/' . $user['id'])?>"
@@ -171,6 +181,8 @@
                         <span>God Mode</span>
                 </a>
                 <?php endif; ?>
+
+                <div class="mobile-only top-nav-panel__divider"></div>
 
                 <a id="nav_logout" class="top-nav-panel__item top-nav-panel__item--icon-only" title="Log out"
                         href="<?=base_url('account/logout')?>">
