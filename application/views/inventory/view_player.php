@@ -87,15 +87,6 @@
 				</tr>
 				<?php endif; ?>
 
-				<?php if (! empty($player['user']['facebook'])): ?>
-				<tr>
-					<td>Facebook</td>
-					<td><a
-							href="<?=$player['user']['facebook']?>"><?=$player['user']['facebook']?></a>
-					</td>
-				</tr>
-				<?php endif; ?>
-
 				<tr>
 					<td>Last activity</td>
 					<td><?=$player['game']['last_activity']?>
