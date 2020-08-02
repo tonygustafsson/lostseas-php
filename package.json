@@ -16,7 +16,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://tony_gustafsson@bitbucket.org/tony_gustafsson/lostseas.git"
+        "url": "git+https://github.com/tonygustafsson/lostseas.git"
     },
     "author": "Tony Gustafsson",
     "license": "ISC",
