@@ -118,6 +118,7 @@ class Market extends Main
         }
             
         $log_input['entry'] = 'bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl at the market.';
+        $log_input['type'] = 'transaction';
         $this->Log->create($log_input);
 
         $data['success'] = 'You bought ' . $matching_item['quantity'] . ' of ' . $matching_item['item'] . ' for ' . $matching_item['cost'] . ' dbl.';
@@ -156,6 +157,7 @@ class Market extends Main
         }
 
         $log_input['entry'] = 'bought ' . $event['slaves']['quantity'] . ' slaves, that is now part of the crew members, for ' . $event['slaves']['cost'] . ' dbl at the market.';
+        $log_input['type'] = 'transaction';
         $this->Log->create($log_input);
 
         $data['success'] = 'You bought ' . $event['slaves']['quantity'] . ' slaves, that is now your crew members, for ' . $event['slaves']['cost'] . ' dbl at the market!';
@@ -243,6 +245,7 @@ class Market extends Main
                     }
                     
                     $log_input['entry'] = 'let the towns healer heal ' . $injured_crew . ' of the crew members for ' . $cost . ' dbl.';
+                    $log_input['type'] = 'crew-management';
                     $this->Log->create($log_input);
                 } else {
                     $data['error'] = 'Something went wrong when healing your crew!';

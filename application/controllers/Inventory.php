@@ -163,6 +163,7 @@ class Inventory extends Main
                     $data['success'] .= 'You discarded ' . $number_of_men . ' of your crew.';
                     
                     $log_input['entry'] = 'discarded ' . $number_of_men . ' of the crew members.';
+                    $log_input['type'] = 'crew-management';
                     $this->Log->create($log_input);
                 } elseif ($action == 'medicine') {
                     $number_of_healed_men = 0;
@@ -199,6 +200,7 @@ class Inventory extends Main
                             }
                             
                             $log_input['entry'] = 'healed ' . $number_of_healed_men . ' crew members with medicine.';
+                            $log_input['type'] = 'crew-management';
                             $this->Log->create($log_input);
                         }
                         
@@ -230,6 +232,7 @@ class Inventory extends Main
                         }
                         
                         $log_input['entry'] = 'gave ' . $number_of_men . ' of the crew members tobacco which increased their mood by 1.';
+                        $log_input['type'] = 'crew-management';
                         $this->Log->create($log_input);
                         
                         $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
@@ -260,6 +263,7 @@ class Inventory extends Main
                         }
                         
                         $log_input['entry'] = 'gave ' . $number_of_men . ' of the crew members 100 dbl, which increased their mood by 2.';
+                        $log_input['type'] = 'crew-management';
                         $this->Log->create($log_input);
                         
                         $data['changeElements'] = array_merge($data['changeElements'], $game_result['changeElements']);
@@ -288,6 +292,7 @@ class Inventory extends Main
                         }
                         
                         $log_input['entry'] = 'gave ' . $number_of_men . ' of the crew members rum which increased their mood by 3.';
+                        $log_input['type'] = 'crew-management';
                         $this->Log->create($log_input);
                         
                         $data['changeElements'] = array_merge($data['changeElements'], $result['changeElements']);

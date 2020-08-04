@@ -12,7 +12,7 @@ class Log extends CI_Model
         }
                
         // Query for getting logs
-        $this->db->select($this->db->log_table . '.id, ' . $this->db->game_table . '.character_name, ' . $this->db->game_table . '.character_avatar, ' . $this->db->game_table . '.character_gender, ' . $this->db->log_table . '.user_id, time, ' . $this->db->log_table . '.week, entry');
+        $this->db->select($this->db->log_table . '.id, ' . $this->db->game_table . '.character_name, ' . $this->db->game_table . '.character_avatar, ' . $this->db->game_table . '.character_gender, ' . $this->db->log_table . '.user_id, time, ' . $this->db->log_table . '.week, ' . $this->db->log_table . '.entry, ' . $this->db->log_table . '.type');
         $this->db->join($this->db->user_table, 'ls_user.id = ls_log.user_id');
         $this->db->join($this->db->game_table, 'ls_game.user_id = ls_log.user_id');
         $this->db->order_by('time DESC');
@@ -39,8 +39,14 @@ class Log extends CI_Model
 
     public function create($input)
     {
+        if (empty($input['entry'])) {
+            // No empty inserts
+            return;
+        }
+
         $input['user_id'] = (isset($input['user_id'])) ? $input['user_id'] : $this->data['user']['id'];
         $input['week'] = (isset($input['week'])) ? $input['week'] : $this->data['game']['week'];
+        $input['type'] = (isset($input['type'])) ? $input['type'] : 'general';
         $input['time'] = (isset($input['time'])) ? $input['time'] : date('Y-m-d H:i:s', time());
         
         $this->db->insert($this->db->log_table, $input);

@@ -79,6 +79,7 @@ class Bank extends Main
                 $data['playSound'] = 'coins';
             }
             
+            $log_input['type'] = 'funds';
             $this->Log->create($log_input);
         }
 
@@ -120,7 +121,7 @@ class Bank extends Main
                 $new_money = $this->data['game']['doubloons'] + floor($transfer);
 
                 $data['success'] = 'You took a loan of ' . $transfer . ' dbl! ' . floor($transfer * 0.15) . ' dbl were taken as intrest.';
-                $input_log['entry'] = 'took a loan of ' . $transfer . ' dbl from the bank.';
+                $log_input['entry'] = 'took a loan of ' . $transfer . ' dbl from the bank.';
             } else {
                 // Paying off a loan
                 $transfer = abs($transfer);
@@ -134,7 +135,7 @@ class Bank extends Main
                 $new_money = $this->data['game']['doubloons'] - floor($transfer);
                 
                 $data['success'] = 'You payed back ' . abs($transfer) . ' dbl of your loan!';
-                $input_log['entry'] = 'payed back ' . abs($transfer) . ' dbl of the bank loan.';
+                $log_input['entry'] = 'payed back ' . abs($transfer) . ' dbl of the bank loan.';
             }
         
             $result = $this->Game->update($updates);
@@ -149,7 +150,8 @@ class Bank extends Main
                 $data['playSound'] = 'coins';
             }
             
-            $this->Log->create($input_log);
+            $log_input['type'] = 'funds';
+            $this->Log->create($log_input);
         }
         
         echo json_encode($data);
@@ -214,6 +216,7 @@ class Bank extends Main
         }
 
         $log_input['entry'] = 'bought a stock in ' . $stock['name'] . '.';
+        $log_input['type'] = 'funds';
         $this->Log->create($log_input);
 
         $this->data['viewdata']['items'] = $stocks;
@@ -258,6 +261,7 @@ class Bank extends Main
 
 
         $log_input['entry'] = 'sold a stock ' . $stock['name'] . '.';
+        $log_input['type'] = 'funds';
         $this->Log->create($log_input);
 
         $stocks = $this->stockslib->get_available_stocks();

@@ -69,6 +69,7 @@ class Ocean extends Main
                     $updates['event']['market'] = null;
 
                     $log_input['entry'] = 'leaves the port of ' . ucwords($this->data['game']['town']) . ' to explore the caribbean sea.';
+                    $log_input['type'] = 'travel';
                     $this->Log->create($log_input);
                     
                     $this->data['game']['town'] = $updates['town'] = $this->this_place;
@@ -415,6 +416,7 @@ class Ocean extends Main
         $this->data['json'] = json_encode($data);
 
         $log_input['entry'] = $log_msg;
+        $log_input['type'] = 'ship-interaction';
         $this->Log->create($log_input);
           
         if (isset($this->data['game']['event']['ship_meeting'])) {
@@ -489,14 +491,19 @@ class Ocean extends Main
             if (isset($item_msg)) {
                 $item_msg = $this->gamelib->readable_list($item_msg);
                 $data['success'] .= 'You ' . $item_msg . '.';
-                $log_input['entry'] .= $item_msg;
+                $log_input['entry'] .= $item_msg . '.';
             }
             
             $this->data['game']['load_current'] = $total_load;
 
             if ($new_crew > 0) {
                 $data['success'] .= ' ' . $new_crew . ' sailors were taken in as crew members.';
-                $log_input['entry'] .= ' ' . $new_crew . ' sailors were taken in as crew members.';
+
+                if (!empty($log_input['entry'])) {
+                    $log_input['entry'] .= ' ' . $new_crew . ' sailors were taken in as crew members.';
+                } else {
+                    $log_input['entry'] .= 'After the great victory, ' . $new_crew . ' sailors were taken in as crew members.';
+                }
                     
                 $crew_input['user_id'] = $this->data['user']['id'];
                 $crew_input['number_of_men'] = $new_crew;
@@ -519,6 +526,7 @@ class Ocean extends Main
             }
 
             if (! empty($data['success'])) {
+                $log_input['type'] = 'ship-interaction';
                 $this->Log->create($log_input);
             }
                 
@@ -592,6 +600,7 @@ class Ocean extends Main
             
         $log_input['entry'] = ($ship_meeting_event['nation'] == 'pirate') ? 'ignored a pirate ship' : 'ignored a ship from ' . ucfirst($ship_meeting_event['nation']);
         $log_input['entry'] .= ' with ' . $ship_meeting_event['crew'] . ' crew members and ' . $ship_meeting_event['cannons'] . ' cannons.';
+        $log_input['type'] = 'ship-interaction';
         $this->Log->create($log_input);
             
         $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
@@ -634,6 +643,7 @@ class Ocean extends Main
                 
         $log_input['entry'] = ($ship_meeting_event['nation'] === 'pirate') ? 'fled from a pirate ship' : 'fled from a ship from ' . $ship_meeting_event['nation'];
         $log_input['entry'] .= ' with ' . $ship_meeting_event['crew'] . ' crew members and ' . $ship_meeting_event['cannons'] . ' cannons.';
+        $log_input['type'] = 'ship-interaction';
         $this->Log->create($log_input);
 
         $data['changeElements']['nav_ocean']['visibility'] = ($this->data['game']['place'] == 'ocean') ? 'block' : 'none';
@@ -775,6 +785,7 @@ class Ocean extends Main
                 $data['success'] = 'You traded away ' . $msg_away . ' for ' . $msg_get . '.';
                     
                 $log_input['entry'] = 'traded away ' . $msg_away . ' for ' . $msg_get . ' with an allied ship.';
+                $log_input['type'] = 'transaction';
                 $this->Log->create($log_input);
             } else {
                 $data['info'] = 'You decided not to trade anything.';

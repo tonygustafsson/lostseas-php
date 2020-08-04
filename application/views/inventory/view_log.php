@@ -2,13 +2,15 @@
 	<?php if ($user['id'] == $player['user']['id']): ?>
 	<h3>Inventory: Log book</h3>
 	<?php else: ?>
-	<h3>About <?=$player['user']['name']?>:
-		Log book</h3>
+	<h3>
+		<?=$player['game']['character_name']?>:
+		Log book
+	</h3>
 	<?php endif; ?>
 
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon"
-			title="Learn more about <?=$player['user']['name']?>"
+			title="Learn more about <?=$player['game']['character_name']?>"
 			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
 				<use xlink:href="#icon-player"></use>
@@ -61,7 +63,9 @@
 
 	<?php if ($player['log']): ?>
 	<?php $current_week = $player['log'][0]['week']; ?>
-	<h3>Week <?=$player['log'][0]['week']?>
+
+	<h3>
+		Week <?=$player['log'][0]['week']?>
 	</h3>
 
 	<ul>
@@ -71,14 +75,16 @@
 		<?php if ($entry['week'] < $current_week): ?>
 		<?php $current_week = $entry['week']; ?>
 	</ul>
-	<h3>Week <?=$entry['week']?>
+
+	<h3>
+		Week <?=$entry['week']?>
 	</h3>
+
 	<ul>
 		<?php endif; ?>
 
-		<li
-			title="Week <?=$entry['week']?>, <?=$entry['time']?>">
-			<?=$game['character_name']?> <?=$entry['entry']?>
+		<li title="<?=$entry['time']?>">
+			<strong>[<?=$entry['type']?>]</strong> <?=ucfirst($entry['entry'])?>
 		</li>
 
 		<?php endfor; ?>

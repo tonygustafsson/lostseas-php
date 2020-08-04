@@ -56,6 +56,7 @@ class Cityhall extends Main
                 $this->data['json'] = json_encode($data);
                 
                 $log_input['entry'] = 'is promoted to ' . $new_title . '! A reward of ' . $reward . ' doubloons is given.';
+                $log_input['type'] = 'social-status';
                 $this->Log->create($log_input);
             } else {
                 // Say thank you!
@@ -123,6 +124,7 @@ class Cityhall extends Main
         }
         
         $log_input['entry'] = 'changed citizenship to ' . $this->data['game']['nation'] . ', and were given the title ' . $new_title . '.';
+        $log_input['type'] = 'social-status';
         $this->Log->create($log_input);
 
         echo json_encode($data);
@@ -215,6 +217,7 @@ class Cityhall extends Main
             }
                 
             $log_input['entry'] = 'and the crew worked for a week as ' . $event['occupation'] . ' and made ' . $event['salary'] . ' dbl.';
+            $log_input['type'] = 'labor';
             $this->Log->create($log_input);
 
             // Update stock worth (week passed)
@@ -247,6 +250,7 @@ class Cityhall extends Main
             $data['changeElements']['action_prisoners']['remove'] = true;
 
             $log_input['entry'] = 'handed in ' . $this->data['game']['prisoners'] . ' prisoners and got a reward of ' . $reward . ' dbl.';
+            $log_input['type'] = 'transaction';
             $this->Log->create($log_input);
     
             echo json_encode($data);
