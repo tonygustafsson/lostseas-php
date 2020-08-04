@@ -269,7 +269,7 @@ class Shipyard extends Main
                     $updates[$item]['value'] = $new_quantity;
                     $this->data['game'][$item] = $new_quantity;
                     $data['changeElements']['inventory_' . $item]['text'] = $new_quantity;
-                    $msg_list[] = ($new_quantity > $current_quantity) ? ' bought ' . ($new_quantity - $current_quantity) . ' ' . $item : ' sold ' . ($current_quantity - $new_quantity) . ' ' . $item;
+                    $msg_list[] = ($new_quantity > $current_quantity) ? ' Bought ' . ($new_quantity - $current_quantity) . ' ' . $item : ' Sold ' . ($current_quantity - $new_quantity) . ' ' . $item;
                 }
             }
         }
