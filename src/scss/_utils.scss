@@ -19,6 +19,13 @@
     max-width: 100%;
 }
 
+.w-m-100 {
+    @include mobile {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
 .w-50 {
     width: 50%;
     max-width: 50%;

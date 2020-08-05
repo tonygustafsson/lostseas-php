@@ -59,11 +59,11 @@
 
 	<hr />
 
-	<div class="text-center">
+	<div class="row row-justify-center">
 		<input type="hidden" name="base_url" id="base_url"
 			value="<?=base_url('inventory/log/' . $this->uri->segment(3))?>">
 
-		<select name="log_filter" id="log_filter">
+		<select name="log_filter" id="log_filter" class="w-m-100">
 			<option value="all">All</option>
 
 			<?php foreach ($viewdata['log_types'] as $type => $type_title): ?>
@@ -79,9 +79,9 @@
 			<?php endforeach; ?>
 		</select>
 
-		<a class="button ajaxHTML"
+		<a class="button ajaxHTML ml-1 ml-m-0 mt-m-2"
 			href="<?=base_url('inventory/log/' . $this->uri->segment(3))?>"
-			id="log_filter_trigger" style="vertical-align: baseline">Filter</a>
+			id="log_filter_trigger">Filter</a>
 	</div>
 
 	<p class="text-center pagination">

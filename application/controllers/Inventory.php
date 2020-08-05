@@ -388,6 +388,8 @@ class Inventory extends Main
         $config['total_rows'] = $this->data['player']['log']['num_rows'];
         $config['per_page'] = $entries_per_page;
         $config['num_links'] = 14;
+        $config['prev_link'] = '⬅';
+        $config['next_link'] = '➡';
         $config['attributes'] = array('class' => 'ajaxHTML');
         $this->pagination->initialize($config);
 
