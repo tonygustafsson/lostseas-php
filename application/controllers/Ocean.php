@@ -281,7 +281,7 @@ class Ocean extends Main
                 $this->data['game']['ships'] = $ship_result['ships'];
                 $data['changeElements'] = array_merge($data['changeElements'], $ship_result['changeElements']);
                     
-                $this->data['game']['bad']['coast'] = 'They sink your ' . $sunken_ship['type'] . ' ' . $sunken_ship['name'] . '.';
+                $this->data['game']['bad']['ship'] = 'They sink your ' . $sunken_ship['type'] . ' ' . $sunken_ship['name'] . '.';
 
                 if ($this->data['game']['ships'] > 0) {
                     // You've got more ships so your cool...
