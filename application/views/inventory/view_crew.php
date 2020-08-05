@@ -135,9 +135,7 @@
 
 		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 		<div class="row row-justify-right">
-			<button type="submit" class="mr-1">Do it</button>
-
-			<select name="action[]">
+			<select name="action[]" class="w-m-100">
 				<?php foreach ($actions as $current_action => $description): ?>
 				<?php if ((isset($player['game'][$current_action]) && $player['game'][$current_action] > 0) || $current_action == 'discard'): ?>
 				<option value="<?=$current_action?>" <?php echo(($action == $current_action) ? 'selected="selected"' : '') ?>><?=$description?>
@@ -145,6 +143,8 @@
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
+
+			<button type="submit" class="ml-m-0 mt-m-1 ml-1">Do it</button>
 		</div>
 		<?php endif; ?>
 	</form>

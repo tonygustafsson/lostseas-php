@@ -52,28 +52,26 @@
 	</div>
 
 	<?php if (isset($chart_data)): ?>
-	<div class="text-center">
-		<form method="post" class="ajaxJSON"
-			action="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
-			<input type="hidden" name="base_url" id="base_url"
-				value="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
+	<div class="row row-justify-center">
+		<input type="hidden" name="base_url" id="base_url"
+			value="<?=base_url('inventory/history/' . $this->uri->segment(3))?>">
 
-			Weeks:
-			<select name="weeks" id="history_weeks">
-				<?php foreach ($history_weeks as $week): ?>
-				<?php if (($this->uri->segment(4) != "" && $week == $this->uri->segment(4)) || $this->uri->segment(4) == "" && $week == 50): ?>
-				<option value="<?=$week?>" selected><?=$week?>
-				</option>
-				<?php else: ?>
-				<option value="<?=$week?>"><?=$week?>
-				</option>
-				<?php endif; ?>
-				<?php endforeach; ?>
-			</select>
+		<select name="weeks" id="history_weeks" class="w-m-100">
+			<?php foreach ($history_weeks as $week): ?>
+			<?php if (($this->uri->segment(4) != "" && $week == $this->uri->segment(4)) || $this->uri->segment(4) == "" && $week == 50): ?>
+			<option value="<?=$week?>" selected>
+				<?=$week?> weeks
+			</option>
+			<?php else: ?>
+			<option value="<?=$week?>">
+				<?=$week?> weeks
+			</option>
+			<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
 
-			<a href="<?=base_url('inventory/history/' . $this->uri->segment(3))?>"
-				class="ajaxHTML" title="Update graph and table" id="history_update_link">Update</a>
-		</form>
+		<a href="<?=base_url('inventory/history/' . $this->uri->segment(3))?>"
+			class="button ajaxHTML ml-1 ml-m-0 mt-m-2" title="Update graph and table" id="history_update_link">View</a>
 	</div>
 
 	<div class="inventory__charts">
