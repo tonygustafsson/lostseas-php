@@ -10,6 +10,10 @@ class Log extends CI_Model
         if (isset($input['user_id'])) {
             $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
         }
+
+        if (isset($input['type'])) {
+            $this->db->where($this->db->log_table . '.type', $input['type']);
+        }
                
         // Query for getting logs
         $this->db->select($this->db->log_table . '.id, ' . $this->db->game_table . '.character_name, ' . $this->db->game_table . '.character_avatar, ' . $this->db->game_table . '.character_gender, ' . $this->db->log_table . '.user_id, time, ' . $this->db->log_table . '.week, ' . $this->db->log_table . '.entry, ' . $this->db->log_table . '.type');
@@ -25,6 +29,10 @@ class Log extends CI_Model
             // Query for num rows, count_all_result did not work with join?
             if (isset($input['user_id'])) {
                 $this->db->where($this->db->log_table . '.user_id', $input['user_id']);
+            }
+
+            if (isset($input['type'])) {
+                $this->db->where($this->db->log_table . '.type', $input['type']);
             }
 
             $this->db->select($this->db->log_table . '.id');

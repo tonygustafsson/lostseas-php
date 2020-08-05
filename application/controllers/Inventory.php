@@ -359,20 +359,34 @@ class Inventory extends Main
 
     public function log()
     {
-        $get_entry_first = ($this->url_page != "") ? $this->url_page : 0;
-        $get_entry_last = 50;
+        $filter = $this->uri->segment(4);
+        $page = $this->uri->segment(5);
+        $entries_per_page = 50;
+
+        $get_entry_first = !empty($page) ? (int)$page : 0;
+        $get_entry_last = $entries_per_page;
 
         $log_input['user_id'] = $this->data['player']['user']['id'];
         $log_input['first_entry'] = $get_entry_first;
         $log_input['entries'] = $get_entry_last;
+
+        $base_url = "";
+
+        if (!empty($filter) && $filter != 'all') {
+            $log_input['type'] = $filter;
+            $base_url = base_url('inventory/log/' . $this->data['player']['user']['id'] . '/' . $filter);
+        } else {
+            $base_url = base_url('inventory/log/' . $this->data['player']['user']['id'] . '/all');
+        }
+
         $this->data['player']['log'] = $this->Log->get($log_input);
         
         // Set up pagination
         $this->load->library('pagination');
-        $config['uri_segment'] = 4;
-        $config['base_url'] = base_url('inventory/log/' . $this->data['player']['user']['id']);
+        $config['uri_segment'] = 5;
+        $config['base_url'] = $base_url;
         $config['total_rows'] = $this->data['player']['log']['num_rows'];
-        $config['per_page'] = 50;
+        $config['per_page'] = $entries_per_page;
         $config['num_links'] = 14;
         $config['attributes'] = array('class' => 'ajaxHTML');
         $this->pagination->initialize($config);
@@ -381,6 +395,18 @@ class Inventory extends Main
         unset($this->data['player']['log']['num_rows']);
         
         $this->data['pages'] = $this->pagination->create_links();
+
+        $this->data['viewdata']['log_types'] = array(
+            'travel' => 'Travels',
+            'general' => 'General',
+            'ship-interaction' => 'Ship interactions',
+            'transaction' => 'Transactions',
+            'gambling' => 'Gambling',
+            'funds' => 'Funds',
+            'social-status' => 'Social status',
+            'labor' => 'Labor',
+            'crew-management' => 'Crew management'
+        );
         
         $this->load->view_ajax('inventory/view_log', $this->data);
     }

@@ -55,18 +55,44 @@
 		Here you can see your ship's log and keep track of what has happend.
 	</p>
 
+	<?php if ($player['log']): ?>
+
+	<hr />
+
+	<div class="text-center">
+		<input type="hidden" name="base_url" id="base_url"
+			value="<?=base_url('inventory/log/' . $this->uri->segment(3))?>">
+
+		<select name="log_filter" id="log_filter">
+			<option value="all">All</option>
+
+			<?php foreach ($viewdata['log_types'] as $type => $type_title): ?>
+			<?php if (!empty($this->uri->segment(4)) && $type == $this->uri->segment(4)): ?>
+			<option value="<?=$type?>" selected>
+				<?=$type_title?>
+			</option>
+			<?php else: ?>
+			<option value="<?=$type?>">
+				<?=$type_title?>
+			</option>
+			<?php endif; ?>
+			<?php endforeach; ?>
+		</select>
+
+		<a class="button ajaxHTML"
+			href="<?=base_url('inventory/log/' . $this->uri->segment(3))?>"
+			id="log_filter_trigger" style="vertical-align: baseline">Filter</a>
+	</div>
+
 	<p class="text-center pagination">
 		<?=$pages?>
 	</p>
 
-	<hr />
-
-	<?php if ($player['log']): ?>
 	<?php $current_week = $player['log'][0]['week']; ?>
 
-	<h3>
+	<h4>
 		Week <?=$player['log'][0]['week']?>
-	</h3>
+	</h4>
 
 	<table class="inventory__log__table">
 		<tr>
@@ -81,9 +107,9 @@
 		<?php $current_week = $entry['week']; ?>
 	</table>
 
-	<h3>
+	<h4>
 		Week <?=$entry['week']?>
-	</h3>
+	</h4>
 
 	<table class="inventory__log__table">
 		<tr>
