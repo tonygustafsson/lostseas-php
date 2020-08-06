@@ -22,4 +22,16 @@
             }
         }
     }
+
+    &__log {
+        &__table {
+            td:first-of-type {
+                width: 20%;
+
+                @include mobile {
+                    width: 30%;
+                }
+            }
+        }
+    }
 }

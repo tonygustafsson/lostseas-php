@@ -2,13 +2,15 @@
 	<?php if ($user['id'] == $player['user']['id']): ?>
 	<h3>Inventory: You</h3>
 	<?php else: ?>
-	<h3>About <?=$player['user']['name']?>:
-		Player</h3>
+	<h3>
+		<?=$player['game']['character_name']?>:
+		Player
+	</h3>
 	<?php endif; ?>
 
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon"
-			title="Learn more about <?=$player['user']['name']?>"
+			title="Learn more about <?=$player['game']['character_name']?>"
 			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
 				<use xlink:href="#icon-player"></use>
@@ -84,15 +86,6 @@
 					<td>Age</td>
 					<td><?=$player['user']['age']?>
 						years old</td>
-				</tr>
-				<?php endif; ?>
-
-				<?php if (! empty($player['user']['facebook'])): ?>
-				<tr>
-					<td>Facebook</td>
-					<td><a
-							href="<?=$player['user']['facebook']?>"><?=$player['user']['facebook']?></a>
-					</td>
 				</tr>
 				<?php endif; ?>
 

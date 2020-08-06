@@ -157,6 +157,13 @@
         }
     }
 
+    &__divider {
+        margin: #{$spacing * 3} auto;
+        height: 1px;
+        width: 90%;
+        background-color: $lightgrey;
+    }
+
     @include mobile {
         flex-wrap: wrap;
         flex-direction: column;

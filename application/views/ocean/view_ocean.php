@@ -25,7 +25,7 @@
 	<?php endif; ?>
 
 	<?php if (isset($game['bad'])): ?>
-	<ul>
+	<ul class="ocean-event-results">
 		<?php foreach ($game['bad'] as $svg_id => $msg): ?>
 		<li class="negative">
 			<svg width="32" height="32" alt="<?=$svg_id?>">

@@ -54,7 +54,7 @@ class Tavern extends Main
                 
         if ($item['health_increase'] > 0) {
             $data['success'] .= ' The crew health was raised by +' . $item['health_increase'] . '.';
-            $log_input['entry'] .= 'The crew health was raised by +' . $item['health_increase'] . '.';
+            $log_input['entry'] .= ' The crew health was raised by +' . $item['health_increase'] . '.';
                     
             $db_crew_updates['all']['health'] = "+" . $item['health_increase'];
         }
@@ -83,6 +83,7 @@ class Tavern extends Main
             }
         }
 
+        $log_input['type'] = 'crew-management';
         $this->Log->create($log_input);
         
         echo json_encode($data);
@@ -172,6 +173,7 @@ class Tavern extends Main
         $this->data['json'] = json_encode($data);
                     
         $log_input['entry'] = 'fought with some sailors and took ' . $loot . ' dbl.';
+        $log_input['type'] = 'crew-management';
         $this->Log->create($log_input);
             
         $this->load->view_ajax('tavern/view_sailors', $this->data);
@@ -212,6 +214,7 @@ class Tavern extends Main
         $db_updates['event']['tavern_sailors']['banned'] = true;
         $this->Game->update($db_updates);
                                     
+        $log_input['type'] = 'crew-management';
         $this->Log->create($log_input);
                         
         $this->load->view_ajax('tavern/view_sailors', $this->data);
@@ -251,6 +254,7 @@ class Tavern extends Main
         $data['changeElements']['inventory_manned_cannons']['text'] = $manned_cannons;
                     
         $log_input['entry'] = 'took ' . $sailors . ' sailors from the tavern in as crew members.';
+        $log_input['type'] = 'crew-management';
         $this->Log->create($log_input);
             
         $db_updates['user_id'] = $this->data['user']['id'];
@@ -365,6 +369,7 @@ class Tavern extends Main
         $data['changeElements']['last_bet']['val'] = $next_bet;
         $data['triggerJsEvents'][] = 'tavern-dice-post';
         
+        $log_input['type'] = 'gambling';
         $this->Log->create($log_input);
         
         echo json_encode($data);
@@ -516,6 +521,7 @@ class Tavern extends Main
             $data['info'] = 'You busted and lost your money to the bank.';
 
             $log_input['entry'] = 'played Black Jack and busted. Lost ' . $event['bet'] . ' dbl.';
+            $log_input['type'] = 'gambling';
             $this->Log->create($log_input);
         } else {
             if ($this->data['user']['sound_effects_play'] == 1) {
@@ -571,6 +577,7 @@ class Tavern extends Main
             $data['info'] = 'You lost to the dealer and lost your money.';
 
             $log_input['entry'] = 'played Black Jack and lost ' . $event['bet'] . ' dbl to the dealer.';
+            $log_input['type'] = 'gambling';
             $this->Log->create($log_input);
 
             if ($this->data['user']['sound_effects_play'] == 1) {
@@ -591,6 +598,7 @@ class Tavern extends Main
                 $log_input['entry'] = 'played Black Jack and won ' . $winning_sum . ' dbl.';
             }
 
+            $log_input['type'] = 'gambling';
             $this->Log->create($log_input);
 
             if ($this->data['user']['sound_effects_play'] == 1) {

@@ -68,6 +68,7 @@ class Shipyard extends Main
                     }
                     
                     $log_input['entry'] = 'bought a new ' . $ship_output['created_ship']['type'] . '.';
+                    $log_input['type'] = 'transaction';
                     $this->Log->create($log_input);
                 } else {
                     $data['error'] = 'Something went wrong when creating the ship!';
@@ -118,6 +119,7 @@ class Shipyard extends Main
                 }
                 
                 $log_input['entry'] = 'sold the ship ' . $this->data['ship'][$ship_id]['name'] . ' for ' . $cost . ' dbl.';
+                $log_input['type'] = 'transaction';
                 $this->Log->create($log_input);
             } else {
                 $data['error'] = 'Something went wrong when deleting the ship!';
@@ -192,6 +194,7 @@ class Shipyard extends Main
         }
         
         $log_input['entry'] = 'repaired all ships for ' . $cost . ' dbl.';
+        $log_input['type'] = 'transaction';
         $this->Log->create($log_input);
 
         echo json_encode($data);
@@ -241,6 +244,7 @@ class Shipyard extends Main
                 }
                 
                 $log_input['entry'] = 'repaired the ship ' . $this->data['ship'][$ship_id]['name'] . ' for ' . $cost . ' dbl.';
+                $log_input['type'] = 'transaction';
                 $this->Log->create($log_input);
             } else {
                 $data['error'] = 'Something went wrong when repairing the ship!';
@@ -265,7 +269,7 @@ class Shipyard extends Main
                     $updates[$item]['value'] = $new_quantity;
                     $this->data['game'][$item] = $new_quantity;
                     $data['changeElements']['inventory_' . $item]['text'] = $new_quantity;
-                    $msg_list[] = ($new_quantity > $current_quantity) ? ' bought ' . ($new_quantity - $current_quantity) . ' ' . $item : ' sold ' . ($current_quantity - $new_quantity) . ' ' . $item;
+                    $msg_list[] = ($new_quantity > $current_quantity) ? ' Bought ' . ($new_quantity - $current_quantity) . ' ' . $item : ' Sold ' . ($current_quantity - $new_quantity) . ' ' . $item;
                 }
             }
         }
@@ -291,6 +295,7 @@ class Shipyard extends Main
             }
 
             $log_input['entry'] = $msg_list . '.';
+            $log_input['type'] = 'transaction';
             $this->Log->create($log_input);
         }
         

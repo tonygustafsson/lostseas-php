@@ -79,6 +79,7 @@ class Harbor extends Main
                 $this->data['json'] = json_encode($data);
 
                 $log_input['entry'] = 'traveled to ' . ucwords($wanted_town) . '.';
+                $log_input['type'] = 'travel';
                 $this->Log->create($log_input);
 
                 $view = isset($this->data['game']['event']['ship_meeting']) || isset($this->data['game']['event']['ship_trade']) ? 'ocean/view_ship_meeting' : $this->data['game']['place'] . '/view_' . $this->data['game']['place'];
