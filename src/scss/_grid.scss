@@ -16,6 +16,10 @@ $orders: 12;
     margin-left: -#{$gutter}px;
     margin-right: -#{$gutter}px;
 
+    &-justify-center {
+        justify-content: center;
+    }
+
     &-justify-right {
         justify-content: flex-end;
     }

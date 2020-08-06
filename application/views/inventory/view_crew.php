@@ -2,13 +2,15 @@
 	<?php if ($user['id'] == $player['user']['id']): ?>
 	<h3>Inventory: Crew</h3>
 	<?php else: ?>
-	<h3>About <?=$player['user']['name']?>:
-		Crew</h3>
+	<h3>
+		<?=$player['game']['character_name']?>:
+		Crew
+	</h3>
 	<?php endif; ?>
 
 	<div class="button-area">
 		<a class="ajaxHTML button big-icon"
-			title="Learn more about <?=$player['user']['name']?>"
+			title="Learn more about <?=$player['game']['character_name']?>"
 			href="<?=base_url('inventory/player/' . $this->uri->segment(3))?>">
 			<svg width="16" height="16" alt="Player">
 				<use xlink:href="#icon-player"></use>
@@ -133,9 +135,7 @@
 
 		<?php if ($this->data['user']['id'] == $this->data['player']['user']['id']): ?>
 		<div class="row row-justify-right">
-			<button type="submit" class="mr-1">Do it</button>
-
-			<select name="action[]">
+			<select name="action[]" class="w-m-100">
 				<?php foreach ($actions as $current_action => $description): ?>
 				<?php if ((isset($player['game'][$current_action]) && $player['game'][$current_action] > 0) || $current_action == 'discard'): ?>
 				<option value="<?=$current_action?>" <?php echo(($action == $current_action) ? 'selected="selected"' : '') ?>><?=$description?>
@@ -143,8 +143,10 @@
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</select>
-			<?php endif; ?>
+
+			<button type="submit" class="ml-m-0 mt-m-1 ml-1">Do it</button>
 		</div>
+		<?php endif; ?>
 	</form>
 	<?php else: ?>
 	<p><em>You are not companied any crew members...</em></p>

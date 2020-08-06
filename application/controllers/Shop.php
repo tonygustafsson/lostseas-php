@@ -105,6 +105,7 @@ class Shop extends Main
         $output['success'] = 'You ' . $this->gamelib->readable_list($item_msg) . '.';
 
         $log_input['entry'] = $this->gamelib->readable_list($item_msg) . '.';
+        $log_input['type'] = 'transaction';
         $this->Log->create($log_input);
         
         echo json_encode($output);
