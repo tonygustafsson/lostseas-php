@@ -16,7 +16,7 @@ services:
         networks:
             default:
     php-fpm:
-        image: 'bitnami/php-fpm:latest'
+        image: 'bitnami/php-fpm:7.4'
         volumes:
             - .:/var/www
             - ./docker/php-fpm/conf.d:/opt/bitnami/php/etc/conf.d
@@ -24,9 +24,9 @@ services:
             - ./docker/php-fpm/logs:/opt/bitnami/php/logs
             - ./docker/php-fpm/logs:/bitnami/php-fpm/logs
         expose:
-            - "9000"
+            - '9000'
         ports:
-            - "9001:9001"
+            - '9001:9001'
         networks:
             default:
                 aliases:
