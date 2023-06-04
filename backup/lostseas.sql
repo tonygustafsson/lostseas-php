@@ -114,7 +114,7 @@ CREATE TABLE `ls_log` (
   `user_id` varchar(20) NOT NULL,
   `time` datetime NOT NULL,
   `week` int NOT NULL,
-  `type` varchar(50) NOT NULL DEFAULT 'general'
+  `type` varchar(50) NOT NULL DEFAULT 'general',
   `entry` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
