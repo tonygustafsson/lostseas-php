@@ -1,5 +1,9 @@
 # Lost Seas
 
+# Legacy
+
+This game has been a part of my life for so long. It's finally time to say goodbye and say hello to the [new version, built with Next.js](https://github.com/tonygustafsson/lostseas) instead. Yarr!
+
 This is an old fashioned web based game. It is based upon Sid Meier's Pirates but with it's own ideas.
 It is an adventure game with images, music and descriptive texts.
 
